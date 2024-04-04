@@ -10,7 +10,7 @@ const CompleteOrder = () => {
     await http.get("/get-processed-img").then((response) => {
       // console.log(response.data.Image);
       if (response) {
-        setCapturedImage(response.data[0].Image);
+        setCapturedImage(response.data.Image);
         console.log(capturedImage);
       }
     });

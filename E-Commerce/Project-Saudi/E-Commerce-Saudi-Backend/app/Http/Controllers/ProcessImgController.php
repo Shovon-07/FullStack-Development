@@ -32,7 +32,7 @@ class ProcessImgController extends Controller
     }
 
 	function GetProcessedImg() {
-        $data = Images::all();
+        $data = Images::first();
 		return $data;
 	}
 }
