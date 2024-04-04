@@ -83,7 +83,7 @@
         transition: $trans;
         background: transparent;
         &:focus::placeholder {
-          padding: 20px;
+          padding-left: 10px;
         }
       }
       textarea {

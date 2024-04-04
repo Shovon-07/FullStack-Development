@@ -154,20 +154,30 @@ body.blur {
   ::placeholder {
     color: $light-3;
   }
+  input:disabled {
+    background: $dark-3 !important;
+    border: 1px solid $light-3 !important;
+  }
 
   .main {
+    color: $light-1;
     //___ Header ___//
     .Header {
       background: #42424259;
-      backdrop-filter: blur(100px);
+      backdrop-filter: blur(15px);
       box-shadow: none;
       border-bottom: $border;
       .menus {
+        backdrop-filter: blur(15px);
+        background: none;
         li {
           a {
             color: $light-1;
           }
         }
+      }
+      .toggler {
+        color: $light-1;
       }
     }
 
