@@ -34,7 +34,7 @@ const TableData = (props) => {
   const getApiData = async () => {
     try {
       let res = await axios.get(api);
-      setApiData(res.data);
+      // setApiData(res.data);
       setApiData(res.data);
       setFilteredApiData(res.data);
     } catch (error) {

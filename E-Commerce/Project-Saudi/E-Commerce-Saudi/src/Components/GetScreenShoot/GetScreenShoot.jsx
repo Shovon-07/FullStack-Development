@@ -19,7 +19,7 @@ const GetScreenShoot = (props) => {
         // ).innerHTML = `<img src="${image}" alt="" />`;
         // localStorage.setItem("img", image);
 
-        http.post("/api/process-img", { imageData: image }).then((res) => {
+        http.post("/process-img", { imageData: image }).then((res) => {
           console.log(res.data);
         });
       })
