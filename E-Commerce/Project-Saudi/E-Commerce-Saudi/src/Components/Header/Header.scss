@@ -1,0 +1,94 @@
+@import "../../Styles/Variable.scss";
+@import "../../Styles/Responsive.scss";
+
+.Header {
+  background: #e3f9e3;
+  width: 100%;
+  height: 85px;
+  box-shadow: $shadow;
+  position: fixed;
+  top: 0;
+  z-index: 998;
+  .container {
+    justify-content: space-between;
+    // padding: 15px 0 10px 0;
+    padding: 0;
+    position: relative;
+    @include slg {
+      display: block;
+      padding: 15px 0 5px 0;
+    }
+    &.active {
+      .menus {
+        right: -6%;
+      }
+    }
+    .left {
+      img {
+        width: 100px;
+        height: auto;
+      }
+      @include slg {
+        display: flex;
+        justify-content: space-between;
+      }
+      .toggler {
+        font-size: 30px;
+        display: none;
+        color: $dark-3;
+        @include slg {
+          display: block;
+        }
+      }
+    }
+    .menus {
+      transition: $trans;
+      li {
+        a {
+          font-size: 0.96rem;
+          text-transform: capitalize;
+          color: $dark-3;
+          transition: $trans;
+          position: relative;
+          &:hover {
+            color: $main-color;
+          }
+        }
+        a::before {
+          content: "";
+          width: 0;
+          height: 3px;
+          background: $main-color;
+          transition: $trans;
+          position: absolute;
+          bottom: -4px;
+          left: 50%;
+          transform: translate(-50%, 0);
+        }
+
+        a.isActive::before {
+          width: 100%;
+        }
+      }
+      @include slg {
+        flex-direction: column;
+        background: $light-green;
+        width: 250px;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: 20px 0;
+        position: absolute;
+        right: -450px;
+        top: 102%;
+        li {
+          &:last-child {
+            a {
+              // background: red;
+              // margin-bottom: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,214 @@
+@import "./Variable.scss";
+@import "./Responsive.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::selection {
+  background: $main-color;
+  color: $light-1;
+}
+::placeholder {
+  color: $placeholder-color;
+  transition: $trans;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background: $body-bg;
+}
+
+.main {
+  color: $dark-2;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.container,
+.headerContainer,
+.footerContainer {
+  width: 90%;
+  height: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+.container {
+  padding: 110px 0 50px 0;
+}
+a {
+  text-decoration: none;
+  color: $dark-2;
+  transition: $trans;
+  &:hover {
+    color: $dark-2;
+  }
+}
+li {
+  list-style: none;
+}
+.button {
+  background: $dark-2;
+  color: $light-1;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  text-transform: capitalize;
+  // font-weight: 600;
+  cursor: pointer;
+  transition: $trans;
+  &:hover {
+    // background: transparent;
+    background: $dark-3;
+    color: $light-1;
+  }
+}
+.cursor {
+  cursor: pointer;
+}
+.title {
+  color: $dark-2;
+}
+
+// Additional
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+.d-none {
+  display: none;
+}
+.gap-10 {
+  gap: 10px;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-30 {
+  gap: 30px;
+}
+.flex-start {
+  align-items: flex-start;
+}
+.visibilityHidden {
+  visibility: hidden;
+}
+.angle {
+  transition: $trans;
+}
+.angleRotate {
+  transition: $trans;
+  transform: rotate(-180deg);
+}
+.shadow {
+  box-shadow: $shadow;
+}
+input,
+textarea {
+  font-size: 17px;
+  border: $border;
+  outline: none;
+  color: $dark-3;
+  &:focus::placeholder {
+    padding-left: 10px;
+    transition: $trans;
+  }
+}
+input:disabled,
+textarea:disabled {
+  background: $light-3;
+  border: 1px solid $dark-3 !important;
+}
+
+// Colors
+
+/*________________ custome scroll bar start ________________*/
+// ::-webkit-scrollbar {
+//   width: 1px;
+//   height: 5px;
+// }
+
+// ::-webkit-scrollbar-track {
+//   background: $dark-2;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   // background: $main-color;
+// }
+/*________________ custome scroll bar end ________________*/
+
+/*________________ Blur effec start ________________*/
+body.blur {
+  background-image: url("/images/snow-river.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  object-fit: cover;
+
+  ::placeholder {
+    color: $light-3;
+  }
+
+  .main {
+    //___ Header ___//
+    .Header {
+      background: #42424259;
+      backdrop-filter: blur(100px);
+      box-shadow: none;
+      border-bottom: $border;
+      .menus {
+        li {
+          a {
+            color: $light-1;
+          }
+        }
+      }
+    }
+
+    //___ Footer ___//
+    .Footer {
+      background: none;
+      backdrop-filter: blur(15px);
+      border-top: 1px solid $light-3;
+    }
+
+    //___ CustomizeImg ___//
+    .CustomizeImg {
+      .right {
+        background: none;
+        backdrop-filter: blur(15px);
+      }
+    }
+
+    //___ Invoice ___//
+    .Invoice {
+      .invoiceSection {
+        color: $light-1;
+        .left,
+        .right {
+          background: none;
+          backdrop-filter: blur(15px);
+          color: $light-1;
+          input,
+          textarea {
+            color: $light-1;
+          }
+        }
+      }
+    }
+
+    .DynamicInput {
+      select {
+        color: $dark-3;
+      }
+    }
+  }
+}
+
+/*________________ Blur effec end ________________*/
