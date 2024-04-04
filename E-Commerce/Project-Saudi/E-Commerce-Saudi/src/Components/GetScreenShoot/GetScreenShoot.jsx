@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import html2canvas from "html2canvas";
 import AxiosConfig from "../../assets/AxiosConfig";
 
@@ -7,6 +7,7 @@ import AxiosConfig from "../../assets/AxiosConfig";
 const GetScreenShoot = (props) => {
   const { btnTitle } = props;
   const { http } = AxiosConfig();
+  const [msg, setMsg] = useState();
 
   const handleScreenShoot = () => {
     let capture = document.getElementById("capture");
@@ -20,7 +21,9 @@ const GetScreenShoot = (props) => {
         // localStorage.setItem("img", image);
 
         http.post("/process-img", { imageData: image }).then((res) => {
-          console.log(res.data);
+          if (res) {
+            setMsg(1);
+          }
         });
       })
       .catch((err) => {
@@ -29,12 +32,22 @@ const GetScreenShoot = (props) => {
   };
 
   return (
-    <>
-      {/* <div id="viewCaptured"></div> */}
-      <button className="button genImgBtn" onClick={handleScreenShoot}>
-        {btnTitle}
+    <div className="">
+      <button
+        className="button genImgBtn"
+        style={{ padding: "0 20px", width: "100%" }}
+        onClick={handleScreenShoot}
+      >
+        <span
+          className={msg == null ? "d-none" : ""}
+          style={{ color: "#6ffd52", marginRight: "10px" }}
+        >
+          &#10004;
+        </span>
+        {btnTitle}{" "}
       </button>
-    </>
+      {/* {msg == null ? "" : <p style={{ color: "green" }}>{msg}</p>} */}
+    </div>
   );
 };
 

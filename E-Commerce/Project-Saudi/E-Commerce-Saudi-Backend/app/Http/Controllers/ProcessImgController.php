@@ -32,7 +32,7 @@ class ProcessImgController extends Controller
     }
 
 	function GetProcessedImg() {
-		$data = ["Image"=>"Captured_1712120209.png"];
+        $data = Images::all();
 		return $data;
 	}
 }
