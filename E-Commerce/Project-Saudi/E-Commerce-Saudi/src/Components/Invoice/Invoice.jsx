@@ -9,6 +9,7 @@ import Logo from "/images/icons/logo.png";
 import "./Invoice.scss";
 
 //___ Component ___//
+import CustomizeImg from "../CustomizeImg/CustomizeImg";
 
 const Invoice = () => {
   return (
@@ -92,6 +93,10 @@ const Invoice = () => {
             </div>
           </div>
         </div>
+
+        {/* <div className="invoiceSection">
+          <CustomizeImg />
+        </div> */}
 
         <div className="invoiceSection first d-flex flex-start gap-20">
           <div className="left shadow">

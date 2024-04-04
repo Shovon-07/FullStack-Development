@@ -34,7 +34,7 @@ import Hand_1 from "/images/dress/hand_type/Standard Cuffed.png";
 import Hand_2 from "/images/dress/hand_type/Standard Chart.png";
 import Hand_3 from "/images/dress/hand_type/Standard.png";
 import Hand_4 from "/images/dress/hand_type/Cuffed Chart.png";
-import Hand_5 from "/images/dress/hand_type/Standard.png";
+import Hand_5 from "/images/dress/hand_type/Standard Small.png";
 
 //___ Css ___//
 import "./CustomizeImg.scss";
@@ -229,10 +229,10 @@ const CustomizeImg = () => {
     {
       hndImg: Hand_5,
       hndName: "Standard",
-      width: "102px",
+      width: "103px",
       top: "147px",
       right: "-29px",
-      left: "-33px",
+      left: "-31px",
     },
     // img size w: 130 px; h:50 px direction <--
 
