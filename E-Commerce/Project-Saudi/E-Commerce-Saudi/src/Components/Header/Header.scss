@@ -15,12 +15,12 @@
     padding: 0;
     position: relative;
     @include slg {
-      display: block;
-      padding: 15px 0 5px 0;
+      // display: block;
+      // padding: 15px 0 5px 0;
     }
     &.active {
       .menus {
-        right: -6%;
+        right: -30px;
       }
     }
     .left {
@@ -32,15 +32,8 @@
         display: flex;
         justify-content: space-between;
       }
-      .toggler {
-        font-size: 30px;
-        display: none;
-        color: $dark-3;
-        @include slg {
-          display: block;
-        }
-      }
     }
+
     .menus {
       transition: $trans;
       li {
@@ -78,7 +71,7 @@
         overflow-y: scroll;
         padding: 20px 0;
         position: absolute;
-        right: -450px;
+        right: -300px;
         top: 102%;
         li {
           &:last-child {
@@ -88,6 +81,15 @@
             }
           }
         }
+      }
+    }
+
+    .toggler {
+      font-size: 30px;
+      display: none;
+      color: $dark-3;
+      @include slg {
+        display: block;
       }
     }
   }

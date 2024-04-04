@@ -39,52 +39,50 @@ const Header = () => {
           <div className="logo">
             <img src={Logo} alt="" />
           </div>
-          <div className="toggler cursor">
-            <HiMenuAlt3 onClick={handleNavToggler} />
-          </div>
         </div>
-        <div className="menus d-flex gap-30">
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "isActive" : "")}
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/customize-image"
-              className={({ isActive }) => (isActive ? "isActive" : "")}
-            >
-              Customize Image
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/sell"
-              className={({ isActive }) => (isActive ? "isActive" : "")}
-            >
-              Sell
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/pending-orders"
-              className={({ isActive }) => (isActive ? "isActive" : "")}
-            >
-              Pending Orders
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/complete-order"
-              className={({ isActive }) => (isActive ? "isActive" : "")}
-            >
-              Complete order
-            </NavLink>
-          </li>
-          {/* <li>
+        <div className="right d-flex">
+          <div className="menus d-flex gap-30">
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "isActive" : "")}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/customize-image"
+                className={({ isActive }) => (isActive ? "isActive" : "")}
+              >
+                Customize Product
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/sell"
+                className={({ isActive }) => (isActive ? "isActive" : "")}
+              >
+                Sell
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/pending-orders"
+                className={({ isActive }) => (isActive ? "isActive" : "")}
+              >
+                Pending Orders
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/complete-order"
+                className={({ isActive }) => (isActive ? "isActive" : "")}
+              >
+                Complete order
+              </NavLink>
+            </li>
+            {/* <li>
             <NavLink
               to="/update-inventory"
               className={({ isActive }) => (isActive ? "isActive" : "")}
@@ -92,14 +90,18 @@ const Header = () => {
               Update Inventory
             </NavLink>
           </li> */}
-          <li>
-            <NavLink
-              to="/history"
-              className={({ isActive }) => (isActive ? "isActive" : "")}
-            >
-              History
-            </NavLink>
-          </li>
+            <li>
+              <NavLink
+                to="/history"
+                className={({ isActive }) => (isActive ? "isActive" : "")}
+              >
+                History
+              </NavLink>
+            </li>
+          </div>
+          <div className="toggler cursor">
+            <HiMenuAlt3 onClick={handleNavToggler} />
+          </div>
         </div>
       </div>
     </header>

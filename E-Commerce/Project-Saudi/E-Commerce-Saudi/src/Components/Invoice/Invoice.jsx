@@ -1,27 +1,21 @@
 import React from "react";
-import Switch from "@mui/material/Switch";
 
 //___ Images ___//
 import Logo from "/images/icons/logo.png";
 
 //___ Icons ___//
-import { FiDollarSign } from "react-icons/fi";
-import { IoMdPaperPlane } from "react-icons/io";
 
 //___ Css ___//
 import "./Invoice.scss";
 
 //___ Component ___//
-import DynamicInput from "../DynamicInput/DynamicInput";
-
-const label = { inputProps: { "aria-label": "Switch demo" } };
 
 const Invoice = () => {
   return (
     <>
       <div className="Invoice">
         <div className="invoiceSection first d-flex flex-start gap-20">
-          <div className="left shadow">
+          <div className="left shadow" style={{ flexBasis: "100%" }}>
             <div className="firstTop d-flex flex-start gap-20">
               <div className="left">
                 <img src={Logo} alt="" className="logo" />
@@ -49,18 +43,6 @@ const Invoice = () => {
                   <input type="date" />
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="right d-flex gap-20 shadow bill">
-            <h3 className="title">Order Summary :</h3>
-            <div className="d-flex">
-              <p>Received amount</p> <h4>4000 $</h4>
-            </div>
-            <div className="d-flex">
-              <p>Remain amount</p> <h4>4000 $</h4>
-            </div>
-            <div className="d-flex">
-              <p>Total =</p> <h4>5000 $</h4>
             </div>
           </div>
         </div>
@@ -95,7 +77,20 @@ const Invoice = () => {
               </div>
             </div>
           </div>
-          <div className="right shadow visibilityHidden"></div>
+          <div className="right shadow">
+            <div className="bill d-flex gap-20">
+              <h3 className="title">Order Summary :</h3>
+              <div className="d-flex">
+                <p>Received amount</p> <h4>4000 $</h4>
+              </div>
+              <div className="d-flex">
+                <p>Remain amount</p> <h4>4000 $</h4>
+              </div>
+              <div className="d-flex">
+                <p>Total =</p> <h4>5000 $</h4>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="invoiceSection first d-flex flex-start gap-20">
