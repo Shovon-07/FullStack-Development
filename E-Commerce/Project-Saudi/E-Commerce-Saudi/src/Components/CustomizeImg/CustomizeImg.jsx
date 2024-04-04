@@ -35,7 +35,6 @@ import Hand_2 from "/images/dress/hand_type/Standard Chart.png";
 import Hand_3 from "/images/dress/hand_type/Standard.png";
 import Hand_4 from "/images/dress/hand_type/Cuffed Chart.png";
 import Hand_5 from "/images/dress/hand_type/Standard.png";
-import Hand_6 from "/images/dress/hand_type/Standard Small.png";
 
 //___ Css ___//
 import "./CustomizeImg.scss";
@@ -67,6 +66,7 @@ const CustomizeImg = () => {
   const [handImgPreview, setHandImgPreview] = useState({
     hndImgPrev: null,
     widthHndImgPrev: null,
+    topPosHndImgPrev: null,
     rightPosHndImgPrev: null,
     leftPosHndImgPrev: null,
   });
@@ -194,12 +194,46 @@ const CustomizeImg = () => {
     },
   ];
   const handImg = [
-    { hndImg: Hand_1, hndName: "Standard Cuffed" },
-    { hndImg: Hand_2, hndName: "Standard Chart" },
-    { hndImg: Hand_3, hndName: "Standard" },
-    { hndImg: Hand_4, hndName: "Cuffed Chart" },
-    { hndImg: Hand_5, hndName: "Standard" },
-    { hndImg: Hand_6, hndName: "Standard Small" },
+    {
+      hndImg: Hand_1,
+      hndName: "Standard Cuffed",
+      width: "102px",
+      top: "147px",
+      right: "-30px",
+      left: "-32px",
+    },
+    {
+      hndImg: Hand_2,
+      hndName: "Standard Chart",
+      width: "102px",
+      top: "147px",
+      right: "-30px",
+      left: "-32px",
+    },
+    {
+      hndImg: Hand_3,
+      hndName: "Standard",
+      width: "102px",
+      top: "147px",
+      right: "-29px",
+      left: "-33px",
+    },
+    {
+      hndImg: Hand_4,
+      hndName: "Cuffed Chart",
+      width: "102px",
+      top: "147px",
+      right: "-30px",
+      left: "-32px",
+    },
+    {
+      hndImg: Hand_5,
+      hndName: "Standard",
+      width: "102px",
+      top: "147px",
+      right: "-29px",
+      left: "-33px",
+    },
     // img size w: 130 px; h:50 px direction <--
 
     // { hndImg: Hand_1, width: "100px", right: "-29px", left: "-31px" },
@@ -240,6 +274,7 @@ const CustomizeImg = () => {
       ...handImgPreview,
       hndImgPrev: items.hndImg,
       widthHndImgPrev: items.width,
+      topPosHndImgPrev: items.top,
       rightPosHndImgPrev: items.right,
       leftPosHndImgPrev: items.left,
     });
@@ -321,6 +356,7 @@ const CustomizeImg = () => {
             alt=""
             style={{
               width: handImgPreview.widthHndImgPrev,
+              top: handImgPreview.topPosHndImgPrev,
               right: handImgPreview.rightPosHndImgPrev,
             }}
             className={`${handImgPreview == null ? "d-none" : "rightHand"}`}
@@ -330,6 +366,7 @@ const CustomizeImg = () => {
             alt=""
             style={{
               width: handImgPreview.widthHndImgPrev,
+              top: handImgPreview.topPosHndImgPrev,
               left: handImgPreview.leftPosHndImgPrev,
             }}
             className={`${handImgPreview == null ? "d-none" : "leftHand"}`}
