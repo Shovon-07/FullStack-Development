@@ -111,17 +111,17 @@ li {
 input,
 textarea {
   font-size: 17px;
+  padding: 5px 10px;
   border: $border;
   outline: none;
   color: $dark-3;
   &:focus::placeholder {
-    padding-left: 10px;
+    padding-left: 30px;
     transition: $trans;
   }
 }
-input:disabled,
-textarea:disabled {
-  background: $light-3;
+input:disabled {
+  background: $light-3 !important;
   border: 1px solid $dark-3 !important;
 }
 
@@ -199,11 +199,21 @@ body.blur {
           textarea {
             color: $light-1;
           }
+          .left,
+          .right {
+            backdrop-filter: blur(0);
+            .title {
+              color: $light-1;
+            }
+          }
         }
       }
     }
 
     .DynamicInput {
+      .title {
+        color: $light-1;
+      }
       select {
         color: $dark-3;
       }

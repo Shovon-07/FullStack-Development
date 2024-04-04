@@ -22,7 +22,7 @@ const Invoice = () => {
       <div className="Invoice">
         <div className="invoiceSection first d-flex flex-start gap-20">
           <div className="left shadow">
-            <div className="firstTop d-flex gap-20">
+            <div className="firstTop d-flex flex-start gap-20">
               <div className="left">
                 <img src={Logo} alt="" className="logo" />
                 <p>
@@ -32,171 +32,62 @@ const Invoice = () => {
                 <p>+1 (123) 456 7891, +44 (876) 543 2198</p>
               </div>
               <div className="right d-flex gap-20">
-                <div className="d-flex gap-20 rightInput">
-                  <h3>Invoice #</h3>
+                <div className="d-flex gap-10 rightInput">
+                  <h4>Invoice #</h4>
                   <input type="text" value={3505} disabled />
                 </div>
-                <div className="d-flex gap-20 rightInput">
-                  <h3>Date:</h3>
+                <div className="d-flex gap-10 rightInput">
+                  <h4>Date:</h4>
                   <input type="date" />
                 </div>
-                <div className="d-flex gap-20 rightInput">
-                  <h3>Due Date:</h3>
+                <div className="d-flex gap-10 rightInput">
+                  <h4>Deadline:</h4>
+                  <input type="date" />
+                </div>
+                <div className="d-flex gap-10 rightInput">
+                  <h4>Delivery date:</h4>
                   <input type="date" />
                 </div>
               </div>
             </div>
           </div>
-          <div className="right d-flex gap-20 shadow">
-            <button className="button d-flex gap-10 sendBtn">
-              <IoMdPaperPlane /> Send Invoice
-            </button>
-            <button className="button d-flex gap-10 sendBtn">
-              <IoMdPaperPlane /> Preview
-            </button>
-            <button className="button d-flex gap-10 sendBtn">
-              <IoMdPaperPlane /> Save
-            </button>
-          </div>
-        </div>
-
-        <div className="invoiceSection first d-flex flex-start gap-20">
-          <div className="left shadow">
-            <div className="firstTop d-flex flex-start gap-20">
-              <div className="left">
-                <h3 className="title">Invoice To:</h3>
-                <p className="name">Thomas shelby</p>
-                <p className="company">Shelby Company Limited</p>
-                <p className="address">Small Heath, B10 0HF, UK</p>
-                <p className="phone">718-986-6062</p>
-                <p className="email">peakyFBlinders@gmail.com</p>
-              </div>
-              <div className="right">
-                <h3 className="title">Bill To:</h3>
-
-                <table>
-                  <tbody>
-                    <tr style={{ height: "27px", fontSize: "15px" }}>
-                      <td>Total Due</td>
-                      <td style={{ width: "20px" }}>:</td>
-                      <td>
-                        <span>$</span> 12,110.55
-                      </td>
-                    </tr>
-                    <tr style={{ height: "27px", fontSize: "15px" }}>
-                      <td>Bank name</td>
-                      <td style={{ width: "20px" }}>:</td>
-                      <td>American Bank</td>
-                    </tr>
-                    <tr style={{ height: "27px", fontSize: "15px" }}>
-                      <td>Country</td>
-                      <td style={{ width: "20px" }}>:</td>
-                      <td>United States</td>
-                    </tr>
-                    <tr style={{ height: "27px", fontSize: "15px" }}>
-                      <td>IBAN</td>
-                      <td style={{ width: "20px" }}>:</td>
-                      <td>ETD95476213874685</td>
-                    </tr>
-                    <tr style={{ height: "27px", fontSize: "15px" }}>
-                      <td>SWIFT code</td>
-                      <td style={{ width: "20px" }}>:</td>
-                      <td>BR91905</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+          <div className="right d-flex gap-20 shadow bill">
+            <h3 className="title">Order Summary :</h3>
+            <div className="d-flex">
+              <p>Received amount</p> <h4>4000 $</h4>
+            </div>
+            <div className="d-flex">
+              <p>Remain amount</p> <h4>4000 $</h4>
+            </div>
+            <div className="d-flex">
+              <p>Total =</p> <h4>5000 $</h4>
             </div>
           </div>
-          <div className="right shadow">
-            <p>Accept payments via</p>
-            <select>
-              <option value="" defaultChecked>
-                Bank account
-              </option>
-              <option value="">Paypal</option>
-              <option value="">Credit/Debit Card</option>
-              <option value="">UPI Transfer</option>
-            </select>
-            <table>
-              <tbody>
-                <tr>
-                  <td style={{ width: "100%" }}>Payment Terms</td>
-                  <td>
-                    <Switch {...label} defaultChecked />
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: "100%" }}>Client Notes</td>
-                  <td>
-                    <Switch {...label} />
-                  </td>
-                </tr>
-                <tr>
-                  <td style={{ width: "100%" }}>Payment Stub</td>
-                  <td>
-                    <Switch {...label} />
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
 
         <div className="invoiceSection first d-flex flex-start gap-20">
           <div className="left shadow">
-            <DynamicInput />
-          </div>
-          <div
-            className="right visibilityHidden"
-            style={{ background: "transparent" }}
-          ></div>
-        </div>
-
-        <div className="invoiceSection first d-flex flex-start gap-20">
-          <div className="left shadow">
-            <div className="firstTop d-flex gap-20">
-              <div className="left">
-                <div className="d-flex gap-20" style={{ marginBottom: "30px" }}>
-                  <p>SALESPERSON:</p>{" "}
-                  <input type="text" placeholder="Edward Crowley" />
-                </div>
-                <input type="text" placeholder="Thanks for your business" />
-              </div>
-              <div className="right d-flex gap-20">
+            <div className="firstTop">
+              <div className="customerDetails">
+                <h3 className="title">Invoice To #</h3>
                 <table>
                   <tbody>
-                    <tr style={{ height: "27px", fontSize: "15px" }}>
-                      <td>Subtotal</td>
-                      <td style={{ width: "20px" }}>:</td>
-                      <td>
-                        <span>$</span> 12,110.55
-                      </td>
+                    <tr>
+                      <td>Name</td>
+                      <td className="tdColon">:</td>
+                      <td>Al jubair shovon</td>
                     </tr>
-                    <tr style={{ height: "27px", fontSize: "15px" }}>
-                      <td>Discount</td>
-                      <td style={{ width: "20px" }}>:</td>
-                      <td>
-                        <span>$</span> 12,110.55
-                      </td>
+                    <tr>
+                      <td>Phone</td>
+                      <td className="tdColon">:</td>
+                      <td>01767692422</td>
                     </tr>
-                    <tr style={{ height: "27px", fontSize: "15px" }}>
-                      <td>Tax</td>
-                      <td style={{ width: "20px" }}>:</td>
+                    <tr>
+                      <td>Address</td>
+                      <td className="tdColon">:</td>
                       <td>
-                        <span>$</span> 12,110.55
-                      </td>
-                    </tr>
-                    <tr
-                      style={{
-                        height: "40px",
-                        fontSize: "20px",
-                      }}
-                    >
-                      <td>Total</td>
-                      <td style={{ width: "20px" }}>:</td>
-                      <td style={{ borderTop: "1px solid #7d7d7d" }}>
-                        <span>$</span> 12,110.55
+                        Charkhutar mor, Rajshahi Court 6201, Kashiadanga,
+                        Rajshahi
                       </td>
                     </tr>
                   </tbody>
@@ -204,25 +95,32 @@ const Invoice = () => {
               </div>
             </div>
           </div>
-          <div
-            className="right visibilityHidden"
-            style={{ background: "transparent" }}
-          ></div>
+          <div className="right shadow visibilityHidden"></div>
         </div>
 
         <div className="invoiceSection first d-flex flex-start gap-20">
           <div className="left shadow">
             <div className="firstTop">
               <div className="left">
-                <p>Note:</p>{" "}
-                <textarea
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="3"
-                  style={{ width: "100%", marginTop: "10px" }}
-                  placeholder="Invoice Note"
-                ></textarea>
+                <div style={{ marginBottom: "20px" }}>
+                  <p>Inquiries number:</p>{" "}
+                  <input
+                    type="text"
+                    style={{ width: "100%", marginTop: "10px" }}
+                    placeholder="000000"
+                  />
+                </div>
+                <div>
+                  <p>Note:</p>{" "}
+                  <textarea
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="3"
+                    style={{ width: "100%", marginTop: "10px" }}
+                    placeholder="Invoice Note"
+                  ></textarea>
+                </div>
               </div>
             </div>
           </div>
