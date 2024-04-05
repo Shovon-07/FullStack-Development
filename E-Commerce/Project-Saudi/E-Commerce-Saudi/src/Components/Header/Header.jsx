@@ -82,14 +82,14 @@ const Header = () => {
                 Complete order
               </NavLink>
             </li>
-            {/* <li>
-            <NavLink
-              to="/update-inventory"
-              className={({ isActive }) => (isActive ? "isActive" : "")}
-            >
-              Update Inventory
-            </NavLink>
-          </li> */}
+            <li>
+              <NavLink
+                to="/user"
+                className={({ isActive }) => (isActive ? "isActive" : "")}
+              >
+                User
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to="/history"

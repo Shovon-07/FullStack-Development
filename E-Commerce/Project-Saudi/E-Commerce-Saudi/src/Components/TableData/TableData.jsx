@@ -17,7 +17,8 @@ const TableData = (props) => {
   const {
     api,
     tableTitle,
-    columnsField,
+    btnTitle,
+    // columnsField,
     // apiData,
     // columns,
     // searchData,
@@ -34,13 +35,38 @@ const TableData = (props) => {
   const getApiData = async () => {
     try {
       let res = await axios.get(api);
-      // setApiData(res.data);
       setApiData(res.data);
       setFilteredApiData(res.data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const columns = [
+    { name: "Id", field: "id", selector: (row) => row.id },
+    { name: "Name", field: "Name", selector: (row) => row.Name },
+    { name: "Email", field: "Email", selector: (row) => row.Email },
+    { name: "Password", field: "Password", selector: (row) => row.Password },
+    {
+      name: "Action",
+      cell: (row) => (
+        <div className="d-flex" style={{ gap: "10px" }}>
+          <img
+            src={EditeIcon}
+            alt=""
+            style={{ cursor: "pointer" }}
+            onClick={() => alert(row.id)}
+          />
+          <img
+            src={DeleteIcon}
+            alt=""
+            style={{ cursor: "pointer" }}
+            onClick={() => alert(row.id)}
+          />
+        </div>
+      ),
+    },
+  ];
 
   // const columns = [
   //   { name: "Customer name", sortable: true, selector: (row) => row.title },
@@ -74,15 +100,15 @@ const TableData = (props) => {
   //   },
   // ];
 
-  let columns = [];
-  columnsField.map((columnsItem) => {
-    let fields = columnsItem.field;
-    // JSON.parse({ field: "title" });
-    columns.push({
-      name: columnsItem.name,
-      selector: (row) => row.title,
-    });
-  });
+  // let columns = [];
+  // columnsField.map((columnsItem) => {
+  //   let fields = columnsItem.field;
+  //   // JSON.parse({ field: "title" });
+  //   columns.push({
+  //     name: columnsItem.name,
+  //     selector: (row) => row.title,
+  //   });
+  // });
 
   useEffect(() => {
     getApiData();

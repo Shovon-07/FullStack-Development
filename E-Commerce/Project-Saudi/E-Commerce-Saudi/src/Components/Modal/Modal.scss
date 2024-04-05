@@ -1,0 +1,107 @@
+@import "../../Styles/Variable.scss";
+
+.css-79ws1d-MuiModal-root {
+  .css-15nnif {
+    background: $dark-2;
+    padding: 10px 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 60vh;
+  }
+  .css-sox5kk-MuiBackdrop-root {
+    background: $dark-1;
+    opacity: 0.8 !important;
+  }
+  .modalCloseBtn {
+    text-align: right;
+    span {
+      cursor: pointer;
+      font-size: 20px;
+      color: $light-1;
+    }
+  }
+  .modalContent {
+    padding: 0 20px 20px 20px;
+
+    .modalTitle {
+      margin-bottom: 20px;
+      font-size: 18px;
+      text-transform: capitalize;
+      color: $light-1;
+    }
+
+    form {
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      flex-direction: column;
+      // padding: 30px;
+      // margin: 8% 0;
+
+      .inputBox {
+        border-bottom: 1px solid $light-3;
+        width: 100%;
+        padding: 5px 15px;
+        margin: 15px 0;
+
+        input {
+          border: none;
+          outline: none;
+          color: $light-1;
+          background: transparent;
+          font-size: 17px;
+          width: 100%;
+        }
+
+        .showHide {
+          cursor: pointer;
+        }
+      }
+
+      button {
+        text-transform: uppercase;
+        background: transparent;
+        outline: none;
+        border: 1px solid $light-3;
+        color: $light-1;
+        padding: 10px 30px;
+        margin-top: 20px;
+        font-weight: 700;
+        font-size: 16px;
+        letter-spacing: 2px;
+        transition: $trans;
+        cursor: pointer;
+        display: inline-block;
+
+        &:hover {
+          background: $light-2 !important;
+          color: $dark-2 !important;
+        }
+      }
+      .addBtn {
+        background: red;
+      }
+
+      .form-bottom {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        a {
+          font-size: 14px;
+          transition: $trans;
+          color: $light-2;
+
+          &:hover {
+            color: $main-color;
+          }
+        }
+
+        span {
+          margin: 0 10px;
+          color: $light-2;
+        }
+      }
+    }
+  }
+}

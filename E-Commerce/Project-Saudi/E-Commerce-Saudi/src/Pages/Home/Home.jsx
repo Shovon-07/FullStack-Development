@@ -46,7 +46,7 @@ const Home = () => {
   // ];
 
   return (
-    <>
+    <div className="Home d-flex">
       {/* <TableData
         api="https://fakestoreapi.com/products"
         // apiData={apiData}
@@ -58,7 +58,12 @@ const Home = () => {
         // setFilteredApiData={setFilteredApiData}
       /> */}
       <h1>Home</h1>
-    </>
+      <h4>
+        Let's work together <br />
+        For better experience, <br />
+        Better output
+      </h4>
+    </div>
   );
 };
 

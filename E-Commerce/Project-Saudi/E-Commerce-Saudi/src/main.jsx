@@ -10,13 +10,12 @@ import "./Styles/App.scss";
 //___ Pages ___//
 import App from "./App.jsx";
 import Home from "./Pages/Home/Home";
-import Customize from "./Pages/Customize/Customize";
-import UpdateInventory from "./Pages/UpdateInventory/UpdateInventory";
+import CustomizeImage from "./Pages/CustomizeImage/CustomizeImage";
 import Sell from "./Pages/Sell/Sell";
 import PendingOrders from "./Pages/PendingOrders/PendingOrders";
-import History from "./Pages/History/History";
-import CustomizeImage from "./Pages/CustomizeImage/CustomizeImage";
 import CompleteOrder from "./Pages/CompleteOrder/CompleteOrder";
+import User from "./Pages/User/User";
+import History from "./Pages/History/History";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
@@ -27,12 +26,12 @@ const router = createBrowserRouter([
     children: [
       // { path: "/", element: <Home /> },
       { path: "/", element: <Home /> },
-      { path: "/update-inventory", element: <UpdateInventory /> },
+      { path: "/customize-image", element: <CustomizeImage /> },
       { path: "/sell", element: <Sell /> },
       { path: "/pending-orders", element: <PendingOrders /> },
-      { path: "/history", element: <History /> },
-      { path: "/customize-image", element: <CustomizeImage /> },
       { path: "/complete-order", element: <CompleteOrder /> },
+      { path: "/user", element: <User /> },
+      { path: "/history", element: <History /> },
     ],
   },
 ]);
