@@ -50,14 +50,14 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink
                 to="/customize-image"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
               >
                 Customize Product
               </NavLink>
-            </li>
+            </li> */}
             <li>
               <NavLink
                 to="/sell"

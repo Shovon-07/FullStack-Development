@@ -59,12 +59,10 @@ li {
   outline: 0;
   border-radius: 5px;
   text-transform: capitalize;
-  // font-weight: 600;
   cursor: pointer;
   transition: $trans;
   &:hover {
-    // background: transparent;
-    background: $dark-3;
+    background: $dark-1;
     color: $light-1;
   }
 }
@@ -72,7 +70,7 @@ li {
   cursor: pointer;
 }
 .title {
-  color: $dark-2;
+  color: $dark-3;
 }
 
 // Additional

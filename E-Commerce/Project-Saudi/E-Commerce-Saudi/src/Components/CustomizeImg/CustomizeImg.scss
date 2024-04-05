@@ -1,6 +1,10 @@
 @import "../../Styles/Variable.scss";
+@import "../../Styles/Responsive.scss";
 
 .CustomizeImg {
+  @include md {
+    flex-direction: column;
+  }
   .left {
     width: 400px;
     background: $light-1;
@@ -73,14 +77,13 @@
           font-size: 17px;
           width: 150px;
           height: 40px;
-          &:hover {
-            background: $dark-2;
-            color: $light-1;
+          @include mlg {
+            width: 100px;
+            font-size: 13px;
           }
         }
 
         .btnChild {
-          // background: #fff;
           background: transparent;
           box-shadow: 1px 1px 5px #cfcfcf, -1px -1px 5px #cfcfcf;
           overflow-x: scroll;
@@ -91,19 +94,17 @@
           left: 175px;
           display: -webkit-inline-box;
           transition: 0.3s all ease;
-
-          // .btnChild.active {
-          //   display: flex;
-          //   transition: $trans;
-          // }
+          @include mlg {
+            left: 120px;
+          }
 
           li {
             overflow: hidden;
             margin: 5px 10px;
 
             img {
-              width: 70px;
-              height: 70px;
+              width: 60px;
+              height: 60px;
               cursor: pointer;
               transition: $trans;
               z-index: 100;
@@ -120,17 +121,42 @@
       justify-content: flex-end;
       .button {
         font-size: 17px;
-        width: 150px;
+        width: 200px !important;
         height: 40px;
         color: $light-1;
         border: none;
         transition: $trans;
-        &:hover {
-          width: 160px;
-        }
       }
       .resetBtn {
         background: $red;
+        &:hover {
+          background: rgb(190, 2, 2);
+        }
+      }
+    }
+  }
+  .measurement {
+    margin-top: 50px;
+    .title {
+      text-align: center;
+    }
+    .measurmentSelection {
+      .left {
+        flex-basis: 50%;
+        align-items: start;
+        box-shadow: none;
+        flex-direction: column;
+      }
+      .right {
+        flex-basis: 50%;
+        box-shadow: none;
+        flex-direction: column;
+      }
+      .inputBox {
+        width: 100%;
+        input {
+          width: 100%;
+        }
       }
     }
   }

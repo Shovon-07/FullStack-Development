@@ -160,3 +160,18 @@
     }
   }
 }
+
+.invoiceSection.customImgSection {
+  .left {
+    flex-basis: 400px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    box-shadow: $shadow;
+  }
+  .right {
+    flex-basis: 100%;
+    box-shadow: $shadow;
+    overflow-x: hidden;
+  }
+}

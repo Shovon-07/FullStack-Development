@@ -94,15 +94,15 @@ const Invoice = () => {
           </div>
         </div>
 
-        {/* <div className="invoiceSection">
+        <div className="invoiceSection customImgSection">
           <CustomizeImg />
-        </div> */}
+        </div>
 
         <div className="invoiceSection first d-flex flex-start gap-20">
-          <div className="left shadow">
+          <div className="left shadow" style={{ flexBasis: "100%" }}>
             <div className="firstTop">
-              <div className="left">
-                <div style={{ marginBottom: "20px" }}>
+              <div className="left d-flex flex-start gap-30">
+                <div style={{ marginBottom: "20px", flexBasis: "50%" }}>
                   <p>Inquiries number:</p>{" "}
                   <input
                     type="text"
@@ -110,13 +110,13 @@ const Invoice = () => {
                     placeholder="000000"
                   />
                 </div>
-                <div>
+                <div style={{ flexBasis: "50%" }}>
                   <p>Note:</p>{" "}
                   <textarea
                     name=""
                     id=""
                     cols="30"
-                    rows="3"
+                    rows="2"
                     style={{ width: "100%", marginTop: "10px" }}
                     placeholder="Invoice Note"
                   ></textarea>
@@ -124,10 +124,10 @@ const Invoice = () => {
               </div>
             </div>
           </div>
-          <div
+          {/* <div
             className="right visibilityHidden"
             style={{ background: "transparent" }}
-          ></div>
+          ></div> */}
         </div>
       </div>
     </>

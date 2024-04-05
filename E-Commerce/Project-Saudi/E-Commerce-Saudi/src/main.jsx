@@ -10,7 +10,7 @@ import "./Styles/App.scss";
 //___ Pages ___//
 import App from "./App.jsx";
 import Home from "./Pages/Home/Home";
-import CustomizeImage from "./Pages/CustomizeImage/CustomizeImage";
+// import CustomizeImage from "./Pages/CustomizeImage/CustomizeImage";
 import Sell from "./Pages/Sell/Sell";
 import PendingOrders from "./Pages/PendingOrders/PendingOrders";
 import CompleteOrder from "./Pages/CompleteOrder/CompleteOrder";
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
     children: [
       // { path: "/", element: <Home /> },
       { path: "/", element: <Home /> },
-      { path: "/customize-image", element: <CustomizeImage /> },
+      // { path: "/customize-image", element: <CustomizeImage /> },
       { path: "/sell", element: <Sell /> },
       { path: "/pending-orders", element: <PendingOrders /> },
       { path: "/complete-order", element: <CompleteOrder /> },

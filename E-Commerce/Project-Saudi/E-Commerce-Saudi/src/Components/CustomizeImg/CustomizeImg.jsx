@@ -458,12 +458,48 @@ const CustomizeImg = () => {
           </div>
         </div>
         <div className="bottomBtn d-flex gap-30">
-          {/* <button className="button genImgBtn" onClick={getScreenShoot}>
-            Generate Image
-          </button> */}
           <GetScreenShoot btnTitle="Generate Image" />
           <button className="button resetBtn" onClick={handelReset}>
             Reset
+          </button>
+        </div>
+
+        <div className="measurement">
+          <h2 className="title">Measurements</h2>
+          <div className="measurmentSelection d-flex flex-start">
+            <div className="left d-flex gap-20">
+              <div className="inputBox">
+                <input type="text" placeholder="Chest width" />
+              </div>
+              <div className="inputBox">
+                <input type="text" placeholder="Nack width" />
+              </div>
+              <div className="inputBox">
+                <input type="text" placeholder="Hand width" />
+              </div>
+              <div className="inputBox">
+                <input type="text" placeholder="Length width" />
+              </div>
+            </div>
+            <div className="right d-flex gap-20">
+              <div className="inputBox">
+                <input type="text" placeholder="Sleeve width" />
+              </div>
+              <div className="inputBox">
+                <input type="text" placeholder="Cuff width" />
+              </div>
+              <div className="inputBox">
+                <input type="text" placeholder="Sttouden" />
+              </div>
+              <div className="inputBox">
+                <input type="text" placeholder="Material width" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{ textAlign: "center", margin: "30px 0 10px 0" }}>
+          <button className="button" style={{ width: "30%" }}>
+            Confirm
           </button>
         </div>
       </div>
