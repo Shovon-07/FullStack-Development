@@ -159,6 +159,9 @@ body.blur {
 
   .main {
     color: $light-1;
+    .title {
+      color: $light-1;
+    }
     //___ Header ___//
     .Header {
       background: #42424259;
@@ -188,6 +191,13 @@ body.blur {
 
     //___ CustomizeImg ___//
     .CustomizeImg {
+      .previewSection {
+        backdrop-filter: none !important;
+        background: $light-1 !important;
+        .title {
+          color: $dark-3;
+        }
+      }
       .right {
         background: none;
         backdrop-filter: blur(15px);
@@ -203,13 +213,16 @@ body.blur {
           background: none;
           backdrop-filter: blur(15px);
           color: $light-1;
+          box-shadow: 1px 1px 5px $dark-2;
           input,
           textarea {
+            background: transparent;
             color: $light-1;
           }
           .left,
           .right {
             backdrop-filter: blur(0);
+            box-shadow: none;
             .title {
               color: $light-1;
             }

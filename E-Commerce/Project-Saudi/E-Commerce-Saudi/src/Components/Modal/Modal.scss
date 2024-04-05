@@ -2,11 +2,10 @@
 
 .css-79ws1d-MuiModal-root {
   .css-15nnif {
-    background: $dark-2;
+    background: $light-1;
     padding: 10px 20px;
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 60vh;
   }
   .css-sox5kk-MuiBackdrop-root {
     background: $dark-1;
@@ -17,7 +16,7 @@
     span {
       cursor: pointer;
       font-size: 20px;
-      color: $light-1;
+      color: $dark-2;
     }
   }
   .modalContent {
@@ -27,7 +26,7 @@
       margin-bottom: 20px;
       font-size: 18px;
       text-transform: capitalize;
-      color: $light-1;
+      color: $dark-3;
     }
 
     form {
@@ -39,16 +38,18 @@
       // margin: 8% 0;
 
       .inputBox {
-        border-bottom: 1px solid $light-3;
+        border: 1px solid $light-3;
         width: 100%;
         padding: 5px 15px;
         margin: 15px 0;
+        border-radius: 8px;
 
         input {
           border: none;
           outline: none;
-          color: $light-1;
+          color: $dark-2;
           background: transparent;
+          border-radius: 8px;
           font-size: 17px;
           width: 100%;
         }
@@ -59,27 +60,19 @@
       }
 
       button {
-        text-transform: uppercase;
-        background: transparent;
-        outline: none;
-        border: 1px solid $light-3;
-        color: $light-1;
+        // text-transform: uppercase;
+        // background: transparent;
+        // outline: none;
+        // border: 1px solid $light-3;
+        // color: $dark-1;
         padding: 10px 30px;
         margin-top: 20px;
         font-weight: 700;
         font-size: 16px;
-        letter-spacing: 2px;
-        transition: $trans;
-        cursor: pointer;
+        // letter-spacing: 2px;
+        // transition: $trans;
+        // cursor: pointer;
         display: inline-block;
-
-        &:hover {
-          background: $light-2 !important;
-          color: $dark-2 !important;
-        }
-      }
-      .addBtn {
-        background: red;
       }
 
       .form-bottom {

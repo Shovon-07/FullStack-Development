@@ -27,10 +27,10 @@ const Invoice = () => {
                 <p>+1 (123) 456 7891, +44 (876) 543 2198</p>
               </div>
               <div className="right d-flex gap-20">
-                <div className="d-flex gap-10 rightInput">
+                {/* <div className="d-flex gap-10 rightInput">
                   <h4>Invoice #</h4>
                   <input type="text" value={3505} disabled />
-                </div>
+                </div> */}
                 <div className="d-flex gap-10 rightInput">
                   <h4>Date:</h4>
                   <input type="date" />
@@ -39,10 +39,10 @@ const Invoice = () => {
                   <h4>Deadline:</h4>
                   <input type="date" />
                 </div>
-                <div className="d-flex gap-10 rightInput">
+                {/* <div className="d-flex gap-10 rightInput">
                   <h4>Delivery date:</h4>
                   <input type="date" />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -85,10 +85,10 @@ const Invoice = () => {
                 <p>Received amount</p> <h4>4000 $</h4>
               </div>
               <div className="d-flex">
-                <p>Remain amount</p> <h4>4000 $</h4>
+                <p>Due amount</p> <h4>2000 $</h4>
               </div>
               <div className="d-flex">
-                <p>Total =</p> <h4>5000 $</h4>
+                <p>Total =</p> <h4>6000 $</h4>
               </div>
             </div>
           </div>

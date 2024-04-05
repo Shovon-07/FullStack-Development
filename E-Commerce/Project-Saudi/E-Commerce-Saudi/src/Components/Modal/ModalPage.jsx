@@ -25,7 +25,14 @@ import AxiosConfig from "../../assets/AxiosConfig";
 //___ Components ___//
 
 const ModalPage = (props) => {
-  const { slug, inputFields, addUserApi } = props;
+  const {
+    slug,
+    id,
+    inputFields,
+    addUserApi,
+    ModalOpenBtnTitle,
+    ModalOpenBtnStyle,
+  } = props;
   const { http } = AxiosConfig();
 
   const [open, setOpen] = React.useState(false);
@@ -57,8 +64,12 @@ const ModalPage = (props) => {
   return (
     <>
       <div>
-        <Button onClick={handleOpen} className="addBtn">
-          Add new {slug}
+        <Button
+          onClick={handleOpen}
+          className="addBtn"
+          style={ModalOpenBtnStyle}
+        >
+          {ModalOpenBtnTitle}
         </Button>
         <Modal
           aria-labelledby="transition-modal-title"
@@ -77,9 +88,10 @@ const ModalPage = (props) => {
             <Box sx={style}>
               <div className="modalCloseBtn">
                 <span onClick={handleClose}>X</span>
+                <span>{id}</span>
               </div>
               <div className="modalContent">
-                <h3 className="modalTitle">{slug} form</h3>
+                <h3 className="modalTitle">{slug}</h3>
                 <form className="d-flex" onSubmit={handleForm}>
                   {inputFields.map((items, index) => {
                     return (
@@ -87,7 +99,7 @@ const ModalPage = (props) => {
                         <input
                           type={items.inputType}
                           name={items.field}
-                          placeholder={`Enter ${slug} ${items.field}`}
+                          placeholder={`${items.placeholder}`}
                           onChange={handleInputValue}
                         />
                       </div>

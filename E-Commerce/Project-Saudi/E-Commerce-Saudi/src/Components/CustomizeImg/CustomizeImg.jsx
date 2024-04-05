@@ -317,7 +317,7 @@ const CustomizeImg = () => {
 
   return (
     <div className="CustomizeImg d-flex flex-start gap-30">
-      <div className="left">
+      <div className="left previewSection">
         <h2 className="title">Preview Image</h2>
         <div className="imageBox d-flex" id="capture">
           <img src={jubba} alt="" className="main-img" />
