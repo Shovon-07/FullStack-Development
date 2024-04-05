@@ -80,14 +80,14 @@ const Home = () => {
           </button> */}
           <ModalPage
             id={row.id}
-            slug={"Add New Material"}
-            inputFields={inputFieldsForAddMaterial}
-            ModalOpenBtnTitle="Add"
-            ModalOpenBtnStyle={addModalOpenBtnStyle}
+            slug={"Stock Material"}
+            inputFields={inputFieldsForAddStockMaterial}
+            ModalOpenBtnTitle="Stock"
+            ModalOpenBtnStyle={stockModalOpenBtnStyle}
           />
           <ModalPage
             id={row.id}
-            slug={"Stock Material"}
+            slug={"Deduct Material"}
             inputFields={inputFieldsForDeductMaterial}
             ModalOpenBtnTitle="Deduct"
             ModalOpenBtnStyle={deductModalOpenBtnStyle}
@@ -117,7 +117,7 @@ const Home = () => {
     setFilteredApiData(result);
   }, [searchData]);
 
-  // For modal
+  // Input For modal
   const inputFieldsForAddMaterial = [
     {
       field: "Material Name",
@@ -138,15 +138,7 @@ const Home = () => {
       className: "inputBox",
     },
   ];
-  const inputFieldsForDeductMaterial = [
-    {
-      field: "Deduct Material",
-      type: "text",
-      placeholder: "Deduct Material",
-      className: "inputBox",
-    },
-  ];
-  const inputFieldsForPriceMaterial = [
+  const inputFieldsForAddStockMaterial = [
     {
       field: "Add Stock",
       type: "text",
@@ -160,15 +152,39 @@ const Home = () => {
       className: "inputBox",
     },
   ];
+  const inputFieldsForDeductMaterial = [
+    {
+      field: "Deduct Material",
+      type: "text",
+      placeholder: "Deduct Material",
+      className: "inputBox",
+    },
+  ];
+  const inputFieldsForPriceMaterial = [
+    {
+      field: "Update Price",
+      type: "text",
+      placeholder: "Update Price",
+      className: "inputBox",
+    },
+  ];
 
   // Style for modal
   const addModalOpenBtnStyle = {
     fontSize: "12px",
     fontWeight: "600",
     color: "#fff",
+    width: "150px",
+    background: "#424242",
+    paddingBottom: "2px",
+  };
+  const stockModalOpenBtnStyle = {
+    fontSize: "12px",
+    fontWeight: "600",
+    color: "#fff",
     width: "10px",
     background: "#069306",
-    padding: "5px 0",
+    paddingBottom: "2px",
   };
   const deductModalOpenBtnStyle = {
     fontSize: "12px",
@@ -176,7 +192,7 @@ const Home = () => {
     color: "#fff",
     width: "80px",
     background: "#6b6bf9",
-    padding: "5px 0",
+    paddingBottom: "2px",
   };
   const priceModalOpenBtnStyle = {
     fontSize: "12px",
@@ -184,19 +200,32 @@ const Home = () => {
     color: "#fff",
     width: "10px",
     background: "#f4703c",
-    padding: "5px 0",
+    paddingBottom: "2px",
   };
 
   return (
     <div className="Home">
+      <div className="homeTop">
+        <div className="title">
+          <h2>Materials</h2>
+        </div>
+        <div style={{ margin: "20px 0" }}>
+          <ModalPage
+            slug={"Add New Material"}
+            inputFields={inputFieldsForAddMaterial}
+            ModalOpenBtnTitle="Add Materials"
+            ModalOpenBtnStyle={addModalOpenBtnStyle}
+          />
+        </div>
+      </div>
       <DataTable
         columns={columns}
         data={filteredApiData}
-        title={"Materials"}
+        // title={"Materials"}
         pagination
         // fixedHeader
         // fixedHeaderScrollHeight="400px"
-        selectableRows
+        // selectableRows
         selectableRowsHighlight
         // highlightOnHover
         subHeader

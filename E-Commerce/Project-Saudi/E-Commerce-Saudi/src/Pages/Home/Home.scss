@@ -2,6 +2,14 @@
 
 .Home {
   box-shadow: $shadow;
+  background: $light-1;
+  padding: 20px 0;
+  .homeTop {
+    padding: 0 20px;
+    .title {
+      text-align: center;
+    }
+  }
   /*** Table header***/
   .evaFvq {
     text-align: center;

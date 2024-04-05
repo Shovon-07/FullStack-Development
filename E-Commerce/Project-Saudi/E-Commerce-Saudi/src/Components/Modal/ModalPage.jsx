@@ -88,10 +88,10 @@ const ModalPage = (props) => {
             <Box sx={style}>
               <div className="modalCloseBtn">
                 <span onClick={handleClose}>X</span>
-                <span>{id}</span>
               </div>
               <div className="modalContent">
                 <h3 className="modalTitle">{slug}</h3>
+                {/* <span> id = {id}</span> */}
                 <form className="d-flex" onSubmit={handleForm}>
                   {inputFields.map((items, index) => {
                     return (
