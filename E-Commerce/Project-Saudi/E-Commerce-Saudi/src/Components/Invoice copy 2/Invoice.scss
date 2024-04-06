@@ -12,18 +12,10 @@
     .title {
       margin-bottom: 15px;
     }
-    .logoSec {
-      background: $light-1;
-      border-radius: 10px;
-      justify-content: flex-end;
-      padding: 0 20px;
-      line-height: 30px;
-      font-size: 13px;
-      text-align: right;
-      .logo {
-        width: 70px;
-        height: auto;
-      }
+    .logo {
+      width: 70px;
+      height: auto;
+      // margin-bottom: 20px;
     }
     .left {
       flex-basis: 65%;
@@ -59,7 +51,7 @@
               justify-content: space-between;
             }
             input {
-              // width: 10px;
+              width: 170px;
               @include md {
                 width: 60%;
               }
@@ -151,8 +143,6 @@
 
   .bill {
     flex-direction: column !important;
-    // background: $light-1;
-    padding: 20px 30px;
     .title {
       width: 100%;
       text-align: start;
@@ -162,45 +152,10 @@
       width: 100%;
       justify-content: space-between;
       font-size: 17px;
-      input {
-        width: 100%;
-        border-radius: 5px;
-      }
-    }
-    .total {
-      border-top: 1px solid #cecdcd;
-      padding: 8px 0;
-      font-size: 22px;
-    }
-  }
-
-  .measurement {
-    margin-top: 50px;
-    background: $light-1;
-    padding: 20px 30px;
-    .title {
-      text-align: center;
-    }
-    .measurmentSelection {
-      @include sm {
-        flex-direction: column;
-      }
-      .left {
-        flex-basis: 50%;
-        align-items: start;
-        box-shadow: none;
-        flex-direction: column;
-      }
-      .right {
-        flex-basis: 50%;
-        box-shadow: none;
-        flex-direction: column;
-      }
-      .inputBox {
-        width: 100%;
-        input {
-          width: 100%;
-        }
+      &:last-child {
+        border-top: 1px solid #cecdcd;
+        padding: 8px 0;
+        font-size: 22px;
       }
     }
   }

@@ -135,29 +135,4 @@
       }
     }
   }
-  .measurement {
-    margin-top: 50px;
-    .title {
-      text-align: center;
-    }
-    .measurmentSelection {
-      .left {
-        flex-basis: 50%;
-        align-items: start;
-        box-shadow: none;
-        flex-direction: column;
-      }
-      .right {
-        flex-basis: 50%;
-        box-shadow: none;
-        flex-direction: column;
-      }
-      .inputBox {
-        width: 100%;
-        input {
-          width: 100%;
-        }
-      }
-    }
-  }
 }

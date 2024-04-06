@@ -230,9 +230,9 @@ const CustomizeImg = () => {
       hndImg: Hand_5,
       hndName: "Standard",
       width: "103px",
-      top: "147px",
-      right: "-29px",
-      left: "-31px",
+      top: "145px",
+      right: "-31px",
+      left: "-32px",
     },
   ];
 
@@ -456,69 +456,9 @@ const CustomizeImg = () => {
             Reset
           </button>
         </div>
-
-        <div className="measurement">
-          <h2 className="title">Measurements</h2>
-          <div className="measurmentSelection d-flex flex-start">
-            <div className="left d-flex gap-20">
-              <div className="inputBox">
-                <input type="text" placeholder="Material type" />
-              </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Chest width" />
-              </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Neck width" />
-              </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Hand width" />
-              </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Length width" />
-              </div>
-            </div>
-            <div className="right d-flex gap-20">
-              <div className="inputBox">
-                <input type="text" placeholder="Dress quantity" />
-              </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Sleeve width" />
-              </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Cuff width" />
-              </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Shoulder" />
-              </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Material width" />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style={{ textAlign: "center", margin: "30px 0 10px 0" }}>
-          <button className="button" style={{ width: "30%" }}>
-            Confirm
-          </button>
-        </div>
       </div>
     </div>
   );
 };
 
 export default CustomizeImg;
-
-/*
-
-=> Order summery
-inputs->
-1. Material length
-2. Material price
-3. Total
-4. Discount
-5. Vat
-6. Payable
-7. Recived ammount
-8. Due ammount
-
-*/
