@@ -44,7 +44,7 @@ Route::controller(MaterialController::class)->group(function(){
 // Invoice
 Route::post('/store-sell',[InvoiceController::class,'store']);
 // Get material
-Route::get('/home',[MaterialController::class,'index']);
+Route::get('/get-material',[InvoiceController::class,'GetMaterial']);
 
 
 Route::controller(UserController::class)->group(function() {

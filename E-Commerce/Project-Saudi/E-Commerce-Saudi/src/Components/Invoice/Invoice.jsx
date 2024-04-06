@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import AxiosConfig from "../../assets/AxiosConfig";
 
 //___ Images ___//
 import Logo from "/images/icons/logo.png";
@@ -12,6 +13,8 @@ import "./Invoice.scss";
 import CustomizeImg from "../CustomizeImg/CustomizeImg";
 
 const Invoice = () => {
+  const { http } = AxiosConfig();
+
   const [invoiceInputValue, setInvoiceInputValue] = useState([
     {
       customer_name: "",
@@ -38,6 +41,7 @@ const Invoice = () => {
       due_ammount: "",
     },
   ]);
+  const [materials, setMaterials] = useState([]);
 
   const handleInvoiceInputValue = (e) => {
     setInvoiceInputValue({
@@ -46,6 +50,21 @@ const Invoice = () => {
     });
     // console.log(invoiceInputValue.deadline);
   };
+
+  // Api call
+  const getMaterialData = async () => {
+    try {
+      http.get("/get-material").then((response) => {
+        setMaterials(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getMaterialData();
+  }, []);
 
   return (
     <>
@@ -182,9 +201,13 @@ const Invoice = () => {
                   <option value="" defaultChecked>
                     Select Material
                   </option>
-                  <option value="1">Optinon 1</option>
-                  <option value="2">Optinon 2</option>
-                  <option value="3">Optinon 3</option>
+                  {materials.map((items, index) => {
+                    return (
+                      <option key={index} value={items.id}>
+                        {items.name}
+                      </option>
+                    );
+                  })}
                 </select>
                 <div className="inputBox">
                   <input
@@ -213,7 +236,7 @@ const Invoice = () => {
                 <div className="inputBox">
                   <input
                     type="text"
-                    placeholder="Length width"
+                    placeholder="Dress length"
                     name="dress_length"
                     onChange={handleInvoiceInputValue}
                   />
@@ -241,14 +264,6 @@ const Invoice = () => {
                     type="text"
                     placeholder="Shoulder"
                     name="shoulder_length"
-                    onChange={handleInvoiceInputValue}
-                  />
-                </div>
-                <div className="inputBox">
-                  <input
-                    type="text"
-                    placeholder="Material width"
-                    name="material_length"
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -336,7 +351,7 @@ const Invoice = () => {
                 <input
                   type="text"
                   placeholder="Due ammount"
-                  name="due_ammount"
+                  // name="due_ammount"
                   onChange={handleInvoiceInputValue}
                 />
               </div>

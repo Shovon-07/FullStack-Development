@@ -54,6 +54,8 @@ class InvoiceController extends Controller
             $advance = $request->input('advance');
             $due = $payable - $advance;
             $deadline_date = $request->input('deadline_date');
+            $inqueries_number = $request->input('inqueries_number') ?? "";
+            $note = $request->input('note') ?? "";
 
             $customer = Customer::updateOrCreate(
                 ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address], // Criteria to find the record
@@ -83,7 +85,9 @@ class InvoiceController extends Controller
                     'payable' => $payable,
                     'advance' => $advance,
                     'due' => $due,
-                    'deadline_date' => $deadline_date
+                    'deadline_date' => $deadline_date,
+                    'inqueries_number' => $inqueries_number,
+                    'note'=> $note
                 ]);
                 
 
@@ -116,9 +120,9 @@ class InvoiceController extends Controller
         }
     }
 
-    public function index()
+    public function GetMaterial()
     {
-        $materials = Material::select("name")->get();
+        $materials = Material::select("id","name")->get();
         // return view('pages.home', compact('materials'));
         return $materials;
     }
