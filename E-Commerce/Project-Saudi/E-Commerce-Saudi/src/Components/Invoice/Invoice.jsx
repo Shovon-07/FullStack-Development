@@ -12,21 +12,45 @@ import "./Invoice.scss";
 import CustomizeImg from "../CustomizeImg/CustomizeImg";
 
 const Invoice = () => {
-  const [inputValue, setInputValue] = useState([
+  const [invoiceInputValue, setInvoiceInputValue] = useState([
     {
-      date: "",
+      customer_name: "",
+      customer_phone: "",
+      customer_address: "",
+      currentDate: "",
+      deadline: "",
+
+      material_id: "",
+      chest_length: "",
+      neck_length: "",
+      hand_length: "",
+      dress_length: "",
+      sleeve_length: "",
+      cuff_length: "",
+      shoulder_length: "",
+      material_length: "",
+
+      material_length: "",
+      sale_price: "",
+      discount: "",
+      var: "",
+      advance: "",
+      due_ammount: "",
     },
   ]);
 
-  const handleInputValue = (e) => {
-    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
-    console.log(inputValue.date);
+  const handleInvoiceInputValue = (e) => {
+    setInvoiceInputValue({
+      ...invoiceInputValue,
+      [e.target.name]: e.target.value,
+    });
+    // console.log(invoiceInputValue.deadline);
   };
 
   return (
     <>
       <div className="Invoice">
-        <div className="invoiceSection d-flex">
+        {/* <div className="invoiceSection d-flex">
           <div
             className="d-flex gap-20 shadow logoSec"
             style={{ width: "100%" }}
@@ -40,50 +64,100 @@ const Invoice = () => {
             </div>
             <img src={Logo} alt="" className="logo" />
           </div>
-        </div>
+        </div> */}
 
         <div className="invoiceSection first d-flex flex-start gap-20">
           <div className="left shadow" style={{ flexBasis: "100%" }}>
             <div className="firstTop d-flex flex-start">
               <div className="customerDetails">
                 <h3 className="title">Invoice To #</h3>
-                <table>
+                {/* <table>
                   <tbody>
                     <tr>
                       <td>Name</td>
                       <td className="tdColon">:</td>
-                      <td>Al jubair shovon</td>
+                      <td>
+                        <input
+                          type="text"
+                          name="customer_name"
+                          placeholder="Customer name"
+                        />
+                      </td>
                     </tr>
                     <tr>
                       <td>Phone</td>
                       <td className="tdColon">:</td>
-                      <td>01767692422</td>
+                      <td>
+                        <input
+                          type="text"
+                          name="customer_phone"
+                          placeholder="Customer phone"
+                        />
+                      </td>
                     </tr>
                     <tr>
                       <td>Address</td>
                       <td className="tdColon">:</td>
                       <td>
-                        Charkhutar mor, Rajshahi Court 6201, Kashiadanga,
-                        Rajshahi
+                        <input
+                          type="text"
+                          name="customer_address"
+                          placeholder="Customer address"
+                        />
                       </td>
                     </tr>
                   </tbody>
-                </table>
+                </table> */}
+                <div className="inputBox">
+                  <label htmlFor="">Name :</label>
+                  <input
+                    type="text"
+                    name="customer_name"
+                    placeholder="Customer name"
+                    onChange={handleInvoiceInputValue}
+                  />
+                </div>
+                <div className="inputBox">
+                  <label htmlFor="">Phone :</label>
+                  <input
+                    type="text"
+                    name="customer_phone"
+                    placeholder="Customer phone"
+                    onChange={handleInvoiceInputValue}
+                  />
+                </div>
+                <div className="inputBox">
+                  <label htmlFor="">Address :</label>
+                  <input
+                    type="text"
+                    name="customer_address"
+                    placeholder="Customer address"
+                    onChange={handleInvoiceInputValue}
+                  />
+                </div>
               </div>
-              <div className="right d-flex gap-20">
+              <div className="right d-flex gap-20 dateSec">
                 <div
                   className="d-flex gap-30 rightInput"
                   style={{ justifyContent: "flex-end" }}
                 >
                   <h4>Date:</h4>
-                  <input type="date" name="date" onChange={handleInputValue} />
+                  <input
+                    type="date"
+                    name="currentDate"
+                    onChange={handleInvoiceInputValue}
+                  />
                 </div>
                 <div
                   className="d-flex gap-30 rightInput"
                   style={{ justifyContent: "flex-end" }}
                 >
                   <h4>Deadline:</h4>
-                  <input type="date" onChange={handleInputValue} />
+                  <input
+                    type="date"
+                    name="deadline_date"
+                    onChange={handleInvoiceInputValue}
+                  />
                 </div>
               </div>
             </div>
@@ -97,41 +171,51 @@ const Invoice = () => {
         <div className="invoiceSection">
           <div className="measurement">
             <h2 className="title">Measurements</h2>
+            {invoiceInputValue.material_id != null ? (
+              <span>{invoiceInputValue.material_id}</span>
+            ) : (
+              ""
+            )}
             <div className="measurmentSelection d-flex flex-start">
               <div className="left d-flex gap-20">
-                <div className="inputBox">
-                  <input
-                    type="text"
-                    placeholder="Material type"
-                    onChange={handleInputValue}
-                  />
-                </div>
+                <select name="material_id" onChange={handleInvoiceInputValue}>
+                  <option value="" defaultChecked>
+                    Select Material
+                  </option>
+                  <option value="1">Optinon 1</option>
+                  <option value="2">Optinon 2</option>
+                  <option value="3">Optinon 3</option>
+                </select>
                 <div className="inputBox">
                   <input
                     type="text"
                     placeholder="Chest width"
-                    onChange={handleInputValue}
+                    name="chest_length"
+                    onChange={handleInvoiceInputValue}
                   />
                 </div>
                 <div className="inputBox">
                   <input
                     type="text"
                     placeholder="Neck width"
-                    onChange={handleInputValue}
+                    name="neck_length"
+                    onChange={handleInvoiceInputValue}
                   />
                 </div>
                 <div className="inputBox">
                   <input
                     type="text"
                     placeholder="Hand width"
-                    onChange={handleInputValue}
+                    name="hand_length"
+                    onChange={handleInvoiceInputValue}
                   />
                 </div>
                 <div className="inputBox">
                   <input
                     type="text"
                     placeholder="Length width"
-                    onChange={handleInputValue}
+                    name="dress_length"
+                    onChange={handleInvoiceInputValue}
                   />
                 </div>
               </div>
@@ -140,28 +224,32 @@ const Invoice = () => {
                   <input
                     type="text"
                     placeholder="Sleeve width"
-                    onChange={handleInputValue}
+                    name="sleeve_length"
+                    onChange={handleInvoiceInputValue}
                   />
                 </div>
                 <div className="inputBox">
                   <input
                     type="text"
                     placeholder="Cuff width"
-                    onChange={handleInputValue}
+                    name="cuff_length"
+                    onChange={handleInvoiceInputValue}
                   />
                 </div>
                 <div className="inputBox">
                   <input
                     type="text"
                     placeholder="Shoulder"
-                    onChange={handleInputValue}
+                    name="shoulder_length"
+                    onChange={handleInvoiceInputValue}
                   />
                 </div>
                 <div className="inputBox">
                   <input
                     type="text"
                     placeholder="Material width"
-                    onChange={handleInputValue}
+                    name="material_length"
+                    onChange={handleInvoiceInputValue}
                   />
                 </div>
               </div>
@@ -181,7 +269,7 @@ const Invoice = () => {
                   type="text"
                   style={{ width: "100%", marginTop: "10px" }}
                   placeholder="000000"
-                  onChange={handleInputValue}
+                  onChange={handleInvoiceInputValue}
                 />
               </div>
               <div style={{ flexBasis: "50%" }}>
@@ -193,7 +281,7 @@ const Invoice = () => {
                   rows="5"
                   style={{ width: "100%", marginTop: "10px" }}
                   placeholder="Invoice Note"
-                  onChange={handleInputValue}
+                  onChange={handleInvoiceInputValue}
                 ></textarea>
               </div>
             </div>
@@ -205,14 +293,16 @@ const Invoice = () => {
                 <input
                   type="text"
                   placeholder="Material length"
-                  onChange={handleInputValue}
+                  name="material_length"
+                  onChange={handleInvoiceInputValue}
                 />
               </div>
               <div className="inputBox">
                 <input
                   type="text"
                   placeholder="Material price"
-                  onChange={handleInputValue}
+                  name="sale_price"
+                  onChange={handleInvoiceInputValue}
                 />
               </div>
               <div className="total d-flex">
@@ -222,28 +312,32 @@ const Invoice = () => {
                 <input
                   type="text"
                   placeholder="Discount"
-                  onChange={handleInputValue}
+                  name="discount"
+                  onChange={handleInvoiceInputValue}
                 />
               </div>
               <div className="inputBox">
                 <input
                   type="text"
                   placeholder="Vat"
-                  onChange={handleInputValue}
+                  name="vat"
+                  onChange={handleInvoiceInputValue}
                 />
               </div>
               <div className="inputBox">
                 <input
                   type="text"
                   placeholder="Received amount"
-                  onChange={handleInputValue}
+                  name="advance"
+                  onChange={handleInvoiceInputValue}
                 />
               </div>
               <div className="inputBox">
                 <input
                   type="text"
                   placeholder="Due ammount"
-                  onChange={handleInputValue}
+                  name="due_ammount"
+                  onChange={handleInvoiceInputValue}
                 />
               </div>
               <div className="total d-flex">
