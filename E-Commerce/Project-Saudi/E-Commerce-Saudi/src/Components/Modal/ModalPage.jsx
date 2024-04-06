@@ -29,9 +29,11 @@ const ModalPage = (props) => {
     slug,
     id,
     inputFields,
-    addUserApi,
+    api,
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
+    setLoading,
+    setRelodeTable,
   } = props;
   const { http } = AxiosConfig();
 
@@ -44,6 +46,9 @@ const ModalPage = (props) => {
       name: "",
       email: "",
       password: "",
+
+      stock: "",
+      price: "",
     },
   ]);
   const handleInputValue = (e) => {
@@ -56,9 +61,18 @@ const ModalPage = (props) => {
       name: inputValue.name,
       email: inputValue.email,
       password: inputValue.password,
+
+      stock: inputValue.stock,
+      price: inputValue.price,
     };
-    http.post(addUserApi, data);
-    // console.log(data);
+    console.log(data);
+    setLoading(true);
+    http.post(api, data).then((response) => {
+      console.log(response.data);
+      handleClose();
+      setLoading(false);
+      setRelodeTable((prev) => !prev);
+    });
   };
 
   return (

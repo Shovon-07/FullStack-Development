@@ -23,17 +23,17 @@ const Home = () => {
   const [apiData, setApiData] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [filteredApiData, setFilteredApiData] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  const [relodeTable, setRelodeTable] = useState(false);
 
   const getApiData = async () => {
     try {
       setLoading(true);
-      await axios.get("https://fakestoreapi.com/products").then((response) => {
+      await http.get("/user-data").then((response) => {
         setApiData(response.data);
         setFilteredApiData(response.data);
         setLoading(false);
+        console.log(response.data);
       });
-      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -50,22 +50,22 @@ const Home = () => {
     {
       name: "Material Name",
       field: "MaterialName",
-      selector: (row) => row.title,
+      selector: (row) => row.Name,
     },
     {
       name: "Meters Available",
       field: "MetersAvailable",
-      selector: (row) => row.category,
+      selector: (row) => row.Email,
     },
     {
       name: "Price Per Meter",
       field: "PricePerMeter",
-      selector: (row) => row.category,
+      selector: (row) => row.Password,
     },
     {
       name: "Total Value",
       field: "TotalValue",
-      selector: (row) => row.price,
+      selector: (row) => row.Name,
     },
     {
       name: "Action",
@@ -92,6 +92,9 @@ const Home = () => {
             inputFields={inputFieldsForAddStockMaterial}
             ModalOpenBtnTitle="Stock"
             ModalOpenBtnStyle={stockModalOpenBtnStyle}
+            api={"/create-user"}
+            setLoading={setLoading}
+            setRelodeTable={setRelodeTable}
           />
           <ModalPage
             id={row.id}
@@ -99,6 +102,9 @@ const Home = () => {
             inputFields={inputFieldsForDeductMaterial}
             ModalOpenBtnTitle="Deduct"
             ModalOpenBtnStyle={deductModalOpenBtnStyle}
+            api={"/create-user"}
+            setLoading={setLoading}
+            setRelodeTable={setRelodeTable}
           />
           <ModalPage
             id={row.id}
@@ -106,6 +112,9 @@ const Home = () => {
             inputFields={inputFieldsForPriceMaterial}
             ModalOpenBtnTitle="Price"
             ModalOpenBtnStyle={priceModalOpenBtnStyle}
+            api={"/create-user"}
+            setLoading={setLoading}
+            setRelodeTable={setRelodeTable}
           />
         </div>
       ),
@@ -114,7 +123,7 @@ const Home = () => {
 
   useEffect(() => {
     getApiData();
-  }, []);
+  }, [relodeTable]);
 
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {
@@ -126,6 +135,26 @@ const Home = () => {
   }, [searchData]);
 
   // Input For modal
+  const inputFieldsForCreateUser = [
+    {
+      field: "name",
+      type: "text",
+      placeholder: "Enter user name",
+      className: "inputBox",
+    },
+    {
+      field: "email",
+      type: "text",
+      placeholder: "Enter user email",
+      className: "inputBox",
+    },
+    {
+      field: "password",
+      type: "text",
+      placeholder: "Enter password ",
+      className: "inputBox",
+    },
+  ];
   const inputFieldsForAddMaterial = [
     {
       field: "Material Name",
@@ -221,9 +250,13 @@ const Home = () => {
         <div style={{ margin: "20px 0" }}>
           <ModalPage
             slug={"Add New Material"}
-            inputFields={inputFieldsForAddMaterial}
+            // inputFields={inputFieldsForAddMaterial}
+            inputFields={inputFieldsForCreateUser}
             ModalOpenBtnTitle="Add Materials"
             ModalOpenBtnStyle={addModalOpenBtnStyle}
+            api={"/create-user"}
+            setLoading={setLoading}
+            setRelodeTable={setRelodeTable}
           />
         </div>
       </div>
