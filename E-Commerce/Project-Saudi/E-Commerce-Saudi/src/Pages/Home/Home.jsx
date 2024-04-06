@@ -28,7 +28,7 @@ const Home = () => {
   const getApiData = async () => {
     try {
       setLoading(true);
-      await http.get("/user-data").then((response) => {
+      await http.get("/home").then((response) => {
         setApiData(response.data);
         setFilteredApiData(response.data);
         setLoading(false);
@@ -50,17 +50,17 @@ const Home = () => {
     {
       name: "Material Name",
       field: "MaterialName",
-      selector: (row) => row.Name,
+      selector: (row) => row.name,
     },
     {
       name: "Meters Available",
       field: "MetersAvailable",
-      selector: (row) => row.Email,
+      selector: (row) => row.stock,
     },
     {
       name: "Price Per Meter",
       field: "PricePerMeter",
-      selector: (row) => row.Password,
+      selector: (row) => row.price,
     },
     {
       name: "Total Value",
@@ -92,7 +92,7 @@ const Home = () => {
             inputFields={inputFieldsForAddStockMaterial}
             ModalOpenBtnTitle="Stock"
             ModalOpenBtnStyle={stockModalOpenBtnStyle}
-            api={"/create-user"}
+            api={"/updateStock"}
             setLoading={setLoading}
             setRelodeTable={setRelodeTable}
           />
@@ -102,7 +102,7 @@ const Home = () => {
             inputFields={inputFieldsForDeductMaterial}
             ModalOpenBtnTitle="Deduct"
             ModalOpenBtnStyle={deductModalOpenBtnStyle}
-            api={"/create-user"}
+            // api={"/create-user"}
             setLoading={setLoading}
             setRelodeTable={setRelodeTable}
           />
@@ -112,7 +112,7 @@ const Home = () => {
             inputFields={inputFieldsForPriceMaterial}
             ModalOpenBtnTitle="Price"
             ModalOpenBtnStyle={priceModalOpenBtnStyle}
-            api={"/create-user"}
+            // api={"/create-user"}
             setLoading={setLoading}
             setRelodeTable={setRelodeTable}
           />
@@ -155,19 +155,19 @@ const Home = () => {
   ];
   const inputFieldsForAddMaterial = [
     {
-      field: "Material Name",
+      field: "name",
       type: "text",
       placeholder: "Enter material name",
       className: "inputBox",
     },
     {
-      field: "Initial Meters",
+      field: "price",
       type: "text",
       placeholder: "Enter initial meters available",
       className: "inputBox",
     },
     {
-      field: "Initial Price",
+      field: "stock",
       type: "text",
       placeholder: "Enter initial price per meter ",
       className: "inputBox",
@@ -175,15 +175,15 @@ const Home = () => {
   ];
   const inputFieldsForAddStockMaterial = [
     {
-      field: "Add Stock",
+      field: "price",
       type: "text",
-      placeholder: "Add Stock",
+      placeholder: "New Price",
       className: "inputBox",
     },
     {
-      field: "New Price",
+      field: "stock",
       type: "text",
-      placeholder: "New Price",
+      placeholder: "Add Stock",
       className: "inputBox",
     },
   ];
@@ -249,10 +249,10 @@ const Home = () => {
           <ModalPage
             slug={"Add New Material"}
             // inputFields={inputFieldsForAddMaterial}
-            inputFields={inputFieldsForCreateUser}
+            inputFields={inputFieldsForAddMaterial}
             ModalOpenBtnTitle="Add Materials"
             ModalOpenBtnStyle={addModalOpenBtnStyle}
-            api={"/create-user"}
+            api={"/store"}
             setLoading={setLoading}
             setRelodeTable={setRelodeTable}
           />

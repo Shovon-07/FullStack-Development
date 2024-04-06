@@ -43,6 +43,7 @@ const ModalPage = (props) => {
 
   const [inputValue, setInputValue] = useState([
     {
+      // id: id,
       name: "",
       email: "",
       password: "",
@@ -58,9 +59,10 @@ const ModalPage = (props) => {
   const handleForm = async (e) => {
     e.preventDefault();
     const data = {
+      id: id,
       name: inputValue.name,
-      email: inputValue.email,
-      password: inputValue.password,
+      // email: inputValue.email,
+      // password: inputValue.password,
 
       stock: inputValue.stock,
       price: inputValue.price,
@@ -106,6 +108,7 @@ const ModalPage = (props) => {
               <div className="modalContent">
                 <h3 className="modalTitle">{slug}</h3>
                 {/* <span> id = {id}</span> */}
+                <input type="text" value={id} />
                 <form className="d-flex" onSubmit={handleForm}>
                   {inputFields.map((items, index) => {
                     return (
@@ -114,6 +117,7 @@ const ModalPage = (props) => {
                           type={items.inputType}
                           name={items.field}
                           placeholder={`${items.placeholder}`}
+                          // value={items.field === "id" ? { id } : ""}
                           onChange={handleInputValue}
                         />
                       </div>

@@ -22,7 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::controller(MaterialController::class)->group(function(){
+    // Get material data
+    Route::get('/home','index');
+
+    // Post material data
     Route::post('/store','store');
+
+    // Updae stock data
+    Route::post('/updateStock','updateStock');
 });
 
 
