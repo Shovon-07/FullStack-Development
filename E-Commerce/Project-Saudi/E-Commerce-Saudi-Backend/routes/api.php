@@ -33,6 +33,11 @@ Route::controller(MaterialController::class)->group(function(){
 
     // update deduct
     Route::post('/updateDeduct','updateDeduct');
+
+    // price
+    // Route::get('/price/{id}','price');
+    Route::get('/price','price');
+    Route::post('/updatePrice','updatePrice');
 });
 
 

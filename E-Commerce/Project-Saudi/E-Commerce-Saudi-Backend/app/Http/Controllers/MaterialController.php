@@ -86,6 +86,23 @@ class MaterialController extends Controller
         }
     }
 
+    // price
+    public function price(Request $request)
+    {
+        $material = Material::select("price")->where("id","=",$request->id);
+        // return view('pages.material.priceMaterial', compact('material'));
+        return $material;
+    }
+
+    public function updatePrice(Request $request)
+    {
+        Material::where('id', '=', $request->id)->update([
+            'price' => $request->price
+        ]);
+
+        return "success";
+    }
+
     public function store(Request $request)
     {
         DB::beginTransaction();

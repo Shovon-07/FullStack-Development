@@ -108,11 +108,13 @@ const Home = () => {
           />
           <ModalPage
             id={row.id}
+            price={row.price}
             slug={"Price"}
             inputFields={inputFieldsForPriceMaterial}
             ModalOpenBtnTitle="Price"
             ModalOpenBtnStyle={priceModalOpenBtnStyle}
-            // api={"/create-user"}
+            api={"/updatePrice"}
+            // getDataApi={"/price"}
             setLoading={setLoading}
             setRelodeTable={setRelodeTable}
           />
@@ -197,10 +199,12 @@ const Home = () => {
   ];
   const inputFieldsForPriceMaterial = [
     {
-      field: "Update Price",
+      field: "price",
       type: "text",
       placeholder: "Update Price",
       className: "inputBox",
+
+      // Input value change problem
     },
   ];
 

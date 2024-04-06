@@ -234,13 +234,6 @@ const CustomizeImg = () => {
       right: "-29px",
       left: "-31px",
     },
-    // img size w: 130 px; h:50 px direction <--
-
-    // { hndImg: Hand_1, width: "100px", right: "-29px", left: "-31px" },
-    // { hndImg: Hand_2, width: "100px", right: "-29px", left: "-31px" },
-    // { hndImg: Hand_3, width: "100px", right: "-29px", left: "-31px" },
-    // { hndImg: Hand_4, width: "99px", right: "-29px", left: "-30px" },
-    // { hndImg: Hand_5, width: "102px", right: "-29px", left: "-33px" },
   ];
 
   const handelButtonImgPreview = (items) => {
@@ -469,6 +462,9 @@ const CustomizeImg = () => {
           <div className="measurmentSelection d-flex flex-start">
             <div className="left d-flex gap-20">
               <div className="inputBox">
+                <input type="text" placeholder="Material type" />
+              </div>
+              <div className="inputBox">
                 <input type="text" placeholder="Chest width" />
               </div>
               <div className="inputBox">
@@ -482,6 +478,9 @@ const CustomizeImg = () => {
               </div>
             </div>
             <div className="right d-flex gap-20">
+              <div className="inputBox">
+                <input type="text" placeholder="Dress quantity" />
+              </div>
               <div className="inputBox">
                 <input type="text" placeholder="Sleeve width" />
               </div>

@@ -28,8 +28,10 @@ const ModalPage = (props) => {
   const {
     slug,
     id,
+    price,
     inputFields,
     api,
+    getDataApi,
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
     setLoading,
@@ -50,6 +52,7 @@ const ModalPage = (props) => {
       stock: "",
       price: "",
       deduct: "",
+      price: "",
     },
   ]);
   const handleInputValue = (e) => {
@@ -67,6 +70,7 @@ const ModalPage = (props) => {
       stock: inputValue.stock,
       price: inputValue.price,
       deduct: inputValue.deduct,
+      price: inputValue.price,
     };
     console.log(data);
     setLoading(true);
@@ -77,6 +81,19 @@ const ModalPage = (props) => {
       setRelodeTable((prev) => !prev);
     });
   };
+
+  // const getDataApiFunc = () => {
+  //   try {
+  //     http.get(getDataApi).then((response) => {
+  //       console.log(response.data);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // useEffect(() => {
+  //   getDataApiFunc();
+  // }, []);
 
   return (
     <>
@@ -118,7 +135,8 @@ const ModalPage = (props) => {
                           type={items.inputType}
                           name={items.field}
                           placeholder={`${items.placeholder}`}
-                          // value={items.field === "id" ? { id } : ""}
+                          // value={price}
+                          value={items.field != "price" ? "" : price}
                           onChange={handleInputValue}
                         />
                       </div>
