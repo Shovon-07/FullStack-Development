@@ -30,6 +30,9 @@ Route::controller(MaterialController::class)->group(function(){
 
     // Updae stock data
     Route::post('/updateStock','updateStock');
+
+    // update deduct
+    Route::post('/updateDeduct','updateDeduct');
 });
 
 

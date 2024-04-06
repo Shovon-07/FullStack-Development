@@ -65,7 +65,7 @@ const Home = () => {
     {
       name: "Total Value",
       field: "TotalValue",
-      selector: (row) => Number(row.stock) + Number(row.price),
+      selector: (row) => Number(row.stock) * Number(row.price),
     },
     {
       name: "Action",
@@ -102,7 +102,7 @@ const Home = () => {
             inputFields={inputFieldsForDeductMaterial}
             ModalOpenBtnTitle="Deduct"
             ModalOpenBtnStyle={deductModalOpenBtnStyle}
-            // api={"/create-user"}
+            api={"/updateDeduct"}
             setLoading={setLoading}
             setRelodeTable={setRelodeTable}
           />
@@ -189,7 +189,7 @@ const Home = () => {
   ];
   const inputFieldsForDeductMaterial = [
     {
-      field: "Deduct Material",
+      field: "deduct",
       type: "text",
       placeholder: "Deduct Material",
       className: "inputBox",

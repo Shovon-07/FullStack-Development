@@ -48,6 +48,44 @@ class MaterialController extends Controller
         }
     }
 
+    // update deduct
+    public function updateDeduct(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $material = Material::where('id', '=', $request->id)->first();
+
+            if ($material) {
+
+                $oldStock = $material->stock;
+                if ($oldStock > 0) {
+                    $newStock = $oldStock - $request->deduct;
+
+                    if ($newStock >= 0) {
+
+                        $updateStock = Material::where('id', '=', $request->id)->update([
+                            'stock' => $newStock
+                        ]);
+
+                        if ($updateStock) {
+                            $deduct = Deduct::create([
+                                'material_id' => $material->id,
+                                'deduct' => $request->deduct,
+                            ]);
+                        }
+                    }
+                }
+            }
+            DB::commit();
+            // return redirect('home');
+            return "success";
+        } catch (Exception $e) {
+            DB::rollBack();
+            // return redirect('home');
+            return "success";
+        }
+    }
+
     public function store(Request $request)
     {
         DB::beginTransaction();

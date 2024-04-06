@@ -43,13 +43,13 @@ const ModalPage = (props) => {
 
   const [inputValue, setInputValue] = useState([
     {
-      // id: id,
       name: "",
-      email: "",
-      password: "",
+      // email: "",
+      // password: "",
 
       stock: "",
       price: "",
+      deduct: "",
     },
   ]);
   const handleInputValue = (e) => {
@@ -66,6 +66,7 @@ const ModalPage = (props) => {
 
       stock: inputValue.stock,
       price: inputValue.price,
+      deduct: inputValue.deduct,
     };
     console.log(data);
     setLoading(true);
