@@ -3,7 +3,7 @@
 .Home {
   box-shadow: $shadow;
   background: $light-1;
-  padding: 20px 0;
+  padding: 20px;
   .homeTop {
     padding: 0 20px;
     .title {
@@ -39,9 +39,9 @@
       border-bottom: 1px solid $dark-2;
       // border-bottom: 1px solid $light-1
     }
-    ::placeholder {
-      color: $dark-2;
-    }
+    // ::placeholder {
+    //   color: $dark-2;
+    // }
   }
   /*** Table Container ***/
   .huezRP {
@@ -60,6 +60,7 @@
   .hVPalX {
     .kUwhdZ {
       border: $border;
+      border-radius: 8px;
     }
     // border-bottom: $tableBorder;
     // border-left: $tableBorder;

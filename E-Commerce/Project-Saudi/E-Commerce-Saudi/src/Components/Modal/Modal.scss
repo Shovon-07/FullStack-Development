@@ -2,7 +2,7 @@
 
 .css-79ws1d-MuiModal-root {
   .css-15nnif {
-    background: $light-1;
+    background: #222222;
     padding: 10px 20px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -16,7 +16,7 @@
     span {
       cursor: pointer;
       font-size: 20px;
-      color: $dark-2;
+      color: $light-1;
     }
   }
   .modalContent {
@@ -26,7 +26,7 @@
       margin-bottom: 20px;
       font-size: 18px;
       text-transform: capitalize;
-      color: $dark-3;
+      color: $light-1;
     }
 
     form {
@@ -38,7 +38,7 @@
       // margin: 8% 0;
 
       .inputBox {
-        border: 1px solid $light-3;
+        border: 1px solid $dark-3;
         width: 100%;
         padding: 5px 15px;
         margin: 15px 0;
@@ -47,7 +47,7 @@
         input {
           border: none;
           outline: none;
-          color: $dark-2;
+          color: $light-1;
           background: transparent;
           border-radius: 8px;
           font-size: 17px;
@@ -60,19 +60,14 @@
       }
 
       button {
-        // text-transform: uppercase;
-        // background: transparent;
-        // outline: none;
-        // border: 1px solid $light-3;
-        // color: $dark-1;
         padding: 10px 30px;
         margin-top: 20px;
         font-weight: 700;
         font-size: 16px;
-        // letter-spacing: 2px;
-        // transition: $trans;
-        // cursor: pointer;
         display: inline-block;
+        &:hover {
+          background: $dark-3;
+        }
       }
 
       .form-bottom {

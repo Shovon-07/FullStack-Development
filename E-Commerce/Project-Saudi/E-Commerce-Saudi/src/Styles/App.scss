@@ -182,6 +182,39 @@ body.blur {
       }
     }
 
+    //___ Home ___//
+    .Home {
+      background: none;
+      backdrop-filter: blur(15px);
+      box-shadow: 1px 1px 5px $dark-2;
+      .hMFeQo,
+      .fpBGKh,
+      .huezRP,
+      .hDHZZh {
+        background: none;
+        color: $light-1;
+        input {
+          color: $light-2;
+          border-bottom: 1px solid $light-2;
+        }
+      }
+      .kGckkd {
+        color: $light-1;
+        border-bottom: 1px solid $light-2;
+      }
+      .kUMlDB {
+        background: none;
+        color: $light-1;
+      }
+      .hVPalX {
+        background: none;
+        color: $light-1;
+      }
+      .kuPCgf {
+        fill: $light-1;
+      }
+    }
+
     //___ Footer ___//
     .Footer {
       background: none;

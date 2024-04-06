@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import axios from "axios";
 import DataTable from "react-data-table-component";
 
 //___ Additional utility ___//
-import Loader from "../../Components/Loader/Loader";
+import AxiosConfig from "../../assets/AxiosConfig";
 
 //___ Css ___//
 import "./Home.scss";
@@ -15,16 +16,23 @@ import "./Home.scss";
 import ModalPage from "../../Components/Modal/ModalPage";
 
 const Home = () => {
+  const [setLoading] = useOutletContext();
+  const { http } = AxiosConfig();
+
   // States
   const [apiData, setApiData] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [filteredApiData, setFilteredApiData] = useState([]);
+  // const [loading, setLoading] = useState(false);
 
   const getApiData = async () => {
     try {
-      let res = await axios.get("https://fakestoreapi.com/products");
-      setApiData(res.data);
-      setFilteredApiData(res.data);
+      setLoading(true);
+      await axios.get("https://fakestoreapi.com/products").then((response) => {
+        setApiData(response.data);
+        setFilteredApiData(response.data);
+        setLoading(false);
+      });
       console.log(res.data);
     } catch (error) {
       console.log(error);
@@ -205,6 +213,7 @@ const Home = () => {
 
   return (
     <div className="Home">
+      {/* {loading && <Loader />} */}
       <div className="homeTop">
         <div className="title">
           <h2>Materials</h2>
@@ -232,7 +241,7 @@ const Home = () => {
         subHeaderComponent={
           <input
             type="text"
-            placeholder="Search here"
+            placeholder="Search by material name"
             value={searchData}
             onChange={(e) => {
               setSearchData(e.target.value);
