@@ -114,7 +114,7 @@ textarea {
   outline: none;
   color: $dark-3;
   &:focus::placeholder {
-    padding-left: 30px;
+    padding-left: 10px;
     transition: $trans;
   }
 }
@@ -130,18 +130,18 @@ input:disabled {
 // Colors
 
 /*________________ custome scroll bar start ________________*/
-// ::-webkit-scrollbar {
-//   width: 1px;
-//   height: 5px;
-// }
+::-webkit-scrollbar {
+  width: 1px;
+  height: 5px;
+}
 
-// ::-webkit-scrollbar-track {
-//   background: $dark-2;
-// }
+::-webkit-scrollbar-track {
+  background: $dark-1;
+}
 
-// ::-webkit-scrollbar-thumb {
-//   // background: $main-color;
-// }
+::-webkit-scrollbar-thumb {
+  background: $main-color;
+}
 /*________________ custome scroll bar end ________________*/
 
 /*________________ Blur effec start ________________*/
@@ -173,8 +173,11 @@ body.blur {
       box-shadow: none;
       border-bottom: $border;
       .menus {
-        backdrop-filter: blur(15px);
         background: none;
+        @include slg {
+          background: #424242c2;
+          backdrop-filter: blur(15px);
+        }
         li {
           a {
             color: $light-1;

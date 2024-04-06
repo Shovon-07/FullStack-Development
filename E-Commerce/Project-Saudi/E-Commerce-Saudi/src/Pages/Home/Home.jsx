@@ -129,7 +129,7 @@ const Home = () => {
 
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {
-      return filteredApiData.Name.toLowerCase().match(searchData.toLowerCase());
+      return filteredApiData.name.toLowerCase().match(searchData.toLowerCase());
     });
     setFilteredApiData(result);
   }, [searchData]);
