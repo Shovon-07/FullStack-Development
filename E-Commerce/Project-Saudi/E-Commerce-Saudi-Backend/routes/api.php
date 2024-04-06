@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProcessImgController;
@@ -40,10 +41,10 @@ Route::controller(MaterialController::class)->group(function(){
     Route::post('/updatePrice','updatePrice');
 });
 
-
-
-
-
+// Invoice
+Route::post('/store-sell',[InvoiceController::class,'store']);
+// Get material
+Route::get('/home',[MaterialController::class,'index']);
 
 
 Route::controller(UserController::class)->group(function() {

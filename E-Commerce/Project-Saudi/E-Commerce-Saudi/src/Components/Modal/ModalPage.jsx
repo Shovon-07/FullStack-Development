@@ -46,9 +46,6 @@ const ModalPage = (props) => {
   const [inputValue, setInputValue] = useState([
     {
       name: "",
-      // email: "",
-      // password: "",
-
       stock: "",
       price: "",
       deduct: "",

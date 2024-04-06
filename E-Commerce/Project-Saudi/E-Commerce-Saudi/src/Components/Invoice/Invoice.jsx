@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //___ Images ___//
 import Logo from "/images/icons/logo.png";
@@ -12,6 +12,17 @@ import "./Invoice.scss";
 import CustomizeImg from "../CustomizeImg/CustomizeImg";
 
 const Invoice = () => {
+  const [inputValue, setInputValue] = useState([
+    {
+      date: "",
+    },
+  ]);
+
+  const handleInputValue = (e) => {
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+    console.log(inputValue.date);
+  };
+
   return (
     <>
       <div className="Invoice">
@@ -65,14 +76,14 @@ const Invoice = () => {
                   style={{ justifyContent: "flex-end" }}
                 >
                   <h4>Date:</h4>
-                  <input type="date" />
+                  <input type="date" name="date" onChange={handleInputValue} />
                 </div>
                 <div
                   className="d-flex gap-30 rightInput"
                   style={{ justifyContent: "flex-end" }}
                 >
                   <h4>Deadline:</h4>
-                  <input type="date" />
+                  <input type="date" onChange={handleInputValue} />
                 </div>
               </div>
             </div>
@@ -89,36 +100,69 @@ const Invoice = () => {
             <div className="measurmentSelection d-flex flex-start">
               <div className="left d-flex gap-20">
                 <div className="inputBox">
-                  <input type="text" placeholder="Material type" />
+                  <input
+                    type="text"
+                    placeholder="Material type"
+                    onChange={handleInputValue}
+                  />
                 </div>
                 <div className="inputBox">
-                  <input type="text" placeholder="Chest width" />
+                  <input
+                    type="text"
+                    placeholder="Chest width"
+                    onChange={handleInputValue}
+                  />
                 </div>
                 <div className="inputBox">
-                  <input type="text" placeholder="Neck width" />
+                  <input
+                    type="text"
+                    placeholder="Neck width"
+                    onChange={handleInputValue}
+                  />
                 </div>
                 <div className="inputBox">
-                  <input type="text" placeholder="Hand width" />
+                  <input
+                    type="text"
+                    placeholder="Hand width"
+                    onChange={handleInputValue}
+                  />
                 </div>
                 <div className="inputBox">
-                  <input type="text" placeholder="Length width" />
+                  <input
+                    type="text"
+                    placeholder="Length width"
+                    onChange={handleInputValue}
+                  />
                 </div>
               </div>
               <div className="right d-flex gap-20">
                 <div className="inputBox">
-                  <input type="text" placeholder="Dress quantity" />
+                  <input
+                    type="text"
+                    placeholder="Sleeve width"
+                    onChange={handleInputValue}
+                  />
                 </div>
                 <div className="inputBox">
-                  <input type="text" placeholder="Sleeve width" />
+                  <input
+                    type="text"
+                    placeholder="Cuff width"
+                    onChange={handleInputValue}
+                  />
                 </div>
                 <div className="inputBox">
-                  <input type="text" placeholder="Cuff width" />
+                  <input
+                    type="text"
+                    placeholder="Shoulder"
+                    onChange={handleInputValue}
+                  />
                 </div>
                 <div className="inputBox">
-                  <input type="text" placeholder="Shoulder" />
-                </div>
-                <div className="inputBox">
-                  <input type="text" placeholder="Material width" />
+                  <input
+                    type="text"
+                    placeholder="Material width"
+                    onChange={handleInputValue}
+                  />
                 </div>
               </div>
             </div>
@@ -137,6 +181,7 @@ const Invoice = () => {
                   type="text"
                   style={{ width: "100%", marginTop: "10px" }}
                   placeholder="000000"
+                  onChange={handleInputValue}
                 />
               </div>
               <div style={{ flexBasis: "50%" }}>
@@ -148,6 +193,7 @@ const Invoice = () => {
                   rows="5"
                   style={{ width: "100%", marginTop: "10px" }}
                   placeholder="Invoice Note"
+                  onChange={handleInputValue}
                 ></textarea>
               </div>
             </div>
@@ -156,28 +202,52 @@ const Invoice = () => {
             <div className="bill d-flex gap-20">
               <h3 className="title">Order Summary :</h3>
               <div className="inputBox">
-                <input type="text" placeholder="Material length" />
+                <input
+                  type="text"
+                  placeholder="Material length"
+                  onChange={handleInputValue}
+                />
               </div>
               <div className="inputBox">
-                <input type="text" placeholder="Material price" />
+                <input
+                  type="text"
+                  placeholder="Material price"
+                  onChange={handleInputValue}
+                />
               </div>
               <div className="total d-flex">
                 <p>Total =</p> <h4>6000 $</h4>
               </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Discount" />
+              <div className="inputBox" style={{ marginTop: "30px" }}>
+                <input
+                  type="text"
+                  placeholder="Discount"
+                  onChange={handleInputValue}
+                />
               </div>
               <div className="inputBox">
-                <input type="text" placeholder="Vat" />
+                <input
+                  type="text"
+                  placeholder="Vat"
+                  onChange={handleInputValue}
+                />
               </div>
               <div className="inputBox">
-                <input type="text" placeholder="Payable" />
+                <input
+                  type="text"
+                  placeholder="Received amount"
+                  onChange={handleInputValue}
+                />
               </div>
               <div className="inputBox">
-                <input type="text" placeholder="Received amount" />
+                <input
+                  type="text"
+                  placeholder="Due ammount"
+                  onChange={handleInputValue}
+                />
               </div>
-              <div className="inputBox">
-                <input type="text" placeholder="Due ammount" />
+              <div className="total d-flex">
+                <p>Payable =</p> <h4>8000 $</h4>
               </div>
             </div>
             <div style={{ textAlign: "center", margin: "30px 0 10px 0" }}>
