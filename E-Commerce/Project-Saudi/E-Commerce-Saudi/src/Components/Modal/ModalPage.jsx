@@ -126,7 +126,10 @@ const ModalPage = (props) => {
               <div className="modalContent">
                 <h3 className="modalTitle">{slug}</h3>
                 {/* <span> id = {id}</span> */}
-                <input type="text" value={id} />
+                <input type="text" value={id} className="d-none" />
+                <p
+                  className={`${price == null ? "d-none" : "color-light"}`}
+                >{`Current price = ${price}`}</p>
                 <form className="d-flex" onSubmit={handleForm}>
                   {inputFields.map((items, index) => {
                     return (
@@ -136,7 +139,7 @@ const ModalPage = (props) => {
                           name={items.field}
                           placeholder={`${items.placeholder}`}
                           // value={price}
-                          value={items.field != "price" ? "" : price}
+                          // value={items.field != "price" ? "" : price}
                           onChange={handleInputValue}
                         />
                       </div>
