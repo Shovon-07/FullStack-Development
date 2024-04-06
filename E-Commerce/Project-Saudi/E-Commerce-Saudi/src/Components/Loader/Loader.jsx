@@ -11,7 +11,7 @@ const Loader = (props) => {
         {/* <div className="Line-Progress">
           <div className="indeterminate"></div>
         </div> */}
-        <div class="loader"></div>
+        <div className="loader"></div>
       </div>
     </>
   );

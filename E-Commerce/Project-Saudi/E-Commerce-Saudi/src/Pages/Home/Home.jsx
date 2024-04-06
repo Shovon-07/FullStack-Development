@@ -127,9 +127,7 @@ const Home = () => {
 
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {
-      return filteredApiData.title
-        .toLowerCase()
-        .match(searchData.toLowerCase());
+      return filteredApiData.Name.toLowerCase().match(searchData.toLowerCase());
     });
     setFilteredApiData(result);
   }, [searchData]);
@@ -268,7 +266,7 @@ const Home = () => {
         // fixedHeader
         // fixedHeaderScrollHeight="400px"
         // selectableRows
-        selectableRowsHighlight
+        // selectableRowsHighlight
         // highlightOnHover
         subHeader
         subHeaderComponent={
