@@ -65,7 +65,7 @@ const Home = () => {
     {
       name: "Total Value",
       field: "TotalValue",
-      selector: (row) => row.Name,
+      selector: (row) => Number(row.stock) + Number(row.price),
     },
     {
       name: "Action",
