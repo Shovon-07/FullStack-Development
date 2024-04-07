@@ -152,6 +152,7 @@ body.blur {
   background-repeat: no-repeat;
   background-attachment: fixed;
   object-fit: cover;
+  aspect-ratio: 1/1;
 
   ::placeholder {
     color: $light-3;

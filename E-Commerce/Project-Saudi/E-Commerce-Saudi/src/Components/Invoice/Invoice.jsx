@@ -41,17 +41,24 @@ const Invoice = () => {
       due_ammount: "",
     },
   ]);
-  const [materials, setMaterials] = useState([]);
+  const [selectedImgName, setSelectedImgName] = useState([
+    {
+      buttonName: "",
+      neckName: "",
+      pocketName: "",
+      handName: "",
+    },
+  ]);
 
   const handleInvoiceInputValue = (e) => {
     setInvoiceInputValue({
       ...invoiceInputValue,
       [e.target.name]: e.target.value,
     });
-    // console.log(invoiceInputValue.deadline);
   };
 
-  // Api call
+  // Get materials dropdown data
+  const [materials, setMaterials] = useState([]);
   const getMaterialData = async () => {
     try {
       http.get("/get-material").then((response) => {
@@ -64,6 +71,7 @@ const Invoice = () => {
 
   useEffect(() => {
     getMaterialData();
+    // console.log(selectedImgName);
   }, []);
 
   return (
@@ -184,7 +192,10 @@ const Invoice = () => {
         </div>
 
         <div className="invoiceSection customImgSection">
-          <CustomizeImg />
+          <CustomizeImg
+            selectedImgName={selectedImgName}
+            setSelectedImgName={setSelectedImgName}
+          />
         </div>
 
         <div className="invoiceSection">

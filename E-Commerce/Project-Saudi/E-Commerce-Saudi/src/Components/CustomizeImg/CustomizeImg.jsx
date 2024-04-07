@@ -42,10 +42,21 @@ import "./CustomizeImg.scss";
 //___ Components ___//
 import GetScreenShoot from "../GetScreenShoot/GetScreenShoot";
 
-const CustomizeImg = () => {
+const CustomizeImg = (props) => {
+  const { selectedImgName, setSelectedImgName } = props;
+  // const [selectedImgName, setSelectedImgName] = useState([
+  //   {
+  //     buttonName: "",
+  //     neckName: "",
+  //     pocketName: "",
+  //     handName: "",
+  //   },
+  // ]);
+
   // Images
   const [btnImgPreview, setBtnImgPreview] = useState({
     btnImgPrev: null,
+    btnImgNamePrev: "",
     widthBtnImgPrev: null,
     heightBtnImgPrev: null,
     topBtnImgPrev: null,
@@ -54,17 +65,20 @@ const CustomizeImg = () => {
   });
   const [nakImgPreview, setNakImgPreview] = useState({
     nakImgPrev: null,
+    nakImgNamePrev: "",
     widthNakImgPrev: null,
     rightPosNakImgPrev: null,
     leftPosNakImgPrev: null,
   });
   const [pktImgPreview, setPktImgPreview] = useState({
     pktImgPrev: null,
+    pktImgNamePrev: "",
     widthPktImgPrev: null,
     rightPosPktImgPrev: null,
   });
   const [handImgPreview, setHandImgPreview] = useState({
     hndImgPrev: null,
+    hndImgNamePrev: "",
     widthHndImgPrev: null,
     topPosHndImgPrev: null,
     rightPosHndImgPrev: null,
@@ -240,36 +254,56 @@ const CustomizeImg = () => {
     setBtnImgPreview({
       ...btnImgPreview,
       btnImgPrev: items.btnImg,
+      btnImgNamePrev: items.btnName,
       widthBtnImgPrev: items.width,
       heightBtnImgPrev: items.height,
       topBtnImgPrev: items.top,
       rightPosBtnImgPrev: items.right,
+    });
+    setSelectedImgName({
+      ...selectedImgName,
+      buttonName: btnImgPreview.btnImgNamePrev,
     });
   };
   const handelNackImgPreview = (items) => {
     setNakImgPreview({
       ...nakImgPreview,
       nakImgPrev: items.nakImg,
+      nakImgNamePrev: items.nakName,
       widthNakImgPrev: items.width,
       rightPosNakImgPrev: items.right,
+    });
+    setSelectedImgName({
+      ...selectedImgName,
+      neckName: nakImgPreview.nakImgNamePrev,
     });
   };
   const handelPocketImgPreview = (items) => {
     setPktImgPreview({
       ...pktImgPreview,
       pktImgPrev: items.pktImg,
+      pktImgNamePrev: items.pktName,
       widthPktImgPrev: items.width,
       rightPosPktImgPrev: items.right,
+    });
+    setSelectedImgName({
+      ...selectedImgName,
+      pocketName: pktImgPreview.pktImgNamePrev,
     });
   };
   const handelHandImgPreview = (items) => {
     setHandImgPreview({
       ...handImgPreview,
       hndImgPrev: items.hndImg,
+      hndImgNamePrev: items.hndName,
       widthHndImgPrev: items.width,
       topPosHndImgPrev: items.top,
       rightPosHndImgPrev: items.right,
       leftPosHndImgPrev: items.left,
+    });
+    setSelectedImgName({
+      ...selectedImgName,
+      handName: handImgPreview.hndImgNamePrev,
     });
   };
 
