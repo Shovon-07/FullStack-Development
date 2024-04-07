@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import html2canvas from "html2canvas";
+
+//___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import { ContextApiForGetImgData } from "../Invoice/Invoice";
 
 const GetScreenShoot = (props) => {
   const { btnImgName, nakImgName, pktImgName, hndImgName } = props;
@@ -58,6 +61,12 @@ const GetScreenShoot = (props) => {
         </span>
         {msg == null ? "Generate Image" : "Generated"}{" "}
       </button>
+
+      <ContextApiForGetImgData.Consumer>
+        {(data) => {
+          return <h1>{data}</h1>;
+        }}
+      </ContextApiForGetImgData.Consumer>
     </div>
   );
 };

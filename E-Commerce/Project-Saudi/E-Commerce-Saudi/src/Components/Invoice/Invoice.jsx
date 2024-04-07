@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { useOutletContext } from "react-router-dom";
 import AxiosConfig from "../../assets/AxiosConfig";
 
@@ -13,9 +13,12 @@ import "./Invoice.scss";
 //___ Component ___//
 import CustomizeImg from "../CustomizeImg/CustomizeImg";
 
+const ContextApiForGetImgData = createContext();
+
 const Invoice = () => {
   const { http } = AxiosConfig();
   const [setLoading] = useOutletContext();
+  const [getImgData, setGetImgData] = useState("getImgData");
 
   const [invoiceInputValue, setInvoiceInputValue] = useState([
     {
@@ -60,11 +63,11 @@ const Invoice = () => {
   const [materials, setMaterials] = useState([]);
   const getMaterialData = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       await http.get("/get-material").then((response) => {
         setMaterials(response.data);
       });
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -74,13 +77,13 @@ const Invoice = () => {
   const [customeImagesData, setCustomeImagesData] = useState([]);
   const getcustomeImagesData = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       await http.get("/get-processed-img").then((response) => {
         setCustomeImagesData(response.data);
         console.log(customeImagesData);
         console.log(customeImagesData.HandName);
       });
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -254,7 +257,9 @@ const Invoice = () => {
         </div>
 
         <div className="invoiceSection customImgSection">
-          <CustomizeImg />
+          <ContextApiForGetImgData.Provider value={(getImgData, setGetImgData)}>
+            <CustomizeImg />
+          </ContextApiForGetImgData.Provider>
         </div>
 
         <div className="invoiceSection">
@@ -447,6 +452,7 @@ const Invoice = () => {
 };
 
 export default Invoice;
+export { ContextApiForGetImgData };
 
 /*
 
