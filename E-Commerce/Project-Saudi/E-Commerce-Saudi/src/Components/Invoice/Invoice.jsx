@@ -23,7 +23,7 @@ const Invoice = () => {
       customer_phone: "",
       customer_address: "",
       currentDate: "",
-      deadline: "",
+      deadline_date: "",
 
       material_id: "",
       chest_length: "",
@@ -33,14 +33,18 @@ const Invoice = () => {
       sleeve_length: "",
       cuff_length: "",
       shoulder_length: "",
-      material_length: "",
+      qty: "",
 
       material_length: "",
       sale_price: "",
+      total: "",
       discount: "",
-      var: "",
+      vat: "",
       advance: "",
       due_ammount: "",
+
+      inqueries_number: "",
+      note: "",
     },
   ]);
 
@@ -87,6 +91,10 @@ const Invoice = () => {
   const handleSubmit = async () => {
     try {
       const data = {
+        customer_name: invoiceInputValue.customer_name,
+        customer_phone: invoiceInputValue.customer_phone,
+        customer_address: invoiceInputValue.customer_address,
+
         material_id: invoiceInputValue.material_id,
         chest_length: invoiceInputValue.chest_length,
         sleeve_length: invoiceInputValue.sleeve_length,
@@ -101,7 +109,6 @@ const Invoice = () => {
         total: invoiceInputValue.total,
         discount: invoiceInputValue.discount,
         vat: invoiceInputValue.vat,
-        payable: invoiceInputValue.payable,
         advance: invoiceInputValue.advance,
         deadline_date: invoiceInputValue.deadline_date,
         inqueries_number: invoiceInputValue.inqueries_number,
@@ -347,13 +354,14 @@ const Invoice = () => {
                   type="text"
                   style={{ width: "100%", marginTop: "10px" }}
                   placeholder="000000"
+                  name="inqueries_number"
                   onChange={handleInvoiceInputValue}
                 />
               </div>
               <div style={{ flexBasis: "50%" }}>
                 <p>Note:</p>{" "}
                 <textarea
-                  name=""
+                  name="note"
                   id=""
                   cols="30"
                   rows="5"
@@ -415,7 +423,7 @@ const Invoice = () => {
                   type="text"
                   placeholder="Due ammount"
                   // name="due_ammount"
-                  onChange={handleInvoiceInputValue}
+                  // onChange={handleInvoiceInputValue}
                 />
               </div>
               <div className="total d-flex">

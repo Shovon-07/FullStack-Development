@@ -18,19 +18,19 @@ class InvoiceController extends Controller
         DB::beginTransaction();
         try {
 
-            $img = $request->input('imageData');
+            // $img = $request->input('imageData');
 
             // For not replace image
-            $imgName = "Captured_" . md5(time()) . ".png";
+            // $imgName = "Captured_" . md5(time()) . ".png";
 
             // For replace image
             // $imgName = "Captured".".png";
 
-            $source = fopen($img, "r");
-            $destination = fopen("images/ScreenShoot/" . $imgName, "w");
-            stream_copy_to_stream($source, $destination);
-            fclose($source);
-            fclose($destination);
+            // $source = fopen($img, "r");
+            // $destination = fopen("images/ScreenShoot/" . $imgName, "w");
+            // stream_copy_to_stream($source, $destination);
+            // fclose($source);
+            // fclose($destination);
 
             $customer_name = $request->input('customer_name');
             $customer_phone = $request->input('customer_phone');
@@ -67,7 +67,7 @@ class InvoiceController extends Controller
 
                 $invoice = Invoice::create([
                     'customer_id' => $customer_id,
-                    'image' => $imgName,
+                    // 'image' => $imgName,
                     
                     'material_id' => $material_id,
                     'chest_length' => $chest_length,
