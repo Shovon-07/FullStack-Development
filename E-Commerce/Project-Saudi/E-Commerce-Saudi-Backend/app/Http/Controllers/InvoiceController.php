@@ -36,6 +36,12 @@ class InvoiceController extends Controller
             $customer_phone = $request->input('customer_phone');
             $customer_address = $request->input('customer_address');
 
+            $button_type = $request->input('button_type');
+            $neck_type = $request->input('neck_type');
+            $pocket_type = $request->input('pocket_type');
+            $hand_type = $request->input('hand_type');
+
+
             $material_id = $request->input('material_id');
             $chest_length = $request->input('chest_length');
             $sleeve_length = $request->input('sleeve_length');
@@ -45,9 +51,8 @@ class InvoiceController extends Controller
             $shoulder_length = $request->input('shoulder_length');
             $dress_length = $request->input('dress_length');
             $material_length = $request->input('material_length');
-            $qty = $request->input('qty');
             $sale_price = $request->input('sale_price');
-            $total = $request->input('total');
+            $total = $material_length * $sale_price;
             $discount = $request->input('discount');
             $vat = $request->input('vat');
             $payable = ($total + $vat) - $discount;
@@ -68,6 +73,11 @@ class InvoiceController extends Controller
                 $invoice = Invoice::create([
                     'customer_id' => $customer_id,
                     // 'image' => $imgName,
+
+                    'button_type' => $button_type,
+                    'neck_type' => $neck_type,
+                    'pocket_type' => $pocket_type,
+                    'hand_type' => $hand_type,
                     
                     'material_id' => $material_id,
                     'chest_length' => $chest_length,
@@ -78,7 +88,6 @@ class InvoiceController extends Controller
                     'shoulder_length' => $shoulder_length,
                     'dress_length' => $dress_length,
                     'material_length' => $material_length,
-                    'qty' => $qty,
                     'sale_price' => $sale_price,
                     'total' => $total,
                     'discount' => $discount,

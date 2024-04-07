@@ -18,7 +18,13 @@ const ContextApiForGetImgData = createContext();
 const Invoice = () => {
   const { http } = AxiosConfig();
   const [setLoading] = useOutletContext();
-  const [getImgData, setGetImgData] = useState("getImgData");
+  const [getImgData, setGetImgData] = useState({
+    Image: "",
+    BtnImgName: "",
+    NakImgName: "",
+    PktImgName: "",
+    HndImgName: "",
+  });
 
   const [invoiceInputValue, setInvoiceInputValue] = useState([
     {
@@ -36,15 +42,14 @@ const Invoice = () => {
       sleeve_length: "",
       cuff_length: "",
       shoulder_length: "",
-      qty: "",
 
       material_length: "",
       sale_price: "",
-      total: "",
+      // total: "",
       discount: "",
       vat: "",
       advance: "",
-      due_ammount: "",
+      // due_ammount: "",
 
       inqueries_number: "",
       note: "",
@@ -63,11 +68,11 @@ const Invoice = () => {
   const [materials, setMaterials] = useState([]);
   const getMaterialData = async () => {
     try {
-      // setLoading(true);
+      setLoading(true);
       await http.get("/get-material").then((response) => {
         setMaterials(response.data);
       });
-      // setLoading(false);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -77,13 +82,13 @@ const Invoice = () => {
   const [customeImagesData, setCustomeImagesData] = useState([]);
   const getcustomeImagesData = async () => {
     try {
-      // setLoading(true);
+      setLoading(true);
       await http.get("/get-processed-img").then((response) => {
         setCustomeImagesData(response.data);
-        console.log(customeImagesData);
-        console.log(customeImagesData.HandName);
+        // console.log(customeImagesData);
+        // console.log(customeImagesData.HandName);
       });
-      // setLoading(false);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -257,7 +262,9 @@ const Invoice = () => {
         </div>
 
         <div className="invoiceSection customImgSection">
-          <ContextApiForGetImgData.Provider value={(getImgData, setGetImgData)}>
+          <ContextApiForGetImgData.Provider
+            value={{ getImgData, setGetImgData }}
+          >
             <CustomizeImg />
           </ContextApiForGetImgData.Provider>
         </div>
@@ -308,6 +315,8 @@ const Invoice = () => {
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
+              </div>
+              <div className="right d-flex gap-20">
                 <div className="inputBox">
                   <input
                     type="text"
@@ -316,8 +325,6 @@ const Invoice = () => {
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
-              </div>
-              <div className="right d-flex gap-20">
                 <div className="inputBox">
                   <input
                     type="text"
@@ -446,6 +453,13 @@ const Invoice = () => {
             </div>
           </div>
         </div>
+        {/* <button
+          onClick={() => {
+            console.log(getImgData.Image);
+          }}
+        >
+          Show
+        </button> */}
       </div>
     </>
   );

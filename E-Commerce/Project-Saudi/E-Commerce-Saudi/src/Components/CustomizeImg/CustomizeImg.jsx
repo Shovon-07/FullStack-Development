@@ -401,7 +401,7 @@ const CustomizeImg = () => {
           </div>
           <div className="btnParent">
             <button className="button" onClick={handleBtnChild} value={2}>
-              Nack Type
+              Neck Type
             </button>
             <ul className={`${activeBtn == 2 ? "btnChild active" : "d-none"}`}>
               {nackImg.map((items, index) => {
