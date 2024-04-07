@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import AxiosConfig from "../../assets/AxiosConfig";
 
 //___ Images ___//
@@ -14,6 +15,7 @@ import CustomizeImg from "../CustomizeImg/CustomizeImg";
 
 const Invoice = () => {
   const { http } = AxiosConfig();
+  const [setLoading] = useOutletContext();
 
   const [invoiceInputValue, setInvoiceInputValue] = useState([
     {
@@ -49,13 +51,16 @@ const Invoice = () => {
     });
   };
 
+  //___ Get Requests start ___//
   // Get materials dropdown data
   const [materials, setMaterials] = useState([]);
   const getMaterialData = async () => {
     try {
-      http.get("/get-material").then((response) => {
+      setLoading(true);
+      await http.get("/get-material").then((response) => {
         setMaterials(response.data);
       });
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -65,15 +70,21 @@ const Invoice = () => {
   const [customeImagesData, setCustomeImagesData] = useState([]);
   const getcustomeImagesData = async () => {
     try {
-      http.get("/get-processed-img").then((response) => {
+      setLoading(true);
+      await http.get("/get-processed-img").then((response) => {
         setCustomeImagesData(response.data);
         console.log(customeImagesData);
         console.log(customeImagesData.ButtonName);
       });
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
+  //___ Get Requests end ___//
+
+  //___ post Requests start ___//
+  //___ Post Requests end ___//
 
   useEffect(() => {
     getMaterialData();

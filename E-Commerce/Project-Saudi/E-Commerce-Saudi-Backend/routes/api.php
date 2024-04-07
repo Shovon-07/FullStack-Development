@@ -47,15 +47,6 @@ Route::controller(InvoiceController::class)->group(function(){
     Route::post('/store-sell','store');
 });
 
-
-Route::controller(UserController::class)->group(function() {
-    Route::get("/user-data", "UserData");
-    Route::post("/create-user", "CreateUser");
-
-    // Route::get("/get-image", "GetImage");
-    // Route::post("/create-image", "CreateImage");
-});
-
 Route::controller(ProcessImgController::class)->group(function(){
     Route::get('/get-processed-img', 'GetProcessedImg');
     Route::post('/process-img', 'ProcessImg');

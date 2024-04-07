@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import axios from "axios";
 import DataTable from "react-data-table-component";
 
 //___ Additional utility ___//
@@ -70,21 +69,6 @@ const Home = () => {
       name: "Action",
       cell: (row) => (
         <div className="d-flex" style={{ gap: "10px" }}>
-          {/* <img
-            src={EditeIcon}
-            alt=""
-            style={{ cursor: "pointer" }}
-            onClick={() => alert(row.id)}
-          /> */}
-          {/* <img
-            src={DeleteIcon}
-            alt=""
-            style={{ cursor: "pointer" }}
-            onClick={() => alert(row.id)}
-          /> */}
-          {/* <button className="button add" onClick={() => alert(row.id)}>
-            Add
-          </button> */}
           <ModalPage
             id={row.id}
             slug={"Stock Material"}
@@ -113,7 +97,6 @@ const Home = () => {
             ModalOpenBtnTitle="Price"
             ModalOpenBtnStyle={priceModalOpenBtnStyle}
             api={"/updatePrice"}
-            // getDataApi={"/price"}
             setLoading={setLoading}
             setRelodeTable={setRelodeTable}
           />
@@ -202,8 +185,6 @@ const Home = () => {
       type: "text",
       placeholder: "Update Price",
       className: "inputBox",
-
-      // Input value change problem
     },
   ];
 
