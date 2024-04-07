@@ -36,10 +36,10 @@ class InvoiceController extends Controller
             $customer_phone = $request->input('customer_phone');
             $customer_address = $request->input('customer_address');
 
-            $button_type = $request->input('button_type');
-            $neck_type = $request->input('neck_type');
-            $pocket_type = $request->input('pocket_type');
-            $hand_type = $request->input('hand_type');
+            $button_type = $request->input('button_type')??"";
+            $neck_type = $request->input('neck_type')??"";
+            $pocket_type = $request->input('pocket_type')??"";
+            $hand_type = $request->input('hand_type')??"";
 
             $material_id = $request->input('material_id');
             $chest_length = $request->input('chest_length');

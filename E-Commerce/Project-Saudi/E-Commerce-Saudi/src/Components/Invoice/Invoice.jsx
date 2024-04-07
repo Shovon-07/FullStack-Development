@@ -18,6 +18,7 @@ const ContextApiForGetImgData = createContext();
 const Invoice = () => {
   const { http } = AxiosConfig();
   const [setLoading] = useOutletContext();
+
   const [getImgData, setGetImgData] = useState({
     Image: "",
     BtnImgName: "",
@@ -97,8 +98,8 @@ const Invoice = () => {
       setLoading(true);
       await http.post("/store-sell", data).then((response) => {
         console.log(response.data);
+        setLoading(false);
       });
-      setLoading(false);
     } catch (error) {
       console.log(error);
     }
