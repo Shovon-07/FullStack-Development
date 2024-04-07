@@ -74,7 +74,7 @@ const Invoice = () => {
       await http.get("/get-processed-img").then((response) => {
         setCustomeImagesData(response.data);
         console.log(customeImagesData);
-        console.log(customeImagesData.ButtonName);
+        console.log(customeImagesData.HandName);
       });
       setLoading(false);
     } catch (error) {
@@ -84,6 +84,44 @@ const Invoice = () => {
   //___ Get Requests end ___//
 
   //___ post Requests start ___//
+  const handleSubmit = async () => {
+    try {
+      const data = {
+        material_id: invoiceInputValue.material_id,
+        chest_length: invoiceInputValue.chest_length,
+        sleeve_length: invoiceInputValue.sleeve_length,
+        neck_length: invoiceInputValue.neck_length,
+        cuff_length: invoiceInputValue.cuff_length,
+        hand_length: invoiceInputValue.hand_length,
+        shoulder_length: invoiceInputValue.shoulder_length,
+        dress_length: invoiceInputValue.dress_length,
+        material_length: invoiceInputValue.material_length,
+        qty: invoiceInputValue.qty,
+        sale_price: invoiceInputValue.sale_price,
+        total: invoiceInputValue.total,
+        discount: invoiceInputValue.discount,
+        vat: invoiceInputValue.vat,
+        payable: invoiceInputValue.payable,
+        advance: invoiceInputValue.advance,
+        deadline_date: invoiceInputValue.deadline_date,
+        inqueries_number: invoiceInputValue.inqueries_number,
+        note: invoiceInputValue.note,
+
+        // For image details
+        // image: customeImagesData.Image,
+        // button_name: customeImagesData.ButtonName,
+        // neck_name: customeImagesData.NeckName,
+        // hand_name: customeImagesData.HandName,
+      };
+      setLoading(true);
+      await http.post("/store-sell", data).then((response) => {
+        console.log(response.data);
+      });
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   //___ Post Requests end ___//
 
   useEffect(() => {
@@ -385,7 +423,11 @@ const Invoice = () => {
               </div>
             </div>
             <div style={{ textAlign: "center", margin: "30px 0 10px 0" }}>
-              <button className="button" style={{ width: "30%" }}>
+              <button
+                className="button"
+                style={{ width: "30%" }}
+                onClick={handleSubmit}
+              >
                 Confirm
               </button>
             </div>

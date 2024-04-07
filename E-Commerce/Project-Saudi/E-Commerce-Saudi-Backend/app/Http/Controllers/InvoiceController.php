@@ -68,6 +68,7 @@ class InvoiceController extends Controller
                 $invoice = Invoice::create([
                     'customer_id' => $customer_id,
                     'image' => $imgName,
+                    
                     'material_id' => $material_id,
                     'chest_length' => $chest_length,
                     'sleeve_length' => $sleeve_length,
