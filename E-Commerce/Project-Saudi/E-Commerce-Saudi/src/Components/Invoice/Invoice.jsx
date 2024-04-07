@@ -41,14 +41,6 @@ const Invoice = () => {
       due_ammount: "",
     },
   ]);
-  const [selectedImgName, setSelectedImgName] = useState([
-    {
-      buttonName: "",
-      neckName: "",
-      pocketName: "",
-      handName: "",
-    },
-  ]);
 
   const handleInvoiceInputValue = (e) => {
     setInvoiceInputValue({
@@ -69,9 +61,23 @@ const Invoice = () => {
     }
   };
 
+  // Get custome image's data
+  const [customeImagesData, setCustomeImagesData] = useState([]);
+  const getcustomeImagesData = async () => {
+    try {
+      http.get("/get-processed-img").then((response) => {
+        setCustomeImagesData(response.data);
+        console.log(customeImagesData);
+        console.log(customeImagesData.ButtonName);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getMaterialData();
-    // console.log(selectedImgName);
+    getcustomeImagesData();
   }, []);
 
   return (
@@ -192,10 +198,7 @@ const Invoice = () => {
         </div>
 
         <div className="invoiceSection customImgSection">
-          <CustomizeImg
-            selectedImgName={selectedImgName}
-            setSelectedImgName={setSelectedImgName}
-          />
+          <CustomizeImg />
         </div>
 
         <div className="invoiceSection">

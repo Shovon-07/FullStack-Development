@@ -42,9 +42,7 @@ import "./CustomizeImg.scss";
 //___ Components ___//
 import GetScreenShoot from "../GetScreenShoot/GetScreenShoot";
 
-const CustomizeImg = (props) => {
-  const { selectedImgName, setSelectedImgName } = props;
-
+const CustomizeImg = () => {
   // Images
   const [btnImgPreview, setBtnImgPreview] = useState({
     btnImgPrev: null,
@@ -252,10 +250,6 @@ const CustomizeImg = (props) => {
       topBtnImgPrev: items.top,
       rightPosBtnImgPrev: items.right,
     });
-    setSelectedImgName({
-      ...selectedImgName,
-      buttonName: btnImgPreview.btnImgNamePrev,
-    });
   };
   const handelNackImgPreview = (items) => {
     setNakImgPreview({
@@ -265,10 +259,6 @@ const CustomizeImg = (props) => {
       widthNakImgPrev: items.width,
       rightPosNakImgPrev: items.right,
     });
-    setSelectedImgName({
-      ...selectedImgName,
-      neckName: nakImgPreview.nakImgNamePrev,
-    });
   };
   const handelPocketImgPreview = (items) => {
     setPktImgPreview({
@@ -277,10 +267,6 @@ const CustomizeImg = (props) => {
       pktImgNamePrev: items.pktName,
       widthPktImgPrev: items.width,
       rightPosPktImgPrev: items.right,
-    });
-    setSelectedImgName({
-      ...selectedImgName,
-      pocketName: pktImgPreview.pktImgNamePrev,
     });
   };
   const handelHandImgPreview = (items) => {
@@ -292,10 +278,6 @@ const CustomizeImg = (props) => {
       topPosHndImgPrev: items.top,
       rightPosHndImgPrev: items.right,
       leftPosHndImgPrev: items.left,
-    });
-    setSelectedImgName({
-      ...selectedImgName,
-      handName: handImgPreview.hndImgNamePrev,
     });
   };
 
