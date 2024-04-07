@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import html2canvas from "html2canvas";
 import AxiosConfig from "../../assets/AxiosConfig";
 
-//___ Additional utility ___//
-
 const GetScreenShoot = (props) => {
-  const { btnTitle } = props;
+  const { btnImgName, nakImgName, pktImgName, hndImgName } = props;
   const { http } = AxiosConfig();
   const [msg, setMsg] = useState();
 
@@ -20,11 +18,25 @@ const GetScreenShoot = (props) => {
         // ).innerHTML = `<img src="${image}" alt="" />`;
         // localStorage.setItem("img", image);
 
-        http.post("/process-img", { imageData: image }).then((res) => {
-          if (res) {
-            setMsg(1);
-          }
+        console.log(
+          `${btnImgName}, ${nakImgName}, ${pktImgName}, ${hndImgName}`
+        );
+
+        const data = {
+          ButtonName: btnImgName,
+          NeckName: nakImgName,
+          PocketName: pktImgName,
+          HandName: hndImgName,
+          imageData: image,
+        };
+
+        http.post("/process-img", data).then((res) => {
+          setMsg(1);
         });
+
+        setInterval(() => {
+          setMsg();
+        }, 5000);
       })
       .catch((err) => {
         console.error("We can't capture" + err);
@@ -44,12 +56,10 @@ const GetScreenShoot = (props) => {
         >
           &#10004;
         </span>
-        {btnTitle}{" "}
+        {msg == null ? "Generate Image" : "Generated"}{" "}
       </button>
-      {/* {msg == null ? "" : <p style={{ color: "green" }}>{msg}</p>} */}
     </div>
   );
 };
 
 export default GetScreenShoot;
-// export { imageUrl };

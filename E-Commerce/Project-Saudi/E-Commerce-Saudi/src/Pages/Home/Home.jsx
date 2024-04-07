@@ -39,12 +39,11 @@ const Home = () => {
     }
   };
 
-  let i = 0;
   const columns = [
     {
       name: "Sl No",
       field: "SlNo",
-      selector: () => i++,
+      selector: (row) => row.id,
       width: "70px",
     },
     {

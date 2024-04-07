@@ -42,9 +42,10 @@ Route::controller(MaterialController::class)->group(function(){
 });
 
 // Invoice
-Route::post('/store-sell',[InvoiceController::class,'store']);
-// Get material
-Route::get('/get-material',[InvoiceController::class,'GetMaterial']);
+Route::controller(InvoiceController::class)->group(function(){
+    Route::get('/get-material','GetMaterial');
+    Route::post('/store-sell','store');
+});
 
 
 Route::controller(UserController::class)->group(function() {
@@ -56,6 +57,6 @@ Route::controller(UserController::class)->group(function() {
 });
 
 Route::controller(ProcessImgController::class)->group(function(){
-    Route::post('/process-img', 'ProcessImg');
     Route::get('/get-processed-img', 'GetProcessedImg');
+    Route::post('/process-img', 'ProcessImg');
 });

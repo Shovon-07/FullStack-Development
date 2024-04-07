@@ -44,14 +44,6 @@ import GetScreenShoot from "../GetScreenShoot/GetScreenShoot";
 
 const CustomizeImg = (props) => {
   const { selectedImgName, setSelectedImgName } = props;
-  // const [selectedImgName, setSelectedImgName] = useState([
-  //   {
-  //     buttonName: "",
-  //     neckName: "",
-  //     pocketName: "",
-  //     handName: "",
-  //   },
-  // ]);
 
   // Images
   const [btnImgPreview, setBtnImgPreview] = useState({
@@ -485,7 +477,12 @@ const CustomizeImg = (props) => {
           </div>
         </div>
         <div className="bottomBtn d-flex gap-30">
-          <GetScreenShoot btnTitle="Generate Image" />
+          <GetScreenShoot
+            btnImgName={btnImgPreview.btnImgNamePrev}
+            nakImgName={nakImgPreview.nakImgNamePrev}
+            pktImgName={pktImgPreview.pktImgNamePrev}
+            hndImgName={handImgPreview.hndImgNamePrev}
+          />
           <button className="button resetBtn" onClick={handelReset}>
             Reset
           </button>
