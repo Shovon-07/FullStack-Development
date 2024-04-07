@@ -18,19 +18,19 @@ class InvoiceController extends Controller
         DB::beginTransaction();
         try {
 
-            // $img = $request->input('imageData');
+            $img = $request->input('image');
 
             // For not replace image
-            // $imgName = "Captured_" . md5(time()) . ".png";
+            $imgName = "Captured_" . md5(time()) . ".png";
 
             // For replace image
             // $imgName = "Captured".".png";
-
-            // $source = fopen($img, "r");
-            // $destination = fopen("images/ScreenShoot/" . $imgName, "w");
-            // stream_copy_to_stream($source, $destination);
-            // fclose($source);
-            // fclose($destination);
+            
+            $source = fopen($img, "r");
+            $destination = fopen("images/ScreenShoot/" . $imgName, "w");
+            stream_copy_to_stream($source, $destination);
+            fclose($source);
+            fclose($destination);
 
             $customer_name = $request->input('customer_name');
             $customer_phone = $request->input('customer_phone');
@@ -40,7 +40,6 @@ class InvoiceController extends Controller
             $neck_type = $request->input('neck_type');
             $pocket_type = $request->input('pocket_type');
             $hand_type = $request->input('hand_type');
-
 
             $material_id = $request->input('material_id');
             $chest_length = $request->input('chest_length');
@@ -72,7 +71,7 @@ class InvoiceController extends Controller
 
                 $invoice = Invoice::create([
                     'customer_id' => $customer_id,
-                    // 'image' => $imgName,
+                    'image' => $imgName,
 
                     'button_type' => $button_type,
                     'neck_type' => $neck_type,

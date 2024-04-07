@@ -45,11 +45,9 @@ const Invoice = () => {
 
       material_length: "",
       sale_price: "",
-      // total: "",
       discount: "",
       vat: "",
       advance: "",
-      // due_ammount: "",
 
       inqueries_number: "",
       note: "",
@@ -62,6 +60,50 @@ const Invoice = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  //___ post Requests start ___//
+  const handleSubmit = async () => {
+    try {
+      const data = {
+        customer_name: invoiceInputValue.customer_name,
+        customer_phone: invoiceInputValue.customer_phone,
+        customer_address: invoiceInputValue.customer_address,
+
+        // For image details
+        image: getImgData.Image,
+        button_type: getImgData.BtnImgName,
+        neck_type: getImgData.NakImgName,
+        pocket_type: getImgData.PktImgName,
+        hand_type: getImgData.HndImgName,
+
+        material_id: invoiceInputValue.material_id,
+        chest_length: invoiceInputValue.chest_length,
+        sleeve_length: invoiceInputValue.sleeve_length,
+        neck_length: invoiceInputValue.neck_length,
+        cuff_length: invoiceInputValue.cuff_length,
+        hand_length: invoiceInputValue.hand_length,
+        shoulder_length: invoiceInputValue.shoulder_length,
+        dress_length: invoiceInputValue.dress_length,
+        material_length: invoiceInputValue.material_length,
+        sale_price: invoiceInputValue.sale_price,
+
+        discount: invoiceInputValue.discount,
+        vat: invoiceInputValue.vat,
+        advance: invoiceInputValue.advance,
+        deadline_date: invoiceInputValue.deadline_date,
+        inqueries_number: invoiceInputValue.inqueries_number,
+        note: invoiceInputValue.note,
+      };
+      setLoading(true);
+      await http.post("/store-sell", data).then((response) => {
+        console.log(response.data);
+      });
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //___ Post Requests end ___//
 
   //___ Get Requests start ___//
   // Get materials dropdown data
@@ -79,6 +121,7 @@ const Invoice = () => {
   };
 
   // Get custome image's data
+  /*
   const [customeImagesData, setCustomeImagesData] = useState([]);
   const getcustomeImagesData = async () => {
     try {
@@ -93,55 +136,12 @@ const Invoice = () => {
       console.log(error);
     }
   };
+  */
   //___ Get Requests end ___//
-
-  //___ post Requests start ___//
-  const handleSubmit = async () => {
-    try {
-      const data = {
-        customer_name: invoiceInputValue.customer_name,
-        customer_phone: invoiceInputValue.customer_phone,
-        customer_address: invoiceInputValue.customer_address,
-
-        material_id: invoiceInputValue.material_id,
-        chest_length: invoiceInputValue.chest_length,
-        sleeve_length: invoiceInputValue.sleeve_length,
-        neck_length: invoiceInputValue.neck_length,
-        cuff_length: invoiceInputValue.cuff_length,
-        hand_length: invoiceInputValue.hand_length,
-        shoulder_length: invoiceInputValue.shoulder_length,
-        dress_length: invoiceInputValue.dress_length,
-        material_length: invoiceInputValue.material_length,
-        qty: invoiceInputValue.qty,
-        sale_price: invoiceInputValue.sale_price,
-        total: invoiceInputValue.total,
-        discount: invoiceInputValue.discount,
-        vat: invoiceInputValue.vat,
-        advance: invoiceInputValue.advance,
-        deadline_date: invoiceInputValue.deadline_date,
-        inqueries_number: invoiceInputValue.inqueries_number,
-        note: invoiceInputValue.note,
-
-        // For image details
-        // image: customeImagesData.Image,
-        // button_name: customeImagesData.ButtonName,
-        // neck_name: customeImagesData.NeckName,
-        // hand_name: customeImagesData.HandName,
-      };
-      setLoading(true);
-      await http.post("/store-sell", data).then((response) => {
-        console.log(response.data);
-      });
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  //___ Post Requests end ___//
 
   useEffect(() => {
     getMaterialData();
-    getcustomeImagesData();
+    // getcustomeImagesData();
   }, []);
 
   return (
@@ -434,6 +434,7 @@ const Invoice = () => {
                 <input
                   type="text"
                   placeholder="Due ammount"
+                  disabled
                   // name="due_ammount"
                   // onChange={handleInvoiceInputValue}
                 />
@@ -453,13 +454,13 @@ const Invoice = () => {
             </div>
           </div>
         </div>
-        {/* <button
+        <button
           onClick={() => {
-            console.log(getImgData.Image);
+            console.log(getImgData);
           }}
         >
           Show
-        </button> */}
+        </button>
       </div>
     </>
   );

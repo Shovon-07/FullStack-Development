@@ -2,14 +2,14 @@ import React, { useContext, useState } from "react";
 import html2canvas from "html2canvas";
 
 //___ Additional utility ___//
-import AxiosConfig from "../../assets/AxiosConfig";
+// import AxiosConfig from "../../assets/AxiosConfig";
 import { ContextApiForGetImgData } from "../Invoice/Invoice";
 
 const GetScreenShoot = (props) => {
   const useContextApi = useContext(ContextApiForGetImgData);
 
   const { btnImgName, nakImgName, pktImgName, hndImgName } = props;
-  const { http } = AxiosConfig();
+  // const { http } = AxiosConfig();
   const [msg, setMsg] = useState();
 
   const handleScreenShoot = () => {
