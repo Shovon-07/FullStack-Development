@@ -375,15 +375,8 @@ export default Invoice;
 
 /*
 
-=> Order summery
-inputs->
-1. Material length
-2. Material price
-3. Total
-4. Discount
-5. Vat
-6. Payable
-7. Recived ammount
-8. Due ammount
+==>> Next Step
+* create get screen shot in this page
+* post all data in backend
 
 */

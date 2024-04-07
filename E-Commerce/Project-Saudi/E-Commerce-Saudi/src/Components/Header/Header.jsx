@@ -25,6 +25,9 @@ const Header = () => {
   const handleNavToggler = () => {
     setNavToggler((prev) => (prev === 0 ? 1 : 0));
   };
+  const closeNav = () => {
+    setNavToggler(0);
+  };
 
   // Testing
   // const [count, setCount] = useState(0);
@@ -46,6 +49,7 @@ const Header = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
+                onClick={closeNav}
               >
                 Home
               </NavLink>
@@ -62,6 +66,7 @@ const Header = () => {
               <NavLink
                 to="/sell"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
+                onClick={closeNav}
               >
                 Sell
               </NavLink>
@@ -70,6 +75,7 @@ const Header = () => {
               <NavLink
                 to="/pending-orders"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
+                onClick={closeNav}
               >
                 Pending Orders
               </NavLink>
@@ -78,6 +84,7 @@ const Header = () => {
               <NavLink
                 to="/complete-order"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
+                onClick={closeNav}
               >
                 Complete order
               </NavLink>
@@ -86,6 +93,7 @@ const Header = () => {
               <NavLink
                 to="/user"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
+                onClick={closeNav}
               >
                 User
               </NavLink>
@@ -94,6 +102,7 @@ const Header = () => {
               <NavLink
                 to="/history"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
+                onClick={closeNav}
               >
                 History
               </NavLink>
