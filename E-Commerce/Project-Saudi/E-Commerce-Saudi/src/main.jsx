@@ -16,6 +16,10 @@ import PendingOrders from "./Pages/PendingOrders/PendingOrders";
 import CompleteOrder from "./Pages/CompleteOrder/CompleteOrder";
 import User from "./Pages/User/User";
 import History from "./Pages/History/History";
+
+import AppNoHeaderFooter from "./AppNoHeaderFooter.jsx";
+import InvoiceRecipt from "./Pages/InvoiceRecipt/InvoiceRecipt.jsx";
+
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
@@ -33,6 +37,12 @@ const router = createBrowserRouter([
       { path: "/user", element: <User /> },
       { path: "/history", element: <History /> },
     ],
+  },
+  {
+    path: "/invoice-recipt",
+    element: <AppNoHeaderFooter />,
+    errorElement: <ErrorPage />,
+    children: [{ path: "/invoice-recipt", element: <InvoiceRecipt /> }],
   },
 ]);
 

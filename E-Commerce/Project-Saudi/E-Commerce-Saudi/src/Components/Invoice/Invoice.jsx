@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createContext, useRef } from "react";
-import { useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
@@ -563,15 +563,16 @@ const Invoice = () => {
             </div>
           </div>
         </div>
-        <button
+        <Link
+          to="/invoice-recipt"
           className="button"
-          style={{ padding: "10px", fontSize: "16px" }}
+          style={{ padding: "10px 20px", fontSize: "16px" }}
           onClick={() => {
             console.log(getImgData);
           }}
         >
-          Print Invoice
-        </button>
+          Preview Invoice
+        </Link>
       </div>
 
       <ToastContainer position="top-center" theme="colored" />
