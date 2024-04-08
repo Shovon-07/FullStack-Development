@@ -1,13 +1,15 @@
 @import "../../Styles/Variable.scss";
+@import "../../Styles/Responsive.scss";
 
 .InvoiceRecipt {
   width: 100%;
   max-width: 1000px;
-  margin: 20px auto;
+  margin: 10px auto 20px auto;
   box-shadow: $shadow;
   background: #fff;
   color: $dark-3;
-  padding: 10px 40px;
+  padding: 10px 40px 30px 40px;
+  border-radius: 8px;
   .logoSec {
     justify-content: space-between;
     .left {
@@ -58,5 +60,51 @@
         }
       }
     }
+  }
+  .measurement {
+    margin-top: 40px;
+    background: $light-1;
+    .title {
+      text-align: center;
+      font-size: 16px;
+    }
+    .measurmentSelection {
+      @include sm {
+        flex-direction: column;
+      }
+      .left {
+        flex-basis: 50%;
+        align-items: start;
+        box-shadow: none;
+        flex-direction: column;
+      }
+      .right {
+        flex-basis: 50%;
+        box-shadow: none;
+        flex-direction: column;
+      }
+      .inputBox {
+        width: 100%;
+        label {
+          margin-bottom: 8px;
+          display: inline-block;
+          font-size: 14px;
+        }
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.printBtnBox {
+  padding: 20px 100px 0 0;
+  text-align: right;
+  .printBtn {
+    font-size: 25px;
+    background: none;
+    color: $dark-3;
+    cursor: pointer;
   }
 }
