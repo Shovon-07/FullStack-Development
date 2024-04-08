@@ -511,7 +511,7 @@ const Invoice = () => {
                   onKeyUp={Calculation}
                 />
                 <p style={{ marginTop: "5px", color: "green" }}>
-                  Saved : {calc.discountForCalc} $
+                  Price after discount : {calc.discountForCalc} $
                 </p>
               </div>
               <div className="inputBox">
