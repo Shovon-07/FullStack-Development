@@ -4,6 +4,8 @@ import DataTable from "react-data-table-component";
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import { motion } from "framer-motion";
+import { fadeIn } from "../../assets/MotionVarient";
 
 //___ Css ___//
 import "./Home.scss";
@@ -31,7 +33,6 @@ const Home = () => {
         setApiData(response.data);
         setFilteredApiData(response.data);
         setLoading(false);
-        console.log(response.data);
       });
     } catch (error) {
       console.log(error);
@@ -225,8 +226,8 @@ const Home = () => {
   return (
     <div className="Home">
       {/* {loading && <Loader />} */}
-      <div className="homeTop">
-        <div className="title">
+      <div>
+        <div>
           <h2>Materials</h2>
         </div>
         <div style={{ margin: "20px 0" }}>

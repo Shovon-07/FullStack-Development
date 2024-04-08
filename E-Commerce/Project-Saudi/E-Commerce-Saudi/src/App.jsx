@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
 //___ Additional utility ___//
@@ -16,7 +16,7 @@ function App() {
       <div className="main">
         <Header />
         <div className="container">
-          {loading && <Loader />}
+          {/* {loading && <Loader />} */}
           <Outlet context={[setLoading]} />
         </div>
         <Footer />

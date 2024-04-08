@@ -1,6 +1,10 @@
 import React, { useEffect, useState, createContext } from "react";
 import { useOutletContext } from "react-router-dom";
+
+//___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Images ___//
 import Logo from "/images/icons/logo.png";
@@ -18,6 +22,7 @@ const ContextApiForGetImgData = createContext();
 const Invoice = () => {
   const { http } = AxiosConfig();
   const [setLoading] = useOutletContext();
+  const [msg, setMsg] = useState("");
 
   const [getImgData, setGetImgData] = useState({
     Image: "",
@@ -64,44 +69,82 @@ const Invoice = () => {
 
   //___ post Requests start ___//
   const handleSubmit = async () => {
-    try {
-      const data = {
-        customer_name: invoiceInputValue.customer_name,
-        customer_phone: invoiceInputValue.customer_phone,
-        customer_address: invoiceInputValue.customer_address,
+    //___ Validation ___//
+    if (invoiceInputValue.customer_name == null) {
+      // setMsg("Please enter customer name");
+      toast.error("Please enter customer name");
+    } else if (invoiceInputValue.customer_phone == null) {
+      toast.error("Please enter customer phone number");
+    } else if (invoiceInputValue.customer_address == null) {
+      toast.error("Please enter customer address");
+    } else if (invoiceInputValue.deadline_date == null) {
+      toast.error("No deadlin date selected");
+    } else if (invoiceInputValue.material_id == null) {
+      toast.error("Please select a material");
+    } else if (invoiceInputValue.chest_length == null) {
+      toast.error("Please enter chest length");
+    } else if (invoiceInputValue.neck_length == null) {
+      toast.error("Please enter neck length");
+    } else if (invoiceInputValue.hand_length == null) {
+      toast.error("Please enter hand length");
+    } else if (invoiceInputValue.dress_length == null) {
+      toast.error("Please enter dress length");
+    } else if (invoiceInputValue.sleeve_length == null) {
+      toast.error("Please enter sleeve length");
+    } else if (invoiceInputValue.cuff_length == null) {
+      toast.error("Please enter cuff length");
+    } else if (invoiceInputValue.shoulder_length == null) {
+      toast.error("Please enter shoulder length");
+    } else if (invoiceInputValue.material_length == null) {
+      toast.error("Please enter material length");
+    } else if (invoiceInputValue.sale_price == null) {
+      toast.error("Please enter material price");
+    } else if (invoiceInputValue.discount == null) {
+      toast.error("Please enter discount amount");
+    } else if (invoiceInputValue.vat == null) {
+      toast.error("Please enter vat amount");
+    } else if (invoiceInputValue.advance == null) {
+      toast.error("Please enter recived amount");
+    } else {
+      try {
+        const data = {
+          customer_name: invoiceInputValue.customer_name,
+          customer_phone: invoiceInputValue.customer_phone,
+          customer_address: invoiceInputValue.customer_address,
 
-        // For image details
-        image: getImgData.Image,
-        button_type: getImgData.BtnImgName,
-        neck_type: getImgData.NakImgName,
-        pocket_type: getImgData.PktImgName,
-        hand_type: getImgData.HndImgName,
+          // For image details
+          image: getImgData.Image,
+          button_type: getImgData.BtnImgName,
+          neck_type: getImgData.NakImgName,
+          pocket_type: getImgData.PktImgName,
+          hand_type: getImgData.HndImgName,
 
-        material_id: invoiceInputValue.material_id,
-        chest_length: invoiceInputValue.chest_length,
-        sleeve_length: invoiceInputValue.sleeve_length,
-        neck_length: invoiceInputValue.neck_length,
-        cuff_length: invoiceInputValue.cuff_length,
-        hand_length: invoiceInputValue.hand_length,
-        shoulder_length: invoiceInputValue.shoulder_length,
-        dress_length: invoiceInputValue.dress_length,
-        material_length: invoiceInputValue.material_length,
-        sale_price: invoiceInputValue.sale_price,
+          material_id: invoiceInputValue.material_id,
+          chest_length: invoiceInputValue.chest_length,
+          sleeve_length: invoiceInputValue.sleeve_length,
+          neck_length: invoiceInputValue.neck_length,
+          cuff_length: invoiceInputValue.cuff_length,
+          hand_length: invoiceInputValue.hand_length,
+          shoulder_length: invoiceInputValue.shoulder_length,
+          dress_length: invoiceInputValue.dress_length,
+          material_length: invoiceInputValue.material_length,
+          sale_price: invoiceInputValue.sale_price,
 
-        discount: invoiceInputValue.discount,
-        vat: invoiceInputValue.vat,
-        advance: invoiceInputValue.advance,
-        deadline_date: invoiceInputValue.deadline_date,
-        inqueries_number: invoiceInputValue.inqueries_number,
-        note: invoiceInputValue.note,
-      };
-      setLoading(true);
-      await http.post("/store-sell", data).then((response) => {
-        console.log(response.data);
-        setLoading(false);
-      });
-    } catch (error) {
-      console.log(error);
+          discount: invoiceInputValue.discount,
+          vat: invoiceInputValue.vat,
+          advance: invoiceInputValue.advance,
+          deadline_date: invoiceInputValue.deadline_date,
+          inqueries_number: invoiceInputValue.inqueries_number,
+          note: invoiceInputValue.note,
+        };
+        setLoading(true);
+        await http.post("/store-sell", data).then((response) => {
+          console.log(response.data);
+          setLoading(false);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   //___ Post Requests end ___//
@@ -120,30 +163,45 @@ const Invoice = () => {
       console.log(error);
     }
   };
-
-  // Get custome image's data
-  /*
-  const [customeImagesData, setCustomeImagesData] = useState([]);
-  const getcustomeImagesData = async () => {
-    try {
-      setLoading(true);
-      await http.get("/get-processed-img").then((response) => {
-        setCustomeImagesData(response.data);
-        // console.log(customeImagesData);
-        // console.log(customeImagesData.HandName);
-      });
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  */
   //___ Get Requests end ___//
 
   useEffect(() => {
     getMaterialData();
-    // getcustomeImagesData();
   }, []);
+
+  //___ Calculation ___//
+  const [total, setTotal] = useState(0);
+  const calcTotal = () => {
+    setTotal(
+      (prevTotal) =>
+        (prevTotal =
+          parseInt(invoiceInputValue.material_length) *
+          parseInt(invoiceInputValue.sale_price))
+    );
+  };
+
+  const [due, setDue] = useState(0);
+  const [payAble, setPayAble] = useState(0);
+  const calcDue = () => {
+    setDue(
+      (prevDue) =>
+        (prevDue =
+          total -
+          parseInt(invoiceInputValue.discount) +
+          parseInt(invoiceInputValue.vat)) - parseInt(invoiceInputValue.advance)
+    );
+
+    setPayAble((prevPayAble) => (prevPayAble = total - due));
+  };
+
+  // const calcPayable = () => {
+  //   setTotal(
+  //     (prevTotal) =>
+  //       (prevTotal =
+  //         parseInt(invoiceInputValue.material_length) *
+  //         parseInt(invoiceInputValue.sale_price))
+  //   );
+  // };
 
   return (
     <>
@@ -211,6 +269,7 @@ const Invoice = () => {
                   <input
                     type="text"
                     name="customer_name"
+                    required
                     placeholder="Customer name"
                     onChange={handleInvoiceInputValue}
                   />
@@ -220,6 +279,7 @@ const Invoice = () => {
                   <input
                     type="text"
                     name="customer_phone"
+                    required
                     placeholder="Customer phone"
                     onChange={handleInvoiceInputValue}
                   />
@@ -229,6 +289,7 @@ const Invoice = () => {
                   <input
                     type="text"
                     name="customer_address"
+                    required
                     placeholder="Customer address"
                     onChange={handleInvoiceInputValue}
                   />
@@ -243,6 +304,7 @@ const Invoice = () => {
                   <input
                     type="date"
                     name="currentDate"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -254,6 +316,7 @@ const Invoice = () => {
                   <input
                     type="date"
                     name="deadline_date"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -297,6 +360,7 @@ const Invoice = () => {
                     type="text"
                     placeholder="Chest width"
                     name="chest_length"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -305,6 +369,7 @@ const Invoice = () => {
                     type="text"
                     placeholder="Neck width"
                     name="neck_length"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -313,6 +378,7 @@ const Invoice = () => {
                     type="text"
                     placeholder="Hand width"
                     name="hand_length"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -323,6 +389,7 @@ const Invoice = () => {
                     type="text"
                     placeholder="Dress length"
                     name="dress_length"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -331,6 +398,7 @@ const Invoice = () => {
                     type="text"
                     placeholder="Sleeve width"
                     name="sleeve_length"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -339,6 +407,7 @@ const Invoice = () => {
                     type="text"
                     placeholder="Cuff width"
                     name="cuff_length"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -347,6 +416,7 @@ const Invoice = () => {
                     type="text"
                     placeholder="Shoulder"
                     name="shoulder_length"
+                    required
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -368,6 +438,7 @@ const Invoice = () => {
                   style={{ width: "100%", marginTop: "10px" }}
                   placeholder="000000"
                   name="inqueries_number"
+                  required
                   onChange={handleInvoiceInputValue}
                 />
               </div>
@@ -375,6 +446,7 @@ const Invoice = () => {
                 <p>Note:</p>{" "}
                 <textarea
                   name="note"
+                  required
                   id=""
                   cols="30"
                   rows="5"
@@ -393,7 +465,9 @@ const Invoice = () => {
                   type="text"
                   placeholder="Material length"
                   name="material_length"
+                  required
                   onChange={handleInvoiceInputValue}
+                  onKeyUp={calcTotal}
                 />
               </div>
               <div className="inputBox">
@@ -401,18 +475,23 @@ const Invoice = () => {
                   type="text"
                   placeholder="Material price"
                   name="sale_price"
+                  required
                   onChange={handleInvoiceInputValue}
+                  onKeyUp={calcTotal}
                 />
               </div>
               <div className="total d-flex">
-                <p>Total =</p> <h4>6000 $</h4>
+                <p>Total =</p>
+                <p>{total} $</p>
               </div>
               <div className="inputBox" style={{ marginTop: "30px" }}>
                 <input
                   type="text"
                   placeholder="Discount"
                   name="discount"
+                  required
                   onChange={handleInvoiceInputValue}
+                  onKeyUp={calcDue}
                 />
               </div>
               <div className="inputBox">
@@ -420,7 +499,9 @@ const Invoice = () => {
                   type="text"
                   placeholder="Vat"
                   name="vat"
+                  required
                   onChange={handleInvoiceInputValue}
+                  onKeyUp={calcDue}
                 />
               </div>
               <div className="inputBox">
@@ -428,20 +509,21 @@ const Invoice = () => {
                   type="text"
                   placeholder="Received amount"
                   name="advance"
+                  required
                   onChange={handleInvoiceInputValue}
+                  onKeyUp={calcDue}
                 />
               </div>
               <div className="inputBox">
                 <input
                   type="text"
-                  placeholder="Due ammount"
+                  placeholder="Due amount"
                   disabled
-                  // name="due_ammount"
-                  // onChange={handleInvoiceInputValue}
+                  value={"Due = " + due}
                 />
               </div>
               <div className="total d-flex">
-                <p>Payable =</p> <h4>8000 $</h4>
+                <p>Payable =</p> <h4>{payAble} $</h4>
               </div>
             </div>
             <div style={{ textAlign: "center", margin: "30px 0 10px 0" }}>
@@ -456,24 +538,20 @@ const Invoice = () => {
           </div>
         </div>
         <button
+          className="button"
+          style={{ padding: "10px", fontSize: "16px" }}
           onClick={() => {
             console.log(getImgData);
           }}
         >
-          Show
+          Print Invoice
         </button>
       </div>
+
+      <ToastContainer position="top-center" theme="colored" />
     </>
   );
 };
 
 export default Invoice;
 export { ContextApiForGetImgData };
-
-/*
-
-==>> Next Step
-* create get screen shot in this page
-* post all data in backend
-
-*/
