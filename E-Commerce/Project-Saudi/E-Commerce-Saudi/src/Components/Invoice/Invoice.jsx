@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext, useRef } from "react";
 import { useOutletContext } from "react-router-dom";
 
 //___ Additional utility ___//
@@ -77,6 +77,8 @@ const Invoice = () => {
       toast.error("Please enter customer phone number");
     } else if (invoiceInputValue.customer_address == null) {
       toast.error("Please enter customer address");
+    } else if (invoiceInputValue.currentDate == null) {
+      toast.error("No date selected");
     } else if (invoiceInputValue.deadline_date == null) {
       toast.error("No deadlin date selected");
     } else if (invoiceInputValue.material_id == null) {
@@ -105,6 +107,8 @@ const Invoice = () => {
       toast.error("Please enter vat amount");
     } else if (invoiceInputValue.advance == null) {
       toast.error("Please enter recived amount");
+    } else if (getImgData.Image == "") {
+      toast.error("Please generate image");
     } else {
       try {
         const data = {
@@ -170,38 +174,47 @@ const Invoice = () => {
   }, []);
 
   //___ Calculation ___//
-  const [total, setTotal] = useState(0);
-  const calcTotal = () => {
-    setTotal(
-      (prevTotal) =>
-        (prevTotal =
-          parseInt(invoiceInputValue.material_length) *
-          parseInt(invoiceInputValue.sale_price))
-    );
+  const changedMaterialLength = useRef();
+  const changedSalePrice = useRef();
+
+  const [calc, setCalc] = useState({
+    total: "0",
+    discountForCalc: "0",
+    vatForCalc: "0",
+    payAbleForCalc: "0",
+    dueForCalc: "0",
+  });
+  const Calculation = () => {
+    setCalc({
+      total:
+        parseFloat(invoiceInputValue.material_length) *
+        parseFloat(invoiceInputValue.sale_price),
+
+      discountForCalc:
+        calc.total -
+        (parseFloat(invoiceInputValue.discount) / 100) * calc.total,
+
+      vatForCalc:
+        (parseFloat(invoiceInputValue.vat) / 100) * calc.discountForCalc,
+
+      payAbleForCalc:
+        calc.discountForCalc +
+        (parseFloat(invoiceInputValue.vat) / 100) * calc.discountForCalc,
+    });
   };
-
-  const [due, setDue] = useState(0);
-  const [payAble, setPayAble] = useState(0);
-  const calcDue = () => {
-    setDue(
-      (prevDue) =>
-        (prevDue =
-          total -
-          parseInt(invoiceInputValue.discount) +
-          parseInt(invoiceInputValue.vat)) - parseInt(invoiceInputValue.advance)
-    );
-
-    setPayAble((prevPayAble) => (prevPayAble = total - due));
+  const ClearAllState = () => {
+    if (
+      invoiceInputValue.material_length != "" ||
+      invoiceInputValue.sale_price != ""
+    ) {
+      setCalc({
+        total: "",
+        discountForCalc: "",
+        vatForCalc: "",
+        payAbleForCalc: "",
+      });
+    }
   };
-
-  // const calcPayable = () => {
-  //   setTotal(
-  //     (prevTotal) =>
-  //       (prevTotal =
-  //         parseInt(invoiceInputValue.material_length) *
-  //         parseInt(invoiceInputValue.sale_price))
-  //   );
-  // };
 
   return (
     <>
@@ -467,7 +480,9 @@ const Invoice = () => {
                   name="material_length"
                   required
                   onChange={handleInvoiceInputValue}
-                  onKeyUp={calcTotal}
+                  onKeyUp={Calculation}
+                  onKeyDown={ClearAllState}
+                  ref={changedMaterialLength}
                 />
               </div>
               <div className="inputBox">
@@ -477,32 +492,43 @@ const Invoice = () => {
                   name="sale_price"
                   required
                   onChange={handleInvoiceInputValue}
-                  onKeyUp={calcTotal}
+                  onKeyUp={Calculation}
+                  onKeyDown={ClearAllState}
+                  ref={changedSalePrice}
                 />
               </div>
               <div className="total d-flex">
                 <p>Total =</p>
-                <p>{total} $</p>
+                <p>{calc.total} $</p>
               </div>
               <div className="inputBox" style={{ marginTop: "30px" }}>
                 <input
                   type="text"
-                  placeholder="Discount"
+                  placeholder="Discount (%)"
                   name="discount"
                   required
                   onChange={handleInvoiceInputValue}
-                  onKeyUp={calcDue}
+                  onKeyUp={Calculation}
                 />
+                <p style={{ marginTop: "5px", color: "green" }}>
+                  Saved : {calc.discountForCalc} $
+                </p>
               </div>
               <div className="inputBox">
                 <input
                   type="text"
-                  placeholder="Vat"
+                  placeholder="Vat (%)"
                   name="vat"
                   required
                   onChange={handleInvoiceInputValue}
-                  onKeyUp={calcDue}
+                  onKeyUp={Calculation}
                 />
+                <p style={{ marginTop: "5px", color: "green" }}>
+                  Tax amount : {calc.vatForCalc} $
+                </p>
+              </div>
+              <div className="total d-flex">
+                <p>Payable =</p> <h4>{calc.payAbleForCalc} $</h4>
               </div>
               <div className="inputBox">
                 <input
@@ -511,7 +537,7 @@ const Invoice = () => {
                   name="advance"
                   required
                   onChange={handleInvoiceInputValue}
-                  onKeyUp={calcDue}
+                  onKeyUp={Calculation}
                 />
               </div>
               <div className="inputBox">
@@ -519,11 +545,8 @@ const Invoice = () => {
                   type="text"
                   placeholder="Due amount"
                   disabled
-                  value={"Due = " + due}
+                  value={"Due = " + calc.dueForCalc}
                 />
-              </div>
-              <div className="total d-flex">
-                <p>Payable =</p> <h4>{payAble} $</h4>
               </div>
             </div>
             <div style={{ textAlign: "center", margin: "30px 0 10px 0" }}>

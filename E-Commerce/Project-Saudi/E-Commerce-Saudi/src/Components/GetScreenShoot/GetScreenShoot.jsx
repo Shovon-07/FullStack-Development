@@ -10,10 +10,11 @@ const GetScreenShoot = (props) => {
 
   const { btnImgName, nakImgName, pktImgName, hndImgName } = props;
   // const { http } = AxiosConfig();
-  const [msg, setMsg] = useState();
+  const [msg, setMsg] = useState("Generate Image");
 
   const handleScreenShoot = () => {
     let capture = document.getElementById("capture");
+    setMsg("Generated");
     html2canvas(capture)
       .then((canvas) => {
         let image = canvas.toDataURL("image/png");
@@ -31,25 +32,9 @@ const GetScreenShoot = (props) => {
           HndImgName: hndImgName,
         });
 
-        // console.log(
-        //   `${btnImgName}, ${nakImgName}, ${pktImgName}, ${hndImgName}`
-        // );
-
-        // const data = {
-        //   ButtonName: btnImgName,
-        //   NeckName: nakImgName,
-        //   PocketName: pktImgName,
-        //   HandName: hndImgName,
-        //   imageData: image,
-        // };
-
-        // http.post("/process-img", data).then((res) => {
-        //   setMsg(1);
-        // });
-
-        // setInterval(() => {
-        //   setMsg();
-        // }, 5000);
+        setInterval(() => {
+          setMsg("Generate Image");
+        }, 2000);
       })
       .catch((err) => {
         console.error("We can't capture" + err);
@@ -74,24 +59,14 @@ const GetScreenShoot = (props) => {
         onClick={handleScreenShoot}
       >
         <span
-          className={msg == null ? "d-none" : ""}
+          className={msg === "Generate Image" ? "d-none" : ""}
           style={{ color: "#6ffd52", marginRight: "10px" }}
         >
           &#10004;
         </span>
-        {msg == null ? "Generate Image" : "Generated"}{" "}
+        {msg == null ? "Generate Image" : msg}{" "}
       </button>
       {/* <button onClick={show}>Show</button> */}
-
-      {/* {useContextApi.getImgData.PktImgName} */}
-      {/* <ContextApiForGetImgData.Consumer>
-        {(data) => {
-          return <h1>{data}</h1>;
-        }}
-      </ContextApiForGetImgData.Consumer> */}
-      <br />
-      {/* {useContextApi.setGetImgData("sexy")}
-      {useContextApi.getImgData} */}
     </div>
   );
 };
