@@ -61,33 +61,22 @@
       }
     }
   }
-  .measurement {
-    margin-top: 40px;
-    background: $light-1;
-    .title {
-      text-align: center;
-      font-size: 16px;
+  .productDetails {
+    .left {
+      flex-basis: 30%;
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
-    .measurmentSelection {
-      @include sm {
-        flex-direction: column;
-      }
-      .left {
-        flex-basis: 50%;
-        align-items: start;
-        box-shadow: none;
-        flex-direction: column;
-      }
-      .right {
-        flex-basis: 50%;
-        box-shadow: none;
-        flex-direction: column;
-      }
+    .right {
+      flex-basis: 70%;
+      flex-direction: column;
       .inputBox {
         width: 100%;
         label {
+          display: block;
           margin-bottom: 8px;
-          display: inline-block;
           font-size: 14px;
         }
         input {
@@ -96,6 +85,59 @@
       }
     }
   }
+
+  .summery {
+    justify-content: space-between;
+    margin-top: 50px;
+    line-height: 30px;
+    .left {
+      flex-basis: 50%;
+    }
+    .right {
+      flex-basis: 50%;
+      div {
+        justify-content: flex-end;
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  // .measurement {
+  //   margin-top: 40px;
+  //   background: $light-1;
+  //   .title {
+  //     text-align: center;
+  //     font-size: 16px;
+  //   }
+  // .measurmentSelection {
+  //   @include sm {
+  //     flex-direction: column;
+  //   }
+  //   .left {
+  //     flex-basis: 50%;
+  //     align-items: start;
+  //     box-shadow: none;
+  //     flex-direction: column;
+  //   }
+  //   .right {
+  //     flex-basis: 50%;
+  //     box-shadow: none;
+  //     flex-direction: column;
+  //   }
+  //   .inputBox {
+  //     width: 100%;
+  //     label {
+  //       margin-bottom: 8px;
+  //       display: inline-block;
+  //       font-size: 14px;
+  //     }
+  //     input {
+  //       width: 100%;
+  //     }
+  //   }
+  // }
+  //   }
 }
 
 .printBtnBox {
