@@ -16,7 +16,7 @@ function App() {
       <div className="main">
         <Header />
         <div className="container">
-          {loading && <Loader />}
+          {/* {loading && <Loader />} */}
           <Outlet context={[setLoading]} />
         </div>
         <Footer />

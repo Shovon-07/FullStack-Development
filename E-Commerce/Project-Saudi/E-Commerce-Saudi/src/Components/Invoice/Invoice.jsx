@@ -182,6 +182,7 @@ const Invoice = () => {
     discountForCalc: "0",
     vatForCalc: "0",
     payAbleForCalc: "0",
+    recivedForCalc: "0",
     dueForCalc: "0",
   });
   const Calculation = () => {
@@ -200,6 +201,8 @@ const Invoice = () => {
       payAbleForCalc:
         calc.discountForCalc +
         (parseFloat(invoiceInputValue.vat) / 100) * calc.discountForCalc,
+
+      dueForCalc: calc.payAbleForCalc - parseFloat(invoiceInputValue.advance),
     });
   };
   const ClearAllState = () => {
