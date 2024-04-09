@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useOutletContext } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
+
+//___ Additional utility ___//
+import AxiosConfig from "../../assets/AxiosConfig";
 
 //___ Images ___//
 import Logo from "/images/icons/logo.png";
@@ -12,14 +15,40 @@ import { FaPrint } from "react-icons/fa";
 import "./InvoiceRecipt.scss";
 
 const InvoiceRecipt = () => {
-  const { invoiceId } = useParams();
-
+  // Print button
   const handlePrint = () => {
     print();
   };
 
+  const { invoiceId } = useParams();
+  const [setLoading] = useOutletContext();
+  const { http } = AxiosConfig();
+
+  const [apiData, setApiData] = useState([]);
+  const getApiData = async () => {
+    try {
+      setLoading(true);
+      await http.post("/order-details", { id: invoiceId }).then((response) => {
+        setApiData(response.data);
+        setLoading(false);
+        console.log(apiData);
+        // Set state
+        // setInvoicePrintAbleValue({
+        //   ...invoicePrintAbleValue,
+        //   customer_name: response.data.customer.name,
+        // });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getApiData();
+  }, []);
+
   const [invoicePrintAbleValue, setInvoicePrintAbleValue] = useState({
-    customer_name: "Asikur rahman",
+    customer_name: "",
     customer_phone: "01767692422",
     customer_address: `Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.
     Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.`,
@@ -86,7 +115,7 @@ const InvoiceRecipt = () => {
                 <tr>
                   <td>Name</td>
                   <td className="tdColon">:</td>
-                  <td>{invoicePrintAbleValue.customer_name}</td>
+                  <td>{"apiData.customer.phone"}</td>
                 </tr>
                 <tr>
                   <td>Phone</td>

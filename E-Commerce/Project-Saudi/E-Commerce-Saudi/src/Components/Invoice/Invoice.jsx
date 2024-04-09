@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Logo from "/images/icons/logo.png";
 
 //___ Icons ___//
+import { FiAlertTriangle } from "react-icons/fi";
 
 //___ Css ___//
 import "./Invoice.scss";
@@ -522,7 +523,10 @@ const Invoice = () => {
             </div>
           </div>
         </div>
-        <div className="alertNote">
+        <div className="alertNote d-flex gap-20" style={{ marginTop: "50px" }}>
+          <p>
+            <FiAlertTriangle size={25} />
+          </p>
           <p>
             If you change the value of any input fields in the order summary
             section, please change the values ​​of the all input fields to get

@@ -66,14 +66,7 @@ const PendingOrders = () => {
       cell: (row) => (
         <div className="d-flex" style={{ gap: "10px" }}>
           <button className="button">
-            <Link
-              to={`/invoice-recipt/${row.id}`}
-              onClick={() => {
-                console.log(getImgData);
-              }}
-            >
-              Invoice
-            </Link>
+            <Link to={`/invoice-recipt/${row.id}`}>Invoice</Link>
           </button>
           <button className="button">Compleate</button>
         </div>

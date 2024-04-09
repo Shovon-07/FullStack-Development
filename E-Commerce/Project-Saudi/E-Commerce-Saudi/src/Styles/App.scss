@@ -124,7 +124,10 @@ input:disabled {
   border: 1px solid $dark-3 !important;
 }
 .alertNote {
-  background: red;
+  background: #faf9cd;
+  justify-content: center;
+  padding: 10px;
+  font-size: 14px;
 }
 
 .color-light {
