@@ -1,5 +1,6 @@
 @import "./Variable.scss";
 @import "./Responsive.scss";
+@import "./Scrollbar.scss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 
 * {
@@ -128,21 +129,6 @@ input:disabled {
 }
 
 // Colors
-
-/*________________ custome scroll bar start ________________*/
-::-webkit-scrollbar {
-  width: 1px;
-  height: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: $dark-1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $main-color;
-}
-/*________________ custome scroll bar end ________________*/
 
 /*________________ Blur effec start ________________*/
 body.blur {
@@ -301,6 +287,9 @@ body.blur {
 
 // For print
 @media print {
+  // ::-webkit-scrollbar {
+  //   display: none;
+  // }
   body {
     background: $light-1;
   }

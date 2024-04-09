@@ -1,0 +1,14 @@
+/*________________ custome scroll bar start ________________*/
+::-webkit-scrollbar {
+  width: 1px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: $dark-1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $main-color;
+}
+/*________________ custome scroll bar end ________________*/
