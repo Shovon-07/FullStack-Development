@@ -45,6 +45,10 @@ Route::controller(MaterialController::class)->group(function(){
 Route::controller(InvoiceController::class)->group(function(){
     Route::get('/get-material','GetMaterial');
     Route::post('/store-sell','store');
+
+    Route::post('/order-details','orderDetails');
+
+    Route::get('/pending-order','pendingOrders');
 });
 
 Route::controller(ProcessImgController::class)->group(function(){

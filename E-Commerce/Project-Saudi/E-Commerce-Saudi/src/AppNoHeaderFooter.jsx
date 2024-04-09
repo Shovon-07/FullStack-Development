@@ -10,7 +10,7 @@ const AppNoHeaderFooter = () => {
   return (
     <>
       <div className="">
-        {/* {loading && <Loader />} */}
+        {loading && <Loader />}
         <Outlet context={[setLoading]} />
       </div>
     </>

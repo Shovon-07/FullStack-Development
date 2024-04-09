@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 
-//___ Additional utility ___//
-
 //___ Images ___//
 import Logo from "/images/icons/logo.png";
 
@@ -38,9 +36,19 @@ const InvoiceRecipt = () => {
     cuff_length: "6",
     shoulder_length: "7",
 
+    button_type: "a",
+    neck_type: "b",
+    pocket_type: "c",
+    hand_type: "d",
+
+    materialLength: "20",
+    materialPrice: "200",
     discount: "10",
     tax: "50",
     total: "1230",
+    payAble: "3000",
+    advance: "500",
+    due: "0",
   });
   const handelInvoicePrintAbleValue = () => {};
 
@@ -150,8 +158,6 @@ const InvoiceRecipt = () => {
                   readOnly
                 />
               </div>
-            </div>
-            <div className="right d-flex gap-20">
               <div className="inputBox">
                 <label htmlFor="">Dress length</label>
                 <input
@@ -172,6 +178,8 @@ const InvoiceRecipt = () => {
                   readOnly
                 />
               </div>
+            </div>
+            <div className="right d-flex gap-20">
               <div className="inputBox">
                 <label htmlFor="">Cuff width</label>
                 <input
@@ -192,6 +200,46 @@ const InvoiceRecipt = () => {
                   readOnly
                 />
               </div>
+              <div className="inputBox">
+                <label htmlFor="">Button type</label>
+                <input
+                  type="text"
+                  name="button_type"
+                  value={invoicePrintAbleValue.button_type}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Neck type</label>
+                <input
+                  type="text"
+                  name="neck_type"
+                  value={invoicePrintAbleValue.neck_type}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Pocket type</label>
+                <input
+                  type="text"
+                  name="pocket_type"
+                  value={invoicePrintAbleValue.pocket_type}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Hand type</label>
+                <input
+                  type="text"
+                  name="hand_type"
+                  value={invoicePrintAbleValue.hand_type}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -203,16 +251,38 @@ const InvoiceRecipt = () => {
           </div>
           <div className="right">
             <div className="d-flex flex-start gap-10">
-              <p>Tax : </p>
-              <p>$ {invoicePrintAbleValue.tax}</p>
+              <p>Material length : </p>
+              <p>$ {invoicePrintAbleValue.materialLength}</p>
             </div>
+            <div className="d-flex flex-start gap-10">
+              <p>Material price : </p>
+              <p>$ {invoicePrintAbleValue.materialPrice}</p>
+            </div>
+            <div className="d-flex flex-start gap-10">
+              <p>Total : </p>
+              <p>$ {invoicePrintAbleValue.total}</p>
+            </div>
+
             <div className="d-flex flex-start gap-10">
               <p>Discount : </p>
               <p>$ {invoicePrintAbleValue.discount}</p>
             </div>
             <div className="d-flex flex-start gap-10">
-              <p>Total : </p>
-              <p>$ {invoicePrintAbleValue.total}</p>
+              <p>Tax : </p>
+              <p>$ {invoicePrintAbleValue.tax}</p>
+            </div>
+            <div className="d-flex flex-start gap-10">
+              <p>Pay able : </p>
+              <p>$ {invoicePrintAbleValue.payAble}</p>
+            </div>
+
+            <div className="d-flex flex-start gap-10">
+              <p>Recivced amount : </p>
+              <p>$ {invoicePrintAbleValue.recivedAmount}</p>
+            </div>
+            <div className="d-flex flex-start gap-10">
+              <p>Due : </p>
+              <p>$ {invoicePrintAbleValue.due}</p>
             </div>
           </div>
         </div>
@@ -222,3 +292,11 @@ const InvoiceRecipt = () => {
 };
 
 export default InvoiceRecipt;
+
+/**
+ * => add
+ * Hand type , ... etc
+ * recived amoutn
+ * due
+ *
+ */

@@ -136,4 +136,17 @@ class InvoiceController extends Controller
         return $materials;
     }
 
+    public function orderDetails(Request $request)
+    {
+        $invoice = Invoice::where('id', '=', $request->id)->with('customer','material')->first();
+        return $invoice;
+    }
+
+    public function pendingOrders()
+    {
+        $pendingOrders = Invoice::where('status', '=', 'pending')->get();
+
+        return $pendingOrders;
+    }
+
 }

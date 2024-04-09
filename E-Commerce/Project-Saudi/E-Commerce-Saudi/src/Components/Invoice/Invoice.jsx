@@ -179,6 +179,7 @@ const Invoice = () => {
 
   const [calc, setCalc] = useState({
     total: "0",
+    discountAmountForCalc: "0",
     discountForCalc: "0",
     vatForCalc: "0",
     payAbleForCalc: "0",
@@ -563,7 +564,7 @@ const Invoice = () => {
             </div>
           </div>
         </div>
-        <Link
+        {/* <Link
           to="/invoice-recipt"
           className="button"
           style={{ padding: "10px 20px", fontSize: "16px" }}
@@ -572,7 +573,7 @@ const Invoice = () => {
           }}
         >
           Preview Invoice
-        </Link>
+        </Link> */}
       </div>
 
       <ToastContainer position="top-center" theme="colored" />
