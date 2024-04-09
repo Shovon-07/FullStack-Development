@@ -28,6 +28,10 @@
     background: transparent;
     border-bottom: 1px solid $dark-2;
     // border-bottom: 1px solid $light-1
+    &:focus::placeholder {
+      padding-left: 10px;
+      transition: $trans;
+    }
   }
   // ::placeholder {
   //   color: $dark-2;

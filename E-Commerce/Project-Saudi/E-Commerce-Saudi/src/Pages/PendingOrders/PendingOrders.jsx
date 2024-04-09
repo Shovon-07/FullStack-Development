@@ -216,7 +216,7 @@ const PendingOrders = () => {
           subHeaderComponent={
             <input
               type="text"
-              placeholder="Search by material name"
+              placeholder="Search by phone number"
               value={searchData}
               onChange={(e) => {
                 setSearchData(e.target.value);

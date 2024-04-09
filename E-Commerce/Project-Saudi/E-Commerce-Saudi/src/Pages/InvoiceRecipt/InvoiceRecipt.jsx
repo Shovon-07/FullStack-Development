@@ -48,39 +48,34 @@ const InvoiceRecipt = () => {
   }, []);
 
   const [invoicePrintAbleValue, setInvoicePrintAbleValue] = useState({
-    customer_name: "",
-    customer_phone: "01767692422",
-    customer_address: `Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.
-    Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.`,
-
-    issueDate: "01/01/2024",
-    deliveryData: "10/01/2024",
-
-    image: "/images/dress/Screenshot from 2024-04-01 19-14-35.png",
-
-    material_id: "",
-    material: "Silk",
-    chest_length: "1",
-    neck_length: "2",
-    hand_length: "3",
-    dress_length: "4",
-    sleeve_length: "5",
-    cuff_length: "6",
-    shoulder_length: "7",
-
-    button_type: "a",
-    neck_type: "b",
-    pocket_type: "c",
-    hand_type: "d",
-
-    materialLength: "20",
-    materialPrice: "200",
-    discount: "10",
-    tax: "50",
-    total: "1230",
-    payAble: "3000",
-    advance: "500",
-    due: "0",
+    // customer_name: "",
+    // customer_phone: "01767692422",
+    // customer_address: `Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.
+    // Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.`,
+    // issueDate: "01/01/2024",
+    // deliveryData: "10/01/2024",
+    // image: "/images/dress/Screenshot from 2024-04-01 19-14-35.png",
+    // material_id: "",
+    // material: "Silk",
+    // chest_length: "1",
+    // neck_length: "2",
+    // hand_length: "3",
+    // dress_length: "4",
+    // sleeve_length: "5",
+    // cuff_length: "6",
+    // shoulder_length: "7",
+    // button_type: "a",
+    // neck_type: "b",
+    // pocket_type: "c",
+    // hand_type: "d",
+    // materialLength: "20",
+    // materialPrice: "200",
+    // discount: "10",
+    // tax: "50",
+    // total: "1230",
+    // payAble: "3000",
+    // advance: "500",
+    // due: "0",
   });
   const handelInvoicePrintAbleValue = () => {};
 
@@ -115,25 +110,25 @@ const InvoiceRecipt = () => {
                 <tr>
                   <td>Name</td>
                   <td className="tdColon">:</td>
-                  <td>{"apiData.customer.phone"}</td>
+                  {/* <td>{apiData.customer.name}</td> */}
                 </tr>
                 <tr>
                   <td>Phone</td>
                   <td className="tdColon">:</td>
-                  <td>{invoicePrintAbleValue.customer_phone}</td>
+                  {/* <td>{apiData.customer.phone}</td> */}
                 </tr>
                 <tr>
                   <td>Address</td>
                   <td className="tdColon">:</td>
-                  <td>{invoicePrintAbleValue.customer_address}</td>
+                  {/* <td>{apiData.customer.address}</td> */}
                 </tr>
               </tbody>
             </table>
           </div>
           <div className="right">
             <p>Invoice # {invoiceId}</p>
-            <p>Issue date : {invoicePrintAbleValue.issueDate}</p>
-            <p>Delivery : {invoicePrintAbleValue.deliveryData}</p>
+            <p>Issue date : 01/01/2024</p>
+            <p>Delivery : {apiData.deadline_date}</p>
           </div>
         </div>
 
@@ -146,7 +141,10 @@ const InvoiceRecipt = () => {
 
         <div className="productDetails d-flex flex-start gap-30">
           <div className="left">
-            <img src={invoicePrintAbleValue.image} alt="" />
+            <img
+              src={"http://localhost:8000/images/ScreenShoot/" + apiData.image}
+              alt=""
+            />
           </div>
           <div className="right d-flex flex-start gap-20">
             <div className="left d-flex gap-20">
@@ -155,37 +153,37 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="material"
-                  value={invoicePrintAbleValue.material}
+                  // value={apiData.material.name}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
               <div className="inputBox">
-                <label htmlFor="">Chest width</label>
+                <label htmlFor="">Chest length</label>
                 <input
                   type="text"
                   name="chest_length"
-                  value={invoicePrintAbleValue.chest_length}
+                  value={apiData.chest_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
               <div className="inputBox">
-                <label htmlFor="">Neck width</label>
+                <label htmlFor="">Neck length</label>
                 <input
                   type="text"
                   name="neck_length"
-                  value={invoicePrintAbleValue.neck_length}
+                  value={apiData.neck_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
               <div className="inputBox">
-                <label htmlFor="">Hand width</label>
+                <label htmlFor="">Hand length</label>
                 <input
                   type="text"
                   name="hand_length"
-                  value={invoicePrintAbleValue.hand_length}
+                  value={apiData.hand_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -195,17 +193,17 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="dress_length"
-                  value={invoicePrintAbleValue.dress_length}
+                  value={apiData.dress_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
               <div className="inputBox">
-                <label htmlFor="">Sleeve width</label>
+                <label htmlFor="">Sleeve length</label>
                 <input
                   type="text"
                   name="sleeve_length"
-                  value={invoicePrintAbleValue.sleeve_length}
+                  value={apiData.sleeve_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -213,21 +211,21 @@ const InvoiceRecipt = () => {
             </div>
             <div className="right d-flex gap-20">
               <div className="inputBox">
-                <label htmlFor="">Cuff width</label>
+                <label htmlFor="">Cuff length</label>
                 <input
                   type="text"
                   name="cuff_length"
-                  value={invoicePrintAbleValue.cuff_length}
+                  value={apiData.cuff_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
               <div className="inputBox">
-                <label htmlFor="">Shoulder</label>
+                <label htmlFor="">Shoulder length</label>
                 <input
                   type="text"
                   name="shoulder_length"
-                  value={invoicePrintAbleValue.shoulder_length}
+                  value={apiData.shoulder_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -237,7 +235,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="button_type"
-                  value={invoicePrintAbleValue.button_type}
+                  value={apiData.button_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -247,7 +245,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="neck_type"
-                  value={invoicePrintAbleValue.neck_type}
+                  value={apiData.neck_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -257,7 +255,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="pocket_type"
-                  value={invoicePrintAbleValue.pocket_type}
+                  value={apiData.pocket_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -267,7 +265,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="hand_type"
-                  value={invoicePrintAbleValue.hand_type}
+                  value={apiData.hand_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -282,40 +280,86 @@ const InvoiceRecipt = () => {
             <h3 className="salespersonNmae">Al jubair shovon</h3>
           </div>
           <div className="right">
-            <div className="d-flex flex-start gap-10">
+            <table>
+              <tbody>
+                <tr>
+                  <td>Material length</td>
+                  <td>:</td>
+                  <td>{apiData.sale_price} $</td>
+                </tr>
+                <tr>
+                  <td>Material price</td>
+                  <td>:</td>
+                  <td>{apiData.sale_price} $</td>
+                </tr>
+                <tr>
+                  <td>Total</td>
+                  <td>:</td>
+                  <td>{apiData.total} $</td>
+                </tr>
+
+                <tr>
+                  <td>Discount</td>
+                  <td>:</td>
+                  <td>{apiData.discount} $</td>
+                </tr>
+                <tr>
+                  <td>Tax</td>
+                  <td>:</td>
+                  <td>{apiData.vat} $</td>
+                </tr>
+                <tr>
+                  <td>Pay able</td>
+                  <td>:</td>
+                  <td>{apiData.payable} $</td>
+                </tr>
+
+                <tr>
+                  <td>Recivced amount</td>
+                  <td>:</td>
+                  <td>{apiData.advance} $</td>
+                </tr>
+                <tr>
+                  <td>Due</td>
+                  <td>:</td>
+                  <td>{apiData.due} $</td>
+                </tr>
+              </tbody>
+            </table>
+            {/* <div className="d-flex flex-start gap-10">
               <p>Material length : </p>
-              <p>$ {invoicePrintAbleValue.materialLength}</p>
-            </div>
-            <div className="d-flex flex-start gap-10">
+              <p>$ {apiData.material_length}</p>
+            </div> */}
+            {/* <div className="d-flex flex-start gap-10">
               <p>Material price : </p>
-              <p>$ {invoicePrintAbleValue.materialPrice}</p>
-            </div>
-            <div className="d-flex flex-start gap-10">
+              <p>{apiData.sale_price} $</p>
+            </div> */}
+            {/* <div className="d-flex flex-start gap-10">
               <p>Total : </p>
-              <p>$ {invoicePrintAbleValue.total}</p>
-            </div>
+              <p>{apiData.total}$</p>
+            </div> */}
 
-            <div className="d-flex flex-start gap-10">
+            {/* <div className="d-flex flex-start gap-10">
               <p>Discount : </p>
-              <p>$ {invoicePrintAbleValue.discount}</p>
-            </div>
-            <div className="d-flex flex-start gap-10">
+              <p>{apiData.discount}$</p>
+            </div> */}
+            {/* <div className="d-flex flex-start gap-10">
               <p>Tax : </p>
-              <p>$ {invoicePrintAbleValue.tax}</p>
-            </div>
-            <div className="d-flex flex-start gap-10">
+              <p>{apiData.vat}$</p>
+            </div> */}
+            {/* <div className="d-flex flex-start gap-10">
               <p>Pay able : </p>
-              <p>$ {invoicePrintAbleValue.payAble}</p>
-            </div>
+              <p>{apiData.payable} $</p>
+            </div> */}
 
-            <div className="d-flex flex-start gap-10">
+            {/* <div className="d-flex flex-start gap-10">
               <p>Recivced amount : </p>
-              <p>$ {invoicePrintAbleValue.recivedAmount}</p>
-            </div>
-            <div className="d-flex flex-start gap-10">
+              <p>{apiData.advance} $</p>
+            </div> */}
+            {/* <div className="d-flex flex-start gap-10">
               <p>Due : </p>
-              <p>$ {invoicePrintAbleValue.due}</p>
-            </div>
+              <p>{apiData.due} $</p>
+            </div> */}
           </div>
         </div>
       </div>
@@ -326,9 +370,7 @@ const InvoiceRecipt = () => {
 export default InvoiceRecipt;
 
 /**
- * => add
- * Hand type , ... etc
- * recived amoutn
- * due
+ * ==> problem
+ * Customer name , phone, address আসেছে। কিন্ত component re-render হলে চেলে যাোেচ্চে।
  *
  */
