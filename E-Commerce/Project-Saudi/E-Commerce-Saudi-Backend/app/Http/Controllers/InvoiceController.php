@@ -138,13 +138,13 @@ class InvoiceController extends Controller
 
     public function orderDetails(Request $request)
     {
-        $invoice = Invoice::where('id', '=', $request->id)->with('customer','material')->first();
+        $invoice = Invoice::where('id', '=', $request->id)->with('customer','material:id,name')->first();
         return $invoice;
     }
 
     public function pendingOrders()
     {
-        $pendingOrders = Invoice::where('status', '=', 'pending')->get();
+        $pendingOrders = Invoice::where('status', '=', 'pending')->select("id","customer_id","payable","due")->with('customer:id,name,phone')->get();
 
         return $pendingOrders;
     }

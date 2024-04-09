@@ -24,7 +24,7 @@ const PendingOrders = () => {
   const getApiData = async () => {
     try {
       setLoading(true);
-      await http.get("/home").then((response) => {
+      await http.get("/pending-order").then((response) => {
         setApiData(response.data);
         setFilteredApiData(response.data);
         setLoading(false);
@@ -44,17 +44,22 @@ const PendingOrders = () => {
     {
       name: "Customer Name",
       field: "CustomerName",
-      selector: (row) => row.name,
+      selector: (row) => row.customer.name,
     },
     {
       name: "Phone",
       field: "CustomerPhone",
-      selector: (row) => row.stock,
+      selector: (row) => row.customer.phone,
     },
     {
-      name: "Order Status",
-      field: "OrderStatus",
-      selector: (row) => row.price,
+      name: "Pay able",
+      field: "PayAble",
+      selector: (row) => row.payable,
+    },
+    {
+      name: "Due",
+      field: "Due",
+      selector: (row) => row.due,
     },
     {
       name: "Action",
@@ -84,7 +89,9 @@ const PendingOrders = () => {
 
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {
-      return filteredApiData.name.toLowerCase().match(searchData.toLowerCase());
+      return filteredApiData.customer.phone
+        .toLowerCase()
+        .match(searchData.toLowerCase());
     });
     setFilteredApiData(result);
   }, [searchData]);
