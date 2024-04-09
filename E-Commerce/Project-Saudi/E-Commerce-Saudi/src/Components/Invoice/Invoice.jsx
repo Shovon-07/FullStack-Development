@@ -40,6 +40,7 @@ const Invoice = () => {
       currentDate: "",
       deadline_date: "",
 
+      // Mesurments
       material_id: "",
       chest_length: "",
       neck_length: "",
@@ -49,11 +50,15 @@ const Invoice = () => {
       cuff_length: "",
       shoulder_length: "",
 
+      // Order summery
       material_length: "",
       sale_price: "",
+      total: "",
       discount: "",
       vat: "",
+      payable: "",
       advance: "",
+      due: "",
 
       inqueries_number: "",
       note: "",
@@ -123,6 +128,7 @@ const Invoice = () => {
           pocket_type: getImgData.PktImgName,
           hand_type: getImgData.HndImgName,
 
+          // Mesurments
           material_id: invoiceInputValue.material_id,
           chest_length: invoiceInputValue.chest_length,
           sleeve_length: invoiceInputValue.sleeve_length,
@@ -131,20 +137,27 @@ const Invoice = () => {
           hand_length: invoiceInputValue.hand_length,
           shoulder_length: invoiceInputValue.shoulder_length,
           dress_length: invoiceInputValue.dress_length,
+
+          // Order summery
           material_length: invoiceInputValue.material_length,
           sale_price: invoiceInputValue.sale_price,
-
-          discount: invoiceInputValue.discount,
-          vat: invoiceInputValue.vat,
+          total: calc.total,
+          discount: calc.discountAmountForCalc,
+          vat: calc.vatForCalc,
+          payable: calc.payAbleForCalc,
           advance: invoiceInputValue.advance,
+          due: calc.dueForCalc,
+
           deadline_date: invoiceInputValue.deadline_date,
           inqueries_number: invoiceInputValue.inqueries_number,
           note: invoiceInputValue.note,
         };
         setLoading(true);
         await http.post("/store-sell", data).then((response) => {
-          console.log(response.data);
           setLoading(false);
+          toast.success("Successfull");
+
+          // Clear all input field
         });
       } catch (error) {
         console.log(error);
@@ -192,6 +205,9 @@ const Invoice = () => {
         parseFloat(invoiceInputValue.material_length) *
         parseFloat(invoiceInputValue.sale_price),
 
+      discountAmountForCalc:
+        (parseFloat(invoiceInputValue.discount) / 100) * calc.total,
+
       discountForCalc:
         calc.total -
         (parseFloat(invoiceInputValue.discount) / 100) * calc.total,
@@ -223,64 +239,11 @@ const Invoice = () => {
   return (
     <>
       <div className="Invoice">
-        {/* <div className="invoiceSection d-flex">
-          <div
-            className="d-flex gap-20 shadow logoSec"
-            style={{ width: "100%" }}
-          >
-            <div>
-              <p>
-                Office 149, 450 South Brand Brooklyn San Diego County, CA 91905,
-                USA
-              </p>
-              <p>+1 (123) 456 7891, +44 (876) 543 2198</p>
-            </div>
-            <img src={Logo} alt="" className="logo" />
-          </div>
-        </div> */}
-
         <div className="invoiceSection first d-flex flex-start gap-20">
           <div className="left shadow" style={{ flexBasis: "100%" }}>
             <div className="firstTop d-flex flex-start">
               <div className="customerDetails">
                 <h3 className="title">Invoice To #</h3>
-                {/* <table>
-                  <tbody>
-                    <tr>
-                      <td>Name</td>
-                      <td className="tdColon">:</td>
-                      <td>
-                        <input
-                          type="text"
-                          name="customer_name"
-                          placeholder="Customer name"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Phone</td>
-                      <td className="tdColon">:</td>
-                      <td>
-                        <input
-                          type="text"
-                          name="customer_phone"
-                          placeholder="Customer phone"
-                        />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Address</td>
-                      <td className="tdColon">:</td>
-                      <td>
-                        <input
-                          type="text"
-                          name="customer_address"
-                          placeholder="Customer address"
-                        />
-                      </td>
-                    </tr>
-                  </tbody>
-                </table> */}
                 <div className="inputBox">
                   <label htmlFor="">Name :</label>
                   <input
@@ -353,11 +316,6 @@ const Invoice = () => {
         <div className="invoiceSection">
           <div className="measurement">
             <h2 className="title">Measurements</h2>
-            {invoiceInputValue.material_id != null ? (
-              <span>{invoiceInputValue.material_id}</span>
-            ) : (
-              ""
-            )}
             <div className="measurmentSelection d-flex flex-start">
               <div className="left d-flex gap-20">
                 <select name="material_id" onChange={handleInvoiceInputValue}>
@@ -564,16 +522,13 @@ const Invoice = () => {
             </div>
           </div>
         </div>
-        {/* <Link
-          to="/invoice-recipt"
-          className="button"
-          style={{ padding: "10px 20px", fontSize: "16px" }}
-          onClick={() => {
-            console.log(getImgData);
-          }}
-        >
-          Preview Invoice
-        </Link> */}
+        <div className="alertNote">
+          <p>
+            If you change the value of any input fields in the order summary
+            section, please change the values ​​of the all input fields to get
+            accurate results.
+          </p>
+        </div>
       </div>
 
       <ToastContainer position="top-center" theme="colored" />

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
 
 //___ Images ___//
@@ -11,6 +12,8 @@ import { FaPrint } from "react-icons/fa";
 import "./InvoiceRecipt.scss";
 
 const InvoiceRecipt = () => {
+  const { invoiceId } = useParams();
+
   const handlePrint = () => {
     print();
   };
@@ -99,7 +102,7 @@ const InvoiceRecipt = () => {
             </table>
           </div>
           <div className="right">
-            <p>Invoice # 10203</p>
+            <p>Invoice # {invoiceId}</p>
             <p>Issue date : {invoicePrintAbleValue.issueDate}</p>
             <p>Delivery : {invoicePrintAbleValue.deliveryData}</p>
           </div>

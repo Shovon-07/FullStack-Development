@@ -65,19 +65,17 @@ const PendingOrders = () => {
       name: "Action",
       cell: (row) => (
         <div className="d-flex" style={{ gap: "10px" }}>
-          <Link
-            to="/invoice-recipt"
-            className="button"
-            style={{ padding: "5px 20px", fontSize: "16px" }}
-            onClick={() => {
-              console.log(getImgData);
-            }}
-          >
-            Invoice
-          </Link>
-          <button className="button" style={{ fontWeight: "800" }}>
-            Compleate
+          <button className="button">
+            <Link
+              to={`/invoice-recipt/${row.id}`}
+              onClick={() => {
+                console.log(getImgData);
+              }}
+            >
+              Invoice
+            </Link>
           </button>
+          <button className="button">Compleate</button>
         </div>
       ),
     },
@@ -204,24 +202,12 @@ const PendingOrders = () => {
 
   return (
     <>
-      <div className="Home">
+      <div className="PendingOrder">
         {/* {loading && <Loader />} */}
         <div>
           <div>
             <h2>Pending orders</h2>
           </div>
-          {/* <div style={{ margin: "20px 0" }}>
-            <ModalPage
-              slug={"Add New Material"}
-              // inputFields={inputFieldsForAddMaterial}
-              inputFields={inputFieldsForAddMaterial}
-              ModalOpenBtnTitle="Add Materials"
-              ModalOpenBtnStyle={addModalOpenBtnStyle}
-              api={"/store"}
-              setLoading={setLoading}
-              setRelodeTable={setRelodeTable}
-            />
-          </div> */}
         </div>
         <DataTable
           columns={columns}

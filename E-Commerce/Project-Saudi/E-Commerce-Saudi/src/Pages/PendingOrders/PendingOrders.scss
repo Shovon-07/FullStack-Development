@@ -1,2 +1,15 @@
-.PendingOrders {
+@import "../../Styles/Variable.scss";
+@import "../../Styles//DataTable.scss";
+
+.PendingOrder {
+  box-shadow: $shadow;
+  background: $light-1;
+  padding: 20px;
+  .button {
+    padding: 5px 10px;
+    font-size: 15px;
+    a {
+      color: $light-1;
+    }
+  }
 }
