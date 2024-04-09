@@ -3,13 +3,15 @@
 
 .InvoiceRecipt {
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
+  min-width: 800px;
   margin: 10px auto 20px auto;
   box-shadow: $shadow;
   background: #fff;
   color: $dark-3;
   padding: 10px 40px 30px 40px;
   border-radius: 8px;
+  overflow-x: scroll;
   .logoSec {
     justify-content: space-between;
     .left {
@@ -64,6 +66,7 @@
   .productDetails {
     .left {
       flex-basis: 30%;
+      min-width: 100px;
       img {
         width: 100%;
         height: auto;
@@ -71,16 +74,22 @@
     }
     .right {
       flex-basis: 70%;
-      flex-direction: column;
-      .inputBox {
-        width: 100%;
-        label {
-          display: block;
-          margin-bottom: 8px;
-          font-size: 14px;
-        }
-        input {
+      // flex-direction: column;
+      .left,
+      .right {
+        flex-basis: 50%;
+        flex-direction: column;
+        .inputBox {
           width: 100%;
+          label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: $placeholder-color;
+          }
+          input {
+            width: 100%;
+          }
         }
       }
     }
@@ -92,6 +101,9 @@
     line-height: 30px;
     .left {
       flex-basis: 50%;
+      .salespersonNmae {
+        font-weight: 800;
+      }
     }
     .right {
       flex-basis: 50%;

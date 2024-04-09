@@ -298,3 +298,13 @@ body.blur {
 }
 
 /*________________ Blur effec end ________________*/
+
+// For print
+@media print {
+  body {
+    background: $light-1;
+  }
+  .printBtn {
+    display: none;
+  }
+}

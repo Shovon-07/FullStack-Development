@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
 
 //___ Additional utility ___//
@@ -17,9 +17,36 @@ const InvoiceRecipt = () => {
     print();
   };
 
+  const [invoicePrintAbleValue, setInvoicePrintAbleValue] = useState({
+    customer_name: "Asikur rahman",
+    customer_phone: "01767692422",
+    customer_address: `Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.
+    Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.`,
+
+    issueDate: "01/01/2024",
+    deliveryData: "10/01/2024",
+
+    image: "/images/dress/Screenshot from 2024-04-01 19-14-35.png",
+
+    material_id: "",
+    material: "Silk",
+    chest_length: "1",
+    neck_length: "2",
+    hand_length: "3",
+    dress_length: "4",
+    sleeve_length: "5",
+    cuff_length: "6",
+    shoulder_length: "7",
+
+    discount: "10",
+    tax: "50",
+    total: "1230",
+  });
+  const handelInvoicePrintAbleValue = () => {};
+
   return (
     <>
-      <div className="printBtnBox">
+      <div className="printBtnBox" id="PrintAble">
         <Tooltip title={"Print"}>
           <button className="printBtn button" onClick={handlePrint}>
             <FaPrint />
@@ -48,28 +75,25 @@ const InvoiceRecipt = () => {
                 <tr>
                   <td>Name</td>
                   <td className="tdColon">:</td>
-                  <td>Asikur rahman</td>
+                  <td>{invoicePrintAbleValue.customer_name}</td>
                 </tr>
                 <tr>
                   <td>Phone</td>
                   <td className="tdColon">:</td>
-                  <td>01767692422</td>
+                  <td>{invoicePrintAbleValue.customer_phone}</td>
                 </tr>
                 <tr>
                   <td>Address</td>
                   <td className="tdColon">:</td>
-                  <td>
-                    Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.
-                    Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.
-                  </td>
+                  <td>{invoicePrintAbleValue.customer_address}</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div className="right">
             <p>Invoice # 10203</p>
-            <p>Issue date : 01/01/2024</p>
-            <p>Delivery : 10/01/2024</p>
+            <p>Issue date : {invoicePrintAbleValue.issueDate}</p>
+            <p>Delivery : {invoicePrintAbleValue.deliveryData}</p>
           </div>
         </div>
 
@@ -82,16 +106,27 @@ const InvoiceRecipt = () => {
 
         <div className="productDetails d-flex flex-start gap-30">
           <div className="left">
-            <img src="/images/bd.svg" alt="" />
+            <img src={invoicePrintAbleValue.image} alt="" />
           </div>
           <div className="right d-flex flex-start gap-20">
+            {/* <div className="inputBox">
+              <label htmlFor="">Material</label>
+              <input
+                type="text"
+                name="material"
+                value={invoicePrintAbleValue.material}
+                onChange={handelInvoicePrintAbleValue}
+                readOnly
+              />
+            </div>
             <div className="inputBox">
               <label htmlFor="">Chest width</label>
               <input
                 type="text"
                 name="chest_length"
-                required
-                // onChange={handleInvoiceInputValue}
+                value={invoicePrintAbleValue.chest_length}
+                onChange={handelInvoicePrintAbleValue}
+                readOnly
               />
             </div>
             <div className="inputBox">
@@ -99,8 +134,9 @@ const InvoiceRecipt = () => {
               <input
                 type="text"
                 name="neck_length"
-                required
-                // onChange={handleInvoiceInputValue}
+                value={invoicePrintAbleValue.neck_length}
+                onChange={handelInvoicePrintAbleValue}
+                readOnly
               />
             </div>
             <div className="inputBox">
@@ -108,8 +144,9 @@ const InvoiceRecipt = () => {
               <input
                 type="text"
                 name="hand_length"
-                required
-                // onChange={handleInvoiceInputValue}
+                value={invoicePrintAbleValue.hand_length}
+                onChange={handelInvoicePrintAbleValue}
+                readOnly
               />
             </div>
             <div className="inputBox">
@@ -117,8 +154,9 @@ const InvoiceRecipt = () => {
               <input
                 type="text"
                 name="dress_length"
-                required
-                // onChange={handleInvoiceInputValue}
+                value={invoicePrintAbleValue.dress_length}
+                onChange={handelInvoicePrintAbleValue}
+                readOnly
               />
             </div>
             <div className="inputBox">
@@ -126,8 +164,9 @@ const InvoiceRecipt = () => {
               <input
                 type="text"
                 name="sleeve_length"
-                required
-                // onChange={handleInvoiceInputValue}
+                value={invoicePrintAbleValue.sleeve_length}
+                onChange={handelInvoicePrintAbleValue}
+                readOnly
               />
             </div>
             <div className="inputBox">
@@ -135,8 +174,9 @@ const InvoiceRecipt = () => {
               <input
                 type="text"
                 name="cuff_length"
-                required
-                // onChange={handleInvoiceInputValue}
+                value={invoicePrintAbleValue.cuff_length}
+                onChange={handelInvoicePrintAbleValue}
+                readOnly
               />
             </div>
             <div className="inputBox">
@@ -144,9 +184,95 @@ const InvoiceRecipt = () => {
               <input
                 type="text"
                 name="shoulder_length"
-                required
-                // onChange={handleInvoiceInputValue}
+                value={invoicePrintAbleValue.shoulder_length}
+                onChange={handelInvoicePrintAbleValue}
+                readOnly
               />
+            </div> */}
+
+            <div className="left d-flex gap-20">
+              <div className="inputBox">
+                <label htmlFor="">Material</label>
+                <input
+                  type="text"
+                  name="material"
+                  value={invoicePrintAbleValue.material}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Chest width</label>
+                <input
+                  type="text"
+                  name="chest_length"
+                  value={invoicePrintAbleValue.chest_length}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Neck width</label>
+                <input
+                  type="text"
+                  name="neck_length"
+                  value={invoicePrintAbleValue.neck_length}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Hand width</label>
+                <input
+                  type="text"
+                  name="hand_length"
+                  value={invoicePrintAbleValue.hand_length}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+            </div>
+            <div className="right d-flex gap-20">
+              <div className="inputBox">
+                <label htmlFor="">Dress length</label>
+                <input
+                  type="text"
+                  name="dress_length"
+                  value={invoicePrintAbleValue.dress_length}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Sleeve width</label>
+                <input
+                  type="text"
+                  name="sleeve_length"
+                  value={invoicePrintAbleValue.sleeve_length}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Cuff width</label>
+                <input
+                  type="text"
+                  name="cuff_length"
+                  value={invoicePrintAbleValue.cuff_length}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Shoulder</label>
+                <input
+                  type="text"
+                  name="shoulder_length"
+                  value={invoicePrintAbleValue.shoulder_length}
+                  onChange={handelInvoicePrintAbleValue}
+                  readOnly
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -160,8 +286,8 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="chest_length"
-                  required
-                  // onChange={handleInvoiceInputValue}
+                  
+                  // onChange={handelInvoicePrintAbleValue}
                 />
               </div>
               <div className="inputBox">
@@ -169,8 +295,8 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="neck_length"
-                  required
-                  // onChange={handleInvoiceInputValue}
+                  
+                  // onChange={handelInvoicePrintAbleValue}
                 />
               </div>
               <div className="inputBox">
@@ -178,8 +304,8 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="hand_length"
-                  required
-                  // onChange={handleInvoiceInputValue}
+                  
+                  // onChange={handelInvoicePrintAbleValue}
                 />
               </div>
               <div className="inputBox">
@@ -187,8 +313,8 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="dress_length"
-                  required
-                  // onChange={handleInvoiceInputValue}
+                  
+                  // onChange={handelInvoicePrintAbleValue}
                 />
               </div>
             </div>
@@ -198,8 +324,8 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="sleeve_length"
-                  required
-                  // onChange={handleInvoiceInputValue}
+                  
+                  // onChange={handelInvoicePrintAbleValue}
                 />
               </div>
               <div className="inputBox">
@@ -207,8 +333,8 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="cuff_length"
-                  required
-                  // onChange={handleInvoiceInputValue}
+                  
+                  // onChange={handelInvoicePrintAbleValue}
                 />
               </div>
               <div className="inputBox">
@@ -216,8 +342,8 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="shoulder_length"
-                  required
-                  // onChange={handleInvoiceInputValue}
+                  
+                  // onChange={handelInvoicePrintAbleValue}
                 />
               </div>
             </div>
@@ -226,25 +352,21 @@ const InvoiceRecipt = () => {
 
         <div className="summery d-flex flex-start gap-30">
           <div className="left">
-            <p>Salesperson: </p>
-            <h3>Al jubair shovon</h3>
+            <p>Salesperson : </p>
+            <h3 className="salespersonNmae">Al jubair shovon</h3>
           </div>
           <div className="right">
             <div className="d-flex flex-start gap-10">
-              <p>Subtotal : </p>
-              <p>$ 100</p>
+              <p>Tax : </p>
+              <p>$ {invoicePrintAbleValue.tax}</p>
             </div>
             <div className="d-flex flex-start gap-10">
               <p>Discount : </p>
-              <p>$ 10</p>
-            </div>
-            <div className="d-flex flex-start gap-10">
-              <p>Tax : </p>
-              <p>$ 50</p>
+              <p>$ {invoicePrintAbleValue.discount}</p>
             </div>
             <div className="d-flex flex-start gap-10">
               <p>Total : </p>
-              <p>$ 1000</p>
+              <p>$ {invoicePrintAbleValue.total}</p>
             </div>
           </div>
         </div>
