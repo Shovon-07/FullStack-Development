@@ -63,6 +63,7 @@ const PendingOrders = () => {
     },
     {
       name: "Action",
+      width: "300px",
       cell: (row) => {
         return (
           <div className="d-flex" style={{ gap: "10px" }}>
