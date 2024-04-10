@@ -334,7 +334,7 @@ const Invoice = () => {
                 <div className="inputBox">
                   <input
                     type="text"
-                    placeholder="Chest width"
+                    placeholder="Chest length"
                     name="chest_length"
                     required
                     onChange={handleInvoiceInputValue}
@@ -343,7 +343,7 @@ const Invoice = () => {
                 <div className="inputBox">
                   <input
                     type="text"
-                    placeholder="Neck width"
+                    placeholder="Neck length"
                     name="neck_length"
                     required
                     onChange={handleInvoiceInputValue}
@@ -352,7 +352,7 @@ const Invoice = () => {
                 <div className="inputBox">
                   <input
                     type="text"
-                    placeholder="Hand width"
+                    placeholder="Hand length"
                     name="hand_length"
                     required
                     onChange={handleInvoiceInputValue}
@@ -372,7 +372,7 @@ const Invoice = () => {
                 <div className="inputBox">
                   <input
                     type="text"
-                    placeholder="Sleeve width"
+                    placeholder="Sleeve length"
                     name="sleeve_length"
                     required
                     onChange={handleInvoiceInputValue}
@@ -381,7 +381,7 @@ const Invoice = () => {
                 <div className="inputBox">
                   <input
                     type="text"
-                    placeholder="Cuff width"
+                    placeholder="Cuff length"
                     name="cuff_length"
                     required
                     onChange={handleInvoiceInputValue}

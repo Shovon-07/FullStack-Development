@@ -51,14 +51,11 @@ class InvoiceController extends Controller
             $dress_length = $request->input('dress_length');
             $material_length = $request->input('material_length');
             $sale_price = $request->input('sale_price');
-            // $total = $material_length * $sale_price;
             $total = $request->input("total");
             $discount = $request->input('discount');
             $vat = $request->input('vat');
-            // $payable = ($total + $vat) - $discount;
             $payable = $request->input("payable");
             $advance = $request->input('advance');
-            // $due = $payable - $advance;
             $due = $request->input("due");
             $deadline_date = $request->input('deadline_date');
             $inqueries_number = $request->input('inqueries_number') ?? "";
@@ -150,6 +147,56 @@ class InvoiceController extends Controller
         $pendingOrders = Invoice::where('status', '=', 'pending')->select("id","customer_id","payable","due")->with('customer:id,name,phone')->get();
 
         return $pendingOrders;
+    }
+
+    // Cancell orders
+    public function cancel(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $invoice = Invoice::where('id','=',$request->id)->first();
+
+            $material = Material::where('id', '=', $invoice->material_id)->first();
+
+            if ($material) {
+
+                $oldStock = $material->stock;
+                $newStock = $oldStock + $invoice->material_length;
+
+                Material::where('id', '=', $invoice->material_id)->update([
+                    'stock' => $newStock
+                ]);
+            }
+
+
+            Invoice::where('id', '=', $request->id)->update([
+                'status' => 'cancel'
+            ]);
+            DB::commit();
+            return 'success';
+        } catch (Exception $e) {
+            DB::rollBack();
+            return 'failed';
+        }
+    }
+
+
+    // Complete orders
+    public function completePendingOrders(Request $request)
+    {
+        $id = $request->input('id');
+        Invoice::where('id', '=', $id)->update([
+            'status' => 'complete'
+        ]);
+        return 1;
+    }
+
+    // View completed orders
+    public function completeOrders()
+    {
+        $completeOrders = Invoice::where('status', '=', 'complete')->get();
+
+        return $completeOrders;
     }
 
 }

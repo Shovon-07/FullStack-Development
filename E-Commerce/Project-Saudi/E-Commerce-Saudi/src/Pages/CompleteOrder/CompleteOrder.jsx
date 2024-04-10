@@ -1,42 +1,138 @@
 import React, { useEffect, useState } from "react";
+import { Link, useOutletContext } from "react-router-dom";
+import DataTable from "react-data-table-component";
+
+//___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
 
 const CompleteOrder = () => {
+  const [setLoading] = useOutletContext();
   const { http } = AxiosConfig();
 
-  const [capturedImage, setCapturedImage] = useState();
+  // States
+  const [apiData, setApiData] = useState([]);
+  const [searchData, setSearchData] = useState("");
+  const [filteredApiData, setFilteredApiData] = useState([]);
+  const [relodeTable, setRelodeTable] = useState(false);
 
-  const getCapturedImg = async () => {
-    await http.get("/get-processed-img").then((response) => {
-      // console.log(response.data.Image);
-      if (response) {
-        setCapturedImage(response.data.Image);
-        console.log(capturedImage);
-      }
-    });
+  const getApiData = async () => {
+    try {
+      setLoading(true);
+      await http.get("/pending-order").then((response) => {
+        setApiData(response.data);
+        setFilteredApiData(response.data);
+        setLoading(false);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  const columns = [
+    {
+      name: "Sl No",
+      field: "SlNo",
+      selector: (row) => row.id,
+      width: "70px",
+    },
+    {
+      name: "Customer Name",
+      field: "CustomerName",
+      selector: (row) => row.customer.name,
+    },
+    {
+      name: "Phone",
+      field: "CustomerPhone",
+      selector: (row) => row.customer.phone,
+    },
+    {
+      name: "Pay able",
+      field: "PayAble",
+      selector: (row) => row.payable,
+    },
+    {
+      name: "Due",
+      field: "Due",
+      selector: (row) => row.due,
+    },
+    {
+      name: "Action",
+      cell: (row) => {
+        return (
+          <div className="d-flex" style={{ gap: "10px" }}>
+            <Link to={`/invoice-recipt/${row.id}`}>
+              <button className="button">Invoice</button>
+            </Link>
+            <button
+              className="button"
+              onClick={() => {
+                try {
+                  http.post("/del", { id: row.id }).then((respone) => {
+                    console.log(respone.data);
+                  });
+                } catch (error) {
+                  console.error(error);
+                }
+              }}
+            >
+              Delivery
+            </button>
+          </div>
+        );
+      },
+    },
+  ];
+
   useEffect(() => {
-    getCapturedImg();
-  }, []);
+    getApiData();
+  }, [relodeTable]);
+
+  useEffect(() => {
+    const result = apiData.filter((filteredApiData) => {
+      return filteredApiData.customer.phone
+        .toLowerCase()
+        .match(searchData.toLowerCase());
+    });
+    setFilteredApiData(result);
+  }, [searchData]);
 
   return (
-    <div>
-      CompleteOrder
-      <div id="viewCapturedImg" style={{ width: "200px", height: "auto" }}>
-        <img
-          src={"http://localhost:8000/images/ScreenShoot/" + capturedImage}
-          alt=""
-        />
-        {/* <button
-          className="button"
-          style={{ fontSize: "20px", padding: "10px" }}
-        >
-          Preview Image
-        </button> */}
+    <div className="CompleteOrder">
+      {/* {loading && <Loader />} */}
+      <div>
+        <div>
+          <h2>Complete orders</h2>
+        </div>
       </div>
+      <DataTable
+        columns={columns}
+        data={filteredApiData}
+        pagination
+        subHeader
+        subHeaderComponent={
+          <input
+            type="text"
+            placeholder="Search by phone number"
+            value={searchData}
+            onChange={(e) => {
+              setSearchData(e.target.value);
+            }}
+          />
+        }
+      />
     </div>
   );
 };
 
 export default CompleteOrder;
+
+/**
+ * in invoice page =>
+ * after due -> Collection : show
+ * Net outstanding:
+ *
+ *
+ * in delivery page =>
+ * after issue-date : Delivery data: inupt
+ * after due -> Collection : input
+ */

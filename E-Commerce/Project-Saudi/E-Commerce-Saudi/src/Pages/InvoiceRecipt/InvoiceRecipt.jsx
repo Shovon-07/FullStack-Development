@@ -65,6 +65,7 @@ const InvoiceRecipt = () => {
           customer_phone: response.data.customer.phone,
           customer_address: response.data.customer.address,
 
+          issue_date: response.data.created_at.substr(0, 10),
           deadline_date: response.data.deadline_date,
 
           image: response.data.image,
@@ -151,7 +152,7 @@ const InvoiceRecipt = () => {
           </div>
           <div className="right">
             <p>Invoice # {invoiceId}</p>
-            <p>Issue date : 01/01/2024</p>
+            <p>Issue date : {apiData.issue_date}</p>
             <p>Delivery : {apiData.deadline_date}</p>
           </div>
         </div>
@@ -297,7 +298,7 @@ const InvoiceRecipt = () => {
                 <tr>
                   <td>Material length</td>
                   <td>:</td>
-                  <td>{apiData.material_length} $</td>
+                  <td>{apiData.material_length} meter</td>
                 </tr>
                 <tr>
                   <td>Material price</td>

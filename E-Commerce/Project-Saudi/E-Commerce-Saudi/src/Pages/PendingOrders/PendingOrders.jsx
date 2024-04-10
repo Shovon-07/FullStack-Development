@@ -63,14 +63,45 @@ const PendingOrders = () => {
     },
     {
       name: "Action",
-      cell: (row) => (
-        <div className="d-flex" style={{ gap: "10px" }}>
-          <Link to={`/invoice-recipt/${row.id}`}>
-            <button className="button">Invoice</button>
-          </Link>
-          <button className="button">Compleate</button>
-        </div>
-      ),
+      cell: (row) => {
+        return (
+          <div className="d-flex" style={{ gap: "10px" }}>
+            <Link to={`/invoice-recipt/${row.id}`}>
+              <button className="button">Invoice</button>
+            </Link>
+            <button
+              className="button"
+              onClick={() => {
+                try {
+                  http
+                    .post("/complete-pendingOrder", { id: row.id })
+                    .then((respone) => {
+                      console.log(respone.data);
+                    });
+                } catch (error) {
+                  console.error(error);
+                }
+              }}
+            >
+              Complete
+            </button>
+            <button
+              className="button"
+              onClick={() => {
+                try {
+                  http.post("/cancel-sell", { id: row.id }).then((respone) => {
+                    console.log(respone.data);
+                  });
+                } catch (error) {
+                  console.error(error);
+                }
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        );
+      },
     },
   ];
 

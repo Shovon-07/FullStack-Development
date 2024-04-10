@@ -36,7 +36,6 @@ Route::controller(MaterialController::class)->group(function(){
     Route::post('/updateDeduct','updateDeduct');
 
     // price
-    // Route::get('/price/{id}','price');
     Route::get('/price','price');
     Route::post('/updatePrice','updatePrice');
 });
@@ -49,6 +48,12 @@ Route::controller(InvoiceController::class)->group(function(){
     Route::post('/order-details','orderDetails');
 
     Route::get('/pending-order','pendingOrders');
+
+    Route::post('/cancel-sell','cancel');
+
+    Route::post('/complete-pendingOrder','completePendingOrders');
+
+    Route::get('/complete-order','completeOrders');
 });
 
 Route::controller(ProcessImgController::class)->group(function(){
