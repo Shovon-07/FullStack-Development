@@ -59,12 +59,8 @@ const InvoiceRecipt = () => {
     try {
       setLoading(true);
       await http.post("/order-details", { id: invoiceId }).then((response) => {
-        setApiData(response.data);
-        setLoading(false);
-
-        // Set state
-        setInvoicePrintAbleValue({
-          ...invoicePrintAbleValue,
+        setApiData({
+          ...apiData,
           customer_name: response.data.customer.name,
           customer_phone: response.data.customer.phone,
           customer_address: response.data.customer.address,
@@ -96,6 +92,7 @@ const InvoiceRecipt = () => {
           due: response.data.due,
         });
       });
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -105,37 +102,6 @@ const InvoiceRecipt = () => {
     getApiData();
   }, []);
 
-  const [invoicePrintAbleValue, setInvoicePrintAbleValue] = useState({
-    customer_name: "",
-    customer_phone: "",
-    customer_address: "",
-    issueDate: "",
-    deadline_date: "",
-
-    image: "",
-
-    material: "",
-    chest_length: "",
-    neck_length: "",
-    hand_length: "",
-    dress_length: "",
-    sleeve_length: "",
-    cuff_length: "",
-    shoulder_length: "",
-    button_type: "",
-    neck_type: "",
-    pocket_type: "",
-    hand_type: "",
-
-    material_length: "",
-    material_price: "",
-    discount: "",
-    tax: "",
-    total: "",
-    payAble: "",
-    advance: "",
-    due: "",
-  });
   const handelInvoicePrintAbleValue = () => {};
 
   return (
@@ -170,17 +136,17 @@ const InvoiceRecipt = () => {
                 <tr>
                   <td>Name</td>
                   <td className="tdColon">:</td>
-                  <td>{invoicePrintAbleValue.customer_name}</td>
+                  <td>{apiData.customer_name}</td>
                 </tr>
                 <tr>
                   <td>Phone</td>
                   <td className="tdColon">:</td>
-                  <td>{invoicePrintAbleValue.customer_phone}</td>
+                  <td>{apiData.customer_phone}</td>
                 </tr>
                 <tr>
                   <td>Address</td>
                   <td className="tdColon">:</td>
-                  <td>{invoicePrintAbleValue.customer_address}</td>
+                  <td>{apiData.customer_address}</td>
                 </tr>
               </tbody>
             </table>
@@ -188,7 +154,7 @@ const InvoiceRecipt = () => {
           <div className="right">
             <p>Invoice # {invoiceId}</p>
             <p>Issue date : 01/01/2024</p>
-            <p>Delivery : {invoicePrintAbleValue.deadline_date}</p>
+            <p>Delivery : {apiData.deadline_date}</p>
           </div>
         </div>
 
@@ -202,10 +168,7 @@ const InvoiceRecipt = () => {
         <div className="productDetails d-flex flex-start gap-30">
           <div className="left">
             <img
-              src={
-                "http://localhost:8000/images/ScreenShoot/" +
-                invoicePrintAbleValue.image
-              }
+              src={"http://localhost:8000/images/ScreenShoot/" + apiData.image}
               alt=""
             />
           </div>
@@ -216,7 +179,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="material"
-                  value={invoicePrintAbleValue.material}
+                  value={apiData.material}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -226,7 +189,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="chest_length"
-                  value={invoicePrintAbleValue.chest_length}
+                  value={apiData.chest_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -236,7 +199,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="neck_length"
-                  value={invoicePrintAbleValue.neck_length}
+                  value={apiData.neck_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -246,7 +209,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="hand_length"
-                  value={invoicePrintAbleValue.hand_length}
+                  value={apiData.hand_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -256,7 +219,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="dress_length"
-                  value={invoicePrintAbleValue.dress_length}
+                  value={apiData.dress_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -266,7 +229,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="sleeve_length"
-                  value={invoicePrintAbleValue.sleeve_length}
+                  value={apiData.sleeve_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -278,7 +241,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="cuff_length"
-                  value={invoicePrintAbleValue.cuff_length}
+                  value={apiData.cuff_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -288,7 +251,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="shoulder_length"
-                  value={invoicePrintAbleValue.shoulder_length}
+                  value={apiData.shoulder_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -298,7 +261,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="button_type"
-                  value={invoicePrintAbleValue.button_type}
+                  value={apiData.button_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -308,7 +271,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="neck_type"
-                  value={invoicePrintAbleValue.neck_type}
+                  value={apiData.neck_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -318,7 +281,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="pocket_type"
-                  value={invoicePrintAbleValue.pocket_type}
+                  value={apiData.pocket_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -328,7 +291,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="hand_type"
-                  value={invoicePrintAbleValue.hand_type}
+                  value={apiData.hand_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -348,44 +311,44 @@ const InvoiceRecipt = () => {
                 <tr>
                   <td>Material length</td>
                   <td>:</td>
-                  <td>{invoicePrintAbleValue.material_length} $</td>
+                  <td>{apiData.material_length} $</td>
                 </tr>
                 <tr>
                   <td>Material price</td>
                   <td>:</td>
-                  <td>{invoicePrintAbleValue.material_price} $</td>
+                  <td>{apiData.material_price} $</td>
                 </tr>
                 <tr>
                   <td>Total</td>
                   <td>:</td>
-                  <td>{invoicePrintAbleValue.total} $</td>
+                  <td>{apiData.total} $</td>
                 </tr>
 
                 <tr>
                   <td>Discount</td>
                   <td>:</td>
-                  <td>{invoicePrintAbleValue.discount} $</td>
+                  <td>{apiData.discount} $</td>
                 </tr>
                 <tr>
                   <td>Tax</td>
                   <td>:</td>
-                  <td>{invoicePrintAbleValue.tax} $</td>
+                  <td>{apiData.tax} $</td>
                 </tr>
                 <tr>
                   <td>Pay able</td>
                   <td>:</td>
-                  <td>{invoicePrintAbleValue.payAble} $</td>
+                  <td>{apiData.payAble} $</td>
                 </tr>
 
                 <tr>
                   <td>Recivced amount</td>
                   <td>:</td>
-                  <td>{invoicePrintAbleValue.advance} $</td>
+                  <td>{apiData.advance} $</td>
                 </tr>
                 <tr>
                   <td>Due</td>
                   <td>:</td>
-                  <td>{invoicePrintAbleValue.due} $</td>
+                  <td>{apiData.due} $</td>
                 </tr>
               </tbody>
             </table>
