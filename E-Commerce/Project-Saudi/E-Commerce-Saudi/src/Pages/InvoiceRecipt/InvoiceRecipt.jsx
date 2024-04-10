@@ -102,8 +102,6 @@ const InvoiceRecipt = () => {
     getApiData();
   }, []);
 
-  const handelInvoicePrintAbleValue = () => {};
-
   return (
     <>
       <div className="printBtnBox" id="PrintAble">
@@ -180,7 +178,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="material"
                   value={apiData.material}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -190,7 +187,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="chest_length"
                   value={apiData.chest_length}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -200,7 +196,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="neck_length"
                   value={apiData.neck_length}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -210,7 +205,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="hand_length"
                   value={apiData.hand_length}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -220,7 +214,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="dress_length"
                   value={apiData.dress_length}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -230,7 +223,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="sleeve_length"
                   value={apiData.sleeve_length}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -242,7 +234,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="cuff_length"
                   value={apiData.cuff_length}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -252,7 +243,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="shoulder_length"
                   value={apiData.shoulder_length}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -262,7 +252,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="button_type"
                   value={apiData.button_type}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -272,7 +261,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="neck_type"
                   value={apiData.neck_type}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -282,7 +270,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="pocket_type"
                   value={apiData.pocket_type}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
@@ -292,7 +279,6 @@ const InvoiceRecipt = () => {
                   type="text"
                   name="hand_type"
                   value={apiData.hand_type}
-                  onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
               </div>
