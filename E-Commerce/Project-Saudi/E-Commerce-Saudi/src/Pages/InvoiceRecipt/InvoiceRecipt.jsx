@@ -24,19 +24,77 @@ const InvoiceRecipt = () => {
   const [setLoading] = useOutletContext();
   const { http } = AxiosConfig();
 
-  const [apiData, setApiData] = useState([]);
+  const [apiData, setApiData] = useState({
+    customer_name: "",
+    customer_phone: "",
+    customer_address: "",
+
+    deadline_date: "",
+
+    image: "",
+
+    material: "",
+    chest_length: "",
+    neck_length: "",
+    hand_length: "",
+    dress_length: "",
+    sleeve_length: "",
+    cuff_length: "",
+    shoulder_length: "",
+    button_type: "",
+    neck_type: "",
+    pocket_type: "",
+    hand_type: "",
+
+    material_length: "",
+    material_price: "",
+    total: "",
+    discount: "",
+    tax: "",
+    payAble: "",
+    advance: "",
+    due: "",
+  });
   const getApiData = async () => {
     try {
       setLoading(true);
       await http.post("/order-details", { id: invoiceId }).then((response) => {
         setApiData(response.data);
         setLoading(false);
-        console.log(apiData);
+
         // Set state
-        // setInvoicePrintAbleValue({
-        //   ...invoicePrintAbleValue,
-        //   customer_name: response.data.customer.name,
-        // });
+        setInvoicePrintAbleValue({
+          ...invoicePrintAbleValue,
+          customer_name: response.data.customer.name,
+          customer_phone: response.data.customer.phone,
+          customer_address: response.data.customer.address,
+
+          deadline_date: response.data.deadline_date,
+
+          image: response.data.image,
+
+          material: response.data.material.name,
+          chest_length: response.data.chest_length,
+          neck_length: response.data.neck_length,
+          hand_length: response.data.hand_length,
+          dress_length: response.data.dress_length,
+          sleeve_length: response.data.sleeve_length,
+          cuff_length: response.data.cuff_length,
+          shoulder_length: response.data.shoulder_length,
+          button_type: response.data.button_type,
+          neck_type: response.data.neck_type,
+          pocket_type: response.data.pocket_type,
+          hand_type: response.data.hand_type,
+
+          material_length: response.data.material_length,
+          material_price: response.data.sale_price,
+          total: response.data.total,
+          discount: response.data.discount,
+          tax: response.data.vat,
+          payAble: response.data.payable,
+          advance: response.data.advance,
+          due: response.data.due,
+        });
       });
     } catch (error) {
       console.log(error);
@@ -48,34 +106,35 @@ const InvoiceRecipt = () => {
   }, []);
 
   const [invoicePrintAbleValue, setInvoicePrintAbleValue] = useState({
-    // customer_name: "",
-    // customer_phone: "01767692422",
-    // customer_address: `Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.
-    // Charkhutar mor, Rajshahi court 6201, kashiadanga, Rajshahi.`,
-    // issueDate: "01/01/2024",
-    // deliveryData: "10/01/2024",
-    // image: "/images/dress/Screenshot from 2024-04-01 19-14-35.png",
-    // material_id: "",
-    // material: "Silk",
-    // chest_length: "1",
-    // neck_length: "2",
-    // hand_length: "3",
-    // dress_length: "4",
-    // sleeve_length: "5",
-    // cuff_length: "6",
-    // shoulder_length: "7",
-    // button_type: "a",
-    // neck_type: "b",
-    // pocket_type: "c",
-    // hand_type: "d",
-    // materialLength: "20",
-    // materialPrice: "200",
-    // discount: "10",
-    // tax: "50",
-    // total: "1230",
-    // payAble: "3000",
-    // advance: "500",
-    // due: "0",
+    customer_name: "",
+    customer_phone: "",
+    customer_address: "",
+    issueDate: "",
+    deadline_date: "",
+
+    image: "",
+
+    material: "",
+    chest_length: "",
+    neck_length: "",
+    hand_length: "",
+    dress_length: "",
+    sleeve_length: "",
+    cuff_length: "",
+    shoulder_length: "",
+    button_type: "",
+    neck_type: "",
+    pocket_type: "",
+    hand_type: "",
+
+    material_length: "",
+    material_price: "",
+    discount: "",
+    tax: "",
+    total: "",
+    payAble: "",
+    advance: "",
+    due: "",
   });
   const handelInvoicePrintAbleValue = () => {};
 
@@ -88,6 +147,7 @@ const InvoiceRecipt = () => {
           </button>
         </Tooltip>
       </div>
+
       <div className="InvoiceRecipt">
         <div className="logoSec d-flex">
           <div className="left">
@@ -110,17 +170,17 @@ const InvoiceRecipt = () => {
                 <tr>
                   <td>Name</td>
                   <td className="tdColon">:</td>
-                  {/* <td>{apiData.customer.name}</td> */}
+                  <td>{invoicePrintAbleValue.customer_name}</td>
                 </tr>
                 <tr>
                   <td>Phone</td>
                   <td className="tdColon">:</td>
-                  {/* <td>{apiData.customer.phone}</td> */}
+                  <td>{invoicePrintAbleValue.customer_phone}</td>
                 </tr>
                 <tr>
                   <td>Address</td>
                   <td className="tdColon">:</td>
-                  {/* <td>{apiData.customer.address}</td> */}
+                  <td>{invoicePrintAbleValue.customer_address}</td>
                 </tr>
               </tbody>
             </table>
@@ -128,7 +188,7 @@ const InvoiceRecipt = () => {
           <div className="right">
             <p>Invoice # {invoiceId}</p>
             <p>Issue date : 01/01/2024</p>
-            <p>Delivery : {apiData.deadline_date}</p>
+            <p>Delivery : {invoicePrintAbleValue.deadline_date}</p>
           </div>
         </div>
 
@@ -142,7 +202,10 @@ const InvoiceRecipt = () => {
         <div className="productDetails d-flex flex-start gap-30">
           <div className="left">
             <img
-              src={"http://localhost:8000/images/ScreenShoot/" + apiData.image}
+              src={
+                "http://localhost:8000/images/ScreenShoot/" +
+                invoicePrintAbleValue.image
+              }
               alt=""
             />
           </div>
@@ -153,7 +216,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="material"
-                  // value={apiData.material.name}
+                  value={invoicePrintAbleValue.material}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -163,7 +226,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="chest_length"
-                  value={apiData.chest_length}
+                  value={invoicePrintAbleValue.chest_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -173,7 +236,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="neck_length"
-                  value={apiData.neck_length}
+                  value={invoicePrintAbleValue.neck_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -183,7 +246,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="hand_length"
-                  value={apiData.hand_length}
+                  value={invoicePrintAbleValue.hand_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -193,7 +256,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="dress_length"
-                  value={apiData.dress_length}
+                  value={invoicePrintAbleValue.dress_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -203,7 +266,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="sleeve_length"
-                  value={apiData.sleeve_length}
+                  value={invoicePrintAbleValue.sleeve_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -215,7 +278,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="cuff_length"
-                  value={apiData.cuff_length}
+                  value={invoicePrintAbleValue.cuff_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -225,7 +288,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="shoulder_length"
-                  value={apiData.shoulder_length}
+                  value={invoicePrintAbleValue.shoulder_length}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -235,7 +298,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="button_type"
-                  value={apiData.button_type}
+                  value={invoicePrintAbleValue.button_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -245,7 +308,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="neck_type"
-                  value={apiData.neck_type}
+                  value={invoicePrintAbleValue.neck_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -255,7 +318,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="pocket_type"
-                  value={apiData.pocket_type}
+                  value={invoicePrintAbleValue.pocket_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -265,7 +328,7 @@ const InvoiceRecipt = () => {
                 <input
                   type="text"
                   name="hand_type"
-                  value={apiData.hand_type}
+                  value={invoicePrintAbleValue.hand_type}
                   onChange={handelInvoicePrintAbleValue}
                   readOnly
                 />
@@ -285,81 +348,47 @@ const InvoiceRecipt = () => {
                 <tr>
                   <td>Material length</td>
                   <td>:</td>
-                  <td>{apiData.sale_price} $</td>
+                  <td>{invoicePrintAbleValue.material_length} $</td>
                 </tr>
                 <tr>
                   <td>Material price</td>
                   <td>:</td>
-                  <td>{apiData.sale_price} $</td>
+                  <td>{invoicePrintAbleValue.material_price} $</td>
                 </tr>
                 <tr>
                   <td>Total</td>
                   <td>:</td>
-                  <td>{apiData.total} $</td>
+                  <td>{invoicePrintAbleValue.total} $</td>
                 </tr>
 
                 <tr>
                   <td>Discount</td>
                   <td>:</td>
-                  <td>{apiData.discount} $</td>
+                  <td>{invoicePrintAbleValue.discount} $</td>
                 </tr>
                 <tr>
                   <td>Tax</td>
                   <td>:</td>
-                  <td>{apiData.vat} $</td>
+                  <td>{invoicePrintAbleValue.tax} $</td>
                 </tr>
                 <tr>
                   <td>Pay able</td>
                   <td>:</td>
-                  <td>{apiData.payable} $</td>
+                  <td>{invoicePrintAbleValue.payAble} $</td>
                 </tr>
 
                 <tr>
                   <td>Recivced amount</td>
                   <td>:</td>
-                  <td>{apiData.advance} $</td>
+                  <td>{invoicePrintAbleValue.advance} $</td>
                 </tr>
                 <tr>
                   <td>Due</td>
                   <td>:</td>
-                  <td>{apiData.due} $</td>
+                  <td>{invoicePrintAbleValue.due} $</td>
                 </tr>
               </tbody>
             </table>
-            {/* <div className="d-flex flex-start gap-10">
-              <p>Material length : </p>
-              <p>$ {apiData.material_length}</p>
-            </div> */}
-            {/* <div className="d-flex flex-start gap-10">
-              <p>Material price : </p>
-              <p>{apiData.sale_price} $</p>
-            </div> */}
-            {/* <div className="d-flex flex-start gap-10">
-              <p>Total : </p>
-              <p>{apiData.total}$</p>
-            </div> */}
-
-            {/* <div className="d-flex flex-start gap-10">
-              <p>Discount : </p>
-              <p>{apiData.discount}$</p>
-            </div> */}
-            {/* <div className="d-flex flex-start gap-10">
-              <p>Tax : </p>
-              <p>{apiData.vat}$</p>
-            </div> */}
-            {/* <div className="d-flex flex-start gap-10">
-              <p>Pay able : </p>
-              <p>{apiData.payable} $</p>
-            </div> */}
-
-            {/* <div className="d-flex flex-start gap-10">
-              <p>Recivced amount : </p>
-              <p>{apiData.advance} $</p>
-            </div> */}
-            {/* <div className="d-flex flex-start gap-10">
-              <p>Due : </p>
-              <p>{apiData.due} $</p>
-            </div> */}
           </div>
         </div>
       </div>
@@ -370,7 +399,6 @@ const InvoiceRecipt = () => {
 export default InvoiceRecipt;
 
 /**
- * ==> problem
- * Customer name , phone, address আসেছে। কিন্ত component re-render হলে চেলে যাোেচ্চে।
+ *
  *
  */
