@@ -6,7 +6,6 @@ import DataTable from "react-data-table-component";
 import AxiosConfig from "../../assets/AxiosConfig";
 
 //___ Components ___//
-import ModalPage from "../../Components/Modal/ModalPage";
 
 //___ Css ___//
 import "./PendingOrders.scss";
@@ -67,7 +66,7 @@ const PendingOrders = () => {
       cell: (row) => {
         return (
           <div className="d-flex" style={{ gap: "10px" }}>
-            <Link to={`/invoice/${row.id}`}>
+            <Link to={`/invoice/temporary-invoice/${row.id}`}>
               <button className="button">Invoice</button>
             </Link>
             <button

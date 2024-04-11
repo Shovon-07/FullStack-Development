@@ -39,7 +39,10 @@ const router = createBrowserRouter([
     path: "/invoice",
     element: <AppNoHeaderFooter />,
     errorElement: <ErrorPage />,
-    children: [{ path: "/invoice/:invoiceId", element: <Invoice /> }],
+    children: [
+      { path: "/invoice/temporary-invoice/:invoiceId", element: <Invoice /> },
+      { path: "/invoice/:invoiceId", element: <Invoice /> },
+    ],
   },
 ]);
 
