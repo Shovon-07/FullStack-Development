@@ -21,7 +21,7 @@ const CompleteOrder = () => {
   const getApiData = async () => {
     try {
       setLoading(true);
-      await http.get("/pending-order").then((response) => {
+      await http.get("/complete-order").then((response) => {
         setApiData(response.data);
         setFilteredApiData(response.data);
         setLoading(false);

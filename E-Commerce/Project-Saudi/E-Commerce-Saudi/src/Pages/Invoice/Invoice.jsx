@@ -337,6 +337,11 @@ const Invoice = () => {
                   <td>:</td>
                   <td>{apiData.due} $</td>
                 </tr>
+                <tr>
+                  <td>Collection</td>
+                  <td>:</td>
+                  <td>{apiData.collection} $</td>
+                </tr>
               </tbody>
             </table>
           </div>
