@@ -6,24 +6,20 @@ import AxiosConfig from "../../assets/AxiosConfig";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-//___ Images ___//
-import Logo from "/images/icons/logo.png";
-
 //___ Icons ___//
 import { FiAlertTriangle } from "react-icons/fi";
 
 //___ Css ___//
-import "./Invoice.scss";
+import "./CreateInvoice.scss";
 
 //___ Component ___//
 import CustomizeImg from "../CustomizeImg/CustomizeImg";
 
 const ContextApiForGetImgData = createContext();
 
-const Invoice = () => {
+const CreateInvoice = () => {
   const { http } = AxiosConfig();
   const [setLoading] = useOutletContext();
-  const [msg, setMsg] = useState("");
 
   const [getImgData, setGetImgData] = useState({
     Image: "",
@@ -77,7 +73,6 @@ const Invoice = () => {
   const handleSubmit = async () => {
     //___ Validation ___//
     if (invoiceInputValue.customer_name == null) {
-      // setMsg("Please enter customer name");
       toast.error("Please enter customer name");
     } else if (invoiceInputValue.customer_phone == null) {
       toast.error("Please enter customer phone number");
@@ -156,12 +151,12 @@ const Invoice = () => {
         setLoading(true);
         await http.post("/store-sell", data).then((response) => {
           setLoading(false);
-          toast.success("Successfull");
+          toast.success("Sell successfull");
 
           // Clear all input field
         });
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   };
@@ -178,7 +173,7 @@ const Invoice = () => {
       });
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   //___ Get Requests end ___//
@@ -239,7 +234,7 @@ const Invoice = () => {
 
   return (
     <>
-      <div className="Invoice">
+      <div className="CreateInvoice">
         <div className="invoiceSection first d-flex flex-start gap-20">
           <div className="left shadow" style={{ flexBasis: "100%" }}>
             <div className="firstTop d-flex flex-start">
@@ -540,5 +535,5 @@ const Invoice = () => {
   );
 };
 
-export default Invoice;
+export default CreateInvoice;
 export { ContextApiForGetImgData };

@@ -67,7 +67,7 @@ const PendingOrders = () => {
       cell: (row) => {
         return (
           <div className="d-flex" style={{ gap: "10px" }}>
-            <Link to={`/invoice-recipt/${row.id}`}>
+            <Link to={`/invoice/${row.id}`}>
               <button className="button">Invoice</button>
             </Link>
             <button
@@ -77,7 +77,7 @@ const PendingOrders = () => {
                   http
                     .post("/complete-pendingOrder", { id: row.id })
                     .then((respone) => {
-                      console.log(respone.data);
+                      // console.log(respone.data);
                     });
                   setRelodeTable((prev) => !prev);
                 } catch (error) {
@@ -92,7 +92,7 @@ const PendingOrders = () => {
               onClick={() => {
                 try {
                   http.post("/cancel-sell", { id: row.id }).then((respone) => {
-                    console.log(respone.data);
+                    // console.log(respone.data);
                   });
                   setRelodeTable((prev) => !prev);
                 } catch (error) {
@@ -121,116 +121,9 @@ const PendingOrders = () => {
     setFilteredApiData(result);
   }, [searchData]);
 
-  // Input For modal
-  const inputFieldsForCreateUser = [
-    {
-      field: "name",
-      type: "text",
-      placeholder: "Enter user name",
-      className: "inputBox",
-    },
-    {
-      field: "email",
-      type: "text",
-      placeholder: "Enter user email",
-      className: "inputBox",
-    },
-    {
-      field: "password",
-      type: "text",
-      placeholder: "Enter password ",
-      className: "inputBox",
-    },
-  ];
-  const inputFieldsForAddMaterial = [
-    {
-      field: "name",
-      type: "text",
-      placeholder: "Enter material name",
-      className: "inputBox",
-    },
-    {
-      field: "price",
-      type: "text",
-      placeholder: "Enter initial meters available",
-      className: "inputBox",
-    },
-    {
-      field: "stock",
-      type: "text",
-      placeholder: "Enter initial price per meter ",
-      className: "inputBox",
-    },
-  ];
-  const inputFieldsForAddStockMaterial = [
-    {
-      field: "price",
-      type: "text",
-      placeholder: "New Price",
-      className: "inputBox",
-    },
-    {
-      field: "stock",
-      type: "text",
-      placeholder: "Add Stock",
-      className: "inputBox",
-    },
-  ];
-  const inputFieldsForDeductMaterial = [
-    {
-      field: "deduct",
-      type: "text",
-      placeholder: "Deduct Material",
-      className: "inputBox",
-    },
-  ];
-  const inputFieldsForPriceMaterial = [
-    {
-      field: "price",
-      type: "text",
-      placeholder: "Update Price",
-      className: "inputBox",
-    },
-  ];
-
-  // Style for modal
-  const addModalOpenBtnStyle = {
-    fontSize: "12px",
-    fontWeight: "600",
-    color: "#fff",
-    width: "150px",
-    background: "#424242",
-    paddingBottom: "2px",
-  };
-  const stockModalOpenBtnStyle = {
-    fontSize: "12px",
-    fontWeight: "600",
-    color: "#fff",
-    width: "10px",
-    background: "#069306",
-    paddingBottom: "2px",
-  };
-  const deductModalOpenBtnStyle = {
-    fontSize: "12px",
-    fontWeight: "600",
-    color: "#fff",
-    width: "80px",
-    background: "#6b6bf9",
-    paddingBottom: "2px",
-  };
-  const priceModalOpenBtnStyle = {
-    fontSize: "12px",
-    fontWeight: "600",
-    color: "#fff",
-    width: "10px",
-    background: "#f4703c",
-    paddingBottom: "2px",
-  };
-
   return (
     <>
       <div className="PendingOrder">
-        {/* {loading && <Loader />} */}
         <div>
           <div>
             <h2>Pending orders</h2>

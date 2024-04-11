@@ -4,12 +4,12 @@ import React from "react";
 import "./Sell.scss";
 
 //___ Components ___//
-import Invoice from "../../Components/Invoice/Invoice";
+import CreateInvoice from "../../Components/CreateInvoice/CreateInvoice";
 
 const Sell = () => {
   return (
     <div className="Sell">
-      <Invoice />
+      <CreateInvoice />
     </div>
   );
 };

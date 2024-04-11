@@ -12,9 +12,9 @@ import Logo from "/images/icons/logo.png";
 import { FaPrint } from "react-icons/fa";
 
 //___ Css ___//
-import "./InvoiceRecipt.scss";
+import "./Invoice.scss";
 
-const InvoiceRecipt = () => {
+const Invoice = () => {
   // Print button
   const handlePrint = () => {
     print();
@@ -95,7 +95,7 @@ const InvoiceRecipt = () => {
       });
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -113,7 +113,7 @@ const InvoiceRecipt = () => {
         </Tooltip>
       </div>
 
-      <div className="InvoiceRecipt">
+      <div className="Invoice">
         <div className="logoSec d-flex">
           <div className="left">
             <img src={Logo} alt="" />
@@ -346,9 +346,4 @@ const InvoiceRecipt = () => {
   );
 };
 
-export default InvoiceRecipt;
-
-/**
- *
- *
- */
+export default Invoice;

@@ -3,7 +3,7 @@ import html2canvas from "html2canvas";
 
 //___ Additional utility ___//
 // import AxiosConfig from "../../assets/AxiosConfig";
-import { ContextApiForGetImgData } from "../Invoice/Invoice";
+import { ContextApiForGetImgData } from "../CreateInvoice/CreateInvoice";
 
 const GetScreenShoot = (props) => {
   const useContextApi = useContext(ContextApiForGetImgData);

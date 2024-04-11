@@ -81,21 +81,43 @@
             width: 100px;
             font-size: 13px;
           }
+          @include xsm {
+            width: 80px;
+            font-size: 10px;
+          }
         }
 
         .btnChild {
           background: transparent;
           box-shadow: 1px 1px 5px #cfcfcf, -1px -1px 5px #cfcfcf;
           overflow-x: scroll;
-          width: 480px;
+          // width: 480px;
+          width: 400%;
           opacity: 1;
           position: absolute;
           top: 0;
           left: 175px;
           display: -webkit-inline-box;
           transition: 0.3s all ease;
+          @include xl {
+            width: 250%;
+          }
+          @include lg {
+            width: 170%;
+          }
           @include mlg {
             left: 120px;
+            width: 200%;
+          }
+          @include md {
+            width: 400%;
+          }
+          @include sm {
+            width: 250%;
+          }
+          @include xsm {
+            left: 90px;
+            width: 150%;
           }
 
           li {

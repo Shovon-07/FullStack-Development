@@ -17,21 +17,6 @@ class InvoiceController extends Controller
 
         DB::beginTransaction();
         try {
-
-            $img = $request->input('image');
-
-            // For not replace image
-            $imgName = "Captured_" . md5(time()) . ".png";
-
-            // For replace image
-            // $imgName = "Captured".".png";
-            
-            $source = fopen($img, "r");
-            $destination = fopen("images/ScreenShoot/" . $imgName, "w");
-            stream_copy_to_stream($source, $destination);
-            fclose($source);
-            fclose($destination);
-
             $customer_name = $request->input('customer_name');
             $customer_phone = $request->input('customer_phone');
             $customer_address = $request->input('customer_address');
@@ -60,6 +45,16 @@ class InvoiceController extends Controller
             $deadline_date = $request->input('deadline_date');
             $inqueries_number = $request->input('inqueries_number') ?? "";
             $note = $request->input('note') ?? "";
+
+            //___ Process Image start ___//
+            $img = $request->input('image');
+            $imgName = $customer_name . "_" . md5(time()) . ".png";
+            $source = fopen($img, "r");
+            $destination = fopen("images/ScreenShoot/" . $imgName, "w");
+            stream_copy_to_stream($source, $destination);
+            fclose($source);
+            fclose($destination);
+            //___ Process Image end ___//
 
             $customer = Customer::updateOrCreate(
                 ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address], // Criteria to find the record
