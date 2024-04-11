@@ -50,6 +50,9 @@ const ModalPage = (props) => {
       price: "",
       deduct: "",
       price: "",
+
+      deliveryDate: "",
+      collectedAmount: "",
     },
   ]);
   const handleInputValue = (e) => {
@@ -61,13 +64,14 @@ const ModalPage = (props) => {
     const data = {
       id: id,
       name: inputValue.name,
-      // email: inputValue.email,
-      // password: inputValue.password,
 
       stock: inputValue.stock,
       price: inputValue.price,
       deduct: inputValue.deduct,
       price: inputValue.price,
+
+      deliveryDate: inputValue.deliveryDate,
+      collectedAmount: inputValue.collectedAmount,
     };
     console.log(data);
     setLoading(true);
@@ -77,6 +81,7 @@ const ModalPage = (props) => {
       setLoading(false);
       setRelodeTable((prev) => !prev);
     });
+    console.log(inputFields.deliveryDate);
   };
 
   // const getDataApiFunc = () => {
@@ -130,15 +135,18 @@ const ModalPage = (props) => {
                 <form className="d-flex" onSubmit={handleForm}>
                   {inputFields.map((items, index) => {
                     return (
-                      <div className="inputBox" key={index}>
-                        <input
-                          type={items.inputType}
-                          name={items.field}
-                          placeholder={`${items.placeholder}`}
-                          // value={price}
-                          // value={items.field != "price" ? "" : price}
-                          onChange={handleInputValue}
-                        />
+                      <div style={{ width: "100%" }} key={index}>
+                        <label>{items.label}</label>
+                        <div className="inputBox">
+                          <input
+                            type={items.inputType}
+                            name={items.field}
+                            placeholder={`${items.placeholder}`}
+                            // value={price}
+                            // value={items.field != "price" ? "" : price}
+                            onChange={handleInputValue}
+                          />
+                        </div>
                       </div>
                     );
                   })}

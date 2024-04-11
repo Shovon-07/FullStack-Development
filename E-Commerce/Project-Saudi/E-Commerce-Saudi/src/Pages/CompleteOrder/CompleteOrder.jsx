@@ -8,6 +8,9 @@ import AxiosConfig from "../../assets/AxiosConfig";
 //___ Css ___//
 import "./CompleteOrder.scss";
 
+//___ Components ___//
+import ModalPage from "../../Components/Modal/ModalPage";
+
 const CompleteOrder = () => {
   const [setLoading] = useOutletContext();
   const { http } = AxiosConfig();
@@ -63,7 +66,7 @@ const CompleteOrder = () => {
       cell: (row) => {
         return (
           <div className="d-flex" style={{ gap: "10px" }}>
-            <button
+            {/* <button
               className="button"
               onClick={() => {
                 try {
@@ -77,7 +80,17 @@ const CompleteOrder = () => {
               }}
             >
               Delivery
-            </button>
+            </button> */}
+            <ModalPage
+              id={row.id}
+              slug={"Delivery"}
+              inputFields={inputFieldsForDelivery}
+              ModalOpenBtnTitle="Delivery"
+              ModalOpenBtnStyle={confirmBtn}
+              api={"/complete-pendingOrder"}
+              setLoading={setLoading}
+              setRelodeTable={setRelodeTable}
+            />
             <Link to={`/invoice/${row.id}`}>
               <button className="button">Invoice</button>
             </Link>
@@ -99,6 +112,33 @@ const CompleteOrder = () => {
     });
     setFilteredApiData(result);
   }, [searchData]);
+
+  // Input For modal
+  const inputFieldsForDelivery = [
+    {
+      field: "deliveryDate",
+      type: "date",
+      label: "Delivery date",
+      placeholder: "Enter delivery date",
+      className: "inputBox",
+    },
+    {
+      field: "collectedAmount",
+      type: "text",
+      label: "Collection",
+      placeholder: "Enter collected amount",
+      className: "inputBox",
+    },
+  ];
+  const confirmBtn = {
+    fontSize: "14px",
+    fontWeight: "500",
+    color: "#fff",
+    height: "27px",
+    background: "#424242",
+    paddingBottom: "3px",
+    textTransform: "capitalize",
+  };
 
   return (
     <div className="CompleteOrder">
