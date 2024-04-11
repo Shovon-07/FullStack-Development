@@ -79,6 +79,7 @@ const PendingOrders = () => {
                     .then((respone) => {
                       console.log(respone.data);
                     });
+                  setRelodeTable((prev) => !prev);
                 } catch (error) {
                   console.error(error);
                 }
@@ -93,6 +94,7 @@ const PendingOrders = () => {
                   http.post("/cancel-sell", { id: row.id }).then((respone) => {
                     console.log(respone.data);
                   });
+                  setRelodeTable((prev) => !prev);
                 } catch (error) {
                   console.error(error);
                 }

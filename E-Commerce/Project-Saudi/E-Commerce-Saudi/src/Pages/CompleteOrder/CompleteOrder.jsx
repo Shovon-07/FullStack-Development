@@ -5,6 +5,9 @@ import DataTable from "react-data-table-component";
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
 
+//___ Css ___//
+import "./CompleteOrder.scss";
+
 const CompleteOrder = () => {
   const [setLoading] = useOutletContext();
   const { http } = AxiosConfig();
@@ -70,6 +73,7 @@ const CompleteOrder = () => {
                   http.post("/del", { id: row.id }).then((respone) => {
                     console.log(respone.data);
                   });
+                  setRelodeTable((prev) => !prev);
                 } catch (error) {
                   console.error(error);
                 }
