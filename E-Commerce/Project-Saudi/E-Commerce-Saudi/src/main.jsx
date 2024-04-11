@@ -17,6 +17,7 @@ import User from "./Pages/User/User";
 import History from "./Pages/History/History";
 
 import AppNoHeaderFooter from "./AppNoHeaderFooter.jsx";
+import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvoice.jsx";
 import Invoice from "./Pages/Invoice/Invoice.jsx";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
@@ -40,7 +41,10 @@ const router = createBrowserRouter([
     element: <AppNoHeaderFooter />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/invoice/temporary-invoice/:invoiceId", element: <Invoice /> },
+      {
+        path: "/invoice/temporary-invoice/:invoiceId",
+        element: <PendingOrdersInvoice />,
+      },
       { path: "/invoice/:invoiceId", element: <Invoice /> },
     ],
   },

@@ -48,12 +48,9 @@ Route::controller(InvoiceController::class)->group(function(){
     Route::post('/order-details','orderDetails');
 
     Route::get('/pending-order','pendingOrders');
-
-    Route::post('/cancel-sell','cancel');
-
-    Route::post('/complete-pendingOrder','completePendingOrders');
-
     Route::get('/complete-order','completeOrders');
+    Route::post('/complete-pendingOrder','completePendingOrders');
+    Route::post('/cancel-sell','cancel');
 });
 
 Route::controller(ProcessImgController::class)->group(function(){

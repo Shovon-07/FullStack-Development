@@ -12,9 +12,9 @@ import Logo from "/images/icons/logo.png";
 import { FaPrint } from "react-icons/fa";
 
 //___ Css ___//
-import "./CompletedOrderInvoice.scss";
+import "./Invoice.scss";
 
-const CompletedOrderInvoice = () => {
+const PendingOrdersInvoice = () => {
   // Print button
   const handlePrint = () => {
     print();
@@ -113,7 +113,7 @@ const CompletedOrderInvoice = () => {
         </Tooltip>
       </div>
 
-      <div className="CompletedOrderInvoice">
+      <div className="Invoice">
         <div className="logoSec d-flex">
           <div className="left">
             <img src={Logo} alt="" />
@@ -346,4 +346,4 @@ const CompletedOrderInvoice = () => {
   );
 };
 
-export default CompletedOrderInvoice;
+export default PendingOrdersInvoice;

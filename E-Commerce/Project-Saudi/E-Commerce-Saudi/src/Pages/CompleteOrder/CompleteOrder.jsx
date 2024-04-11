@@ -63,7 +63,7 @@ const CompleteOrder = () => {
       cell: (row) => {
         return (
           <div className="d-flex" style={{ gap: "10px" }}>
-            <Link to={`/invoice-recipt/${row.id}`}>
+            <Link to={`/invoice/${row.id}`}>
               <button className="button">Invoice</button>
             </Link>
             <button

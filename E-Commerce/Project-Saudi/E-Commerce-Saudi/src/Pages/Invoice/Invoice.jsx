@@ -12,7 +12,7 @@ import Logo from "/images/icons/logo.png";
 import { FaPrint } from "react-icons/fa";
 
 //___ Css ___//
-import "./Invoice.scss";
+// import "./CompletedOrderInvoice.scss";
 
 const Invoice = () => {
   // Print button
