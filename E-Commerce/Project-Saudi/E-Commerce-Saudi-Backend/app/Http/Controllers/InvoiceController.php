@@ -37,10 +37,10 @@ class InvoiceController extends Controller
             $material_length = $request->input('material_length');
             $sale_price = $request->input('sale_price');
             $total = $request->input("total");
-            $discount = $request->input('discount');
-            $vat = $request->input('vat');
+            $discount = $request->input('discount') ?? "";
+            $vat = $request->input('vat') ?? "";
             $payable = $request->input("payable");
-            $advance = $request->input('advance');
+            $advance = $request->input('advance') ?? "";
             $due = $request->input("due");
             $deadline_date = $request->input('deadline_date');
             $inqueries_number = $request->input('inqueries_number') ?? "";
@@ -189,7 +189,7 @@ class InvoiceController extends Controller
     // View completed orders
     public function completeOrders()
     {
-        $completeOrders = Invoice::where('status', '=', 'complete')->get();
+        $completeOrders = Invoice::where('status', '=', 'complete')->select("id","customer_id","payable","due")->with('customer:id,name,phone')->get();
 
         return $completeOrders;
     }

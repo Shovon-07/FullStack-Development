@@ -18,7 +18,9 @@ const PendingOrders = () => {
   const [apiData, setApiData] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [filteredApiData, setFilteredApiData] = useState([]);
-  const [relodeTable, setRelodeTable] = useState(false);
+
+  const [relodeTableForCompleate, setRelodeTableForCompleate] = useState(false);
+  const [relodeTableForCancel, setRelodeTableForCancel] = useState(false);
 
   const getApiData = async () => {
     try {
@@ -78,7 +80,7 @@ const PendingOrders = () => {
                     .then((respone) => {
                       // console.log(respone.data);
                     });
-                  setRelodeTable((prev) => !prev);
+                  setRelodeTableForCompleate((prev) => !prev);
                 } catch (error) {
                   console.error(error);
                 }
@@ -93,7 +95,7 @@ const PendingOrders = () => {
                   http.post("/cancel-sell", { id: row.id }).then((respone) => {
                     // console.log(respone.data);
                   });
-                  setRelodeTable((prev) => !prev);
+                  setRelodeTableForCancel((prev) => !prev);
                 } catch (error) {
                   console.error(error);
                 }
@@ -109,7 +111,7 @@ const PendingOrders = () => {
 
   useEffect(() => {
     getApiData();
-  }, [relodeTable]);
+  }, [relodeTableForCompleate, relodeTableForCancel]);
 
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {

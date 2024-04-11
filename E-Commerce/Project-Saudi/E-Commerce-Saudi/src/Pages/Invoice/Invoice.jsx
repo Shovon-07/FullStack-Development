@@ -12,7 +12,7 @@ import Logo from "/images/icons/logo.png";
 import { FaPrint } from "react-icons/fa";
 
 //___ Css ___//
-// import "./CompletedOrderInvoice.scss";
+import "../../Styles/Invoice.scss";
 
 const Invoice = () => {
   // Print button
@@ -341,6 +341,11 @@ const Invoice = () => {
                   <td>Collection</td>
                   <td>:</td>
                   <td>{apiData.collection} $</td>
+                </tr>
+                <tr>
+                  <td>Net Outstanding</td>
+                  <td>:</td>
+                  <td>{apiData.net_outstanding} $</td>
                 </tr>
               </tbody>
             </table>

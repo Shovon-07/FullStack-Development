@@ -299,7 +299,8 @@ body.blur {
   body {
     background: $light-1;
   }
-  .printBtn {
+  .printBtn,
+  .printHidden {
     display: none;
   }
 }
