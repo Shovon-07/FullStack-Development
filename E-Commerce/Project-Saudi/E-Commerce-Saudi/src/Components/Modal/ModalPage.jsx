@@ -139,7 +139,7 @@ const ModalPage = (props) => {
                         <label>{items.label}</label>
                         <div className="inputBox">
                           <input
-                            type={items.inputType}
+                            type={items.type}
                             name={items.field}
                             placeholder={`${items.placeholder}`}
                             // value={price}

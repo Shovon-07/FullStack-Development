@@ -30,6 +30,7 @@ const Invoice = () => {
     customer_address: "",
 
     deadline_date: "",
+    delivery_date: "",
 
     image: "",
 
@@ -54,6 +55,8 @@ const Invoice = () => {
     payAble: "",
     advance: "",
     due: "",
+    collection: "",
+    net_outstanding: "",
   });
   const getApiData = async () => {
     try {
@@ -67,6 +70,7 @@ const Invoice = () => {
 
           issue_date: response.data.created_at.substr(0, 10),
           deadline_date: response.data.deadline_date,
+          delivery_date: response.data.delivery_date,
 
           image: response.data.image,
 
@@ -91,6 +95,8 @@ const Invoice = () => {
           payAble: response.data.payable,
           advance: response.data.advance,
           due: response.data.due,
+          collection: response.data.collection,
+          net_outstanding: response.data.net_outstanding,
         });
       });
       setLoading(false);
@@ -153,7 +159,7 @@ const Invoice = () => {
           <div className="right">
             <p>Invoice # {invoiceId}</p>
             <p>Issue date : {apiData.issue_date}</p>
-            <p>Delivery : {apiData.deadline_date}</p>
+            <p>Deliverd : {apiData.delivery_date}</p>
           </div>
         </div>
 

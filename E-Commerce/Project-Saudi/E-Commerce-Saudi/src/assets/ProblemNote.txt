@@ -1,0 +1,6 @@
+# Backend :
+-> Home page :
+    Stock : stock করার সময় new price নাও দিেতে পারে । কিন্ততুুু এখাোেনে new price নাা দিেলে কাাজ হচ্ছেনাা।
+
+-> Complete order page :
+    Delivery এর input গুলোা database এ যাচ্ছেনোাা।

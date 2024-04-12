@@ -118,26 +118,6 @@ const Home = () => {
   }, [searchData]);
 
   // Input For modal
-  const inputFieldsForCreateUser = [
-    {
-      field: "name",
-      type: "text",
-      placeholder: "Enter user name",
-      className: "inputBox",
-    },
-    {
-      field: "email",
-      type: "text",
-      placeholder: "Enter user email",
-      className: "inputBox",
-    },
-    {
-      field: "password",
-      type: "text",
-      placeholder: "Enter password ",
-      className: "inputBox",
-    },
-  ];
   const inputFieldsForAddMaterial = [
     {
       field: "name",
@@ -146,29 +126,29 @@ const Home = () => {
       className: "inputBox",
     },
     {
-      field: "price",
+      field: "stock",
       type: "text",
       placeholder: "Enter initial meters available",
       className: "inputBox",
     },
     {
-      field: "stock",
+      field: "price",
       type: "text",
-      placeholder: "Enter initial price per meter ",
+      placeholder: "Enter initial price per meter",
       className: "inputBox",
     },
   ];
   const inputFieldsForAddStockMaterial = [
     {
-      field: "price",
-      type: "text",
-      placeholder: "New Price",
-      className: "inputBox",
-    },
-    {
       field: "stock",
       type: "text",
       placeholder: "Add Stock",
+      className: "inputBox",
+    },
+    {
+      field: "price",
+      type: "text",
+      placeholder: "New Price",
       className: "inputBox",
     },
   ];
