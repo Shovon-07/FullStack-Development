@@ -173,7 +173,7 @@ const Home = () => {
   const addModalOpenBtnStyle = {
     fontSize: "12px",
     fontWeight: "600",
-    color: "#424242",
+    color: "#fff",
     width: "1503x",
     background: "#424242",
     paddingBottom: "3px",

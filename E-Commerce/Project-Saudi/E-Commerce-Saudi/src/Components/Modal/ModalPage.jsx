@@ -21,6 +21,8 @@ const style = {
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Components ___//
 
@@ -73,15 +75,15 @@ const ModalPage = (props) => {
       delivery_date: inputValue.deliveryDate,
       collection: inputValue.collectedAmount,
     };
-    console.log(data);
+    // console.log(data);
     setLoading(true);
     http.post(api, data).then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       handleClose();
       setLoading(false);
       setRelodeTable((prev) => !prev);
+      // toast.success(response.data);
     });
-    console.log(inputFields.deliveryDate);
   };
 
   // const getDataApiFunc = () => {

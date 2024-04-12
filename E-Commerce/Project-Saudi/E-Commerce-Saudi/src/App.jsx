@@ -19,7 +19,7 @@ function App() {
           {loading && <Loader />}
           <Outlet context={[setLoading]} />
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

@@ -53,13 +53,18 @@ const History = () => {
     },
     {
       name: "Collection",
-      field: "PayAble",
+      field: "collection",
       selector: (row) => row.collection,
     },
     {
-      name: "	Net Outstanding",
-      field: "Due",
+      name: "Net Outstanding",
+      field: "netOutstanding",
       selector: (row) => row.net_outstanding,
+    },
+    {
+      name: "Payed",
+      field: "payed",
+      selector: (row) => row.id,
     },
     {
       name: "Action",
