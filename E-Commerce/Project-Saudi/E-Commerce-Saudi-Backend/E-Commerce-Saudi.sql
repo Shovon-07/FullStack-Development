@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 10, 2024 at 07:28 AM
+-- Generation Time: Apr 12, 2024 at 06:45 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -61,7 +61,13 @@ INSERT INTO `customers` (`id`, `name`, `phone`, `address`, `created_at`, `update
 (8, 'Al jubair shovon', '01767692422', 'Charkhutar mor, Rajshahi court-6201, Kashiadanga, Rajshahi', '2024-04-09 03:55:08', '2024-04-09 03:55:08'),
 (9, 'Asikur rahman', '010123123', 'Rajabari, Rajshahi court-6201, Rajabari, Rajshahi', '2024-04-09 04:03:03', '2024-04-09 04:03:03'),
 (10, 'Jony babu', '01122', 'Nauga, Rajshahi court-6201, Nauga, Rajshahi', '2024-04-09 04:05:57', '2024-04-09 04:05:57'),
-(11, 'Said', '02232', 'Nauga, Rajshahi court-6201, Nauga, Rajshahi', '2024-04-09 04:13:21', '2024-04-09 04:13:21');
+(11, 'Said', '02232', 'Nauga, Rajshahi court-6201, Nauga, Rajshahi', '2024-04-09 04:13:21', '2024-04-09 04:13:21'),
+(12, 'Saheb ador', '0155512', 'Baneswer Bazar, Rajshahi', '2024-04-11 04:37:20', '2024-04-11 04:37:20'),
+(13, 'Asikur rahman', '01921', 'Rajabari bazar, Rajabair post, Rajabari', '2024-04-11 04:56:37', '2024-04-11 04:56:37'),
+(14, 'Jony babu', '01314', 'Nauga, Rajshahi, Bangladesh', '2024-04-11 08:26:40', '2024-04-11 08:26:40'),
+(17, 'Said', '0529', 'Nauga, Rajshahi, Bangladesh', '2024-04-11 08:38:13', '2024-04-11 08:38:13'),
+(18, 'Saheb ador', '0123', 'Baneswar bazar, Rajshahi', '2024-04-11 08:49:06', '2024-04-11 08:49:06'),
+(19, 'Jony babu', '0129', 'Nauga, Rajshahi, Bangladesh', '2024-04-11 09:33:53', '2024-04-11 09:33:53');
 
 -- --------------------------------------------------------
 
@@ -82,7 +88,12 @@ CREATE TABLE `deducts` (
 --
 
 INSERT INTO `deducts` (`id`, `material_id`, `deduct`, `created_at`, `updated_at`) VALUES
-(1, 7, 20, '2024-04-07 23:43:46', '2024-04-07 23:43:46');
+(1, 7, 20, '2024-04-07 23:43:46', '2024-04-07 23:43:46'),
+(2, 8, 1, '2024-04-11 04:30:13', '2024-04-11 04:30:13'),
+(3, 8, 2, '2024-04-11 11:31:54', '2024-04-11 11:31:54'),
+(4, 8, 20, '2024-04-11 11:32:02', '2024-04-11 11:32:02'),
+(5, 10, 10, '2024-04-11 19:32:23', '2024-04-11 19:32:23'),
+(6, 10, 1, '2024-04-11 19:41:24', '2024-04-11 19:41:24');
 
 -- --------------------------------------------------------
 
@@ -130,10 +141,11 @@ CREATE TABLE `invoices` (
 --
 
 INSERT INTO `invoices` (`id`, `customer_id`, `image`, `button_type`, `neck_type`, `pocket_type`, `hand_type`, `material_id`, `chest_length`, `sleeve_length`, `neck_length`, `cuff_length`, `hand_length`, `shoulder_length`, `dress_length`, `material_length`, `sale_price`, `total`, `discount`, `vat`, `payable`, `advance`, `due`, `deadline_date`, `collection`, `net_outstanding`, `delivery_date`, `inqueries_number`, `note`, `status`, `created_at`, `updated_at`) VALUES
-(13, 8, 'Captured_9d6cec56e6279730279edb93413909ab.png', 'Button Triangle', 'French', 'Pointed Triangle', 'Standard Cuffed', 1, 1, 5, 2, 6, 3, 7, 4, 100, 40, '4000', '1200', '1120', '3920', '500', '3420', '2024-04-12', '0', '0', NULL, '8', '9', 'pending', '2024-04-09 03:55:08', '2024-04-09 03:55:08'),
-(14, 9, 'Captured_638407cd84723ebc77c18b95275a5b25.png', 'Zipper Triangle', 'Royal', 'Standard Curved', 'Cuffed Chart', 5, 1, 5, 2, 6, 3, 7, 4, 50, 4, '200', '40', '64', '224', '30', '194', '2024-04-14', '0', '0', NULL, '8', '9', 'pending', '2024-04-09 04:03:03', '2024-04-09 04:03:03'),
-(15, 10, 'Captured_bd3dc47ae9e95e3ef7bb5d4608b30a23.png', 'Button Curved', 'Closed Royal', 'Pointed', 'Cuffed Chart', 6, 1, 5, 2, 6, 3, 7, 4, 80, 4, '320', '64', '102.4', '358.4', '300', '58.4', '2024-04-22', '0', '0', NULL, '8', '9', 'pending', '2024-04-09 04:05:57', '2024-04-09 04:05:57'),
-(16, 11, 'Captured_ad5730f0e3cbc631b3d8b900175e9dd5.png', 'Hidden Curved', 'Opened', '', 'Standard', 2, 1, 5, 2, 6, 3, 7, 4, 10, 4, '40', '8', '1.28', '33.28', '20', '13.28', '2024-04-22', '0', '0', NULL, '8', '9', 'pending', '2024-04-09 04:13:21', '2024-04-09 04:13:21');
+(18, 8, 'Al jubair shovon_8185204967347795235d3671a4c5151b.png', 'Button Triangle', 'French', 'Pointed Triangle', 'Standard Cuffed', 7, 34, 25, 10, 12, 30, 34, 44, 20, 200, '4000', '1200', '560', '3360', '2500', '860', '2024-04-13', '0', '0', NULL, '', '', 'complete', '2024-04-11 04:45:17', '2024-04-11 22:36:00'),
+(19, 13, 'Asikur rahman_85e33d20baaac72e022b93c7b0a1dd28.png', 'Button Curved', 'Royal', 'Standard Curved', 'Standard Chart', 6, 1, 5, 2, 6, 3, 7, 4, 10, 300, '3000', '300', '1080', '3780', '1000', '2780', '2024-04-13', '0', '0', NULL, '', '', 'pending', '2024-04-11 04:56:37', '2024-04-11 17:19:07'),
+(26, 17, 'Said_fe283f23c0582b6882b11484f8c22a00.png', 'Zipper Cuved', 'Opened', 'Standard Curved', 'Standard', 4, 2, 5, 2, 666, 1, 7, 444, 100, 3, '300', '60', '24', '264', '100', '164', '2024-04-25', '0', '0', NULL, '', '', 'pending', '2024-04-11 08:47:41', '2024-04-12 01:35:40'),
+(28, 18, 'Saheb ador_6783fc61bb5b790354dc9396a8c2dad9.png', 'Zipper Cuved', 'Single Button', '', 'Standard', 2, 111, 555, 222, 666, 333, 777, 444, 55, 3, '165', '33', '52.8', '184.8', '100', '84.8', '2024-04-19', '3', '81.8', '2024-04-13', '', '', 'delivery', '2024-04-11 08:49:37', '2024-04-11 22:18:49'),
+(33, 19, 'Jony babu_2ed689ffb28f80b10b0a6af2f031a2c3.png', 'Button Curved', 'Single Button', 'Curved', 'Cuffed Chart', 2, 1, 1, 222, 666, 4, 777, 4, 300, 77, '23100', '2310', '1039.5', '21829.5', '5600', '16229.5', '2024-04-17', '16229.5', '0', '2024-04-12', '', '', 'delivery', '2024-04-11 09:33:53', '2024-04-11 21:45:04');
 
 -- --------------------------------------------------------
 
@@ -155,13 +167,21 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`id`, `name`, `price`, `stock`, `created_at`, `updated_at`) VALUES
-(1, 'Silk', '20', 1026, '2024-04-05 22:13:31', '2024-04-09 03:55:08'),
-(2, 'Woven Cotton', '2', 10, '2024-04-05 16:26:31', '2024-04-09 04:13:21'),
+(1, 'Silk', '20', 36, '2024-04-05 22:13:31', '2024-04-11 19:30:22'),
+(2, 'Woven Cotton', '2', 1035, '2024-04-05 16:26:31', '2024-04-11 21:35:44'),
 (3, 'Tweed Suiting Fabrics', '100', 146, '2024-04-05 16:27:09', '2024-04-07 23:59:21'),
-(4, 'Fabrics', '23', 5650, '2024-04-05 16:50:54', '2024-04-07 12:35:33'),
-(5, 'Cotton', '1', 1, '2024-04-05 18:49:22', '2024-04-06 22:41:56'),
-(6, 'Texture', '11', 1067352752, '2024-04-06 16:42:35', '2024-04-09 04:05:57'),
-(7, 'Silk Cotton', '200', 101, '2024-04-07 23:34:42', '2024-04-07 23:43:46');
+(4, 'Fabrics', '23', 5750, '2024-04-05 16:50:54', '2024-04-11 19:35:09'),
+(5, 'Cotton', '1', 251, '2024-04-05 18:49:22', '2024-04-11 04:39:01'),
+(6, 'Texture', '11', 1067352982, '2024-04-06 16:42:35', '2024-04-11 04:56:37'),
+(7, 'Silk Cotton', '200', 81, '2024-04-07 23:34:42', '2024-04-11 04:45:17'),
+(8, 'Fabrics Cottton', '200', 278, '2024-04-11 04:29:22', '2024-04-11 11:32:02'),
+(9, 'Fiber', '100', 200, '2024-04-11 19:20:22', '2024-04-11 19:20:22'),
+(10, 'Fiber Cottton', '2', 110, '2024-04-11 19:26:43', '2024-04-11 19:41:39'),
+(11, 'Suiting Fabrics', '200', 40, '2024-04-11 22:04:22', '2024-04-11 22:04:22'),
+(12, 'Silk Cotton', '300', 20, '2024-04-11 22:09:31', '2024-04-11 22:09:31'),
+(13, 'Silk Cotton', '300', 20, '2024-04-11 22:11:15', '2024-04-11 22:11:15'),
+(14, 'Texture cotton', '2', 3, '2024-04-11 22:15:59', '2024-04-11 22:15:59'),
+(15, 'Woven texture', '2', 40, '2024-04-11 22:17:27', '2024-04-11 22:17:27');
 
 -- --------------------------------------------------------
 
@@ -231,7 +251,19 @@ CREATE TABLE `stocks` (
 INSERT INTO `stocks` (`id`, `material_id`, `price`, `stock`, `created_at`, `updated_at`) VALUES
 (1, 7, '300', 100, '2024-04-07 23:34:42', '2024-04-07 23:34:42'),
 (2, 7, '1', 20, '2024-04-07 23:35:16', '2024-04-07 23:35:16'),
-(3, 7, '1', 1, '2024-04-07 23:36:15', '2024-04-07 23:36:15');
+(3, 7, '1', 1, '2024-04-07 23:36:15', '2024-04-07 23:36:15'),
+(4, 8, '199', 300, '2024-04-11 04:29:22', '2024-04-11 04:29:22'),
+(5, 8, '100', 1, '2024-04-11 04:30:03', '2024-04-11 04:30:03'),
+(6, 9, '100', 200, '2024-04-11 19:20:22', '2024-04-11 19:20:22'),
+(7, 10, '10', 100, '2024-04-11 19:26:43', '2024-04-11 19:26:43'),
+(8, 1, '5', 10, '2024-04-11 19:30:22', '2024-04-11 19:30:22'),
+(9, 10, '5', 20, '2024-04-11 19:31:31', '2024-04-11 19:31:31'),
+(10, 10, '1', 1, '2024-04-11 19:41:11', '2024-04-11 19:41:11'),
+(11, 11, '200', 40, '2024-04-11 22:04:22', '2024-04-11 22:04:22'),
+(12, 12, '300', 20, '2024-04-11 22:09:31', '2024-04-11 22:09:31'),
+(13, 13, '300', 20, '2024-04-11 22:11:15', '2024-04-11 22:11:15'),
+(14, 14, '2', 3, '2024-04-11 22:15:59', '2024-04-11 22:15:59'),
+(15, 15, '2', 40, '2024-04-11 22:17:27', '2024-04-11 22:17:27');
 
 -- --------------------------------------------------------
 
@@ -328,25 +360,25 @@ ALTER TABLE `captured_imgs`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `deducts`
 --
 ALTER TABLE `deducts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -364,7 +396,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `stocks`
 --
 ALTER TABLE `stocks`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
