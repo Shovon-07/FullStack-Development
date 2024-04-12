@@ -66,21 +66,6 @@ const CompleteOrder = () => {
       cell: (row) => {
         return (
           <div className="d-flex" style={{ gap: "10px" }}>
-            {/* <button
-              className="button"
-              onClick={() => {
-                try {
-                  http.post("/del", { id: row.id }).then((respone) => {
-                    console.log(respone.data);
-                  });
-                  setRelodeTable((prev) => !prev);
-                } catch (error) {
-                  console.error(error);
-                }
-              }}
-            >
-              Delivery
-            </button> */}
             <ModalPage
               id={row.id}
               slug={"Delivery"}
@@ -91,7 +76,7 @@ const CompleteOrder = () => {
               setLoading={setLoading}
               setRelodeTable={setRelodeTable}
             />
-            <Link to={`/invoice/${row.id}`}>
+            <Link to={`/invoice/temporary-invoice/${row.id}`}>
               <button className="button">Invoice</button>
             </Link>
           </div>

@@ -91,20 +91,20 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/user"
-                className={({ isActive }) => (isActive ? "isActive" : "")}
-                onClick={closeNav}
-              >
-                User
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="/history"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
                 onClick={closeNav}
               >
-                History
+                Order History
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/user"
+                className={({ isActive }) => (isActive ? "isActive" : "")}
+                onClick={closeNav}
+              >
+                Statistics
               </NavLink>
             </li>
           </div>

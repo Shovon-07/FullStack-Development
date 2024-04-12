@@ -1,9 +1,15 @@
 @import "../../Styles/Variable.scss";
+@import "../../Styles//DataTable.scss";
 
 .History {
+  box-shadow: $shadow;
   background: $light-1;
-  padding: 15px 10px;
-  .title {
-    margin-bottom: 20px;
+  padding: 20px;
+  .button {
+    padding: 5px 10px;
+    font-size: 15px;
+    a {
+      color: $light-1;
+    }
   }
 }

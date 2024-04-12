@@ -19,8 +19,14 @@ const PendingOrders = () => {
   const [searchData, setSearchData] = useState("");
   const [filteredApiData, setFilteredApiData] = useState([]);
 
-  const [relodeTableForCompleate, setRelodeTableForCompleate] = useState(false);
-  const [relodeTableForCancel, setRelodeTableForCancel] = useState(false);
+  // const [relodeTableForCompleate, setRelodeTableForCompleate] = useState(false);
+  // const [relodeTableForCancel, setRelodeTableForCancel] = useState(false);
+
+  const [relodeTable, setRelodeTable] = useState(false);
+  // const [relodeTable, setRelodeTable] = useState({
+  //   relodeTableForCompleate: false,
+  //   relodeTableForCancel: false,
+  // });
 
   const getApiData = async () => {
     try {
@@ -80,7 +86,8 @@ const PendingOrders = () => {
                     .then((respone) => {
                       // console.log(respone.data);
                     });
-                  setRelodeTableForCompleate((prev) => !prev);
+                  // Reload table
+                  setRelodeTable((prev) => !prev);
                 } catch (error) {
                   console.error(error);
                 }
@@ -95,7 +102,8 @@ const PendingOrders = () => {
                   http.post("/cancel-sell", { id: row.id }).then((respone) => {
                     // console.log(respone.data);
                   });
-                  setRelodeTableForCancel((prev) => !prev);
+                  // Reload table
+                  setRelodeTable((prev) => !prev);
                 } catch (error) {
                   console.error(error);
                 }
@@ -111,7 +119,7 @@ const PendingOrders = () => {
 
   useEffect(() => {
     getApiData();
-  }, [relodeTableForCompleate, relodeTableForCancel]);
+  }, [relodeTable]);
 
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {

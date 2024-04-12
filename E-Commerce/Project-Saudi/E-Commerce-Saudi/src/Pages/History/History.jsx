@@ -1,98 +1,117 @@
 import React, { useEffect, useState } from "react";
+import { Link, useOutletContext } from "react-router-dom";
+import DataTable from "react-data-table-component";
+
+//___ Additional utility ___//
+import AxiosConfig from "../../assets/AxiosConfig";
 
 //___ Css ___//
 import "./History.scss";
 
-//___ Additional utility ___//
-import Loader from "../../Components/Loader/Loader";
-import AxiosConfig from "../../assets/AxiosConfig";
+//___ Components ___//
+import ModalPage from "../../Components/Modal/ModalPage";
 
 const History = () => {
-  // const { http } = AxiosConfig();
+  const [setLoading] = useOutletContext();
+  const { http } = AxiosConfig();
 
-  // const [userData, setUserData] = useState([]);
-  // const [image, setImage] = useState("");
-  // const [viewImages, setViewImages] = useState([]);
+  // States
+  const [apiData, setApiData] = useState([]);
+  const [searchData, setSearchData] = useState("");
+  const [filteredApiData, setFilteredApiData] = useState([]);
+  const [relodeTable, setRelodeTable] = useState(false);
 
-  // const createUser = () => {
-  //   http.post("/create-user", {
-  //     name: "Jubiar",
-  //     email: "jubair@gmail.com",
-  //     password: "jub123",
-  //   });
-  // };
-  // const getUserData = async () => {
-  //   try {
-  //     await http.get("/user-data").then((res) => {
-  //       setUserData(res.data);
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const getApiData = async () => {
+    try {
+      setLoading(true);
+      await http.get("/complete-order").then((response) => {
+        setApiData(response.data);
+        setFilteredApiData(response.data);
+        setLoading(false);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  // const handleImageInput = (e) => {
-  //   setImage(e.target.files[0]);
-  // };
-  // const submitForm = (e) => {
-  //   e.preventDefault();
-  //   const url = "/create-image";
-  //   const data = new FormData();
-  //   data.append("image", image);
-  //   http.post(url, data).then((res) => console.log(res.data));
-  // };
-  // const getImage = async () => {
-  //   await http.get("/get-image").then((response) => {
-  //     setViewImages(response.data);
-  //     console.log(viewImages);
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   getUserData();
-  //   getImage();
-  // }, []);
-  return (
-    <div className="History">
-      <h1 className="title">History</h1>
-
-      {/* <button className="button" onClick={createUser}>
-        Add User
-      </button>
-      {userData.map((user, index) => {
+  const columns = [
+    {
+      name: "Sl No",
+      field: "SlNo",
+      selector: (row) => row.id,
+      width: "70px",
+    },
+    {
+      name: "Customer Name",
+      field: "CustomerName",
+      selector: (row) => row.customer.name,
+    },
+    {
+      name: "Phone",
+      field: "CustomerPhone",
+      selector: (row) => row.customer.phone,
+    },
+    {
+      name: "Pay able",
+      field: "PayAble",
+      selector: (row) => row.payable,
+    },
+    {
+      name: "Due",
+      field: "Due",
+      selector: (row) => row.due,
+    },
+    {
+      name: "Action",
+      cell: (row) => {
         return (
-          <div key={index} className="d-flex gap-20">
-            <span>{user.Name}</span>
-            <span>{user.Email}</span>
-            <span>{user.Password}</span>
+          <div className="d-flex" style={{ gap: "10px" }}>
+            <Link to={`/invoice/${row.id}`}>
+              <button className="button">Invoice</button>
+            </Link>
           </div>
         );
-      })} */}
-      <br />
-      <br />
-      {/* <form onSubmit={submitForm}>
-        <div>
-          <input type="file" onChange={handleImageInput} />
-        </div>
-        <button className="button" type="submit">
-          Create Image
-        </button>
-      </form> */}
+      },
+    },
+  ];
 
+  useEffect(() => {
+    getApiData();
+  }, [relodeTable]);
+
+  useEffect(() => {
+    const result = apiData.filter((filteredApiData) => {
+      return filteredApiData.customer.phone
+        .toLowerCase()
+        .match(searchData.toLowerCase());
+    });
+    setFilteredApiData(result);
+  }, [searchData]);
+
+  return (
+    <div className="CompleteOrder">
+      {/* {loading && <Loader />} */}
       <div>
-        {/* {viewImages.map((image, index) => {
-          return (
-            <div key={index} className="d-flex gap-20">
-              <span>{image.Image}</span>
-              <span>{image.created_at}</span>
-              <img
-                src={`http://127.0.0.1:8000/images/${image.Image}`}
-                style={{ width: "200px", height: "auto" }}
-              />
-            </div>
-          );
-        })} */}
+        <div>
+          <h2>History</h2>
+        </div>
       </div>
+      <DataTable
+        columns={columns}
+        data={filteredApiData}
+        pagination
+        subHeader
+        subHeaderComponent={
+          <input
+            type="text"
+            placeholder="Search by phone number"
+            value={searchData}
+            onChange={(e) => {
+              setSearchData(e.target.value);
+            }}
+          />
+        }
+      />
     </div>
   );
 };

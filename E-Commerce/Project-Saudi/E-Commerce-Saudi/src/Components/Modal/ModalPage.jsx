@@ -57,7 +57,6 @@ const ModalPage = (props) => {
   ]);
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
-    console.log(id);
   };
 
   const handleForm = async (e) => {
