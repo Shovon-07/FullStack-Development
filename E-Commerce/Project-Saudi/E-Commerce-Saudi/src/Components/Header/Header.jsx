@@ -54,14 +54,6 @@ const Header = () => {
                 Home
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink
-                to="/customize-image"
-                className={({ isActive }) => (isActive ? "isActive" : "")}
-              >
-                Customize Product
-              </NavLink>
-            </li> */}
             <li>
               <NavLink
                 to="/sell"
@@ -100,7 +92,7 @@ const Header = () => {
             </li>
             <li>
               <NavLink
-                to="/user"
+                to="/statistics"
                 className={({ isActive }) => (isActive ? "isActive" : "")}
                 onClick={closeNav}
               >

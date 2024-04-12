@@ -13,8 +13,8 @@ import Home from "./Pages/Home/Home";
 import Sell from "./Pages/Sell/Sell";
 import PendingOrders from "./Pages/PendingOrders/PendingOrders";
 import CompleteOrder from "./Pages/CompleteOrder/CompleteOrder";
-import User from "./Pages/User/User";
 import History from "./Pages/History/History";
+import Statistics from "./Pages/Statistics/Statistics.jsx";
 
 import AppNoHeaderFooter from "./AppNoHeaderFooter.jsx";
 import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvoice.jsx";
@@ -32,8 +32,8 @@ const router = createBrowserRouter([
       { path: "/sell", element: <Sell /> },
       { path: "/pending-orders", element: <PendingOrders /> },
       { path: "/complete-order", element: <CompleteOrder /> },
-      { path: "/user", element: <User /> },
       { path: "/history", element: <History /> },
+      { path: "/statistics", element: <Statistics /> },
     ],
   },
   {
