@@ -87,7 +87,7 @@ const CompleteOrder = () => {
               inputFields={inputFieldsForDelivery}
               ModalOpenBtnTitle="Delivery"
               ModalOpenBtnStyle={confirmBtn}
-              api={"/complete-pendingOrder"}
+              api={"/update-completeOrder"}
               setLoading={setLoading}
               setRelodeTable={setRelodeTable}
             />
@@ -169,14 +169,3 @@ const CompleteOrder = () => {
 };
 
 export default CompleteOrder;
-
-/**
- * in invoice page =>
- * after due -> Collection : show
- * Net outstanding:
- *
- *
- * in delivery page =>
- * after issue-date : Delivery data: inupt
- * after due -> Collection : input
- */

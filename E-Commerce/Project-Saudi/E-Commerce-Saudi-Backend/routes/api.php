@@ -49,6 +49,7 @@ Route::controller(InvoiceController::class)->group(function(){
 
     Route::get('/pending-order','pendingOrders');
     Route::get('/complete-order','completeOrders');
+    Route::post('/update-completeOrder','updateCompleteOrder');
     Route::post('/complete-pendingOrder','completePendingOrders');
     Route::post('/cancel-sell','cancel');
 });

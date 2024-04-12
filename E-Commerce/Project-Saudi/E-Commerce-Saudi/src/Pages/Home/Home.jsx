@@ -173,34 +173,34 @@ const Home = () => {
   const addModalOpenBtnStyle = {
     fontSize: "12px",
     fontWeight: "600",
-    color: "#fff",
-    width: "150px",
+    color: "#424242",
+    width: "1503x",
     background: "#424242",
-    paddingBottom: "2px",
+    paddingBottom: "3px",
   };
   const stockModalOpenBtnStyle = {
     fontSize: "12px",
     fontWeight: "600",
     color: "#fff",
     width: "10px",
-    background: "#069306",
-    paddingBottom: "2px",
+    background: "#424242",
+    paddingBottom: "3px",
   };
   const deductModalOpenBtnStyle = {
     fontSize: "12px",
     fontWeight: "600",
     color: "#fff",
     width: "80px",
-    background: "#6b6bf9",
-    paddingBottom: "2px",
+    background: "#424242",
+    paddingBottom: "3px",
   };
   const priceModalOpenBtnStyle = {
     fontSize: "12px",
     fontWeight: "600",
     color: "#fff",
     width: "10px",
-    background: "#f4703c",
-    paddingBottom: "2px",
+    background: "#424242",
+    paddingBottom: "3px",
   };
 
   return (

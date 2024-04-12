@@ -194,4 +194,27 @@ class InvoiceController extends Controller
         return $completeOrders;
     }
 
+    public function updateCompleteOrder(Request $request)
+    {
+
+        $invoice_id = $request->id;
+        $collection = $request->collection;
+        $deliveryDate = $request->delivery_date;
+
+        $invoice = Invoice::where('id', '=', $invoice_id)->first();
+        if ($invoice) {
+
+            $netOutstanding = $invoice->due - $collection;
+
+            Invoice::where('id', '=', $invoice_id)->update([
+                'collection' => $collection,
+                'net_outstanding' => $netOutstanding,
+                'status' => 'delivery',
+                'delivery_date' => $deliveryDate
+            ]);
+        }
+
+        return 'sucess';
+    }
+
 }

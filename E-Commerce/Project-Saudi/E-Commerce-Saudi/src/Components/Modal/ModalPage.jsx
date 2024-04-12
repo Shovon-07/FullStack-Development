@@ -51,12 +51,13 @@ const ModalPage = (props) => {
       deduct: "",
       price: "",
 
-      deliveryDate: "",
-      collectedAmount: "",
+      delivery_date: "",
+      collection: "",
     },
   ]);
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+    console.log(id);
   };
 
   const handleForm = async (e) => {
@@ -70,8 +71,8 @@ const ModalPage = (props) => {
       deduct: inputValue.deduct,
       price: inputValue.price,
 
-      deliveryDate: inputValue.deliveryDate,
-      collectedAmount: inputValue.collectedAmount,
+      delivery_date: inputValue.deliveryDate,
+      collection: inputValue.collectedAmount,
     };
     console.log(data);
     setLoading(true);
@@ -142,8 +143,6 @@ const ModalPage = (props) => {
                             type={items.type}
                             name={items.field}
                             placeholder={`${items.placeholder}`}
-                            // value={price}
-                            // value={items.field != "price" ? "" : price}
                             onChange={handleInputValue}
                           />
                         </div>
