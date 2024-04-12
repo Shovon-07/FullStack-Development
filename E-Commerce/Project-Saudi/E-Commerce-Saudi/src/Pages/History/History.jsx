@@ -24,7 +24,7 @@ const History = () => {
   const getApiData = async () => {
     try {
       setLoading(true);
-      await http.get("/complete-order").then((response) => {
+      await http.get("/delivery-order").then((response) => {
         setApiData(response.data);
         setFilteredApiData(response.data);
         setLoading(false);
@@ -52,14 +52,14 @@ const History = () => {
       selector: (row) => row.customer.phone,
     },
     {
-      name: "Pay able",
+      name: "Collection",
       field: "PayAble",
-      selector: (row) => row.payable,
+      selector: (row) => row.collection,
     },
     {
-      name: "Due",
+      name: "	Net Outstanding",
       field: "Due",
-      selector: (row) => row.due,
+      selector: (row) => row.net_outstanding,
     },
     {
       name: "Action",

@@ -47,11 +47,18 @@ Route::controller(InvoiceController::class)->group(function(){
 
     Route::post('/order-details','orderDetails');
 
+    // For pending order page
     Route::get('/pending-order','pendingOrders');
+
+    // For complete order page
     Route::get('/complete-order','completeOrders');
+    
     Route::post('/update-completeOrder','updateCompleteOrder');
     Route::post('/complete-pendingOrder','completePendingOrders');
     Route::post('/cancel-sell','cancel');
+
+    // Delivered order (For history page)
+    Route::get('/delivery-order','deliveryOrders');
 });
 
 Route::controller(ProcessImgController::class)->group(function(){

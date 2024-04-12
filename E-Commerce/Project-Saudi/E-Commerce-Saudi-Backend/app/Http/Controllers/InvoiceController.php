@@ -217,4 +217,14 @@ class InvoiceController extends Controller
         return 'sucess';
     }
 
+    // Delivered order (for history page)
+    public function deliveryOrders()
+    {
+        $deliveryOrders = Invoice::where('status', '=', 'delivery')->select("id","customer_id","collection","net_outstanding")->with('customer:id,name,phone')->get();
+
+        // $deliveryOrders = Invoice::where('status', '=', 'delivery')->get();
+
+        return $deliveryOrders;
+    }
+
 }
