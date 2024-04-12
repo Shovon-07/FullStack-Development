@@ -41,11 +41,12 @@ const PendingOrders = () => {
     }
   };
 
+  let i = 0;
   const columns = [
     {
       name: "Sl No",
       field: "SlNo",
-      selector: (row) => row.id,
+      selector: (row, index) => index + 1,
       width: "70px",
     },
     {
@@ -88,6 +89,7 @@ const PendingOrders = () => {
                     });
                   // Reload table
                   setRelodeTable((prev) => !prev);
+                  getApiData();
                 } catch (error) {
                   console.error(error);
                 }
@@ -104,6 +106,7 @@ const PendingOrders = () => {
                   });
                   // Reload table
                   setRelodeTable((prev) => !prev);
+                  getApiData();
                 } catch (error) {
                   console.error(error);
                 }
