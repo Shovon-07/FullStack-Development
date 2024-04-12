@@ -141,13 +141,9 @@ const PendingOrders = () => {
         <DataTable
           columns={columns}
           data={filteredApiData}
-          // title={"Materials"}
           pagination
-          // fixedHeader
-          // fixedHeaderScrollHeight="400px"
-          // selectableRows
-          // selectableRowsHighlight
-          // highlightOnHover
+          fixedHeader
+          fixedHeaderScrollHeight="400px"
           subHeader
           subHeaderComponent={
             <input

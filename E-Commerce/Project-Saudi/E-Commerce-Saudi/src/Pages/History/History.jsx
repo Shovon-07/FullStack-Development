@@ -105,6 +105,8 @@ const History = () => {
         columns={columns}
         data={filteredApiData}
         pagination
+        fixedHeader
+        fixedHeaderScrollHeight="400px"
         subHeader
         subHeaderComponent={
           <input

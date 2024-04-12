@@ -210,7 +210,7 @@ const Home = () => {
         <div>
           <h2>Materials</h2>
         </div>
-        <div style={{ margin: "20px 0" }}>
+        <div style={{ marginTop: "20px" }}>
           <ModalPage
             slug={"Add New Material"}
             // inputFields={inputFieldsForAddMaterial}
@@ -228,8 +228,8 @@ const Home = () => {
         data={filteredApiData}
         // title={"Materials"}
         pagination
-        // fixedHeader
-        // fixedHeaderScrollHeight="400px"
+        fixedHeader
+        fixedHeaderScrollHeight="400px"
         // selectableRows
         // selectableRowsHighlight
         // highlightOnHover
