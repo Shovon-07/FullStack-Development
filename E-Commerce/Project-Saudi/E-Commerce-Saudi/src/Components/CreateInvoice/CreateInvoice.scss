@@ -59,7 +59,6 @@
               justify-content: space-between;
             }
             input {
-              // width: 10px;
               @include md {
                 width: 60%;
               }
@@ -87,10 +86,6 @@
           }
           input {
             width: 80%;
-          }
-        }
-        table {
-          td {
           }
         }
       }
@@ -149,8 +144,6 @@
     textarea {
       resize: vertical;
     }
-  }
-  .first {
   }
 
   .css-1ex1afd-MuiTableCell-root,
