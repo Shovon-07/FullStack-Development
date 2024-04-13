@@ -16,7 +16,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  cursor: pointer;
+  cursor: progress;
   z-index: 500000 !important;
   background-color: #0000008e;
   // opacity: 0.8;
@@ -121,23 +121,33 @@
 // }
 
 /* HTML: <div class="loader"></div> */
-/* HTML: <div class="loader"></div> */
 .loader {
-  --d: 22px;
-  width: 4px;
-  height: 4px;
+  width: 50px;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
   border-radius: 50%;
-  color: $main-color;
-  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
-    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
-    calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
-    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
-    calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
-    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
-    calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
-  animation: l27 1s infinite steps(8);
+  border-color: #ccc #0000;
+  animation: l16 1s infinite linear;
 }
-@keyframes l27 {
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+.loader::before {
+  border-color: $main-color #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+.loader::after {
+  margin: 8px;
+}
+@keyframes l16 {
   100% {
     transform: rotate(1turn);
   }
