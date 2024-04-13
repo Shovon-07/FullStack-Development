@@ -95,34 +95,34 @@ const CustomizeImg = () => {
     {
       dressImg: Dress_1,
       dressName: "Dress 1",
-      // width: "73px",
-      // height: "170px",
-      // top: "26px",
-      // right: "110px",
+      width: "300px",
+      height: "400px",
+      top: "0",
+      right: "0",
     },
     {
       dressImg: Dress_2,
       dressName: "Dress 2",
-      // width: "73px",
-      // height: "170px",
-      // top: "26px",
-      // right: "110px",
+      width: "300px",
+      height: "400px",
+      top: "0",
+      right: "0",
     },
     {
       dressImg: Dress_3,
       dressName: "Dress 3",
-      // width: "73px",
-      // height: "170px",
-      // top: "26px",
-      // right: "110px",
+      width: "300px",
+      height: "400px",
+      top: "0",
+      right: "0",
     },
     {
       dressImg: Dress_4,
       dressName: "Dress 4",
-      // width: "71px",
-      // height: "171px",
-      // top: "16px",
-      // right: "111px",
+      width: "300px",
+      height: "400px",
+      top: "0",
+      right: "0",
     },
   ];
   const buttonImg = [
@@ -390,20 +390,17 @@ const CustomizeImg = () => {
       <div className="left previewSection">
         <h2 className="title">Preview Image</h2>
         <div className="imageBox d-flex" id="capture">
-          {/* <img src={jubba} alt="" className="main-img" /> */}
           {/* <img src={Dress_1} alt="" className="main-img" /> */}
 
           <img
             src={dressImgPreview.dressImgPrev}
             alt=""
-            style={
-              {
-                // width: dressImgPreview.widthDressImgPrev,
-                // height: dressImgPreview.heightDressImgPrev,
-                // top: dressImgPreview.topDressImgPrev,
-                // right: dressImgPreview.rightPosDressImgPrev,
-              }
-            }
+            style={{
+              width: dressImgPreview.widthDressImgPrev,
+              height: dressImgPreview.heightDressImgPrev,
+              top: dressImgPreview.topDressImgPrev,
+              right: dressImgPreview.rightPosDressImgPrev,
+            }}
             className={`${dressImgPreview == null ? "d-none" : "main-img"}`}
             // className="main-img"
           />
