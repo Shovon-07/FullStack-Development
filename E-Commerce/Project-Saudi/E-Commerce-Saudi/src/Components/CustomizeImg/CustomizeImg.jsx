@@ -4,7 +4,12 @@ import Tooltip from "@mui/material/Tooltip";
 //___ Additional utility ___//
 
 //___ Images ___//
-import jubba from "/images/dress/jubba2.png";
+// import jubba from "/images/dress/jubba2.png";
+
+import Dress_1 from "/images/dress/dress_type/1.png";
+import Dress_2 from "/images/dress/dress_type/2.png";
+import Dress_3 from "/images/dress/dress_type/3.png";
+import Dress_4 from "/images/dress/dress_type/4.png";
 
 import Btn_1 from "/images/dress/button_type/Button Triangle.png";
 import Btn_2 from "/images/dress/button_type/Button Square.png";
@@ -46,6 +51,15 @@ import GetScreenShoot from "../GetScreenShoot/GetScreenShoot";
 
 const CustomizeImg = () => {
   // Images
+  const [dressImgPreview, setDressImgPreview] = useState({
+    dressImgPrev: Dress_1,
+    dressImgNamePrev: "",
+    widthDressImgPrev: null,
+    heightDressImgPrev: null,
+    topDressImgPrev: null,
+    rightPosDressImgPrev: null,
+    leftPosDressImgPrev: null,
+  });
   const [btnImgPreview, setBtnImgPreview] = useState({
     btnImgPrev: null,
     btnImgNamePrev: "",
@@ -77,6 +91,40 @@ const CustomizeImg = () => {
     leftPosHndImgPrev: null,
   });
 
+  const dressImg = [
+    {
+      dressImg: Dress_1,
+      dressName: "Dress 1",
+      // width: "73px",
+      // height: "170px",
+      // top: "26px",
+      // right: "110px",
+    },
+    {
+      dressImg: Dress_2,
+      dressName: "Dress 2",
+      // width: "73px",
+      // height: "170px",
+      // top: "26px",
+      // right: "110px",
+    },
+    {
+      dressImg: Dress_3,
+      dressName: "Dress 3",
+      // width: "73px",
+      // height: "170px",
+      // top: "26px",
+      // right: "110px",
+    },
+    {
+      dressImg: Dress_4,
+      dressName: "Dress 4",
+      // width: "71px",
+      // height: "171px",
+      // top: "16px",
+      // right: "111px",
+    },
+  ];
   const buttonImg = [
     {
       btnImg: Btn_1,
@@ -242,6 +290,17 @@ const CustomizeImg = () => {
     },
   ];
 
+  const handelDressImgPreview = (items) => {
+    setDressImgPreview({
+      ...dressImgPreview,
+      dressImgPrev: items.dressImg,
+      dressImgNamePrev: items.dressName,
+      widthDressImgPrev: items.width,
+      heightDressImgPrev: items.height,
+      topDressImgPrev: items.top,
+      rightPosDressImgPrev: items.right,
+    });
+  };
   const handelButtonImgPreview = (items) => {
     setBtnImgPreview({
       ...btnImgPreview,
@@ -284,15 +343,23 @@ const CustomizeImg = () => {
   };
 
   // Active Button
-  const [activeBtn, setActiveBtn] = useState(1);
+  const [activeBtn, setActiveBtn] = useState(0);
   const handleBtnChild = (e) => {
     setActiveBtn((prev) => e.target.value);
   };
 
   // Reset
   const handelReset = () => {
-    setActiveBtn(1);
+    setActiveBtn(0);
 
+    setDressImgPreview({
+      dressImgPrev: Dress_1,
+
+      // widthDressImgPrev: items.width,
+      // heightDressImgPrev: items.height,
+      // topDressImgPrev: items.top,
+      // rightPosDressImgPrev: items.right,
+    });
     setBtnImgPreview({
       btnImgPrev: null,
       widthBtnImgPrev: null,
@@ -323,7 +390,23 @@ const CustomizeImg = () => {
       <div className="left previewSection">
         <h2 className="title">Preview Image</h2>
         <div className="imageBox d-flex" id="capture">
-          <img src={jubba} alt="" className="main-img" />
+          {/* <img src={jubba} alt="" className="main-img" /> */}
+          {/* <img src={Dress_1} alt="" className="main-img" /> */}
+
+          <img
+            src={dressImgPreview.dressImgPrev}
+            alt=""
+            style={
+              {
+                // width: dressImgPreview.widthDressImgPrev,
+                // height: dressImgPreview.heightDressImgPrev,
+                // top: dressImgPreview.topDressImgPrev,
+                // right: dressImgPreview.rightPosDressImgPrev,
+              }
+            }
+            className={`${dressImgPreview == null ? "d-none" : "main-img"}`}
+            // className="main-img"
+          />
           <img
             src={btnImgPreview.btnImgPrev}
             alt=""
@@ -379,6 +462,27 @@ const CustomizeImg = () => {
       <div className="right">
         <h2>Select type</h2>
         <div className="btnBox d-flex flex-start gap-30">
+          <div className="btnParent">
+            <button className="button" onClick={handleBtnChild} value={0}>
+              Dress Type
+            </button>
+            <ul className={`${activeBtn == 0 ? "btnChild active" : "d-none"}`}>
+              {dressImg.map((items, index) => {
+                return (
+                  <li key={index}>
+                    <Tooltip title={items.dressName}>
+                      <img
+                        src={items.dressImg}
+                        alt=""
+                        onClick={() => handelDressImgPreview(items)}
+                      />
+                    </Tooltip>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+
           <div className="btnParent">
             <button className="button" onClick={handleBtnChild} value={1}>
               Button Type
