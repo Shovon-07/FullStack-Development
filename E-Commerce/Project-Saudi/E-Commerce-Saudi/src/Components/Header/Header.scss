@@ -61,7 +61,8 @@
           transform: translate(-50%, 0);
         }
 
-        a.isActive::before {
+        a.isActive::before,
+        a:hover::before {
           width: 100%;
         }
       }

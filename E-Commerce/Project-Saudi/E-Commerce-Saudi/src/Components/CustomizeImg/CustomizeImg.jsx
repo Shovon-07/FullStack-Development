@@ -4,7 +4,7 @@ import Tooltip from "@mui/material/Tooltip";
 //___ Additional utility ___//
 
 //___ Images ___//
-// import jubba from "/images/dress/jubba2.png";
+import jubba from "/images/dress/jubba2.png";
 
 import Dress_1 from "/images/dress/dress_type/1.png";
 import Dress_2 from "/images/dress/dress_type/2.png";
@@ -343,14 +343,14 @@ const CustomizeImg = () => {
   };
 
   // Active Button
-  const [activeBtn, setActiveBtn] = useState(0);
+  const [activeBtn, setActiveBtn] = useState(1);
   const handleBtnChild = (e) => {
     setActiveBtn((prev) => e.target.value);
   };
 
   // Reset
   const handelReset = () => {
-    setActiveBtn(0);
+    setActiveBtn(1);
 
     setDressImgPreview({
       dressImgPrev: Dress_1,
@@ -390,9 +390,9 @@ const CustomizeImg = () => {
       <div className="left previewSection">
         <h2 className="title">Preview Image</h2>
         <div className="imageBox d-flex" id="capture">
-          {/* <img src={Dress_1} alt="" className="main-img" /> */}
+          <img src={jubba} alt="" className="main-img" />
 
-          <img
+          {/* <img
             src={dressImgPreview.dressImgPrev}
             alt=""
             style={{
@@ -403,7 +403,7 @@ const CustomizeImg = () => {
             }}
             className={`${dressImgPreview == null ? "d-none" : "main-img"}`}
             // className="main-img"
-          />
+          /> */}
           <img
             src={btnImgPreview.btnImgPrev}
             alt=""
@@ -459,7 +459,7 @@ const CustomizeImg = () => {
       <div className="right">
         <h2>Select type</h2>
         <div className="btnBox d-flex flex-start gap-30">
-          <div className="btnParent">
+          {/* <div className="btnParent">
             <button className="button" onClick={handleBtnChild} value={0}>
               Dress Type
             </button>
@@ -478,7 +478,7 @@ const CustomizeImg = () => {
                 );
               })}
             </ul>
-          </div>
+          </div> */}
 
           <div className="btnParent">
             <button className="button" onClick={handleBtnChild} value={1}>
