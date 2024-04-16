@@ -20,48 +20,50 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['Cors'])->group(function(){
-    Route::controller(MaterialController::class)->group(function(){
-        // Get material data
-        Route::get('/home','index');
+/* Route::middleware(['Cors'])->group(function(){
     
-        // Post material data
-        Route::post('/store','store');
+}); */
+
+Route::controller(MaterialController::class)->group(function(){
+    // Get material data
+    Route::get('/home','index');
+
+    // Post material data
+    Route::post('/store','store');
+
+    // Updae stock data
+    Route::post('/updateStock','updateStock');
+
+    // update deduct
+    Route::post('/updateDeduct','updateDeduct');
+
+    // price
+    Route::get('/price','price');
+    Route::post('/updatePrice','updatePrice');
+});
+
+// Invoice
+Route::controller(InvoiceController::class)->group(function(){
+    Route::get('/get-material','GetMaterial');
+    Route::post('/store-sell','store');
+
+    Route::post('/order-details','orderDetails');
+
+    // For pending order page
+    Route::get('/pending-order','pendingOrders');
+
+    // For complete order page
+    Route::get('/complete-order','completeOrders');
     
-        // Updae stock data
-        Route::post('/updateStock','updateStock');
-    
-        // update deduct
-        Route::post('/updateDeduct','updateDeduct');
-    
-        // price
-        Route::get('/price','price');
-        Route::post('/updatePrice','updatePrice');
-    });
-    
-    // Invoice
-    Route::controller(InvoiceController::class)->group(function(){
-        Route::get('/get-material','GetMaterial');
-        Route::post('/store-sell','store');
-    
-        Route::post('/order-details','orderDetails');
-    
-        // For pending order page
-        Route::get('/pending-order','pendingOrders');
-    
-        // For complete order page
-        Route::get('/complete-order','completeOrders');
-        
-        Route::post('/update-completeOrder','updateCompleteOrder');
-        Route::post('/complete-pendingOrder','completePendingOrders');
-        Route::post('/cancel-sell','cancel');
-    
-        // Delivered order (For history page)
-        Route::get('/delivery-order','deliveryOrders');
-    });
-    
-    Route::controller(ProcessImgController::class)->group(function(){
-        Route::get('/get-processed-img', 'GetProcessedImg');
-        Route::post('/process-img', 'ProcessImg');
-    });
+    Route::post('/update-completeOrder','updateCompleteOrder');
+    Route::post('/complete-pendingOrder','completePendingOrders');
+    Route::post('/cancel-sell','cancel');
+
+    // Delivered order (For history page)
+    Route::get('/delivery-order','deliveryOrders');
+});
+
+Route::controller(ProcessImgController::class)->group(function(){
+    Route::get('/get-processed-img', 'GetProcessedImg');
+    Route::post('/process-img', 'ProcessImg');
 });

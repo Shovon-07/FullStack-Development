@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default function AxiosConfig() {
   const http = axios.create({
-    baseURL: "https://shovon-portfolio.wuaze.com/public",
+    baseURL: "http://project.preview.com.aljubairshovon.com/backend/public/",
     headers: {
       "Content-type": "application/json",
     },
@@ -11,5 +11,3 @@ export default function AxiosConfig() {
     http,
   };
 }
-
-// http://shovon-portfolio.wuaze.com/Backend/public/api
