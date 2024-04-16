@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import DataTable from "react-data-table-component";
 
 //___ Additional utility ___//
@@ -9,7 +9,6 @@ import AxiosConfig from "../../assets/AxiosConfig";
 import "./Statistics.scss";
 
 //___ Components ___//
-import ModalPage from "../../Components/Modal/ModalPage";
 
 const Statistics = () => {
   const [setLoading] = useOutletContext();

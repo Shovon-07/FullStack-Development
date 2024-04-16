@@ -390,9 +390,9 @@ const CustomizeImg = () => {
       <div className="left previewSection">
         <h2 className="title">Preview Image</h2>
         <div className="imageBox d-flex" id="capture">
-          {/* <img src={jubba} alt="" className="main-img" /> */}
+          <img src={jubba} alt="" className="main-img" />
 
-          <img
+          {/* <img
             src={dressImgPreview.dressImgPrev}
             alt=""
             style={{
@@ -403,7 +403,7 @@ const CustomizeImg = () => {
             }}
             className={`${dressImgPreview == null ? "d-none" : "main-img"}`}
             // className="main-img"
-          />
+          /> */}
           <img
             src={btnImgPreview.btnImgPrev}
             alt=""
@@ -459,7 +459,7 @@ const CustomizeImg = () => {
       <div className="right">
         <h2>Select type</h2>
         <div className="btnBox d-flex flex-start gap-30">
-          <div className="btnParent">
+          {/* <div className="btnParent">
             <button className="button" onClick={handleBtnChild} value={0}>
               Dress Type
             </button>
@@ -478,7 +478,7 @@ const CustomizeImg = () => {
                 );
               })}
             </ul>
-          </div>
+          </div> */}
 
           <div className="btnParent">
             <button className="button" onClick={handleBtnChild} value={1}>

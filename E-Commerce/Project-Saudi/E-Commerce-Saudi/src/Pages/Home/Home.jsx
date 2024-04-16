@@ -4,8 +4,6 @@ import DataTable from "react-data-table-component";
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
-import { motion } from "framer-motion";
-import { fadeIn } from "../../assets/MotionVarient";
 
 //___ Css ___//
 import "./Home.scss";

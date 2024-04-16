@@ -8,9 +8,6 @@ import AxiosConfig from "../../assets/AxiosConfig";
 //___ Css ___//
 import "./History.scss";
 
-//___ Components ___//
-import ModalPage from "../../Components/Modal/ModalPage";
-
 const History = () => {
   const [setLoading] = useOutletContext();
   const { http } = AxiosConfig();

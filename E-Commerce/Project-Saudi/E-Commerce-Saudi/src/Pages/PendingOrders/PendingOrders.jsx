@@ -18,15 +18,7 @@ const PendingOrders = () => {
   const [apiData, setApiData] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [filteredApiData, setFilteredApiData] = useState([]);
-
-  // const [relodeTableForCompleate, setRelodeTableForCompleate] = useState(false);
-  // const [relodeTableForCancel, setRelodeTableForCancel] = useState(false);
-
   const [relodeTable, setRelodeTable] = useState(false);
-  // const [relodeTable, setRelodeTable] = useState({
-  //   relodeTableForCompleate: false,
-  //   relodeTableForCancel: false,
-  // });
 
   const getApiData = async () => {
     try {

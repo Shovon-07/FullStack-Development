@@ -1,5 +1,5 @@
 import React, { useEffect, useState, createContext, useRef } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";

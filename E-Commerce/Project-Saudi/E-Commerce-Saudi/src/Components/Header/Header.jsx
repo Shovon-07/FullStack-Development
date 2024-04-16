@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 //___ Icons ___//
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -11,10 +11,8 @@ import "./Header.scss";
 import Logo from "/images/icons/logo.png";
 
 //___ Data ___//
-// import { notificationDataLength } from "../../Data";
 
 //___ Components ___//
-// import DropdownMenu from "../DropdownMenu/DropdownMenu";
 
 const Header = () => {
   // Props
