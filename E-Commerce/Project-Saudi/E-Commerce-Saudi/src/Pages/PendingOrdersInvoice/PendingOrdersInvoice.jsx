@@ -168,7 +168,7 @@ const PendingOrdersInvoice = () => {
         <div className="productDetails d-flex flex-start gap-30">
           <div className="left">
             <img
-              src={"http://localhost:8000/images/ScreenShoot/" + apiData.image}
+              src={"http://project.preview.com.aljubairshovon.com/backend/public/images/ScreenShoot/" + apiData.image}
               alt=""
             />
           </div>
