@@ -58,11 +58,11 @@ const History = () => {
       field: "netOutstanding",
       selector: (row) => row.net_outstanding,
     },
-    {
-      name: "Payed",
-      field: "payed",
-      selector: (row) => row.id,
-    },
+    // {
+    //   name: "Payed",
+    //   field: "payed",
+    //   selector: (row) => row.id,
+    // },
     {
       name: "Action",
       cell: (row) => {

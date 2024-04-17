@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
@@ -21,8 +21,8 @@ const style = {
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Components ___//
 
@@ -30,7 +30,7 @@ const ModalPage = (props) => {
   const {
     id,
     slug,
-    price,
+    viewPrice,
     inputFields,
     api,
     ModalOpenBtnTitle,
@@ -50,7 +50,6 @@ const ModalPage = (props) => {
       stock: "",
       price: "",
       deduct: "",
-      price: "",
 
       delivery_date: "",
       collection: "",
@@ -69,20 +68,23 @@ const ModalPage = (props) => {
       stock: inputValue.stock,
       price: inputValue.price,
       deduct: inputValue.deduct,
-      price: inputValue.price,
 
       delivery_date: inputValue.deliveryDate,
       collection: inputValue.collectedAmount,
     };
     // console.log(data);
     setLoading(true);
-    http.post(api, data).then((response) => {
-      // console.log(response.data);
-      handleClose();
-      setLoading(false);
-      setRelodeTable((prev) => !prev);
-      // toast.success(response.data);
-    });
+    try {
+      http.post(api, data).then((response) => {
+        // console.log(response.data);
+        handleClose();
+        setLoading(false);
+        setRelodeTable((prev) => !prev);
+        // toast.success(response.data);
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -116,10 +118,10 @@ const ModalPage = (props) => {
               <div className="modalContent">
                 <h3 className="modalTitle">{slug}</h3>
                 {/* <span> id = {id}</span> */}
-                <input type="text" value={id} className="d-none" />
+                <input type="text" value={id} className="d-none" readOnly />
                 <p
-                  className={`${price == null ? "d-none" : "color-light"}`}
-                >{`Current price = ${price}`}</p>
+                  className={`${viewPrice == null ? "d-none" : "color-light"}`}
+                >{`Current price = ${viewPrice}`}</p>
                 <form className="d-flex" onSubmit={handleForm}>
                   {inputFields.map((items, index) => {
                     return (
@@ -148,6 +150,12 @@ const ModalPage = (props) => {
           </Fade>
         </Modal>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        theme="colored"
+        style={{ boxShadow: 0 }}
+      />
     </>
   );
 };

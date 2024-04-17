@@ -90,7 +90,7 @@ const Home = () => {
           />
           <ModalPage
             id={row.id}
-            price={row.price}
+            viewPrice={row.price}
             slug={"Price"}
             inputFields={inputFieldsForPriceMaterial}
             ModalOpenBtnTitle="Price"
