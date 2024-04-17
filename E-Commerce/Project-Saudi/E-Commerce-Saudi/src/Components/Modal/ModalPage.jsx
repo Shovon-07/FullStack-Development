@@ -72,11 +72,9 @@ const ModalPage = (props) => {
       delivery_date: inputValue.deliveryDate,
       collection: inputValue.collectedAmount,
     };
-    // console.log(data);
     setLoading(true);
     try {
       http.post(api, data).then((response) => {
-        // console.log(response.data);
         handleClose();
         setLoading(false);
         setRelodeTable((prev) => !prev);

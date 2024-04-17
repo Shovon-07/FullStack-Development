@@ -72,15 +72,15 @@ const PendingOrders = () => {
             </Link>
             <button
               className="button"
-              onClick={() => {
+              onClick={async () => {
                 try {
-                  http
+                  await http
                     .post("/complete-pendingOrder", { id: row.id })
                     .then((respone) => {
                       // console.log(respone.data);
                     });
                   // Reload table
-                  setRelodeTable((prev) => !prev);
+                  // setRelodeTable(true);
                   getApiData();
                 } catch (error) {
                   console.error(error);
@@ -91,13 +91,15 @@ const PendingOrders = () => {
             </button>
             <button
               className="button"
-              onClick={() => {
+              onClick={async () => {
                 try {
-                  http.post("/cancel-sell", { id: row.id }).then((respone) => {
-                    // console.log(respone.data);
-                  });
+                  await http
+                    .post("/cancel-sell", { id: row.id })
+                    .then((respone) => {
+                      // console.log(respone.data);
+                    });
                   // Reload table
-                  setRelodeTable((prev) => !prev);
+                  // setRelodeTable(true);
                   getApiData();
                 } catch (error) {
                   console.error(error);
