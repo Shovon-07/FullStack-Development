@@ -41,7 +41,7 @@ const Home = () => {
     {
       name: "Sl No",
       field: "SlNo",
-      selector: (row) => row.id,
+      selector: (row, index) => index + 1,
       width: "70px",
     },
     {
@@ -221,6 +221,7 @@ const Home = () => {
           />
         </div>
       </div>
+
       <DataTable
         columns={columns}
         data={filteredApiData}

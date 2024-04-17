@@ -21,19 +21,18 @@ const style = {
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 //___ Components ___//
 
 const ModalPage = (props) => {
   const {
-    slug,
     id,
+    slug,
     price,
     inputFields,
     api,
-    getDataApi,
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
     setLoading,
@@ -85,19 +84,6 @@ const ModalPage = (props) => {
       // toast.success(response.data);
     });
   };
-
-  // const getDataApiFunc = () => {
-  //   try {
-  //     http.get(getDataApi).then((response) => {
-  //       console.log(response.data);
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // useEffect(() => {
-  //   getDataApiFunc();
-  // }, []);
 
   return (
     <>
