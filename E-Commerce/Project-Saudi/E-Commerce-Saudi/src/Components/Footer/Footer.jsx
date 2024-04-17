@@ -10,7 +10,9 @@ const Footer = () => {
   return (
     <div className="Footer">
       <div className="footerContainer">
-        <h1>Footer</h1>
+        <p>
+          All right reserved by <span>أضواء الشرق</span>
+        </p>
         <Credits />
       </div>
     </div>

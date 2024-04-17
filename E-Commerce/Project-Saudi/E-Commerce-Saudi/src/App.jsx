@@ -6,7 +6,7 @@ import Loader from "./Components/Loader/Loader";
 
 //___ Components ___//
 import Header from "./Components/Header/Header";
-// import Footer from "./Components/Footer/Footer";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,7 @@ function App() {
           {loading && <Loader />}
           <Outlet context={[setLoading]} />
         </div>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </>
   );
