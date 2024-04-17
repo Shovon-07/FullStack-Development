@@ -45,7 +45,8 @@
           font-weight: 500;
           transition: $trans;
           position: relative;
-          &:hover {
+          &:hover,
+          &.isActive {
             color: $main-color;
           }
         }
@@ -64,6 +65,7 @@
         a.isActive::before,
         a:hover::before {
           width: 100%;
+          color: $main-color;
         }
       }
       @include slg {
