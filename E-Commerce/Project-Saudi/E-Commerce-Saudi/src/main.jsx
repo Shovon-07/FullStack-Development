@@ -5,8 +5,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 //___ Css ___//
 import "./Styles/App.scss";
 
-//___ Components ___//
-
 //___ Pages ___//
 import App from "./App.jsx";
 import Home from "./Pages/Home/Home";
