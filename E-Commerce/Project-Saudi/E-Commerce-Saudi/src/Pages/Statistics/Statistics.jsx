@@ -79,7 +79,6 @@ const Statistics = () => {
 
   return (
     <div className="Statistics">
-      {/* {loading && <Loader />} */}
       <div>
         <div>
           <h2>Statistics</h2>

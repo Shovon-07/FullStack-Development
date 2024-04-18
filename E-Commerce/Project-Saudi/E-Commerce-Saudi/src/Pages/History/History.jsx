@@ -92,7 +92,6 @@ const History = () => {
 
   return (
     <div className="CompleteOrder">
-      {/* {loading && <Loader />} */}
       <div>
         <div>
           <h2>History</h2>

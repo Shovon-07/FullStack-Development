@@ -10,13 +10,9 @@ import "./Header.scss";
 //___ Images ___//
 import Logo from "/images/icons/logo.png";
 
-//___ Data ___//
-
 //___ Components ___//
 
 const Header = () => {
-  // Props
-
   // States
   const [navToggler, setNavToggler] = useState(0);
 
@@ -26,12 +22,6 @@ const Header = () => {
   const closeNav = () => {
     setNavToggler(0);
   };
-
-  // Testing
-  // const [count, setCount] = useState(0);
-  // useEffect(() => {
-  //   setCount((prev) => (prev < 200 ? prev + 1 : prev));
-  // });
 
   return (
     <header className="Header">

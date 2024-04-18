@@ -8,9 +8,6 @@ import AxiosConfig from "../../assets/AxiosConfig";
 //___ Css ___//
 import "./Home.scss";
 
-//___ Data ___//
-// import { categories } from "../../Data";
-
 //___ Components ___//
 import ModalPage from "../../Components/Modal/ModalPage";
 
@@ -67,7 +64,7 @@ const Home = () => {
     {
       name: "Action",
       cell: (row) => (
-        <div className="d-flex" style={{ gap: "10px" }}>
+        <div className="d-flex" style={{ gap: "3px" }}>
           <ModalPage
             id={row.id}
             slug={"Stock Material"}
@@ -181,7 +178,7 @@ const Home = () => {
     fontSize: "12px",
     fontWeight: "600",
     color: "#fff",
-    width: "10px",
+    width: "5px",
     background: "#424242",
     paddingBottom: "3px",
   };
@@ -189,7 +186,7 @@ const Home = () => {
     fontSize: "12px",
     fontWeight: "600",
     color: "#fff",
-    width: "80px",
+    width: "70px",
     background: "#424242",
     paddingBottom: "3px",
   };
@@ -197,14 +194,13 @@ const Home = () => {
     fontSize: "12px",
     fontWeight: "600",
     color: "#fff",
-    width: "10px",
+    width: "5px",
     background: "#424242",
     paddingBottom: "3px",
   };
 
   return (
     <div className="Home">
-      {/* {loading && <Loader />} */}
       <div>
         <div>
           <h2>Materials</h2>

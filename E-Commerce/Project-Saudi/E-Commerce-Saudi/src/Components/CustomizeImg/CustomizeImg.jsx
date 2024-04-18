@@ -424,7 +424,6 @@ const CustomizeImg = () => {
             }}
             className={`${nakImgPreview == null ? "d-none" : "nackImg"}`}
           />
-          {/* <img src={nakImgPreview} alt="" className="nackImg" /> */}
           <img
             src={pktImgPreview.pktImgPrev}
             alt=""

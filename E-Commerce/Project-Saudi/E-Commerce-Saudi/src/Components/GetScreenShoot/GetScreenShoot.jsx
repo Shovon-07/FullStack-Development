@@ -2,14 +2,12 @@ import React, { useContext, useState } from "react";
 import html2canvas from "html2canvas";
 
 //___ Additional utility ___//
-// import AxiosConfig from "../../assets/AxiosConfig";
 import { ContextApiForGetImgData } from "../CreateInvoice/CreateInvoice";
 
 const GetScreenShoot = (props) => {
   const useContextApi = useContext(ContextApiForGetImgData);
 
   const { btnImgName, nakImgName, pktImgName, hndImgName } = props;
-  // const { http } = AxiosConfig();
   const [msg, setMsg] = useState("Generate Image");
 
   const handleScreenShoot = () => {
@@ -18,12 +16,6 @@ const GetScreenShoot = (props) => {
     html2canvas(capture)
       .then((canvas) => {
         let image = canvas.toDataURL("image/png");
-        // console.log(image);
-        // document.getElementById(
-        //   "viewCaptured"
-        // ).innerHTML = `<img src="${image}" alt="" />`;
-        // localStorage.setItem("img", image);
-
         useContextApi.setGetImgData({
           Image: image,
           BtnImgName: btnImgName,
@@ -41,16 +33,6 @@ const GetScreenShoot = (props) => {
       });
   };
 
-  // const show = () => {
-  //   useContextApi.setGetImgData({
-  //     // Image: image,
-  //     BtnImgName: "btnImgName",
-  //     NakImgName: "nakImgName",
-  //     PktImgName: "pktImgName",
-  //     HndImgName: "hndImgName",
-  //   });
-  // };
-
   return (
     <div className="">
       <button
@@ -66,7 +48,6 @@ const GetScreenShoot = (props) => {
         </span>
         {msg == null ? "Generate Image" : msg}{" "}
       </button>
-      {/* <button onClick={show}>Show</button> */}
     </div>
   );
 };

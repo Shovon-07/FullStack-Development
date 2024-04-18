@@ -21,8 +21,6 @@ const style = {
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 //___ Components ___//
 
@@ -78,7 +76,6 @@ const ModalPage = (props) => {
         handleClose();
         setLoading(false);
         setRelodeTable((prev) => !prev);
-        // toast.success(response.data);
       });
     } catch (error) {
       console.error(error);
@@ -115,7 +112,6 @@ const ModalPage = (props) => {
               </div>
               <div className="modalContent">
                 <h3 className="modalTitle">{slug}</h3>
-                {/* <span> id = {id}</span> */}
                 <input type="text" value={id} className="d-none" readOnly />
                 <p
                   className={`${viewPrice == null ? "d-none" : "color-light"}`}
@@ -148,12 +144,6 @@ const ModalPage = (props) => {
           </Fade>
         </Modal>
       </div>
-
-      <ToastContainer
-        position="top-center"
-        theme="colored"
-        style={{ boxShadow: 0 }}
-      />
     </>
   );
 };

@@ -3,14 +3,10 @@ import React from "react";
 //___ Css ___//
 import "./Loader.scss";
 
-const Loader = (props) => {
-  const { show } = props;
+const Loader = () => {
   return (
     <>
       <div id="loader" className="LoadingOverlay">
-        {/* <div className="Line-Progress">
-          <div className="indeterminate"></div>
-        </div> */}
         <div className="loader"></div>
       </div>
     </>

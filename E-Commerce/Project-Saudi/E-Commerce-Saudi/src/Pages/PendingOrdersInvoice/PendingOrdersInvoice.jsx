@@ -12,7 +12,6 @@ import Logo from "/images/icons/logo.png";
 import { FaPrint } from "react-icons/fa";
 
 //___ Css ___//
-// import "./Invoice.scss";
 import "../../Styles/Invoice.scss";
 
 const PendingOrdersInvoice = () => {

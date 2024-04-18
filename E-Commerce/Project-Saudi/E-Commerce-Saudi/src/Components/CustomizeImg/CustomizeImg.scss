@@ -13,11 +13,10 @@
     .imageBox {
       width: 300px;
       height: 450px;
-      // border: $border;
+
       margin-top: 15px;
       justify-content: center;
       position: relative;
-      // background: red;
 
       img {
         position: absolute;
@@ -27,8 +26,6 @@
         width: 300px;
         height: 400px;
         margin: auto;
-        // top: 0;
-        // right: 0;
       }
 
       .buttonImg {
@@ -49,17 +46,11 @@
       }
 
       .rightHand {
-        // width: 101px;
         height: auto;
-        // top: 172px;
-        // right: -29px;
         transform: rotate(-90deg);
       }
       .leftHand {
-        // width: 101px;
         height: auto;
-        // top: 168px;
-        // left: -31px;
         transform: rotate(-90deg);
       }
     }
@@ -94,7 +85,6 @@
           background: transparent;
           box-shadow: 1px 1px 5px #cfcfcf, -1px -1px 5px #cfcfcf;
           overflow-x: scroll;
-          // width: 480px;
           width: 400%;
           opacity: 1;
           position: absolute;

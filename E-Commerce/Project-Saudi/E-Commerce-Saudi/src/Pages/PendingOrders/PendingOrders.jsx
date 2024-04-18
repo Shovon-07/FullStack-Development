@@ -5,8 +5,6 @@ import DataTable from "react-data-table-component";
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
 
-//___ Components ___//
-
 //___ Css ___//
 import "./PendingOrders.scss";
 
@@ -76,11 +74,8 @@ const PendingOrders = () => {
                 try {
                   await http
                     .post("/complete-pendingOrder", { id: row.id })
-                    .then((respone) => {
-                      // console.log(respone.data);
-                    });
+                    .then((respone) => {});
                   // Reload table
-                  // setRelodeTable(true);
                   getApiData();
                 } catch (error) {
                   console.error(error);
@@ -95,11 +90,8 @@ const PendingOrders = () => {
                 try {
                   await http
                     .post("/cancel-sell", { id: row.id })
-                    .then((respone) => {
-                      // console.log(respone.data);
-                    });
+                    .then((respone) => {});
                   // Reload table
-                  // setRelodeTable(true);
                   getApiData();
                 } catch (error) {
                   console.error(error);

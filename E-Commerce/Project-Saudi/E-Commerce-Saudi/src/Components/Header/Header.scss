@@ -11,12 +11,9 @@
   z-index: 998;
   .container {
     justify-content: space-between;
-    // padding: 15px 0 10px 0;
     padding: 0;
     position: relative;
     @include slg {
-      // display: block;
-      // padding: 15px 0 5px 0;
     }
     &.active {
       .menus {
@@ -36,13 +33,12 @@
 
     .menus {
       transition: $trans;
-      // position: relative;
       li {
         a {
           font-size: 0.96rem;
           text-transform: capitalize;
           color: $dark-3;
-          font-weight: 500;
+          font-weight: 700;
           transition: $trans;
           position: relative;
           &:hover,
@@ -79,14 +75,6 @@
         position: absolute;
         right: -300px;
         top: 102%;
-        li {
-          &:last-child {
-            a {
-              // background: red;
-              // margin-bottom: 50px;
-            }
-          }
-        }
       }
     }
 

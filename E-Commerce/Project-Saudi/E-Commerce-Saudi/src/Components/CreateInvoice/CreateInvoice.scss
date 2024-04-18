@@ -48,7 +48,6 @@
           flex-basis: 50%;
         }
         .right {
-          // justify-content: flex-end;
           flex-basis: 50%;
           flex-direction: column;
           background: $light-1;
@@ -153,7 +152,6 @@
 
   table {
     tr {
-      // height: 27px;
       font-size: 0.98rem;
       td {
         padding: 8px 0;
@@ -168,7 +166,6 @@
 
   .bill {
     flex-direction: column !important;
-    // background: $light-1;
     padding: 20px 30px;
     .title {
       width: 100%;

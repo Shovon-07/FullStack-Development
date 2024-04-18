@@ -101,15 +101,7 @@ const CreateInvoice = () => {
       toast.error("Please enter material length");
     } else if (invoiceInputValue.sale_price == null) {
       toast.error("Please enter material price");
-    }
-    // else if (invoiceInputValue.discount == null) {
-    //   toast.error("Please enter discount amount");
-    // } else if (invoiceInputValue.vat == null) {
-    //   toast.error("Please enter vat amount");
-    // } else if (invoiceInputValue.advance == null) {
-    //   toast.error("Please enter recived amount");
-    // }
-    else if (getImgData.Image == "") {
+    } else if (getImgData.Image == "") {
       toast.error("Please generate image");
     } else {
       try {
@@ -152,8 +144,6 @@ const CreateInvoice = () => {
         await http.post("/store-sell", data).then((response) => {
           setLoading(false);
           toast.success("Order Confirmed");
-
-          // Clear inputs
         });
       } catch (error) {
         console.error(error);
@@ -163,7 +153,6 @@ const CreateInvoice = () => {
   //___ Post Requests end ___//
 
   //___ Get Requests start ___//
-  // Get materials dropdown data
   const [materials, setMaterials] = useState([]);
   const getMaterialData = async () => {
     try {

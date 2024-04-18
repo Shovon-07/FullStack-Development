@@ -83,7 +83,6 @@
     }
     .right {
       flex-basis: 70%;
-      // flex-direction: column;
       .left,
       .right {
         flex-basis: 50%;
@@ -101,12 +100,6 @@
           }
         }
       }
-      // .right {
-      //   label,
-      //   input {
-      //     text-align: right;
-      //   }
-      // }
     }
   }
 
@@ -129,7 +122,6 @@
       }
 
       table {
-        // width: 100%;
         tr {
           td {
             font-weight: 600;
