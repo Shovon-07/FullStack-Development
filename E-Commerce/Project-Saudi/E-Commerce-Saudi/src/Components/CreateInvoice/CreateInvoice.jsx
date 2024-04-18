@@ -144,6 +144,7 @@ const CreateInvoice = () => {
         await http.post("/store-sell", data).then((response) => {
           setLoading(false);
           toast.success("Order Confirmed");
+          console.clear();
         });
       } catch (error) {
         console.error(error);
