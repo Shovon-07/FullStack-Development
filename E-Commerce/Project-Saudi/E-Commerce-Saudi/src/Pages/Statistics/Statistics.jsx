@@ -32,7 +32,10 @@ const Statistics = () => {
         setBuyData(resBuy.data[0]);
       });
       // Balance
-      // console.log(soldData[0] - buyData[0]);
+      http.get("/balance").then((resBal) => {
+        console.log(resBal.data);
+        setBalData(resBal.data[0]);
+      });
     } else if (e.target.value === "Last week") {
       // Sold
       http.get("/statisticSold").then((res) => {
@@ -41,6 +44,10 @@ const Statistics = () => {
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
         setBuyData(resBuy.data[1]);
+      });
+      // Balance
+      http.get("/balance").then((resBal) => {
+        setBalData(resBal.data[1]);
       });
     } else if (e.target.value === "Last month") {
       // Sold
@@ -51,6 +58,10 @@ const Statistics = () => {
       http.get("/statisticBuy").then((resBuy) => {
         setBuyData(resBuy.data[2]);
       });
+      // Balance
+      http.get("/balance").then((resBal) => {
+        setBalData(resBal.data[2]);
+      });
     } else if (e.target.value === "Last year") {
       // Sold
       http.get("/statisticSold").then((res) => {
@@ -60,9 +71,14 @@ const Statistics = () => {
       http.get("/statisticBuy").then((resBuy) => {
         setBuyData(resBuy.data[3]);
       });
+      // Balance
+      http.get("/balance").then((resBal) => {
+        setBalData(resBal.data[3]);
+      });
     } else {
       setSoldData(0);
       setBuyData(0);
+      setBalData(0);
     }
   };
 
@@ -92,22 +108,22 @@ const Statistics = () => {
         <div className="card">
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
-            <h3 className="title">Buy</h3>
-            <p className="amount">$ {ValueConvert(buyData)}</p>
+            <h3 className="title">Sold</h3>
+            <p className="amount">$ {soldData}</p>
           </div>
         </div>
         <div className="card">
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
-            <h3 className="title">Sold</h3>
-            <p className="amount">$ {ValueConvert(soldData)}</p>
+            <h3 className="title">Buy</h3>
+            <p className="amount">$ {buyData}</p>
           </div>
         </div>
         <div className="card">
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
             <h3 className="title">Balance</h3>
-            <p className="amount">$ {ValueConvert(balData)}</p>
+            <p className="amount">$ {balData}</p>
           </div>
         </div>
       </div>

@@ -65,6 +65,7 @@ Route::controller(InvoiceController::class)->group(function(){
     // Statistics
     Route::get('/statisticSold','statisticSold');
     Route::get('/statisticBuy','statisticBuy');
+    Route::get('/balance','balance');
 });
 
 Route::controller(ProcessImgController::class)->group(function(){

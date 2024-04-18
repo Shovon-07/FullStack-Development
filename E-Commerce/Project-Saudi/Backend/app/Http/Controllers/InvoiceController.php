@@ -326,4 +326,21 @@ class InvoiceController extends Controller
             return $statisticBuy;
     }
 
+    public function balance()
+    {
+        // Get total sales and total purchases
+        $totalSales = $this->statisticSold();        
+        $totalPurchases = $this->statisticBuy();       
+
+        // Calculate balance
+        $balanceDay = $totalSales[0] - $totalPurchases[0];
+        $balanceWeek = $totalSales[1] - $totalPurchases[1];
+        $balanceMonth = $totalSales[2] - $totalPurchases[2];
+        $balanceYear = $totalSales[3] - $totalPurchases[3];
+
+
+        $balance = array($balanceDay, $balanceWeek, $balanceMonth, $balanceYear);
+        return $balance;       
+    }
+
 }
