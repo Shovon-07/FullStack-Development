@@ -133,23 +133,23 @@ const CompleteOrder = () => {
           <h2>Complete orders</h2>
         </div>
       </div>
+
+      <div className="searchInput">
+        <input
+          type="text"
+          placeholder="Search by phone number"
+          value={searchData}
+          onChange={(e) => {
+            setSearchData(e.target.value);
+          }}
+        />
+      </div>
       <DataTable
         columns={columns}
         data={filteredApiData}
         pagination
         fixedHeader
         fixedHeaderScrollHeight="400px"
-        subHeader
-        subHeaderComponent={
-          <input
-            type="text"
-            placeholder="Search by phone number"
-            value={searchData}
-            onChange={(e) => {
-              setSearchData(e.target.value);
-            }}
-          />
-        }
       />
     </div>
   );

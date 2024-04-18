@@ -292,9 +292,9 @@ const PendingOrdersInvoice = () => {
         </div>
 
         <div className="summery d-flex flex-start gap-30">
-          <div className="left">
+          <div className="left d-flex flex-start gap-10">
             <p>Salesperson : </p>
-            <h3 className="salespersonNmae">Al jubair shovon</h3>
+            <h4 className="salespersonNmae">أضواء الشرق</h4>
           </div>
           <div className="right">
             <table>

@@ -1,5 +1,26 @@
 @import "./Variable.scss";
 
+/*** Input field for search***/
+.searchInput {
+  text-align: right;
+  input {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 0;
+    outline: 0;
+    color: $dark-2;
+    // color: $light-1;
+    background: transparent;
+    border-bottom: 1px solid $dark-2;
+    // border-bottom: 1px solid $light-1
+    &:focus::placeholder {
+      padding-left: 10px;
+      transition: $trans;
+    }
+  }
+}
+
 /*** Table header***/
 .evaFvq {
   text-align: center;

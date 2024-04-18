@@ -108,6 +108,7 @@ const Home = () => {
     getApiData();
   }, [relodeTable]);
 
+  //___ Searching function ___//
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {
       return filteredApiData.name.toLowerCase().match(searchData.toLowerCase());
@@ -221,27 +222,23 @@ const Home = () => {
         </div>
       </div>
 
+      <div className="searchInput">
+        <input
+          type="text"
+          placeholder="Search by material name"
+          value={searchData}
+          onChange={(e) => {
+            setSearchData(e.target.value);
+          }}
+        />
+      </div>
       <DataTable
         columns={columns}
-        data={apiData}
-        // title={"Materials"}
+        data={filteredApiData}
         pagination
         fixedHeader
         fixedHeaderScrollHeight="400px"
-        // selectableRows
-        // selectableRowsHighlight
         highlightOnHover
-        // subHeader
-        // subHeaderComponent={
-        //   <input
-        //     type="text"
-        //     placeholder="Search by material name"
-        //     value={searchData}
-        //     onChange={(e) => {
-        //       setSearchData(e.target.value);
-        //     }}
-        //   />
-        // }
       />
     </div>
   );
