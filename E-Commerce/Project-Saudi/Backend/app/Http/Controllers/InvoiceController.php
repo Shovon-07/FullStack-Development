@@ -227,4 +227,55 @@ class InvoiceController extends Controller
         return $deliveryOrders;
     }
 
+    // Statistics
+    public function statistic()
+    {
+
+        // Query to get total sales per day
+        $currentDate = now()->toDateString();
+
+        $advanceDay = Invoice::whereDate('created_at', $currentDate)->sum('advance');    
+        $collectionDay = Invoice::whereDate('delivery_date', $currentDate)->sum('collection');
+            
+        $currentDay = $advanceDay + $collectionDay;
+       
+        // Query to get total sales per week
+
+        $startOfWeek = now()->startOfWeek()->toDateString();
+        $endOfWeek = now()->endOfWeek()->toDateString();
+
+
+        $advanceWeek = Invoice::whereBetween('created_at', [$startOfWeek, $endOfWeek])->sum('advance');
+        $collectionWeek = Invoice::whereBetween('delivery_date', [$startOfWeek, $endOfWeek])->sum('collection');
+
+        $currentWeek = $advanceWeek + $collectionWeek;
+
+
+        // Query to get total sales per month
+        $currentMonthStart = now()->startOfMonth()->toDateString();
+        $currentMonthEnd = now()->endOfMonth()->toDateString();
+
+        $advanceMonth = Invoice::whereBetween('created_at', [$currentMonthStart, $currentMonthEnd])->sum('advance');
+        $collectionMonth = Invoice::whereBetween('delivery_date', [$currentMonthStart, $currentMonthEnd])->sum('collection');
+            
+        $currentMonth = $advanceMonth + $collectionMonth;
+
+        // Query to get total sales per year
+        $currentYearStart = now()->startOfYear()->toDateString();
+        $currentYearEnd = now()->endOfYear()->toDateString();
+
+        $advanceYear = Invoice::whereBetween('created_at', [$currentYearStart, $currentYearEnd])->sum('advance');
+        $collectionYear = Invoice::whereBetween('delivery_date', [$currentYearStart, $currentYearEnd])->sum('collection');
+            
+        $currentYear = $advanceYear + $collectionYear;
+
+        $statistic = array($currentDay,$currentWeek,$currentMonth,$currentYear);
+        return response()->json([
+            "day" => $currentDay,
+            "week" => $currentWeek,
+            "month" => $currentMonth,
+            "year" => $currentYear,
+        ]);
+    }
+
 }

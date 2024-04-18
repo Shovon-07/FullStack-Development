@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 //___ Additional utility ___//
-// import AxiosConfig from "../../assets/AxiosConfig";
+import AxiosConfig from "../../assets/AxiosConfig";
 import ValueConvert from "../../assets/ValueConvert";
 
 //___ Css ___//
@@ -10,16 +10,36 @@ import "./Statistics.scss";
 //___ Components ___//
 
 const Statistics = () => {
+  const { http } = AxiosConfig();
   const [duration, setDuration] = useState("No duration");
-  const [inputValue, setInputValue] = useState({
-    perWeek: "200000000",
-    perMonth: "200",
-    perYear: "100000",
-  });
 
-  const handleInput = (e) => {
-    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+  const [buyData, setBuyData] = useState(["0"]);
+  const [soldData, setSoldData] = useState(["0"]);
+  const [balData, setBalData] = useState(["0"]);
+
+  const handleInput = async (e) => {
     setDuration(e.target.value);
+
+    if (e.target.value === "Today") {
+      await http.get("/statisticSold").then((res) => {
+        console.log(res.data);
+        setSoldData(res.data[0]);
+      });
+    } else if (e.target.value === "Last week") {
+      await http.get("/statisticSold").then((res) => {
+        setSoldData(res.data[1]);
+      });
+    } else if (e.target.value === "Last month") {
+      await http.get("/statisticSold").then((res) => {
+        setSoldData(res.data[2]);
+      });
+    } else if (e.target.value === "Last year") {
+      await http.get("/statisticSold").then((res) => {
+        setSoldData(res.data[3]);
+      });
+    } else {
+      setSoldData(0);
+    }
   };
 
   return (
@@ -28,18 +48,18 @@ const Statistics = () => {
         <h2>Statistics</h2>
       </div>
       <div style={{ textAlign: "end" }}>
-        <select name="time_id" onChange={handleInput}>
+        <select name="time" onChange={handleInput}>
           <option value="No duration">Select duration</option>
           <option value="Today" name="today">
             Today
           </option>
-          <option value="Last week" name="perWeek">
+          <option value="Last week" name="lastWeek">
             Last week
           </option>
-          <option value="Last month" name="perMonth">
+          <option value="Last month" name="lastMonth">
             Last month
           </option>
-          <option value="Last year" name="perYear">
+          <option value="Last year" name="lastYear">
             Last year
           </option>
         </select>
@@ -49,21 +69,21 @@ const Statistics = () => {
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
             <h3 className="title">Buy</h3>
-            <p className="amount">$ {ValueConvert(inputValue.perWeek)}</p>
+            <p className="amount">$ {ValueConvert(buyData)}</p>
           </div>
         </div>
         <div className="card">
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
             <h3 className="title">Sold</h3>
-            <p className="amount">$ {ValueConvert(inputValue.perMonth)}</p>
+            <p className="amount">$ {ValueConvert(soldData)}</p>
           </div>
         </div>
         <div className="card">
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
             <h3 className="title">Balance</h3>
-            <p className="amount">$ {ValueConvert(inputValue.perYear)}</p>
+            <p className="amount">$ {ValueConvert(balData)}</p>
           </div>
         </div>
       </div>
