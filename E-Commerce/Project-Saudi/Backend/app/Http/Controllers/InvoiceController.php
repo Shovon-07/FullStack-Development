@@ -48,7 +48,7 @@ class InvoiceController extends Controller
 
             //___ Process Image start ___//
             $img = $request->input('image');
-            $imgName = $customer_name . "_" . md5(time()) . ".png";
+            $imgName = "http://project.preview.com.aljubairshovon.com/backend/public/images/ScreenShoot/" . $customer_name . "_" . md5(time()) . ".png";
             $source = fopen($img, "r");
             $destination = fopen("images/ScreenShoot/" . $imgName, "w");
             stream_copy_to_stream($source, $destination);

@@ -172,13 +172,7 @@ const Invoice = () => {
 
         <div className="productDetails d-flex flex-start gap-30">
           <div className="left">
-            <img
-              src={
-                "http://project.preview.com.aljubairshovon.com/backend/public/images/ScreenShoot/" +
-                apiData.image
-              }
-              alt=""
-            />
+            <img src={apiData.image} alt="" />
           </div>
           <div className="right d-flex flex-start gap-20">
             <div className="left d-flex gap-20">
