@@ -11,3 +11,5 @@ export default function AxiosConfig() {
     http,
   };
 }
+
+// http://localhost:8000/

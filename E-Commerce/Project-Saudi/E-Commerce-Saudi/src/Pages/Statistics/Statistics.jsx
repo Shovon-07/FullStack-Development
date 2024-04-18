@@ -30,14 +30,17 @@ const Statistics = () => {
       <div style={{ textAlign: "end" }}>
         <select name="time_id" onChange={handleInput}>
           <option value="No duration">Select duration</option>
-          <option value="Per week" name="perWeek">
-            Per week
+          <option value="Today" name="today">
+            Today
           </option>
-          <option value="Per month" name="perMonth">
-            Per month
+          <option value="Last week" name="perWeek">
+            Last week
           </option>
-          <option value="Per year" name="perYear">
-            Per year
+          <option value="Last month" name="perMonth">
+            Last month
+          </option>
+          <option value="Last year" name="perYear">
+            Last year
           </option>
         </select>
       </div>
@@ -45,7 +48,7 @@ const Statistics = () => {
         <div className="card">
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
-            <h3 className="title">Earned</h3>
+            <h3 className="title">Buy</h3>
             <p className="amount">$ {ValueConvert(inputValue.perWeek)}</p>
           </div>
         </div>
