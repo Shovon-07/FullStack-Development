@@ -211,7 +211,6 @@ const Home = () => {
         <div style={{ marginTop: "20px" }}>
           <ModalPage
             slug={"Add New Material"}
-            // inputFields={inputFieldsForAddMaterial}
             inputFields={inputFieldsForAddMaterial}
             ModalOpenBtnTitle="Add Materials"
             ModalOpenBtnStyle={addModalOpenBtnStyle}
@@ -224,25 +223,25 @@ const Home = () => {
 
       <DataTable
         columns={columns}
-        data={filteredApiData}
+        data={apiData}
         // title={"Materials"}
         pagination
         fixedHeader
         fixedHeaderScrollHeight="400px"
         // selectableRows
         // selectableRowsHighlight
-        // highlightOnHover
-        subHeader
-        subHeaderComponent={
-          <input
-            type="text"
-            placeholder="Search by material name"
-            value={searchData}
-            onChange={(e) => {
-              setSearchData(e.target.value);
-            }}
-          />
-        }
+        highlightOnHover
+        // subHeader
+        // subHeaderComponent={
+        //   <input
+        //     type="text"
+        //     placeholder="Search by material name"
+        //     value={searchData}
+        //     onChange={(e) => {
+        //       setSearchData(e.target.value);
+        //     }}
+        //   />
+        // }
       />
     </div>
   );
