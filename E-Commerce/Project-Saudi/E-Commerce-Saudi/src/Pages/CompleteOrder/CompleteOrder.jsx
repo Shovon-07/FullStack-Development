@@ -63,9 +63,10 @@ const CompleteOrder = () => {
     },
     {
       name: "Action",
+      width: "180px",
       cell: (row) => {
         return (
-          <div className="d-flex" style={{ gap: "10px" }}>
+          <div className="d-flex" style={{ gap: "3px" }}>
             <ModalPage
               id={row.id}
               slug={"Delivery"}
