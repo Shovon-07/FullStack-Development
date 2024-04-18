@@ -57,7 +57,6 @@ const CreateInvoice = () => {
       advance: "",
       due: "",
 
-      inqueries_number: "",
       note: "",
     },
   ]);
@@ -118,6 +117,7 @@ const CreateInvoice = () => {
           customer_name: invoiceInputValue.customer_name,
           customer_phone: invoiceInputValue.customer_phone,
           customer_address: invoiceInputValue.customer_address,
+          deadline_date: invoiceInputValue.deadline_date,
 
           // For image details
           image: getImgData.Image,
@@ -146,8 +146,6 @@ const CreateInvoice = () => {
           advance: invoiceInputValue.advance,
           due: calc.dueForCalc,
 
-          deadline_date: invoiceInputValue.deadline_date,
-          inqueries_number: invoiceInputValue.inqueries_number,
           note: invoiceInputValue.note,
         };
         setLoading(true);
@@ -255,7 +253,7 @@ const CreateInvoice = () => {
                 <div className="inputBox">
                   <label htmlFor="">Phone :</label>
                   <input
-                    type="text"
+                    type="number"
                     name="customer_phone"
                     required
                     placeholder="Customer phone"
@@ -330,7 +328,7 @@ const CreateInvoice = () => {
                 </select>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Chest length"
                     name="chest_length"
                     required
@@ -339,7 +337,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Neck length"
                     name="neck_length"
                     required
@@ -348,7 +346,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Hand length"
                     name="hand_length"
                     required
@@ -359,7 +357,7 @@ const CreateInvoice = () => {
               <div className="right d-flex gap-20">
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Dress length"
                     name="dress_length"
                     required
@@ -368,7 +366,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Sleeve length"
                     name="sleeve_length"
                     required
@@ -377,7 +375,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Cuff length"
                     name="cuff_length"
                     required
@@ -386,7 +384,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Shoulder"
                     name="shoulder_length"
                     required
@@ -404,27 +402,16 @@ const CreateInvoice = () => {
             style={{ flexBasis: "50%", padding: "20px 30px" }}
           >
             <div className="firstTop">
-              <div style={{ marginBottom: "20px", flexBasis: "50%" }}>
-                <p>Inquiries number:</p>{" "}
-                <input
-                  type="text"
-                  style={{ width: "100%", marginTop: "10px" }}
-                  placeholder="000000"
-                  name="inqueries_number"
-                  required
-                  onChange={handleInvoiceInputValue}
-                />
-              </div>
               <div style={{ flexBasis: "50%" }}>
-                <p>Note:</p>{" "}
+                <h4>Note:</h4>{" "}
                 <textarea
                   name="note"
                   required
                   id=""
                   cols="30"
-                  rows="5"
+                  rows="10"
                   style={{ width: "100%", marginTop: "10px" }}
-                  placeholder="Invoice Note"
+                  placeholder="Invoice Note (Optional)"
                   onChange={handleInvoiceInputValue}
                 ></textarea>
               </div>
