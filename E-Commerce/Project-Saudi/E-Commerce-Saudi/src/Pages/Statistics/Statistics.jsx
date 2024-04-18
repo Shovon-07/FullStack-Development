@@ -32,8 +32,7 @@ const Statistics = () => {
         setBuyData(resBuy.data[0]);
       });
       // Balance
-      // setBalData(buyData[0] - soldData[0]);
-      console.log(buyData[0]);
+      // console.log(soldData[0] - buyData[0]);
     } else if (e.target.value === "Last week") {
       // Sold
       http.get("/statisticSold").then((res) => {

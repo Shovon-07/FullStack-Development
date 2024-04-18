@@ -61,6 +61,10 @@ Route::controller(InvoiceController::class)->group(function(){
 
     // Delivered order (For history page)
     Route::get('/delivery-order','deliveryOrders');
+
+    // Statistics
+    Route::get('/statisticSold','statisticSold');
+    Route::get('/statisticBuy','statisticBuy');
 });
 
 Route::controller(ProcessImgController::class)->group(function(){

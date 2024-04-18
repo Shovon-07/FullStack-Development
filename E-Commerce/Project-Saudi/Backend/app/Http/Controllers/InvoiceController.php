@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
 use Exception;
@@ -228,7 +229,7 @@ class InvoiceController extends Controller
     }
 
     // Statistics
-    public function statistic()
+    public function statisticSold()
     {
 
         // Query to get total sales per day
@@ -276,6 +277,53 @@ class InvoiceController extends Controller
             "month" => $currentMonth,
             "year" => $currentYear,
         ]);
+    }
+
+    public function statisticBuy()
+    {
+        // Query to get total sales per day
+        $currentDate = now()->toDateString();
+
+        $buyDay = Stock::whereDate('created_at', $currentDate)
+            ->get()
+            ->sum(function ($item) {
+                return $item->stock * $item->price;
+            });
+
+        // Query to get total sales per week
+
+        $startOfWeek = now()->startOfWeek()->toDateString();
+        $endOfWeek = now()->endOfWeek()->toDateString();
+
+        $buyWeek = Stock::whereBetween('created_at', [$startOfWeek, $endOfWeek])
+            ->get()
+            ->sum(function ($item) {
+                return $item->stock * $item->price;
+            });
+
+
+        // Query to get total sales per month
+        $currentMonthStart = now()->startOfMonth()->toDateString();
+        $currentMonthEnd = now()->endOfMonth()->toDateString();
+
+        $buyMonth = Stock::whereBetween('created_at', [$currentMonthStart, $currentMonthEnd])
+            ->get()
+            ->sum(function ($item) {
+                return $item->stock * $item->price;
+            });
+
+        // Query to get total sales per year
+        $currentYearStart = now()->startOfYear()->toDateString();
+        $currentYearEnd = now()->endOfYear()->toDateString();
+
+        $buyYear = Stock::whereBetween('created_at', [$currentYearStart, $currentYearEnd])
+            ->get()
+            ->sum(function ($item) {
+                return $item->stock * $item->price;
+            });
+
+            $statisticBuy = array($buyDay, $buyWeek, $buyMonth, $buyYear);
+            return $statisticBuy;
     }
 
 }
