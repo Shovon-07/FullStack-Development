@@ -304,9 +304,7 @@ const CreateInvoice = () => {
             <div className="measurmentSelection d-flex flex-start">
               <div className="left d-flex gap-20">
                 <select name="material_id" onChange={handleInvoiceInputValue}>
-                  <option value="" defaultChecked>
-                    Select Material
-                  </option>
+                  <option value="">Select Material</option>
                   {materials.map((items, index) => {
                     return (
                       <option key={index} value={items.id}>

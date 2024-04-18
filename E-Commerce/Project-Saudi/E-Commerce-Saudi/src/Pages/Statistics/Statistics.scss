@@ -1,15 +1,59 @@
 @import "../../Styles/Variable.scss";
-@import "../../Styles//DataTable.scss";
 
 .Statistics {
   box-shadow: $shadow;
   background: $light-1;
   padding: 20px;
-  .button {
-    padding: 5px 10px;
-    font-size: 15px;
-    a {
-      color: $light-1;
+  select {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    border: $border;
+    margin: 20px 0;
+    color: $dark-3;
+    background: transparent;
+  }
+  .Cards {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px 0 40px 0;
+    .card {
+      box-shadow: 2px 2px 5px #cfcfcf, -2px -2px 5px #cfcfcf;
+      width: 300px;
+      margin: 0 auto;
+      padding: 10px 20px 20px 20px;
+      cursor: default;
+      .viewDuration {
+        color: $dark-2;
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+      .title {
+        font-size: 20px;
+        color: $dark-2;
+      }
+      .amount {
+        font-size: 35px;
+        margin-top: 7px;
+        font-weight: bold;
+      }
+
+      &:nth-child(1) {
+        .amount {
+          color: $blue;
+        }
+      }
+      &:nth-child(2) {
+        .amount {
+          color: $green;
+        }
+      }
+      &:nth-child(3) {
+        .amount {
+          color: $yellow;
+        }
+      }
     }
   }
 }
