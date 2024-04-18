@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers')
                 ->cascadeOnUpdate()->restrictOnDelete();
-            $table->string('image');
+            $table->text('image');
             $table->string('button_type');
             $table->string('neck_type');
             $table->string('pocket_type');
