@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
-import ValueConvert from "../../assets/ValueConvert";
 
 //___ Css ___//
 import "./Statistics.scss";
@@ -23,17 +22,14 @@ const Statistics = () => {
     if (e.target.value === "Today") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        console.log(res.data);
         setSoldData(res.data[0]);
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        console.log(resBuy.data);
         setBuyData(resBuy.data[0]);
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        console.log(resBal.data);
         setBalData(resBal.data[0]);
       });
     } else if (e.target.value === "Last week") {
