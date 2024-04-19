@@ -18,7 +18,6 @@ import AppNoHeaderFooter from "./AppNoHeaderFooter.jsx";
 import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvoice.jsx";
 import Invoice from "./Pages/Invoice/Invoice.jsx";
 
-import OnlyInput from "./Pages/OnlyInput.jsx";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
@@ -33,7 +32,6 @@ const router = createBrowserRouter([
       { path: "/complete-order", element: <CompleteOrder /> },
       { path: "/history", element: <History /> },
       { path: "/statistics", element: <Statistics /> },
-      { path: "/oi", element: <OnlyInput /> },
     ],
   },
   {

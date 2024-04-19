@@ -142,8 +142,6 @@ const PendingOrders = () => {
           columns={columns}
           data={filteredApiData}
           pagination
-          fixedHeader
-          fixedHeaderScrollHeight="400px"
           highlightOnHover
         />
       </div>

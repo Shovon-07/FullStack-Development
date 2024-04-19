@@ -144,13 +144,7 @@ const CompleteOrder = () => {
           }}
         />
       </div>
-      <DataTable
-        columns={columns}
-        data={filteredApiData}
-        pagination
-        fixedHeader
-        fixedHeaderScrollHeight="400px"
-      />
+      <DataTable columns={columns} data={filteredApiData} pagination />
     </div>
   );
 };
