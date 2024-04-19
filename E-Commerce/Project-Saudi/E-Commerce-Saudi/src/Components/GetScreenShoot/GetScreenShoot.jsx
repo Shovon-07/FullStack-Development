@@ -7,7 +7,8 @@ import { ContextApiForGetImgData } from "../CreateInvoice/CreateInvoice";
 const GetScreenShoot = (props) => {
   const useContextApi = useContext(ContextApiForGetImgData);
 
-  const { btnImgName, nakImgName, pktImgName, hndImgName } = props;
+  const { dressImgName, btnImgName, nakImgName, pktImgName, hndImgName } =
+    props;
   const [msg, setMsg] = useState("Generate Image");
 
   const handleScreenShoot = () => {
@@ -18,11 +19,13 @@ const GetScreenShoot = (props) => {
         let image = canvas.toDataURL("image/png");
         useContextApi.setGetImgData({
           Image: image,
+          DressImgName: dressImgName,
           BtnImgName: btnImgName,
           NakImgName: nakImgName,
           PktImgName: pktImgName,
           HndImgName: hndImgName,
         });
+        console.log(image);
 
         setInterval(() => {
           setMsg("Generate Image");

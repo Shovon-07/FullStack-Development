@@ -437,7 +437,6 @@ const CustomizeImg = () => {
             className={`main-img ${
               dressImgPreview == null ? "d-none" : "main-img"
             }`}
-            // className="main-img"
           />
           <img
             src={btnImgPreview.btnImgPrev}
@@ -636,6 +635,7 @@ const CustomizeImg = () => {
         </div>
         <div className="bottomBtn d-flex gap-30">
           <GetScreenShoot
+            dressImgName={dressImgPreview.dressImgNamePrev}
             btnImgName={btnImgPreview.btnImgNamePrev}
             nakImgName={nakImgPreview.nakImgNamePrev}
             pktImgName={pktImgPreview.pktImgNamePrev}
