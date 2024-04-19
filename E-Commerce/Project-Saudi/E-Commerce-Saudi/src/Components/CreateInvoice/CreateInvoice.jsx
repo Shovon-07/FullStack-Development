@@ -99,6 +99,12 @@ const CreateInvoice = () => {
       toast.error("Please enter material length");
     } else if (invoiceInputValue.sale_price == "") {
       toast.error("Please enter material price");
+    } else if (invoiceInputValue.discount == "") {
+      toast.error("Please enter discount");
+    } else if (invoiceInputValue.vat == "") {
+      toast.error("Please enter vat");
+    } else if (invoiceInputValue.advance == "") {
+      toast.error("Please enter recived amount");
     } else if (getImgData.Image == "") {
       toast.error("Please generate image");
     } else {
@@ -174,6 +180,15 @@ const CreateInvoice = () => {
               due: "",
 
               note: "",
+            });
+            setCalc({
+              total: "0",
+              discountAmountForCalc: "0",
+              discountForCalc: "0",
+              vatForCalc: "0",
+              payAbleForCalc: "0",
+              recivedForCalc: "0",
+              dueForCalc: "0",
             });
           }
         });
