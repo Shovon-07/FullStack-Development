@@ -52,7 +52,7 @@ const CustomizeImg = () => {
   // Images
   const [dressImgPreview, setDressImgPreview] = useState({
     dressImgPrev: jubba,
-    dressImgNamePrev: "",
+    dressImgNamePrev: "Standard",
     widthDressImgPrev: null,
     heightDressImgPrev: null,
     topDressImgPrev: null,
@@ -307,6 +307,32 @@ const CustomizeImg = () => {
       topDressImgPrev: items.top,
       rightPosDressImgPrev: items.right,
     });
+
+    if (dressImgPreview.dressImgNamePrev !== "Standard") {
+      setBtnImgPreview({
+        btnImgPrev: null,
+        widthBtnImgPrev: null,
+        rightPosBtnImgPrev: null,
+        leftPosBtnImgPrev: null,
+      });
+      setNakImgPreview({
+        nakImgPrev: null,
+        widthNakImgPrev: null,
+        rightPosNakImgPrev: null,
+        leftPosNakImgPrev: null,
+      });
+      setPktImgPreview({
+        pktImgPrev: null,
+        widthPktImgPrev: null,
+        rightPosPktImgPrev: null,
+      });
+      setHandImgPreview({
+        hndImgPrev: null,
+        widthHndImgPrev: null,
+        rightPosHndImgPrev: null,
+        leftPosHndImgPrev: null,
+      });
+    }
   };
   const handelButtonImgPreview = (items) => {
     setBtnImgPreview({
@@ -397,8 +423,6 @@ const CustomizeImg = () => {
       <div className="left previewSection">
         <h2 className="title">Preview Image</h2>
         <div className="imageBox d-flex" id="capture">
-          {/* <img src={jubba} alt="" className="main-img" /> */}
-
           <img
             src={dressImgPreview.dressImgPrev}
             alt=""
@@ -424,7 +448,10 @@ const CustomizeImg = () => {
               top: btnImgPreview.topBtnImgPrev,
               right: btnImgPreview.rightPosBtnImgPrev,
             }}
-            className={`${btnImgPreview == null ? "d-none" : "buttonImg"}`}
+            // className={`${btnImgPreview == null ? "d-none" : "buttonImg"}`}
+            className={`buttonImg ${
+              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+            }`}
           />
           <img
             src={nakImgPreview.nakImgPrev}
@@ -433,7 +460,10 @@ const CustomizeImg = () => {
               width: nakImgPreview.widthNakImgPrev,
               right: nakImgPreview.rightPosNakImgPrev,
             }}
-            className={`${nakImgPreview == null ? "d-none" : "nackImg"}`}
+            // className={`${nakImgPreview == null ? "d-none" : "nackImg"}`}
+            className={`nackImg ${
+              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+            }`}
           />
           <img
             src={pktImgPreview.pktImgPrev}
@@ -442,7 +472,10 @@ const CustomizeImg = () => {
               width: pktImgPreview.widthPktImgPrev,
               right: pktImgPreview.rightPosPktImgPrev,
             }}
-            className={`${pktImgPreview == null ? "d-none" : "pocket"}`}
+            // className={`${pktImgPreview == null ? "d-none" : "pocket"}`}
+            className={`pocket ${
+              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+            }`}
           />
           <img
             src={handImgPreview.hndImgPrev}
@@ -452,7 +485,10 @@ const CustomizeImg = () => {
               top: handImgPreview.topPosHndImgPrev,
               right: handImgPreview.rightPosHndImgPrev,
             }}
-            className={`${handImgPreview == null ? "d-none" : "rightHand"}`}
+            // className={`${handImgPreview == null ? "d-none" : "rightHand"}`}
+            className={`rightHand ${
+              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+            }`}
           />
           <img
             src={handImgPreview.hndImgPrev}
@@ -462,7 +498,10 @@ const CustomizeImg = () => {
               top: handImgPreview.topPosHndImgPrev,
               left: handImgPreview.leftPosHndImgPrev,
             }}
-            className={`${handImgPreview == null ? "d-none" : "leftHand"}`}
+            // className={`${handImgPreview == null ? "d-none" : "leftHand"}`}
+            className={`leftHand ${
+              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+            }`}
           />
         </div>
       </div>
@@ -492,11 +531,9 @@ const CustomizeImg = () => {
 
           <div className="btnParent">
             <button
-              // className={`button ${
-              //   dressImgPreview.dressImgPrev == "jubba" ? "d-none" : ""
-              // }`}
-
-              className={`button`}
+              className={`button ${
+                dressImgPreview.dressImgNamePrev == "Standard" ? "" : "disabled"
+              }`}
               onClick={handleButtonChild}
               value={1}
             >
@@ -519,7 +556,13 @@ const CustomizeImg = () => {
             </ul>
           </div>
           <div className="btnParent">
-            <button className="button" onClick={handleButtonChild} value={2}>
+            <button
+              className={`button ${
+                dressImgPreview.dressImgNamePrev == "Standard" ? "" : "disabled"
+              }`}
+              onClick={handleButtonChild}
+              value={2}
+            >
               Neck Type
             </button>
             <ul className={`${activeBtn == 2 ? "btnChild active" : "d-none"}`}>
@@ -539,7 +582,13 @@ const CustomizeImg = () => {
             </ul>
           </div>
           <div className="btnParent">
-            <button className="button" onClick={handleButtonChild} value={3}>
+            <button
+              className={`button ${
+                dressImgPreview.dressImgNamePrev == "Standard" ? "" : "disabled"
+              }`}
+              onClick={handleButtonChild}
+              value={3}
+            >
               Pocket Type
             </button>
             <ul className={`${activeBtn == 3 ? "btnChild active" : "d-none"}`}>
@@ -559,7 +608,13 @@ const CustomizeImg = () => {
             </ul>
           </div>
           <div className="btnParent">
-            <button className="button" onClick={handleButtonChild} value={4}>
+            <button
+              className={`button ${
+                dressImgPreview.dressImgNamePrev == "Standard" ? "" : "disabled"
+              }`}
+              onClick={handleButtonChild}
+              value={4}
+            >
               Hand Type
             </button>
             <ul className={`${activeBtn == 4 ? "btnChild active" : "d-none"}`}>

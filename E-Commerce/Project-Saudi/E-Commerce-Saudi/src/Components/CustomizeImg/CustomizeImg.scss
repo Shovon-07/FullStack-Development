@@ -71,6 +71,11 @@
           font-size: 17px;
           width: 150px;
           height: 40px;
+          &.disabled {
+            pointer-events: none;
+            background: $dark-3;
+            color: $light-3;
+          }
           @include mlg {
             width: 100px;
             font-size: 13px;
