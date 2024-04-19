@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, lazy, Suspense } from "react";
 import Tooltip from "@mui/material/Tooltip";
 
 //___ Additional utility ___//
+import Loader from "../Loader/Loader";
 
 //___ Images ___//
 import jubba from "/images/dress/jubba2.png";
@@ -46,7 +47,7 @@ import Hand_5 from "/images/dress/hand_type/Standard Small.png";
 import "./CustomizeImg.scss";
 
 //___ Components ___//
-import GetScreenShoot from "../GetScreenShoot/GetScreenShoot";
+const GetScreenShoot = lazy(() => import("../GetScreenShoot/GetScreenShoot"));
 
 const CustomizeImg = () => {
   // Images
@@ -634,13 +635,15 @@ const CustomizeImg = () => {
           </div>
         </div>
         <div className="bottomBtn d-flex gap-30">
-          <GetScreenShoot
-            dressImgName={dressImgPreview.dressImgNamePrev}
-            btnImgName={btnImgPreview.btnImgNamePrev}
-            nakImgName={nakImgPreview.nakImgNamePrev}
-            pktImgName={pktImgPreview.pktImgNamePrev}
-            hndImgName={handImgPreview.hndImgNamePrev}
-          />
+          <Suspense fallback={<Loader />}>
+            <GetScreenShoot
+              dressImgName={dressImgPreview.dressImgNamePrev}
+              btnImgName={btnImgPreview.btnImgNamePrev}
+              nakImgName={nakImgPreview.nakImgNamePrev}
+              pktImgName={pktImgPreview.pktImgNamePrev}
+              hndImgName={handImgPreview.hndImgNamePrev}
+            />
+          </Suspense>
           <button className="button resetBtn" onClick={handelReset}>
             Reset
           </button>

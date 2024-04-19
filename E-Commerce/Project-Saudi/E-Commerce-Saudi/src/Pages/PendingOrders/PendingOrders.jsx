@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { Link, useOutletContext } from "react-router-dom";
-import DataTable from "react-data-table-component";
+const DataTable = lazy(() => import("react-data-table-component"));
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import Loader from "../../Components/Loader/Loader";
 
 //___ Css ___//
 import "./PendingOrders.scss";
@@ -138,12 +139,14 @@ const PendingOrders = () => {
             }}
           />
         </div>
-        <DataTable
-          columns={columns}
-          data={filteredApiData}
-          pagination
-          highlightOnHover
-        />
+        <Suspense fallback={<Loader />}>
+          <DataTable
+            columns={columns}
+            data={filteredApiData}
+            pagination
+            highlightOnHover
+          />
+        </Suspense>
       </div>
     </>
   );

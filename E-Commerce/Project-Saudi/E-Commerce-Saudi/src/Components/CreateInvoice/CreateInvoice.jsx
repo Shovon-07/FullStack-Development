@@ -1,8 +1,16 @@
-import React, { useEffect, useState, createContext, useRef } from "react";
+import {
+  useEffect,
+  useState,
+  createContext,
+  useRef,
+  lazy,
+  Suspense,
+} from "react";
 import { useOutletContext } from "react-router-dom";
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import Loader from "../Loader/Loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -13,7 +21,7 @@ import { FiAlertTriangle } from "react-icons/fi";
 import "./CreateInvoice.scss";
 
 //___ Component ___//
-import CustomizeImg from "../CustomizeImg/CustomizeImg";
+const CustomizeImg = lazy(() => import("../CustomizeImg/CustomizeImg"));
 
 const ContextApiForGetImgData = createContext();
 
@@ -348,7 +356,9 @@ const CreateInvoice = () => {
           <ContextApiForGetImgData.Provider
             value={{ getImgData, setGetImgData }}
           >
-            <CustomizeImg />
+            <Suspense fallback={<Loader />}>
+              <CustomizeImg />
+            </Suspense>
           </ContextApiForGetImgData.Provider>
         </div>
 

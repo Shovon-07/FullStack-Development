@@ -1,5 +1,3 @@
-import React from "react";
-
 //___ Css ___//
 import "./Credits.scss";
 

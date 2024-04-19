@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { Link, useOutletContext } from "react-router-dom";
-import DataTable from "react-data-table-component";
+const DataTable = lazy(() => import("react-data-table-component"));
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import Loader from "../../Components/Loader/Loader";
 
 //___ Css ___//
 import "./CompleteOrder.scss";
 
 //___ Components ___//
-import ModalPage from "../../Components/Modal/ModalPage";
+const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const CompleteOrder = () => {
   const [setLoading] = useOutletContext();
@@ -63,7 +64,7 @@ const CompleteOrder = () => {
     },
     {
       name: "Action",
-      width: "180px",
+      width: "200px",
       cell: (row) => {
         return (
           <div className="d-flex" style={{ gap: "3px" }}>
@@ -122,7 +123,7 @@ const CompleteOrder = () => {
     color: "#fff",
     height: "27px",
     background: "#424242",
-    paddingBottom: "3px",
+    paddingBottom: "4px",
     textTransform: "capitalize",
   };
 
@@ -144,7 +145,9 @@ const CompleteOrder = () => {
           }}
         />
       </div>
-      <DataTable columns={columns} data={filteredApiData} pagination />
+      <Suspense fallback={<Loader />}>
+        <DataTable columns={columns} data={filteredApiData} pagination />
+      </Suspense>
     </div>
   );
 };

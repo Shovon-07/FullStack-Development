@@ -1,15 +1,22 @@
-import React from "react";
+import { Suspense, lazy } from "react";
 
 //___ Css ___//
 import "./Sell.scss";
 
+//___ Additional utility ___//
+import Loader from "../../Components/Loader/Loader";
+
 //___ Components ___//
-import CreateInvoice from "../../Components/CreateInvoice/CreateInvoice";
+const CreateInvoice = lazy(() =>
+  import("../../Components/CreateInvoice/CreateInvoice")
+);
 
 const Sell = () => {
   return (
     <div className="Sell">
-      <CreateInvoice />
+      <Suspense fallback={<Loader />}>
+        <CreateInvoice />
+      </Suspense>
     </div>
   );
 };

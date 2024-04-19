@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";

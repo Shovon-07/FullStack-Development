@@ -1,5 +1,6 @@
 @import "../../Styles/Variable.scss";
-@import "../../Styles//DataTable.scss";
+
+@import "../../Styles/DataTable.css";
 
 .CompleteOrder {
   box-shadow: $shadow;
@@ -11,5 +12,8 @@
     a {
       color: $light-1;
     }
+  }
+  button {
+    margin-top: 0;
   }
 }

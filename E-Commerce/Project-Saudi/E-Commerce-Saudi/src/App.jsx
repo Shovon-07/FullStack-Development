@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 //___ Additional utility ___//
 import Loader from "./Components/Loader/Loader";
 
 //___ Components ___//
-import Header from "./Components/Header/Header";
-import Footer from "./Components/Footer/Footer";
+const Header = lazy(() => import("./Components/Header/Header"));
+const Footer = lazy(() => import("./Components/Footer/Footer"));
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -14,12 +14,16 @@ function App() {
   return (
     <>
       <div className="main">
-        <Header />
+        <Suspense fallback={<Loader />}>
+          <Header />
+        </Suspense>
         <div className="container">
           {loading && <Loader />}
           <Outlet context={[setLoading]} />
         </div>
-        <Footer />
+        <Suspense fallback={<Loader />}>
+          <Footer />
+        </Suspense>
       </div>
     </>
   );

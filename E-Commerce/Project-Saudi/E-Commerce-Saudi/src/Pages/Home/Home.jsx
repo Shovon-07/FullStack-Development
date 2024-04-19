@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { useOutletContext } from "react-router-dom";
-import DataTable from "react-data-table-component";
+const DataTable = lazy(() => import("react-data-table-component"));
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import Loader from "../../Components/Loader/Loader";
 
 //___ Css ___//
 import "./Home.scss";
 
 //___ Components ___//
-import ModalPage from "../../Components/Modal/ModalPage";
+const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Home = () => {
   const [setLoading] = useOutletContext();
@@ -65,37 +66,39 @@ const Home = () => {
       name: "Action",
       cell: (row) => (
         <div className="d-flex" style={{ gap: "3px" }}>
-          <ModalPage
-            id={row.id}
-            slug={"Stock Material"}
-            inputFields={inputFieldsForAddStockMaterial}
-            ModalOpenBtnTitle="Stock"
-            ModalOpenBtnStyle={stockModalOpenBtnStyle}
-            api={"/updateStock"}
-            setLoading={setLoading}
-            setRelodeTable={setRelodeTable}
-          />
-          <ModalPage
-            id={row.id}
-            slug={"Deduct Material"}
-            inputFields={inputFieldsForDeductMaterial}
-            ModalOpenBtnTitle="Deduct"
-            ModalOpenBtnStyle={deductModalOpenBtnStyle}
-            api={"/updateDeduct"}
-            setLoading={setLoading}
-            setRelodeTable={setRelodeTable}
-          />
-          <ModalPage
-            id={row.id}
-            viewPrice={row.price}
-            slug={"Price"}
-            inputFields={inputFieldsForPriceMaterial}
-            ModalOpenBtnTitle="Price"
-            ModalOpenBtnStyle={priceModalOpenBtnStyle}
-            api={"/updatePrice"}
-            setLoading={setLoading}
-            setRelodeTable={setRelodeTable}
-          />
+          <Suspense fallback={<Loader />}>
+            <ModalPage
+              id={row.id}
+              slug={"Stock Material"}
+              inputFields={inputFieldsForAddStockMaterial}
+              ModalOpenBtnTitle="Stock"
+              ModalOpenBtnStyle={stockModalOpenBtnStyle}
+              api={"/updateStock"}
+              setLoading={setLoading}
+              setRelodeTable={setRelodeTable}
+            />
+            <ModalPage
+              id={row.id}
+              slug={"Deduct Material"}
+              inputFields={inputFieldsForDeductMaterial}
+              ModalOpenBtnTitle="Deduct"
+              ModalOpenBtnStyle={deductModalOpenBtnStyle}
+              api={"/updateDeduct"}
+              setLoading={setLoading}
+              setRelodeTable={setRelodeTable}
+            />
+            <ModalPage
+              id={row.id}
+              viewPrice={row.price}
+              slug={"Price"}
+              inputFields={inputFieldsForPriceMaterial}
+              ModalOpenBtnTitle="Price"
+              ModalOpenBtnStyle={priceModalOpenBtnStyle}
+              api={"/updatePrice"}
+              setLoading={setLoading}
+              setRelodeTable={setRelodeTable}
+            />
+          </Suspense>
         </div>
       ),
     },
@@ -206,15 +209,17 @@ const Home = () => {
           <h2>Materials</h2>
         </div>
         <div style={{ marginTop: "20px" }}>
-          <ModalPage
-            slug={"Add New Material"}
-            inputFields={inputFieldsForAddMaterial}
-            ModalOpenBtnTitle="Add Materials"
-            ModalOpenBtnStyle={addModalOpenBtnStyle}
-            api={"/store"}
-            setLoading={setLoading}
-            setRelodeTable={setRelodeTable}
-          />
+          <Suspense fallback={<Loader />}>
+            <ModalPage
+              slug={"Add New Material"}
+              inputFields={inputFieldsForAddMaterial}
+              ModalOpenBtnTitle="Add Materials"
+              ModalOpenBtnStyle={addModalOpenBtnStyle}
+              api={"/store"}
+              setLoading={setLoading}
+              setRelodeTable={setRelodeTable}
+            />
+          </Suspense>
         </div>
       </div>
 
@@ -228,14 +233,16 @@ const Home = () => {
           }}
         />
       </div>
-      <DataTable
-        columns={columns}
-        data={filteredApiData}
-        pagination
-        // fixedHeader
-        // fixedHeaderScrollHeight="400px"
-        highlightOnHover
-      />
+      <Suspense fallback={<Loader />}>
+        <DataTable
+          columns={columns}
+          data={filteredApiData}
+          pagination
+          // fixedHeader
+          // fixedHeaderScrollHeight="400px"
+          highlightOnHover
+        />
+      </Suspense>
     </div>
   );
 };
