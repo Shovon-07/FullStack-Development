@@ -29,37 +29,35 @@ const CreateInvoice = () => {
     HndImgName: "",
   });
 
-  const [invoiceInputValue, setInvoiceInputValue] = useState([
-    {
-      customer_name: "",
-      customer_phone: "",
-      customer_address: "",
-      currentDate: "",
-      deadline_date: "",
+  const [invoiceInputValue, setInvoiceInputValue] = useState({
+    customer_name: "",
+    customer_phone: "",
+    customer_address: "",
+    currentDate: "",
+    deadline_date: "",
 
-      // Mesurments
-      material_id: "",
-      chest_length: "",
-      neck_length: "",
-      hand_length: "",
-      dress_length: "",
-      sleeve_length: "",
-      cuff_length: "",
-      shoulder_length: "",
+    // Mesurments
+    material_id: "",
+    chest_length: "",
+    neck_length: "",
+    hand_length: "",
+    dress_length: "",
+    sleeve_length: "",
+    cuff_length: "",
+    shoulder_length: "",
 
-      // Order summery
-      material_length: "",
-      sale_price: "",
-      total: "",
-      discount: "",
-      vat: "",
-      payable: "",
-      advance: "",
-      due: "",
+    // Order summery
+    material_length: "",
+    sale_price: "",
+    total: "",
+    discount: "",
+    vat: "",
+    payable: "",
+    advance: "",
+    due: "",
 
-      note: "",
-    },
-  ]);
+    note: "",
+  });
 
   const handleInvoiceInputValue = (e) => {
     setInvoiceInputValue({
@@ -71,35 +69,35 @@ const CreateInvoice = () => {
   //___ post Requests start ___//
   const handleSubmit = async () => {
     //___ Validation ___//
-    if (invoiceInputValue.customer_name == null) {
+    if (invoiceInputValue.customer_name == "") {
       toast.error("Please enter customer name");
-    } else if (invoiceInputValue.customer_phone == null) {
+    } else if (invoiceInputValue.customer_phone == "") {
       toast.error("Please enter customer phone number");
-    } else if (invoiceInputValue.customer_address == null) {
+    } else if (invoiceInputValue.customer_address == "") {
       toast.error("Please enter customer address");
-    } else if (invoiceInputValue.currentDate == null) {
+    } else if (invoiceInputValue.currentDate == "") {
       toast.error("No date selected");
-    } else if (invoiceInputValue.deadline_date == null) {
+    } else if (invoiceInputValue.deadline_date == "") {
       toast.error("No deadlin date selected");
-    } else if (invoiceInputValue.material_id == null) {
+    } else if (invoiceInputValue.material_id == "") {
       toast.error("Please select a material");
-    } else if (invoiceInputValue.chest_length == null) {
+    } else if (invoiceInputValue.chest_length == "") {
       toast.error("Please enter chest length");
-    } else if (invoiceInputValue.neck_length == null) {
+    } else if (invoiceInputValue.neck_length == "") {
       toast.error("Please enter neck length");
-    } else if (invoiceInputValue.hand_length == null) {
+    } else if (invoiceInputValue.hand_length == "") {
       toast.error("Please enter hand length");
-    } else if (invoiceInputValue.dress_length == null) {
+    } else if (invoiceInputValue.dress_length == "") {
       toast.error("Please enter dress length");
-    } else if (invoiceInputValue.sleeve_length == null) {
+    } else if (invoiceInputValue.sleeve_length == "") {
       toast.error("Please enter sleeve length");
-    } else if (invoiceInputValue.cuff_length == null) {
+    } else if (invoiceInputValue.cuff_length == "") {
       toast.error("Please enter cuff length");
-    } else if (invoiceInputValue.shoulder_length == null) {
+    } else if (invoiceInputValue.shoulder_length == "") {
       toast.error("Please enter shoulder length");
-    } else if (invoiceInputValue.material_length == null) {
+    } else if (invoiceInputValue.material_length == "") {
       toast.error("Please enter material length");
-    } else if (invoiceInputValue.sale_price == null) {
+    } else if (invoiceInputValue.sale_price == "") {
       toast.error("Please enter material price");
     } else if (getImgData.Image == "") {
       toast.error("Please generate image");
@@ -142,9 +140,42 @@ const CreateInvoice = () => {
         };
         setLoading(true);
         await http.post("/store-sell", data).then((response) => {
-          setLoading(false);
-          toast.success("Order Confirmed");
-          console.clear();
+          if (response.data === "success") {
+            setLoading(false);
+            toast.success("Order Confirmed");
+            console.clear();
+
+            // Clear input value
+            setInvoiceInputValue({
+              customer_name: "",
+              customer_phone: "",
+              customer_address: "",
+              currentDate: "",
+              deadline_date: "",
+
+              // Mesurments
+              material_id: "",
+              chest_length: "",
+              neck_length: "",
+              hand_length: "",
+              dress_length: "",
+              sleeve_length: "",
+              cuff_length: "",
+              shoulder_length: "",
+
+              // Order summery
+              material_length: "",
+              sale_price: "",
+              total: "",
+              discount: "",
+              vat: "",
+              payable: "",
+              advance: "",
+              due: "",
+
+              note: "",
+            });
+          }
         });
       } catch (error) {
         console.error(error);
@@ -237,6 +268,7 @@ const CreateInvoice = () => {
                     name="customer_name"
                     required
                     placeholder="Customer name"
+                    value={invoiceInputValue.customer_name}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -247,6 +279,7 @@ const CreateInvoice = () => {
                     name="customer_phone"
                     required
                     placeholder="Customer phone"
+                    value={invoiceInputValue.customer_phone}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -257,6 +290,7 @@ const CreateInvoice = () => {
                     name="customer_address"
                     required
                     placeholder="Customer address"
+                    value={invoiceInputValue.customer_address}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -271,6 +305,7 @@ const CreateInvoice = () => {
                     type="date"
                     name="currentDate"
                     required
+                    value={invoiceInputValue.currentDate}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -283,6 +318,7 @@ const CreateInvoice = () => {
                     type="date"
                     name="deadline_date"
                     required
+                    value={invoiceInputValue.deadline_date}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -320,6 +356,7 @@ const CreateInvoice = () => {
                     placeholder="Chest length"
                     name="chest_length"
                     required
+                    value={invoiceInputValue.chest_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -329,6 +366,7 @@ const CreateInvoice = () => {
                     placeholder="Neck length"
                     name="neck_length"
                     required
+                    value={invoiceInputValue.neck_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -338,6 +376,7 @@ const CreateInvoice = () => {
                     placeholder="Hand length"
                     name="hand_length"
                     required
+                    value={invoiceInputValue.hand_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -349,6 +388,7 @@ const CreateInvoice = () => {
                     placeholder="Dress length"
                     name="dress_length"
                     required
+                    value={invoiceInputValue.dress_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -358,6 +398,7 @@ const CreateInvoice = () => {
                     placeholder="Sleeve length"
                     name="sleeve_length"
                     required
+                    value={invoiceInputValue.sleeve_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -367,6 +408,7 @@ const CreateInvoice = () => {
                     placeholder="Cuff length"
                     name="cuff_length"
                     required
+                    value={invoiceInputValue.cuff_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -376,6 +418,7 @@ const CreateInvoice = () => {
                     placeholder="Shoulder"
                     name="shoulder_length"
                     required
+                    value={invoiceInputValue.shoulder_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -400,6 +443,7 @@ const CreateInvoice = () => {
                   rows="10"
                   style={{ width: "100%", marginTop: "10px" }}
                   placeholder="Invoice Note (Optional)"
+                  value={invoiceInputValue.note}
                   onChange={handleInvoiceInputValue}
                 ></textarea>
               </div>
@@ -417,6 +461,7 @@ const CreateInvoice = () => {
                   onChange={handleInvoiceInputValue}
                   onKeyUp={Calculation}
                   onKeyDown={ClearAllState}
+                  value={invoiceInputValue.material_length}
                   ref={changedMaterialLength}
                 />
               </div>
@@ -426,6 +471,7 @@ const CreateInvoice = () => {
                   placeholder="Material price"
                   name="sale_price"
                   required
+                  value={invoiceInputValue.sale_price}
                   onChange={handleInvoiceInputValue}
                   onKeyUp={Calculation}
                   onKeyDown={ClearAllState}
@@ -442,6 +488,7 @@ const CreateInvoice = () => {
                   placeholder="Discount (%)"
                   name="discount"
                   required
+                  value={invoiceInputValue.discount}
                   onChange={handleInvoiceInputValue}
                   onKeyUp={Calculation}
                 />
@@ -455,6 +502,7 @@ const CreateInvoice = () => {
                   placeholder="Vat (%)"
                   name="vat"
                   required
+                  value={invoiceInputValue.vat}
                   onChange={handleInvoiceInputValue}
                   onKeyUp={Calculation}
                 />
@@ -471,6 +519,7 @@ const CreateInvoice = () => {
                   placeholder="Received amount"
                   name="advance"
                   required
+                  value={invoiceInputValue.advance}
                   onChange={handleInvoiceInputValue}
                   onKeyUp={Calculation}
                 />
