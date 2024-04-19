@@ -23,6 +23,7 @@ const CreateInvoice = () => {
 
   const [getImgData, setGetImgData] = useState({
     Image: "",
+    DressImgName: "",
     BtnImgName: "",
     NakImgName: "",
     PktImgName: "",
@@ -117,6 +118,7 @@ const CreateInvoice = () => {
 
           // For image details
           image: getImgData.Image,
+          // button_type: getImgData.DressImgName,
           button_type: getImgData.BtnImgName,
           neck_type: getImgData.NakImgName,
           pocket_type: getImgData.PktImgName,
@@ -290,7 +292,7 @@ const CreateInvoice = () => {
                 <div className="inputBox">
                   <label htmlFor="">Phone :</label>
                   <input
-                    type="text"
+                    type="number"
                     name="customer_phone"
                     required
                     placeholder="Customer phone"
@@ -367,7 +369,7 @@ const CreateInvoice = () => {
                 </select>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Chest length"
                     name="chest_length"
                     required
@@ -377,7 +379,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Neck length"
                     name="neck_length"
                     required
@@ -387,7 +389,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Hand length"
                     name="hand_length"
                     required
@@ -399,7 +401,7 @@ const CreateInvoice = () => {
               <div className="right d-flex gap-20">
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Dress length"
                     name="dress_length"
                     required
@@ -409,7 +411,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Sleeve length"
                     name="sleeve_length"
                     required
@@ -419,7 +421,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Cuff length"
                     name="cuff_length"
                     required
@@ -429,7 +431,7 @@ const CreateInvoice = () => {
                 </div>
                 <div className="inputBox">
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Shoulder"
                     name="shoulder_length"
                     required
@@ -469,7 +471,7 @@ const CreateInvoice = () => {
               <h3 className="title">Order Summary :</h3>
               <div className="inputBox">
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Material length"
                   name="material_length"
                   required
@@ -482,7 +484,7 @@ const CreateInvoice = () => {
               </div>
               <div className="inputBox">
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Material price"
                   name="sale_price"
                   required
@@ -499,7 +501,7 @@ const CreateInvoice = () => {
               </div>
               <div className="inputBox" style={{ marginTop: "30px" }}>
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Discount (%)"
                   name="discount"
                   required
@@ -513,7 +515,7 @@ const CreateInvoice = () => {
               </div>
               <div className="inputBox">
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Vat (%)"
                   name="vat"
                   required
@@ -530,7 +532,7 @@ const CreateInvoice = () => {
               </div>
               <div className="inputBox">
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Received amount"
                   name="advance"
                   required
