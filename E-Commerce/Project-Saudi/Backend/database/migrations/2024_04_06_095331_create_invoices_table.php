@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreign('customer_id')->references('id')->on('customers')
                 ->cascadeOnUpdate()->restrictOnDelete();
             $table->text('image');
+            $table->string('dress_type');
             $table->string('button_type');
             $table->string('neck_type');
             $table->string('pocket_type');

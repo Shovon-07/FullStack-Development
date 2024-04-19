@@ -118,7 +118,7 @@ const CreateInvoice = () => {
 
           // For image details
           image: getImgData.Image,
-          // button_type: getImgData.DressImgName,
+          dress_type: getImgData.DressImgName,
           button_type: getImgData.BtnImgName,
           neck_type: getImgData.NakImgName,
           pocket_type: getImgData.PktImgName,

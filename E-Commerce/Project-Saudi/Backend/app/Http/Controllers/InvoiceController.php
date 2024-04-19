@@ -22,6 +22,7 @@ class InvoiceController extends Controller
             $customer_phone = $request->input('customer_phone');
             $customer_address = $request->input('customer_address');
 
+            $dress_type = $request->input('dress_type') ?? "";
             $button_type = $request->input('button_type') ?? "";
             $neck_type = $request->input('neck_type') ?? "";
             $pocket_type = $request->input('pocket_type') ?? "";
@@ -69,6 +70,7 @@ class InvoiceController extends Controller
                     'customer_id' => $customer_id,
                     'image' => $imgName,
 
+                    'dress_type' => $dress_type,
                     'button_type' => $button_type,
                     'neck_type' => $neck_type,
                     'pocket_type' => $pocket_type,
