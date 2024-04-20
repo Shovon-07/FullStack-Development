@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 //___ Additional utility ___//
@@ -10,16 +10,17 @@ const Footer = lazy(() => import("./Components/Footer/Footer"));
 
 function App() {
   const [loading, setLoading] = useState(false);
+  const [auth, setAuth] = React.useState(false);
 
   return (
     <>
       <div className="main">
         <Suspense fallback={<Loader />}>
-          <Header />
+          <Header auth={auth} />
         </Suspense>
         <div className="container">
           {loading && <Loader />}
-          <Outlet context={[setLoading]} />
+          <Outlet context={[setLoading, auth, setAuth]} />
         </div>
         <Suspense fallback={<Loader />}>
           <Footer />

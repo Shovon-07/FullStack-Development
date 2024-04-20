@@ -19,6 +19,7 @@ import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvo
 import Invoice from "./Pages/Invoice/Invoice.jsx";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
+import Login from "./Pages/Login/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,8 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Home /> },
+      { path: "/", element: <Login /> },
+      { path: "/home", element: <Home /> },
       { path: "/sell", element: <Sell /> },
       { path: "/pending-orders", element: <PendingOrders /> },
       { path: "/complete-order", element: <CompleteOrder /> },

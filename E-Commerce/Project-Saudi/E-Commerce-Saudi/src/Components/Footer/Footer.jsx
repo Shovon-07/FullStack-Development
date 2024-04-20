@@ -4,16 +4,24 @@ import "./Footer.scss";
 //___ Components ___//
 import Credits from "../Credits/Credits";
 
-const Footer = () => {
+const Footer = (props) => {
+  const { auth } = props;
+
   return (
-    <div className="Footer">
-      <div className="footerContainer">
-        <p>
-          All right reserved by <span>أضواء الشرق</span>
-        </p>
-        <Credits />
-      </div>
-    </div>
+    <>
+      {auth == true ? (
+        <div className="Footer">
+          <div className="footerContainer">
+            <p>
+              All right reserved by <span>أضواء الشرق</span>
+            </p>
+            <Credits />
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </>
   );
 };
 
