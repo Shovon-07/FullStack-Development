@@ -352,16 +352,6 @@ const CreateInvoice = () => {
           </div>
         </div>
 
-        <div className="invoiceSection customImgSection">
-          <ContextApiForGetImgData.Provider
-            value={{ getImgData, setGetImgData }}
-          >
-            <Suspense fallback={<Loader />}>
-              <CustomizeImg />
-            </Suspense>
-          </ContextApiForGetImgData.Provider>
-        </div>
-
         <div className="invoiceSection">
           <div className="measurement">
             <h2 className="title">Measurements</h2>
@@ -452,6 +442,16 @@ const CreateInvoice = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="invoiceSection customImgSection">
+          <ContextApiForGetImgData.Provider
+            value={{ getImgData, setGetImgData }}
+          >
+            <Suspense fallback={<Loader />}>
+              <CustomizeImg />
+            </Suspense>
+          </ContextApiForGetImgData.Provider>
         </div>
 
         <div className="invoiceSection first d-flex flex-start gap-20">

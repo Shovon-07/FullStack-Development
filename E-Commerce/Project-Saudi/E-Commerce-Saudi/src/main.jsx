@@ -24,10 +24,15 @@ import Login from "./Pages/Login/Login.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <AppNoHeaderFooter />,
+    errorElement: <ErrorPage />,
+    children: [{ path: "/", element: <Login /> }],
+  },
+  {
+    path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Login /> },
       { path: "/home", element: <Home /> },
       { path: "/sell", element: <Sell /> },
       { path: "/pending-orders", element: <PendingOrders /> },

@@ -25,17 +25,17 @@ const Login = () => {
 
   return (
     <>
-      <Suspense fallback={<Loader />}>
-        <Form
-          title={"Sign in"}
-          inputFields={inputField}
-          url={"/dashboard"}
-          loginOrSingupUrl={"/signup"}
-          loginOrSingup={"Sign up"}
-          // auth={auth}
-          // setAuth={setAuth}
-        />
-      </Suspense>
+      <div className="Login">
+        <Suspense fallback={<Loader />}>
+          <Form
+            title={"Sign in"}
+            inputFields={inputField}
+            url={"/dashboard"}
+            loginOrSingupUrl={"/signup"}
+            loginOrSingup={"Sign up"}
+          />
+        </Suspense>
+      </div>
     </>
   );
 };
