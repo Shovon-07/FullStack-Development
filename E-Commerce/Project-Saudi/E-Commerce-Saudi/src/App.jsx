@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 //___ Additional utility ___//
@@ -10,7 +10,7 @@ const Footer = lazy(() => import("./Components/Footer/Footer"));
 
 function App() {
   const [loading, setLoading] = useState(false);
-  const [auth, setAuth] = React.useState(false);
+  const [auth, setAuth] = useState(false);
 
   return (
     <>

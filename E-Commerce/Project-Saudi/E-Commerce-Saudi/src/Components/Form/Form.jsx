@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 //___ Icons ___//
 import { FaEye } from "react-icons/fa";
@@ -15,14 +15,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Form = (props) => {
   const navigate = useNavigate();
+  const [setLoading, auth, setAuth] = useOutletContext();
+
   const {
     title,
     url,
     inputFields,
     loginOrSingupUrl,
     loginOrSingup,
-    auth,
-    setAuth,
+    // auth,
+    // setAuth,
   } = props;
 
   // States
@@ -46,6 +48,7 @@ const Form = (props) => {
       toast.success("Login successful");
       setInterval(() => {
         navigate("/home");
+        setAuth(true);
       }, 1000);
     } else {
       toast.error("User not found !");
@@ -108,6 +111,15 @@ const Form = (props) => {
           <NavLink to="forgot-password">Forgot password</NavLink>
         </div> */}
       </form>
+
+      {/* <button
+        onClick={() => {
+          console.log(auth);
+          setAuth((prev) => !prev);
+        }}
+      >
+        auth
+      </button> */}
 
       <ToastContainer position="top-center" theme="colored" />
     </div>

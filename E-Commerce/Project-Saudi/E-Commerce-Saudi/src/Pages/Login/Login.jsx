@@ -1,5 +1,4 @@
 import React, { Suspense, lazy } from "react";
-import { useOutletContext } from "react-router-dom";
 
 //___ Css ___//
 import "./Login.css";
@@ -9,8 +8,6 @@ const Form = lazy(() => import("../../Components/Form/Form"));
 import Loader from "../../Components/Loader/Loader";
 
 const Login = () => {
-  const [auth, setAuth] = useOutletContext();
-
   const inputField = [
     {
       field: "email",
@@ -35,8 +32,8 @@ const Login = () => {
           url={"/dashboard"}
           loginOrSingupUrl={"/signup"}
           loginOrSingup={"Sign up"}
-          auth={auth}
-          setAuth={setAuth}
+          // auth={auth}
+          // setAuth={setAuth}
         />
       </Suspense>
     </>
