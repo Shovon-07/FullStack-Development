@@ -1,4 +1,5 @@
-# Backend :
--> ___ page :
+# Frontend :
+-> add stock thake price optin bad (done)
+-> add materials a buy price optin hobe sell price bad (pending)
 
-# correction
+# Backend :
