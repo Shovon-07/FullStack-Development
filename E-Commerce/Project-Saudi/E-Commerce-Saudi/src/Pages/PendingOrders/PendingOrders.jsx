@@ -69,6 +69,9 @@ const PendingOrders = () => {
             <Link to={`/invoice/temporary-invoice/${row.id}`}>
               <button className="button">Invoice</button>
             </Link>
+            <Link to={`/invoice/temporary-production-invoice/${row.id}`}>
+              <button className="button">Mesurments</button>
+            </Link>
             <button
               className="button"
               onClick={async () => {

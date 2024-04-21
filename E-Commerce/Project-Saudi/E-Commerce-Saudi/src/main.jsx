@@ -6,20 +6,21 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./Styles/App.scss";
 
 //___ Pages ___//
-import App from "./App.jsx";
+import App from "./App";
 import Home from "./Pages/Home/Home";
 import Sell from "./Pages/Sell/Sell";
 import PendingOrders from "./Pages/PendingOrders/PendingOrders";
 import CompleteOrder from "./Pages/CompleteOrder/CompleteOrder";
 import History from "./Pages/History/History";
-import Statistics from "./Pages/Statistics/Statistics.jsx";
+import Statistics from "./Pages/Statistics/Statistics";
 
-import AppNoHeaderFooter from "./AppNoHeaderFooter.jsx";
-import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvoice.jsx";
-import Invoice from "./Pages/Invoice/Invoice.jsx";
+import AppNoHeaderFooter from "./AppNoHeaderFooter";
+import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvoice";
+import PendingOrdersInvoiceForWorker from "./Pages/PendingOrdersInvoiceForWorker/PendingOrdersInvoiceForWorker";
+import Invoice from "./Pages/Invoice/Invoice";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
-import Login from "./Pages/Login/Login.jsx";
+import Login from "./Pages/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/invoice/temporary-invoice/:invoiceId",
         element: <PendingOrdersInvoice />,
+      },
+      {
+        path: "/invoice/temporary-production-invoice/:invoiceId",
+        element: <PendingOrdersInvoiceForWorker />,
       },
       { path: "/invoice/:invoiceId", element: <Invoice /> },
     ],
