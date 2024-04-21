@@ -33,8 +33,8 @@ return new class extends Migration
             $table->integer('hand_length');
             $table->integer('shoulder_length');            
             $table->integer('dress_length');
-            $table->integer('material_length');
-            $table->integer('sale_price');
+            $table->string('material_length');
+            $table->string('sale_price');
             $table->string('total');
             $table->string('discount');
             $table->string('vat');

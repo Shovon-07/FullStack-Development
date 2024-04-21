@@ -127,6 +127,7 @@ const ModalPage = (props) => {
                             <input
                               type={items.type}
                               name={items.field}
+                              required
                               placeholder={`${items.placeholder}`}
                               onChange={handleInputValue}
                             />
