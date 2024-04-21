@@ -524,7 +524,7 @@ const CreateInvoice = () => {
                 <p>Total =</p>
                 <p>{Number(calc.total).toFixed(2)} $</p>
               </div> */}
-              <div className="inputBox" style={{ marginTop: "30px" }}>
+              <div className="inputBox">
                 <input
                   type="number"
                   placeholder="Discount (%)"
@@ -557,7 +557,8 @@ const CreateInvoice = () => {
                 <p>Payable =</p>{" "}
                 <h4>{Number(calc.payAbleForCalc).toFixed(2)} $</h4>
               </div>
-              <div className="inputBox">
+
+              <div className="inputBox" style={{ marginTop: "30px" }}>
                 <input
                   type="number"
                   placeholder="Received amount"
@@ -568,14 +569,17 @@ const CreateInvoice = () => {
                   onKeyUp={Calculation}
                 />
               </div>
-              <div className="inputBox">
+              <div className="total d-flex">
+                <p>Due =</p> <h4>{Number(calc.dueForCalc).toFixed(2)} $</h4>
+              </div>
+              {/* <div className="inputBox">
                 <input
                   type="text"
                   placeholder="Due amount"
                   disabled
                   value={"Due = " + Number(calc.dueForCalc).toFixed(2)}
                 />
-              </div>
+              </div> */}
             </div>
             <div style={{ textAlign: "center", margin: "30px 0 10px 0" }}>
               <button
