@@ -306,11 +306,11 @@ const Invoice = () => {
                   <td>:</td>
                   <td>{apiData.material_length} meter</td>
                 </tr>
-                <tr>
+                {/* <tr>
                   <td>Material price</td>
                   <td>:</td>
                   <td>{apiData.material_price} $</td>
-                </tr>
+                </tr> */}
                 <tr>
                   <td>Total</td>
                   <td>:</td>

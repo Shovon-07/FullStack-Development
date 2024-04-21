@@ -108,8 +108,8 @@ const CreateInvoice = () => {
       toast.error("Please generate image");
     } else if (invoiceInputValue.material_length == "") {
       toast.error("Please enter material length");
-    } else if (invoiceInputValue.sale_price == "") {
-      toast.error("Please enter material price");
+    } else if (invoiceInputValue.total == "") {
+      toast.error("Please enter total price");
     } else if (invoiceInputValue.discount == "") {
       toast.error("Please enter discount");
     } else if (invoiceInputValue.vat == "") {
@@ -144,8 +144,8 @@ const CreateInvoice = () => {
 
           // Order summery
           material_length: Number(invoiceInputValue.material_length).toFixed(2),
-          sale_price: Number(invoiceInputValue.sale_price).toFixed(2),
-          total: Number(calc.total).toFixed(2),
+          sale_price: "0",
+          total: Number(invoiceInputValue.total).toFixed(2),
           discount: Number(calc.discountAmountForCalc).toFixed(2),
           vat: Number(calc.vatForCalc).toFixed(2),
           payable: Number(calc.payAbleForCalc).toFixed(2),
@@ -192,7 +192,7 @@ const CreateInvoice = () => {
               note: "",
             });
             setCalc({
-              total: "0",
+              // total: "0",
               discountAmountForCalc: "0",
               discountForCalc: "0",
               vatForCalc: "0",
@@ -233,7 +233,7 @@ const CreateInvoice = () => {
   const changedSalePrice = useRef();
 
   const [calc, setCalc] = useState({
-    total: "0",
+    // total: "0",
     discountAmountForCalc: "0",
     discountForCalc: "0",
     vatForCalc: "0",
@@ -243,16 +243,18 @@ const CreateInvoice = () => {
   });
   const Calculation = () => {
     setCalc({
-      total:
-        parseFloat(invoiceInputValue.material_length) *
-        parseFloat(invoiceInputValue.sale_price),
+      // total:
+      //   parseFloat(invoiceInputValue.material_length) *
+      //   parseFloat(invoiceInputValue.sale_price),
 
       discountAmountForCalc:
-        (parseFloat(invoiceInputValue.discount) / 100) * calc.total,
+        (parseFloat(invoiceInputValue.discount) / 100) *
+        invoiceInputValue.total,
 
       discountForCalc:
-        calc.total -
-        (parseFloat(invoiceInputValue.discount) / 100) * calc.total,
+        invoiceInputValue.total -
+        (parseFloat(invoiceInputValue.discount) / 100) *
+          invoiceInputValue.total,
 
       vatForCalc:
         (parseFloat(invoiceInputValue.vat) / 100) * calc.discountForCalc,
@@ -265,17 +267,17 @@ const CreateInvoice = () => {
     });
   };
   const ClearAllState = () => {
-    if (
-      invoiceInputValue.material_length != "" ||
-      invoiceInputValue.sale_price != ""
-    ) {
-      setCalc({
-        total: "",
-        discountForCalc: "",
-        vatForCalc: "",
-        payAbleForCalc: "",
-      });
-    }
+    // if (
+    //   invoiceInputValue.material_length != "" ||
+    //   invoiceInputValue.sale_price != ""
+    // ) {
+    //   setCalc({
+    //     total: "",
+    //     discountForCalc: "",
+    //     vatForCalc: "",
+    //     payAbleForCalc: "",
+    //   });
+    // }
   };
 
   return (
@@ -492,7 +494,7 @@ const CreateInvoice = () => {
                   ref={changedMaterialLength}
                 />
               </div>
-              <div className="inputBox">
+              {/* <div className="inputBox">
                 <input
                   type="number"
                   placeholder="Material price"
@@ -504,11 +506,24 @@ const CreateInvoice = () => {
                   onKeyDown={ClearAllState}
                   ref={changedSalePrice}
                 />
+              </div> */}
+              <div className="inputBox">
+                <input
+                  type="number"
+                  placeholder="Total"
+                  name="total"
+                  required
+                  value={invoiceInputValue.total}
+                  onChange={handleInvoiceInputValue}
+                  onKeyUp={Calculation}
+                  onKeyDown={ClearAllState}
+                  ref={changedSalePrice}
+                />
               </div>
-              <div className="total d-flex">
+              {/* <div className="total d-flex">
                 <p>Total =</p>
                 <p>{Number(calc.total).toFixed(2)} $</p>
-              </div>
+              </div> */}
               <div className="inputBox" style={{ marginTop: "30px" }}>
                 <input
                   type="number"
