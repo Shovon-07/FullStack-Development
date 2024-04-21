@@ -143,14 +143,14 @@ const CreateInvoice = () => {
           dress_length: invoiceInputValue.dress_length,
 
           // Order summery
-          material_length: invoiceInputValue.material_length,
-          sale_price: invoiceInputValue.sale_price,
-          total: calc.total,
-          discount: calc.discountAmountForCalc,
-          vat: calc.vatForCalc,
-          payable: calc.payAbleForCalc,
-          advance: invoiceInputValue.advance,
-          due: calc.dueForCalc,
+          material_length: Number(invoiceInputValue.material_length).toFixed(2),
+          sale_price: Number(invoiceInputValue.sale_price).toFixed(2),
+          total: Number(calc.total).toFixed(2),
+          discount: Number(calc.discountAmountForCalc).toFixed(2),
+          vat: Number(calc.vatForCalc).toFixed(2),
+          payable: Number(calc.payAbleForCalc).toFixed(2),
+          advance: Number(invoiceInputValue.advance).toFixed(2),
+          due: Number(calc.dueForCalc).toFixed(2),
 
           note: invoiceInputValue.note,
         };
@@ -507,7 +507,7 @@ const CreateInvoice = () => {
               </div>
               <div className="total d-flex">
                 <p>Total =</p>
-                <p>{calc.total} $</p>
+                <p>{Number(calc.total).toFixed(2)} $</p>
               </div>
               <div className="inputBox" style={{ marginTop: "30px" }}>
                 <input
@@ -520,7 +520,8 @@ const CreateInvoice = () => {
                   onKeyUp={Calculation}
                 />
                 <p style={{ marginTop: "5px", color: "green" }}>
-                  Price after discount : {calc.discountForCalc} $
+                  Price after discount :{" "}
+                  {Number(calc.discountForCalc).toFixed(2)} $
                 </p>
               </div>
               <div className="inputBox">
@@ -534,11 +535,12 @@ const CreateInvoice = () => {
                   onKeyUp={Calculation}
                 />
                 <p style={{ marginTop: "5px", color: "green" }}>
-                  Tax amount : {calc.vatForCalc} $
+                  Tax amount : {Number(calc.vatForCalc).toFixed(2)} $
                 </p>
               </div>
               <div className="total d-flex">
-                <p>Payable =</p> <h4>{calc.payAbleForCalc} $</h4>
+                <p>Payable =</p>{" "}
+                <h4>{Number(calc.payAbleForCalc).toFixed(2)} $</h4>
               </div>
               <div className="inputBox">
                 <input
@@ -556,7 +558,7 @@ const CreateInvoice = () => {
                   type="text"
                   placeholder="Due amount"
                   disabled
-                  value={"Due = " + calc.dueForCalc}
+                  value={"Due = " + Number(calc.dueForCalc).toFixed(2)}
                 />
               </div>
             </div>
