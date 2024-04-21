@@ -40,11 +40,15 @@
   cursor: pointer;
 }
 
+.FormContainer a {
+  background: var(--dark-2);
+}
 .FormContainer .button {
   text-transform: uppercase;
   outline: none;
   border: var(--border);
   color: var(--light-1);
+  background: var(--dark-2);
   padding: 10px 30px;
   margin-top: 20px;
   font-weight: 700;

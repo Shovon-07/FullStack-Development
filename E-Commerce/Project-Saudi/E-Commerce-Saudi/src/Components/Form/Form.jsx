@@ -98,8 +98,10 @@ const Form = (props) => {
           );
         })}
         <div>
-          <NavLink to={"/home"} className="button">
-            <button type="submit">next</button>
+          <NavLink to={"/home"}>
+            <button type="submit" className="button">
+              next
+            </button>
           </NavLink>
           {/* <button type="submit" className="button">
             next
