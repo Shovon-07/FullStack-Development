@@ -104,6 +104,8 @@ const CreateInvoice = () => {
       toast.error("Please enter cuff length");
     } else if (invoiceInputValue.shoulder_length == "") {
       toast.error("Please enter shoulder length");
+    } else if (getImgData.Image == "") {
+      toast.error("Please generate image");
     } else if (invoiceInputValue.material_length == "") {
       toast.error("Please enter material length");
     } else if (invoiceInputValue.sale_price == "") {
@@ -114,8 +116,6 @@ const CreateInvoice = () => {
       toast.error("Please enter vat");
     } else if (invoiceInputValue.advance == "") {
       toast.error("Please enter recived amount");
-    } else if (getImgData.Image == "") {
-      toast.error("Please generate image");
     } else {
       try {
         const data = {
@@ -485,10 +485,10 @@ const CreateInvoice = () => {
                   placeholder="Material length"
                   name="material_length"
                   required
+                  value={invoiceInputValue.material_length}
                   onChange={handleInvoiceInputValue}
                   onKeyUp={Calculation}
                   onKeyDown={ClearAllState}
-                  value={invoiceInputValue.material_length}
                   ref={changedMaterialLength}
                 />
               </div>
