@@ -23,6 +23,10 @@ const Header = () => {
     setNavToggler(0);
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+  };
+
   return (
     <>
       <header className="Header">
@@ -87,6 +91,11 @@ const Header = () => {
                 >
                   Statistics
                 </NavLink>
+              </li>
+              <li>
+                <button className="button logout" onClick={handleLogout}>
+                  Logout
+                </button>
               </li>
             </div>
             <div className="toggler cursor">

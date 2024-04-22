@@ -1,5 +1,5 @@
-import { Suspense, lazy, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Suspense, lazy, useEffect, useState } from "react";
+import { Outlet, Navigate, useNavigate } from "react-router-dom";
 
 //___ Additional utility ___//
 import Loader from "./Components/Loader/Loader";
@@ -9,18 +9,35 @@ const Header = lazy(() => import("./Components/Header/Header"));
 const Footer = lazy(() => import("./Components/Footer/Footer"));
 
 function App() {
+  // const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [auth, setAuth] = useState(false);
+  const auth = localStorage.getItem("LoginValue");
+
+  // const [auth, setAuth] = useState(null);
+
+  // const authFunc = () => {
+  //   setAuth(localStorage.getItem("LoginValue"));
+  //   console.log(auth);
+  // };
+
+  // useEffect(() => {
+  //   authFunc();
+  // });
 
   return (
     <>
       <div className="main">
         <Suspense fallback={<Loader />}>
-          <Header auth={auth} />
+          <Header />
         </Suspense>
         <div className="container">
           {loading && <Loader />}
-          <Outlet context={[setLoading, auth, setAuth]} />
+          {/* {auth == "shovon@gmail.com" ? (
+            <Outlet context={[setLoading]} />
+          ) : (
+            <Navigate to="/" />
+          )} */}
+          <Outlet context={[setLoading]} />
         </div>
         <Suspense fallback={<Loader />}>
           <Footer />

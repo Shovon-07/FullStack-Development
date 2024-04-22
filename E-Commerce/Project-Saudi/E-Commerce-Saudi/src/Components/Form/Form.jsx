@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Form = (props) => {
   const navigate = useNavigate();
-  const [setLoading, auth, setAuth] = useOutletContext();
+  // const [setLoading, auth, setAuth] = useOutletContext();
 
   const {
     title,
@@ -40,20 +40,18 @@ const Form = (props) => {
 
   const handleForm = (e) => {
     e.preventDefault();
-
     let u_email = "shovon@gmail.com";
     let u_pass = "sho";
 
-    // if (formInput.email === u_email && formInput.password === u_pass) {
-    //   toast.success("Login successful");
-    //   setInterval(() => {
-    //     navigate("/home");
-    //     // setAuth(true);
-    //   }, 1000);
-    // } else {
-    //   toast.error("User not found !");
-    // }
-    // console.log(formInput.email);
+    if (formInput.email === u_email && formInput.password === u_pass) {
+      toast.success("Login successful");
+      setInterval(() => {
+        localStorage.setItem("LoginValue", u_email);
+        navigate("/home");
+      }, 1000);
+    } else {
+      toast.error("User not found !");
+    }
   };
 
   return (
@@ -98,14 +96,14 @@ const Form = (props) => {
           );
         })}
         <div>
-          <NavLink to={"/home"}>
+          {/* <NavLink to={"/home"}>
             <button type="submit" className="button">
               next
             </button>
-          </NavLink>
-          {/* <button type="submit" className="button">
+          </NavLink> */}
+          <button type="submit" className="button">
             next
-          </button> */}
+          </button>
         </div>
         {/* <div className="form-bottom d-flex">
           <NavLink to={loginOrSingupUrl}>{loginOrSingup}</NavLink>
