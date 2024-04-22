@@ -22,55 +22,54 @@ const Statistics = () => {
     if (e.target.value === "Today") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(res.data[0]);
+        setSoldData(Number(res.data[0]).toFixed(2));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(resBuy.data[0]);
-        console.log(resBuy.data[0]);
+        setBuyData(Number(resBuy.data[0]).toFixed(2));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(resBal.data[0]);
+        setBalData(Number(resBal.data[0]).toFixed(2));
       });
     } else if (e.target.value === "Last week") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(res.data[1]);
+        setSoldData(Number(res.data[1]).toFixed(2));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(resBuy.data[1]);
+        setBuyData(Number(resBuy.data[1]).toFixed(2));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(resBal.data[1]);
+        setBalData(Number(resBal.data[1]).toFixed(2));
       });
     } else if (e.target.value === "Last month") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(res.data[2]);
+        setSoldData(Number(res.data[2]).toFixed(2));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(resBuy.data[2]);
+        setBuyData(Number(resBuy.data[2]).toFixed(2));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(resBal.data[2]);
+        setBalData(Number(resBal.data[2]).toFixed(2));
       });
     } else if (e.target.value === "Last year") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(res.data[3]);
+        setSoldData(Number(res.data[3]).toFixed(2));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(resBuy.data[3]);
+        setBuyData(Number(resBuy.data[3]).toFixed(2));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(resBal.data[3]);
+        setBalData(Number(resBal.data[3]).toFixed(2));
       });
     } else {
       setSoldData(0);
