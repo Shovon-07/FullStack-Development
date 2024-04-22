@@ -47,7 +47,7 @@ const Form = (props) => {
       toast.success("Login successful");
       setInterval(() => {
         localStorage.setItem("LoginValue", u_email);
-        navigate("/home");
+        navigate("/dashboard/home");
       }, 1000);
     } else {
       toast.error("User not found !");

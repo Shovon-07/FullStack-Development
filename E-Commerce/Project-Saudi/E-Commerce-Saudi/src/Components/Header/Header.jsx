@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 
 //___ Icons ___//
 import { HiMenuAlt3 } from "react-icons/hi";
@@ -13,6 +13,8 @@ import Logo from "/images/icons/logo.png";
 //___ Components ___//
 
 const Header = () => {
+  const navigate = useNavigate();
+
   // States
   const [navToggler, setNavToggler] = useState(0);
 
@@ -25,6 +27,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.clear();
+    navigate("/");
   };
 
   return (
@@ -40,7 +43,7 @@ const Header = () => {
             <div className="menus d-flex gap-30">
               <li>
                 <NavLink
-                  to="/home"
+                  to="/dashboard/home"
                   className={({ isActive }) => (isActive ? "isActive" : "")}
                   onClick={closeNav}
                 >
@@ -49,7 +52,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/sell"
+                  to="/dashboard/sell"
                   className={({ isActive }) => (isActive ? "isActive" : "")}
                   onClick={closeNav}
                 >
@@ -58,7 +61,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/pending-orders"
+                  to="/dashboard/pending-orders"
                   className={({ isActive }) => (isActive ? "isActive" : "")}
                   onClick={closeNav}
                 >
@@ -67,7 +70,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/complete-order"
+                  to="/dashboard/complete-order"
                   className={({ isActive }) => (isActive ? "isActive" : "")}
                   onClick={closeNav}
                 >
@@ -76,7 +79,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/history"
+                  to="/dashboard/history"
                   className={({ isActive }) => (isActive ? "isActive" : "")}
                   onClick={closeNav}
                 >
@@ -85,7 +88,7 @@ const Header = () => {
               </li>
               <li>
                 <NavLink
-                  to="/statistics"
+                  to="/dashboard/statistics"
                   className={({ isActive }) => (isActive ? "isActive" : "")}
                   onClick={closeNav}
                 >

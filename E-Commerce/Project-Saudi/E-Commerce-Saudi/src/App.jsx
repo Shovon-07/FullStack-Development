@@ -1,5 +1,5 @@
-import { Suspense, lazy, useEffect, useState } from "react";
-import { Outlet, Navigate, useNavigate } from "react-router-dom";
+import { Suspense, lazy, useState } from "react";
+import { Outlet } from "react-router-dom";
 
 //___ Additional utility ___//
 import Loader from "./Components/Loader/Loader";

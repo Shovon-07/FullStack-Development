@@ -19,6 +19,8 @@ import "./Styles/App.scss";
 import App from "./App";
 import AppNoHeaderFooter from "./AppNoHeaderFooter";
 
+import Login from "./Pages/Login/Login";
+
 import Home from "./Pages/Home/Home";
 import Sell from "./Pages/Sell/Sell";
 import PendingOrders from "./Pages/PendingOrders/PendingOrders";
@@ -31,7 +33,6 @@ import PendingOrdersInvoiceForWorker from "./Pages/PendingOrdersInvoiceForWorker
 import Invoice from "./Pages/Invoice/Invoice";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
-import Login from "./Pages/Login/Login";
 
 // const router = createBrowserRouter([
 //   {
@@ -71,6 +72,8 @@ import Login from "./Pages/Login/Login";
 //   },
 // ]);
 
+const atuhData = localStorage.getItem("LovinValue");
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <RouterProvider router={router} /> */}
@@ -79,15 +82,25 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Routes>
         <Route path="/" element={<AppNoHeaderFooter />}>
           <Route path="/" element={<Login />} />
+          <Route path="/*" element={<ErrorPage />} />
         </Route>
 
-        <Route path="/" element={<App />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/sell" element={<Sell />} />
-          <Route path="/pending-orders" element={<PendingOrders />} />
-          <Route path="/complete-order" element={<CompleteOrder />} />
-          <Route path="/history" element={<History />} />
-          <Route path="/statistics" element={<Statistics />} />
+        <Route path="/" element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<App />}>
+            <Route path="/dashboard/home" element={<Home />} />
+            <Route path="/dashboard/sell" element={<Sell />} />
+            <Route
+              path="/dashboard/pending-orders"
+              element={<PendingOrders />}
+            />
+            <Route
+              path="/dashboard/complete-order"
+              element={<CompleteOrder />}
+            />
+            <Route path="/dashboard/history" element={<History />} />
+            <Route path="/dashboard/statistics" element={<Statistics />} />
+            <Route path="/dashboard/*" element={<ErrorPage />} />
+          </Route>
         </Route>
 
         <Route path="/invoice" element={<AppNoHeaderFooter />}>
@@ -101,6 +114,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           />
           <Route path="/invoice/:invoiceId" element={<Invoice />} />
         </Route>
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
