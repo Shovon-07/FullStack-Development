@@ -85,22 +85,32 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/*" element={<ErrorPage />} />
         </Route>
 
-        <Route path="/" element={<ProtectedRoute />}>
-          <Route path="/dashboard" element={<App />}>
-            <Route path="/dashboard/home" element={<Home />} />
-            <Route path="/dashboard/sell" element={<Sell />} />
-            <Route
-              path="/dashboard/pending-orders"
-              element={<PendingOrders />}
-            />
-            <Route
-              path="/dashboard/complete-order"
-              element={<CompleteOrder />}
-            />
-            <Route path="/dashboard/history" element={<History />} />
-            <Route path="/dashboard/statistics" element={<Statistics />} />
-            <Route path="/dashboard/*" element={<ErrorPage />} />
-          </Route>
+        <Route path="/dashboard" element={<App />}>
+          <Route
+            path="/dashboard/home"
+            element={<ProtectedRoute Component={Home} />}
+          />
+          <Route
+            path="/dashboard/sell"
+            element={<ProtectedRoute Component={Sell} />}
+          />
+          <Route
+            path="/dashboard/pending-orders"
+            element={<ProtectedRoute Component={PendingOrders} />}
+          />
+          <Route
+            path="/dashboard/complete-order"
+            element={<ProtectedRoute Component={CompleteOrder} />}
+          />
+          <Route
+            path="/dashboard/history"
+            element={<ProtectedRoute Component={History} />}
+          />
+          <Route
+            path="/dashboard/statistics"
+            element={<ProtectedRoute Component={Statistics} />}
+          />
+          <Route path="/dashboard/*" element={<ErrorPage />} />
         </Route>
 
         <Route path="/invoice" element={<AppNoHeaderFooter />}>

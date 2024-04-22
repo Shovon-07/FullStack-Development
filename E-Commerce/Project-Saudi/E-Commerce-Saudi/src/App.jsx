@@ -31,12 +31,7 @@ function App() {
           <Header />
         </Suspense>
         <div className="container">
-          {/* {loading && <Loader />} */}
-          {/* {auth == "shovon@gmail.com" ? (
-            <Outlet context={[setLoading]} />
-          ) : (
-            <Navigate to="/" />
-          )} */}
+          {loading && <Loader />}
           <Outlet context={[setLoading]} />
         </div>
         <Suspense fallback={<Loader />}>

@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { NavLink, useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 //___ Icons ___//
 import { FaEye } from "react-icons/fa";
@@ -14,18 +14,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Form = (props) => {
-  const navigate = useNavigate();
-  // const [setLoading, auth, setAuth] = useOutletContext();
+  // const navigate = useNavigate();
 
-  const {
-    title,
-    url,
-    inputFields,
-    loginOrSingupUrl,
-    loginOrSingup,
-    // auth,
-    // setAuth,
-  } = props;
+  const { title, url, inputFields, loginOrSingupUrl, loginOrSingup } = props;
 
   // States
   const [showHide, setShowHide] = useState(false);
