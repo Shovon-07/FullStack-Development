@@ -10,29 +10,29 @@ import {
 } from "react-router-dom";
 
 //___ Additional utility ___//
-import ProtectedRoute from "./assets/ProtectedRoute";
+// import ProtectedRoute from "./assets/ProtectedRoute";
 
 //___ Css ___//
-import "./Styles/App.scss";
+// import "./Styles/App.scss";
 
 //___ Pages ___//
 import App from "./App";
-import AppNoHeaderFooter from "./AppNoHeaderFooter";
+// import AppNoHeaderFooter from "./AppNoHeaderFooter";
 
-import Login from "./Pages/Login/Login";
+// import Login from "./Pages/Login/Login";
 
-import Home from "./Pages/Home/Home";
-import Sell from "./Pages/Sell/Sell";
-import PendingOrders from "./Pages/PendingOrders/PendingOrders";
-import CompleteOrder from "./Pages/CompleteOrder/CompleteOrder";
-import History from "./Pages/History/History";
-import Statistics from "./Pages/Statistics/Statistics";
+// import Home from "./Pages/Home/Home";
+// import Sell from "./Pages/Sell/Sell";
+// import PendingOrders from "./Pages/PendingOrders/PendingOrders";
+// import CompleteOrder from "./Pages/CompleteOrder/CompleteOrder";
+// import History from "./Pages/History/History";
+// import Statistics from "./Pages/Statistics/Statistics";
 
-import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvoice";
-import PendingOrdersInvoiceForWorker from "./Pages/PendingOrdersInvoiceForWorker/PendingOrdersInvoiceForWorker";
-import Invoice from "./Pages/Invoice/Invoice";
+// import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvoice";
+// import PendingOrdersInvoiceForWorker from "./Pages/PendingOrdersInvoiceForWorker/PendingOrdersInvoiceForWorker";
+// import Invoice from "./Pages/Invoice/Invoice";
 
-import ErrorPage from "./Pages/ErrorPage/ErrorPage";
+// import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 // const router = createBrowserRouter([
 //   {
@@ -72,14 +72,12 @@ import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 //   },
 // ]);
 
-const atuhData = localStorage.getItem("LovinValue");
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <RouterProvider router={router} /> */}
 
     <BrowserRouter>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<AppNoHeaderFooter />}>
           <Route path="/" element={<Login />} />
           <Route path="/*" element={<ErrorPage />} />
@@ -125,7 +123,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="/invoice/:invoiceId" element={<Invoice />} />
         </Route>
         <Route path="/*" element={<ErrorPage />} />
-      </Routes>
+      </Routes> */}
+
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );

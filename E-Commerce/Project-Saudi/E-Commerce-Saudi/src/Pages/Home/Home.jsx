@@ -13,7 +13,7 @@ import "./Home.scss";
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Home = () => {
-  const [setLoading, auth, setAuth] = useOutletContext();
+  const [setLoading] = useOutletContext();
   const { http } = AxiosConfig();
 
   // States

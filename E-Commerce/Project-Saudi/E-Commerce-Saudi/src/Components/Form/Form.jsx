@@ -9,12 +9,13 @@ import { FaEyeSlash } from "react-icons/fa6";
 import "./Form.css";
 
 //___ Additional utility ___//
-import AxiosConfig from "../../assets/AxiosConfig";
+import AuthUser from "../../assets/AuthUser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Form = (props) => {
   // const navigate = useNavigate();
+  const { http, setToken } = AuthUser();
 
   const { title, url, inputFields, loginOrSingupUrl, loginOrSingup } = props;
 
@@ -29,26 +30,40 @@ const Form = (props) => {
     setFormInput({ ...formInput, [e.target.name]: e.target.value });
   };
 
-  const handleForm = (e) => {
+  const submitForm = async (e) => {
     e.preventDefault();
-    let u_email = "shovon@gmail.com";
-    let u_pass = "sho";
 
-    if (formInput.email === u_email && formInput.password === u_pass) {
-      toast.success("Login successful");
-      setInterval(() => {
-        localStorage.setItem("LoginValue", u_email);
-        // navigate("/dashboard/home");
-        window.location.href = "/dashboard/home";
-      }, 1000);
-    } else {
-      toast.error("User not found !");
-    }
+    const data = {
+      email: formInput.email,
+      password: formInput.password,
+    };
+    await http.post("/login", data).then((response) => {
+      console.log(response.data);
+      if (response.data[2] === 1) {
+        setToken(response.data[0], response.data[1]);
+      } else {
+        toast.error(response.data);
+      }
+    });
+
+    // let u_email = "shovon@gmail.com";
+    // let u_pass = "sho";
+
+    // if (formInput.email === u_email && formInput.password === u_pass) {
+    //   toast.success("Login successful");
+    //   setInterval(() => {
+    //     localStorage.setItem("LoginValue", u_email);
+    //     navigate("/dashboard/home");
+    //     window.location.href = "/dashboard/home";
+    //   }, 1000);
+    // } else {
+    //   toast.error("User not found !");
+    // }
   };
 
   return (
     <div className="FormContainer d-flex">
-      <form className="d-flex" onSubmit={handleForm}>
+      <form className="d-flex" onSubmit={submitForm}>
         <h3>{title}</h3>
         {inputFields.map((items, index) => {
           return (

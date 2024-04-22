@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 //___ Icons ___//
 import { HiMenuAlt3 } from "react-icons/hi";
