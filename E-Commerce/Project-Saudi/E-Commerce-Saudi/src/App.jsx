@@ -31,7 +31,7 @@ function App() {
           <Header />
         </Suspense>
         <div className="container">
-          {loading && <Loader />}
+          {/* {loading && <Loader />} */}
           {/* {auth == "shovon@gmail.com" ? (
             <Outlet context={[setLoading]} />
           ) : (
