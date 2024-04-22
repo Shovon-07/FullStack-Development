@@ -38,27 +38,12 @@ const Form = (props) => {
       password: formInput.password,
     };
     await http.post("/login", data).then((response) => {
-      console.log(response.data);
       if (response.data[2] === 1) {
         setToken(response.data[0], response.data[1]);
       } else {
         toast.error(response.data);
       }
     });
-
-    // let u_email = "shovon@gmail.com";
-    // let u_pass = "sho";
-
-    // if (formInput.email === u_email && formInput.password === u_pass) {
-    //   toast.success("Login successful");
-    //   setInterval(() => {
-    //     localStorage.setItem("LoginValue", u_email);
-    //     navigate("/dashboard/home");
-    //     window.location.href = "/dashboard/home";
-    //   }, 1000);
-    // } else {
-    //   toast.error("User not found !");
-    // }
   };
 
   return (

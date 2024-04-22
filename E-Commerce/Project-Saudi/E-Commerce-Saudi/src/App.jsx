@@ -1,16 +1,10 @@
-import { Suspense, lazy, useState } from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 //___ Additional utility ___//
-// import Loader from "./Components/Loader/Loader";
 import ProtectedRoute from "./assets/ProtectedRoute";
 
 //___ Css ___//
 import "./Styles/App.scss";
-
-//___ Components ___//
-// const Header = lazy(() => import("./Components/Header/Header"));
-// const Footer = lazy(() => import("./Components/Footer/Footer"));
 
 //___ Pages ___//
 import Layout from "./Layout";
@@ -32,49 +26,10 @@ import Invoice from "./Pages/Invoice/Invoice";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 function App() {
-  // const navigate = useNavigate();
-  // const [loading, setLoading] = useState(false);
   const auth = sessionStorage.getItem("token");
 
   return (
     <>
-      {/* <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Login />} />
-
-          <Route path="/home" element={<ProtectedRoute Component={Home} />} />
-          <Route path="/sell" element={<ProtectedRoute Component={Sell} />} />
-          <Route
-            path="/pending-orders"
-            element={<ProtectedRoute Component={PendingOrders} />}
-          />
-          <Route
-            path="/complete-order"
-            element={<ProtectedRoute Component={CompleteOrder} />}
-          />
-          <Route
-            path="/history"
-            element={<ProtectedRoute Component={History} />}
-          />
-          <Route
-            path="/statistics"
-            element={<ProtectedRoute Component={Statistics} />}
-          />
-          <Route
-            path="/invoice/temporary-invoice/:invoiceId"
-            element={<PendingOrdersInvoice />}
-          />
-          <Route
-            path="/invoice/temporary-production-invoice/:invoiceId"
-            element={<PendingOrdersInvoiceForWorker />}
-          />
-          <Route path="/invoice/:invoiceId" element={<Invoice />} />
-          <Route path="/*" element={<ErrorPage />} />
-        </Route>
-
-        <Route path="/*" element={<ErrorPage />} />
-      </Routes> */}
-
       <Routes>
         <Route path="/" element={<LayoutNoHeaderFooter />}>
           <Route path="/" element={<Login />} />
