@@ -9,7 +9,7 @@ const ProtectedRoute = (props) => {
   const { getToken } = AuthUser();
 
   useEffect(() => {
-    let auth = localStorage.getItem("token");
+    let auth = sessionStorage.getItem("token");
     if (!auth) {
       navigate("/");
     }

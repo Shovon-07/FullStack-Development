@@ -34,10 +34,47 @@ import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 function App() {
   // const navigate = useNavigate();
   // const [loading, setLoading] = useState(false);
-  const auth = localStorage.getItem("token");
+  const auth = sessionStorage.getItem("token");
 
   return (
     <>
+      {/* <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/" element={<Login />} />
+
+          <Route path="/home" element={<ProtectedRoute Component={Home} />} />
+          <Route path="/sell" element={<ProtectedRoute Component={Sell} />} />
+          <Route
+            path="/pending-orders"
+            element={<ProtectedRoute Component={PendingOrders} />}
+          />
+          <Route
+            path="/complete-order"
+            element={<ProtectedRoute Component={CompleteOrder} />}
+          />
+          <Route
+            path="/history"
+            element={<ProtectedRoute Component={History} />}
+          />
+          <Route
+            path="/statistics"
+            element={<ProtectedRoute Component={Statistics} />}
+          />
+          <Route
+            path="/invoice/temporary-invoice/:invoiceId"
+            element={<PendingOrdersInvoice />}
+          />
+          <Route
+            path="/invoice/temporary-production-invoice/:invoiceId"
+            element={<PendingOrdersInvoiceForWorker />}
+          />
+          <Route path="/invoice/:invoiceId" element={<Invoice />} />
+          <Route path="/*" element={<ErrorPage />} />
+        </Route>
+
+        <Route path="/*" element={<ErrorPage />} />
+      </Routes> */}
+
       <Routes>
         <Route path="/" element={<LayoutNoHeaderFooter />}>
           <Route path="/" element={<Login />} />
@@ -57,7 +94,10 @@ function App() {
           <Route path="/dashboard/*" element={<ErrorPage />} />
         </Route>
 
-        <Route path="/invoice" element={<LayoutNoHeaderFooter />}>
+        <Route
+          path="/invoice"
+          element={<ProtectedRoute Component={LayoutNoHeaderFooter} />}
+        >
           <Route
             path="/invoice/temporary-invoice/:invoiceId"
             element={<PendingOrdersInvoice />}

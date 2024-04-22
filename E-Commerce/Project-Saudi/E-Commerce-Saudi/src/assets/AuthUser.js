@@ -6,13 +6,13 @@ export default function AuthUser() {
   const navigate = useNavigate();
 
   const getToken = () => {
-    const tokenString = localStorage.getItem("token");
+    const tokenString = sessionStorage.getItem("token");
     const userToken = tokenString;
     // const userToken = JSON.parse(tokenString);
     return userToken;
   };
   const getUser = () => {
-    const userString = localStorage.getItem("user");
+    const userString = sessionStorage.getItem("user");
     const userDetails = userString;
     // const userDetails = JSON.parse(userString);
     return userDetails;
@@ -25,8 +25,8 @@ export default function AuthUser() {
     // localStorage.setItem("token", JSON.stringify(token));
     // localStorage.setItem("user", JSON.stringify(user));
 
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", user);
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("user", user);
 
     setToken(token);
     setUser(user);
