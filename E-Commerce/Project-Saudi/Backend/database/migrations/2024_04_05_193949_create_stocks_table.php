@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreign('material_id')->references('id')->on('materials')
             ->cascadeOnUpdate()->restrictOnDelete();
 
-            $table->string('price');
-            $table->integer('stock')->default(0);
+            $table->float('price');
+            $table->float('stock')->default(0);
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

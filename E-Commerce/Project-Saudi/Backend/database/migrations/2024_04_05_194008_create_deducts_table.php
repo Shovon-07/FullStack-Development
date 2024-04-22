@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreign('material_id')->references('id')->on('materials')
             ->cascadeOnUpdate()->restrictOnDelete();
             
-            $table->integer('deduct');
+            // $table->string('deduct');
+            $table->decimal('deduct',8,2);
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

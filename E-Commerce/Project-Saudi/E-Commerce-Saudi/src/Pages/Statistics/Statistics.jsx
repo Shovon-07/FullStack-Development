@@ -27,6 +27,7 @@ const Statistics = () => {
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
         setBuyData(resBuy.data[0]);
+        console.log(resBuy.data[0]);
       });
       // Balance
       http.get("/balance").then((resBal) => {

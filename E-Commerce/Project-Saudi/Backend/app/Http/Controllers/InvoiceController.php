@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Stock;
 use Illuminate\Http\Request;
 
 use Exception;
 use App\Models\Invoice;
 use App\Models\Customer;
 use App\Models\Material;
+use App\Models\Stock;
 use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
@@ -45,7 +45,6 @@ class InvoiceController extends Controller
             $advance = $request->input('advance') ?? "";
             $due = $request->input("due");
             $deadline_date = $request->input('deadline_date');
-            $inqueries_number = $request->input('inqueries_number') ?? "";
             $note = $request->input('note') ?? "";
 
             //___ Process Image start ___//
@@ -61,7 +60,7 @@ class InvoiceController extends Controller
             $customer = Customer::updateOrCreate(
                 ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address], // Criteria to find the record
                 ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address] // Data to update or create
-            );           
+            );
 
             if ($customer) {
                 $customer_id = $customer->id;          
@@ -69,7 +68,7 @@ class InvoiceController extends Controller
                 $invoice = Invoice::create([
                     'customer_id' => $customer_id,
                     'image' => $imgName,
-
+                    
                     'dress_type' => $dress_type,
                     'button_type' => $button_type,
                     'neck_type' => $neck_type,
@@ -93,7 +92,6 @@ class InvoiceController extends Controller
                     'advance' => $advance,
                     'due' => $due,
                     'deadline_date' => $deadline_date,
-                    'inqueries_number' => $inqueries_number,
                     'note'=> $note
                 ]);
                 
@@ -229,7 +227,7 @@ class InvoiceController extends Controller
 
         return $deliveryOrders;
     }
-
+    
     // Statistics
     public function statisticSold()
     {
@@ -273,14 +271,9 @@ class InvoiceController extends Controller
         $currentYear = $advanceYear + $collectionYear;
 
         $statistic = array($currentDay,$currentWeek,$currentMonth,$currentYear);
-        return response()->json([
-            "day" => $currentDay,
-            "week" => $currentWeek,
-            "month" => $currentMonth,
-            "year" => $currentYear,
-        ]);
+        return $statistic;
     }
-
+    
     public function statisticBuy()
     {
         // Query to get total sales per day
@@ -327,7 +320,7 @@ class InvoiceController extends Controller
             $statisticBuy = array($buyDay, $buyWeek, $buyMonth, $buyYear);
             return $statisticBuy;
     }
-
+    
     public function balance()
     {
         // Get total sales and total purchases
@@ -344,5 +337,21 @@ class InvoiceController extends Controller
         $balance = array($balanceDay, $balanceWeek, $balanceMonth, $balanceYear);
         return $balance;       
     }
+    
+    public function Login(Request $request) {
+	    $email=$request->input("email");
+	    $password=$request->input("password");
+	    $status = 1;
+	    
+	    $staticEmail = "test@mail.com";
+	    $staticPassword = "test";
+	    
+	    if($email===$staticEmail && $password===$staticPassword) {
+	        $data = array($email,$password,$status);
+            return $data;
+	    } else {
+	       return "Invalid user"; 
+	    }
+	}
 
 }

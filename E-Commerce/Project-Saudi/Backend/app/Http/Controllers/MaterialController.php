@@ -34,7 +34,7 @@ class MaterialController extends Controller
                     Stock::create([
                         'material_id' => $material->id,
                         'stock' => $request->stock,
-                        'price' => $request->price
+                        'price' => $request->price ?? "",
                     ]);
                 }
             }

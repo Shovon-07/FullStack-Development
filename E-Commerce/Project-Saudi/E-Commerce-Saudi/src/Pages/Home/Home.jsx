@@ -50,17 +50,18 @@ const Home = () => {
     {
       name: "Meters Available",
       field: "MetersAvailable",
-      selector: (row) => row.stock,
+      selector: (row) => Number(row.stock).toFixed(2),
     },
     {
-      name: "Price Per Meter",
+      // name: "Price Per Meter",
+      name: "Buy price",
       field: "PricePerMeter",
-      selector: (row) => row.price,
+      selector: (row) => Number(row.price).toFixed(2),
     },
     {
       name: "Total Value",
       field: "TotalValue",
-      selector: (row) => Number(row.stock) * Number(row.price),
+      selector: (row) => (Number(row.stock) * Number(row.price)).toFixed(2),
     },
     {
       name: "Action",
@@ -133,7 +134,7 @@ const Home = () => {
     {
       field: "price",
       type: "text",
-      placeholder: "Enter initial price per meter",
+      placeholder: "Enter buy price",
       className: "inputBox",
     },
   ];
