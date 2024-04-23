@@ -23,54 +23,54 @@ const Statistics = () => {
     if (e.target.value === "Today") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(ValueConvert(Number(res.data[0]).toFixed(2)));
+        setSoldData(Number(res.data[0]).toFixed(2));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(ValueConvert(Number(resBuy.data[0]).toFixed(2)));
+        setBuyData(Number(resBuy.data[0]).toFixed(2));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(ValueConvert(Number(resBal.data[0]).toFixed(2)));
+        setBalData(Number(resBal.data[0]).toFixed(2));
       });
     } else if (e.target.value === "Last week") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(ValueConvert(Number(res.data[1]).toFixed(2)));
+        setSoldData(Number(res.data[1]).toFixed(2));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(ValueConvert(Number(resBuy.data[1]).toFixed(2)));
+        setBuyData(Number(resBuy.data[1]).toFixed(2));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(ValueConvert(Number(resBal.data[1]).toFixed(2)));
+        setBalData(Number(resBal.data[1]).toFixed(2));
       });
     } else if (e.target.value === "Last month") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(ValueConvert(Number(res.data[2]).toFixed(2)));
+        setSoldData(Number(res.data[2]).toFixed(2));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(ValueConvert(Number(resBuy.data[2]).toFixed(2)));
+        setBuyData(Number(resBuy.data[2]).toFixed(2));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(ValueConvert(Number(resBal.data[2]).toFixed(2)));
+        setBalData(Number(resBal.data[2]).toFixed(2));
       });
     } else if (e.target.value === "Last year") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(ValueConvert(Number(res.data[3]).toFixed(2)));
+        setSoldData(Number(res.data[3]).toFixed(2));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(ValueConvert(Number(resBuy.data[3]).toFixed(2)));
+        setBuyData(Number(resBuy.data[3]).toFixed(2));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(ValueConvert(Number(resBal.data[3]).toFixed(2)));
+        setBalData(Number(resBal.data[3]).toFixed(2));
       });
     } else {
       setSoldData(0);

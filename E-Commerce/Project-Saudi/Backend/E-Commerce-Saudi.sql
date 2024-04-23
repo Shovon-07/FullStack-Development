@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 06:37 AM
+-- Generation Time: Apr 23, 2024 at 06:02 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -125,13 +125,13 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2024_04_03_090609_create_images_table', 2),
-(40, '2019_12_14_000001_create_personal_access_tokens_table', 3),
-(41, '2024_04_03_083146_create_users_table', 3),
-(42, '2024_04_05_193157_create_materials_table', 3),
-(43, '2024_04_05_193949_create_stocks_table', 3),
-(44, '2024_04_05_194008_create_deducts_table', 3),
-(45, '2024_04_06_062556_create_customers_table', 3),
-(46, '2024_04_06_095331_create_invoices_table', 3);
+(47, '2019_12_14_000001_create_personal_access_tokens_table', 3),
+(48, '2024_04_03_083146_create_users_table', 3),
+(49, '2024_04_05_193157_create_materials_table', 3),
+(50, '2024_04_05_193949_create_stocks_table', 3),
+(51, '2024_04_05_194008_create_deducts_table', 3),
+(52, '2024_04_06_062556_create_customers_table', 3),
+(53, '2024_04_06_095331_create_invoices_table', 3);
 
 -- --------------------------------------------------------
 
@@ -274,7 +274,7 @@ ALTER TABLE `materials`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

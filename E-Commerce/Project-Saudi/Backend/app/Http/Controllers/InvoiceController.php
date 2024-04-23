@@ -166,7 +166,9 @@ class InvoiceController extends Controller
 
 
             Invoice::where('id', '=', $request->id)->update([
-                'status' => 'cancel'
+                'status' => 'cancel',
+                'advance' => 0,
+                
             ]);
             DB::commit();
             return 'success';
