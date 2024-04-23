@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2024 at 06:54 PM
+-- Generation Time: Apr 23, 2024 at 06:37 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -101,8 +101,8 @@ CREATE TABLE `invoices` (
 CREATE TABLE `materials` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `price` varchar(255) NOT NULL,
-  `stock` varchar(255) NOT NULL DEFAULT '0',
+  `price` double(8,2) NOT NULL,
+  `stock` double(8,2) NOT NULL DEFAULT 0.00,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -125,13 +125,13 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2024_04_03_090609_create_images_table', 2),
-(33, '2019_12_14_000001_create_personal_access_tokens_table', 3),
-(34, '2024_04_03_083146_create_users_table', 3),
-(35, '2024_04_05_193157_create_materials_table', 3),
-(36, '2024_04_05_193949_create_stocks_table', 3),
-(37, '2024_04_05_194008_create_deducts_table', 3),
-(38, '2024_04_06_062556_create_customers_table', 3),
-(39, '2024_04_06_095331_create_invoices_table', 3);
+(40, '2019_12_14_000001_create_personal_access_tokens_table', 3),
+(41, '2024_04_03_083146_create_users_table', 3),
+(42, '2024_04_05_193157_create_materials_table', 3),
+(43, '2024_04_05_193949_create_stocks_table', 3),
+(44, '2024_04_05_194008_create_deducts_table', 3),
+(45, '2024_04_06_062556_create_customers_table', 3),
+(46, '2024_04_06_095331_create_invoices_table', 3);
 
 -- --------------------------------------------------------
 
@@ -274,7 +274,7 @@ ALTER TABLE `materials`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
