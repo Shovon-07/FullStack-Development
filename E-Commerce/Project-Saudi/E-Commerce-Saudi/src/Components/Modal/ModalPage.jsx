@@ -47,6 +47,7 @@ const ModalPage = (props) => {
       stock: "",
       price: "",
       deduct: "",
+      priceForStock: "",
 
       delivery_date: "",
       collection: "",
@@ -61,11 +62,10 @@ const ModalPage = (props) => {
     const data = {
       id: id,
       name: inputValue.name,
-
       stock: inputValue.stock,
       price: inputValue.price,
       deduct: inputValue.deduct,
-
+      priceForStock: 0,
       delivery_date: inputValue.deliveryDate,
       collection: inputValue.collectedAmount,
     };

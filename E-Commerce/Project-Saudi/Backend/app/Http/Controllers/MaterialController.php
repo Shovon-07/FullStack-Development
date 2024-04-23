@@ -22,9 +22,10 @@ class MaterialController extends Controller
     {
         DB::beginTransaction();
         try {
-            $material = Material::where('id', '=', $request->id)->first();
+            $material = Material::where('id', '=', $request->id)->first();            
             $oldStock = $material->stock;
             $newStock = $oldStock + $request->stock;
+            //dd($newStock);
             if ($material) {
                 
                 $updateStock = Material::where('id', '=', $request->id)->update([
@@ -34,17 +35,15 @@ class MaterialController extends Controller
                     Stock::create([
                         'material_id' => $material->id,
                         'stock' => $request->stock,
-                        'price' => $request->price ?? "",
+                        'price' => $request->priceForStock ?? "",
                     ]);
                 }
             }
             DB::commit();
-            // return redirect('home');
-            return "success";
+            return redirect('home');
         } catch (Exception $e) {
             DB::rollBack();
-            // return redirect('home');
-            return "success";
+            return redirect('home');
         }
     }
 

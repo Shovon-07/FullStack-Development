@@ -2,6 +2,7 @@ import { useState } from "react";
 
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
+import ValueConvert from "../../assets/ValueConvert";
 
 //___ Css ___//
 import "./Statistics.scss";
@@ -22,54 +23,54 @@ const Statistics = () => {
     if (e.target.value === "Today") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(Number(res.data[0]).toFixed(2));
+        setSoldData(ValueConvert(Number(res.data[0]).toFixed(2)));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(Number(resBuy.data[0]).toFixed(2));
+        setBuyData(ValueConvert(Number(resBuy.data[0]).toFixed(2)));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(Number(resBal.data[0]).toFixed(2));
+        setBalData(ValueConvert(Number(resBal.data[0]).toFixed(2)));
       });
     } else if (e.target.value === "Last week") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(Number(res.data[1]).toFixed(2));
+        setSoldData(ValueConvert(Number(res.data[1]).toFixed(2)));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(Number(resBuy.data[1]).toFixed(2));
+        setBuyData(ValueConvert(Number(resBuy.data[1]).toFixed(2)));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(Number(resBal.data[1]).toFixed(2));
+        setBalData(ValueConvert(Number(resBal.data[1]).toFixed(2)));
       });
     } else if (e.target.value === "Last month") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(Number(res.data[2]).toFixed(2));
+        setSoldData(ValueConvert(Number(res.data[2]).toFixed(2)));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(Number(resBuy.data[2]).toFixed(2));
+        setBuyData(ValueConvert(Number(resBuy.data[2]).toFixed(2)));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(Number(resBal.data[2]).toFixed(2));
+        setBalData(ValueConvert(Number(resBal.data[2]).toFixed(2)));
       });
     } else if (e.target.value === "Last year") {
       // Sold
       http.get("/statisticSold").then((res) => {
-        setSoldData(Number(res.data[3]).toFixed(2));
+        setSoldData(ValueConvert(Number(res.data[3]).toFixed(2)));
       });
       // Buy
       http.get("/statisticBuy").then((resBuy) => {
-        setBuyData(Number(resBuy.data[3]).toFixed(2));
+        setBuyData(ValueConvert(Number(resBuy.data[3]).toFixed(2)));
       });
       // Balance
       http.get("/balance").then((resBal) => {
-        setBalData(Number(resBal.data[3]).toFixed(2));
+        setBalData(ValueConvert(Number(resBal.data[3]).toFixed(2)));
       });
     } else {
       setSoldData(0);
@@ -104,15 +105,15 @@ const Statistics = () => {
         <div className="card">
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
-            <h3 className="title">Sold</h3>
-            <p className="amount">$ {soldData}</p>
+            <h3 className="title">Buy</h3>
+            <p className="amount">$ {buyData}</p>
           </div>
         </div>
         <div className="card">
           <p className="viewDuration">{duration}</p>
           <div className="d-flex" style={{ flexDirection: "column" }}>
-            <h3 className="title">Buy</h3>
-            <p className="amount">$ {buyData}</p>
+            <h3 className="title">Sold</h3>
+            <p className="amount">$ {soldData}</p>
           </div>
         </div>
         <div className="card">

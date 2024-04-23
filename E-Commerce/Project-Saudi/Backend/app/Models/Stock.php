@@ -9,4 +9,5 @@ class Stock extends Model
 {
     use HasFactory;
     protected $fillable = ['material_id','price','stock'];
+    protected $attributes = ['price'=>0];
 }

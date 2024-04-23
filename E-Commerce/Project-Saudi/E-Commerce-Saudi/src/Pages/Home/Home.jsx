@@ -149,7 +149,7 @@ const Home = () => {
     //   field: "price",
     //   type: "text",
     //   placeholder: "New Price",
-    //   className: "inputBox",
+    //   className: "d-none",
     // },
   ];
   const inputFieldsForDeductMaterial = [
