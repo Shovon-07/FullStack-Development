@@ -24,6 +24,7 @@ import PendingOrdersInvoiceForWorker from "./Pages/PendingOrdersInvoiceForWorker
 import Invoice from "./Pages/Invoice/Invoice";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
+// import LayoutForHideLogin from "./LayoutForHideLogin";
 
 function App() {
   const auth = sessionStorage.getItem("token");
@@ -35,6 +36,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/*" element={<ErrorPage />} />
         </Route>
+
+        {/* {!auth ? <Login /> : <Layout />} */}
 
         <Route
           path="/dashboard"

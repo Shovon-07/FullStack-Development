@@ -1,12 +1,9 @@
 import { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
-import AuthUser from "./AuthUser";
+import { useNavigate } from "react-router-dom";
 
 const ProtectedRoute = (props) => {
   const { Component } = props;
   const navigate = useNavigate();
-
-  const { getToken } = AuthUser();
 
   useEffect(() => {
     let auth = sessionStorage.getItem("token");
@@ -15,7 +12,6 @@ const ProtectedRoute = (props) => {
     }
   });
 
-  // return !getToken ? "" : <Navigate to="/" />;
   return (
     <>
       <Component />
