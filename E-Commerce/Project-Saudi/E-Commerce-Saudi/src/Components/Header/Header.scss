@@ -13,11 +13,11 @@
     justify-content: space-between;
     padding: 0;
     position: relative;
-    @include slg {
+    @include mlg {
     }
     &.active {
       .menus {
-        right: -38px;
+        right: -47px;
       }
     }
     .left {
@@ -25,7 +25,7 @@
         width: 90px;
         height: auto;
       }
-      @include slg {
+      @include mlg {
         display: flex;
         justify-content: space-between;
       }
@@ -69,7 +69,7 @@
           padding: 5px 10px;
         }
       }
-      @include slg {
+      @include mlg {
         flex-direction: column;
         background: $light-1;
         box-shadow: $shadow;
@@ -87,7 +87,7 @@
       font-size: 30px;
       display: none;
       color: $dark-3;
-      @include slg {
+      @include mlg {
         display: block;
       }
     }

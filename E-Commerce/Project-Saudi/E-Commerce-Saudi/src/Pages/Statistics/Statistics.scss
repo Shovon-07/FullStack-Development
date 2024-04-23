@@ -1,4 +1,5 @@
 @import "../../Styles/Variable.scss";
+@import "../../Styles/Responsive.scss";
 
 .Statistics {
   box-shadow: $shadow;
@@ -20,10 +21,13 @@
     margin: 20px 0 40px 0;
     .card {
       box-shadow: 2px 2px 5px #cfcfcf, -2px -2px 5px #cfcfcf;
-      width: 300px;
+      width: 350px;
       margin: 0 auto;
       padding: 10px 20px 20px 20px;
       cursor: default;
+      @include slg {
+        width: 90%;
+      }
       .viewDuration {
         color: $dark-2;
         font-size: 12px;
@@ -57,3 +61,9 @@
     }
   }
 }
+
+// @media screen and (max-width: 768px) {
+//   .Cards .card {
+//     width: 90%;
+//   }
+// }

@@ -76,3 +76,9 @@
   margin: 0 10px;
   color: var(--light-2);
 }
+
+@media screen and (max-width: 650px) {
+  .FormContainer form {
+    width: 90%;
+  }
+}

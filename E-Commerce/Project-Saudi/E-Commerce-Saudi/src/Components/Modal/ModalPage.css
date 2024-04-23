@@ -83,3 +83,9 @@ button.hover {
   margin: 0 10px;
   color: #f8f9fa;
 }
+
+@media screen and (max-width: 650px) {
+  .css-15nnif {
+    width: 90% !important;
+  }
+}
