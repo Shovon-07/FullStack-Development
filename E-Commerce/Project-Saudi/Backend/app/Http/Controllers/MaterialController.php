@@ -29,13 +29,14 @@ class MaterialController extends Controller
             if ($material) {
                 
                 $updateStock = Material::where('id', '=', $request->id)->update([
-                    'stock' => $newStock
+                    'stock' => $newStock,
+                    "price" => $request->price
                 ]);
                 if ($updateStock) {
                     Stock::create([
                         'material_id' => $material->id,
                         'stock' => $request->stock,
-                        'price' => $request->priceForStock ?? "",
+                        'price' => $request->price,
                     ]);
                 }
             }

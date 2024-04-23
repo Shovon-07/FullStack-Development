@@ -145,12 +145,12 @@ const Home = () => {
       placeholder: "Add Stock",
       className: "inputBox",
     },
-    // {
-    //   field: "price",
-    //   type: "text",
-    //   placeholder: "New Price",
-    //   className: "d-none",
-    // },
+    {
+      field: "price",
+      type: "text",
+      placeholder: "New Price",
+      className: "inputBox",
+    },
   ];
   const inputFieldsForDeductMaterial = [
     {
