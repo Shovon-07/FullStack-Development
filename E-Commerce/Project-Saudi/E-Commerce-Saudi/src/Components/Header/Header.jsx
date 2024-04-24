@@ -10,10 +10,9 @@ import "./Header.scss";
 //___ Images ___//
 import Logo from "/images/icons/logo.png";
 
-//___ Components ___//
-
 const Header = () => {
   const navigate = useNavigate();
+  const auth = sessionStorage.getItem("token");
 
   // States
   const [navToggler, setNavToggler] = useState(0);
@@ -42,24 +41,32 @@ const Header = () => {
           </div>
           <div className="right d-flex">
             <div className="menus d-flex gap-30">
-              <li>
-                <NavLink
-                  to="/dashboard/home"
-                  className={({ isActive }) => (isActive ? "isActive" : "")}
-                  onClick={closeNav}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/dashboard/sell"
-                  className={({ isActive }) => (isActive ? "isActive" : "")}
-                  onClick={closeNav}
-                >
-                  Sell
-                </NavLink>
-              </li>
+              {auth === "admin@mail.com" ? (
+                <li>
+                  <NavLink
+                    to="/dashboard/home"
+                    className={({ isActive }) => (isActive ? "isActive" : "")}
+                    onClick={closeNav}
+                  >
+                    Home
+                  </NavLink>
+                </li>
+              ) : (
+                ""
+              )}
+              {auth === "admin@mail.com" ? (
+                <li>
+                  <NavLink
+                    to="/dashboard/sell"
+                    className={({ isActive }) => (isActive ? "isActive" : "")}
+                    onClick={closeNav}
+                  >
+                    Sell
+                  </NavLink>
+                </li>
+              ) : (
+                ""
+              )}
               <li>
                 <NavLink
                   to="/dashboard/pending-orders"
@@ -87,15 +94,19 @@ const Header = () => {
                   Order History
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/dashboard/statistics"
-                  className={({ isActive }) => (isActive ? "isActive" : "")}
-                  onClick={closeNav}
-                >
-                  Statistics
-                </NavLink>
-              </li>
+              {auth === "admin@mail.com" ? (
+                <li>
+                  <NavLink
+                    to="/dashboard/statistics"
+                    className={({ isActive }) => (isActive ? "isActive" : "")}
+                    onClick={closeNav}
+                  >
+                    Statistics
+                  </NavLink>
+                </li>
+              ) : (
+                ""
+              )}
               <li>
                 <button className="button logout" onClick={handleLogout}>
                   Logout

@@ -30,7 +30,11 @@ export default function AuthUser() {
 
     setToken(token);
     setUser(user);
-    navigate("/dashboard/home");
+    if (token === "admin@mail.com") {
+      navigate("/dashboard/home");
+    } else if (token === "worker@mail.com") {
+      navigate("/dashboard/pending-orders");
+    }
   };
 
   const http = axios.create({

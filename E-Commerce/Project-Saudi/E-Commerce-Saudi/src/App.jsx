@@ -23,8 +23,9 @@ import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvo
 import PendingOrdersInvoiceForWorker from "./Pages/PendingOrdersInvoiceForWorker/PendingOrdersInvoiceForWorker";
 import Invoice from "./Pages/Invoice/Invoice";
 
+// import HomeForHideLogin from "./Pages/Login/HomeForHideLogin";
+
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
-// import LayoutForHideLogin from "./LayoutForHideLogin";
 
 function App() {
   const auth = sessionStorage.getItem("token");
@@ -33,22 +34,36 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<LayoutNoHeaderFooter />}>
+          {/* <Route path="/" element={!auth ? <Login /> : <HomeForHideLogin />} /> */}
           <Route path="/" element={<Login />} />
           <Route path="/*" element={<ErrorPage />} />
         </Route>
-
-        {/* {!auth ? <Login /> : <Layout />} */}
 
         <Route
           path="/dashboard"
           element={<ProtectedRoute Component={Layout} />}
         >
-          <Route path="/dashboard/home" element={<Home />} />
-          <Route path="/dashboard/sell" element={<Sell />} />
+          {/* <Route path="/dashboard/home" element={<Home />} /> */}
+
+          <Route
+            path={auth === "admin@mail.com" ? "/dashboard/home" : ""}
+            element={<Home />}
+          />
+
+          {/* <Route path="/dashboard/sell" element={<Sell />} /> */}
+          <Route
+            path={auth === "admin@mail.com" ? "/dashboard/sell" : ""}
+            element={<Sell />}
+          />
+
           <Route path="/dashboard/pending-orders" element={<PendingOrders />} />
           <Route path="/dashboard/complete-order" element={<CompleteOrder />} />
           <Route path="/dashboard/history" element={<History />} />
-          <Route path="/dashboard/statistics" element={<Statistics />} />
+          {/* <Route path="/dashboard/statistics" element={<Statistics />} /> */}
+          <Route
+            path={auth === "admin@mail.com" ? "/dashboard/statistics" : ""}
+            element={<Statistics />}
+          />
           <Route path="/dashboard/*" element={<ErrorPage />} />
         </Route>
 

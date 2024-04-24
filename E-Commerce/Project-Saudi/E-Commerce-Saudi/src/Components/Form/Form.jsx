@@ -40,6 +40,8 @@ const Form = (props) => {
     await http.post("/login", data).then((response) => {
       if (response.data[2] === 1) {
         setToken(response.data[0], response.data[1]);
+      } else if (response.data[2] === 2) {
+        setToken(response.data[0], response.data[1]);
       } else {
         toast.error(response.data);
       }

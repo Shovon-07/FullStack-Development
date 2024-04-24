@@ -1,5 +1,7 @@
 # Frontend :
--> add stock thake price optin bad (done)
--> add materials a buy price optin hobe sell price bad (pending)
+-> For authorization.
+I changed AuthUser.js, Form.jsx, Header.jsx, App.jsx(Route)
 
 # Backend :
+-> For authorization.
+I changed Invoice Controller -> Login function
