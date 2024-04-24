@@ -66,7 +66,7 @@ const ModalPage = (props) => {
       deduct: inputValue.deduct,
       // priceForStock: 0,
       delivery_date: inputValue.deliveryDate,
-      collection: inputValue.collectedAmount,
+      collection: viewDue,
     };
     setLoading(true);
     try {
