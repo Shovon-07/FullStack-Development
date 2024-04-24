@@ -28,6 +28,7 @@ const ModalPage = (props) => {
     id,
     slug,
     viewPrice,
+    viewDue,
     inputFields,
     api,
     ModalOpenBtnTitle,
@@ -41,18 +42,16 @@ const ModalPage = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [inputValue, setInputValue] = useState([
-    {
-      name: "",
-      stock: "",
-      price: "",
-      deduct: "",
-      // priceForStock: "",
+  const [inputValue, setInputValue] = useState({
+    name: "1",
+    stock: "2",
+    price: "3",
+    deduct: "4",
+    // priceForStock: "",
 
-      delivery_date: "",
-      collection: "",
-    },
-  ]);
+    delivery_date: "",
+    collection: viewDue,
+  });
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
@@ -118,6 +117,9 @@ const ModalPage = (props) => {
                       viewPrice == null ? "d-none" : "color-light"
                     }`}
                   >{`Current price = ${viewPrice}`}</p>
+                  {/* <p
+                    className={`${viewDue == null ? "d-none" : "color-light"}`}
+                  >{`Due = ${viewDue}`}</p> */}
                   <form className="d-flex" onSubmit={handleForm}>
                     {inputFields.map((items, index) => {
                       return (
@@ -130,6 +132,11 @@ const ModalPage = (props) => {
                               required
                               placeholder={`${items.placeholder}`}
                               onChange={handleInputValue}
+                              value={
+                                items.field == "collectedAmount"
+                                  ? inputValue.collection
+                                  : inputValue.field
+                              }
                             />
                           </div>
                         </div>

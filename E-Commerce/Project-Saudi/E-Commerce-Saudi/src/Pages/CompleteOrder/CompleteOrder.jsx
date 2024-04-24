@@ -71,6 +71,7 @@ const CompleteOrder = () => {
             <ModalPage
               id={row.id}
               slug={"Delivery"}
+              viewDue={row.due}
               inputFields={inputFieldsForDelivery}
               ModalOpenBtnTitle="Delivery"
               ModalOpenBtnStyle={confirmBtn}
