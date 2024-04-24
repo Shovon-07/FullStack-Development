@@ -46,13 +46,13 @@ function App() {
           {/* <Route path="/dashboard/home" element={<Home />} /> */}
 
           <Route
-            path={auth === "admin@mail.com" ? "/dashboard/home" : ""}
+            path={auth == "worker@mail.com" ? "" : "/dashboard/home"}
             element={<Home />}
           />
 
           {/* <Route path="/dashboard/sell" element={<Sell />} /> */}
           <Route
-            path={auth === "admin@mail.com" ? "/dashboard/sell" : ""}
+            path={auth == "worker@mail.com" ? "" : "/dashboard/sell"}
             element={<Sell />}
           />
 
@@ -61,7 +61,7 @@ function App() {
           <Route path="/dashboard/history" element={<History />} />
           {/* <Route path="/dashboard/statistics" element={<Statistics />} /> */}
           <Route
-            path={auth === "admin@mail.com" ? "/dashboard/statistics" : ""}
+            path={auth == "worker@mail.com" ? "" : "/dashboard/statistics"}
             element={<Statistics />}
           />
           <Route path="/dashboard/*" element={<ErrorPage />} />
