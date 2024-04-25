@@ -3,13 +3,14 @@ import { useState } from "react";
 //___ Additional utility ___//
 import AxiosConfig from "../../assets/AxiosConfig";
 import ValueConvert from "../../assets/ValueConvert";
+import Loader from "../../Components/Loader/Loader";
 
 //___ Css ___//
 import "./Statistics.scss";
-
-//___ Components ___//
+import { useOutletContext } from "react-router-dom";
 
 const Statistics = () => {
+  const [setLoading] = useOutletContext();
   const { http } = AxiosConfig();
   const [duration, setDuration] = useState("No duration");
 
@@ -17,61 +18,85 @@ const Statistics = () => {
   const [soldData, setSoldData] = useState(["0"]);
   const [balData, setBalData] = useState(["0"]);
 
-  const handleInput = (e) => {
+  const handleInput = async (e) => {
     setDuration(e.target.value);
 
     if (e.target.value === "Today") {
       // Sold
-      http.get("/statisticSold").then((res) => {
+      setLoading(true);
+      await http.get("/statisticSold").then((res) => {
         setSoldData(Number(res.data[0]).toFixed(2));
       });
+      setLoading(false);
       // Buy
-      http.get("/statisticBuy").then((resBuy) => {
+      setLoading(true);
+      await http.get("/statisticBuy").then((resBuy) => {
         setBuyData(Number(resBuy.data[0]).toFixed(2));
       });
+      setLoading(false);
       // Balance
-      http.get("/balance").then((resBal) => {
+      setLoading(true);
+      await http.get("/balance").then((resBal) => {
         setBalData(Number(resBal.data[0]).toFixed(2));
       });
+      setLoading(false);
     } else if (e.target.value === "Last week") {
       // Sold
-      http.get("/statisticSold").then((res) => {
+      setLoading(true);
+      await http.get("/statisticSold").then((res) => {
         setSoldData(Number(res.data[1]).toFixed(2));
       });
+      setLoading(false);
       // Buy
-      http.get("/statisticBuy").then((resBuy) => {
+      setLoading(true);
+      await http.get("/statisticBuy").then((resBuy) => {
         setBuyData(Number(resBuy.data[1]).toFixed(2));
       });
+      setLoading(false);
       // Balance
-      http.get("/balance").then((resBal) => {
+      setLoading(true);
+      await http.get("/balance").then((resBal) => {
         setBalData(Number(resBal.data[1]).toFixed(2));
       });
+      setLoading(false);
     } else if (e.target.value === "Last month") {
       // Sold
-      http.get("/statisticSold").then((res) => {
+      setLoading(true);
+      await http.get("/statisticSold").then((res) => {
         setSoldData(Number(res.data[2]).toFixed(2));
       });
+      setLoading(false);
       // Buy
-      http.get("/statisticBuy").then((resBuy) => {
+      setLoading(true);
+      await http.get("/statisticBuy").then((resBuy) => {
         setBuyData(Number(resBuy.data[2]).toFixed(2));
       });
+      setLoading(false);
       // Balance
-      http.get("/balance").then((resBal) => {
+      setLoading(true);
+      await http.get("/balance").then((resBal) => {
         setBalData(Number(resBal.data[2]).toFixed(2));
       });
+      setLoading(false);
     } else if (e.target.value === "Last year") {
       // Sold
-      http.get("/statisticSold").then((res) => {
+      setLoading(true);
+      await http.get("/statisticSold").then((res) => {
         setSoldData(Number(res.data[3]).toFixed(2));
       });
+      setLoading(false);
       // Buy
-      http.get("/statisticBuy").then((resBuy) => {
+      setLoading(true);
+      await http.get("/statisticBuy").then((resBuy) => {
         setBuyData(Number(resBuy.data[3]).toFixed(2));
       });
+      setLoading(false);
       // Balance
-      http.get("/balance").then((resBal) => {
+      setLoading(true);
+      await http.get("/balance").then((resBal) => {
         setBalData(Number(resBal.data[3]).toFixed(2));
       });
+      setLoading(false);
     } else {
       setSoldData(0);
       setBuyData(0);
