@@ -5,7 +5,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Loader from "../Loader/Loader";
 
 //___ Images ___//
-import jubba from "/images/dress/jubba2.png";
+import jubba from "/images/dress/jubba.png";
 import Dress_1 from "/images/dress/dress_type/1.png";
 import Dress_2 from "/images/dress/dress_type/2.png";
 import Dress_3 from "/images/dress/dress_type/3.png";
