@@ -152,6 +152,8 @@ const CreateInvoice = () => {
 
           // Mesurments
           material_id: invoiceInputValue.material_id,
+          material_id_2: invoiceInputValue.material_id_2,
+          material_id_3: invoiceInputValue.material_id_3,
           chest_length: invoiceInputValue.chest_length,
           sleeve_length: invoiceInputValue.sleeve_length,
           neck_length: invoiceInputValue.neck_length,
@@ -377,17 +379,6 @@ const CreateInvoice = () => {
             <h2 className="title">Measurements</h2>
             <div className="measurmentSelection d-flex flex-start">
               <div className="left d-flex gap-20">
-                {/* <select name="material_id" onChange={handleInvoiceInputValue}>
-                  <option value="">Select Material</option>
-                  {materials.map((items, index) => {
-                    return (
-                      <option key={index} value={items.id}>
-                        {items.name}
-                      </option>
-                    );
-                  })}
-                </select>*/}
-
                 <div
                   style={{
                     width: "100%",
