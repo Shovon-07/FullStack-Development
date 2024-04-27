@@ -18,13 +18,10 @@ import PendingOrders from "./Pages/PendingOrders/PendingOrders";
 import CompleteOrder from "./Pages/CompleteOrder/CompleteOrder";
 import History from "./Pages/History/History";
 import Statistics from "./Pages/Statistics/Statistics";
-import DynamicInput from "./Pages/DynamicInput";
 
 import PendingOrdersInvoice from "./Pages/PendingOrdersInvoice/PendingOrdersInvoice";
 import PendingOrdersInvoiceForWorker from "./Pages/PendingOrdersInvoiceForWorker/PendingOrdersInvoiceForWorker";
 import Invoice from "./Pages/Invoice/Invoice";
-
-// import HomeForHideLogin from "./Pages/Login/HomeForHideLogin";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
@@ -65,7 +62,6 @@ function App() {
             path={auth == "worker@mail.com" ? "" : "/dashboard/statistics"}
             element={<Statistics />}
           />
-          <Route path="/dashboard/dynamiInp" element={<DynamicInput />} />
           <Route path="/dashboard/*" element={<ErrorPage />} />
         </Route>
 

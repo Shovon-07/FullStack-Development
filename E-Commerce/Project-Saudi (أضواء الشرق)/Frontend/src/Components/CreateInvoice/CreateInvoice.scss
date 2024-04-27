@@ -223,6 +223,26 @@
           width: 100%;
         }
       }
+
+      .addSelecItem,
+      .removeSelecItem {
+        width: 40px;
+        height: 40px;
+        color: #fff;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .addSelecItem {
+        background: $green;
+      }
+      .removeSelecItem {
+        background: $red;
+      }
     }
   }
 }

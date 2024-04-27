@@ -47,6 +47,8 @@ const CreateInvoice = () => {
 
     // Mesurments
     material_id: "",
+    material_id_2: "",
+    material_id_3: "",
     chest_length: "",
     neck_length: "",
     hand_length: "",
@@ -73,6 +75,22 @@ const CreateInvoice = () => {
       ...invoiceInputValue,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const [count, setCount] = useState([1]);
+  const addInput = () => {
+    if (count.length < 3) {
+      setCount((prev) => (prev += 1));
+    }
+  };
+  const removeInput = () => {
+    if (count.length == 2) {
+      setCount(count.slice(0, 1));
+      invoiceInputValue.material_id_2 = "";
+    } else if (count.length == 3) {
+      setCount(count.slice(0, 2));
+      invoiceInputValue.material_id_3 = "";
+    }
   };
 
   //___ post Requests start ___//
@@ -359,7 +377,7 @@ const CreateInvoice = () => {
             <h2 className="title">Measurements</h2>
             <div className="measurmentSelection d-flex flex-start">
               <div className="left d-flex gap-20">
-                <select name="material_id" onChange={handleInvoiceInputValue}>
+                {/* <select name="material_id" onChange={handleInvoiceInputValue}>
                   <option value="">Select Material</option>
                   {materials.map((items, index) => {
                     return (
@@ -368,7 +386,81 @@ const CreateInvoice = () => {
                       </option>
                     );
                   })}
-                </select>
+                </select>*/}
+
+                <div
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    gap: "10px",
+                  }}
+                >
+                  <button className="addSelecItem" onClick={addInput}>
+                    +
+                  </button>
+                  <button
+                    onClick={removeInput}
+                    className={count.length == 1 ? "d-none" : "removeSelecItem"}
+                  >
+                    -
+                  </button>
+                  <div style={{ width: "100%" }}>
+                    <select
+                      name="material_id"
+                      onChange={handleInvoiceInputValue}
+                    >
+                      <option value="">Select Material</option>
+                      {materials.map((items, index) => {
+                        return (
+                          <option key={index} value={items.id}>
+                            {items.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+
+                    <select
+                      name="material_id_2"
+                      onChange={handleInvoiceInputValue}
+                      className={count.length >= 2 ? "" : "d-none"}
+                    >
+                      <option
+                        value=""
+                        selected={count.length < 2 ? "true" : ""}
+                      >
+                        Select Material 2
+                      </option>
+                      {materials.map((items, index) => {
+                        return (
+                          <option key={index} value={items.id}>
+                            {items.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <select
+                      name="material_id_3"
+                      onChange={handleInvoiceInputValue}
+                      className={count.length >= 3 ? "" : "d-none"}
+                    >
+                      <option
+                        value=""
+                        selected={count.length < 3 ? "true" : ""}
+                      >
+                        Select Material 3
+                      </option>
+                      {materials.map((items, index) => {
+                        return (
+                          <option key={index} value={items.id}>
+                            {items.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+
                 <div className="inputBox">
                   <input
                     type="text"
