@@ -529,6 +529,16 @@ const CreateInvoice = () => {
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
+                <div className="inputBox">
+                  <input
+                    type="text"
+                    placeholder="Dress length"
+                    name="dress_length"
+                    required
+                    value={invoiceInputValue.dress_length}
+                    onChange={handleInvoiceInputValue}
+                  />
+                </div>
               </div>
               <div className="right d-flex gap-20">
                 <div className="inputBox">
@@ -584,17 +594,7 @@ const CreateInvoice = () => {
                   />
                 </div>
 
-                <div className="inputBox">
-                  <input
-                    type="text"
-                    placeholder="Dress length"
-                    name="dress_length"
-                    required
-                    value={invoiceInputValue.dress_length}
-                    onChange={handleInvoiceInputValue}
-                  />
-                </div>
-                <div className="inputBox">
+                <div className="inputBox" style={{ marginTop: "8px" }}>
                   <input
                     type="text"
                     placeholder="Sleeve length"

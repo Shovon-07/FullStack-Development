@@ -223,11 +223,18 @@
           width: 100%;
         }
       }
+      .materialLengthInput {
+        // margin-bottom: 5px;
+      }
+      select {
+        margin-bottom: 8px;
+      }
 
       .addSelecItem,
       .removeSelecItem {
         width: 40px;
-        height: 40px;
+        // height: 40px;
+        margin-bottom: 12px;
         color: #fff;
         border: none;
         outline: none;

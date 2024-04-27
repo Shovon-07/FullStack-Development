@@ -23,9 +23,21 @@ return new class extends Migration
             $table->string('neck_type');
             $table->string('pocket_type');
             $table->string('hand_type');
+            
             $table->unsignedBigInteger('material_id');
             $table->foreign('material_id')->references('id')->on('materials')
-                ->cascadeOnUpdate()->restrictOnDelete();            
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->unsignedBigInteger('material_id_2');
+            $table->foreign('material_id_2')->references('id')->on('materials')
+                    ->cascadeOnUpdate()->restrictOnDelete();
+            $table->unsignedBigInteger('material_id_3');
+            $table->foreign('material_id_3')->references('id')->on('materials')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->unsignedBigInteger('material_id_4');
+            $table->foreign('material_id_4')->references('id')->on('materials')
+                ->cascadeOnUpdate()->restrictOnDelete();
+                
+                
             $table->integer('chest_length');
             $table->integer('sleeve_length');
             $table->integer('neck_length');
@@ -33,7 +45,12 @@ return new class extends Migration
             $table->integer('hand_length');
             $table->integer('shoulder_length');            
             $table->integer('dress_length');
+            
             $table->string('material_length');
+            $table->string('material_length_2');
+            $table->string('material_length_3');
+            $table->string('material_length_4');
+            
             $table->string('sale_price');
             $table->string('total');
             $table->string('discount');
