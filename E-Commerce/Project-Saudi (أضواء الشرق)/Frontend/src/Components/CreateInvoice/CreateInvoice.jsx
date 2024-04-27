@@ -49,6 +49,12 @@ const CreateInvoice = () => {
     material_id: "",
     material_id_2: "",
     material_id_3: "",
+    material_id_4: "",
+    material_length: "",
+    material_length_2: "",
+    material_length_3: "",
+    material_length_4: "",
+
     chest_length: "",
     neck_length: "",
     hand_length: "",
@@ -58,7 +64,6 @@ const CreateInvoice = () => {
     shoulder_length: "",
 
     // Order summery
-    material_length: "",
     sale_price: "",
     total: "",
     discount: "",
@@ -79,7 +84,7 @@ const CreateInvoice = () => {
 
   const [count, setCount] = useState([1]);
   const addInput = () => {
-    if (count.length < 3) {
+    if (count.length < 4) {
       setCount((prev) => (prev += 1));
     }
   };
@@ -87,9 +92,15 @@ const CreateInvoice = () => {
     if (count.length == 2) {
       setCount(count.slice(0, 1));
       invoiceInputValue.material_id_2 = "";
+      invoiceInputValue.material_length_2 = "";
     } else if (count.length == 3) {
       setCount(count.slice(0, 2));
       invoiceInputValue.material_id_3 = "";
+      invoiceInputValue.material_length_3 = "";
+    } else if (count.length == 4) {
+      setCount(count.slice(0, 3));
+      invoiceInputValue.material_id_4 = "";
+      invoiceInputValue.material_length_4 = "";
     }
   };
 
@@ -154,6 +165,18 @@ const CreateInvoice = () => {
           material_id: invoiceInputValue.material_id,
           material_id_2: invoiceInputValue.material_id_2,
           material_id_3: invoiceInputValue.material_id_3,
+          material_id_4: invoiceInputValue.material_id_4,
+          material_length: Number(invoiceInputValue.material_length).toFixed(2),
+          material_length_2: Number(
+            invoiceInputValue.material_length_2
+          ).toFixed(2),
+          material_length_3: Number(
+            invoiceInputValue.material_length_3
+          ).toFixed(2),
+          material_length_4: Number(
+            invoiceInputValue.material_length_4
+          ).toFixed(2),
+
           chest_length: invoiceInputValue.chest_length,
           sleeve_length: invoiceInputValue.sleeve_length,
           neck_length: invoiceInputValue.neck_length,
@@ -163,7 +186,6 @@ const CreateInvoice = () => {
           dress_length: invoiceInputValue.dress_length,
 
           // Order summery
-          material_length: Number(invoiceInputValue.material_length).toFixed(2),
           sale_price: "0",
           total: Number(invoiceInputValue.total).toFixed(2),
           discount: Number(calc.discountAmountForCalc).toFixed(2),
@@ -191,6 +213,14 @@ const CreateInvoice = () => {
 
               // Mesurments
               material_id: "",
+              material_id_2: "",
+              material_id_3: "",
+              material_id_4: "",
+              material_length: "",
+              material_length_2: "",
+              material_length_3: "",
+              material_length_4: "",
+
               chest_length: "",
               neck_length: "",
               hand_length: "",
@@ -200,7 +230,6 @@ const CreateInvoice = () => {
               shoulder_length: "",
 
               // Order summery
-              material_length: "",
               sale_price: "",
               total: "",
               discount: "",
@@ -410,7 +439,6 @@ const CreateInvoice = () => {
                         );
                       })}
                     </select>
-
                     <select
                       name="material_id_2"
                       onChange={handleInvoiceInputValue}
@@ -440,6 +468,25 @@ const CreateInvoice = () => {
                         selected={count.length < 3 ? "true" : ""}
                       >
                         Select Material 3
+                      </option>
+                      {materials.map((items, index) => {
+                        return (
+                          <option key={index} value={items.id}>
+                            {items.name}
+                          </option>
+                        );
+                      })}
+                    </select>
+                    <select
+                      name="material_id_4"
+                      onChange={handleInvoiceInputValue}
+                      className={count.length >= 4 ? "" : "d-none"}
+                    >
+                      <option
+                        value=""
+                        selected={count.length < 4 ? "true" : ""}
+                      >
+                        Select Material 4
                       </option>
                       {materials.map((items, index) => {
                         return (
@@ -484,6 +531,59 @@ const CreateInvoice = () => {
                 </div>
               </div>
               <div className="right d-flex gap-20">
+                <div className="inputBox">
+                  <input
+                    type="text"
+                    placeholder="Material length"
+                    name="material_length"
+                    required
+                    value={invoiceInputValue.material_length}
+                    onChange={handleInvoiceInputValue}
+                    onKeyUp={Calculation}
+                    onKeyDown={ClearAllState}
+                    ref={changedMaterialLength}
+                  />
+                </div>
+                <div className={count.length >= 2 ? "inputBox" : "d-none"}>
+                  <input
+                    type="text"
+                    placeholder="Material length 2"
+                    name="material_length_2"
+                    required
+                    value={invoiceInputValue.material_length_2}
+                    onChange={handleInvoiceInputValue}
+                    onKeyUp={Calculation}
+                    onKeyDown={ClearAllState}
+                    ref={changedMaterialLength}
+                  />
+                </div>
+                <div className={count.length >= 3 ? "inputBox" : "d-none"}>
+                  <input
+                    type="text"
+                    placeholder="Material length 3"
+                    name="material_length_3"
+                    required
+                    value={invoiceInputValue.material_length_3}
+                    onChange={handleInvoiceInputValue}
+                    onKeyUp={Calculation}
+                    onKeyDown={ClearAllState}
+                    ref={changedMaterialLength}
+                  />
+                </div>
+                <div className={count.length >= 4 ? "inputBox" : "d-none"}>
+                  <input
+                    type="text"
+                    placeholder="Material length 4"
+                    name="material_length_4"
+                    required
+                    value={invoiceInputValue.material_length_4}
+                    onChange={handleInvoiceInputValue}
+                    onKeyUp={Calculation}
+                    onKeyDown={ClearAllState}
+                    ref={changedMaterialLength}
+                  />
+                </div>
+
                 <div className="inputBox">
                   <input
                     type="text"
@@ -564,7 +664,7 @@ const CreateInvoice = () => {
           <div className="right" style={{ flexBasis: "50%" }}>
             <div className="bill d-flex gap-20">
               <h3 className="title">Order Summary :</h3>
-              <div className="inputBox">
+              {/* <div className="inputBox">
                 <input
                   type="text"
                   placeholder="Material length"
@@ -575,19 +675,6 @@ const CreateInvoice = () => {
                   onKeyUp={Calculation}
                   onKeyDown={ClearAllState}
                   ref={changedMaterialLength}
-                />
-              </div>
-              {/* <div className="inputBox">
-                <input
-                  type="text"
-                  placeholder="Material price"
-                  name="sale_price"
-                  required
-                  value={invoiceInputValue.sale_price}
-                  onChange={handleInvoiceInputValue}
-                  onKeyUp={Calculation}
-                  onKeyDown={ClearAllState}
-                  ref={changedSalePrice}
                 />
               </div> */}
               <div className="inputBox">
@@ -603,10 +690,6 @@ const CreateInvoice = () => {
                   ref={changedSalePrice}
                 />
               </div>
-              {/* <div className="total d-flex">
-                <p>Total =</p>
-                <p>{Number(calc.total).toFixed(2)} $</p>
-              </div> */}
               <div className="inputBox">
                 <input
                   type="text"
@@ -655,14 +738,6 @@ const CreateInvoice = () => {
               <div className="total d-flex">
                 <p>Due =</p> <h4>{Number(calc.dueForCalc).toFixed(2)} $</h4>
               </div>
-              {/* <div className="inputBox">
-                <input
-                  type="text"
-                  placeholder="Due amount"
-                  disabled
-                  value={"Due = " + Number(calc.dueForCalc).toFixed(2)}
-                />
-              </div> */}
             </div>
             <div style={{ textAlign: "center", margin: "30px 0 10px 0" }}>
               <button
