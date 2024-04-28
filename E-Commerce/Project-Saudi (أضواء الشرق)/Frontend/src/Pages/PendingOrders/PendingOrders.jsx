@@ -25,6 +25,7 @@ const PendingOrders = () => {
       await http.get("/pending-order").then((response) => {
         setApiData(response.data);
         setFilteredApiData(response.data);
+        console.log(response.data);
         setLoading(false);
       });
     } catch (error) {

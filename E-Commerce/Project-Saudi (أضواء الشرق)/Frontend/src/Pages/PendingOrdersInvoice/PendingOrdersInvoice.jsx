@@ -78,13 +78,14 @@ const PendingOrdersInvoice = () => {
           image: response.data.image,
 
           material: response.data.material.name,
-          // material_2: response.data.material_2.name,
-          // material_3: response.data.material_3.name,
-          // material_4: response.data.material_4.name,
+          material_2: response.data.material2.name,
+          material_3: response.data.material3.name,
+          material_4: response.data.material4.name,
+
           material_length: response.data.material_length,
-          // material_length_2: response.data.material_length_2,
-          // material_length_3: response.data.material_length_3,
-          // material_length_4: response.data.material_length_4,
+          material_length_2: response.data.material_length_2,
+          material_length_3: response.data.material_length_3,
+          material_length_4: response.data.material_length_4,
 
           chest_length: response.data.chest_length,
           neck_length: response.data.neck_length,
@@ -196,6 +197,34 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
+              <div className={apiData.material_2 == "" ? "d-none" : "inputBox"}>
+                <label htmlFor="">Material</label>
+                <input
+                  type="text"
+                  name="material"
+                  value={apiData.material_2}
+                  readOnly
+                />
+              </div>
+              <div className={apiData.material_3 == "" ? "d-none" : "inputBox"}>
+                <label htmlFor="">Material</label>
+                <input
+                  type="text"
+                  name="material"
+                  value={apiData.material_3}
+                  readOnly
+                />
+              </div>
+              <div className={apiData.material_4 == "" ? "d-none" : "inputBox"}>
+                <label htmlFor="">Material</label>
+                <input
+                  type="text"
+                  name="material"
+                  value={apiData.material_4}
+                  readOnly
+                />
+              </div>
+
               <div className="inputBox">
                 <label htmlFor="">Chest length</label>
                 <input
@@ -261,6 +290,34 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
+              <div className={apiData.material_2 == "" ? "d-none" : "inputBox"}>
+                <label htmlFor="">Material length</label>
+                <input
+                  type="text"
+                  name="cuff_length"
+                  value={apiData.material_length_2 + " m"}
+                  readOnly
+                />
+              </div>
+              <div className={apiData.material_3 == "" ? "d-none" : "inputBox"}>
+                <label htmlFor="">Material length</label>
+                <input
+                  type="text"
+                  name="cuff_length"
+                  value={apiData.material_length_3 + " m"}
+                  readOnly
+                />
+              </div>
+              <div className={apiData.material_4 == "" ? "d-none" : "inputBox"}>
+                <label htmlFor="">Material length</label>
+                <input
+                  type="text"
+                  name="cuff_length"
+                  value={apiData.material_length_4 + " m"}
+                  readOnly
+                />
+              </div>
+
               <div className="inputBox">
                 <label htmlFor="">Shoulder length</label>
                 <input

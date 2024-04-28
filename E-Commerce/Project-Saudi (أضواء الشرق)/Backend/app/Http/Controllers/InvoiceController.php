@@ -299,7 +299,7 @@ class InvoiceController extends Controller
 
     public function orderDetails(Request $request)
     {
-        $invoice = Invoice::where('id', '=', $request->id)->with('customer', 'material:id,name')->first();
+        $invoice = Invoice::where('id', '=', $request->id)->with('customer', 'material:id,name', 'material2:id,name', 'material3:id,name', 'material4:id,name')->first();
         return $invoice;
     }
 
