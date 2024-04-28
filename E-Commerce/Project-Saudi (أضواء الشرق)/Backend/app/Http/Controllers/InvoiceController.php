@@ -13,6 +13,118 @@ use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
+    // public function store(Request $request)
+    // {
+
+    //     DB::beginTransaction();
+    //     try {
+    //         $customer_name = $request->input('customer_name');
+    //         $customer_phone = $request->input('customer_phone');
+    //         $customer_address = $request->input('customer_address');
+
+    //         $dress_type = $request->input('dress_type') ?? "";
+    //         $button_type = $request->input('button_type') ?? "";
+    //         $neck_type = $request->input('neck_type') ?? "";
+    //         $pocket_type = $request->input('pocket_type') ?? "";
+    //         $hand_type = $request->input('hand_type') ?? "";
+
+    //         $material_id = $request->input('material_id');
+    //         $chest_length = $request->input('chest_length');
+    //         $sleeve_length = $request->input('sleeve_length');
+    //         $neck_length = $request->input('neck_length');
+    //         $cuff_length = $request->input('cuff_length');
+    //         $hand_length = $request->input('hand_length');
+    //         $shoulder_length = $request->input('shoulder_length');
+    //         $dress_length = $request->input('dress_length');
+    //         $material_length = $request->input('material_length');
+    //         $sale_price = $request->input('sale_price');
+    //         $total = $request->input("total");
+    //         $discount = $request->input('discount') ?? "";
+    //         $vat = $request->input('vat') ?? "";
+    //         $payable = $request->input("payable");
+    //         $advance = $request->input('advance') ?? "";
+    //         $due = $request->input("due");
+    //         $deadline_date = $request->input('deadline_date');
+    //         $note = $request->input('note') ?? "";
+
+    //         //___ Process Image start ___//
+    //         $img = $request->input('image');
+    //         $imgName = $customer_name . "_" . md5(time()) . ".png";
+    //         $source = fopen($img, "r");
+    //         $destination = fopen("images/ScreenShoot/" . $imgName, "w");
+    //         stream_copy_to_stream($source, $destination);
+    //         fclose($source);
+    //         fclose($destination);
+    //         //___ Process Image end ___//
+
+    //         $customer = Customer::updateOrCreate(
+    //             ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address], // Criteria to find the record
+    //             ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address] // Data to update or create
+    //         );
+
+    //         if ($customer) {
+    //             $customer_id = $customer->id;          
+
+    //             $invoice = Invoice::create([
+    //                 'customer_id' => $customer_id,
+    //                 'image' => $imgName,
+
+    //                 'dress_type' => $dress_type,
+    //                 'button_type' => $button_type,
+    //                 'neck_type' => $neck_type,
+    //                 'pocket_type' => $pocket_type,
+    //                 'hand_type' => $hand_type,
+
+    //                 'material_id' => $material_id,
+    //                 'chest_length' => $chest_length,
+    //                 'sleeve_length' => $sleeve_length,
+    //                 'neck_length' => $neck_length,
+    //                 'cuff_length' => $cuff_length,
+    //                 'hand_length' => $hand_length,
+    //                 'shoulder_length' => $shoulder_length,
+    //                 'dress_length' => $dress_length,
+    //                 'material_length' => $material_length,
+    //                 'sale_price' => $sale_price,
+    //                 'total' => $total,
+    //                 'discount' => $discount,
+    //                 'vat' => $vat,
+    //                 'payable' => $payable,
+    //                 'advance' => $advance,
+    //                 'due' => $due,
+    //                 'deadline_date' => $deadline_date,
+    //                 'note'=> $note
+    //             ]);
+
+
+    //             if ($invoice) {
+
+    //                 $material = Material::where('id', '=', $material_id)->first();
+
+    //                 if ($material) {
+
+    //                     $oldStock = $material->stock;
+    //                     if ($oldStock > 0) {
+    //                         $newStock = $oldStock - $material_length;
+
+    //                         if ($newStock >= 0) {
+
+    //                             Material::where('id', '=', $material_id)->update([
+    //                                 'stock' => $newStock
+    //                             ]);
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+
+    //         DB::commit();
+    //         return 'success';
+    //     } catch (Exception $e) {
+    //         DB::rollBack();
+    //         return 'failed';
+    //     }
+    // }
+
     public function store(Request $request)
     {
 
@@ -29,6 +141,10 @@ class InvoiceController extends Controller
             $hand_type = $request->input('hand_type') ?? "";
 
             $material_id = $request->input('material_id');
+            $material_id_2 = $request->input('material_id_2');
+            $material_id_3 = $request->input('material_id_3');
+            $material_id_4 = $request->input('material_id_4');
+
             $chest_length = $request->input('chest_length');
             $sleeve_length = $request->input('sleeve_length');
             $neck_length = $request->input('neck_length');
@@ -36,7 +152,12 @@ class InvoiceController extends Controller
             $hand_length = $request->input('hand_length');
             $shoulder_length = $request->input('shoulder_length');
             $dress_length = $request->input('dress_length');
+
             $material_length = $request->input('material_length');
+            $material_length_2 = $request->input('material_length_2');
+            $material_length_3 = $request->input('material_length_3');
+            $material_length_4 = $request->input('material_length_4');
+
             $sale_price = $request->input('sale_price');
             $total = $request->input("total");
             $discount = $request->input('discount') ?? "";
@@ -61,21 +182,25 @@ class InvoiceController extends Controller
                 ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address], // Criteria to find the record
                 ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address] // Data to update or create
             );
-
+            //dd($material_id_2);
             if ($customer) {
-                $customer_id = $customer->id;          
+                $customer_id = $customer->id;
 
                 $invoice = Invoice::create([
                     'customer_id' => $customer_id,
                     'image' => $imgName,
-                    
+
                     'dress_type' => $dress_type,
                     'button_type' => $button_type,
                     'neck_type' => $neck_type,
                     'pocket_type' => $pocket_type,
                     'hand_type' => $hand_type,
-                    
+
                     'material_id' => $material_id,
+                    'material_id_2' => $material_id_2,
+                    'material_id_3' => $material_id_3,
+                    'material_id_4' => $material_id_4,
+
                     'chest_length' => $chest_length,
                     'sleeve_length' => $sleeve_length,
                     'neck_length' => $neck_length,
@@ -84,6 +209,10 @@ class InvoiceController extends Controller
                     'shoulder_length' => $shoulder_length,
                     'dress_length' => $dress_length,
                     'material_length' => $material_length,
+                    'material_length_2' => $material_length_2,
+                    'material_length_3' => $material_length_3,
+                    'material_length_4' => $material_length_4,
+
                     'sale_price' => $sale_price,
                     'total' => $total,
                     'discount' => $discount,
@@ -92,24 +221,60 @@ class InvoiceController extends Controller
                     'advance' => $advance,
                     'due' => $due,
                     'deadline_date' => $deadline_date,
-                    'note'=> $note
+                    'note' => $note
                 ]);
-                
+
 
                 if ($invoice) {
 
                     $material = Material::where('id', '=', $material_id)->first();
+                    $material_2 = Material::where('id', '=', $material_id_2)->first();
+                    $material_3 = Material::where('id', '=', $material_id_3)->first();
+                    $material_4 = Material::where('id', '=', $material_id_4)->first();
 
-                    if ($material) {
-
+                    if ($material !== NULL) {
                         $oldStock = $material->stock;
                         if ($oldStock > 0) {
                             $newStock = $oldStock - $material_length;
-
                             if ($newStock >= 0) {
-
                                 Material::where('id', '=', $material_id)->update([
                                     'stock' => $newStock
+                                ]);
+                            }
+                        }
+                    }
+
+                    if ($material_2 !== NULL) {
+                        $oldStock_2 = $material_2->stock;
+                        if ($oldStock_2 > 0) {
+                            $newStock_2 = $oldStock_2 - $material_length_2;
+                            if ($newStock_2 >= 0) {
+                                Material::where('id', '=', $material_id_2)->update([
+                                    'stock' => $newStock_2
+                                ]);
+                            }
+                        }
+                    }
+
+                    if ($material_3 !== NULL) {
+                        $oldStock_3 = $material_3->stock;
+                        if ($oldStock_3 > 0) {
+                            $newStock_3 = $oldStock_3 - $material_length_3;
+                            if ($newStock_3 >= 0) {
+                                Material::where('id', '=', $material_id_3)->update([
+                                    'stock' => $newStock_3
+                                ]);
+                            }
+                        }
+                    }
+
+                    if ($material_4 !== NULL) {
+                        $oldStock_4 = $material_4->stock;
+                        if ($oldStock_4 > 0) {
+                            $newStock_4 = $oldStock_4 - $material_length_4;
+                            if ($newStock_4 >= 0) {
+                                Material::where('id', '=', $material_id_4)->update([
+                                    'stock' => $newStock_4
                                 ]);
                             }
                         }
@@ -121,46 +286,103 @@ class InvoiceController extends Controller
             return 'success';
         } catch (Exception $e) {
             DB::rollBack();
-            return 'failed';
+            return $e;
         }
     }
 
     public function GetMaterial()
     {
-        $materials = Material::select("id","name")->get();
+        $materials = Material::select("id", "name")->get();
         // return view('pages.home', compact('materials'));
         return $materials;
     }
 
     public function orderDetails(Request $request)
     {
-        $invoice = Invoice::where('id', '=', $request->id)->with('customer','material:id,name')->first();
+        $invoice = Invoice::where('id', '=', $request->id)->with('customer', 'material:id,name')->first();
         return $invoice;
     }
 
     public function pendingOrders()
     {
-        $pendingOrders = Invoice::where('status', '=', 'pending')->select("id","customer_id","payable","due")->with('customer:id,name,phone')->get();
+        $pendingOrders = Invoice::where('status', '=', 'pending')->select("id", "customer_id", "payable", "due")->with('customer:id,name,phone')->get();
 
         return $pendingOrders;
     }
 
     // Cancell orders
+    // public function cancel(Request $request)
+    // {
+    //     DB::beginTransaction();
+    //     try {
+    //         $invoice = Invoice::where('id', '=', $request->id)->first();
+
+    //         $material = Material::where('id', '=', $invoice->material_id)->first();
+
+    //         if ($material) {
+
+    //             $oldStock = $material->stock;
+    //             $newStock = $oldStock + $invoice->material_length;
+
+    //             Material::where('id', '=', $invoice->material_id)->update([
+    //                 'stock' => $newStock
+    //             ]);
+    //         }
+
+
+    //         Invoice::where('id', '=', $request->id)->update([
+    //             'status' => 'cancel',
+    //             'advance' => 0,
+
+    //         ]);
+    //         DB::commit();
+    //         return 'success';
+    //     } catch (Exception $e) {
+    //         DB::rollBack();
+    //         return 'failed';
+    //     }
+    // }
+
     public function cancel(Request $request)
     {
         DB::beginTransaction();
         try {
-            $invoice = Invoice::where('id','=',$request->id)->first();
+            $invoice = Invoice::where('id', '=', $request->id)->first();
 
             $material = Material::where('id', '=', $invoice->material_id)->first();
+            $material_2 = Material::where('id', '=', $invoice->material_id_2)->first();
+            $material_3 = Material::where('id', '=', $invoice->material_id_3)->first();
+            $material_4 = Material::where('id', '=', $invoice->material_id_4)->first();
 
-            if ($material) {
-
+            if ($material !== NULL ) {
                 $oldStock = $material->stock;
                 $newStock = $oldStock + $invoice->material_length;
-
                 Material::where('id', '=', $invoice->material_id)->update([
                     'stock' => $newStock
+                ]);
+            }
+
+            if ($material_2 !== NULL ) {
+                $oldStock_2 = $material_2->stock;
+                $newStock_2 = $oldStock_2 + $invoice->material_length_2;
+                Material::where('id', '=', $invoice->material_id_2)->update([
+                    'stock' => $newStock_2
+                ]);
+            }
+
+            if ($material_3 !== NULL ) {
+                $oldStock_3 = $material_3->stock;
+                $newStock_3 = $oldStock_3 + $invoice->material_length_3;
+                Material::where('id', '=', $invoice->material_id_3)->update([
+                    'stock' => $newStock_3
+                ]);
+            }
+
+            if ($material_4 !== NULL ) {
+                $oldStock_4 = $material_4->stock;
+                $newStock_4 = $oldStock_4 + $invoice->material_length_4;
+                Material::where('id', '=', $invoice->material_id_4)->update([
+                    'stock' => $newStock_4
                 ]);
             }
 
@@ -168,7 +390,7 @@ class InvoiceController extends Controller
             Invoice::where('id', '=', $request->id)->update([
                 'status' => 'cancel',
                 'advance' => 0,
-                
+
             ]);
             DB::commit();
             return 'success';
@@ -177,6 +399,7 @@ class InvoiceController extends Controller
             return 'failed';
         }
     }
+
 
 
     // Complete orders
@@ -192,7 +415,7 @@ class InvoiceController extends Controller
     // View completed orders
     public function completeOrders()
     {
-        $completeOrders = Invoice::where('status', '=', 'complete')->select("id","customer_id","payable","due")->with('customer:id,name,phone')->get();
+        $completeOrders = Invoice::where('status', '=', 'complete')->select("id", "customer_id", "payable", "due")->with('customer:id,name,phone')->get();
 
         return $completeOrders;
     }
@@ -223,13 +446,13 @@ class InvoiceController extends Controller
     // Delivered order (for history page)
     public function deliveryOrders()
     {
-        $deliveryOrders = Invoice::where('status', '=', 'delivery')->select("id","customer_id","collection","net_outstanding","advance")->with('customer:id,name,phone')->get();
+        $deliveryOrders = Invoice::where('status', '=', 'delivery')->select("id", "customer_id", "collection", "net_outstanding", "advance")->with('customer:id,name,phone')->get();
 
         // $deliveryOrders = Invoice::where('status', '=', 'delivery')->get();
 
         return $deliveryOrders;
     }
-    
+
     // Statistics
     public function statisticSold()
     {
@@ -237,11 +460,11 @@ class InvoiceController extends Controller
         // Query to get total sales per day
         $currentDate = now()->toDateString();
 
-        $advanceDay = Invoice::whereDate('created_at', $currentDate)->sum('advance');    
+        $advanceDay = Invoice::whereDate('created_at', $currentDate)->sum('advance');
         $collectionDay = Invoice::whereDate('delivery_date', $currentDate)->sum('collection');
-            
+
         $currentDay = $advanceDay + $collectionDay;
-       
+
         // Query to get total sales per week
 
         $startOfWeek = now()->startOfWeek()->toDateString();
@@ -260,7 +483,7 @@ class InvoiceController extends Controller
 
         $advanceMonth = Invoice::whereBetween('created_at', [$currentMonthStart, $currentMonthEnd])->sum('advance');
         $collectionMonth = Invoice::whereBetween('delivery_date', [$currentMonthStart, $currentMonthEnd])->sum('collection');
-            
+
         $currentMonth = $advanceMonth + $collectionMonth;
 
         // Query to get total sales per year
@@ -269,13 +492,13 @@ class InvoiceController extends Controller
 
         $advanceYear = Invoice::whereBetween('created_at', [$currentYearStart, $currentYearEnd])->sum('advance');
         $collectionYear = Invoice::whereBetween('delivery_date', [$currentYearStart, $currentYearEnd])->sum('collection');
-            
+
         $currentYear = $advanceYear + $collectionYear;
 
-        $statistic = array($currentDay,$currentWeek,$currentMonth,$currentYear);
+        $statistic = array($currentDay, $currentWeek, $currentMonth, $currentYear);
         return $statistic;
     }
-    
+
     public function statisticBuy()
     {
         // Query to get total sales per day
@@ -319,15 +542,15 @@ class InvoiceController extends Controller
                 return $item->stock * $item->price;
             });
 
-            $statisticBuy = array($buyDay, $buyWeek, $buyMonth, $buyYear);
-            return $statisticBuy;
+        $statisticBuy = array($buyDay, $buyWeek, $buyMonth, $buyYear);
+        return $statisticBuy;
     }
-    
+
     public function balance()
     {
         // Get total sales and total purchases
-        $totalSales = $this->statisticSold();        
-        $totalPurchases = $this->statisticBuy();       
+        $totalSales = $this->statisticSold();
+        $totalPurchases = $this->statisticBuy();
 
         // Calculate balance
         $balanceDay = $totalSales[0] - $totalPurchases[0];
@@ -337,23 +560,24 @@ class InvoiceController extends Controller
 
 
         $balance = array($balanceDay, $balanceWeek, $balanceMonth, $balanceYear);
-        return $balance;       
+        return $balance;
     }
-    
-    public function Login(Request $request) {
-	    $email=$request->input("email");
-	    $password=$request->input("password");
-	    $status = 1;
-	    
-	    $staticEmail = "test@mail.com";
-	    $staticPassword = "test";
-	    
-	    if($email===$staticEmail && $password===$staticPassword) {
-	        $data = array($email,$password,$status);
+
+    public function Login(Request $request)
+    {
+        $email = $request->input("email");
+        $password = $request->input("password");
+        $status = 1;
+
+        $staticEmail = "test@mail.com";
+        $staticPassword = "test";
+
+        if ($email === $staticEmail && $password === $staticPassword) {
+            $data = array($email, $password, $status);
             return $data;
-	    } else {
-	       return "Invalid user"; 
-	    }
-	}
+        } else {
+            return "Invalid user";
+        }
+    }
 
 }
