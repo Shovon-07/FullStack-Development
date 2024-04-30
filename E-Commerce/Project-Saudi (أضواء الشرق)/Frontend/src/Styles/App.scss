@@ -115,7 +115,7 @@ textarea {
   outline: none;
   color: $dark-3;
   &:focus::placeholder {
-    padding-left: 10px;
+    padding-left: 15px;
     transition: $trans;
   }
 }

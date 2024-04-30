@@ -64,6 +64,7 @@ const CreateInvoice = () => {
     shoulder_length: "",
 
     // Order summery
+    quantity: "",
     sale_price: "",
     total: "",
     discount: "",
@@ -137,6 +138,8 @@ const CreateInvoice = () => {
       toast.error("Please generate image");
     } else if (invoiceInputValue.material_length == "") {
       toast.error("Please enter material length");
+    } else if (invoiceInputValue.quantity == "") {
+      toast.error("Please enter dress quantity");
     } else if (invoiceInputValue.total == "") {
       toast.error("Please enter total price");
     } else if (invoiceInputValue.discount == "") {
@@ -187,6 +190,7 @@ const CreateInvoice = () => {
 
           // Order summery
           sale_price: "0",
+          quantity: Number(invoiceInputValue.quantity).toFixed(2),
           total: Number(invoiceInputValue.total).toFixed(2),
           discount: Number(calc.discountAmountForCalc).toFixed(2),
           vat: Number(calc.vatForCalc).toFixed(2),
@@ -404,7 +408,7 @@ const CreateInvoice = () => {
         </div>
 
         <div className="invoiceSection">
-          <div className="measurement">
+          <div className="measurement shadow">
             <h2 className="title">Measurements</h2>
             <div className="measurmentSelection d-flex flex-start">
               <div className="left d-flex gap-20">
@@ -500,6 +504,18 @@ const CreateInvoice = () => {
                     </select>
                   </div>
                 </div>
+                <div
+                  className="alertNote d-flex gap-20"
+                  style={{ marginTop: "-15px" }}
+                >
+                  <p style={{ lineHeight: "normal" }}>
+                    <FiAlertTriangle size={25} />
+                  </p>
+                  <p style={{ lineHeight: "normal" }}>
+                    The material you have selected for the first time, please do
+                    not select it again later.
+                  </p>
+                </div>
 
                 <div className="inputBox">
                   <input
@@ -528,16 +544,6 @@ const CreateInvoice = () => {
                     name="hand_length"
                     required
                     value={invoiceInputValue.hand_length}
-                    onChange={handleInvoiceInputValue}
-                  />
-                </div>
-                <div className="inputBox">
-                  <input
-                    type="text"
-                    placeholder="Dress length"
-                    name="dress_length"
-                    required
-                    value={invoiceInputValue.dress_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
@@ -626,6 +632,16 @@ const CreateInvoice = () => {
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
+                <div className="inputBox">
+                  <input
+                    type="text"
+                    placeholder="Dress length"
+                    name="dress_length"
+                    required
+                    value={invoiceInputValue.dress_length}
+                    onChange={handleInvoiceInputValue}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -663,22 +679,19 @@ const CreateInvoice = () => {
               </div>
             </div>
           </div>
-          <div className="right" style={{ flexBasis: "50%" }}>
+          <div className="right shadow" style={{ flexBasis: "50%" }}>
             <div className="bill d-flex gap-20">
               <h3 className="title">Order Summary :</h3>
-              {/* <div className="inputBox">
+              <div className="inputBox">
                 <input
                   type="text"
-                  placeholder="Material length"
-                  name="material_length"
+                  placeholder="Quantity"
+                  name="quantity"
                   required
-                  value={invoiceInputValue.material_length}
+                  value={invoiceInputValue.quantity}
                   onChange={handleInvoiceInputValue}
-                  onKeyUp={Calculation}
-                  onKeyDown={ClearAllState}
-                  ref={changedMaterialLength}
                 />
-              </div> */}
+              </div>
               <div className="inputBox">
                 <input
                   type="text"

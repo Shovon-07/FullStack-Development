@@ -53,6 +53,9 @@ form .inputBox input {
   font-size: 17px;
   width: 100%;
 }
+form .inputBox input:focus::placeholder {
+  padding-left: 10px;
+}
 form .inputBox input .showHide {
   cursor: pointer;
 }

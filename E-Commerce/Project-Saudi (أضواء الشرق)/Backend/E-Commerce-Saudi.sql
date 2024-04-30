@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 23, 2024 at 06:02 PM
+-- Generation Time: Apr 30, 2024 at 05:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -66,6 +66,9 @@ CREATE TABLE `invoices` (
   `pocket_type` varchar(255) NOT NULL,
   `hand_type` varchar(255) NOT NULL,
   `material_id` bigint(20) UNSIGNED NOT NULL,
+  `material_id_2` bigint(20) UNSIGNED DEFAULT NULL,
+  `material_id_3` bigint(20) UNSIGNED DEFAULT NULL,
+  `material_id_4` bigint(20) UNSIGNED DEFAULT NULL,
   `chest_length` int(11) NOT NULL,
   `sleeve_length` int(11) NOT NULL,
   `neck_length` int(11) NOT NULL,
@@ -74,7 +77,11 @@ CREATE TABLE `invoices` (
   `shoulder_length` int(11) NOT NULL,
   `dress_length` int(11) NOT NULL,
   `material_length` varchar(255) NOT NULL,
+  `material_length_2` varchar(255) DEFAULT NULL,
+  `material_length_3` varchar(255) DEFAULT NULL,
+  `material_length_4` varchar(255) DEFAULT NULL,
   `sale_price` varchar(255) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `total` varchar(255) NOT NULL,
   `discount` varchar(255) NOT NULL,
   `vat` varchar(255) NOT NULL,
@@ -125,13 +132,13 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (3, '2024_04_03_090609_create_images_table', 2),
-(47, '2019_12_14_000001_create_personal_access_tokens_table', 3),
-(48, '2024_04_03_083146_create_users_table', 3),
-(49, '2024_04_05_193157_create_materials_table', 3),
-(50, '2024_04_05_193949_create_stocks_table', 3),
-(51, '2024_04_05_194008_create_deducts_table', 3),
-(52, '2024_04_06_062556_create_customers_table', 3),
-(53, '2024_04_06_095331_create_invoices_table', 3);
+(82, '2019_12_14_000001_create_personal_access_tokens_table', 3),
+(83, '2024_04_03_083146_create_users_table', 3),
+(84, '2024_04_05_193157_create_materials_table', 3),
+(85, '2024_04_05_193949_create_stocks_table', 3),
+(86, '2024_04_05_194008_create_deducts_table', 3),
+(87, '2024_04_06_062556_create_customers_table', 3),
+(88, '2024_04_06_095331_create_invoices_table', 3);
 
 -- --------------------------------------------------------
 
@@ -206,13 +213,17 @@ ALTER TABLE `deducts`
 ALTER TABLE `invoices`
   ADD PRIMARY KEY (`id`),
   ADD KEY `invoices_customer_id_foreign` (`customer_id`),
-  ADD KEY `invoices_material_id_foreign` (`material_id`);
+  ADD KEY `invoices_material_id_foreign` (`material_id`),
+  ADD KEY `invoices_material_id_2_foreign` (`material_id_2`),
+  ADD KEY `invoices_material_id_3_foreign` (`material_id_3`),
+  ADD KEY `invoices_material_id_4_foreign` (`material_id_4`);
 
 --
 -- Indexes for table `materials`
 --
 ALTER TABLE `materials`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `materials_name_unique` (`name`);
 
 --
 -- Indexes for table `migrations`
@@ -274,7 +285,7 @@ ALTER TABLE `materials`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -309,6 +320,9 @@ ALTER TABLE `deducts`
 --
 ALTER TABLE `invoices`
   ADD CONSTRAINT `invoices_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `invoices_material_id_2_foreign` FOREIGN KEY (`material_id_2`) REFERENCES `materials` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `invoices_material_id_3_foreign` FOREIGN KEY (`material_id_3`) REFERENCES `materials` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `invoices_material_id_4_foreign` FOREIGN KEY (`material_id_4`) REFERENCES `materials` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `invoices_material_id_foreign` FOREIGN KEY (`material_id`) REFERENCES `materials` (`id`) ON UPDATE CASCADE;
 
 --

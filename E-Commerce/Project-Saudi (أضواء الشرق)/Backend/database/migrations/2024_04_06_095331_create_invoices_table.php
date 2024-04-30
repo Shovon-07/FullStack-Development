@@ -52,6 +52,7 @@ return new class extends Migration
             $table->string('material_length_4')->nullable();
             
             $table->string('sale_price');
+            $table->integer('quantity');
             $table->string('total');
             $table->string('discount');
             $table->string('vat');

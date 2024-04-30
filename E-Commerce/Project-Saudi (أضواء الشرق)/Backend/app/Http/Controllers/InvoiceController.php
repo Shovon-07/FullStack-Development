@@ -13,118 +13,6 @@ use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
-    // public function store(Request $request)
-    // {
-
-    //     DB::beginTransaction();
-    //     try {
-    //         $customer_name = $request->input('customer_name');
-    //         $customer_phone = $request->input('customer_phone');
-    //         $customer_address = $request->input('customer_address');
-
-    //         $dress_type = $request->input('dress_type') ?? "";
-    //         $button_type = $request->input('button_type') ?? "";
-    //         $neck_type = $request->input('neck_type') ?? "";
-    //         $pocket_type = $request->input('pocket_type') ?? "";
-    //         $hand_type = $request->input('hand_type') ?? "";
-
-    //         $material_id = $request->input('material_id');
-    //         $chest_length = $request->input('chest_length');
-    //         $sleeve_length = $request->input('sleeve_length');
-    //         $neck_length = $request->input('neck_length');
-    //         $cuff_length = $request->input('cuff_length');
-    //         $hand_length = $request->input('hand_length');
-    //         $shoulder_length = $request->input('shoulder_length');
-    //         $dress_length = $request->input('dress_length');
-    //         $material_length = $request->input('material_length');
-    //         $sale_price = $request->input('sale_price');
-    //         $total = $request->input("total");
-    //         $discount = $request->input('discount') ?? "";
-    //         $vat = $request->input('vat') ?? "";
-    //         $payable = $request->input("payable");
-    //         $advance = $request->input('advance') ?? "";
-    //         $due = $request->input("due");
-    //         $deadline_date = $request->input('deadline_date');
-    //         $note = $request->input('note') ?? "";
-
-    //         //___ Process Image start ___//
-    //         $img = $request->input('image');
-    //         $imgName = $customer_name . "_" . md5(time()) . ".png";
-    //         $source = fopen($img, "r");
-    //         $destination = fopen("images/ScreenShoot/" . $imgName, "w");
-    //         stream_copy_to_stream($source, $destination);
-    //         fclose($source);
-    //         fclose($destination);
-    //         //___ Process Image end ___//
-
-    //         $customer = Customer::updateOrCreate(
-    //             ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address], // Criteria to find the record
-    //             ['name' => $customer_name, 'phone' => $customer_phone, 'address' => $customer_address] // Data to update or create
-    //         );
-
-    //         if ($customer) {
-    //             $customer_id = $customer->id;          
-
-    //             $invoice = Invoice::create([
-    //                 'customer_id' => $customer_id,
-    //                 'image' => $imgName,
-
-    //                 'dress_type' => $dress_type,
-    //                 'button_type' => $button_type,
-    //                 'neck_type' => $neck_type,
-    //                 'pocket_type' => $pocket_type,
-    //                 'hand_type' => $hand_type,
-
-    //                 'material_id' => $material_id,
-    //                 'chest_length' => $chest_length,
-    //                 'sleeve_length' => $sleeve_length,
-    //                 'neck_length' => $neck_length,
-    //                 'cuff_length' => $cuff_length,
-    //                 'hand_length' => $hand_length,
-    //                 'shoulder_length' => $shoulder_length,
-    //                 'dress_length' => $dress_length,
-    //                 'material_length' => $material_length,
-    //                 'sale_price' => $sale_price,
-    //                 'total' => $total,
-    //                 'discount' => $discount,
-    //                 'vat' => $vat,
-    //                 'payable' => $payable,
-    //                 'advance' => $advance,
-    //                 'due' => $due,
-    //                 'deadline_date' => $deadline_date,
-    //                 'note'=> $note
-    //             ]);
-
-
-    //             if ($invoice) {
-
-    //                 $material = Material::where('id', '=', $material_id)->first();
-
-    //                 if ($material) {
-
-    //                     $oldStock = $material->stock;
-    //                     if ($oldStock > 0) {
-    //                         $newStock = $oldStock - $material_length;
-
-    //                         if ($newStock >= 0) {
-
-    //                             Material::where('id', '=', $material_id)->update([
-    //                                 'stock' => $newStock
-    //                             ]);
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //         }
-
-    //         DB::commit();
-    //         return 'success';
-    //     } catch (Exception $e) {
-    //         DB::rollBack();
-    //         return 'failed';
-    //     }
-    // }
-
     public function store(Request $request)
     {
 
@@ -159,6 +47,7 @@ class InvoiceController extends Controller
             $material_length_4 = $request->input('material_length_4');
 
             $sale_price = $request->input('sale_price');
+            $quantity = $request->input("quantity");
             $total = $request->input("total");
             $discount = $request->input('discount') ?? "";
             $vat = $request->input('vat') ?? "";
@@ -214,6 +103,7 @@ class InvoiceController extends Controller
                     'material_length_4' => $material_length_4,
 
                     'sale_price' => $sale_price,
+                    'quantity' => $quantity,
                     'total' => $total,
                     'discount' => $discount,
                     'vat' => $vat,
@@ -292,8 +182,7 @@ class InvoiceController extends Controller
 
     public function GetMaterial()
     {
-        $materials = Material::select("id", "name")->get();
-        // return view('pages.home', compact('materials'));
+        $materials = Material::select("id", "name")->orderBy('id','asc')->get();
         return $materials;
     }
 
@@ -305,43 +194,10 @@ class InvoiceController extends Controller
 
     public function pendingOrders()
     {
-        $pendingOrders = Invoice::where('status', '=', 'pending')->select("id", "customer_id", "payable", "due")->with('customer:id,name,phone')->get();
+        $pendingOrders = Invoice::where('status', '=', 'pending')->select("id", "customer_id", "payable", "due")->with('customer:id,name,phone')->orderBy('id','desc')->get();
 
         return $pendingOrders;
     }
-
-    // Cancell orders
-    // public function cancel(Request $request)
-    // {
-    //     DB::beginTransaction();
-    //     try {
-    //         $invoice = Invoice::where('id', '=', $request->id)->first();
-
-    //         $material = Material::where('id', '=', $invoice->material_id)->first();
-
-    //         if ($material) {
-
-    //             $oldStock = $material->stock;
-    //             $newStock = $oldStock + $invoice->material_length;
-
-    //             Material::where('id', '=', $invoice->material_id)->update([
-    //                 'stock' => $newStock
-    //             ]);
-    //         }
-
-
-    //         Invoice::where('id', '=', $request->id)->update([
-    //             'status' => 'cancel',
-    //             'advance' => 0,
-
-    //         ]);
-    //         DB::commit();
-    //         return 'success';
-    //     } catch (Exception $e) {
-    //         DB::rollBack();
-    //         return 'failed';
-    //     }
-    // }
 
     public function cancel(Request $request)
     {
@@ -415,7 +271,7 @@ class InvoiceController extends Controller
     // View completed orders
     public function completeOrders()
     {
-        $completeOrders = Invoice::where('status', '=', 'complete')->select("id", "customer_id", "payable", "due")->with('customer:id,name,phone')->get();
+        $completeOrders = Invoice::where('status', '=', 'complete')->select("id", "customer_id", "payable", "due")->with('customer:id,name,phone')->orderBy('updated_at','desc')->get();
 
         return $completeOrders;
     }
@@ -446,9 +302,7 @@ class InvoiceController extends Controller
     // Delivered order (for history page)
     public function deliveryOrders()
     {
-        $deliveryOrders = Invoice::where('status', '=', 'delivery')->select("id", "customer_id", "collection", "net_outstanding", "advance")->with('customer:id,name,phone')->get();
-
-        // $deliveryOrders = Invoice::where('status', '=', 'delivery')->get();
+        $deliveryOrders = Invoice::where('status', '=', 'delivery')->select("id", "customer_id", "collection", "net_outstanding", "advance")->with('customer:id,name,phone')->orderBy('updated_at','desc')->get();
 
         return $deliveryOrders;
     }
@@ -569,8 +423,8 @@ class InvoiceController extends Controller
         $password = $request->input("password");
         $status = 1;
 
-        $staticEmail = "test@mail.com";
-        $staticPassword = "test";
+        $staticEmail = "admin@mail.com";
+        $staticPassword = "admin";
 
         if ($email === $staticEmail && $password === $staticPassword) {
             $data = array($email, $password, $status);
