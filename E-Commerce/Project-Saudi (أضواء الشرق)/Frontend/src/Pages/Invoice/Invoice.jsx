@@ -103,7 +103,6 @@ const Invoice = () => {
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
 
-          material_length: response.data.material_length,
           material_price: response.data.sale_price,
           total: response.data.total,
           discount: response.data.discount,
