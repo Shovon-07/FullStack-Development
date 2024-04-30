@@ -35,6 +35,14 @@ const Invoice = () => {
     image: "",
 
     material: "",
+    material_2: "",
+    material_3: "",
+    material_4: "",
+    material_length: "",
+    material_length_2: "",
+    material_length_3: "",
+    material_length_4: "",
+
     chest_length: "",
     neck_length: "",
     hand_length: "",
@@ -47,7 +55,6 @@ const Invoice = () => {
     pocket_type: "",
     hand_type: "",
 
-    material_length: "",
     material_price: "",
     total: "",
     discount: "",
@@ -75,6 +82,15 @@ const Invoice = () => {
           image: response.data.image,
 
           material: response.data.material.name,
+          material_2: response.data.material2.name,
+          material_3: response.data.material3.name,
+          material_4: response.data.material4.name,
+
+          material_length: response.data.material_length,
+          material_length_2: response.data.material_length_2,
+          material_length_3: response.data.material_length_3,
+          material_length_4: response.data.material_length_4,
+
           chest_length: response.data.chest_length,
           neck_length: response.data.neck_length,
           hand_length: response.data.hand_length,
@@ -188,6 +204,46 @@ const Invoice = () => {
                   readOnly
                 />
               </div>
+              <div
+                className={
+                  apiData.material_2 == "No material" ? "d-none" : "inputBox"
+                }
+              >
+                <label htmlFor="">Material</label>
+                <input
+                  type="text"
+                  name="material"
+                  value={apiData.material_2}
+                  readOnly
+                />
+              </div>
+              <div
+                className={
+                  apiData.material_3 == "No material" ? "d-none" : "inputBox"
+                }
+              >
+                <label htmlFor="">Material</label>
+                <input
+                  type="text"
+                  name="material"
+                  value={apiData.material_3}
+                  readOnly
+                />
+              </div>
+              <div
+                className={
+                  apiData.material_4 == "No material" ? "d-none" : "inputBox"
+                }
+              >
+                <label htmlFor="">Material</label>
+                <input
+                  type="text"
+                  name="material"
+                  value={apiData.material_4}
+                  readOnly
+                />
+              </div>
+
               <div className="inputBox">
                 <label htmlFor="">Chest length</label>
                 <input
@@ -233,8 +289,6 @@ const Invoice = () => {
                   readOnly
                 />
               </div>
-            </div>
-            <div className="right d-flex gap-20">
               <div className="inputBox">
                 <label htmlFor="">Cuff length</label>
                 <input
@@ -244,6 +298,57 @@ const Invoice = () => {
                   readOnly
                 />
               </div>
+            </div>
+            <div className="right d-flex gap-20">
+              <div className="inputBox">
+                <label htmlFor="">Material length</label>
+                <input
+                  type="text"
+                  name="cuff_length"
+                  value={apiData.material_length + " m"}
+                  readOnly
+                />
+              </div>
+              <div
+                className={
+                  apiData.material_2 == "No material" ? "d-none" : "inputBox"
+                }
+              >
+                <label htmlFor="">Material length</label>
+                <input
+                  type="text"
+                  name="cuff_length"
+                  value={apiData.material_length_2 + " m"}
+                  readOnly
+                />
+              </div>
+              <div
+                className={
+                  apiData.material_3 == "No material" ? "d-none" : "inputBox"
+                }
+              >
+                <label htmlFor="">Material length</label>
+                <input
+                  type="text"
+                  name="cuff_length"
+                  value={apiData.material_length_3 + " m"}
+                  readOnly
+                />
+              </div>
+              <div
+                className={
+                  apiData.material_4 == "No material" ? "d-none" : "inputBox"
+                }
+              >
+                <label htmlFor="">Material length</label>
+                <input
+                  type="text"
+                  name="cuff_length"
+                  value={apiData.material_length_4 + " m"}
+                  readOnly
+                />
+              </div>
+
               <div className="inputBox">
                 <label htmlFor="">Shoulder length</label>
                 <input
