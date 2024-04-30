@@ -6,6 +6,4 @@ I changed AuthUser.js, Form.jsx, Header.jsx, App.jsx(Route)
 -> For authorization.
 I changed Invoice Controller -> Login function
 
--> add material faild msg for unique data.
-
 -> jokhon material_2,3,4 select hosse na tokhon invoice a error disse. sejonno database material table a id: 0, name: No material, stock: 0 manualy set korte hobe
