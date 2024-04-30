@@ -121,11 +121,9 @@ class MaterialController extends Controller
                 ]);
             }
             DB::commit();
-            // return redirect('home');
             return "Material added";
         } catch (Exception $e) {
             DB::rollBack();
-            // return redirect('home');
             return "failed";
         }
     }

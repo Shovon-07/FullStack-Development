@@ -416,22 +416,4 @@ class InvoiceController extends Controller
         $balance = array($balanceDay, $balanceWeek, $balanceMonth, $balanceYear);
         return $balance;
     }
-
-    public function Login(Request $request)
-    {
-        $email = $request->input("email");
-        $password = $request->input("password");
-        $status = 1;
-
-        $staticEmail = "admin@mail.com";
-        $staticPassword = "admin";
-
-        if ($email === $staticEmail && $password === $staticPassword) {
-            $data = array($email, $password, $status);
-            return $data;
-        } else {
-            return "Invalid user";
-        }
-    }
-
 }

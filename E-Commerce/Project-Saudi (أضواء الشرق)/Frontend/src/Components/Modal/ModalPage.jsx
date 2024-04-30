@@ -47,7 +47,6 @@ const ModalPage = (props) => {
     stock: "2",
     price: "3",
     deduct: "4",
-    // priceForStock: "",
 
     delivery_date: "",
     collection: viewDue,
@@ -71,9 +70,15 @@ const ModalPage = (props) => {
     setLoading(true);
     try {
       http.post(api, data).then((response) => {
-        handleClose();
-        setLoading(false);
-        setRelodeTable((prev) => !prev);
+        if (response.data === "Material added") {
+          handleClose();
+          setLoading(false);
+          setRelodeTable((prev) => !prev);
+        } else {
+          handleClose();
+          setLoading(false);
+          alert("You don't add duplicate data !");
+        }
       });
     } catch (error) {
       console.error(error);

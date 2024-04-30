@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,7 +62,8 @@ Route::controller(InvoiceController::class)->group(function(){
     Route::get('/statisticSold','statisticSold');
     Route::get('/statisticBuy','statisticBuy');
     Route::get('/balance','balance');
-    
-    Route::post('/login', 'Login');
+});
 
+Route::controller(UserController::class)->group(function(){
+    Route::post('/login', 'Login');
 });
