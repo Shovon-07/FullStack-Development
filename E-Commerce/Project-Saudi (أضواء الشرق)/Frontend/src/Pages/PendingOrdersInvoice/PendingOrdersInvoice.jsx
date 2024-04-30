@@ -197,7 +197,11 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-              <div className={apiData.material_2 == "" ? "d-none" : "inputBox"}>
+              <div
+                className={
+                  apiData.material_2 == "No material" ? "d-none" : "inputBox"
+                }
+              >
                 <label htmlFor="">Material</label>
                 <input
                   type="text"
@@ -206,7 +210,11 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-              <div className={apiData.material_3 == "" ? "d-none" : "inputBox"}>
+              <div
+                className={
+                  apiData.material_3 == "No material" ? "d-none" : "inputBox"
+                }
+              >
                 <label htmlFor="">Material</label>
                 <input
                   type="text"
@@ -215,7 +223,11 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-              <div className={apiData.material_4 == "" ? "d-none" : "inputBox"}>
+              <div
+                className={
+                  apiData.material_4 == "No material" ? "d-none" : "inputBox"
+                }
+              >
                 <label htmlFor="">Material</label>
                 <input
                   type="text"
@@ -290,7 +302,11 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-              <div className={apiData.material_2 == "" ? "d-none" : "inputBox"}>
+              <div
+                className={
+                  apiData.material_2 == "No material" ? "d-none" : "inputBox"
+                }
+              >
                 <label htmlFor="">Material length</label>
                 <input
                   type="text"
@@ -299,7 +315,11 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-              <div className={apiData.material_3 == "" ? "d-none" : "inputBox"}>
+              <div
+                className={
+                  apiData.material_3 == "No material" ? "d-none" : "inputBox"
+                }
+              >
                 <label htmlFor="">Material length</label>
                 <input
                   type="text"
@@ -308,7 +328,11 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-              <div className={apiData.material_4 == "" ? "d-none" : "inputBox"}>
+              <div
+                className={
+                  apiData.material_4 == "No material" ? "d-none" : "inputBox"
+                }
+              >
                 <label htmlFor="">Material length</label>
                 <input
                   type="text"
