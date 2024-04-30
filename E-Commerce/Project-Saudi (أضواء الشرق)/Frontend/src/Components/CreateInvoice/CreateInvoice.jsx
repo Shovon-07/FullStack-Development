@@ -91,15 +91,15 @@ const CreateInvoice = () => {
   const removeInput = () => {
     if (count.length == 2) {
       setCount(count.slice(0, 1));
-      invoiceInputValue.material_id_2 = "";
+      invoiceInputValue.material_id_2 = "0";
       invoiceInputValue.material_length_2 = "";
     } else if (count.length == 3) {
       setCount(count.slice(0, 2));
-      invoiceInputValue.material_id_3 = "";
+      invoiceInputValue.material_id_3 = "0";
       invoiceInputValue.material_length_3 = "";
     } else if (count.length == 4) {
       setCount(count.slice(0, 3));
-      invoiceInputValue.material_id_4 = "";
+      invoiceInputValue.material_id_4 = "0";
       invoiceInputValue.material_length_4 = "";
     }
   };
@@ -446,13 +446,12 @@ const CreateInvoice = () => {
                       onChange={handleInvoiceInputValue}
                       className={count.length >= 2 ? "" : "d-none"}
                     >
-                      {/* <option
+                      <option
                         value="0"
-                        default
                         selected={count.length < 2 ? "true" : ""}
                       >
                         Select Material 2
-                      </option> */}
+                      </option>
                       {materials.map((items, index) => {
                         return (
                           <option key={index} value={items.id}>
@@ -466,13 +465,12 @@ const CreateInvoice = () => {
                       onChange={handleInvoiceInputValue}
                       className={count.length >= 3 ? "" : "d-none"}
                     >
-                      {/* <option
+                      <option
                         value="0"
-                        default
                         selected={count.length < 3 ? "true" : ""}
                       >
                         Select Material 3
-                      </option> */}
+                      </option>
                       {materials.map((items, index) => {
                         return (
                           <option key={index} value={items.id}>
@@ -486,13 +484,12 @@ const CreateInvoice = () => {
                       onChange={handleInvoiceInputValue}
                       className={count.length >= 4 ? "" : "d-none"}
                     >
-                      {/* <option
+                      <option
                         value="0"
-                        default
                         selected={count.length < 4 ? "true" : ""}
                       >
                         Select Material 4
-                      </option> */}
+                      </option>
                       {materials.map((items, index) => {
                         return (
                           <option key={index} value={items.id}>
