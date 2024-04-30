@@ -13,7 +13,8 @@ class MaterialController extends Controller
 {
     public function index()
     {
-        $materials = Material::all();
+        // $materials = Material::all();
+        $materials = Material::where('id','>','0')->get();
         return $materials;
     }
 
