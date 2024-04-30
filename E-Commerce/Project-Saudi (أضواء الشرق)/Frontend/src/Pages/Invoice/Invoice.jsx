@@ -406,16 +406,6 @@ const Invoice = () => {
             <table>
               <tbody>
                 <tr>
-                  <td>Material length</td>
-                  <td>:</td>
-                  <td>{apiData.material_length} meter</td>
-                </tr>
-                {/* <tr>
-                  <td>Material price</td>
-                  <td>:</td>
-                  <td>{apiData.material_price} $</td>
-                </tr> */}
-                <tr>
                   <td>Total</td>
                   <td>:</td>
                   <td>{apiData.total} $</td>
@@ -442,11 +432,6 @@ const Invoice = () => {
                   <td>:</td>
                   <td>{apiData.advance} $</td>
                 </tr>
-                {/* <tr>
-                  <td>Due</td>
-                  <td>:</td>
-                  <td>{apiData.due} $</td>
-                </tr> */}
                 <tr>
                   <td>Collection</td>
                   <td>:</td>
