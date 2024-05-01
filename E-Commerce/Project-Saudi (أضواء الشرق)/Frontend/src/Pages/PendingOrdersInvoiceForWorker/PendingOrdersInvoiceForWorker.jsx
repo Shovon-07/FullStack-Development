@@ -53,6 +53,7 @@ const PendingOrdersInvoice = () => {
     neck_type: "",
     pocket_type: "",
     hand_type: "",
+    quantity: "",
   });
   const getApiData = async () => {
     try {
@@ -90,6 +91,7 @@ const PendingOrdersInvoice = () => {
           neck_type: response.data.neck_type,
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
+          quantity: response.data.quantity,
         });
       });
       setLoading(false);
@@ -368,6 +370,15 @@ const PendingOrdersInvoice = () => {
                   type="text"
                   name="hand_type"
                   value={apiData.hand_type}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">Quantity</label>
+                <input
+                  type="text"
+                  name="hand_type"
+                  value={apiData.quantity}
                   readOnly
                 />
               </div>

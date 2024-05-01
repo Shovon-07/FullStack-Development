@@ -53,6 +53,7 @@ const PendingOrdersInvoice = () => {
     neck_type: "",
     pocket_type: "",
     hand_type: "",
+    quantity: "",
 
     material_price: "",
     total: "",
@@ -98,6 +99,7 @@ const PendingOrdersInvoice = () => {
           neck_type: response.data.neck_type,
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
+          quantity: response.data.quantity,
 
           material_price: response.data.sale_price,
           total: response.data.total,
@@ -387,6 +389,15 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
+              <div className="inputBox">
+                <label htmlFor="">Quantity</label>
+                <input
+                  type="text"
+                  name="hand_type"
+                  value={apiData.quantity}
+                  readOnly
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -399,11 +410,6 @@ const PendingOrdersInvoice = () => {
           <div className="right">
             <table>
               <tbody>
-                {/* <tr>
-                  <td>Material length</td>
-                  <td>:</td>
-                  <td>{apiData.material_length} m</td>
-                </tr> */}
                 <tr>
                   <td>Total</td>
                   <td>:</td>
