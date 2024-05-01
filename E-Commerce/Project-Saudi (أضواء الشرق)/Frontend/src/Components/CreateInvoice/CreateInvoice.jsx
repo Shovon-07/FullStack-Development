@@ -118,7 +118,7 @@ const CreateInvoice = () => {
       toast.error("No date selected");
     } else if (invoiceInputValue.deadline_date == "") {
       toast.error("No deadlin date selected");
-    } else if (invoiceInputValue.material_id == "") {
+    } else if (invoiceInputValue.material_id <= "1") {
       toast.error("Please select a material");
     } else if (invoiceInputValue.chest_length == "") {
       toast.error("Please enter chest length");
