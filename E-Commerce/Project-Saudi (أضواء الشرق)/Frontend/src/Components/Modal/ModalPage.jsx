@@ -70,7 +70,7 @@ const ModalPage = (props) => {
     setLoading(true);
     try {
       http.post(api, data).then((response) => {
-        if (response.data === "Material added") {
+        if (response.data === "success") {
           handleClose();
           setLoading(false);
           setRelodeTable((prev) => !prev);

@@ -7,3 +7,5 @@ I changed AuthUser.js, Form.jsx, Header.jsx, App.jsx(Route)
 I changed Invoice Controller -> Login function
 
 -> jokhon material_2,3,4 select hosse na tokhon invoice a error disse. sejonno database material table a id: 0, name: No material, stock: 0 manualy set korte hobe
+
+-> duplicate material problem, sell problem

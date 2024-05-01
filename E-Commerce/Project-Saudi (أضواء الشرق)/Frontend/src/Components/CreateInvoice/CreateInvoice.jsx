@@ -47,9 +47,9 @@ const CreateInvoice = () => {
 
     // Mesurments
     material_id: "",
-    material_id_2: "0",
-    material_id_3: "0",
-    material_id_4: "0",
+    material_id_2: "1",
+    material_id_3: "1",
+    material_id_4: "1",
     material_length: "",
     material_length_2: "",
     material_length_3: "",
@@ -92,15 +92,15 @@ const CreateInvoice = () => {
   const removeInput = () => {
     if (count.length == 2) {
       setCount(count.slice(0, 1));
-      invoiceInputValue.material_id_2 = "0";
+      invoiceInputValue.material_id_2 = "1";
       invoiceInputValue.material_length_2 = "";
     } else if (count.length == 3) {
       setCount(count.slice(0, 2));
-      invoiceInputValue.material_id_3 = "0";
+      invoiceInputValue.material_id_3 = "1";
       invoiceInputValue.material_length_3 = "";
     } else if (count.length == 4) {
       setCount(count.slice(0, 3));
-      invoiceInputValue.material_id_4 = "0";
+      invoiceInputValue.material_id_4 = "1";
       invoiceInputValue.material_length_4 = "";
     }
   };
@@ -434,7 +434,7 @@ const CreateInvoice = () => {
                       name="material_id"
                       onChange={handleInvoiceInputValue}
                     >
-                      <option value="0" default>
+                      <option value="1" default>
                         Select Material
                       </option>
                       {materials.map((items, index) => {
@@ -451,7 +451,7 @@ const CreateInvoice = () => {
                       className={count.length >= 2 ? "" : "d-none"}
                     >
                       <option
-                        value="0"
+                        value="1"
                         selected={count.length < 2 ? "true" : ""}
                       >
                         Select Material 2
@@ -470,7 +470,7 @@ const CreateInvoice = () => {
                       className={count.length >= 3 ? "" : "d-none"}
                     >
                       <option
-                        value="0"
+                        value="1"
                         selected={count.length < 3 ? "true" : ""}
                       >
                         Select Material 3
@@ -489,7 +489,7 @@ const CreateInvoice = () => {
                       className={count.length >= 4 ? "" : "d-none"}
                     >
                       <option
-                        value="0"
+                        value="1"
                         selected={count.length < 4 ? "true" : ""}
                       >
                         Select Material 4

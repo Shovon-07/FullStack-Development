@@ -295,8 +295,7 @@ class InvoiceController extends Controller
                 'delivery_date' => $deliveryDate
             ]);
         }
-
-        return 'sucess';
+        return "success";
     }
 
     // Delivered order (for history page)

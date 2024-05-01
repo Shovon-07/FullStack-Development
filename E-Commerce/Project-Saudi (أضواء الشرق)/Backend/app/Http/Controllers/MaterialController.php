@@ -13,8 +13,7 @@ class MaterialController extends Controller
 {
     public function index()
     {
-        // $materials = Material::all();
-        $materials = Material::where('id','>','0')->get();
+        $materials = Material::where('id','>','1')->get();
         return $materials;
     }
 
@@ -26,7 +25,6 @@ class MaterialController extends Controller
             $material = Material::where('id', '=', $request->id)->first();            
             $oldStock = $material->stock;
             $newStock = $oldStock + $request->stock;
-            //dd($newStock);
             if ($material) {
                 
                 $updateStock = Material::where('id', '=', $request->id)->update([
@@ -42,10 +40,10 @@ class MaterialController extends Controller
                 }
             }
             DB::commit();
-            return redirect('home');
+            return "success";
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect('home');
+            return "failed";
         }
     }
 
@@ -78,12 +76,10 @@ class MaterialController extends Controller
                 }
             }
             DB::commit();
-            // return redirect('home');
             return "success";
         } catch (Exception $e) {
             DB::rollBack();
-            // return redirect('home');
-            return "success";
+            return "failed";
         }
     }
 
@@ -91,7 +87,6 @@ class MaterialController extends Controller
     public function price(Request $request)
     {
         $material = Material::select("price")->where("id","=",$request->id);
-        // return view('pages.material.priceMaterial', compact('material'));
         return $material;
     }
 
@@ -100,7 +95,6 @@ class MaterialController extends Controller
         Material::where('id', '=', $request->id)->update([
             'price' => $request->price
         ]);
-
         return "success";
     }
 
@@ -121,7 +115,7 @@ class MaterialController extends Controller
                 ]);
             }
             DB::commit();
-            return "Material added";
+            return "success";
         } catch (Exception $e) {
             DB::rollBack();
             return "failed";
