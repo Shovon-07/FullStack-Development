@@ -33,6 +33,23 @@ const Calculator = () => {
   //__ Handle input value __//
   const [calcInput, setCalcInp] = useState({
     display: "00",
+    one: "1",
+    two: "2",
+    three: "3",
+    four: "4",
+    five: "5",
+    six: "6",
+    seveen: "7",
+    eight: "8",
+    nine: "9",
+    zero: "0",
+    dot: ".",
+    AC: "AC",
+    percent: "%",
+    devide: "/",
+    multiply: "*",
+    plus: "+",
+    minus: "-",
   });
 
   const handleInput = (e) => {
@@ -70,6 +87,7 @@ const Calculator = () => {
         <div className="display">
           <input
             type="text"
+            name="display"
             value={calcInput.display}
             onChange={handleInput}
             readOnly
@@ -79,36 +97,82 @@ const Calculator = () => {
           <table>
             <tbody>
               <tr>
-                <td>AC</td>
                 <td>
-                  <FaBackspace />
+                  <input type="submit" value={calcInput.AC} />
                 </td>
-                <td>%</td>
-                <td>/</td>
+                <td>
+                  <button type="submit" value={"clear"}>
+                    <FaBackspace />
+                  </button>
+                </td>
+                <td>
+                  <input
+                    type="submit"
+                    name="percent"
+                    value={calcInput.percent}
+                  />
+                </td>
+                <td>
+                  <input type="submit" name="devide" value={calcInput.devide} />
+                </td>
               </tr>
               <tr>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-                <td>*</td>
+                <td>
+                  <input type="submit" name="seveen" value={calcInput.seveen} />
+                </td>
+                <td>
+                  <input type="submit" name="eight" value={calcInput.eight} />
+                </td>
+                <td>
+                  <input type="submit" name="nine" value={calcInput.nine} />
+                </td>
+                <td>
+                  <input
+                    type="submit"
+                    name="multiply"
+                    value={calcInput.multiply}
+                  />
+                </td>
               </tr>
               <tr>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-                <td>-</td>
+                <td>
+                  <input type="submit" name="four" value={calcInput.four} />
+                </td>
+                <td>
+                  <input type="submit" name="five" value={calcInput.five} />
+                </td>
+                <td>
+                  <input type="submit" name="six" value={calcInput.six} />
+                </td>
+                <td>
+                  <input type="submit" name="minus" value={calcInput.minus} />
+                </td>
               </tr>
               <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-                <td>+</td>
+                <td>
+                  <input type="submit" name="one" value={calcInput.one} />
+                </td>
+                <td>
+                  <input type="submit" name="two" value={calcInput.two} />
+                </td>
+                <td>
+                  <input type="submit" name="three" value={calcInput.three} />
+                </td>
+                <td>
+                  <input type="submit" name="plus" value={calcInput.plus} />
+                </td>
               </tr>
               <tr>
-                <td>0</td>
-                <td>.</td>
+                <td>
+                  <input type="submit" name="zero" value={calcInput.zero} />
+                </td>
+                <td>
+                  <input type="submit" name="dot" value={calcInput.dot} />
+                </td>
                 <td colSpan="2" className="equalBtn">
-                  =
+                  <button type="submit" value={"equal"}>
+                    =
+                  </button>
                 </td>
               </tr>
             </tbody>

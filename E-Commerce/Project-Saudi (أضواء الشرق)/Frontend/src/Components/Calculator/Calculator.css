@@ -23,18 +23,20 @@
   padding: 8px 10px;
   border-radius: 8px;
   transition: var(--trans);
-  z-index: 1000;
+  z-index: -1;
   overflow: hidden;
   opacity: 0;
-  display: none;
+  /* display: none; */
 }
 .calculatorBox.active {
   opacity: 1;
-  display: block;
+  z-index: 1000;
+  /* display: block; */
 }
 .calculatorBox.fullWidth {
   opacity: 1;
-  display: block;
+  z-index: 1000;
+  /* display: block; */
   width: 30%;
   height: 70%;
   /* top: 10px; */
@@ -79,8 +81,16 @@
   text-align: center;
   width: 50px;
   height: 35px;
-  font-size: 20px;
   cursor: pointer;
+}
+.calculatorBox .buttons table tr td input,
+.calculatorBox .buttons table tr td button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 20px;
 }
 .calculatorBox .buttons table tr td:hover {
   background: #000;

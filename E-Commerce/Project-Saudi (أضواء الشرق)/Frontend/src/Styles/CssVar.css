@@ -19,7 +19,7 @@
   --yellow: #d3ad04;
 
   /* Additional */
-  --trans: 0.3s all ease;
+  --trans: 0.5s all ease;
   --shadow: 1px 1px 5px #cfcfcf;
   --border: 1px solid var(--light-3);
   --tableBorder: 1px solid var(--dark-2);
