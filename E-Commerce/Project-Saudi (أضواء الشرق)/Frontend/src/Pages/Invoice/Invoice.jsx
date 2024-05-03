@@ -47,6 +47,7 @@ const Invoice = () => {
     neck_length: "",
     hand_length: "",
     dress_length: "",
+    dress_type: "",
     sleeve_length: "",
     cuff_length: "",
     shoulder_length: "",
@@ -96,6 +97,7 @@ const Invoice = () => {
           neck_length: response.data.neck_length,
           hand_length: response.data.hand_length,
           dress_length: response.data.dress_length,
+          dress_type: response.data.dress_type,
           sleeve_length: response.data.sleeve_length,
           cuff_length: response.data.cuff_length,
           shoulder_length: response.data.shoulder_length,
@@ -246,6 +248,15 @@ const Invoice = () => {
               </div>
 
               <div className="inputBox">
+                <label htmlFor="">Dress type</label>
+                <input
+                  type="text"
+                  name="dress_type"
+                  value={apiData.dress_type}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
                 <label htmlFor="">Chest length</label>
                 <input
                   type="text"
@@ -278,24 +289,6 @@ const Invoice = () => {
                   type="text"
                   name="dress_length"
                   value={apiData.dress_length}
-                  readOnly
-                />
-              </div>
-              <div className="inputBox">
-                <label htmlFor="">Sleeve length</label>
-                <input
-                  type="text"
-                  name="sleeve_length"
-                  value={apiData.sleeve_length}
-                  readOnly
-                />
-              </div>
-              <div className="inputBox">
-                <label htmlFor="">Cuff length</label>
-                <input
-                  type="text"
-                  name="cuff_length"
-                  value={apiData.cuff_length}
                   readOnly
                 />
               </div>
@@ -351,6 +344,16 @@ const Invoice = () => {
               </div>
 
               <div className="inputBox">
+                <label htmlFor="">Quantity</label>
+                <input
+                  type="text"
+                  name="hand_type"
+                  value={apiData.quantity}
+                  readOnly
+                />
+              </div>
+
+              <div className="inputBox">
                 <label htmlFor="">Shoulder length</label>
                 <input
                   type="text"
@@ -360,50 +363,66 @@ const Invoice = () => {
                 />
               </div>
               <div className="inputBox">
-                <label htmlFor="">Button type</label>
+                <label htmlFor="">Sleeve length</label>
                 <input
                   type="text"
-                  name="button_type"
-                  value={apiData.button_type}
+                  name="sleeve_length"
+                  value={apiData.sleeve_length}
                   readOnly
                 />
               </div>
               <div className="inputBox">
-                <label htmlFor="">Neck type</label>
+                <label htmlFor="">Cuff length</label>
                 <input
                   type="text"
-                  name="neck_type"
-                  value={apiData.neck_type}
+                  name="cuff_length"
+                  value={apiData.cuff_length}
                   readOnly
                 />
               </div>
-              <div className="inputBox">
-                <label htmlFor="">Pocket type</label>
-                <input
-                  type="text"
-                  name="pocket_type"
-                  value={apiData.pocket_type}
-                  readOnly
-                />
-              </div>
-              <div className="inputBox">
-                <label htmlFor="">Hand type</label>
-                <input
-                  type="text"
-                  name="hand_type"
-                  value={apiData.hand_type}
-                  readOnly
-                />
-              </div>
-              <div className="inputBox">
-                <label htmlFor="">Quantity</label>
-                <input
-                  type="text"
-                  name="hand_type"
-                  value={apiData.quantity}
-                  readOnly
-                />
-              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="types d-flex flex-start gap-30">
+          <div className="left">
+            <div className={apiData.button_type == "" ? "d-none" : "inputBox"}>
+              <label htmlFor="">Button type</label>
+              <input
+                type="text"
+                name="button_type"
+                value={apiData.button_type}
+                readOnly
+              />
+            </div>
+            <div className={apiData.neck_type == "" ? "d-none" : "inputBox"}>
+              <label htmlFor="">Neck type</label>
+              <input
+                type="text"
+                name="neck_type"
+                value={apiData.neck_type}
+                readOnly
+              />
+            </div>
+          </div>
+          <div className="right">
+            <div className={apiData.pocket_type == "" ? "d-none" : "inputBox"}>
+              <label htmlFor="">Pocket type</label>
+              <input
+                type="text"
+                name="pocket_type"
+                value={apiData.pocket_type}
+                readOnly
+              />
+            </div>
+            <div className={apiData.pocket_type == "" ? "d-none" : "inputBox"}>
+              <label htmlFor="">Hand type</label>
+              <input
+                type="text"
+                name="hand_type"
+                value={apiData.hand_type}
+                readOnly
+              />
             </div>
           </div>
         </div>

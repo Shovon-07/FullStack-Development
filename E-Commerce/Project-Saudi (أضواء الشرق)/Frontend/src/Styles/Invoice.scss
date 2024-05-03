@@ -97,7 +97,30 @@
           }
           input {
             width: 100%;
+            text-transform: capitalize;
           }
+        }
+      }
+    }
+  }
+
+  .types {
+    width: 100%;
+    margin-top: 10px;
+    .left,
+    .right {
+      flex-basis: 50%;
+      .inputBox {
+        width: 100%;
+        label {
+          display: block;
+          margin: 20px 0 8px 0;
+          font-size: 14px;
+          color: $placeholder-color;
+        }
+        input {
+          width: 100%;
+          text-transform: capitalize;
         }
       }
     }
