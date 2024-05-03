@@ -5,6 +5,7 @@ import { IoCalculatorSharp } from "react-icons/io5";
 import { LuExpand } from "react-icons/lu";
 import { FaMinus } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
+import { FaBackspace } from "react-icons/fa";
 
 //___ Css ___//
 import "./Calculator.css";
@@ -73,6 +74,45 @@ const Calculator = () => {
             onChange={handleInput}
             readOnly
           />
+        </div>
+        <div className="buttons">
+          <table>
+            <tbody>
+              <tr>
+                <td>AC</td>
+                <td>
+                  <FaBackspace />
+                </td>
+                <td>%</td>
+                <td>/</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>*</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>+</td>
+              </tr>
+              <tr>
+                <td>0</td>
+                <td>.</td>
+                <td colSpan="2" className="equalBtn">
+                  =
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

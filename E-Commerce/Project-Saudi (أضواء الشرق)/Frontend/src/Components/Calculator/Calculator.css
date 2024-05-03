@@ -24,6 +24,7 @@
   border-radius: 8px;
   transition: var(--trans);
   z-index: 1000;
+  overflow: hidden;
   opacity: 0;
   display: none;
 }
@@ -34,9 +35,9 @@
 .calculatorBox.fullWidth {
   opacity: 1;
   display: block;
-  width: 40%;
-  height: 90%;
-  top: 10px;
+  width: 30%;
+  height: 70%;
+  /* top: 10px; */
 }
 .calculatorBox .closeIcon {
   text-align: end;
@@ -60,12 +61,44 @@
   background: var(--main-color);
   margin-left: 8px;
 }
+
 .calculatorBox .display input {
   background: #424242;
+  color: #fff;
   margin: 10px 0;
   width: 100%;
   border: none;
   box-shadow: inset 2px 2px 10px #000;
   font-size: 20px;
   padding: 10px;
+}
+.calculatorBox .buttons table {
+  width: 100%;
+}
+.calculatorBox .buttons table tr td {
+  text-align: center;
+  width: 50px;
+  height: 35px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.calculatorBox .buttons table tr td:hover {
+  background: #000;
+}
+.calculatorBox .buttons .equalBtn {
+  background: var(--main-color);
+  font-size: 30px;
+}
+.calculatorBox .buttons .equalBtn:hover {
+  background: #b33a03;
+}
+
+.calculatorBox.fullWidth .display input {
+  font-size: 35px;
+  padding: 15px;
+  margin: 25px 0;
+}
+.calculatorBox.fullWidth .buttons table tr td {
+  height: 50px;
+  font-size: 25px;
 }
