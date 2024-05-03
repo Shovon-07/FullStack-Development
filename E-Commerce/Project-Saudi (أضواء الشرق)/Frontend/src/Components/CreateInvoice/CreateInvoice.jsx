@@ -602,7 +602,17 @@ const CreateInvoice = () => {
                   />
                 </div>
 
-                <div className="inputBox" style={{ marginTop: "8px" }}>
+                <div className="inputBox" style={{ marginTop: "4px" }}>
+                  <input
+                    type="text"
+                    placeholder="Dress length"
+                    name="dress_length"
+                    required
+                    value={invoiceInputValue.dress_length}
+                    onChange={handleInvoiceInputValue}
+                  />
+                </div>
+                <div className="inputBox">
                   <input
                     type="text"
                     placeholder="Sleeve length"
@@ -629,16 +639,6 @@ const CreateInvoice = () => {
                     name="shoulder_length"
                     required
                     value={invoiceInputValue.shoulder_length}
-                    onChange={handleInvoiceInputValue}
-                  />
-                </div>
-                <div className="inputBox">
-                  <input
-                    type="text"
-                    placeholder="Dress length"
-                    name="dress_length"
-                    required
-                    value={invoiceInputValue.dress_length}
                     onChange={handleInvoiceInputValue}
                   />
                 </div>
