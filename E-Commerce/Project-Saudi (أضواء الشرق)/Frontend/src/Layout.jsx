@@ -7,6 +7,7 @@ import Loader from "./Components/Loader/Loader";
 //___ Components ___//
 const Header = lazy(() => import("./Components/Header/Header"));
 const Footer = lazy(() => import("./Components/Footer/Footer"));
+const Calculator = lazy(() => import("./Components/Calculator/Calculator"));
 
 const Layout = () => {
   const [loading, setLoading] = useState(false);
@@ -20,6 +21,9 @@ const Layout = () => {
         {loading && <Loader />}
         <Outlet context={[setLoading]} />
       </div>
+      <Suspense fallback={<Loader />}>
+        <Calculator />
+      </Suspense>
       <Suspense fallback={<Loader />}>
         <Footer />
       </Suspense>
