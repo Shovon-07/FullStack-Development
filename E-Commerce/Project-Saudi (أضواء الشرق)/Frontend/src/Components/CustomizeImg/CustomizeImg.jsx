@@ -1,4 +1,4 @@
-import React, { useContext, useState, lazy, Suspense } from "react";
+import React, { useState, lazy, Suspense } from "react";
 import Tooltip from "@mui/material/Tooltip";
 
 //___ Additional utility ___//
@@ -448,7 +448,6 @@ const CustomizeImg = () => {
               top: btnImgPreview.topBtnImgPrev,
               right: btnImgPreview.rightPosBtnImgPrev,
             }}
-            // className={`${btnImgPreview == null ? "d-none" : "buttonImg"}`}
             className={`buttonImg ${
               dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
             }`}
@@ -460,7 +459,6 @@ const CustomizeImg = () => {
               width: nakImgPreview.widthNakImgPrev,
               right: nakImgPreview.rightPosNakImgPrev,
             }}
-            // className={`${nakImgPreview == null ? "d-none" : "nackImg"}`}
             className={`nackImg ${
               dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
             }`}
@@ -472,7 +470,6 @@ const CustomizeImg = () => {
               width: pktImgPreview.widthPktImgPrev,
               right: pktImgPreview.rightPosPktImgPrev,
             }}
-            // className={`${pktImgPreview == null ? "d-none" : "pocket"}`}
             className={`pocket ${
               dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
             }`}
@@ -485,7 +482,6 @@ const CustomizeImg = () => {
               top: handImgPreview.topPosHndImgPrev,
               right: handImgPreview.rightPosHndImgPrev,
             }}
-            // className={`${handImgPreview == null ? "d-none" : "rightHand"}`}
             className={`rightHand ${
               dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
             }`}
@@ -498,7 +494,6 @@ const CustomizeImg = () => {
               top: handImgPreview.topPosHndImgPrev,
               left: handImgPreview.leftPosHndImgPrev,
             }}
-            // className={`${handImgPreview == null ? "d-none" : "leftHand"}`}
             className={`leftHand ${
               dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
             }`}

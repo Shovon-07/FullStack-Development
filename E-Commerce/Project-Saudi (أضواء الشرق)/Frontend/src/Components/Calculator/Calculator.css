@@ -37,8 +37,8 @@
   opacity: 1;
   z-index: 1000;
   /* display: block; */
-  width: 30%;
-  height: 70%;
+  width: 400px;
+  height: 430px;
   /* top: 10px; */
 }
 .calculatorBox .closeIcon {
@@ -111,4 +111,16 @@
 .calculatorBox.fullWidth .buttons table tr td {
   height: 50px;
   font-size: 25px;
+}
+
+/*__ Responsive __*/
+@media screen and (max-width: 445px) {
+  .calculatorBox.fullWidth {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 445px) {
+  .calculatorBox.fullWidth {
+    width: 250px;
+  }
 }

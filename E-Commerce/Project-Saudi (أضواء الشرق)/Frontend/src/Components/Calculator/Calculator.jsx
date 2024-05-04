@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Tooltip from "@mui/material/Tooltip";
 
 //___ Icons ___//
 import { IoCalculatorSharp } from "react-icons/io5";
@@ -58,9 +59,11 @@ const Calculator = () => {
 
   return (
     <div className="Calculator">
-      <div className="iconBox d-flex cursor" onClick={handleActive}>
-        <IoCalculatorSharp size={25} />
-      </div>
+      <Tooltip title="Calculator">
+        <div className="iconBox d-flex cursor" onClick={handleActive}>
+          <IoCalculatorSharp size={25} />
+        </div>
+      </Tooltip>
 
       <div
         className={(() => {
