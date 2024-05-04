@@ -74,6 +74,7 @@
   display: flex;
   align-items: center;
   justify-content: end;
+  transition: var(--trans);
 }
 .calculatorBox.fullWidth .display {
   height: 70px;
