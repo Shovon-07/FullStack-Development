@@ -32,29 +32,39 @@ const Calculator = () => {
   };
 
   //__ Handle input value __//
-  const [calcInput, setCalcInp] = useState({
-    display: "00",
-    one: "1",
-    two: "2",
-    three: "3",
-    four: "4",
-    five: "5",
-    six: "6",
-    seveen: "7",
-    eight: "8",
-    nine: "9",
-    zero: "0",
-    dot: ".",
-    AC: "AC",
-    percent: "%",
-    devide: "/",
-    multiply: "*",
-    plus: "+",
-    minus: "-",
-  });
+  const [result, setResult] = useState("");
+  // const [calcInput, setCalcInp] = useState({
+  //   one: "1",
+  //   two: "2",
+  //   three: "3",
+  //   four: "4",
+  //   five: "5",
+  //   six: "6",
+  //   seveen: "7",
+  //   eight: "8",
+  //   nine: "9",
+  //   zero: "0",
+  //   dot: ".",
+  //   AC: "AC",
+  //   percent: "%",
+  //   devide: "/",
+  //   multiply: "*",
+  //   plus: "+",
+  //   minus: "-",
+  // });
 
-  const handleInput = (e) => {
-    setCalcInp({ ...calcInput, [e.target.name]: e.target.value });
+  // const changeInput = (e) => {
+  //   setResult((prev) => (prev = e.target.value));
+  // };
+
+  const handleInput = (event) => {
+    // setCalcInp({ ...calcInput, [e.target.name]: e.target.value });
+    setResult(result.concat(event.target.value));
+  };
+
+  const calculate = () => {
+    // setResult(eval(result).toString());
+    alert("Calculator doesn't work this moment !");
   };
 
   return (
@@ -89,10 +99,12 @@ const Calculator = () => {
         </div>
         <div className="display">
           <input
-            type="text"
-            name="display"
-            value={calcInput.display}
-            onChange={handleInput}
+            type="number"
+            name="result"
+            id="result"
+            value={result}
+            placeholder="0"
+            // onChange={changeInput}
             readOnly
           />
         </div>
@@ -101,79 +113,174 @@ const Calculator = () => {
             <tbody>
               <tr>
                 <td>
-                  <input type="submit" value={calcInput.AC} />
+                  <input
+                    type="button"
+                    // value={calcInput.AC}
+                    value="AC"
+                    onClick={() => {
+                      setResult("");
+                    }}
+                  />
                 </td>
                 <td>
-                  <button type="submit" value={"clear"}>
+                  <button type="button" value="clear">
                     <FaBackspace />
                   </button>
                 </td>
                 <td>
                   <input
-                    type="submit"
+                    type="button"
                     name="percent"
-                    value={calcInput.percent}
+                    // value={calcInput.percent}
+                    value="%"
+                    onClick={handleInput}
                   />
-                </td>
-                <td>
-                  <input type="submit" name="devide" value={calcInput.devide} />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="submit" name="seveen" value={calcInput.seveen} />
-                </td>
-                <td>
-                  <input type="submit" name="eight" value={calcInput.eight} />
-                </td>
-                <td>
-                  <input type="submit" name="nine" value={calcInput.nine} />
                 </td>
                 <td>
                   <input
-                    type="submit"
-                    name="multiply"
-                    value={calcInput.multiply}
+                    type="button"
+                    name="devide"
+                    // value={calcInput.devide}
+                    value="/"
+                    onClick={handleInput}
                   />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <input type="submit" name="four" value={calcInput.four} />
+                  <input
+                    type="button"
+                    name="seveen"
+                    // value={calcInput.seveen}
+                    value="7"
+                    onClick={handleInput}
+                  />
                 </td>
                 <td>
-                  <input type="submit" name="five" value={calcInput.five} />
+                  <input
+                    type="button"
+                    name="eight"
+                    // value={calcInput.eight}
+                    value="8"
+                    onClick={handleInput}
+                  />
                 </td>
                 <td>
-                  <input type="submit" name="six" value={calcInput.six} />
+                  <input
+                    type="button"
+                    name="nine"
+                    // value={calcInput.nine}
+                    value="9"
+                    onClick={handleInput}
+                  />
                 </td>
                 <td>
-                  <input type="submit" name="minus" value={calcInput.minus} />
+                  <input
+                    type="button"
+                    name="multiply"
+                    // value={calcInput.multiply}
+                    value="*"
+                    onClick={handleInput}
+                  />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <input type="submit" name="one" value={calcInput.one} />
+                  <input
+                    type="button"
+                    name="four"
+                    // value={calcInput.four}
+                    value="4"
+                    onClick={handleInput}
+                  />
                 </td>
                 <td>
-                  <input type="submit" name="two" value={calcInput.two} />
+                  <input
+                    type="button"
+                    name="five"
+                    // value={calcInput.five}
+                    value="5"
+                    onClick={handleInput}
+                  />
                 </td>
                 <td>
-                  <input type="submit" name="three" value={calcInput.three} />
+                  <input
+                    type="button"
+                    name="six"
+                    // value={calcInput.six}
+                    value="6"
+                    onClick={handleInput}
+                  />
                 </td>
                 <td>
-                  <input type="submit" name="plus" value={calcInput.plus} />
+                  <input
+                    type="button"
+                    name="minus"
+                    // value={calcInput.minus}
+                    value="-"
+                    onClick={handleInput}
+                  />
                 </td>
               </tr>
               <tr>
                 <td>
-                  <input type="submit" name="zero" value={calcInput.zero} />
+                  <input
+                    type="button"
+                    name="one"
+                    // value={calcInput.one}
+                    value="1"
+                    onClick={handleInput}
+                  />
                 </td>
                 <td>
-                  <input type="submit" name="dot" value={calcInput.dot} />
+                  <input
+                    type="button"
+                    name="two"
+                    // value={calcInput.two}
+                    value="2"
+                    onClick={handleInput}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="button"
+                    name="three"
+                    // value={calcInput.three}
+                    value="3"
+                    onClick={handleInput}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="button"
+                    name="plus"
+                    // value={calcInput.plus}
+                    value="+"
+                    onClick={handleInput}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input
+                    type="button"
+                    name="zero"
+                    // value={calcInput.zero}
+                    value="0"
+                    onClick={handleInput}
+                  />
+                </td>
+                <td>
+                  <input
+                    type="button"
+                    name="dot"
+                    // value={calcInput.dot}
+                    value="."
+                    onClick={handleInput}
+                  />
                 </td>
                 <td colSpan="2" className="equalBtn">
-                  <button type="submit" value={"equal"}>
+                  <button type="button" value="equal" onClick={calculate}>
                     =
                   </button>
                 </td>
