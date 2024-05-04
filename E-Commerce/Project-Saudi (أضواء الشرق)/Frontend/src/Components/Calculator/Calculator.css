@@ -122,6 +122,10 @@
   font-size: 25px;
 }
 
+.disbled {
+  pointer-events: none;
+}
+
 /*__ Responsive __*/
 @media screen and (max-width: 445px) {
   .calculatorBox.fullWidth {

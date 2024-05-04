@@ -78,9 +78,7 @@ const Calculator = () => {
           <FaMinus size={15} className="icon cursor" onClick={handleMinimize} />
           <RxCross1 size={15} className="icon cursor" onClick={handleClose} />
         </div>
-        <div className="display" data-text="placeholder text...">
-          {result}
-        </div>
+        <div className="display">{result}</div>
         <div className="buttons">
           <table>
             <tbody>
@@ -108,18 +106,18 @@ const Calculator = () => {
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="percent"
-                    // value={calcInput.percent}
                     value="%"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="devide"
-                    // value={calcInput.devide}
                     value="/"
                     onClick={handleInput}
                   />
@@ -128,36 +126,36 @@ const Calculator = () => {
               <tr>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="seveen"
-                    // value={calcInput.seveen}
                     value="7"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="eight"
-                    // value={calcInput.eight}
                     value="8"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="nine"
-                    // value={calcInput.nine}
                     value="9"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="multiply"
-                    // value={calcInput.multiply}
                     value="*"
                     onClick={handleInput}
                   />
@@ -166,36 +164,36 @@ const Calculator = () => {
               <tr>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="four"
-                    // value={calcInput.four}
                     value="4"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="five"
-                    // value={calcInput.five}
                     value="5"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="six"
-                    // value={calcInput.six}
                     value="6"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="minus"
-                    // value={calcInput.minus}
                     value="-"
                     onClick={handleInput}
                   />
@@ -204,36 +202,36 @@ const Calculator = () => {
               <tr>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="one"
-                    // value={calcInput.one}
                     value="1"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="two"
-                    // value={calcInput.two}
                     value="2"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="three"
-                    // value={calcInput.three}
                     value="3"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="plus"
-                    // value={calcInput.plus}
                     value="+"
                     onClick={handleInput}
                   />
@@ -242,18 +240,18 @@ const Calculator = () => {
               <tr>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="zero"
-                    // value={calcInput.zero}
                     value="0"
                     onClick={handleInput}
                   />
                 </td>
                 <td>
                   <input
+                    className={result.length >= 12 ? "disbled" : ""}
                     type="button"
                     name="dot"
-                    // value={calcInput.dot}
                     value="."
                     onClick={handleInput}
                   />
