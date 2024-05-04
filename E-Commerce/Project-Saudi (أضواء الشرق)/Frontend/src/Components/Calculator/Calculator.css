@@ -116,10 +116,15 @@
 /*__ Responsive __*/
 @media screen and (max-width: 445px) {
   .calculatorBox.fullWidth {
+    width: 350px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .calculatorBox.fullWidth {
     width: 300px;
   }
 }
-@media screen and (max-width: 445px) {
+@media screen and (max-width: 325px) {
   .calculatorBox.fullWidth {
     width: 250px;
   }
