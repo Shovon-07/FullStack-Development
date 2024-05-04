@@ -31,31 +31,7 @@ const Calculator = () => {
     setActivCalculator((prev) => (prev = 0));
   };
 
-  //__ Handle input value __//
   const [result, setResult] = useState("");
-  // const [calcInput, setCalcInp] = useState({
-  //   one: "1",
-  //   two: "2",
-  //   three: "3",
-  //   four: "4",
-  //   five: "5",
-  //   six: "6",
-  //   seveen: "7",
-  //   eight: "8",
-  //   nine: "9",
-  //   zero: "0",
-  //   dot: ".",
-  //   AC: "AC",
-  //   percent: "%",
-  //   devide: "/",
-  //   multiply: "*",
-  //   plus: "+",
-  //   minus: "-",
-  // });
-
-  // const changeInput = (e) => {
-  //   setResult((prev) => (prev = e.target.value));
-  // };
 
   const handleInput = (event) => {
     // setCalcInp({ ...calcInput, [e.target.name]: e.target.value });
@@ -63,8 +39,13 @@ const Calculator = () => {
   };
 
   const calculate = () => {
-    // setResult(eval(result).toString());
-    alert("Calculator doesn't work this moment !");
+    try {
+      // Evaluate the input expression
+      const evalResult = eval(result);
+      setResult(evalResult.toString());
+    } catch (e) {
+      setResult("Error");
+    }
   };
 
   return (
@@ -97,16 +78,8 @@ const Calculator = () => {
           <FaMinus size={15} className="icon cursor" onClick={handleMinimize} />
           <RxCross1 size={15} className="icon cursor" onClick={handleClose} />
         </div>
-        <div className="display">
-          <input
-            type="number"
-            name="result"
-            id="result"
-            value={result}
-            placeholder="0"
-            // onChange={changeInput}
-            readOnly
-          />
+        <div className="display" data-text="placeholder text...">
+          {result}
         </div>
         <div className="buttons">
           <table>
@@ -123,7 +96,13 @@ const Calculator = () => {
                   />
                 </td>
                 <td>
-                  <button type="button" value="clear">
+                  <button
+                    type="button"
+                    value="clear"
+                    onClick={() => {
+                      setResult(result.slice(0, -1));
+                    }}
+                  >
                     <FaBackspace />
                   </button>
                 </td>
@@ -279,8 +258,8 @@ const Calculator = () => {
                     onClick={handleInput}
                   />
                 </td>
-                <td colSpan="2" className="equalBtn">
-                  <button type="button" value="equal" onClick={calculate}>
+                <td colSpan="2" className="equalBtn" onClick={calculate}>
+                  <button type="button" value="equal">
                     =
                   </button>
                 </td>
