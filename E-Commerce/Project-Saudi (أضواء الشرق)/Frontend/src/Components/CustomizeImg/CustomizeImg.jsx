@@ -5,11 +5,11 @@ import Tooltip from "@mui/material/Tooltip";
 import Loader from "../Loader/Loader";
 
 //___ Images ___//
-import jubba from "/images/dress/jubba.png";
-import Dress_1 from "/images/dress/dress_type/1.png";
-import Dress_2 from "/images/dress/dress_type/2.png";
-import Dress_3 from "/images/dress/dress_type/3.png";
-import Dress_4 from "/images/dress/dress_type/4.png";
+import Structure from "/images/dress/dress_type/Structure.png";
+import Standard from "/images/dress/dress_type/Standard.png";
+import Qatari from "/images/dress/dress_type/Qatari.png";
+import Kuwaiti from "/images/dress/dress_type/Kuwaiti.png";
+import Emarati from "/images/dress/dress_type/Emarati.png";
 
 import Btn_1 from "/images/dress/button_type/Button Triangle.png";
 import Btn_2 from "/images/dress/button_type/Button Square.png";
@@ -52,8 +52,8 @@ const GetScreenShoot = lazy(() => import("../GetScreenShoot/GetScreenShoot"));
 const CustomizeImg = () => {
   // Images
   const [dressImgPreview, setDressImgPreview] = useState({
-    dressImgPrev: jubba,
-    dressImgNamePrev: "Standard",
+    dressImgPrev: Structure,
+    dressImgNamePrev: "Structure",
     widthDressImgPrev: null,
     heightDressImgPrev: null,
     topDressImgPrev: null,
@@ -93,7 +93,15 @@ const CustomizeImg = () => {
 
   const dressImg = [
     {
-      dressImg: jubba,
+      dressImg: Structure,
+      dressName: "Structure",
+      width: "300px",
+      height: "400px",
+      top: "0",
+      right: "0",
+    },
+    {
+      dressImg: Standard,
       dressName: "Standard",
       width: "300px",
       height: "400px",
@@ -101,32 +109,24 @@ const CustomizeImg = () => {
       right: "0",
     },
     {
-      dressImg: Dress_1,
-      dressName: "Dress 1",
+      dressImg: Qatari,
+      dressName: "Qatari",
       width: "300px",
       height: "400px",
       top: "0",
       right: "0",
     },
     {
-      dressImg: Dress_2,
-      dressName: "Dress 2",
+      dressImg: Kuwaiti,
+      dressName: "Kuwaiti",
       width: "300px",
       height: "400px",
       top: "0",
       right: "0",
     },
     {
-      dressImg: Dress_3,
-      dressName: "Dress 3",
-      width: "300px",
-      height: "400px",
-      top: "0",
-      right: "0",
-    },
-    {
-      dressImg: Dress_4,
-      dressName: "Dress 4",
+      dressImg: Emarati,
+      dressName: "Emarati",
       width: "300px",
       height: "400px",
       top: "0",
@@ -309,7 +309,7 @@ const CustomizeImg = () => {
       rightPosDressImgPrev: items.right,
     });
 
-    if (dressImgPreview.dressImgNamePrev !== "Standard") {
+    if (dressImgPreview.dressImgNamePrev !== "Structure") {
       setBtnImgPreview({
         btnImgPrev: null,
         widthBtnImgPrev: null,
@@ -387,7 +387,8 @@ const CustomizeImg = () => {
     setActiveBtn(0);
 
     setDressImgPreview({
-      dressImgPrev: jubba,
+      dressImgPrev: Structure,
+      dressImgNamePrev: "Structure",
 
       // widthDressImgPrev: items.width,
       // heightDressImgPrev: items.height,
@@ -449,7 +450,7 @@ const CustomizeImg = () => {
               right: btnImgPreview.rightPosBtnImgPrev,
             }}
             className={`buttonImg ${
-              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+              dressImgPreview.dressImgNamePrev !== "Structure" ? "d-none" : ""
             }`}
           />
           <img
@@ -460,7 +461,7 @@ const CustomizeImg = () => {
               right: nakImgPreview.rightPosNakImgPrev,
             }}
             className={`nackImg ${
-              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+              dressImgPreview.dressImgNamePrev !== "Structure" ? "d-none" : ""
             }`}
           />
           <img
@@ -471,7 +472,7 @@ const CustomizeImg = () => {
               right: pktImgPreview.rightPosPktImgPrev,
             }}
             className={`pocket ${
-              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+              dressImgPreview.dressImgNamePrev !== "Structure" ? "d-none" : ""
             }`}
           />
           <img
@@ -483,7 +484,7 @@ const CustomizeImg = () => {
               right: handImgPreview.rightPosHndImgPrev,
             }}
             className={`rightHand ${
-              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+              dressImgPreview.dressImgNamePrev !== "Structure" ? "d-none" : ""
             }`}
           />
           <img
@@ -495,7 +496,7 @@ const CustomizeImg = () => {
               left: handImgPreview.leftPosHndImgPrev,
             }}
             className={`leftHand ${
-              dressImgPreview.dressImgNamePrev !== "Standard" ? "d-none" : ""
+              dressImgPreview.dressImgNamePrev !== "Structure" ? "d-none" : ""
             }`}
           />
         </div>
@@ -527,7 +528,9 @@ const CustomizeImg = () => {
           <div className="btnParent">
             <button
               className={`button ${
-                dressImgPreview.dressImgNamePrev == "Standard" ? "" : "disabled"
+                dressImgPreview.dressImgNamePrev == "Structure"
+                  ? ""
+                  : "disabled"
               }`}
               onClick={handleButtonChild}
               value={1}
@@ -553,7 +556,9 @@ const CustomizeImg = () => {
           <div className="btnParent">
             <button
               className={`button ${
-                dressImgPreview.dressImgNamePrev == "Standard" ? "" : "disabled"
+                dressImgPreview.dressImgNamePrev == "Structure"
+                  ? ""
+                  : "disabled"
               }`}
               onClick={handleButtonChild}
               value={2}
@@ -579,7 +584,9 @@ const CustomizeImg = () => {
           <div className="btnParent">
             <button
               className={`button ${
-                dressImgPreview.dressImgNamePrev == "Standard" ? "" : "disabled"
+                dressImgPreview.dressImgNamePrev == "Structure"
+                  ? ""
+                  : "disabled"
               }`}
               onClick={handleButtonChild}
               value={3}
@@ -605,7 +612,9 @@ const CustomizeImg = () => {
           <div className="btnParent">
             <button
               className={`button ${
-                dressImgPreview.dressImgNamePrev == "Standard" ? "" : "disabled"
+                dressImgPreview.dressImgNamePrev == "Structure"
+                  ? ""
+                  : "disabled"
               }`}
               onClick={handleButtonChild}
               value={4}
