@@ -55,6 +55,7 @@ const PendingOrdersInvoice = () => {
     pocket_type: "",
     hand_type: "",
     quantity: "",
+    shop_phone: "",
     note: "",
   });
   const getApiData = async () => {
@@ -95,6 +96,7 @@ const PendingOrdersInvoice = () => {
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
           quantity: response.data.quantity,
+          shop_phone: response.data.shop_phone,
           note: response.data.note,
         });
       });
@@ -122,6 +124,9 @@ const PendingOrdersInvoice = () => {
         <div className="logoSec d-flex">
           <div className="left">
             <img src={Logo} alt="" />
+          </div>
+          <div className="middle">
+            <h2>{apiData.shop_phone}</h2>
           </div>
           <div className="right">
             <h2>أضواء الشرق</h2>

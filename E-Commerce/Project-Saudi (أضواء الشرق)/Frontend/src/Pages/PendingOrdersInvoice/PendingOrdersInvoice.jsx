@@ -141,6 +141,9 @@ const PendingOrdersInvoice = () => {
           <div className="left">
             <img src={Logo} alt="" />
           </div>
+          <div className="middle">
+            <h2>{apiData.shop_phone}</h2>
+          </div>
           <div className="right">
             <h2>أضواء الشرق</h2>
           </div>
@@ -438,10 +441,10 @@ const PendingOrdersInvoice = () => {
               <p>Salesperson : </p>
               <h4 className="salespersonNmae">أضواء الشرق</h4>
             </div>
-            <div className="d-flex flex-start gap-10">
+            {/* <div className="d-flex flex-start gap-10">
               <p>Shop phone : </p>
               <h4 className="phone">{apiData.shop_phone}</h4>
-            </div>
+            </div> */}
           </div>
           <div className="right">
             <table>

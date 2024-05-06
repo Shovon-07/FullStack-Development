@@ -74,7 +74,7 @@ const CreateInvoice = () => {
     advance: "",
     due: "",
 
-    shop_phone: "xxxxxxxxxxx",
+    shop_phone: "0558180520",
     note: "",
   });
 
@@ -249,6 +249,7 @@ const CreateInvoice = () => {
               advance: "",
               due: "",
 
+              shop_phone: "0558180520",
               note: "",
             });
             setCalc({

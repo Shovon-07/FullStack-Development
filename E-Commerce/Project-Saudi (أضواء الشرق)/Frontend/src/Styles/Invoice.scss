@@ -15,13 +15,18 @@
     justify-content: space-between;
     .left {
       img {
-        width: 80px;
+        width: 120px;
         height: auto;
+      }
+    }
+    .middle {
+      h2 {
       }
     }
     .right {
       h2 {
         font-weight: 500;
+        font-size: 30px;
       }
     }
   }
