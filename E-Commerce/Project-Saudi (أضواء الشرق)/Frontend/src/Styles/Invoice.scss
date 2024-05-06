@@ -126,6 +126,23 @@
     }
   }
 
+  .note {
+    margin-top: 10px;
+    label {
+      display: block;
+      margin: 20px 0 8px 0;
+      font-size: 14px;
+      color: $placeholder-color;
+    }
+    textarea {
+      width: 100% !important;
+      resize: none;
+      &:disabled {
+        pointer-events: none;
+      }
+    }
+  }
+
   .summery {
     justify-content: space-between;
     margin-top: 50px;

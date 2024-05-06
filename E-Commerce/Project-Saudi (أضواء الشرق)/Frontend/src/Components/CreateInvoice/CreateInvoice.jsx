@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 //___ Icons ___//
 import { FiAlertTriangle } from "react-icons/fi";
+import { FaBackspace } from "react-icons/fa";
 
 //___ Css ___//
 import "./CreateInvoice.scss";
@@ -148,6 +149,8 @@ const CreateInvoice = () => {
       toast.error("Please enter vat");
     } else if (invoiceInputValue.advance == "") {
       toast.error("Please enter recived amount");
+    } else if (invoiceInputValue.note.length > 1000) {
+      toast.error("You cannot enter more than 1000 characters");
     } else {
       try {
         const data = {
@@ -666,16 +669,28 @@ const CreateInvoice = () => {
               <div style={{ flexBasis: "50%" }}>
                 <h4>Note:</h4>{" "}
                 <textarea
+                  disabled={invoiceInputValue.note.length == 1000 ? "true" : ""}
                   name="note"
                   required
                   id=""
                   cols="30"
                   rows="10"
                   style={{ width: "100%", marginTop: "10px" }}
-                  placeholder="Invoice Note (Optional)"
+                  placeholder="Invoice Note (Must be within 1000 characters)"
                   value={invoiceInputValue.note}
                   onChange={handleInvoiceInputValue}
                 ></textarea>
+                <button
+                  className="button clearNote d-flex"
+                  onClick={() => {
+                    setInvoiceInputValue({
+                      ...invoiceInputValue,
+                      note: invoiceInputValue.note.slice(0, -1),
+                    });
+                  }}
+                >
+                  <FaBackspace size={20} />
+                </button>
               </div>
             </div>
           </div>

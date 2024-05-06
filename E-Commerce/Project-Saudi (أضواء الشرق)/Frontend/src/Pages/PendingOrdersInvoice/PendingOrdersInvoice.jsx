@@ -55,6 +55,7 @@ const PendingOrdersInvoice = () => {
     pocket_type: "",
     hand_type: "",
     quantity: "",
+    note: "",
 
     material_price: "",
     total: "",
@@ -102,6 +103,7 @@ const PendingOrdersInvoice = () => {
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
           quantity: response.data.quantity,
+          note: response.data.note,
 
           material_price: response.data.sale_price,
           total: response.data.total,
@@ -409,7 +411,7 @@ const PendingOrdersInvoice = () => {
                 readOnly
               />
             </div>
-            <div className={apiData.pocket_type == "" ? "d-none" : "inputBox"}>
+            <div className={apiData.hand_type == "" ? "d-none" : "inputBox"}>
               <label htmlFor="">Hand type</label>
               <input
                 type="text"
@@ -421,10 +423,21 @@ const PendingOrdersInvoice = () => {
           </div>
         </div>
 
+        <div className={apiData.note == "" ? "d-none" : "note"}>
+          <label htmlFor="">Note</label>
+          <textarea cols="30" rows="5" readOnly value={apiData.note}></textarea>
+        </div>
+
         <div className="summery d-flex flex-start gap-30">
-          <div className="left d-flex flex-start gap-10">
-            <p>Salesperson : </p>
-            <h4 className="salespersonNmae">أضواء الشرق</h4>
+          <div className="left">
+            <div className="d-flex flex-start gap-10">
+              <p>Salesperson : </p>
+              <h4 className="salespersonNmae">أضواء الشرق</h4>
+            </div>
+            <div className="d-flex flex-start gap-10">
+              <p>Shop phone : </p>
+              <h4 className="phone">xxxxxxxxxxxx</h4>
+            </div>
           </div>
           <div className="right">
             <table>

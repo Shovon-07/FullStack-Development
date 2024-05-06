@@ -145,6 +145,15 @@
     }
   }
 
+  .clearNote {
+    background: $red;
+    padding: 5px 10px;
+    margin-top: 10px;
+    &:hover {
+      background: rgb(190, 2, 2);
+    }
+  }
+
   .css-1ex1afd-MuiTableCell-root,
   .css-177gid-MuiTableCell-root {
     border: 0;

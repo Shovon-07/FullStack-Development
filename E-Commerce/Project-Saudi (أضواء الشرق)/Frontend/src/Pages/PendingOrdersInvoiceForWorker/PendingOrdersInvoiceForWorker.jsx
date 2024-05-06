@@ -55,6 +55,7 @@ const PendingOrdersInvoice = () => {
     pocket_type: "",
     hand_type: "",
     quantity: "",
+    note: "",
   });
   const getApiData = async () => {
     try {
@@ -94,6 +95,7 @@ const PendingOrdersInvoice = () => {
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
           quantity: response.data.quantity,
+          note: response.data.note,
         });
       });
       setLoading(false);
@@ -403,6 +405,11 @@ const PendingOrdersInvoice = () => {
               />
             </div>
           </div>
+        </div>
+
+        <div className={apiData.note == "" ? "d-none" : "note"}>
+          <label htmlFor="">Note</label>
+          <textarea cols="30" rows="5" readOnly value={apiData.note}></textarea>
         </div>
       </div>
     </>

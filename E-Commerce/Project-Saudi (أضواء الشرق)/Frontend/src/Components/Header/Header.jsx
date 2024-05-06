@@ -54,19 +54,15 @@ const Header = () => {
               ) : (
                 ""
               )}
-              {auth === "admin@mail.com" ? (
-                <li>
-                  <NavLink
-                    to="/dashboard/sell"
-                    className={({ isActive }) => (isActive ? "isActive" : "")}
-                    onClick={closeNav}
-                  >
-                    Sell
-                  </NavLink>
-                </li>
-              ) : (
-                ""
-              )}
+              <li>
+                <NavLink
+                  to="/dashboard/sell"
+                  className={({ isActive }) => (isActive ? "isActive" : "")}
+                  onClick={closeNav}
+                >
+                  Sell
+                </NavLink>
+              </li>
               <li>
                 <NavLink
                   to="/dashboard/pending-orders"

@@ -42,17 +42,16 @@ function App() {
           element={<ProtectedRoute Component={Layout} />}
         >
           {/* <Route path="/dashboard/home" element={<Home />} /> */}
-
           <Route
             path={auth == "worker@mail.com" ? "" : "/dashboard/home"}
             element={<Home />}
           />
 
-          {/* <Route path="/dashboard/sell" element={<Sell />} /> */}
-          <Route
+          <Route path="/dashboard/sell" element={<Sell />} />
+          {/* <Route
             path={auth == "worker@mail.com" ? "" : "/dashboard/sell"}
             element={<Sell />}
-          />
+          /> */}
 
           <Route path="/dashboard/pending-orders" element={<PendingOrders />} />
           <Route path="/dashboard/complete-order" element={<CompleteOrder />} />

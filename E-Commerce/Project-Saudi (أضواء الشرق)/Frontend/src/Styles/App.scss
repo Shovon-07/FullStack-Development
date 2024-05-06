@@ -120,8 +120,14 @@ textarea {
   }
 }
 textarea {
+  resize: vertical;
+  line-height: 28px;
+  font-size: 18px;
+  text-align: justify;
+  font-family: "Times New Roman", Times, serif;
   &::placeholder {
-    font-size: 14px;
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
   }
 }
 input:disabled {

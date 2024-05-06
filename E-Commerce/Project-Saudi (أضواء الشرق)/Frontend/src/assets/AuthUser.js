@@ -33,7 +33,7 @@ export default function AuthUser() {
     if (token === "admin@mail.com") {
       navigate("/dashboard/home");
     } else if (token === "worker@mail.com") {
-      navigate("/dashboard/pending-orders");
+      navigate("/dashboard/sell");
     }
   };
 
