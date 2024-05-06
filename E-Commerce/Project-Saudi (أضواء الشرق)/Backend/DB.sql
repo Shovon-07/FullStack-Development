@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 01, 2024 at 12:58 PM
+-- Generation Time: May 06, 2024 at 03:11 PM
 -- Server version: 10.6.17-MariaDB
 -- PHP Version: 8.1.27
 
@@ -92,7 +92,7 @@ CREATE TABLE `invoices` (
   `collection` varchar(255) NOT NULL DEFAULT '0',
   `net_outstanding` varchar(255) NOT NULL DEFAULT '0',
   `delivery_date` varchar(255) DEFAULT NULL,
-  `inqueries_number` varchar(255) DEFAULT NULL,
+  `shop_phone` varchar(255) DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   `status` enum('pending','cancel','complete','delivery') NOT NULL DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
