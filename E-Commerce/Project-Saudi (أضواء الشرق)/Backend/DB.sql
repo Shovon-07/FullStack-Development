@@ -93,7 +93,7 @@ CREATE TABLE `invoices` (
   `net_outstanding` varchar(255) NOT NULL DEFAULT '0',
   `delivery_date` varchar(255) DEFAULT NULL,
   `shop_phone` varchar(255) DEFAULT NULL,
-  `note` varchar(255) DEFAULT NULL,
+  `note` longtext DEFAULT NULL,
   `status` enum('pending','cancel','complete','delivery') NOT NULL DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()

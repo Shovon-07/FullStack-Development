@@ -65,5 +65,6 @@ Route::controller(InvoiceController::class)->group(function(){
 });
 
 Route::controller(UserController::class)->group(function(){
+    Route::get('/userData','UserData');
     Route::post('/login', 'Login');
 });

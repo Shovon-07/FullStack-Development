@@ -45,6 +45,18 @@ const Form = (props) => {
       } else {
         toast.error(response.data);
       }
+
+      /*
+      if (response.data["token"] === "edb0e96701c209ab4b50211c856c50c4") {
+        setToken(response.data["token"], response.data["status"]);
+      } else if (
+        response.data["token"] === "95c265b2580de762ec1f66e99b7dbc93"
+      ) {
+        setToken(response.data["token"], response.data["status"]);
+      } else {
+        toast.error(response.data["message"]);
+      }
+      */
     });
   };
 

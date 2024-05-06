@@ -65,7 +65,7 @@ return new class extends Migration
             $table->string('delivery_date')->nullable();
             $table->string('inqueries_number')->nullable();
             $table->string('shop_phone')->nullable();
-            $table->string('note')->nullable();
+            $table->longText('note')->nullable();
             $table->enum('status',['pending','cancel','complete','delivery'])->default('pending');           
 
             $table->timestamp('created_at')->useCurrent();

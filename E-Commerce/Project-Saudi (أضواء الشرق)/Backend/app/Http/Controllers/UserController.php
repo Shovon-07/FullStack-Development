@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Images;
 use App\Models\User;
-use Hash;
+use Exception;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,14 +12,6 @@ class UserController extends Controller
         $userData = User::all();
         return $userData;
     }
-    // function CreateUser(Request $request) {
-    //     User::create([
-    //     'Name' => $request->input('name'),
-    //     'Email' => $request->input('email'),
-    //     'Password' => Hash::make($request->input('password'))
-    //     ]);
-    //     return "User created";
-    // }
 
     public function Login(Request $request)
     {
@@ -43,5 +34,41 @@ class UserController extends Controller
         } else {
             return "Invalid user";
         }
+
+        // $userData = User::where('Email','=', $email)->where('Password','=', $password)->first();
+        // $userEmail = $userData->Email;
+
+        // try {
+        //     if($userData != null) {
+        //         return response()->json([
+        //             "status" => "admin",
+        //             "message" => "Login succesfull",
+        //             "email" => $userEmail,
+        //             "token" => md5($userEmail)
+        //         ]);
+        //     }
+        //     // else if($userEmail === 'worker@mail.com') {
+        //     //     return response()->json([
+        //     //         "status" => "worker",
+        //     //         "message" => "Login succesfull",
+        //     //         "token" => md5($userEmail)
+        //     //     ]);
+        //     // }
+        //     else {
+        //         return response()->json([
+        //             "status" => "failed",
+        //             "message" => "User Not found",
+        //             "email" => "Not found",
+        //             "token" => "No token added"
+        //         ]);
+        //     }
+        // } catch (Exception $exception) {
+        //     return response()->json([
+        //         "status" => "failed",
+        //         "message" => $exception,
+        //         "email" => "Not found",
+        //         "token" => "No token added"
+        //     ]);
+        // }
     }
 }
