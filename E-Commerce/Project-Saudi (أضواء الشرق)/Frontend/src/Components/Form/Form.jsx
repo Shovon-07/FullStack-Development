@@ -61,6 +61,7 @@ const Form = (props) => {
                 value={formInput.name}
                 placeholder={items.placeholder}
                 onChange={handleFormInput}
+                autoComplete="off"
               />
 
               <div

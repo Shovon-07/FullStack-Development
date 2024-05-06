@@ -180,19 +180,22 @@ const PendingOrdersInvoice = () => {
 
         <div
           className="title"
-          style={{ margin: "50px 0 30px 0", fontSize: "13px" }}
+          style={{ margin: "40px 0 30px 0", fontSize: "13px" }}
         >
           <h2>Product Details</h2>
         </div>
 
         <div className="productDetails d-flex flex-start gap-30">
-          <div className="left">
+          {/* <div className="left">
             <img
               src={`http://project.preview.com.aljubairshovon.com/backend/public/images/ScreenShoot/${apiData.image}`}
               alt=""
             />
-          </div>
-          <div className="right d-flex flex-start gap-20">
+          </div> */}
+          <div
+            className="right d-flex flex-start gap-20"
+            style={{ flexBasis: "100%" }}
+          >
             <div className="left d-flex gap-20">
               <div className="inputBox">
                 <label htmlFor="">Material</label>
@@ -279,22 +282,13 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-              <div className="inputBox">
-                <label htmlFor="">Dress length</label>
-                <input
-                  type="text"
-                  name="dress_length"
-                  value={apiData.dress_length}
-                  readOnly
-                />
-              </div>
             </div>
             <div className="right d-flex gap-20">
-              <div className="inputBox">
+              {/* <div className="inputBox">
                 <label htmlFor="">Material length</label>
                 <input
                   type="text"
-                  name="cuff_length"
+                  name="material_length"
                   value={apiData.material_length + " m"}
                   readOnly
                 />
@@ -307,7 +301,7 @@ const PendingOrdersInvoice = () => {
                 <label htmlFor="">Material length</label>
                 <input
                   type="text"
-                  name="cuff_length"
+                  name="material_length_2"
                   value={apiData.material_length_2 + " m"}
                   readOnly
                 />
@@ -320,7 +314,7 @@ const PendingOrdersInvoice = () => {
                 <label htmlFor="">Material length</label>
                 <input
                   type="text"
-                  name="cuff_length"
+                  name="material_length_3"
                   value={apiData.material_length_3 + " m"}
                   readOnly
                 />
@@ -333,11 +327,11 @@ const PendingOrdersInvoice = () => {
                 <label htmlFor="">Material length</label>
                 <input
                   type="text"
-                  name="cuff_length"
+                  name="material_length_4"
                   value={apiData.material_length_4 + " m"}
                   readOnly
                 />
-              </div>
+              </div> */}
 
               <div className="inputBox">
                 <label htmlFor="">Quantity</label>
@@ -348,7 +342,15 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-
+              <div className="inputBox">
+                <label htmlFor="">Dress length</label>
+                <input
+                  type="text"
+                  name="dress_length"
+                  value={apiData.dress_length}
+                  readOnly
+                />
+              </div>
               <div className="inputBox">
                 <label htmlFor="">Shoulder length</label>
                 <input

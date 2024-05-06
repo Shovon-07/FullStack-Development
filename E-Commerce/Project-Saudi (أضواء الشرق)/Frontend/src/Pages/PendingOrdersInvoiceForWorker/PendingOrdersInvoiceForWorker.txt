@@ -170,16 +170,13 @@ const PendingOrdersInvoice = () => {
         </div>
 
         <div className="productDetails d-flex flex-start gap-30">
-          {/* <div className="left">
+          <div className="left">
             <img
               src={`http://project.preview.com.aljubairshovon.com/backend/public/images/ScreenShoot/${apiData.image}`}
               alt=""
             />
-          </div> */}
-          <div
-            className="right d-flex flex-start gap-20"
-            style={{ flexBasis: "100%" }}
-          >
+          </div>
+          <div className="right d-flex flex-start gap-20">
             <div className="left d-flex gap-20">
               <div className="inputBox">
                 <label htmlFor="">Material</label>
@@ -397,7 +394,7 @@ const PendingOrdersInvoice = () => {
                 readOnly
               />
             </div>
-            <div className={apiData.hand_type == "" ? "d-none" : "inputBox"}>
+            <div className={apiData.pocket_type == "" ? "d-none" : "inputBox"}>
               <label htmlFor="">Hand type</label>
               <input
                 type="text"
