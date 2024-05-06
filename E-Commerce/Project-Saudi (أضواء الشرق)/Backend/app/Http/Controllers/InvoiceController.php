@@ -55,6 +55,7 @@ class InvoiceController extends Controller
             $advance = $request->input('advance') ?? "";
             $due = $request->input("due");
             $deadline_date = $request->input('deadline_date');
+            $shop_phone = $request->input('shop_phone') ?? "";
             $note = $request->input('note') ?? "";
 
             //___ Process Image start ___//
@@ -111,6 +112,7 @@ class InvoiceController extends Controller
                     'advance' => $advance,
                     'due' => $due,
                     'deadline_date' => $deadline_date,
+                    'shop_phone' => $shop_phone,
                     'note' => $note
                 ]);
 

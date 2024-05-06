@@ -74,6 +74,7 @@ const CreateInvoice = () => {
     advance: "",
     due: "",
 
+    shop_phone: "xxxxxxxxxxx",
     note: "",
   });
 
@@ -149,7 +150,9 @@ const CreateInvoice = () => {
       toast.error("Please enter vat");
     } else if (invoiceInputValue.advance == "") {
       toast.error("Please enter recived amount");
-    } else if (invoiceInputValue.note.length > 1000) {
+    } else if (invoiceInputValue.shop_phone == "") {
+      toast.error("Please enter shope phone number");
+    } else if (invoiceInputValue.note.length > 550) {
       toast.error("You cannot enter more than 1000 characters");
     } else {
       try {
@@ -201,6 +204,7 @@ const CreateInvoice = () => {
           advance: Number(invoiceInputValue.advance).toFixed(2),
           due: Number(calc.dueForCalc).toFixed(2),
 
+          shop_phone: invoiceInputValue.shop_phone,
           note: invoiceInputValue.note,
         };
         setLoading(true);
@@ -666,17 +670,29 @@ const CreateInvoice = () => {
             style={{ flexBasis: "50%", padding: "20px 30px" }}
           >
             <div className="firstTop">
+              <div className="inputBox">
+                <h4>Shop Phone :</h4>
+                <input
+                  type="text"
+                  name="shop_phone"
+                  style={{ width: "100%", margin: "10px 0" }}
+                  required
+                  placeholder="Shop phone"
+                  value={invoiceInputValue.shop_phone}
+                  onChange={handleInvoiceInputValue}
+                />
+              </div>
               <div style={{ flexBasis: "50%" }}>
                 <h4>Note:</h4>{" "}
                 <textarea
-                  disabled={invoiceInputValue.note.length == 1000 ? "true" : ""}
+                  disabled={invoiceInputValue.note.length == 550 ? "true" : ""}
                   name="note"
                   required
                   id=""
                   cols="30"
                   rows="10"
                   style={{ width: "100%", marginTop: "10px" }}
-                  placeholder="Invoice Note (Must be within 1000 characters)"
+                  placeholder="Invoice Note (Must be within 550 characters)"
                   value={invoiceInputValue.note}
                   onChange={handleInvoiceInputValue}
                 ></textarea>

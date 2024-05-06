@@ -64,6 +64,7 @@ return new class extends Migration
             $table->string('net_outstanding')->default(0);            
             $table->string('delivery_date')->nullable();
             $table->string('inqueries_number')->nullable();
+            $table->string('shop_phone')->nullable();
             $table->string('note')->nullable();
             $table->enum('status',['pending','cancel','complete','delivery'])->default('pending');           
 

@@ -56,6 +56,7 @@ const Invoice = () => {
     pocket_type: "",
     hand_type: "",
     quantity: "",
+    shop_phone: "",
     note: "",
 
     material_price: "",
@@ -107,6 +108,7 @@ const Invoice = () => {
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
           quantity: response.data.quantity,
+          shop_phone: response.data.shop_phone,
           note: response.data.note,
 
           material_price: response.data.sale_price,
@@ -128,6 +130,7 @@ const Invoice = () => {
 
   useEffect(() => {
     getApiData();
+    console.log(apiData.note.length);
   }, []);
 
   return (
@@ -444,7 +447,7 @@ const Invoice = () => {
             </div>
             <div className="d-flex flex-start gap-10">
               <p>Shop phone : </p>
-              <h4 className="phone">xxxxxxxxxxxx</h4>
+              <h4 className="phone">{apiData.shop_phone}</h4>
             </div>
           </div>
           <div className="right">
