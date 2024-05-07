@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 //___ Icons ___//
 import { HiMenuAlt3 } from "react-icons/hi";
+import { RxCross2 } from "react-icons/rx";
 
 //___ Css ___//
 import "./Header.scss";
@@ -40,7 +41,14 @@ const Header = () => {
             </div>
           </div>
           <div className="right d-flex">
+            <div
+              className={`overlay ${navToggler === 0 ? "" : "activeOverlay"}`}
+              onClick={closeNav}
+            ></div>
             <div className="menus d-flex gap-30">
+              <div className="toggler close cursor">
+                <RxCross2 size={40} onClick={handleNavToggler} />
+              </div>
               {auth === "admin@mail.com" ? (
                 <li>
                   <NavLink
