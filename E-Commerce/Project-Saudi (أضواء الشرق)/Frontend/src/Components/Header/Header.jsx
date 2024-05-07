@@ -47,7 +47,7 @@ const Header = () => {
             ></div>
             <div className="menus d-flex gap-30">
               <div className="toggler close cursor">
-                <RxCross2 size={40} onClick={handleNavToggler} />
+                <RxCross2 size={30} onClick={handleNavToggler} />
               </div>
               {auth === "admin@mail.com" ? (
                 <li>

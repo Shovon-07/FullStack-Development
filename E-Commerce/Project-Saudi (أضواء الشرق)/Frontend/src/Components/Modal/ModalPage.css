@@ -5,8 +5,8 @@
   overflow-x: hidden;
 }
 .css-sox5kk-MuiBackdrop-root {
-  background: #0e0e0e;
-  opacity: 0.8 !important;
+  background: var(--overlay) !important;
+  opacity: 1 !important;
 }
 .modalCloseBtn {
   text-align: right;

@@ -18,7 +18,8 @@
   bottom: 0;
   cursor: wait;
   z-index: 500000 !important;
-  background-color: #000000da;
+  background: $overlay !important;
+  opacity: 1 !important;
 }
 .loader {
   width: 50px;

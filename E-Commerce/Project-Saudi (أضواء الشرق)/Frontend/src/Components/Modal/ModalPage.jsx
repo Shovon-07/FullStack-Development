@@ -5,6 +5,9 @@ const Modal = lazy(() => import("@mui/material/Modal"));
 const Fade = lazy(() => import("@mui/material/Fade"));
 const Button = lazy(() => import("@mui/material/Button"));
 
+//___ Icons ___//
+import { RxCross2 } from "react-icons/rx";
+
 //___ Css ___//
 import "./ModalPage.css";
 
@@ -112,7 +115,12 @@ const ModalPage = (props) => {
             <Fade in={open}>
               <Box sx={style}>
                 <div className="modalCloseBtn">
-                  <span onClick={handleClose}>X</span>
+                  <RxCross2
+                    size={25}
+                    className="cursor"
+                    color="#fff"
+                    onClick={handleClose}
+                  />
                 </div>
                 <div className="modalContent">
                   <h3 className="modalTitle">{slug}</h3>
@@ -122,9 +130,6 @@ const ModalPage = (props) => {
                       viewPrice == null ? "d-none" : "color-light"
                     }`}
                   >{`Current price = ${viewPrice}`}</p>
-                  {/* <p
-                    className={`${viewDue == null ? "d-none" : "color-light"}`}
-                  >{`Due = ${viewDue}`}</p> */}
                   <form className="d-flex" onSubmit={handleForm}>
                     {inputFields.map((items, index) => {
                       return (
