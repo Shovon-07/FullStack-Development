@@ -66,6 +66,9 @@
           &.isActive {
             color: $main-color;
           }
+          @include xsm {
+            font-size: 13px;
+          }
         }
         a::before {
           content: "";
@@ -97,12 +100,13 @@
         width: 250px;
         height: 100vh;
         overflow-y: scroll;
-        // padding: 20px 0;
-        padding: 80px 0 20px 0;
+        padding: 60px 0 20px 0;
         position: absolute;
         right: -300px;
-        // top: 102%;
         top: 0;
+      }
+      @include xsm {
+        width: 180px;
       }
     }
 
