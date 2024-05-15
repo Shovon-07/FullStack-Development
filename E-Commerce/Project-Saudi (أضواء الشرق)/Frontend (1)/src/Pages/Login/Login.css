@@ -1,0 +1,40 @@
+.Login {
+  background: var(--body-bg);
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Login .loginCard {
+  background: var(--light-1);
+  width: 50%;
+  padding: 20px;
+  /* height: 100%; */
+}
+.Login .title {
+  text-transform: uppercase;
+  text-align: center;
+}
+.Login .inputBox {
+  margin: 15px 0;
+}
+.Login .inputBox input {
+  width: 100%;
+}
+.Login .inputBox label {
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.Login .btnBox {
+  text-align: center;
+  margin-top: 30px;
+}
+.Login .btnBox .button {
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 9px 50px;
+}

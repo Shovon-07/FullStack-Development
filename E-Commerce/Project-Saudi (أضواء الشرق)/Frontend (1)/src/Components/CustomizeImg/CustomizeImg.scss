@@ -1,0 +1,158 @@
+@import "../../Styles/Variable.scss";
+@import "../../Styles/Responsive.scss";
+
+.CustomizeImg {
+  @include md {
+    flex-direction: column;
+  }
+  .left {
+    width: 400px;
+    background: $light-1;
+    padding: 15px;
+
+    .imageBox {
+      width: 300px;
+      height: 450px;
+
+      margin-top: 15px;
+      justify-content: center;
+      position: relative;
+
+      img {
+        position: absolute;
+      }
+
+      .main-img {
+        width: 300px;
+        height: 400px;
+        margin: auto;
+      }
+
+      .buttonImg {
+        height: 120px;
+        top: 44px;
+        z-index: 1;
+      }
+
+      .nackImg {
+        height: 35px;
+        top: 17px;
+        z-index: 100;
+      }
+
+      .pocket {
+        height: auto;
+        top: 86px;
+      }
+
+      .rightHand {
+        height: auto;
+        transform: rotate(-90deg);
+      }
+      .leftHand {
+        height: auto;
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .right {
+    flex-basis: 100%;
+    background: $light-1;
+    padding: 15px 30px;
+
+    .btnBox {
+      flex-direction: column;
+      margin-top: 30px;
+
+      .btnParent {
+        position: relative;
+        .button {
+          font-size: 17px;
+          width: 150px;
+          height: 40px;
+          &.disabled {
+            pointer-events: none;
+            background: $dark-3;
+            color: $light-3;
+          }
+          @include mlg {
+            width: 100px;
+            font-size: 13px;
+          }
+          @include xsm {
+            width: 80px;
+            font-size: 10px;
+          }
+        }
+
+        .btnChild {
+          background: transparent;
+          box-shadow: 1px 1px 5px #cfcfcf, -1px -1px 5px #cfcfcf;
+          overflow-x: scroll;
+          width: 400%;
+          opacity: 1;
+          position: absolute;
+          top: 0;
+          left: 175px;
+          display: -webkit-inline-box;
+          transition: 0.3s all ease;
+          @include xl {
+            width: 250%;
+          }
+          @include lg {
+            width: 170%;
+          }
+          @include mlg {
+            left: 120px;
+            width: 200%;
+          }
+          @include md {
+            width: 400%;
+          }
+          @include sm {
+            width: 250%;
+          }
+          @include xsm {
+            left: 90px;
+            width: 150%;
+          }
+
+          li {
+            overflow: hidden;
+            margin: 5px 10px;
+
+            img {
+              width: 60px;
+              height: 60px;
+              cursor: pointer;
+              transition: $trans;
+              z-index: 100;
+              &:hover {
+                transform: scale(1.2);
+              }
+            }
+          }
+        }
+      }
+    }
+    .bottomBtn {
+      margin-top: 100px;
+      justify-content: flex-end;
+      .button {
+        font-size: 17px;
+        width: 200px !important;
+        height: 40px;
+        color: $light-1;
+        border: none;
+        transition: $trans;
+      }
+      .resetBtn {
+        background: $red;
+        &:hover {
+          background: rgb(190, 2, 2);
+        }
+      }
+    }
+  }
+}

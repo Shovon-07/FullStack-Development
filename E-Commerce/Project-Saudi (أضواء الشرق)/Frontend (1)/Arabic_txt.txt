@@ -1,0 +1,139 @@
+Add Material 
+قماش جديد
+
+Material name
+اسم القماش
+
+Meter Available
+المخزون الموجود
+
+Buy price 
+سعر الشراء بالمتر
+
+Total Value 
+المجموع الكلي
+
+Action 
+تحديث المخزون
+
+Stock 
+زيادة مخزون
+
+
+Deduct 
+نقص مخزون
+
+Price
+تغيير السعر 
+
+Search by material name
+ابحث بأسم القماش
+
+Customer name
+اسم العميل
+
+Phone 
+رقم الجوال 
+
+Search by phone number 
+ابحث برقم الجوال
+
+Pay able
+المجموع الكلي
+
+Net outstanding 
+الباقي
+
+Action
+غير
+
+Delivery 
+توصيل
+
+Invoice 
+الفاتورة
+
+Confim
+تأكيد
+
+Quantity 
+العدد
+
+Total 
+المجموع
+
+Discount 
+خصم 
+
+Vat 
+الضريبة
+
+Received amount 
+الواصل
+
+Price 
+السعر 
+
+Current price 
+السعر الخالي 
+
+Update price 
+حدث السعر
+
+Deduct material 
+نقص قماش 
+ 
+Deduct material 
+نقص قماش
+
+Stock material 
+قماش جديد 
+
+Add stock 
+اضف مخزون 
+
+ New price 
+سعر جديد
+
+Dress preview 
+عرض مسبق 
+
+Select type 
+اختر النوع
+
+Dress type 
+نوع الثوب
+
+Button type 
+نوع السحاب
+
+Neck type
+نوع القلاب
+
+Pocket type 
+نوع الجيب
+
+Hand type 
+نوع الكبك
+
+Generate image 
+فعل الصورة
+
+Reset 
+اعادة ضبط
+
+Measurment
+المقاسات
+
+Add new material 
+أضف قماش جديد 
+
+Enter material name 
+أدخل أسم القماش
+
+
+Enter initial meters available 
+ادخل الكمية الموجودة بالمتر 
+
+Enter buy price 
+أدخل سعر الشراء للمتر

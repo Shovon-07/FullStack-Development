@@ -1,0 +1,16 @@
+@import "../../Styles/Variable.scss";
+
+.Footer {
+  margin-top: auto;
+  background: $light-1;
+  border-top: $border;
+  .footerContainer {
+    padding: 15px 0 10px 0;
+    text-align: center;
+    span {
+      color: $main-color;
+      font-weight: 800;
+      cursor: default;
+    }
+  }
+}
