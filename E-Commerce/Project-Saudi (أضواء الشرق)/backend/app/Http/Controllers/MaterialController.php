@@ -25,6 +25,7 @@ class MaterialController extends Controller
             $material = Material::where('id', '=', $request->id)->first();            
             $oldStock = $material->stock;
             $newStock = $oldStock + $request->stock;
+            //dd($newStock);
             if ($material) {
                 
                 $updateStock = Material::where('id', '=', $request->id)->update([
