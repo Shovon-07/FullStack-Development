@@ -153,7 +153,7 @@ const CreateInvoice = () => {
     } else if (invoiceInputValue.shop_phone == "") {
       toast.error("Please enter shope phone number");
     } else if (invoiceInputValue.note.length > 550) {
-      toast.error("You cannot enter more than 1000 characters");
+      toast.error("You cannot enter more than 550 characters");
     } else {
       try {
         const data = {
@@ -514,13 +514,13 @@ const CreateInvoice = () => {
                 </div>
                 <div
                   className="alertNote d-flex gap-20"
-                  style={{ marginTop: "-15px" }}
+                  style={{ margin: "-8px 0 7px 0" }}
                 >
                   <p style={{ lineHeight: "normal" }}>
-                    <FiAlertTriangle size={18} />
+                    رجاءً لا تختار نفس القماش
                   </p>
                   <p style={{ lineHeight: "normal" }}>
-                    رجاءً لا تختار نفس القماش
+                    <FiAlertTriangle size={18} />
                   </p>
                 </div>
 
