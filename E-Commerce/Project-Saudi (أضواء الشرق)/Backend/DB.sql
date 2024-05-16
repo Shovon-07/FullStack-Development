@@ -119,7 +119,10 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`id`, `name`, `price`, `stock`, `created_at`, `updated_at`) VALUES
-(1, 'No material', 0.00, 0.00, '2024-05-01 05:16:02', '2024-05-01 05:16:02');
+(1, 'لايوجد قماش', 0.00, 0.00, '2024-05-01 05:16:02', '2024-05-01 05:16:02');
+
+/* INSERT INTO `materials` (`id`, `name`, `price`, `stock`, `created_at`, `updated_at`) VALUES
+(1, 'No material', 0.00, 0.00, '2024-05-01 05:16:02', '2024-05-01 05:16:02'); */
 
 -- --------------------------------------------------------
 

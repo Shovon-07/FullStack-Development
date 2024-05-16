@@ -696,7 +696,7 @@ const CreateInvoice = () => {
                   cols="30"
                   rows="10"
                   style={{ width: "100%", marginTop: "10px" }}
-                  placeholder="Invoice Note (Must be within 550 characters)"
+                  placeholder="الملاحظة: (يجب ان لا تزيد عن 550 حرف)"
                   value={invoiceInputValue.note}
                   onChange={handleInvoiceInputValue}
                 ></textarea>
