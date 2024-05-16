@@ -807,11 +807,11 @@ const CreateInvoice = () => {
         </div>
         <div className="alertNote d-flex gap-20" style={{ marginTop: "50px" }}>
           <p>
-            <FiAlertTriangle size={25} />
-          </p>
-          <p>
             اذا غيرت الرقم المدخل في تفاصيل الطلب، الرجاء قم بتغييره على جميع
             الخيارات لتحصل على ارقام صحيحة.
+          </p>
+          <p>
+            <FiAlertTriangle size={25} />
           </p>
         </div>
       </div>
