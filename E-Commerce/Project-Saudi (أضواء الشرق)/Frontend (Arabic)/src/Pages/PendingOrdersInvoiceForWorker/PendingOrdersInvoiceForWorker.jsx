@@ -197,7 +197,7 @@ const PendingOrdersInvoice = () => {
               </div>
               <div
                 className={
-                  apiData.material_2 == "No material" ? "d-none" : "inputBox"
+                  apiData.material_2 == "لايوجد قماش" ? "d-none" : "inputBox"
                 }
               >
                 <label htmlFor="">القماش</label>
@@ -210,7 +210,7 @@ const PendingOrdersInvoice = () => {
               </div>
               <div
                 className={
-                  apiData.material_3 == "No material" ? "d-none" : "inputBox"
+                  apiData.material_3 == "لايوجد قماش" ? "d-none" : "inputBox"
                 }
               >
                 <label htmlFor="">القماش</label>
@@ -223,7 +223,7 @@ const PendingOrdersInvoice = () => {
               </div>
               <div
                 className={
-                  apiData.material_4 == "No material" ? "d-none" : "inputBox"
+                  apiData.material_4 == "لايوجد قماش" ? "d-none" : "inputBox"
                 }
               >
                 <label htmlFor="">القماش</label>
@@ -293,7 +293,7 @@ const PendingOrdersInvoice = () => {
               </div>
               <div
                 className={
-                  apiData.material_2 == "No material" ? "d-none" : "inputBox"
+                  apiData.material_2 == "لايوجد قماش" ? "d-none" : "inputBox"
                 }
               >
                 <label htmlFor="">طول القماش</label>
@@ -306,7 +306,7 @@ const PendingOrdersInvoice = () => {
               </div>
               <div
                 className={
-                  apiData.material_3 == "No material" ? "d-none" : "inputBox"
+                  apiData.material_3 == "لايوجد قماش" ? "d-none" : "inputBox"
                 }
               >
                 <label htmlFor="">طول القماش</label>
@@ -319,7 +319,7 @@ const PendingOrdersInvoice = () => {
               </div>
               <div
                 className={
-                  apiData.material_4 == "No material" ? "d-none" : "inputBox"
+                  apiData.material_4 == "لايوجد قماش" ? "d-none" : "inputBox"
                 }
               >
                 <label htmlFor="">طول القماش</label>

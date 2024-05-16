@@ -289,55 +289,6 @@ const PendingOrdersInvoice = () => {
               </div>
             </div>
             <div className="right d-flex gap-20">
-              {/* <div className="inputBox">
-                <label htmlFor="">Material length</label>
-                <input
-                  type="text"
-                  name="material_length"
-                  value={apiData.material_length + " m"}
-                  readOnly
-                />
-              </div>
-              <div
-                className={
-                  apiData.material_2 == "No material" ? "d-none" : "inputBox"
-                }
-              >
-                <label htmlFor="">Material length</label>
-                <input
-                  type="text"
-                  name="material_length_2"
-                  value={apiData.material_length_2 + " m"}
-                  readOnly
-                />
-              </div>
-              <div
-                className={
-                  apiData.material_3 == "No material" ? "d-none" : "inputBox"
-                }
-              >
-                <label htmlFor="">Material length</label>
-                <input
-                  type="text"
-                  name="material_length_3"
-                  value={apiData.material_length_3 + " m"}
-                  readOnly
-                />
-              </div>
-              <div
-                className={
-                  apiData.material_4 == "No material" ? "d-none" : "inputBox"
-                }
-              >
-                <label htmlFor="">Material length</label>
-                <input
-                  type="text"
-                  name="material_length_4"
-                  value={apiData.material_length_4 + " m"}
-                  readOnly
-                />
-              </div> */}
-
               <div className="inputBox">
                 <label htmlFor="">Quantity</label>
                 <input

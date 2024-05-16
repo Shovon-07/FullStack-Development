@@ -278,66 +278,8 @@ const PendingOrdersInvoice = () => {
                   readOnly
                 />
               </div>
-              <div className="inputBox">
-                <label htmlFor="">وسع الذراع</label>
-                <input
-                  type="text"
-                  name="hand_length"
-                  value={apiData.hand_length}
-                  readOnly
-                />
-              </div>
             </div>
             <div className="right d-flex gap-20">
-              {/* <div className="inputBox">
-                <label htmlFor="">Material length</label>
-                <input
-                  type="text"
-                  name="material_length"
-                  value={apiData.material_length + " m"}
-                  readOnly
-                />
-              </div>
-              <div
-                className={
-                  apiData.material_2 == "No material" ? "d-none" : "inputBox"
-                }
-              >
-                <label htmlFor="">Material length</label>
-                <input
-                  type="text"
-                  name="material_length_2"
-                  value={apiData.material_length_2 + " m"}
-                  readOnly
-                />
-              </div>
-              <div
-                className={
-                  apiData.material_3 == "No material" ? "d-none" : "inputBox"
-                }
-              >
-                <label htmlFor="">Material length</label>
-                <input
-                  type="text"
-                  name="material_length_3"
-                  value={apiData.material_length_3 + " m"}
-                  readOnly
-                />
-              </div>
-              <div
-                className={
-                  apiData.material_4 == "No material" ? "d-none" : "inputBox"
-                }
-              >
-                <label htmlFor="">Material length</label>
-                <input
-                  type="text"
-                  name="material_length_4"
-                  value={apiData.material_length_4 + " m"}
-                  readOnly
-                />
-              </div> */}
-
               <div className="inputBox">
                 <label htmlFor="">عدد الأثواب</label>
                 <input
@@ -380,6 +322,15 @@ const PendingOrdersInvoice = () => {
                   type="text"
                   name="cuff_length"
                   value={apiData.cuff_length}
+                  readOnly
+                />
+              </div>
+              <div className="inputBox">
+                <label htmlFor="">وسع الذراع</label>
+                <input
+                  type="text"
+                  name="hand_length"
+                  value={apiData.hand_length}
                   readOnly
                 />
               </div>
@@ -452,29 +403,29 @@ const PendingOrdersInvoice = () => {
                 <tr>
                   <td>المجموع</td>
                   <td>:</td>
-                  <td>{apiData.total} $</td>
+                  <td>{apiData.total} ر.س</td>
                 </tr>
 
                 <tr>
                   <td>خصم</td>
                   <td>:</td>
-                  <td>{apiData.discount} $</td>
+                  <td>{apiData.discount} ر.س</td>
                 </tr>
                 <tr>
                   <td>الضريبة</td>
                   <td>:</td>
-                  <td>{apiData.tax} $</td>
+                  <td>{apiData.tax} ر.س</td>
                 </tr>
                 <tr>
                   <td>المجموع بعد الضريبة</td>
                   <td>:</td>
-                  <td>{apiData.payAble} $</td>
+                  <td>{apiData.payAble} ر.س</td>
                 </tr>
 
                 <tr>
                   <td>الواصل</td>
                   <td>:</td>
-                  <td>{apiData.advance} $</td>
+                  <td>{apiData.advance} ر.س</td>
                 </tr>
                 <tr>
                   <td>الباقي</td>

@@ -753,7 +753,8 @@ const CreateInvoice = () => {
                 <p
                   style={{ marginTop: "5px", color: "green", textAlign: "end" }}
                 >
-                  $ السعر بعد الخصم : {Number(calc.discountForCalc).toFixed(2)}
+                  السعر بعد الخصم : {Number(calc.discountForCalc).toFixed(2)}{" "}
+                  ر.س
                 </p>
               </div>
               <div className="inputBox">
@@ -769,11 +770,11 @@ const CreateInvoice = () => {
                 <p
                   style={{ marginTop: "5px", color: "green", textAlign: "end" }}
                 >
-                  $ الضريبة : {Number(calc.vatForCalc).toFixed(2)}
+                  الضريبة : {Number(calc.vatForCalc).toFixed(2)} ر.س
                 </p>
               </div>
               <div className="total d-flex">
-                <h4>{Number(calc.payAbleForCalc).toFixed(2)} $</h4>
+                <h4>{"ر.س " + Number(calc.payAbleForCalc).toFixed(2)}</h4>
                 <p> = المجموع بعد الضريبة</p>{" "}
               </div>
 
@@ -789,7 +790,7 @@ const CreateInvoice = () => {
                 />
               </div>
               <div className="total d-flex">
-                <h4>{Number(calc.dueForCalc).toFixed(2)} $</h4>
+                <h4>{"ر.س " + Number(calc.dueForCalc).toFixed(2)}</h4>
                 <p>= الباقي</p>
               </div>
             </div>
