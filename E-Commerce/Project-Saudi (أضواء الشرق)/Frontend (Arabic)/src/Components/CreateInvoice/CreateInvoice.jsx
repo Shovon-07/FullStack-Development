@@ -211,7 +211,7 @@ const CreateInvoice = () => {
         await http.post("/store-sell", data).then((response) => {
           if (response.data === "success") {
             setLoading(false);
-            toast.success("Order Confirmed");
+            toast.success("الطلب تم تأكيده");
             console.clear();
 
             // Clear input value
