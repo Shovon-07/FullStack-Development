@@ -137,3 +137,74 @@ Enter initial meters available
 
 Enter buy price 
 أدخل سعر الشراء للمتر
+
+===
+
+Please enter customer name
+الرجاء أدخل أسم العميل 
+
+Please enter customer phone number
+الرجاء أدخل رقم جوال العميل
+
+Please enter customer address
+الرجاء إدخال موقع العميل
+
+No date selected
+لم يتم تحديد التاريخ
+
+No deadlin date selected
+لم يتم تحديد وقت التسليم 
+
+Please select a material
+أدخل القماش 
+
+Please enter chest length
+أدخل عرض الصدر
+
+Please enter neck length
+أدخل عرض الرقبة
+ 
+Please enter hand length
+أدخل عرض اليد 
+
+Please enter dress length
+أدخل الطول
+
+Please enter sleeve length
+أدخل طول الكم
+
+Please enter cuff length
+أدخل عرض الكبك
+
+Please enter shoulder length
+أدخل عرض الكتف 
+
+Please generate image
+الرجاء فعل الصورة 
+
+Please enter material length
+أدخل طول القماش المستخدم
+
+Please enter dress quantity
+أدخل عدد الاثواب
+
+Please enter total price
+أدخل المجموع 
+
+Please enter discount
+أدخل الخصم 
+ 
+Please enter vat
+أدخل الضريبة
+
+Please enter recived amount
+أدخل المبلغ المستلم 
+
+Please enter shope phone number
+أدخل رقم جوال المحل
+
+You cannot enter more than 550 characters
+لا تستطيع إدخال أكثر من 550 حرف
+
+Order confirmed
+الطلب تم تأكيده

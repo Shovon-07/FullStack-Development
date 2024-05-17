@@ -111,49 +111,49 @@ const CreateInvoice = () => {
   const handleSubmit = async () => {
     //___ Validation ___//
     if (invoiceInputValue.customer_name == "") {
-      toast.error("Please enter customer name");
+      toast.error("الرجاء أدخل أسم العميل");
     } else if (invoiceInputValue.customer_phone == "") {
-      toast.error("Please enter customer phone number");
+      toast.error("الرجاء أدخل رقم جوال العميل");
     } else if (invoiceInputValue.customer_address == "") {
-      toast.error("Please enter customer address");
+      toast.error("الرجاء إدخال موقع العميل");
     } else if (invoiceInputValue.currentDate == "") {
-      toast.error("No date selected");
+      toast.error("لم يتم تحديد التاريخ");
     } else if (invoiceInputValue.deadline_date == "") {
-      toast.error("No deadlin date selected");
+      toast.error("لم يتم تحديد وقت التسليم");
     } else if (invoiceInputValue.material_id <= "1") {
-      toast.error("Please select a material");
+      toast.error("أدخل القماش");
     } else if (invoiceInputValue.chest_length == "") {
-      toast.error("Please enter chest length");
+      toast.error("أدخل عرض الصدر");
     } else if (invoiceInputValue.neck_length == "") {
-      toast.error("Please enter neck length");
+      toast.error("أدخل عرض الرقبة");
     } else if (invoiceInputValue.hand_length == "") {
-      toast.error("Please enter hand length");
+      toast.error("أدخل عرض اليد");
     } else if (invoiceInputValue.dress_length == "") {
-      toast.error("Please enter dress length");
+      toast.error("أدخل الطول");
     } else if (invoiceInputValue.sleeve_length == "") {
-      toast.error("Please enter sleeve length");
+      toast.error("أدخل طول الكم");
     } else if (invoiceInputValue.cuff_length == "") {
-      toast.error("Please enter cuff length");
+      toast.error("أدخل عرض الكبك");
     } else if (invoiceInputValue.shoulder_length == "") {
-      toast.error("Please enter shoulder length");
+      toast.error("أدخل عرض الكتف");
     } else if (getImgData.Image == "") {
-      toast.error("Please generate image");
+      toast.error("الرجاء فعل الصورة");
     } else if (invoiceInputValue.material_length == "") {
-      toast.error("Please enter material length");
+      toast.error("أدخل طول القماش المستخدم");
     } else if (invoiceInputValue.quantity == "") {
-      toast.error("Please enter dress quantity");
+      toast.error("أدخل عدد الاثواب");
     } else if (invoiceInputValue.total == "") {
-      toast.error("Please enter total price");
+      toast.error("أدخل المجموع");
     } else if (invoiceInputValue.discount == "") {
-      toast.error("Please enter discount");
+      toast.error("أدخل الخصم");
     } else if (invoiceInputValue.vat == "") {
-      toast.error("Please enter vat");
+      toast.error("أدخل الضريبة");
     } else if (invoiceInputValue.advance == "") {
-      toast.error("Please enter recived amount");
+      toast.error("أدخل المبلغ المستلم");
     } else if (invoiceInputValue.shop_phone == "") {
-      toast.error("Please enter shope phone number");
+      toast.error("أدخل رقم جوال المحل");
     } else if (invoiceInputValue.note.length > 550) {
-      toast.error("You cannot enter more than 550 characters");
+      toast.error("لا تستطيع إدخال أكثر من 550 حرف");
     } else {
       try {
         const data = {
