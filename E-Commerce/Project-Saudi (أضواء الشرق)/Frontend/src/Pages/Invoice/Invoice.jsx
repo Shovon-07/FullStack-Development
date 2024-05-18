@@ -56,7 +56,6 @@ const Invoice = () => {
     pocket_type: "",
     hand_type: "",
     quantity: "",
-    shop_phone: "",
     note: "",
 
     material_price: "",
@@ -108,7 +107,6 @@ const Invoice = () => {
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
           quantity: response.data.quantity,
-          shop_phone: response.data.shop_phone,
           note: response.data.note,
 
           material_price: response.data.sale_price,
@@ -130,7 +128,6 @@ const Invoice = () => {
 
   useEffect(() => {
     getApiData();
-    console.log(apiData.note.length);
   }, []);
 
   return (
@@ -147,9 +144,6 @@ const Invoice = () => {
         <div className="logoSec d-flex">
           <div className="left">
             <img src={Logo} alt="" />
-          </div>
-          <div className="middle">
-            <h2>{apiData.shop_phone}</h2>
           </div>
           <div className="right">
             <h2>أضواء الشرق</h2>
@@ -198,16 +192,13 @@ const Invoice = () => {
         </div>
 
         <div className="productDetails d-flex flex-start gap-30">
-          {/* <div className="left">
+          <div className="left">
             <img
               src={`http://project.preview.com.aljubairshovon.com/backend/public/images/ScreenShoot/${apiData.image}`}
               alt=""
             />
-          </div> */}
-          <div
-            className="right d-flex flex-start gap-20"
-            style={{ flexBasis: "100%" }}
-          >
+          </div>
+          <div className="right d-flex flex-start gap-20">
             <div className="left d-flex gap-20">
               <div className="inputBox">
                 <label htmlFor="">Material</label>
@@ -294,9 +285,18 @@ const Invoice = () => {
                   readOnly
                 />
               </div>
+              <div className="inputBox">
+                <label htmlFor="">Dress length</label>
+                <input
+                  type="text"
+                  name="dress_length"
+                  value={apiData.dress_length}
+                  readOnly
+                />
+              </div>
             </div>
             <div className="right d-flex gap-20">
-              {/* <div className="inputBox">
+              <div className="inputBox">
                 <label htmlFor="">Material length</label>
                 <input
                   type="text"
@@ -343,7 +343,7 @@ const Invoice = () => {
                   value={apiData.material_length_4 + " m"}
                   readOnly
                 />
-              </div> */}
+              </div>
 
               <div className="inputBox">
                 <label htmlFor="">Quantity</label>
@@ -354,15 +354,7 @@ const Invoice = () => {
                   readOnly
                 />
               </div>
-              <div className="inputBox">
-                <label htmlFor="">Dress length</label>
-                <input
-                  type="text"
-                  name="dress_length"
-                  value={apiData.dress_length}
-                  readOnly
-                />
-              </div>
+
               <div className="inputBox">
                 <label htmlFor="">Shoulder length</label>
                 <input
@@ -448,10 +440,10 @@ const Invoice = () => {
               <p>Salesperson : </p>
               <h4 className="salespersonNmae">أضواء الشرق</h4>
             </div>
-            {/* <div className="d-flex flex-start gap-10">
+            <div className="d-flex flex-start gap-10">
               <p>Shop phone : </p>
-              <h4 className="phone">{apiData.shop_phone}</h4>
-            </div> */}
+              <h4 className="phone">xxxxxxxxxxxx</h4>
+            </div>
           </div>
           <div className="right">
             <table>

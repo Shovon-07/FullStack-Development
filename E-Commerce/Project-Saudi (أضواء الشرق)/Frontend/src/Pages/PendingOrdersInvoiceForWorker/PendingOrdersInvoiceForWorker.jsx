@@ -55,7 +55,6 @@ const PendingOrdersInvoice = () => {
     pocket_type: "",
     hand_type: "",
     quantity: "",
-    shop_phone: "",
     note: "",
   });
   const getApiData = async () => {
@@ -96,7 +95,6 @@ const PendingOrdersInvoice = () => {
           pocket_type: response.data.pocket_type,
           hand_type: response.data.hand_type,
           quantity: response.data.quantity,
-          shop_phone: response.data.shop_phone,
           note: response.data.note,
         });
       });
@@ -124,9 +122,6 @@ const PendingOrdersInvoice = () => {
         <div className="logoSec d-flex">
           <div className="left">
             <img src={Logo} alt="" />
-          </div>
-          <div className="middle">
-            <h2>{apiData.shop_phone}</h2>
           </div>
           <div className="right">
             <h2>أضواء الشرق</h2>
@@ -175,16 +170,13 @@ const PendingOrdersInvoice = () => {
         </div>
 
         <div className="productDetails d-flex flex-start gap-30">
-          {/* <div className="left">
+          <div className="left">
             <img
               src={`http://project.preview.com.aljubairshovon.com/backend/public/images/ScreenShoot/${apiData.image}`}
               alt=""
             />
-          </div> */}
-          <div
-            className="right d-flex flex-start gap-20"
-            style={{ flexBasis: "100%" }}
-          >
+          </div>
+          <div className="right d-flex flex-start gap-20">
             <div className="left d-flex gap-20">
               <div className="inputBox">
                 <label htmlFor="">Material</label>
@@ -402,7 +394,7 @@ const PendingOrdersInvoice = () => {
                 readOnly
               />
             </div>
-            <div className={apiData.hand_type == "" ? "d-none" : "inputBox"}>
+            <div className={apiData.pocket_type == "" ? "d-none" : "inputBox"}>
               <label htmlFor="">Hand type</label>
               <input
                 type="text"
