@@ -37,6 +37,12 @@ const PendingOrdersInvoice = () => {
     material_2: "",
     material_3: "",
     material_4: "",
+
+    material_id: "",
+    material_2_id: "",
+    material_3_id: "",
+    material_4_id: "",
+
     material_length: "",
     material_length_2: "",
     material_length_3: "",
@@ -77,6 +83,11 @@ const PendingOrdersInvoice = () => {
           material_2: response.data.material2.name,
           material_3: response.data.material3.name,
           material_4: response.data.material4.name,
+
+          material_id: response.data.material.id,
+          material_2_id: response.data.material2.id,
+          material_3_id: response.data.material3.id,
+          material_4_id: response.data.material4.id,
 
           material_length: response.data.material_length,
           material_length_2: response.data.material_length_2,
@@ -196,9 +207,7 @@ const PendingOrdersInvoice = () => {
                 />
               </div>
               <div
-                className={
-                  apiData.material_2 == "لايوجد قماش" ? "d-none" : "inputBox"
-                }
+                className={apiData.material_2_id == "1" ? "d-none" : "inputBox"}
               >
                 <label htmlFor="">القماش</label>
                 <input
@@ -209,9 +218,7 @@ const PendingOrdersInvoice = () => {
                 />
               </div>
               <div
-                className={
-                  apiData.material_3 == "لايوجد قماش" ? "d-none" : "inputBox"
-                }
+                className={apiData.material_3_id == "1" ? "d-none" : "inputBox"}
               >
                 <label htmlFor="">القماش</label>
                 <input
@@ -222,9 +229,7 @@ const PendingOrdersInvoice = () => {
                 />
               </div>
               <div
-                className={
-                  apiData.material_4 == "لايوجد قماش" ? "d-none" : "inputBox"
-                }
+                className={apiData.material_4_id == "1" ? "d-none" : "inputBox"}
               >
                 <label htmlFor="">القماش</label>
                 <input
@@ -292,9 +297,7 @@ const PendingOrdersInvoice = () => {
                 />
               </div>
               <div
-                className={
-                  apiData.material_2 == "لايوجد قماش" ? "d-none" : "inputBox"
-                }
+                className={apiData.material_2_id == "1" ? "d-none" : "inputBox"}
               >
                 <label htmlFor="">طول القماش</label>
                 <input
@@ -305,9 +308,7 @@ const PendingOrdersInvoice = () => {
                 />
               </div>
               <div
-                className={
-                  apiData.material_3 == "لايوجد قماش" ? "d-none" : "inputBox"
-                }
+                className={apiData.material_3_id == "1" ? "d-none" : "inputBox"}
               >
                 <label htmlFor="">طول القماش</label>
                 <input
@@ -318,9 +319,7 @@ const PendingOrdersInvoice = () => {
                 />
               </div>
               <div
-                className={
-                  apiData.material_4 == "لايوجد قماش" ? "d-none" : "inputBox"
-                }
+                className={apiData.material_4_id == "1" ? "d-none" : "inputBox"}
               >
                 <label htmlFor="">طول القماش</label>
                 <input
