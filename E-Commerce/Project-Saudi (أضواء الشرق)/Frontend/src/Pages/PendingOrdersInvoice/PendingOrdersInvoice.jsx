@@ -470,7 +470,7 @@ const PendingOrdersInvoice = () => {
                   <td>{apiData.advance} $</td>
                 </tr>
                 <tr>
-                  <td>Due</td>
+                  <td>Due amount</td>
                   <td>:</td>
                   <td>{apiData.due} $</td>
                 </tr>

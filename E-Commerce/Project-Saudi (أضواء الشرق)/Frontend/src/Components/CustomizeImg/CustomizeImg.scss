@@ -105,6 +105,10 @@
           }
           @include mlg {
             left: 120px;
+            width: 250%;
+          }
+          @include slg {
+            left: 120px;
             width: 200%;
           }
           @include md {
@@ -115,7 +119,7 @@
           }
           @include xsm {
             left: 90px;
-            width: 150%;
+            width: 220%;
           }
 
           li {

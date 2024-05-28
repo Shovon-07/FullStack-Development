@@ -47,7 +47,7 @@ const CreateInvoice = () => {
     deadline_date: "",
 
     // Mesurments
-    material_id: "",
+    material_id: "1",
     material_id_2: "1",
     material_id_3: "1",
     material_id_4: "1",
@@ -74,7 +74,7 @@ const CreateInvoice = () => {
     advance: "",
     due: "",
 
-    shop_phone: "0558180520",
+    shop_phone: "xxxxxxxxxxxx",
     note: "",
   });
 
@@ -223,10 +223,10 @@ const CreateInvoice = () => {
               deadline_date: "",
 
               // Mesurments
-              material_id: "",
-              material_id_2: "",
-              material_id_3: "",
-              material_id_4: "",
+              material_id: "1",
+              material_id_2: "1",
+              material_id_3: "1",
+              material_id_4: "1",
               material_length: "",
               material_length_2: "",
               material_length_3: "",
@@ -241,7 +241,8 @@ const CreateInvoice = () => {
               shoulder_length: "",
 
               // Order summery
-              sale_price: "",
+              sale_price: "0",
+              quantity: "",
               total: "",
               discount: "",
               vat: "",
@@ -249,7 +250,7 @@ const CreateInvoice = () => {
               advance: "",
               due: "",
 
-              shop_phone: "0558180520",
+              shop_phone: "xxxxxxxxxxxx",
               note: "",
             });
             setCalc({
@@ -261,6 +262,9 @@ const CreateInvoice = () => {
               recivedForCalc: "0",
               dueForCalc: "0",
             });
+
+            // Hide select material
+            setCount([1]);
           }
         });
       } catch (error) {

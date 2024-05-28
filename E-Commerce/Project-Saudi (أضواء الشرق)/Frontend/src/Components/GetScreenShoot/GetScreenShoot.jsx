@@ -32,7 +32,7 @@ const GetScreenShoot = (props) => {
         }, 2000);
       })
       .catch((err) => {
-        console.error("We can't capture" + err);
+        console.error("We can't capture " + err);
       });
   };
 

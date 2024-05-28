@@ -261,6 +261,9 @@ const CreateInvoice = () => {
               recivedForCalc: "0",
               dueForCalc: "0",
             });
+
+            // Hide select material
+            setCount([1]);
           }
         });
       } catch (error) {

@@ -309,7 +309,7 @@ const CustomizeImg = () => {
       rightPosDressImgPrev: items.right,
     });
 
-    if (dressImgPreview.dressImgNamePrev !== "Structure") {
+    if (dressImgPreview.dressImgNamePrev == "Structure") {
       setBtnImgPreview({
         btnImgPrev: null,
         widthBtnImgPrev: null,
