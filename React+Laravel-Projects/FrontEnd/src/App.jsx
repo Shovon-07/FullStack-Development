@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Route, Routes, NavLink } from "react-router-dom";
 
 //___ Css ___//
 import "./assets/Css/App.css";

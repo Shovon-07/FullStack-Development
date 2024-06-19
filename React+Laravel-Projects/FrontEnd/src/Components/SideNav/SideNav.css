@@ -1,6 +1,6 @@
 .SideNav {
-  background: var(--dark-blue);
-  width: 250px;
+  background: var(--dark-1);
+  width: 230px;
   height: 100vh;
   color: var(--light-1);
   position: fixed;
@@ -17,7 +17,8 @@
   font-family: Arial, Helvetica, sans-serif;
   padding: 10px 0;
   cursor: default;
-  background: var(--dark-blue);
+  color: var(--light-2);
+  background: var(--dark-1);
   position: sticky;
   top: 0;
 }
@@ -27,7 +28,6 @@
 .SideNav ul li a {
   width: 100%;
   font-size: 0.95rem;
-  color: var(--light-1);
   margin: 15px 0;
   padding: 0 15px;
   display: inline-block;
@@ -37,4 +37,5 @@
   color: var(--light-3);
   padding: 0 5px;
   margin: 15px 0 5px 0;
+  cursor: default;
 }

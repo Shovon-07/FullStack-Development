@@ -9,12 +9,15 @@
 /* Common style */
 body {
   font-family: "Rubik", sans-serif;
+  background: var(--dark-2);
+  color: var(--light-1);
 }
 li {
   list-style: none;
 }
 a {
   text-decoration: none;
+  color: var(--light-1);
 }
 
 .d-flex {
