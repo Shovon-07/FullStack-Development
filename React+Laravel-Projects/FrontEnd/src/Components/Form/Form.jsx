@@ -6,9 +6,11 @@ import "./Form.css";
 //___ Icons ___//
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
+import { useState } from "react";
 
 const Form = (props) => {
   const { title, inputFields, url, loginOrSingupUrl, loginOrSingup } = props;
+  const [inputTypes, setInputTypes] = useState(false);
 
   return (
     <div className="Form">
@@ -21,9 +23,26 @@ const Form = (props) => {
             className="input"
             placeholder={items.placeholder}
           />
-          <div className={items.type != "password" ? "d-none" : "showHide"}>
-            <FaEye size={20} className="show c_pointer" />
-            <FaEyeSlash size={20} className="hide c_pointer" />
+          <div
+            className={items.field != "password" ? "d-none" : "showHide"}
+            onClick={() => {
+              if (inputTypes == false) {
+                setInputTypes(true);
+                items.type = "text";
+              } else if (inputTypes == true) {
+                setInputTypes(false);
+                items.type = "password";
+              }
+            }}
+          >
+            <FaEye
+              size={20}
+              className={inputTypes == false ? "d-none" : "c_pointer"}
+            />
+            <FaEyeSlash
+              size={20}
+              className={inputTypes == true ? "d-none" : "c_pointer"}
+            />
           </div>
         </div>
       ))}

@@ -30,9 +30,6 @@
   padding: 0px 10px 0 15px;
   background: var(--dark-2);
 }
-.Form .inputBox .showHide .show {
-  display: none;
-}
 .Form .btnBox {
   margin-top: 50px;
   text-align: center;
