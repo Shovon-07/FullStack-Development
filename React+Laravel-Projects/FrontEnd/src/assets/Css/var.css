@@ -1,0 +1,13 @@
+:root {
+  --light-1: #e0dddd;
+  --light-3: #7c7c7c;
+
+  --dark-1: #313131;
+
+  --main-color: rgb(255, 115, 0);
+  --dark-blue: #01021d;
+
+  --border: 1px solid var(--dark-1);
+  --shadow: 1px 1px 10px #848282;
+  --trans: 0.5s ease all;
+}
