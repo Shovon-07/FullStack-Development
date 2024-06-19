@@ -10,17 +10,35 @@ import Loader from "./Components/Loader/Loader";
 const SideNav = lazy(() => import("./Components/SideNav/SideNav"));
 
 //___ Pages ___//
-const TempRemote = lazy(() => import("./Pages/TemperatureRemote/TempRemote"));
 import Login from "./Pages/Login/Login";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+const TempRemote = lazy(() => import("./Pages/TemperatureRemote/TempRemote"));
 
 function App() {
   return (
     <>
-      {/* <Login /> */}
-      <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Dashboard />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/tempRemote"
+          element={
+            <Suspense fallback={<Loader />}>
+              <TempRemote />
+            </Suspense>
+          }
+        />
+      </Routes>
+      {/* <Suspense fallback={<Loader />}>
         <SideNav />
-        <TempRemote />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
