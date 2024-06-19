@@ -6,7 +6,7 @@
 }
 .Form .formTitle {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 .Form .inputBox {
   width: 100%;
@@ -56,4 +56,10 @@
   justify-content: end;
   margin-top: 30px;
   font-size: 0.9rem;
+}
+.Form .formBottom div a {
+  transition: var(--trans);
+}
+.Form .formBottom div a:hover {
+  color: var(--main-color);
 }

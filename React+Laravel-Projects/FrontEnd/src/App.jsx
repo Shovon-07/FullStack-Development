@@ -10,7 +10,9 @@ import Loader from "./Components/Loader/Loader";
 const SideNav = lazy(() => import("./Components/SideNav/SideNav"));
 
 //___ Pages ___//
-import Login from "./Pages/Login/Login";
+import Login from "./Pages/Auth/Login";
+import SignUp from "./Pages/Auth/SignUp";
+import ForgotPass from "./Pages/Auth/ForgotPass";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 const TempRemote = lazy(() => import("./Pages/TemperatureRemote/TempRemote"));
 
@@ -18,7 +20,31 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Login />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Suspense fallback={<Loader />}>
+              <SignUp />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/forgot-password"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ForgotPass />
+            </Suspense>
+          }
+        />
+
         <Route
           path="/dashboard"
           element={

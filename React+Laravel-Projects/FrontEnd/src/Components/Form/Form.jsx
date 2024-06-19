@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 //___ Css ___//
 import "./Form.css";
@@ -7,33 +7,37 @@ import "./Form.css";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 
-const Form = () => {
+const Form = (props) => {
+  const { title, inputFields, url, loginOrSingupUrl, loginOrSingup } = props;
+
   return (
     <div className="Form">
-      <h3 className="formTitle">Login</h3>
-      <div className="inputBox">
-        <input type="text" className="input" placeholder="Enter your name" />
-      </div>
-      <div className="inputBox">
-        <input
-          type="password"
-          className="input"
-          placeholder="Enter your password"
-        />
-        <div className="showHide">
-          <FaEye size={20} className="show c_pointer" />
-          <FaEyeSlash size={20} className="hide c_pointer" />
+      <h3 className="formTitle">{title}</h3>
+
+      {inputFields.map((items, index) => (
+        <div className="inputBox" key={index}>
+          <input
+            type={items.type}
+            className="input"
+            placeholder={items.placeholder}
+          />
+          <div className={items.type != "password" ? "d-none" : "showHide"}>
+            <FaEye size={20} className="show c_pointer" />
+            <FaEyeSlash size={20} className="hide c_pointer" />
+          </div>
         </div>
-      </div>
+      ))}
       <div className="btnBox">
         <button className="submitBtn c_pointer">next</button>
       </div>
 
-      <div className="formBottom">
+      <div
+        className={`${title == "Forgot password" ? "d-none" : "formBottom"}`}
+      >
         <div className="d-flex gap-20">
-          <a href="">Sign up</a>
+          <Link to={loginOrSingupUrl}>{loginOrSingup}</Link>
           <span>|</span>
-          <a href="">Forgot password</a>
+          <Link to="/forgot-password">Forgot password</Link>
         </div>
       </div>
     </div>

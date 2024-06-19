@@ -1,14 +1,20 @@
 import React, { Suspense, lazy, useEffect } from "react";
 
 //___ Css ___//
-import "./Login.css";
+import "./Auth.css";
 
 //___ Components ___//
 const Form = lazy(() => import("../../Components/Form/Form"));
 import Loader from "../../Components/Loader/Loader";
 
-const Login = () => {
+const SignUp = () => {
   const inputField = [
+    {
+      field: "name",
+      type: "text",
+      placeholder: "Enter your name",
+      className: "inputBox",
+    },
     {
       field: "email",
       type: "email",
@@ -21,22 +27,28 @@ const Login = () => {
       placeholder: "Enter your password",
       className: "inputBox d-flex",
     },
+    {
+      field: "confirm_password",
+      type: "password",
+      placeholder: "Please confirm password",
+      className: "inputBox d-flex",
+    },
   ];
 
   return (
     <>
-      <div className="Login">
+      <div className="Auth">
         <Suspense fallback={<Loader />}>
           <Form
-            title={"Sign in"}
+            title={"Sign up"}
             inputFields={inputField}
             url={"/dashboard"}
-            loginOrSingupUrl={"/signup"}
-            loginOrSingup={"Sign up"}
+            loginOrSingupUrl={"/"}
+            loginOrSingup={"Sign in"}
           />
         </Suspense>
       </div>
     </>
   );
 };
-export default Login;
+export default SignUp;

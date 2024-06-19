@@ -7,6 +7,17 @@
 }
 
 /* Common style */
+::selection {
+  background: var(--main-color);
+}
+::placeholder {
+  color: var(--light-3);
+  transition: var(--trans);
+}
+input:focus::placeholder {
+  padding-left: 10px;
+}
+
 body {
   font-family: "Rubik", sans-serif;
   background: var(--dark-2);
@@ -20,6 +31,9 @@ a {
   color: var(--light-1);
 }
 
+.d-none {
+  display: none;
+}
 .d-flex {
   display: flex;
   align-items: center;
