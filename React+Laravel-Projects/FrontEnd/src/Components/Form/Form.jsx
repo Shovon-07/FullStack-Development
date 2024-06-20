@@ -10,7 +10,18 @@ import { useState } from "react";
 
 const Form = (props) => {
   const { title, inputFields, url, loginOrSingupUrl, loginOrSingup } = props;
+
   const [inputTypes, setInputTypes] = useState(false);
+  const [inputData, setInputData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    otp: "",
+  });
+  const handleInputValues = (e) => {
+    setInputData({ ...inputData, [e.target.name]: e.target.value });
+  };
 
   return (
     <div className="Form">
@@ -21,7 +32,9 @@ const Form = (props) => {
           <input
             type={items.type}
             className="input"
+            name={items.field}
             placeholder={items.placeholder}
+            onChange={handleInputValues}
           />
           <div
             className={items.field != "password" ? "d-none" : "showHide"}
@@ -50,9 +63,7 @@ const Form = (props) => {
         <button className="submitBtn c_pointer">next</button>
       </div>
 
-      <div
-        className={`${title == "Forgot password" ? "d-none" : "formBottom"}`}
-      >
+      <div className={`${loginOrSingupUrl == "" ? "d-none" : "formBottom"}`}>
         <div className="d-flex gap-20">
           <Link to={loginOrSingupUrl}>{loginOrSingup}</Link>
           <span>|</span>

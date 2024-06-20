@@ -28,7 +28,7 @@ const SignUp = () => {
       className: "inputBox d-flex",
     },
     {
-      field: "confirm_password",
+      field: "confirmPassword",
       type: "password",
       placeholder: "Please confirm password",
       className: "inputBox d-flex",

@@ -7,12 +7,12 @@ import "./Auth.css";
 const Form = lazy(() => import("../../Components/Form/Form"));
 import Loader from "../../Components/Loader/Loader";
 
-const ForgotPass = () => {
+const SubmitOtp = () => {
   const inputField = [
     {
       field: "email",
-      type: "email",
-      placeholder: "Enter your email",
+      type: "number",
+      placeholder: "Enter 6 digit otp",
       className: "inputBox",
     },
   ];
@@ -22,7 +22,7 @@ const ForgotPass = () => {
       <div className="Auth">
         <Suspense fallback={<Loader />}>
           <Form
-            title={"Send OTP"}
+            title={"OTP"}
             inputFields={inputField}
             url={"/dashboard"}
             loginOrSingupUrl={""}
@@ -33,4 +33,4 @@ const ForgotPass = () => {
     </>
   );
 };
-export default ForgotPass;
+export default SubmitOtp;

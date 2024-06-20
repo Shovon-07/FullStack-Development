@@ -13,6 +13,8 @@ const SideNav = lazy(() => import("./Components/SideNav/SideNav"));
 import Login from "./Pages/Auth/Login";
 import SignUp from "./Pages/Auth/SignUp";
 import ForgotPass from "./Pages/Auth/ForgotPass";
+import SubmitOtp from "./Pages/Auth/SubmitOtp";
+
 import Dashboard from "./Pages/Dashboard/Dashboard";
 const TempRemote = lazy(() => import("./Pages/TemperatureRemote/TempRemote"));
 
@@ -41,6 +43,14 @@ function App() {
           element={
             <Suspense fallback={<Loader />}>
               <ForgotPass />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/submit-otp"
+          element={
+            <Suspense fallback={<Loader />}>
+              <SubmitOtp />
             </Suspense>
           }
         />
