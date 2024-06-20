@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import AuthUser from "../../assets/Js/AuthUser";
 
 //___ Css ___//
 import "./Form.css";
@@ -9,6 +10,7 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { useState } from "react";
 
 const Form = (props) => {
+  const { http } = AuthUser();
   const { title, inputFields, url, loginOrSingupUrl, loginOrSingup } = props;
 
   const [inputTypes, setInputTypes] = useState(false);
@@ -21,6 +23,15 @@ const Form = (props) => {
   });
   const handleInputValues = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
+  };
+
+  const submit = () => {
+    // console.log(inputData.email + " - " + inputData.password);
+    http
+      .post("/login", { email: inputData.email, password: inputData.password })
+      .then((res) => {
+        console.log(res.data);
+      });
   };
 
   return (
@@ -60,7 +71,9 @@ const Form = (props) => {
         </div>
       ))}
       <div className="btnBox">
-        <button className="submitBtn c_pointer">next</button>
+        <button className="submitBtn c_pointer" onClick={submit}>
+          next
+        </button>
       </div>
 
       <div className={`${loginOrSingupUrl == "" ? "d-none" : "formBottom"}`}>
