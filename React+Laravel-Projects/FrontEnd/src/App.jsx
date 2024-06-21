@@ -57,22 +57,24 @@ function App() {
           }
         />
 
-        <Route
-          path="/"
-          element={
-            <Suspense fallback={<Loader />}>
-              <Dashboard />
-            </Suspense>
-          }
-        />
-        <Route
-          path="/tempRemote"
-          element={
-            <Suspense fallback={<Loader />}>
-              <TempRemote />
-            </Suspense>
-          }
-        />
+        <Route path="/" element={<Layout />}>
+          <Route
+            path="/dashboard"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/tempRemote"
+            element={
+              <Suspense fallback={<Loader />}>
+                <TempRemote />
+              </Suspense>
+            }
+          />
+        </Route>
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>

@@ -1,6 +1,12 @@
 //___ Css ___//
 import "./SideNav.css";
 
+//___ Icons ___//
+import { MdDashboard, MdEditDocument } from "react-icons/md";
+import { FaUser, FaClipboardList } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { TbDeviceRemote } from "react-icons/tb";
+
 const SideNav = () => {
   return (
     <div className="SideNav">
@@ -8,43 +14,63 @@ const SideNav = () => {
       <ul className="menu">
         <div className="menuSection">
           <li>
-            <a href="">Dashboard</a>
+            <a href="">
+              <MdDashboard size={20} /> Dashboard
+            </a>
           </li>
           <li>
-            <a href="">Documentaton</a>
+            <a href="">
+              <MdEditDocument size={20} /> Documentaton
+            </a>
           </li>
         </div>
 
         <div className="menuSection">
           <h4 className="menuTitle">Accessibility</h4>
           <li>
-            <a href="">Profile</a>
+            <a href="">
+              <FaUser size={18} /> Profile
+            </a>
           </li>
           <li>
-            <a href="">Settings</a>
+            <a href="">
+              <IoMdSettings size={20} /> Settings
+            </a>
           </li>
         </div>
 
         <div className="menuSection">
           <h4 className="menuTitle">Projects</h4>
           <li>
-            <a href="">ToDo App</a>
+            <a href="">
+              <FaClipboardList size={18} /> ToDo App
+            </a>
           </li>
           <li>
-            <a href="">Temp Remote</a>
+            <a href="">
+              <TbDeviceRemote size={20} /> Temp Remote
+            </a>
           </li>
 
           <li>
-            <a href="">ToDo App</a>
+            <a href="">
+              <FaClipboardList size={18} /> ToDo App
+            </a>
           </li>
           <li>
-            <a href="">Temp Remote</a>
+            <a href="">
+              <TbDeviceRemote size={20} /> Temp Remote
+            </a>
           </li>
           <li>
-            <a href="">ToDo App</a>
+            <a href="">
+              <FaClipboardList size={18} /> ToDo App
+            </a>
           </li>
           <li>
-            <a href="">Temp Remote</a>
+            <a href="">
+              <TbDeviceRemote size={20} /> Temp Remote
+            </a>
           </li>
         </div>
       </ul>

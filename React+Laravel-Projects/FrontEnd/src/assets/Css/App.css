@@ -44,3 +44,20 @@ a {
 .c_pointer {
   cursor: pointer;
 }
+
+/*___ Layout ___*/
+.main {
+}
+.container {
+  /* margin-left: 230px; */
+  padding-left: 230px;
+  width: auto;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  padding: 0 20px;
+}

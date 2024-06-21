@@ -1,5 +1,6 @@
 .SideNav {
-  background: var(--dark-1);
+  /* background: var(--dark-1); */
+  box-shadow: var(--shadow);
   width: 230px;
   height: 100vh;
   color: var(--light-1);
@@ -18,7 +19,7 @@
   padding: 10px 0;
   cursor: default;
   color: var(--light-2);
-  background: var(--dark-1);
+  background: var(--dark-2);
   position: sticky;
   top: 0;
 }
@@ -29,8 +30,14 @@
   width: 100%;
   font-size: 0.95rem;
   margin: 15px 0;
-  padding: 0 15px;
-  display: inline-block;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--trans);
+}
+.SideNav ul li a:hover {
+  color: var(--main-color);
 }
 .SideNav .menuTitle {
   font-size: 0.9rem;
