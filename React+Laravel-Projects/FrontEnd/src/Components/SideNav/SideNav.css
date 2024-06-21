@@ -36,7 +36,8 @@
   gap: 10px;
   transition: var(--trans);
 }
-.SideNav ul li a:hover {
+.SideNav ul li a:hover,
+.SideNav ul li a.active {
   color: var(--main-color);
 }
 .SideNav .menuTitle {

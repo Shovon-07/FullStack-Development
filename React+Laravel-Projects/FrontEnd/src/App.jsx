@@ -61,13 +61,44 @@ function App() {
           path="/"
           element={
             <Suspense fallback={<Loader />}>
-              {" "}
               <Layout />
             </Suspense>
           }
         >
           <Route
             path="/dashboard"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/documentaton"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/todo-app"
             element={
               <Suspense fallback={<Loader />}>
                 <Dashboard />

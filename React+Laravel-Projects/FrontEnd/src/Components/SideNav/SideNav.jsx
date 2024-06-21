@@ -6,6 +6,7 @@ import { MdDashboard, MdEditDocument } from "react-icons/md";
 import { FaUser, FaClipboardList } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { TbDeviceRemote } from "react-icons/tb";
+import { NavLink } from "react-router-dom";
 
 const SideNav = () => {
   return (
@@ -14,63 +15,63 @@ const SideNav = () => {
       <ul className="menu">
         <div className="menuSection">
           <li>
-            <a href="">
+            <NavLink to="/dashboard">
               <MdDashboard size={20} /> Dashboard
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/documentaton">
               <MdEditDocument size={20} /> Documentaton
-            </a>
+            </NavLink>
           </li>
         </div>
 
         <div className="menuSection">
           <h4 className="menuTitle">Accessibility</h4>
           <li>
-            <a href="">
+            <NavLink to="/profile">
               <FaUser size={18} /> Profile
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/settings">
               <IoMdSettings size={20} /> Settings
-            </a>
+            </NavLink>
           </li>
         </div>
 
         <div className="menuSection">
           <h4 className="menuTitle">Projects</h4>
           <li>
-            <a href="">
+            <NavLink to="/todo-app">
               <FaClipboardList size={18} /> ToDo App
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/temperature-remote">
               <TbDeviceRemote size={20} /> Temp Remote
-            </a>
+            </NavLink>
           </li>
 
           <li>
-            <a href="">
+            <NavLink to="/todo-app">
               <FaClipboardList size={18} /> ToDo App
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/temperature-remote">
               <TbDeviceRemote size={20} /> Temp Remote
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/todo-app">
               <FaClipboardList size={18} /> ToDo App
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="/temperature-remote">
               <TbDeviceRemote size={20} /> Temp Remote
-            </a>
+            </NavLink>
           </li>
         </div>
       </ul>
