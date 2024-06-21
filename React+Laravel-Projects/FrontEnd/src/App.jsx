@@ -7,7 +7,6 @@ import "./assets/Css/ScrollBar.css";
 
 //___ Components ___//
 import Loader from "./Components/Loader/Loader";
-const SideNav = lazy(() => import("./Components/SideNav/SideNav"));
 
 //___ Pages ___//
 const Layout = lazy(() => import("./Layout"));
