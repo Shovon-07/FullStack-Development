@@ -10,15 +10,15 @@ import Loader from "./Components/Loader/Loader";
 const SideNav = lazy(() => import("./Components/SideNav/SideNav"));
 
 //___ Pages ___//
-import Layout from "./Layout";
-import Login from "./Pages/Auth/Login";
-import SignUp from "./Pages/Auth/SignUp";
-import ForgotPass from "./Pages/Auth/ForgotPass";
-import SubmitOtp from "./Pages/Auth/SubmitOtp";
+const Layout = lazy(() => import("./Layout"));
+const Login = lazy(() => import("./Pages/Auth/Login"));
+const SignUp = lazy(() => import("./Pages/Auth/SignUp"));
+const ForgotPass = lazy(() => import("./Pages/Auth/ForgotPass"));
+const SubmitOtp = lazy(() => import("./Pages/Auth/SubmitOtp"));
 
-import Dashboard from "./Pages/Dashboard/Dashboard";
+const Dashboard = lazy(() => import("./Pages/Dashboard/Dashboard"));
 const TempRemote = lazy(() => import("./Pages/TemperatureRemote/TempRemote"));
-import ErrorPage from "./Pages/ErrorPage/ErrorPage";
+const ErrorPage = lazy(() => import("./Pages/ErrorPage/ErrorPage"));
 
 function App() {
   return (
@@ -57,7 +57,15 @@ function App() {
           }
         />
 
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <Suspense fallback={<Loader />}>
+              {" "}
+              <Layout />
+            </Suspense>
+          }
+        >
           <Route
             path="/dashboard"
             element={
@@ -67,7 +75,7 @@ function App() {
             }
           />
           <Route
-            path="/tempRemote"
+            path="/temperature-remote"
             element={
               <Suspense fallback={<Loader />}>
                 <TempRemote />
@@ -75,7 +83,14 @@ function App() {
             }
           />
         </Route>
-        <Route path="*" element={<ErrorPage />} />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ErrorPage />
+            </Suspense>
+          }
+        />
       </Routes>
     </>
   );

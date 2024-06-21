@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Outlet } from "react-router-dom";
 
 //___ Components ___//
 import Loader from "./Components/Loader/Loader";
@@ -13,7 +14,7 @@ const Layout = () => {
       </Suspense>
       <div className="container">
         <div className="content">
-          <h1>layout</h1>
+          <Outlet />
         </div>
         <Suspense fallback={<Loader />}>
           <Footer />
