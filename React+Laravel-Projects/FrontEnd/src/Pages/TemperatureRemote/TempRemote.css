@@ -65,6 +65,7 @@
   font-weight: 600;
   font-size: 14px;
   box-shadow: var(--shadow);
+  cursor: pointer;
 }
 .TempRemote .btn .plus,
 .TempRemote .btn .minus {

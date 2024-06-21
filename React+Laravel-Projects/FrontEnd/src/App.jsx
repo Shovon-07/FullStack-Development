@@ -10,6 +10,7 @@ import Loader from "./Components/Loader/Loader";
 const SideNav = lazy(() => import("./Components/SideNav/SideNav"));
 
 //___ Pages ___//
+import Layout from "./Layout";
 import Login from "./Pages/Auth/Login";
 import SignUp from "./Pages/Auth/SignUp";
 import ForgotPass from "./Pages/Auth/ForgotPass";
@@ -17,6 +18,7 @@ import SubmitOtp from "./Pages/Auth/SubmitOtp";
 
 import Dashboard from "./Pages/Dashboard/Dashboard";
 const TempRemote = lazy(() => import("./Pages/TemperatureRemote/TempRemote"));
+import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 function App() {
   return (
@@ -56,7 +58,7 @@ function App() {
         />
 
         <Route
-          path="/dashboard"
+          path="/"
           element={
             <Suspense fallback={<Loader />}>
               <Dashboard />
@@ -71,10 +73,8 @@ function App() {
             </Suspense>
           }
         />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
-      {/* <Suspense fallback={<Loader />}>
-        <SideNav />
-      </Suspense> */}
     </>
   );
 }
