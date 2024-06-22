@@ -19,9 +19,29 @@ const Header = (props) => {
   const { setToggleVal } = props;
   const [userName, setUserName] = useState("Al jubair shovon");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
+  const [messageDropdownVal, setMessageDropdownVal] = useState(false);
+  const [notificationDropdownVal, setNotificationDropdownVal] = useState(false);
 
   const handleProfileDropdown = () => {
     setProfileDropdownVal((prev) => !prev);
+    if (messageDropdownVal == true || notificationDropdownVal == true) {
+      setMessageDropdownVal(false);
+      setNotificationDropdownVal(false);
+    }
+  };
+  const handleMessageDropdown = () => {
+    setMessageDropdownVal((prev) => !prev);
+    if (profileDropdownVal == true || notificationDropdownVal == true) {
+      setProfileDropdownVal(false);
+      setNotificationDropdownVal(false);
+    }
+  };
+  const handleNotificationDropdown = () => {
+    setNotificationDropdownVal((prev) => !prev);
+    if (profileDropdownVal == true || messageDropdownVal == true) {
+      setProfileDropdownVal(false);
+      setMessageDropdownVal(false);
+    }
   };
 
   return (
@@ -41,19 +61,72 @@ const Header = (props) => {
             <MdDashboard size={23} />
           </NavLink>
         </div>
-        <div>
-          <AiFillMessage size={22} className="c_pointer" />
+
+        {/* Message start */}
+        <div className="message dorwpDownParent">
+          <AiFillMessage
+            size={22}
+            className="c_pointer"
+            onClick={handleMessageDropdown}
+          />
+          <ul
+            className={
+              messageDropdownVal != false ? "dorpdown show" : "dorpdown"
+            }
+          >
+            <p className="dropdownTitle">Messages</p>
+            <li>
+              <a href="">
+                <FaUser size={15} /> Profile
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <IoMdSettings size={19} /> Settings
+              </a>
+            </li>
+          </ul>
         </div>
-        <div>
-          <IoNotifications size={23} className="c_pointer" />
+        {/* Message end */}
+
+        {/* Notification start */}
+        <div className="notification dorwpDownParent">
+          <IoNotifications
+            size={23}
+            className="c_pointer"
+            onClick={handleNotificationDropdown}
+          />
+          <ul
+            className={
+              notificationDropdownVal != false ? "dorpdown show" : "dorpdown"
+            }
+          >
+            <p className="dropdownTitle">Notifications</p>
+            <li>
+              <a href="">
+                <FaUser size={15} /> Profile
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <IoMdSettings size={19} /> Settings
+              </a>
+            </li>
+          </ul>
         </div>
+        {/* Notification end */}
+
+        {/* Settings start */}
         <div>
           <NavLink to="/settings">
             <IoMdSettings size={23} className="c_pointer" />
           </NavLink>
         </div>
+        {/* Settings end */}
+
+        {/* Profile start */}
         <div
-          className="profile d-flex gap-10 c_pointer"
+          className="profile d-flex gap-10 c_pointer dorwpDownParent"
           onClick={handleProfileDropdown}
         >
           <img src={User} alt="" />
@@ -80,6 +153,7 @@ const Header = (props) => {
             </li>
           </ul>
         </div>
+        {/* Profile end */}
       </div>
     </div>
   );

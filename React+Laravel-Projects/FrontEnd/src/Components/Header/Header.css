@@ -8,7 +8,6 @@
 .Header .profile {
   width: 179px;
   font-weight: 500;
-  position: relative;
 }
 .Header .profile img {
   width: 35px;
@@ -24,6 +23,9 @@
   transform: rotate(-90deg);
 }
 
+.Header .dorwpDownParent {
+  position: relative;
+}
 .Header .dorpdown {
   background: var(--dark-2);
   box-shadow: var(--shadow);
@@ -35,7 +37,12 @@
   position: absolute;
   transition: var(--trans);
   top: 47px;
-  left: 0;
+  right: 0;
+}
+.Header .dorpdown .dropdownTitle {
+  color: var(--light-2);
+  padding: 5px 20px;
+  border-bottom: 1px solid var(--light-3);
 }
 .Header .dorpdown li a {
   width: 100%;
@@ -50,4 +57,9 @@
 .Header .dorpdown.show {
   opacity: 1;
   visibility: visible;
+}
+
+.notification .dorpdown,
+.message .dorpdown {
+  width: 300px;
 }
