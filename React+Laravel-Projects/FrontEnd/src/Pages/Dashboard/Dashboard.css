@@ -28,6 +28,7 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   animation-name: animateTag;
   animation-duration: 1s;
@@ -65,4 +66,21 @@
   100% {
     transform: scale(1);
   }
+}
+
+.Dashboard .topContributor li {
+  border-bottom: 1px solid var(--light-3);
+  padding: 10px 0;
+}
+.Dashboard .topContributor li:last-child {
+  border-bottom: none;
+}
+.Dashboard .topContributor li .description {
+  font-size: 0.85rem;
+  margin: 5px 0;
+}
+.Dashboard .topContributor li img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }

@@ -56,7 +56,7 @@ const MyAreaChart = () => {
   return (
     <>
       <AreaChart
-        width={730}
+        width={720}
         height={350}
         data={data}
         margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
