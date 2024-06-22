@@ -15,6 +15,7 @@
 .SideNav.sideNavHide .logo,
 .SideNav.sideNavHide .menuTitle,
 .SideNav.sideNavHide a {
+  font-size: 0px;
   opacity: 0;
   margin-left: 100px;
 }

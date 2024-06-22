@@ -8,6 +8,7 @@
 .Header .profile {
   width: 179px;
   font-weight: 500;
+  position: relative;
 }
 .Header .profile img {
   width: 35px;
@@ -21,4 +22,32 @@
 }
 .Header .profile .arrow.fliped {
   transform: rotate(-90deg);
+}
+
+.Header .dorpdown {
+  background: var(--dark-2);
+  box-shadow: var(--shadow);
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: var(--trans);
+  top: 47px;
+  left: 0;
+}
+.Header .dorpdown li a {
+  width: 100%;
+  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.Header .dorpdown li a:hover {
+  background: var(--dark-1);
+}
+.Header .dorpdown.show {
+  opacity: 1;
+  visibility: visible;
 }

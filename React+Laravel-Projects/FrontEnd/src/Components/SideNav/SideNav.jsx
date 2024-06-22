@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 //___ Css ___//
 import "./SideNav.css";
 
@@ -6,7 +8,6 @@ import { MdDashboard, MdEditDocument } from "react-icons/md";
 import { FaUser, FaClipboardList } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { TbDeviceRemote } from "react-icons/tb";
-import { NavLink } from "react-router-dom";
 
 const SideNav = (props) => {
   const { toggleVal } = props;

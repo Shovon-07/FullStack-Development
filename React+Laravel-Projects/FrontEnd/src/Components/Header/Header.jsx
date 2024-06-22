@@ -9,6 +9,7 @@ import { IoNotifications } from "react-icons/io5";
 import { AiFillMessage } from "react-icons/ai";
 import { IoMdSettings, IoIosArrowForward } from "react-icons/io";
 import { FaBarsStaggered } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 
 //___ Images ___//
 import User from "../../assets/Images/User.jpg";
@@ -62,6 +63,22 @@ const Header = (props) => {
           <IoIosArrowForward
             className={profileDropdownVal != false ? "arrow fliped" : "arrow"}
           />
+          <ul
+            className={
+              profileDropdownVal != false ? "dorpdown show" : "dorpdown"
+            }
+          >
+            <li>
+              <a href="">
+                <FaUser size={15} /> Profile
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <IoMdSettings size={19} /> Settings
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
