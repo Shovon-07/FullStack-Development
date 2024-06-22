@@ -75,8 +75,14 @@
 .message .dorpdown li:hover {
   background: var(--dark-1);
 }
+.notification .dorpdown li .msgUserPic,
+.message .dorpdown li .msgUserPic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
 .notification .dorpdown li .description,
 .message .dorpdown li .description {
-  margin: 8px 0;
+  margin: 7px 0;
   font-size: 0.9rem;
 }

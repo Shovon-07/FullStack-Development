@@ -16,7 +16,7 @@ import { FaUser } from "react-icons/fa";
 import User from "../../assets/Images/User.jpg";
 
 //___ Data ___//
-import { notificationData, messageData } from "../../Data";
+import { notificationData, messageData } from "../../assets/Js/Data";
 
 const Header = (props) => {
   const { setToggleVal } = props;
@@ -91,19 +91,17 @@ const Header = (props) => {
             <p className="dropdownTitle">Messages</p>
             {messageData.map((items, index) => {
               return (
-                <li className="c_pointer">
-                  <div>
-                    <img src={items.img} alt="" />
-                  </div>
+                <li className="c_pointer d-flex-start gap-20">
+                  <img src={items.img} alt="" className="msgUserPic" />
                   <div>
                     <h4 className="title">
-                      {items.title.length > 30
-                        ? items.title.slice(0, 30) + "..."
+                      {items.title.length > 25
+                        ? items.title.slice(0, 25) + "..."
                         : items.title}
                     </h4>
                     <p className="description">
-                      {items.description.length > 55
-                        ? items.description.slice(0, 55) + "..."
+                      {items.description.length > 50
+                        ? items.description.slice(0, 50) + "..."
                         : items.description}
                     </p>
                     <p
