@@ -10,11 +10,10 @@
 }
 .TempRemote .remoteBox {
   background: var(--light-1);
-  /* border: var(--border); */
   box-shadow: var(--shadow);
   border-radius: 5px;
   padding: 5px 5px 20px 5px;
-  width: 20%;
+  width: 60%;
   height: 100%;
 }
 .TempRemote .display {

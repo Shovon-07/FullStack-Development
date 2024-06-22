@@ -57,22 +57,22 @@ const SideNav = (props) => {
           </li>
 
           <li>
-            <NavLink to="/todo-app">
+            <NavLink to="/null">
               <FaClipboardList size={18} /> ToDo App
             </NavLink>
           </li>
           <li>
-            <NavLink to="/temperature-remote">
+            <NavLink to="/null">
               <TbDeviceRemote size={20} /> Temp Remote
             </NavLink>
           </li>
           <li>
-            <NavLink to="/todo-app">
+            <NavLink to="/null">
               <FaClipboardList size={18} /> ToDo App
             </NavLink>
           </li>
           <li>
-            <NavLink to="/temperature-remote">
+            <NavLink to="/null">
               <TbDeviceRemote size={20} /> Temp Remote
             </NavLink>
           </li>
