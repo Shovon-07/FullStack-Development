@@ -43,6 +43,17 @@ const Header = (props) => {
       setMessageDropdownVal(false);
     }
   };
+  const closeAllDropdown = () => {
+    setProfileDropdownVal(false);
+    setMessageDropdownVal(false);
+    setNotificationDropdownVal(false);
+  };
+  document.onkeydown = function (evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+      closeAllDropdown();
+    }
+  };
 
   return (
     <div className="Header d-flex">
@@ -58,7 +69,7 @@ const Header = (props) => {
       <div className="right d-flex gap-20">
         <div>
           <NavLink to="/dashboard">
-            <MdDashboard size={23} />
+            <MdDashboard size={23} onClick={closeAllDropdown} />
           </NavLink>
         </div>
 
@@ -119,7 +130,11 @@ const Header = (props) => {
         {/* Settings start */}
         <div>
           <NavLink to="/settings">
-            <IoMdSettings size={23} className="c_pointer" />
+            <IoMdSettings
+              size={23}
+              className="c_pointer"
+              onClick={closeAllDropdown}
+            />
           </NavLink>
         </div>
         {/* Settings end */}
