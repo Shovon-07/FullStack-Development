@@ -1,2 +1,24 @@
 .Header {
+  background: var(--dark-2);
+  box-shadow: var(--shadow);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+.Header .profile {
+  width: 179px;
+  font-weight: 500;
+}
+.Header .profile img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.Header .profile .arrow {
+  transform: rotate(90deg);
+  margin-top: 3px;
+  transition: var(--trans);
+}
+.Header .profile .arrow.fliped {
+  transform: rotate(-90deg);
 }

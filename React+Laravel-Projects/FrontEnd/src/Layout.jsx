@@ -14,10 +14,10 @@ const Layout = () => {
         <SideNav />
       </Suspense>
       <div className="container">
+        <Suspense fallback={<Loader />}>
+          <Header />
+        </Suspense>
         <div className="content">
-          <Suspense fallback={<Loader />}>
-            <Header />
-          </Suspense>
           <Outlet />
         </div>
         <Suspense fallback={<Loader />}>
