@@ -10,7 +10,7 @@
   --main-color: rgb(126 130 251);
   --dark-blue: #01021d;
 
-  --border: 1px solid var(--dark-1);
+  --border: 1px solid var(--light-3);
   --shadow: 1px 1px 10px #0b0b0b;
   --trans: 0.5s ease all;
 }
