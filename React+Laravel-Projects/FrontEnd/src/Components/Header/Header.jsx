@@ -14,7 +14,8 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import User from "../../assets/Images/User.jpg";
 import { useState } from "react";
 
-const Header = () => {
+const Header = (props) => {
+  const { setToggleVal } = props;
   const [userName, setUserName] = useState("Al jubair shovon");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
 
@@ -25,7 +26,13 @@ const Header = () => {
   return (
     <div className="Header d-flex">
       <div className="left">
-        <FaBarsStaggered size={25} className="c_pointer" />
+        <FaBarsStaggered
+          size={25}
+          className="c_pointer"
+          onClick={() => {
+            setToggleVal((prev) => !prev);
+          }}
+        />
       </div>
       <div className="right d-flex gap-20">
         <div>

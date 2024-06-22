@@ -8,9 +8,11 @@ import { IoMdSettings } from "react-icons/io";
 import { TbDeviceRemote } from "react-icons/tb";
 import { NavLink } from "react-router-dom";
 
-const SideNav = () => {
+const SideNav = (props) => {
+  const { toggleVal } = props;
+
   return (
-    <div className="SideNav">
+    <div className={toggleVal == false ? "SideNav" : "SideNav sideNavHide"}>
       <h3 className="logo">admin</h3>
       <ul className="menu">
         <div className="menuSection">
