@@ -4,6 +4,9 @@
   padding: 10px 20px;
   margin-bottom: 20px;
   justify-content: space-between;
+  z-index: 999;
+  /* position: sticky;
+  top: 0; */
 }
 .Header .profile {
   width: 179px;
@@ -38,6 +41,7 @@
   transition: var(--trans);
   top: 47px;
   right: 0;
+  z-index: 998;
 }
 .Header .dorpdown .dropdownTitle {
   color: var(--light-2);
@@ -62,4 +66,17 @@
 .notification .dorpdown,
 .message .dorpdown {
   width: 300px;
+}
+.notification .dorpdown li,
+.message .dorpdown li {
+  padding: 10px 20px;
+}
+.notification .dorpdown li:hover,
+.message .dorpdown li:hover {
+  background: var(--dark-1);
+}
+.notification .dorpdown li .description,
+.message .dorpdown li .description {
+  margin: 8px 0;
+  font-size: 0.9rem;
 }

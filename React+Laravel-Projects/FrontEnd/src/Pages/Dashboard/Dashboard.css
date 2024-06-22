@@ -28,6 +28,9 @@
   width: 100%;
   display: flex;
   align-items: center;
+
+  animation-name: animateTag;
+  animation-duration: 1s;
 }
 .Dashboard .item .tag p {
   display: flex;
@@ -55,6 +58,11 @@
   background: #ff8042;
 }
 
-.Dashboard .item:nth-child(1) .recharts-wrapper {
-  /* margin: -100px 0 0 0; */
+@keyframes animateTag {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

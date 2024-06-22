@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 //___ Css ___//
@@ -13,7 +14,9 @@ import { FaUser } from "react-icons/fa";
 
 //___ Images ___//
 import User from "../../assets/Images/User.jpg";
-import { useState } from "react";
+
+//___ Data ___//
+import { notificationData, messageData } from "../../Data";
 
 const Header = (props) => {
   const { setToggleVal } = props;
@@ -86,16 +89,33 @@ const Header = (props) => {
             }
           >
             <p className="dropdownTitle">Messages</p>
-            <li>
-              <a href="">
-                <FaUser size={15} /> Profile
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <IoMdSettings size={19} /> Settings
-              </a>
-            </li>
+            {messageData.map((items, index) => {
+              return (
+                <li className="c_pointer">
+                  <div>
+                    <img src={items.img} alt="" />
+                  </div>
+                  <div>
+                    <h4 className="title">
+                      {items.title.length > 30
+                        ? items.title.slice(0, 30) + "..."
+                        : items.title}
+                    </h4>
+                    <p className="description">
+                      {items.description.length > 55
+                        ? items.description.slice(0, 55) + "..."
+                        : items.description}
+                    </p>
+                    <p
+                      className="time"
+                      style={{ fontSize: "0.8rem", textAlign: "right" }}
+                    >
+                      {items.time}
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
         {/* Message end */}
@@ -113,16 +133,28 @@ const Header = (props) => {
             }
           >
             <p className="dropdownTitle">Notifications</p>
-            <li>
-              <a href="">
-                <FaUser size={15} /> Profile
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <IoMdSettings size={19} /> Settings
-              </a>
-            </li>
+            {notificationData.map((items, index) => {
+              return (
+                <li className="c_pointer">
+                  <h4 className="title">
+                    {items.title.length > 30
+                      ? items.title.slice(0, 30) + "..."
+                      : items.title}
+                  </h4>
+                  <p className="description">
+                    {items.description.length > 55
+                      ? items.description.slice(0, 55) + "..."
+                      : items.description}
+                  </p>
+                  <p
+                    className="time"
+                    style={{ fontSize: "0.8rem", textAlign: "right" }}
+                  >
+                    {items.time}
+                  </p>
+                </li>
+              );
+            })}
           </ul>
         </div>
         {/* Notification end */}
