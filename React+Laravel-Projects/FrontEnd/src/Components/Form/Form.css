@@ -1,4 +1,15 @@
 .Form {
+  width: 100%;
+  height: 100vh;
+}
+.Form .formBox {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Form .card {
   width: 50%;
   /* background: var(--dark-1); */
   box-shadow: var(--shadow);

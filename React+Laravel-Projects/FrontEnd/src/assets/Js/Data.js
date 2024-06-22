@@ -1,3 +1,22 @@
+export const userData = [
+  {
+    id: 1,
+    name: "Al jubair shovon",
+    email: "shovon@gmail.com",
+    password: "sho123",
+    img: "/src/assets/Images/User.jpg",
+    role: "admin",
+  },
+  {
+    id: 2,
+    name: "Asikur rahman",
+    email: "asik@gmail.com",
+    password: "ask123",
+    img: "/src/assets/Images/cartoon.png",
+    role: "editor",
+  },
+];
+
 export const notificationData = [
   {
     id: 1,
