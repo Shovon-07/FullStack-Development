@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 //___ Css ___//
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  const [count, setCount] = useState(0);
+
+  // useEffect(() => {
+  //   setCount((prev) => prev + 1);
+  // });
+
+  return <div>Dashboard {count}</div>;
 };
 
 export default Dashboard;

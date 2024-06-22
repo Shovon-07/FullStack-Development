@@ -56,8 +56,6 @@ a {
 }
 
 /*___ Layout ___*/
-.main {
-}
 .container {
   /* margin-left: 230px; */
   padding-left: 230px;
@@ -67,7 +65,11 @@ a {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  transition: var(--trans);
 }
 .content {
   padding: 0 20px;
+}
+.container.large {
+  padding-left: 0;
 }

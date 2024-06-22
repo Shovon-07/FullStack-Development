@@ -15,7 +15,7 @@ const Layout = () => {
       <Suspense fallback={<Loader />}>
         <SideNav toggleVal={toggleVal} />
       </Suspense>
-      <div className="container">
+      <div className={toggleVal == false ? "container" : "container large"}>
         <Suspense fallback={<Loader />}>
           <Header setToggleVal={setToggleVal} />
         </Suspense>

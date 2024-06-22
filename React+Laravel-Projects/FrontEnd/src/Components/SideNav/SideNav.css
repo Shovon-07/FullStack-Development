@@ -16,6 +16,7 @@
 .SideNav.sideNavHide .menuTitle,
 .SideNav.sideNavHide a {
   opacity: 0;
+  margin-left: 100px;
 }
 .SideNav::-webkit-scrollbar {
   display: none;
