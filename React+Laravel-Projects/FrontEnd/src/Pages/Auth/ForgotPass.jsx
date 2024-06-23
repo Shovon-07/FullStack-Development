@@ -24,7 +24,7 @@ const ForgotPass = () => {
           <Form
             title={"Send OTP"}
             inputFields={inputField}
-            url={"/dashboard"}
+            api={"/send-otp"}
             loginOrSingupUrl={""}
             loginOrSingup={""}
           />

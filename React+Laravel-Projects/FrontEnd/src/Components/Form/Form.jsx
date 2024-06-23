@@ -20,7 +20,7 @@ const Form = (props) => {
   const {
     title,
     inputFields,
-    url,
+    api,
     loginOrSingupUrl,
     loginOrSingup,
     setAuthMsg,
@@ -39,17 +39,74 @@ const Form = (props) => {
   };
 
   const submit = () => {
-    userData.map((items, i) => {
-      if (items.email === inputData.email) {
-        toast.success("Login successfull");
-        setInterval(() => {
-          localStorage.setItem("role", items.role);
-          navigate("/dashboard");
-        }, 1000);
+    // userData.map((items, i) => {
+    //   if (items.email === inputData.email) {
+    //     toast.success("Login successfull");
+    //     setInterval(() => {
+    //       localStorage.setItem("role", items.role);
+    //       navigate("/dashboard");
+    //     }, 1000);
+    //   } else {
+    //     toast.error("Invalid user!");
+    //   }
+    // });
+
+    if (api == "/sign-in") {
+      if (inputData.email == "") {
+        toast.error("Please enter email address.");
+      } else if (inputData.password == "") {
+        toast.error("Please enter password.");
       } else {
-        toast.error("Invalid user!");
+        const data = {
+          email: inputData.email,
+          password: inputData.password,
+        };
+        http.post(api, data).then((res) => {
+          console.log(res.data);
+        });
       }
-    });
+    } else if (api == "/sign-up") {
+      if (inputData.name == "") {
+        toast.error("Please enter your name.");
+      } else if (inputData.email == "") {
+        toast.error("Please enter email address.");
+      } else if (inputData.password == "") {
+        toast.error("Please enter password.");
+      } else if (inputData.password != inputData.confirmPassword) {
+        toast.error("Password not matched.");
+      } else {
+        const data = {
+          name: inputData.name,
+          email: inputData.email,
+          password: inputData.password,
+        };
+        http.post(api, data).then((res) => {
+          console.log(res.data);
+        });
+      }
+    } else if (api == "/send-otp") {
+      if (inputData.email == "") {
+        toast.error("Please enter email address.");
+      } else {
+        const data = {
+          email: inputData.email,
+        };
+        http.post(api, data).then((res) => {
+          console.log(res.data);
+        });
+      }
+    } else if (api == "/submit-otp") {
+      if (inputData.otp == "") {
+        toast.error("Please enter valid otp.");
+      } else {
+        const data = {
+          otp: inputData.otp,
+        };
+        http.post(api, data).then((res) => {
+          console.log(res.data);
+        });
+      }
+    }
   };
 
   return (

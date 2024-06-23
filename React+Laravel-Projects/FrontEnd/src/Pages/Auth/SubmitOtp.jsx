@@ -24,7 +24,7 @@ const SubmitOtp = () => {
           <Form
             title={"OTP"}
             inputFields={inputField}
-            url={"/dashboard"}
+            api={"/submit-otp"}
             loginOrSingupUrl={""}
             loginOrSingup={""}
           />
