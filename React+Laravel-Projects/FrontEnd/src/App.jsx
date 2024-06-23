@@ -9,7 +9,7 @@ import "./assets/Css/ScrollBar.css";
 import Loader from "./Components/Loader/Loader";
 
 //___ Pages ___//
-const Layout = lazy(() => import("./Layout"));
+import Layout from "./Layout";
 import Protection from "./Protection";
 const Login = lazy(() => import("./Pages/Auth/Login"));
 const SignUp = lazy(() => import("./Pages/Auth/SignUp"));
@@ -58,14 +58,7 @@ function App() {
           }
         />
 
-        <Route
-          path="/"
-          element={
-            <Suspense fallback={<Loader />}>
-              <Layout />
-            </Suspense>
-          }
-        >
+        <Route path="/" element={<Protection Child={Layout} />}>
           <Route
             path="/dashboard"
             element={
@@ -115,6 +108,7 @@ function App() {
             }
           />
         </Route>
+
         <Route
           path="*"
           element={

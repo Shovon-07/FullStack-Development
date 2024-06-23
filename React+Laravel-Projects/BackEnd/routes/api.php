@@ -20,7 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::controller(UserController::class)->group(function () {
-    Route::get("/s", "S");
     Route::post("/sign-up", "SignUp");
     Route::post("/sign-in", "SignIn");
 });
