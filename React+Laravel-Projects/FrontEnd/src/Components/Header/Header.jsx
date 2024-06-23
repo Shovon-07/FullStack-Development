@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 //___ Css ___//
 import "./Header.css";
@@ -20,6 +20,7 @@ import { notificationData, messageData } from "../../assets/Js/Data";
 
 const Header = (props) => {
   const { setToggleVal } = props;
+  const navigate = useNavigate();
   const [userName, setUserName] = useState("Al jubair shovon");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
@@ -56,6 +57,11 @@ const Header = (props) => {
     if (evt.keyCode == 27) {
       closeAllDropdown();
     }
+  };
+
+  const handleLogout = () => {
+    sessionStorage.clear();
+    navigate("/");
   };
 
   return (
@@ -197,7 +203,7 @@ const Header = (props) => {
               </a>
             </li>
             <li>
-              <a href="">
+              <a onClick={handleLogout}>
                 <IoLogOutOutline size={19} /> Logout
               </a>
             </li>

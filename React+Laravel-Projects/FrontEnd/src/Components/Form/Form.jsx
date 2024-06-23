@@ -39,18 +39,6 @@ const Form = (props) => {
   };
 
   const submit = () => {
-    // userData.map((items, i) => {
-    //   if (items.email === inputData.email) {
-    //     toast.success("Login successfull");
-    //     setInterval(() => {
-    //       localStorage.setItem("role", items.role);
-    //       navigate("/dashboard");
-    //     }, 1000);
-    //   } else {
-    //     toast.error("Invalid user!");
-    //   }
-    // });
-
     if (api == "/sign-in") {
       if (inputData.email == "") {
         toast.error("Please enter email address.");
@@ -62,7 +50,15 @@ const Form = (props) => {
           password: inputData.password,
         };
         http.post(api, data).then((res) => {
-          console.log(res.data);
+          if (res.data.status == true) {
+            toast.success(res.data.msg);
+            sessionStorage.setItem("token", res.data.status);
+            setInterval(() => {
+              navigate("/dashboard");
+            }, 2000);
+          } else {
+            toast.error(res.data.msg);
+          }
         });
       }
     } else if (api == "/sign-up") {
@@ -81,7 +77,14 @@ const Form = (props) => {
           password: inputData.password,
         };
         http.post(api, data).then((res) => {
-          console.log(res.data);
+          if (res.data.status == true) {
+            toast.success(res.data.msg);
+            setInterval(() => {
+              navigate("/");
+            }, 2000);
+          } else {
+            toast.error(res.data.msg.errorInfo[2]);
+          }
         });
       }
     } else if (api == "/send-otp") {
