@@ -10,6 +10,7 @@ import Loader from "./Components/Loader/Loader";
 
 //___ Pages ___//
 const Layout = lazy(() => import("./Layout"));
+import Protection from "./Protection";
 const Login = lazy(() => import("./Pages/Auth/Login"));
 const SignUp = lazy(() => import("./Pages/Auth/SignUp"));
 const ForgotPass = lazy(() => import("./Pages/Auth/ForgotPass"));

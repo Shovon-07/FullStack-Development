@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\JwtHelper;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -30,11 +31,11 @@ class UserController extends Controller
             $email = $request->input("email");
             $password = $request->input("password");
             // $hashedPassword = Hash::make($password);
-
             $data = User::where("Email", $email)->where("Password", $password)->first();
 
             if ($data != null) {
-                return response()->json(["status" => true, "msg" => "Login successed"]);
+                $token = JwtHelper::createToken($data->id, $data->Email);
+                return response()->json(["status" => true, "msg" => "Login successed", "token" => $token]);
             } else {
                 return response()->json(["status" => false, "msg" => "Invalid user"]);
             }

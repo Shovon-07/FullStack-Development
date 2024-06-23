@@ -52,7 +52,7 @@ const Form = (props) => {
         http.post(api, data).then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
-            sessionStorage.setItem("token", res.data.status);
+            sessionStorage.setItem("token", res.data.token);
             setInterval(() => {
               navigate("/dashboard");
             }, 2000);
