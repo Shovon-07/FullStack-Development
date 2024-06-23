@@ -4,6 +4,7 @@ import AuthUser from "../../assets/Js/AuthUser";
 
 //___ Css ___//
 import "./Form.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Icons ___//
 import { FaEye } from "react-icons/fa";
@@ -41,8 +42,10 @@ const Form = (props) => {
     userData.map((items, i) => {
       if (items.email === inputData.email) {
         toast.success("Login successfull");
-        localStorage.setItem("role", items.role);
-        navigate("/dashboard");
+        setInterval(() => {
+          localStorage.setItem("role", items.role);
+          navigate("/dashboard");
+        }, 1000);
       } else {
         toast.error("Invalid user!");
       }
@@ -105,7 +108,7 @@ const Form = (props) => {
         </div>
       </div>
       <ToastContainer
-        position="top-right"
+        position="top-center"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -114,10 +117,8 @@ const Form = (props) => {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="colored"
       />
-      {/* Same as */}
-      <ToastContainer />
     </div>
   );
 };

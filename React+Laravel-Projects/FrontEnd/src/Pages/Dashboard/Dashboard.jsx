@@ -44,7 +44,7 @@ const Dashboard = () => {
             <ul className="topContributor">
               {messageData.map((items, index) => {
                 return (
-                  <li className="c_pointer d-flex-start gap-20">
+                  <li className="c_pointer d-flex-start gap-20" key={index}>
                     <img src={items.img} alt="" className="msgUserPic" />
                     <div>
                       <h4 className="title">

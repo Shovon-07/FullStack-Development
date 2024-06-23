@@ -16,6 +16,7 @@ const ForgotPass = lazy(() => import("./Pages/Auth/ForgotPass"));
 const SubmitOtp = lazy(() => import("./Pages/Auth/SubmitOtp"));
 
 const Dashboard = lazy(() => import("./Pages/Dashboard/Dashboard"));
+const Documentation = lazy(() => import("./Pages/Documentation/Documentation"));
 const TempRemote = lazy(() => import("./Pages/TemperatureRemote/TempRemote"));
 const ErrorPage = lazy(() => import("./Pages/ErrorPage/ErrorPage"));
 
@@ -76,7 +77,7 @@ function App() {
             path="/documentaton"
             element={
               <Suspense fallback={<Loader />}>
-                <Dashboard />
+                <Documentation />
               </Suspense>
             }
           />

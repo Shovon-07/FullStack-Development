@@ -6,7 +6,7 @@ import "./Header.css";
 
 //___ Icons ___//
 import { MdDashboard } from "react-icons/md";
-import { IoNotifications } from "react-icons/io5";
+import { IoNotifications, IoLogOutOutline } from "react-icons/io5";
 import { AiFillMessage } from "react-icons/ai";
 import { IoMdSettings, IoIosArrowForward } from "react-icons/io";
 import { FaBarsStaggered } from "react-icons/fa6";
@@ -91,7 +91,7 @@ const Header = (props) => {
             <p className="dropdownTitle">Messages</p>
             {messageData.map((items, index) => {
               return (
-                <li className="c_pointer d-flex-start gap-20">
+                <li className="c_pointer d-flex-start gap-20" key={index}>
                   <img src={items.img} alt="" className="msgUserPic" />
                   <div>
                     <h4 className="title">
@@ -133,7 +133,7 @@ const Header = (props) => {
             <p className="dropdownTitle">Notifications</p>
             {notificationData.map((items, index) => {
               return (
-                <li className="c_pointer">
+                <li className="c_pointer" key={index}>
                   <h4 className="title">
                     {items.title.length > 30
                       ? items.title.slice(0, 30) + "..."
@@ -194,6 +194,11 @@ const Header = (props) => {
             <li>
               <a href="">
                 <IoMdSettings size={19} /> Settings
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <IoLogOutOutline size={19} /> Logout
               </a>
             </li>
           </ul>
