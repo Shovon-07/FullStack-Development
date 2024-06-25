@@ -21,7 +21,8 @@ import { notificationData, messageData } from "../../assets/Js/Data";
 const Header = (props) => {
   const { setToggleVal } = props;
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("Al jubair shovon");
+  // const [userName, setUserName] = useState("Al jubair shovon");
+  const userName = localStorage.getItem("userName");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
   const [notificationDropdownVal, setNotificationDropdownVal] = useState(false);

@@ -35,7 +35,7 @@ class UserController extends Controller
 
             if ($data != null) {
                 $token = JwtHelper::createToken($data->id, $data->Email);
-                return response()->json(["status" => true, "msg" => "Login successed", "token" => $token]);
+                return response()->json(["status" => true, "msg" => "Login successfull", "token" => $token,"userName"=>$data->Name]);
             } else {
                 return response()->json(["status" => false, "msg" => "Invalid user"]);
             }

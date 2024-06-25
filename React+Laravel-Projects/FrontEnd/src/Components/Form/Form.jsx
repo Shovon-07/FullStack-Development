@@ -54,7 +54,8 @@ const Form = (props) => {
         await http.post(api, data).then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
-            sessionStorage.setItem("token", res.data.token);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("userName", res.data.userName);
             setInterval(() => {
               navigate("/");
             }, 2000);
