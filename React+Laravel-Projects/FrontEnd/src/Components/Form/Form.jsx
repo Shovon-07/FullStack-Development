@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import AuthUser from "../../assets/Js/AuthUser";
 
@@ -52,13 +52,26 @@ const Form = (props) => {
           password: inputData.password,
         };
         await http.post(api, data).then((res) => {
+          // if (res.data.status == true) {
+          //   toast.success(res.data.msg);
+          //   localStorage.setItem("token", res.data.token);
+          //   localStorage.setItem("userName", res.data.userName);
+          //   setInterval(() => {
+          //     navigate("/");
+          //   }, 2000);
+          // }
           if (res.data.status == true) {
-            toast.success(res.data.msg);
             localStorage.setItem("token", res.data.token);
-            localStorage.setItem("userName", res.data.userName);
-            setInterval(() => {
-              navigate("/");
-            }, 2000);
+            localStorage.setItem("id", res.data.userId);
+            if (res.data.token === localStorage.getItem("token")) {
+              toast.success(res.data.msg);
+              localStorage.setItem("userName", res.data.userName);
+              setInterval(() => {
+                navigate("/");
+              }, 2000);
+            } else {
+              toast.error(res.data.msg);
+            }
           } else {
             toast.error(res.data.msg);
           }

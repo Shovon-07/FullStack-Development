@@ -10,5 +10,5 @@ class User extends Model
     use HasFactory;
 
     protected $fillable = ["Name", "Email", "Password", "Otp"];
-    protected $attributes = ["Otp" => 0];
+    protected $attributes = ["Otp" => 0,"Token"=>0];
 }

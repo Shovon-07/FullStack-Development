@@ -19,7 +19,7 @@ class UserController extends Controller
 
             // User::create(["Name" => $name, "Email" => $email, "Password" => Hash::make($password)]);
             User::create(["Name" => $name, "Email" => $email, "Password" => $password]);
-            return response()->json(["status" => true, "msg" => "Registration succeded"]);
+            return response()->json(["status" => true, "msg" => "Registration successfull"]);
         } catch (Exception $e) {
             return response()->json(["status" => false, "msg" => $e]);
         }
@@ -35,12 +35,19 @@ class UserController extends Controller
 
             if ($data != null) {
                 $token = JwtHelper::createToken($data->id, $data->Email);
-                return response()->json(["status" => true, "msg" => "Login successfull", "token" => $token,"userName"=>$data->Name]);
+                User::where("id", $data->id)->update(["Token" => $token]);
+                return response()->json(["status" => true, "msg" => "Login successfull", "token" => $token, "userId" => $data->id, "userName" => $data->Name]);
             } else {
                 return response()->json(["status" => false, "msg" => "Invalid user"]);
             }
         } catch (Exception $e) {
             return response()->json(["status" => false, "msg" => $e]);
         }
+    }
+
+    public function GetToken(Request $request)
+    {
+        $dbToken = User::where("id", $request->userId)->select("Token")->first();
+        return response()->json(["dbToken" => $dbToken]);
     }
 }
