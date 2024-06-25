@@ -18,7 +18,7 @@ const SideNav = (props) => {
       <ul className="menu">
         <div className="menuSection">
           <li>
-            <NavLink to="/dashboard">
+            <NavLink to="/">
               <MdDashboard size={20} /> Dashboard
             </NavLink>
           </li>

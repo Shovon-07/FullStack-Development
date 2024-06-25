@@ -38,7 +38,9 @@ const Form = (props) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
   };
 
-  const submit = () => {
+  const submit = async (e) => {
+    e.preventDefault();
+
     if (api == "/sign-in") {
       if (inputData.email == "") {
         toast.error("Please enter email address.");
@@ -49,12 +51,12 @@ const Form = (props) => {
           email: inputData.email,
           password: inputData.password,
         };
-        http.post(api, data).then((res) => {
+        await http.post(api, data).then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
             sessionStorage.setItem("token", res.data.token);
             setInterval(() => {
-              navigate("/dashboard");
+              navigate("/");
             }, 2000);
           } else {
             toast.error(res.data.msg);
@@ -76,7 +78,7 @@ const Form = (props) => {
           email: inputData.email,
           password: inputData.password,
         };
-        http.post(api, data).then((res) => {
+        await http.post(api, data).then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
             setInterval(() => {
@@ -94,7 +96,7 @@ const Form = (props) => {
         const data = {
           email: inputData.email,
         };
-        http.post(api, data).then((res) => {
+        await http.post(api, data).then((res) => {
           console.log(res.data);
         });
       }
@@ -105,7 +107,7 @@ const Form = (props) => {
         const data = {
           otp: inputData.otp,
         };
-        http.post(api, data).then((res) => {
+        await http.post(api, data).then((res) => {
           console.log(res.data);
         });
       }
@@ -118,43 +120,45 @@ const Form = (props) => {
         <div className="card">
           <h3 className="formTitle">{title}</h3>
 
-          {inputFields.map((items, index) => (
-            <div className="inputBox" key={index}>
-              <input
-                type={items.type}
-                className="input"
-                name={items.field}
-                placeholder={items.placeholder}
-                onChange={handleInputValues}
-              />
-              <div
-                className={items.field != "password" ? "d-none" : "showHide"}
-                onClick={() => {
-                  if (inputTypes == false) {
-                    setInputTypes(true);
-                    items.type = "text";
-                  } else if (inputTypes == true) {
-                    setInputTypes(false);
-                    items.type = "password";
-                  }
-                }}
-              >
-                <FaEye
-                  size={20}
-                  className={inputTypes == false ? "d-none" : "c_pointer"}
+          <form onSubmit={submit}>
+            {inputFields.map((items, index) => (
+              <div className="inputBox" key={index}>
+                <input
+                  type={items.type}
+                  className="input"
+                  name={items.field}
+                  placeholder={items.placeholder}
+                  onChange={handleInputValues}
                 />
-                <FaEyeSlash
-                  size={20}
-                  className={inputTypes == true ? "d-none" : "c_pointer"}
-                />
+                <div
+                  className={items.field != "password" ? "d-none" : "showHide"}
+                  onClick={() => {
+                    if (inputTypes == false) {
+                      setInputTypes(true);
+                      items.type = "text";
+                    } else if (inputTypes == true) {
+                      setInputTypes(false);
+                      items.type = "password";
+                    }
+                  }}
+                >
+                  <FaEye
+                    size={20}
+                    className={inputTypes == false ? "d-none" : "c_pointer"}
+                  />
+                  <FaEyeSlash
+                    size={20}
+                    className={inputTypes == true ? "d-none" : "c_pointer"}
+                  />
+                </div>
               </div>
+            ))}
+            <div className="btnBox">
+              <button type="submit" className="submitBtn c_pointer">
+                next
+              </button>
             </div>
-          ))}
-          <div className="btnBox">
-            <button className="submitBtn c_pointer" onClick={submit}>
-              next
-            </button>
-          </div>
+          </form>
 
           <div
             className={`${loginOrSingupUrl == "" ? "d-none" : "formBottom"}`}

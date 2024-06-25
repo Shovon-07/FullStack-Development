@@ -26,7 +26,7 @@ function App() {
     <>
       <Routes>
         <Route
-          path="/"
+          path="/login"
           element={
             <Suspense fallback={<Loader />}>
               <Login />
@@ -60,7 +60,7 @@ function App() {
 
         <Route path="/" element={<Protection Child={Layout} />}>
           <Route
-            path="/dashboard"
+            path="/"
             element={
               <Suspense fallback={<Loader />}>
                 <Dashboard />
