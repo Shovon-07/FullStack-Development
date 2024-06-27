@@ -30,8 +30,8 @@ const Routes = createBrowserRouter([
     element: <GuestLayout />,
     children: [
       { path: "/login", element: <Login /> },
-      { path: "/sign-up", element: <SignUp /> },
-      { path: "/send-otp", element: <ForgotPass /> },
+      { path: "/signup", element: <SignUp /> },
+      { path: "/forgot-password", element: <ForgotPass /> },
       { path: "/submit-otp", element: <SubmitOtp /> },
     ],
   },

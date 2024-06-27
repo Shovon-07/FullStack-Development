@@ -1,10 +1,11 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import { UseAuthContext } from "../Context/AuthContext";
 
 const GuestLayout = () => {
-  const token = true;
+  const { token } = UseAuthContext();
 
-  if (token != false) {
+  if (token) {
     return <Navigate to={"/"} />;
   }
 

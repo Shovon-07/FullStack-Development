@@ -1,5 +1,6 @@
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import AxiosClient from "../../assets/Js/AxiosClient";
 
 //___ Css ___//
 import "./Form.css";
@@ -11,7 +12,7 @@ import { FaEyeSlash } from "react-icons/fa6";
 import { useState } from "react";
 
 //___ Data ___//
-import { userData } from "../../assets/Js/Data";
+// import { userData } from "../../assets/Js/Data";
 
 const Form = (props) => {
   const {
@@ -50,7 +51,7 @@ const Form = (props) => {
         };
         console.log(data);
       }
-    } else if (api == "/sign-up") {
+    } else if (api == "/signup") {
       if (inputData.name == "") {
         toast.error("Please enter your name.");
       } else if (inputData.email == "") {
@@ -60,12 +61,19 @@ const Form = (props) => {
       } else if (inputData.password != inputData.confirmPassword) {
         toast.error("Password not matched.");
       } else {
-        const data = {
+        const payload = {
           name: inputData.name,
           email: inputData.email,
           password: inputData.password,
         };
-        console.log(data);
+        AxiosClient.post(api, payload).then(({ res }) => {
+          // if (res.data.status == true) {
+          //   toast.success(res.data.message);
+          // } else {
+          //   toast.success(res.data.message);
+          // }
+          console.log(res.status);
+        });
       }
     } else if (api == "/send-otp") {
       if (inputData.email == "") {
@@ -91,7 +99,7 @@ const Form = (props) => {
   return (
     <div className="Form">
       <div className="formBox">
-        <div className="card">
+        <div className="card animated fadeInDown">
           <h3 className="formTitle">{title}</h3>
 
           <form onSubmit={submit}>

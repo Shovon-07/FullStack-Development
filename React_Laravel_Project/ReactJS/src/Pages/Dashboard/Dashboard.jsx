@@ -1,9 +1,10 @@
-import React, { lazy } from "react";
+import React, { Suspense, lazy } from "react";
 
 //___ Css ___//
 import "./Dashboard.css";
 
 //___ Components ___//
+import Loader from "../../Components/Loader/Loader";
 const MyAreaChart = lazy(() => import("../../Components/MyAreaChart"));
 const MyPieChart = lazy(() => import("../../Components/MyPieChart"));
 
@@ -17,11 +18,15 @@ const Dashboard = () => {
       <div className="mainBox d-flex-start gap-10">
         <div className="left">
           <h4 style={{ marginBottom: "30px" }}>Earned</h4>
-          <MyAreaChart />
+          <Suspense fallback={<Loader />}>
+            <MyAreaChart />
+          </Suspense>
         </div>
         <div className="right d-flex gap-20">
           <div className="item d-flex">
-            <MyPieChart />
+            <Suspense fallback={<Loader />}>
+              <MyPieChart />
+            </Suspense>
             <div className="tag">
               <p>
                 <span></span> Sold

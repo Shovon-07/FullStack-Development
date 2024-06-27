@@ -42,7 +42,7 @@ const SignUp = () => {
           <Form
             title={"Sign up"}
             inputFields={inputField}
-            api={"/sign-up"}
+            api={"/signup"}
             loginOrSingupUrl={"/"}
             loginOrSingup={"Sign in"}
           />
