@@ -57,8 +57,7 @@ const Form = (props) => {
           if (res.data.status == true) {
             toast.success(res.data.message);
             setInterval(() => {
-              SetToken(res.data.token);
-              setUser(res.data.userName);
+              SetToken(res.data.userName, res.data.token);
             }, 1000);
           } else {
             toast.error(res.data.message);

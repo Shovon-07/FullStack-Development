@@ -11,7 +11,7 @@ const Footer = lazy(() => import("../Components/Footer/Footer"));
 const AdminLayout = () => {
   const { token } = UseAuthContext();
   const [toggleVal, setToggleVal] = useState(false);
-  // const token = true;
+  const userName = localStorage.getItem("USER");
 
   if (!token) {
     return <Navigate to={"/login"} />;
@@ -24,7 +24,7 @@ const AdminLayout = () => {
       </Suspense>
       <div className={toggleVal == false ? "container" : "container large"}>
         <Suspense fallback={<Loader />}>
-          <Header setToggleVal={setToggleVal} />
+          <Header user={userName} setToggleVal={setToggleVal} />
         </Suspense>
         <div className="content">
           <Outlet context={[toggleVal]} />

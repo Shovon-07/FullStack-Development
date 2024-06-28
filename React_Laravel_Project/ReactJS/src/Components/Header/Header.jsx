@@ -19,10 +19,9 @@ import User from "../../assets/Images/User.jpg";
 import { notificationData, messageData } from "../../assets/Js/Data";
 
 const Header = (props) => {
-  const { setToggleVal } = props;
+  const { user, setToggleVal } = props;
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("Al jubair shovon");
-  // const userName = localStorage.getItem("userName");
+  // const [user, setUser] = useState("Al jubair shovon");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
   const [notificationDropdownVal, setNotificationDropdownVal] = useState(false);
@@ -183,9 +182,7 @@ const Header = (props) => {
           onClick={handleProfileDropdown}
         >
           <img src={User} alt="" />
-          <span>
-            {userName.length > 13 ? userName.slice(0, 13) + "..." : userName}
-          </span>
+          <span>{user.length > 13 ? user.slice(0, 13) + "..." : user}</span>
           <IoIosArrowForward
             className={profileDropdownVal != false ? "arrow fliped" : "arrow"}
           />
