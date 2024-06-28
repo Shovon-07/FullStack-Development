@@ -17,7 +17,7 @@ import { useState } from "react";
 
 const Form = (props) => {
   const navigate = useNavigate();
-  const { SetToken } = UseAuthContext();
+  const { setUser, SetToken } = UseAuthContext();
 
   const {
     title,
@@ -49,11 +49,22 @@ const Form = (props) => {
       } else if (inputData.password == "") {
         toast.error("Please enter password.");
       } else {
-        const data = {
+        const payload = {
           email: inputData.email,
           password: inputData.password,
         };
-        console.log(data);
+        AxiosClient.post("/login", payload).then((res) => {
+          if (res.data.status == true) {
+            toast.success(res.data.message);
+            setInterval(() => {
+              SetToken(res.data.token);
+              setUser(res.data.userName);
+            }, 1000);
+          } else {
+            toast.error(res.data.message);
+            // console.log(res.data.message);
+          }
+        });
       }
     } else if (api == "/signup") {
       if (inputData.name == "") {
@@ -77,7 +88,7 @@ const Form = (props) => {
               navigate("/login");
             }, 1000);
           } else {
-            toast.success(res.data.message.errorInfo[2]);
+            toast.error(res.data.message.errorInfo[2]);
           }
         });
       }

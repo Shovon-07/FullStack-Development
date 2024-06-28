@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 
 //___ Css ___//
 import "./Header.css";
@@ -63,6 +63,7 @@ const Header = (props) => {
   const handleLogout = () => {
     sessionStorage.clear();
     localStorage.clear();
+    return <Navigate to={"/login"} />;
   };
 
   return (
