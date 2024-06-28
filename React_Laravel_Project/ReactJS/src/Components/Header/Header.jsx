@@ -68,13 +68,15 @@ const Header = (props) => {
   return (
     <div className="Header d-flex">
       <div className="left">
-        <FaBarsStaggered
-          size={25}
-          className="c_pointer"
-          onClick={() => {
-            setToggleVal((prev) => !prev);
-          }}
-        />
+        <a>
+          <FaBarsStaggered
+            size={25}
+            className="c_pointer"
+            onClick={() => {
+              setToggleVal((prev) => !prev);
+            }}
+          />
+        </a>
       </div>
       <div className="right d-flex gap-20">
         <div>
@@ -85,11 +87,13 @@ const Header = (props) => {
 
         {/* Message start */}
         <div className="message dorwpDownParent">
-          <AiFillMessage
-            size={22}
-            className="c_pointer"
-            onClick={handleMessageDropdown}
-          />
+          <a>
+            <AiFillMessage
+              size={22}
+              className="c_pointer"
+              onClick={handleMessageDropdown}
+            />
+          </a>
           <ul
             className={
               messageDropdownVal != false ? "dorpdown show" : "dorpdown"
@@ -127,11 +131,13 @@ const Header = (props) => {
 
         {/* Notification start */}
         <div className="notification dorwpDownParent">
-          <IoNotifications
-            size={24}
-            className="c_pointer"
-            onClick={handleNotificationDropdown}
-          />
+          <a>
+            <IoNotifications
+              size={24}
+              className="c_pointer"
+              onClick={handleNotificationDropdown}
+            />
+          </a>
           <ul
             className={
               notificationDropdownVal != false ? "dorpdown show" : "dorpdown"
@@ -167,12 +173,15 @@ const Header = (props) => {
         {/* Theme start */}
         <div
           className="c_pointer"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             setToggleTheme((prev) => !prev);
           }}
         >
-          <IoMdSunny size={25} className={theme == false ? "d-none" : ""} />
-          <IoMoonSharp size={25} className={theme == true ? "d-none" : ""} />
+          <a>
+            <IoMdSunny size={25} className={theme == false ? "d-none" : ""} />
+            <IoMoonSharp size={25} className={theme == true ? "d-none" : ""} />
+          </a>
         </div>
         {/* Theme end */}
 
@@ -181,11 +190,13 @@ const Header = (props) => {
           className="profile d-flex gap-10 c_pointer dorwpDownParent"
           onClick={handleProfileDropdown}
         >
-          <img src={User} alt="" />
-          <span>{user.length > 13 ? user.slice(0, 13) + "..." : user}</span>
-          <IoIosArrowForward
-            className={profileDropdownVal != false ? "arrow fliped" : "arrow"}
-          />
+          <a className="d-flex gap-10">
+            <img src={User} alt="" />
+            <span>{user.length > 13 ? user.slice(0, 13) + "..." : user}</span>
+            <IoIosArrowForward
+              className={profileDropdownVal != false ? "arrow fliped" : "arrow"}
+            />
+          </a>
           <ul
             className={
               profileDropdownVal != false ? "dorpdown show" : "dorpdown"
