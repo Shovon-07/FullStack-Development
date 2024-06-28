@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import AxiosClient from "../../assets/Js/AxiosClient";
+import { UseAuthContext } from "../../Context/AuthContext";
 
 //___ Css ___//
 import "./Form.css";
@@ -15,6 +16,9 @@ import { useState } from "react";
 // import { userData } from "../../assets/Js/Data";
 
 const Form = (props) => {
+  const navigate = useNavigate();
+  const { SetToken } = UseAuthContext();
+
   const {
     title,
     inputFields,
@@ -66,13 +70,15 @@ const Form = (props) => {
           email: inputData.email,
           password: inputData.password,
         };
-        AxiosClient.post(api, payload).then(({ res }) => {
-          // if (res.data.status == true) {
-          //   toast.success(res.data.message);
-          // } else {
-          //   toast.success(res.data.message);
-          // }
-          console.log(res.status);
+        AxiosClient.post(api, payload).then((res) => {
+          if (res.data.status == true) {
+            toast.success(res.data.message);
+            setInterval(() => {
+              navigate("/login");
+            }, 1000);
+          } else {
+            toast.success(res.data.message.errorInfo[2]);
+          }
         });
       }
     } else if (api == "/send-otp") {
