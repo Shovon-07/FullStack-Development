@@ -6,9 +6,9 @@ import "./Header.css";
 
 //___ Icons ___//
 import { MdDashboard } from "react-icons/md";
-import { IoNotifications, IoLogOutOutline } from "react-icons/io5";
+import { IoNotifications, IoLogOutOutline, IoMoonSharp } from "react-icons/io5";
 import { AiFillMessage } from "react-icons/ai";
-import { IoMdSettings, IoIosArrowForward } from "react-icons/io";
+import { IoMdSettings, IoIosArrowForward, IoMdSunny } from "react-icons/io";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 
@@ -19,7 +19,7 @@ import User from "../../assets/Images/User.jpg";
 import { notificationData, messageData } from "../../assets/Js/Data";
 
 const Header = (props) => {
-  const { user, setToggleVal } = props;
+  const { user, setToggleVal, theme, setToggleTheme } = props;
   const navigate = useNavigate();
   // const [user, setUser] = useState("Al jubair shovon");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
@@ -128,7 +128,7 @@ const Header = (props) => {
         {/* Notification start */}
         <div className="notification dorwpDownParent">
           <IoNotifications
-            size={23}
+            size={24}
             className="c_pointer"
             onClick={handleNotificationDropdown}
           />
@@ -164,17 +164,17 @@ const Header = (props) => {
         </div>
         {/* Notification end */}
 
-        {/* Settings start */}
-        <div>
-          <NavLink to="/settings">
-            <IoMdSettings
-              size={23}
-              className="c_pointer"
-              onClick={closeAllDropdown}
-            />
-          </NavLink>
+        {/* Theme start */}
+        <div
+          className="c_pointer"
+          onClick={() => {
+            setToggleTheme((prev) => !prev);
+          }}
+        >
+          <IoMdSunny size={25} className={theme == false ? "d-none" : ""} />
+          <IoMoonSharp size={25} className={theme == true ? "d-none" : ""} />
         </div>
-        {/* Settings end */}
+        {/* Theme end */}
 
         {/* Profile start */}
         <div

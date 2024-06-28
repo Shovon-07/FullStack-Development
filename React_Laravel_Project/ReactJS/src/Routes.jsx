@@ -23,6 +23,7 @@ const Routes = createBrowserRouter([
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/documentation", element: <Documentation /> },
       { path: "/temperature-remote", element: <TempRemote /> },
+      { path: "/settings", element: <Documentation /> },
     ],
   },
   {

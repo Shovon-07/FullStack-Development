@@ -20,8 +20,6 @@ input:focus::placeholder {
 
 body {
   font-family: "Rubik", sans-serif;
-  background: var(--dark-2);
-  color: var(--light-1);
 }
 li {
   list-style: none;
@@ -61,6 +59,11 @@ a {
 }
 
 /*___ Admin Layout ___*/
+.main {
+  background: var(--dark-2);
+  color: var(--light-1);
+  transition: var(--trans);
+}
 .container {
   padding-left: 230px;
   width: auto;

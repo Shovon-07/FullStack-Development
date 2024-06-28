@@ -11,6 +11,7 @@ const Footer = lazy(() => import("../Components/Footer/Footer"));
 const AdminLayout = () => {
   const { token } = UseAuthContext();
   const [toggleVal, setToggleVal] = useState(false);
+  const [theme, setToggleTheme] = useState(false);
   const userName = localStorage.getItem("USER");
 
   if (!token) {
@@ -18,13 +19,18 @@ const AdminLayout = () => {
   }
 
   return (
-    <>
+    <div className={theme == false ? "main" : "main light"}>
       <Suspense fallback={<Loader />}>
         <SideNav toggleVal={toggleVal} />
       </Suspense>
       <div className={toggleVal == false ? "container" : "container large"}>
         <Suspense fallback={<Loader />}>
-          <Header user={userName} setToggleVal={setToggleVal} />
+          <Header
+            user={userName}
+            setToggleVal={setToggleVal}
+            theme={theme}
+            setToggleTheme={setToggleTheme}
+          />
         </Suspense>
         <div className="content">
           <Outlet context={[toggleVal]} />
@@ -33,7 +39,7 @@ const AdminLayout = () => {
           <Footer />
         </Suspense>
       </div>
-    </>
+    </div>
   );
 };
 
