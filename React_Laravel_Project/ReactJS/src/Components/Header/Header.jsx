@@ -180,7 +180,7 @@ const Header = (props) => {
               size={25}
               className={!theme ? "" : "d-none"}
               onClick={(e) => {
-                e.preventDefault();
+                // e.preventDefault();
                 setTheme((prev) => !prev);
                 localStorage.setItem("THEME", true);
               }}
@@ -189,7 +189,7 @@ const Header = (props) => {
               size={25}
               className={theme ? "" : "d-none"}
               onClick={(e) => {
-                e.preventDefault();
+                // e.preventDefault();
                 setTheme((prev) => !prev);
                 localStorage.removeItem("THEME");
               }}

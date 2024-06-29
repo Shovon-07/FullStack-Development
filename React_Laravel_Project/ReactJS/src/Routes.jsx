@@ -19,8 +19,8 @@ const Routes = createBrowserRouter([
     path: "/",
     element: <AdminLayout />,
     children: [
-      { path: "/", element: <Navigate to={"/dashboard"} /> },
-      { path: "/dashboard", element: <Dashboard /> },
+      // { path: "/", element: <Navigate to={"/dashboard"} /> },
+      { path: "/", element: <Dashboard /> },
       { path: "/documentation", element: <Documentation /> },
       { path: "/temperature-remote", element: <TempRemote /> },
       { path: "/settings", element: <Documentation /> },
