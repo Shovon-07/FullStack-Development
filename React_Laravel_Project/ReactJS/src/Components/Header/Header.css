@@ -61,6 +61,7 @@
 .Header .notification .dorpdown,
 .Header .message .dorpdown {
   width: 300px;
+  top: 42px;
 }
 .Header .notification .dorpdown li,
 .Header .message .dorpdown li {

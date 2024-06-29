@@ -79,7 +79,7 @@ const Header = (props) => {
       </div>
       <div className="right d-flex gap-20">
         <div>
-          <NavLink to="/dashboard">
+          <NavLink to="/">
             <MdDashboard size={23} onClick={closeAllDropdown} />
           </NavLink>
         </div>

@@ -31,7 +31,7 @@
   justify-content: center;
 
   animation-name: animateTag;
-  animation-duration: 1s;
+  animation-duration: 2s;
 }
 .Dashboard .item .tag p {
   display: flex;

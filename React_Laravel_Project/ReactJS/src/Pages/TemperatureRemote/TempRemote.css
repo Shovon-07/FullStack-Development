@@ -7,21 +7,21 @@
   margin-bottom: 30px;
 }
 .TempRemote .remoteBox {
-  background: var(--light-1);
-  box-shadow: var(--shadow);
+  background: #fff;
+  box-shadow: 1px 1px 10px #7c7b7b;
   border-radius: 5px;
   padding: 5px 5px 20px 5px;
   width: 25%;
   height: 100%;
 }
 .TempRemote .display {
-  background: var(--light-1);
-  color: var(--dark-1);
+  background: #fff;
+  color: #7c7c7c;
   border-radius: 5px;
   padding: 20px;
   font-size: 35px;
   text-align: center;
-  box-shadow: inset 1px 1px 10px var(--dark-1);
+  box-shadow: inset 1px 1px 10px #5e5c5c;
   position: relative;
   cursor: default;
 }
@@ -38,11 +38,9 @@
   position: absolute;
   right: 10px;
   bottom: 10px;
-  /* box-shadow: inset 1px 1px 2px var(--light-3),
-    inset -1px -1px 2px var(--light-3); */
 }
 .TempRemote .companyTag {
-  color: var(--light-3);
+  color: #7c7c7c;
   text-transform: uppercase;
   font-size: 10px;
   text-align: center;
@@ -54,14 +52,14 @@
   flex-direction: column;
 }
 .TempRemote .btn .button {
-  background: var(--light-1);
-  color: var(--dark-1);
+  background: #fff;
+  color: #7c7c7c;
   border: 0;
   outline: 0;
   text-transform: uppercase;
   font-weight: 600;
   font-size: 14px;
-  box-shadow: var(--shadow);
+  box-shadow: 1px 1px 10px #7c7b7b;
   cursor: pointer;
 }
 .TempRemote .btn .plus,
@@ -72,7 +70,7 @@
   border-radius: 50%;
 }
 .TempRemote .btn .button:active {
-  box-shadow: inset 1px 1px 10px var(--dark-1);
+  box-shadow: inset 1px 1px 10px #5e5c5c;
 }
 .TempRemote .flexBtn {
   width: 100%;
