@@ -14,7 +14,6 @@ const AdminLayout = () => {
   const [theme, setTheme] = useState(localStorage.getItem("THEME"));
 
   const userName = localStorage.getItem("USER");
-  // const themeVal = localStorage.getItem("THEME");
 
   if (!token) {
     return <Navigate to={"/login"} />;

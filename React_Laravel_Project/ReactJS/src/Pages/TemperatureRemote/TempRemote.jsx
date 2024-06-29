@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 //___ Icons ___//
-import { FaPlus } from "react-icons/fa6";
-import { FaMinus } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 //___ Css ___//
 import "./TempRemote.css";
