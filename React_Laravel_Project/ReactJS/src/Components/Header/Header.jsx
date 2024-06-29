@@ -19,7 +19,7 @@ import User from "../../assets/Images/User.jpg";
 import { notificationData, messageData } from "../../assets/Js/Data";
 
 const Header = (props) => {
-  const { user, setToggleVal, theme, setToggleTheme } = props;
+  const { user, setToggleVal, theme, setTheme } = props;
   // const [user, setUser] = useState("Al jubair shovon");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
@@ -174,17 +174,26 @@ const Header = (props) => {
         {/* Notification end */}
 
         {/* Theme start */}
-        <div
-          className="c_pointer"
-          onClick={(e) => {
-            e.preventDefault();
-            setToggleTheme((prev) => !prev);
-            // localStorage.setItem("THEME", theme);
-          }}
-        >
+        <div className="c_pointer">
           <a>
-            <IoMdSunny size={25} className={theme == false ? "d-none" : ""} />
-            <IoMoonSharp size={25} className={theme == true ? "d-none" : ""} />
+            <IoMdSunny
+              size={25}
+              className={!theme ? "" : "d-none"}
+              onClick={(e) => {
+                e.preventDefault();
+                setTheme((prev) => !prev);
+                localStorage.setItem("THEME", true);
+              }}
+            />
+            <IoMoonSharp
+              size={25}
+              className={theme ? "" : "d-none"}
+              onClick={(e) => {
+                e.preventDefault();
+                setTheme((prev) => !prev);
+                localStorage.removeItem("THEME");
+              }}
+            />
           </a>
         </div>
         {/* Theme end */}

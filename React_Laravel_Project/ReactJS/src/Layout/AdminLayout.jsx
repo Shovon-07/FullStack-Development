@@ -11,22 +11,17 @@ const Footer = lazy(() => import("../Components/Footer/Footer"));
 const AdminLayout = () => {
   const { token } = UseAuthContext();
   const [toggleVal, setToggleVal] = useState(false);
-  const [theme, setToggleTheme] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("THEME"));
 
   const userName = localStorage.getItem("USER");
-
-  // let themeVal = "";
-  // useEffect(() => {
-  //   themeVal = localStorage.getItem("THEME");
-  // }, []);
+  // const themeVal = localStorage.getItem("THEME");
 
   if (!token) {
     return <Navigate to={"/login"} />;
   }
 
   return (
-    <div className={theme == false ? "main" : "main light"}>
-      {/* <div className={themeVal == false ? "main" : "main light"}> */}
+    <div className={!theme ? "main" : "main light"}>
       <Suspense fallback={<Loader />}>
         <SideNav toggleVal={toggleVal} />
       </Suspense>
@@ -36,7 +31,7 @@ const AdminLayout = () => {
             user={userName}
             setToggleVal={setToggleVal}
             theme={theme}
-            setToggleTheme={setToggleTheme}
+            setTheme={setTheme}
           />
         </Suspense>
         <div className="content">
