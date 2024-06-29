@@ -50,14 +50,6 @@
   padding: 5px 20px;
   border-bottom: 1px solid var(--light-3);
 }
-.Header .dorpdown li a {
-  width: 100%;
-  padding: 10px 20px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: none;
-}
 .Header .dorpdown li a:hover {
   background: var(--dark-1);
 }
@@ -66,26 +58,44 @@
   visibility: visible;
 }
 
-.notification .dorpdown,
-.message .dorpdown {
+.Header .notification .dorpdown,
+.Header .message .dorpdown {
   width: 300px;
 }
-.notification .dorpdown li,
-.message .dorpdown li {
+.Header .notification .dorpdown li,
+.Header .message .dorpdown li {
   padding: 10px 20px;
 }
-.notification .dorpdown li:hover,
-.message .dorpdown li:hover {
+.Header .notification .dorpdown li:hover,
+.Header .message .dorpdown li:hover {
   background: var(--dark-1);
 }
-.notification .dorpdown li .msgUserPic,
-.message .dorpdown li .msgUserPic {
+.Header .notification .dorpdown li .msgUserPic,
+.Header .message .dorpdown li .msgUserPic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.notification .dorpdown li .description,
-.message .dorpdown li .description {
+.Header .notification .dorpdown li .description,
+.Header .message .dorpdown li .description {
   margin: 7px 0;
   font-size: 0.9rem;
+}
+
+.Header .profile .dorpdown li a {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.Header .notification .dorpdown li a {
+  width: 100%;
+  display: block;
+}
+.Header .message .dorpdown li a {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }

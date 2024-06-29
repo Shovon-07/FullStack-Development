@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { UseAuthContext } from "../Context/AuthContext";
 
@@ -12,7 +12,13 @@ const AdminLayout = () => {
   const { token } = UseAuthContext();
   const [toggleVal, setToggleVal] = useState(false);
   const [theme, setToggleTheme] = useState(false);
+
   const userName = localStorage.getItem("USER");
+
+  // let themeVal = "";
+  // useEffect(() => {
+  //   themeVal = localStorage.getItem("THEME");
+  // }, []);
 
   if (!token) {
     return <Navigate to={"/login"} />;
@@ -20,6 +26,7 @@ const AdminLayout = () => {
 
   return (
     <div className={theme == false ? "main" : "main light"}>
+      {/* <div className={themeVal == false ? "main" : "main light"}> */}
       <Suspense fallback={<Loader />}>
         <SideNav toggleVal={toggleVal} />
       </Suspense>

@@ -10,9 +10,9 @@ const GuestLayout = () => {
   }
 
   return (
-    <>
+    <div className="main">
       <Outlet />
-    </>
+    </div>
   );
 };
 

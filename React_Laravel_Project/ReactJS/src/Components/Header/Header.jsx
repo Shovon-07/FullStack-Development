@@ -20,7 +20,6 @@ import { notificationData, messageData } from "../../assets/Js/Data";
 
 const Header = (props) => {
   const { user, setToggleVal, theme, setToggleTheme } = props;
-  const navigate = useNavigate();
   // const [user, setUser] = useState("Al jubair shovon");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
@@ -102,26 +101,28 @@ const Header = (props) => {
             <p className="dropdownTitle">Messages</p>
             {messageData.map((items, index) => {
               return (
-                <li className="c_pointer d-flex-start gap-20" key={index}>
-                  <img src={items.img} alt="" className="msgUserPic" />
-                  <div>
-                    <h4 className="title">
-                      {items.title.length > 25
-                        ? items.title.slice(0, 25) + "..."
-                        : items.title}
-                    </h4>
-                    <p className="description">
-                      {items.description.length > 50
-                        ? items.description.slice(0, 50) + "..."
-                        : items.description}
-                    </p>
-                    <p
-                      className="time"
-                      style={{ fontSize: "0.8rem", textAlign: "right" }}
-                    >
-                      {items.time}
-                    </p>
-                  </div>
+                <li className="c_pointer" key={index}>
+                  <a>
+                    <img src={items.img} alt="" className="msgUserPic" />
+                    <div>
+                      <h4 className="title">
+                        {items.title.length > 25
+                          ? items.title.slice(0, 25) + "..."
+                          : items.title}
+                      </h4>
+                      <p className="description">
+                        {items.description.length > 50
+                          ? items.description.slice(0, 50) + "..."
+                          : items.description}
+                      </p>
+                      <p
+                        className="time"
+                        style={{ fontSize: "0.8rem", textAlign: "right" }}
+                      >
+                        {items.time}
+                      </p>
+                    </div>
+                  </a>
                 </li>
               );
             })}
@@ -147,22 +148,24 @@ const Header = (props) => {
             {notificationData.map((items, index) => {
               return (
                 <li className="c_pointer" key={index}>
-                  <h4 className="title">
-                    {items.title.length > 30
-                      ? items.title.slice(0, 30) + "..."
-                      : items.title}
-                  </h4>
-                  <p className="description">
-                    {items.description.length > 55
-                      ? items.description.slice(0, 55) + "..."
-                      : items.description}
-                  </p>
-                  <p
-                    className="time"
-                    style={{ fontSize: "0.8rem", textAlign: "right" }}
-                  >
-                    {items.time}
-                  </p>
+                  <a>
+                    <h4 className="title">
+                      {items.title.length > 30
+                        ? items.title.slice(0, 30) + "..."
+                        : items.title}
+                    </h4>
+                    <p className="description">
+                      {items.description.length > 55
+                        ? items.description.slice(0, 55) + "..."
+                        : items.description}
+                    </p>
+                    <p
+                      className="time"
+                      style={{ fontSize: "0.8rem", textAlign: "right" }}
+                    >
+                      {items.time}
+                    </p>
+                  </a>
                 </li>
               );
             })}
@@ -176,6 +179,7 @@ const Header = (props) => {
           onClick={(e) => {
             e.preventDefault();
             setToggleTheme((prev) => !prev);
+            // localStorage.setItem("THEME", theme);
           }}
         >
           <a>
