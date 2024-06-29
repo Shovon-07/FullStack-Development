@@ -15,6 +15,9 @@ const Dashboard = () => {
   return (
     <div className="Dashboard">
       <h3 className="pageTitle">Dashboard</h3>
+
+      {/* <button style={{marginBottom:"20px"}}><a style={{color:"#000",fontSize:"20px",padding:"10px"}} href="https://mail.google.com/mail/u/0/#inbox?compose=new" target="__blank">Go to gmail</a></button> */}
+      
       <div className="mainBox d-flex-start gap-10">
         <div className="left">
           <h4 style={{ marginBottom: "30px" }}>Earned</h4>

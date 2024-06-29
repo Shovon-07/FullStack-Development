@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, Navigate, useNavigate } from "react-router-dom";
+import { Link, NavLink, Navigate } from "react-router-dom";
 
 //___ Css ___//
 import "./Header.css";
@@ -216,14 +216,14 @@ const Header = (props) => {
             }
           >
             <li>
-              <a href="">
+              <Link to="/profile">
                 <FaUser size={15} /> Profile
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="">
+              <Link to="/settings">
                 <IoMdSettings size={19} /> Settings
-              </a>
+              </Link>
             </li>
             <li>
               <a onClick={handleLogout}>
