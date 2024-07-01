@@ -205,7 +205,7 @@ const Header = (props) => {
         >
           <a className="d-flex gap-10">
             <img src={User} alt="" />
-            <span>{user.length > 13 ? user.slice(0, 13) + "..." : user}</span>
+            <span>{user.length > 15 ? user.slice(0, 15) + "..." : user}</span>
             <IoIosArrowForward
               className={profileDropdownVal != false ? "arrow fliped" : "arrow"}
             />
