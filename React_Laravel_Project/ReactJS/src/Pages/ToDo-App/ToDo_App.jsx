@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ToDo_Items from "./ToDo_Items";
 
 //___ Css ___//
@@ -25,6 +25,27 @@ const ToDo_App = () => {
     inputRef.current.value = "";
   };
 
+  const deleteTodo = (id) => {
+    setToDoList((prev) => {
+      return prev.filter((todo) => todo.id !== id);
+    });
+  };
+
+  const toggleTodo = (id) => {
+    setToDoList((prev) => {
+      return prev.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isComplete: !todo.isComplete };
+        }
+        return todo;
+      });
+    });
+  };
+
+  useEffect(() => {
+    console.log(toDoList);
+  }, [toDoList]);
+
   return (
     <div className="ToDo_App  d-flex">
       <h3 className="pageTitle">ToDo App</h3>
@@ -42,10 +63,20 @@ const ToDo_App = () => {
           <button onClick={Add}>Add</button>
         </div>
         <div>
-          {toDoList.map((itemx, index) => {})}
-          <ToDo_Items text="Python" />
-          <ToDo_Items text="Java" />
-          <ToDo_Items text="Php" />
+          {toDoList.map((items, index) => {
+            return (
+              <ToDo_Items
+                key={index}
+                id={items.id}
+                text={items.text}
+                isComplete={items.isComplete}
+                deleteTodo={deleteTodo}
+                toggleTodo={toggleTodo}
+              />
+            );
+          })}
+          {/* <ToDo_Items text="Java" />
+          <ToDo_Items text="Php" /> */}
         </div>
       </div>
     </div>

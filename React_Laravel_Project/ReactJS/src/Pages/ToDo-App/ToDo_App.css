@@ -63,3 +63,6 @@
   width: 15px;
   height: auto;
 }
+.ToDo_Items .line-throw {
+  text-decoration: line-through;
+}
