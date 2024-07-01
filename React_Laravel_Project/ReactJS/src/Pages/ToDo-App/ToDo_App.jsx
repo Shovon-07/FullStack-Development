@@ -9,7 +9,11 @@ import ToDo_Icon from "../../assets/Images/Icons/todo_icon.png";
 
 const ToDo_App = () => {
   const inputRef = useRef();
-  const [toDoList, setToDoList] = useState([]);
+  const [toDoList, setToDoList] = useState(
+    localStorage.getItem("ToDos")
+      ? JSON.parse(localStorage.getItem("ToDos"))
+      : []
+  );
 
   const Add = () => {
     const inputTxt = inputRef.current.value.trim();
@@ -43,7 +47,7 @@ const ToDo_App = () => {
   };
 
   useEffect(() => {
-    console.log(toDoList);
+    localStorage.setItem("ToDos", JSON.stringify(toDoList));
   }, [toDoList]);
 
   return (

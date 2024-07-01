@@ -13,10 +13,10 @@ const ToDo_Items = (props) => {
     <div className="ToDo_Items d-flex gap-10">
       <div
         onClick={() => toggleTodo(id)}
-        className="toDoOnlyOneItems d-flex gap-10"
+        className="toDoOnlyOneItems d-flex gap-10 c_pointer"
       >
-        <img src={isComplete ? Tick : Not_Tick} alt="" className="c_pointer" />
-        <p className={`c_pointer ${isComplete ? "line-throw" : ""}`}>{text}</p>
+        <img src={isComplete ? Tick : Not_Tick} alt="" />
+        <p className={`${isComplete ? "line-throw" : ""}`}>{text}</p>
       </div>
       <img
         onClick={() => deleteTodo(id)}
