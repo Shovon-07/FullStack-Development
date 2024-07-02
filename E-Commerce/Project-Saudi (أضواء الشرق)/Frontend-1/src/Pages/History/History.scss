@@ -1,0 +1,17 @@
+@import "../../Styles/Variable.scss";
+
+@import "../../Styles/CssVar.css";
+@import "../../Styles/DataTable.css";
+
+.History {
+  box-shadow: $shadow;
+  background: $light-1;
+  padding: 20px;
+  .button {
+    padding: 5px 10px;
+    font-size: 15px;
+    a {
+      color: $light-1;
+    }
+  }
+}

@@ -1,0 +1,344 @@
+@import "./Variable.scss";
+@import "./Responsive.scss";
+@import "./Scrollbar.scss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+::selection {
+  background: $main-color;
+  color: $light-1;
+}
+::placeholder {
+  color: $placeholder-color;
+  transition: $trans;
+}
+body {
+  font-family: "Inter", sans-serif;
+  background: $body-bg;
+}
+
+.main {
+  color: $dark-2;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.container,
+.headerContainer,
+.footerContainer {
+  width: 90%;
+  height: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+.container {
+  padding: 110px 0 50px 0;
+}
+a {
+  text-decoration: none;
+  color: $dark-2;
+  transition: $trans;
+  &:hover {
+    color: $dark-2;
+  }
+}
+li {
+  list-style: none;
+}
+.button {
+  background: $dark-2;
+  color: $light-1;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: $trans;
+  &:hover {
+    background: $dark-1;
+    color: $light-1;
+  }
+}
+.cursor {
+  cursor: pointer;
+}
+.title {
+  color: $dark-3;
+}
+
+// Additional
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+.d-none {
+  display: none;
+}
+.gap-10 {
+  gap: 10px;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-30 {
+  gap: 30px;
+}
+.flex-start {
+  align-items: flex-start;
+}
+.visibilityHidden {
+  visibility: hidden;
+}
+.angle {
+  transition: $trans;
+}
+.angleRotate {
+  transition: $trans;
+  transform: rotate(-180deg);
+}
+.shadow {
+  box-shadow: $shadow;
+}
+input,
+textarea {
+  font-size: 17px;
+  padding: 5px 10px;
+  border: $border;
+  outline: none;
+  color: $dark-3;
+  &:focus::placeholder {
+    padding-left: 15px;
+    transition: $trans;
+  }
+}
+textarea {
+  resize: vertical;
+  line-height: 28px;
+  font-size: 18px;
+  text-align: justify;
+  font-family: "Times New Roman", Times, serif;
+  &::placeholder {
+    font-size: 16px;
+    font-family: "Times New Roman", Times, serif;
+  }
+}
+input:disabled {
+  background: $light-3 !important;
+  border: 1px solid green !important;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.alertNote {
+  background: #faf9cd;
+  justify-content: center;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.color-light {
+  color: $light-1;
+}
+
+/*________________ Blur effec start ________________*/
+body.blur {
+  background-image: url("/images/snow-river.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+
+  ::placeholder {
+    color: $light-3;
+  }
+  input:disabled {
+    background: $dark-3 !important;
+    border: 1px solid $light-3 !important;
+  }
+
+  .main {
+    color: $light-1;
+    .title {
+      color: $light-1;
+    }
+    //___ Header ___//
+    .Header {
+      background: #42424259;
+      backdrop-filter: blur(15px);
+      box-shadow: none;
+      border-bottom: $border;
+      .menus {
+        background: none;
+        @include slg {
+          background: #424242c2;
+          backdrop-filter: blur(15px);
+        }
+        li {
+          a {
+            color: $light-1;
+          }
+        }
+      }
+      .toggler {
+        color: $light-1;
+      }
+    }
+
+    //___ Home,PendingOrder,CompleteOrder,History,Statistics ___//
+    .Home,
+    .PendingOrder,
+    .CompleteOrder,
+    .History,
+    .Statistics {
+      background: none;
+      backdrop-filter: blur(15px);
+      box-shadow: 1px 1px 5px $dark-2;
+    }
+
+    //___ Footer ___//
+    .Footer {
+      background: none;
+      backdrop-filter: blur(15px);
+      border-top: 1px solid $light-3;
+    }
+
+    //___ CustomizeImg ___//
+    .CustomizeImg {
+      .previewSection {
+        backdrop-filter: none !important;
+        background: $light-1 !important;
+        .title {
+          color: $dark-3;
+        }
+      }
+      .right {
+        background: none;
+        backdrop-filter: blur(15px);
+      }
+    }
+
+    //___ Create invoice ___//
+    .CreateInvoice {
+      .invoiceSection {
+        color: $light-1;
+        .logoSec {
+          background: none;
+          backdrop-filter: blur(15px);
+          box-shadow: 1px 1px 5px $dark-2;
+        }
+        .left,
+        .right {
+          background: none;
+          backdrop-filter: blur(15px);
+          color: $light-1;
+          box-shadow: 1px 1px 5px $dark-2;
+          input,
+          textarea {
+            background: transparent;
+            color: $light-1;
+          }
+          .left,
+          .right {
+            backdrop-filter: blur(0);
+            box-shadow: none;
+            .title {
+              color: $light-1;
+            }
+          }
+        }
+      }
+      .measurement {
+        background: none;
+        backdrop-filter: blur(15px);
+        box-shadow: 1px 1px 5px $dark-2;
+        .left,
+        .right {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .DynamicInput {
+      .title {
+        color: $light-1;
+      }
+      select {
+        color: $dark-3;
+      }
+    }
+
+    //___ Data table ___//
+    .kGckkd,
+    .mHisf {
+      background: $dark-2;
+      color: $light-1;
+    }
+    .hMFeQo,
+    .fpBGKh,
+    .huezRP,
+    .hDHZZh {
+      background: none;
+      color: $light-1;
+      input {
+        color: $light-2;
+        border-bottom: 1px solid $light-2;
+      }
+    }
+    .kGckkd {
+      color: $light-1;
+      border-bottom: 1px solid $light-2;
+    }
+    .kUMlDB {
+      background: none;
+      color: $light-1;
+    }
+    .hVPalX {
+      background: none;
+      color: $light-1;
+    }
+    .kuPCgf {
+      fill: $light-1;
+    }
+  }
+
+  .alertNote {
+    background: #f3ee0a38;
+  }
+  .printBtn {
+    color: $light-1;
+  }
+}
+
+/*________________ Blur effec end ________________*/
+
+// For print
+@media print {
+  // ::-webkit-scrollbar {
+  //   display: none;
+  // }
+  body,
+  body.blur {
+    background: $light-1;
+  }
+  .printBtn,
+  .printHidden {
+    display: none;
+  }
+}
