@@ -1,7 +1,9 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import { UseAuthContext } from "./Context/AuthContext";
 
 //___ Layouts ___//
 import AdminLayout from "./Layouts/AdminLayout";
+import WorkerLayout from "./Layouts/WorkerLayout";
 import LayoutNoHeaderFooter from "./Layouts/LayoutNoHeaderFooter";
 import GuestLayout from "./Layouts/GuestLayout";
 
@@ -60,8 +62,9 @@ const Routes = createBrowserRouter([
   // Worker layout
   {
     path: "/",
-    element: <AdminLayout />,
+    element: <WorkerLayout />,
     children: [
+      { path: "/", element: <Navigate to={"/sell"} /> },
       { path: "/sell", element: <Sell /> },
       { path: "/pending-orders", element: <PendingOrders /> },
       { path: "/complete-order", element: <CompleteOrder /> },

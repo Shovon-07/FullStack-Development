@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 
 //___ Icons ___//
@@ -14,7 +14,6 @@ import Logo from "/images/icons/logo.png";
 
 const Header = () => {
   const { token, user, SetToken, setUser } = UseAuthContext();
-  const auth = sessionStorage.getItem("token");
 
   // States
   const [navToggler, setNavToggler] = useState(0);
@@ -27,7 +26,8 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    localStorage.clear();
+    localStorage.removeItem("ACCESS_TOKEN");
+    localStorage.removeItem("USER");
     sessionStorage.clear();
     SetToken(null);
     setUser({});

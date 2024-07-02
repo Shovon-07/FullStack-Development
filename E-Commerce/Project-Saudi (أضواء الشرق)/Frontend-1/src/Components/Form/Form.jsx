@@ -43,20 +43,9 @@ const Form = (props) => {
         email: formInput.email,
         password: formInput.password,
       };
-      // await http.post("/login", data).then((response) => {
-      //   if (response.data[2] === 1) {
-      //     SetToken(response.data[0], response.data[1]);
-      //     console.log(response.data);
-      //   } else if (response.data[2] === 2) {
-      //     SetToken(response.data[0], response.data[1]);
-      //   } else {
-      //     toast.error(response.data);
-      //   }
-      // });
-
       await http.post("/login", data).then((response) => {
         if (response.data.status == true) {
-          console.log(response.data);
+          toast.success(`Welcome ${response.data.role}`);
           SetToken(response.data.role, response.data.token);
         } else {
           toast.error(response.data.msg);

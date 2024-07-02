@@ -6,7 +6,7 @@ const GuestLayout = () => {
   const { token, SetToken, setUser } = UseAuthContext();
 
   if (token) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/dashboard"} />;
   }
 
   return (
