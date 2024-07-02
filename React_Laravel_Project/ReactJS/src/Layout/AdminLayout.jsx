@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { UseAuthContext } from "../Context/AuthContext";
 
@@ -9,7 +9,7 @@ const Header = lazy(() => import("../Components/Header/Header"));
 const Footer = lazy(() => import("../Components/Footer/Footer"));
 
 const AdminLayout = () => {
-  const { token } = UseAuthContext();
+  const { token, SetToken, setUser } = UseAuthContext();
   const [toggleVal, setToggleVal] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("THEME"));
 
@@ -31,6 +31,8 @@ const AdminLayout = () => {
             setToggleVal={setToggleVal}
             theme={theme}
             setTheme={setTheme}
+            SetToken={SetToken}
+            setUser={setUser}
           />
         </Suspense>
         <div className="content">

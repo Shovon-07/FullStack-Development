@@ -11,7 +11,11 @@
   padding: 20px;
   width: 30%;
   height: 100%;
-  min-height: 400px;
+  height: 400px;
+  overflow-y: scroll;
+}
+.ToDo_App .todoBox::-webkit-scrollbar {
+  width: 2px;
 }
 .ToDo_App .todoBox .todoIcon {
   width: 25px;
@@ -25,6 +29,8 @@
   background: #dddddd;
   border-radius: 50px;
   margin: 15px 0 25px 0;
+  position: sticky;
+  top: 0;
 }
 .ToDo_App .todoBox .addTask input {
   width: 80%;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink, Navigate } from "react-router-dom";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 
 //___ Css ___//
 import "./Header.css";
@@ -19,8 +19,9 @@ import User from "../../assets/Images/User.jpg";
 import { notificationData, messageData } from "../../assets/Js/Data";
 
 const Header = (props) => {
-  const { user, setToggleVal, theme, setTheme } = props;
+  const { user, setToggleVal, theme, setTheme, SetToken, setUser } = props;
   // const [user, setUser] = useState("Al jubair shovon");
+  const navigate = useNavigate();
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
   const [notificationDropdownVal, setNotificationDropdownVal] = useState(false);
@@ -59,9 +60,8 @@ const Header = (props) => {
   };
 
   const handleLogout = () => {
-    sessionStorage.clear();
-    localStorage.clear();
-    return <Navigate to={"/login"} />;
+    SetToken(null);
+    // setUser(null);
   };
 
   return (
