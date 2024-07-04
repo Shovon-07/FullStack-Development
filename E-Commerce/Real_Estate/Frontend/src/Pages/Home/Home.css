@@ -1,0 +1,41 @@
+.Home .homeImg {
+  background: url("/src/assets/Images/snow-river.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 3000px;
+  min-height: 500px;
+  justify-content: center;
+  position: relative;
+}
+.Home .overlay {
+  z-index: 1;
+}
+.Home .txt {
+  color: var(--light-1);
+  line-height: 4rem;
+  font-weight: 500;
+  width: 60%;
+  z-index: 2;
+}
+.Home .txt h1 {
+  font-size: 4rem;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+}
+.Home .txt h2 {
+  font-size: 2rem;
+}
+.Home .txt h2 span {
+  letter-spacing: 0.8rem;
+}
+.Home .txt p {
+  line-height: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.03rem;
+}
+
+.Home .latestProject {
+  margin: 40px 0;
+}
