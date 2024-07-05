@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 //___ Components ___//
 import Loader from "../Components/Loader/Loader";
 const Header = lazy(() => import("../Components/Header/Header"));
+const Footer = lazy(() => import("../Components/Footer/Footer"));
 
 const GuestLayout = () => {
   return (
@@ -14,7 +15,9 @@ const GuestLayout = () => {
       <div className="container">
         <Outlet />
       </div>
-      {/* Footer */}
+      <Suspense fallback={<Loader />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
