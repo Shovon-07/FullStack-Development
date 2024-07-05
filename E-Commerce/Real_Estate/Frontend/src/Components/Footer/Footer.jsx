@@ -1,5 +1,19 @@
 //___ Icons ___//
-import { FaHeadset } from "react-icons/fa6";
+import { FaHeadset, FaLinkedin, FaSquareInstagram } from "react-icons/fa6";
+import {
+  FaFacebook,
+  FaTwitter,
+  FaYoutube,
+  FaRegCopyright,
+} from "react-icons/fa";
+import { RiWhatsappFill } from "react-icons/ri";
+
+//___ Images ___//
+import Bkash from "../../assets/Images/bkash.png";
+import Nagad from "../../assets/Images/nagad.png";
+import Roket from "../../assets/Images/roket.png";
+import Visa from "../../assets/Images/visa.png";
+import Faisal from "../../assets/Images/Faisal_mahmud.jpg";
 
 //___ Css ___//
 import "./Footer.css";
@@ -10,39 +24,42 @@ const Footer = () => {
       <div className="footer-top">
         <div>
           <div className="brand">
-            <h3 className="footer-title">Ready Plot</h3>
+            <h3 className="footer-title">
+              Ready <span>Plot</span>
+            </h3>
           </div>
           <div className="d-flex">
-            <FaHeadset size={50} style={{ marginRight: "20px" }} />
+            <FaHeadset
+              size={50}
+              className="headset"
+              style={{ marginRight: "20px" }}
+            />
             <div>
               <p>Got Questions? Call us 24/7</p>
               <p>01790238340</p>
             </div>
           </div>
-          <div className="mt-5">
+          <div style={{ marginTop: "15px" }}>
             <p className="bolded fs-4">Contact Info</p>
             <p className="address">Horogram, Charkhutar mor, Rajshahi</p>
-            <div className="footer-icons mt-4">
+            <div className="footer-icons" style={{ marginTop: "25px" }}>
               <a href="" className="link-hovered">
-                <i className="fa-brands fa-facebook"></i>
+                <FaFacebook size={25} />
               </a>
               <a href="" className="link-hovered">
-                <i className="fa-brands fa-twitter"></i>
+                <FaTwitter size={25} />
               </a>
               <a href="" className="link-hovered">
-                <i className="fa-brands fa-whatsapp"></i>
+                <RiWhatsappFill size={25} />
               </a>
               <a href="" className="link-hovered">
-                <i className="fa-brands fa-linkedin"></i>
+                <FaLinkedin size={25} />
               </a>
               <a href="" className="link-hovered">
-                <i className="fa-brands fa-pinterest"></i>
+                <FaSquareInstagram size={25} />
               </a>
               <a href="" className="link-hovered">
-                <i className="fa-brands fa-instagram"></i>
-              </a>
-              <a href="" className="link-hovered">
-                <i className="fa-brands fa-youtube"></i>
+                <FaYoutube size={25} />
               </a>
             </div>
           </div>
@@ -52,77 +69,73 @@ const Footer = () => {
           <ul>
             <li>
               <a href="" className="link-hovered">
-                Laptop & Computers
+                Rajshahi
               </a>
             </li>
             <li>
               <a href="" className="link-hovered">
-                Cameras & Photography
+                Dhaka
               </a>
             </li>
             <li>
               <a href="" className="link-hovered">
-                Smartphones & Tablets
+                Chittagong
               </a>
             </li>
             <li>
               <a href="" className="link-hovered">
-                Video Games & Consoles
+                Kumilla
               </a>
             </li>
             <li>
               <a href="" className="link-hovered">
-                Tv & Audio
+                Sylhet
               </a>
             </li>
             <li>
               <a href="" className="link-hovered">
-                Gadgets
+                Khulna
               </a>
             </li>
           </ul>
         </div>
         <div>
-          <h3 className="footer-title">Customer Care</h3>
+          <h3 className="footer-title">Membership</h3>
           <ul>
             <li>
-              <a href="" className="link-hovered">
-                About
+              <a
+                href="https://www.facebook.com/faisal.mahmud.7393264"
+                className="link-hovered"
+                target="_blank"
+              >
+                <img src={Faisal} alt="" />
+                <p>
+                  Faisal Mahmud <br /> Rank: CEO
+                </p>
               </a>
             </li>
             <li>
-              <a href="" className="link-hovered">
-                Contact
+              <a
+                href="https://www.facebook.com/faisal.mahmud.7393264"
+                className="link-hovered"
+                target="_blank"
+              >
+                <img src={Faisal} alt="" />
+                <p>
+                  Faisal Mahmud <br /> Rank: CEO
+                </p>
               </a>
             </li>
             <li>
-              <a href="" className="link-hovered">
-                My Account
-              </a>
-            </li>
-            <li>
-              <a href="" className="link-hovered">
-                Track Your Order
-              </a>
-            </li>
-            <li>
-              <a href="" className="link-hovered">
-                Customer Services
-              </a>
-            </li>
-            <li>
-              <a href="" className="link-hovered">
-                Returns/Exchenges
-              </a>
-            </li>
-            <li>
-              <a href="" className="link-hovered">
-                FAQs
-              </a>
-            </li>
-            <li>
-              <a href="" className="link-hovered">
-                Product Support
+              <a
+                href="https://www.facebook.com/faisal.mahmud.7393264"
+                className="link-hovered"
+                target="_blank"
+              >
+                <img src={Faisal} alt="" />
+                <p>
+                  Faisal Mahmud <br /> Rank: CEO
+                </p>
               </a>
             </li>
           </ul>
@@ -131,16 +144,16 @@ const Footer = () => {
       <div className="footer-bottom">
         <div className="footer-bottom-item">
           <div>
-            <p>
-              <i className="fa-regular fa-copyright"></i>{" "}
+            <p className="d-flex gap-10">
+              <FaRegCopyright size={20} />
               <span className="bolded">Village Mart</span>-All Right Reserved
             </p>
           </div>
           <div className="payment-img">
-            {/* <img src="assets/images/bkash.png">
-                    <img src="assets/images/nagad.png">
-                    <img src="assets/images/roket.png">
-                    <img src="assets/images/visa.png"> */}
+            <img src={Bkash} alt="" />
+            <img src={Nagad} alt="" />
+            <img src={Roket} alt="" />
+            <img src={Visa} alt="" />
           </div>
         </div>
       </div>

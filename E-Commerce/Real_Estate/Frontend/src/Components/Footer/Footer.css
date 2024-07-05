@@ -7,7 +7,14 @@
 }
 .footer .footer-title {
   overflow: hidden;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
+  color: var(--dark-2);
+}
+.footer .brand .footer-title {
+  font-size: 2rem;
+}
+.footer .brand .footer-title span {
+  color: var(--main-color);
 }
 .footer .footer-top {
   display: flex;
@@ -16,10 +23,10 @@
   max-width: 2000px;
   margin: 0 auto;
 }
-.footer .footer-top .fa-headset {
-  color: var(--main-clr);
-  font-size: 50px;
-  margin-right: 40px;
+.footer .footer-top .headset {
+  color: var(--main-color);
+  /* font-size: 50px;
+  margin-right: 40px; */
 }
 .footer .footer-top .address {
   font-size: 12px;
@@ -27,17 +34,28 @@
 .footer .footer-top .footer-icons a {
   font-size: 20px;
   margin-right: 20px;
-  transition: var(--main-transition);
+  transition: var(--trans);
 }
 .footer .footer-top ul li a {
   font-size: 15px;
-  margin: 2px 0;
-  display: inline-block;
-  transition: var(--main-transition);
+  margin: 6px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--trans);
+}
+.footer .footer-top ul li a:hover {
+  color: var(--main-color);
+}
+.footer .footer-top ul li a img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
 }
 .footer .footer-bottom {
-  background: var(--light-50);
+  background: var(--light-1);
   padding: 10px;
+  border-top: 1px solid var(--light-2);
 }
 .footer .footer-bottom .footer-bottom-item {
   max-width: 2000px;
@@ -69,6 +87,10 @@
   .footer .footer-bottom .payment-img img {
     width: 50px;
   }
+}
+
+.link-hovered:hover {
+  color: var(--main-color);
 }
 
 /*=== Small screen ===*/
