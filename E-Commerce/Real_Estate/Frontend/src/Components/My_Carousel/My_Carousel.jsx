@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
-const My_Carousel = () => {
+//___ Css ___//
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+function My_Carousel(props) {
+  const { data } = props;
+
   var settings = {
     dots: true,
     infinite: true,
@@ -11,31 +17,21 @@ const My_Carousel = () => {
     autoplaySpeed: 2000,
     pauseOnHover: true,
   };
-
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        <div>
-          <h3>1</h3>
-        </div>
-        <div>
-          <h3>2</h3>
-        </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
-        </div>
+        {data.map((items, index) => (
+          <div className="card">
+            <img src={items.img} alt="" />
+            <div className="txt">
+              <h2 className="title">{items.title}</h2>
+              <p className="description">{items.description}</p>
+            </div>
+          </div>
+        ))}
       </Slider>
     </div>
   );
-};
+}
 
 export default My_Carousel;

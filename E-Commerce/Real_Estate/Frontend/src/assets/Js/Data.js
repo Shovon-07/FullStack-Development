@@ -82,3 +82,46 @@ export const messageData = [
     time: "3 day ago",
   },
 ];
+
+export const latestProject = [
+  {
+    id: 1,
+    img: "/src/assets/Images/plot-1.jpg",
+    title: "A wonderful serenity has taken possession of my entire soul.",
+    description:
+      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was",
+    time: "3 day ago",
+  },
+  {
+    id: 2,
+    img: "/src/assets/Images/plot-2.jpg",
+    title: "A wonderful serenity has taken possession of my entire soul.",
+    description:
+      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was",
+    time: "3 day ago",
+  },
+  {
+    id: 3,
+    img: "/src/assets/Images/plot-3.jpg",
+    title: "A wonderful serenity has taken possession of my entire soul.",
+    description:
+      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was",
+    time: "3 day ago",
+  },
+  {
+    id: 4,
+    img: "/src/assets/Images/plot-4.jpg",
+    title: "A wonderful serenity has taken possession of my entire soul.",
+    description:
+      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was",
+    time: "3 day ago",
+  },
+  {
+    id: 5,
+    img: "/src/assets/Images/plot-5.jpg",
+    title: "A wonderful serenity has taken possession of my entire soul.",
+    description:
+      "A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was",
+    time: "3 day ago",
+  },
+];

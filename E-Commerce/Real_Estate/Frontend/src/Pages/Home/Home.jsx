@@ -3,6 +3,9 @@ import React, { lazy } from "react";
 //___ Css __//
 import "./Home.css";
 
+//___ Additional utilitis ___//
+import { latestProject } from "../../assets/Js/Data";
+
 //___ Components ___//
 import Loader from "../../Components/Loader/Loader";
 const My_Carousel = lazy(() =>
@@ -26,7 +29,7 @@ const Home = () => {
       <div className="content">
         <div className="latestProject">
           <h3 className="pageTitle">Our latest projects</h3>
-          <My_Carousel />
+          <My_Carousel data={latestProject} />
         </div>
       </div>
     </div>
