@@ -1,0 +1,44 @@
+.slider-container .slick-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+}
+.slider-container .card {
+  background: var(--light-1);
+  box-shadow: var(--shadow);
+  height: 400px;
+  overflow: hidden;
+  outline: none;
+}
+.slider-container .card .img {
+  overflow: hidden;
+}
+.slider-container .card .img img {
+  width: 100%;
+  height: 200px;
+  /* margin-bottom: 15px; */
+  transition: var(--trans);
+}
+.slider-container .card:hover img {
+  transform: scale(1.2);
+}
+.slider-container .card .txt {
+  padding: 10px 20px;
+}
+.slider-container .card .title {
+  color: var(--dark-2);
+  margin-bottom: 7px;
+}
+.slider-container .card .readMoreBtn {
+  background: var(--blue);
+  color: var(--light-1);
+  font-size: 1.3rem;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin-top: 18px;
+  transition: var(--trans);
+}
+.slider-container .card .readMoreBtn:hover {
+  padding: 5px 30px;
+}

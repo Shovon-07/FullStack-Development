@@ -41,10 +41,3 @@
 .Home .latestProject {
   margin: 40px 0;
 }
-.Home .latestProject .card {
-  width: 200px;
-}
-.Home .latestProject .card img {
-  width: 100%;
-  height: 250px;
-}

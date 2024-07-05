@@ -19,9 +19,6 @@ const Home = () => {
         <div className="overlay"></div>
         <div className="txt d-flex">
           <h1>রেডি প্লট</h1>
-          {/* <h2>
-            Lets work together <span>...</span>
-          </h2> */}
           <p>আমরা দিচ্ছি সর্বোচ্চ সুযোগ সুবিধা সহ রেডি প্লট</p>
         </div>
       </div>

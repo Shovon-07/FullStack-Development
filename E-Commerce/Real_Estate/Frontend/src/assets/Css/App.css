@@ -59,6 +59,7 @@ a {
   font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 20px;
+  color: var(--dark-2);
 }
 .overlay {
   width: 100%;
@@ -67,6 +68,10 @@ a {
   top: 0;
   left: 0;
   background: #1f1f1f94;
+}
+.btn {
+  border: none;
+  outline: none;
 }
 
 /*___ Admin Layout ___*/

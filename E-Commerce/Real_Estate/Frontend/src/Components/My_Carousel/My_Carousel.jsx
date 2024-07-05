@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 
 //___ Css ___//
+import "./My_Carousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -13,19 +14,32 @@ function My_Carousel(props) {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
+    autoplay: true, //
+    autoplaySpeed: 5000,
     pauseOnHover: true,
   };
   return (
-    <div className="slider-container">
+    <div className="slider-container My_Carousel">
       <Slider {...settings}>
         {data.map((items, index) => (
-          <div className="card">
-            <img src={items.img} alt="" />
+          <div className="card" key={index}>
+            <div className="img">
+              <img src={items.img} alt="" />
+            </div>
             <div className="txt">
-              <h2 className="title">{items.title}</h2>
-              <p className="description">{items.description}</p>
+              <h3 className="title">
+                {items.title.length > 33
+                  ? items.title.slice(0, 33) + " ..."
+                  : items.title}
+              </h3>
+              <p className="description">
+                {items.description.length > 150
+                  ? items.description.slice(0, 150) + " ..."
+                  : items.description}
+              </p>
+              <div style={{ textAlign: "center" }}>
+                <button className="readMoreBtn btn c_pointer">Read more</button>
+              </div>
             </div>
           </div>
         ))}
