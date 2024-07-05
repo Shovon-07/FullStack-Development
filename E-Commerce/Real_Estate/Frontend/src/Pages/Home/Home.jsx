@@ -1,30 +1,32 @@
-import React from "react";
+import React, { lazy } from "react";
 
 //___ Css __//
 import "./Home.css";
+
+//___ Components ___//
+import Loader from "../../Components/Loader/Loader";
+const My_Carousel = lazy(() =>
+  import("../../Components/My_Carousel/My_Carousel")
+);
 
 const Home = () => {
   return (
     <div className="Home">
       <div className="homeImg d-flex">
         <div className="overlay"></div>
-        <div className="txt">
-          <h1>No 01 Real estate site</h1>
-          <h2>
+        <div className="txt d-flex">
+          <h1>রেডি প্লট</h1>
+          {/* <h2>
             Lets work together <span>...</span>
-          </h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus
-            asperiores amet aliquam iusto rerum harum itaque placeat veritatis
-            earum, tenetur architecto sunt aspernatur laudantium veniam labore
-            incidunt provident minus eaque.
-          </p>
+          </h2> */}
+          <p>আমরা দিচ্ছি সর্বোচ্চ সুযোগ সুবিধা সহ রেডি প্লট</p>
         </div>
       </div>
 
       <div className="content">
         <div className="latestProject">
           <h3 className="pageTitle">Our latest projects</h3>
+          <My_Carousel />
         </div>
       </div>
     </div>

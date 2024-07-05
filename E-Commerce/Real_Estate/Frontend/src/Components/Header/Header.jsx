@@ -1,13 +1,14 @@
-import React from "react";
+import { Suspense, lazy } from "react";
 
 //___ Images __//
 import Logo from "../../assets/Images/logo.svg";
 
-//___ Icons __//
-import { GoSearch } from "react-icons/go";
-
 //___ Css __//
 import "./Header.css";
+
+//___ Components ___//
+import Loader from "../Loader/Loader";
+const My_Modal = lazy(() => import("../Search_Modal/Search_Modal"));
 
 const Header = () => {
   return (
@@ -15,7 +16,7 @@ const Header = () => {
       <div className="logo">
         {/* <img src={Logo} alt="" /> */}
         <p>
-          Real <span>Estate</span>
+          ready <span>plot</span>
         </p>
       </div>
       <ul className="d-flex">
@@ -40,7 +41,9 @@ const Header = () => {
       </ul>
       <ul className="d-flex">
         <li className="search d-flex">
-          <GoSearch size={25} className="c_pointer" />
+          <Suspense fallback={<Loader />}>
+            <My_Modal />
+          </Suspense>
         </li>
         <li>
           <a href="">Manage rentals</a>

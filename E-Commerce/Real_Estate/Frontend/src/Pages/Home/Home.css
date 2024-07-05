@@ -1,5 +1,5 @@
 .Home .homeImg {
-  background: url("/src/assets/Images/snow-river.jpg");
+  background: url("/src/assets/Images/Banner.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -14,26 +14,28 @@
 }
 .Home .txt {
   color: var(--light-1);
-  line-height: 4rem;
   font-weight: 500;
   width: 60%;
+  flex-direction: column;
+  justify-content: center;
   z-index: 2;
 }
 .Home .txt h1 {
   font-size: 4rem;
   letter-spacing: 0.1rem;
-  font-weight: 500;
+  font-weight: 700;
 }
-.Home .txt h2 {
+/* .Home .txt h2 {
   font-size: 2rem;
 }
 .Home .txt h2 span {
   letter-spacing: 0.8rem;
-}
+} */
 .Home .txt p {
   line-height: 1.5rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.03rem;
+  font-size: 1.5rem;
 }
 
 .Home .latestProject {

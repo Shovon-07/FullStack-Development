@@ -11,8 +11,9 @@
   background: var(--main-color);
 }
 ::placeholder {
-  color: var(--light-3);
+  color: var(--dark-2);
   transition: var(--trans);
+  font-weight: 500;
 }
 input:focus::placeholder {
   padding-left: 10px;
@@ -65,7 +66,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  background: #1f1f1f5e;
+  background: #1f1f1f94;
 }
 
 /*___ Admin Layout ___*/

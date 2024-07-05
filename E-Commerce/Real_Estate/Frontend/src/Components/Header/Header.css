@@ -42,4 +42,5 @@
 }
 .Header ul .search {
   justify-content: center;
+  width: 20px;
 }
