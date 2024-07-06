@@ -1,4 +1,4 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css __//
@@ -15,8 +15,12 @@ const My_Carousel = lazy(() =>
 );
 
 const Home = () => {
+  const [c, setC] = useState(0);
+  useEffect(() => {
+    // setC((prev) => (prev += 1));
+  });
   return (
-    <div className="Home">
+    <div className="Home page">
       <div className="homeImg d-flex">
         <LazyLoadImage
           src="/src/assets/Images/Banner.jpg"
@@ -31,6 +35,7 @@ const Home = () => {
         <div className="txt d-flex">
           <h1>রেডি প্লট</h1>
           <p>আমরা দিচ্ছি সর্বোচ্চ সুযোগ সুবিধা সহ রেডি প্লট</p>
+          <p>{c}</p>
         </div>
       </div>
 

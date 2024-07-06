@@ -26,7 +26,7 @@
   transform: scale(1.1);
 }
 .slider-container .card .txt {
-  background: #00000063;
+  background: var(--overlay);
   color: var(--light-1);
   width: 100%;
   height: 200px;

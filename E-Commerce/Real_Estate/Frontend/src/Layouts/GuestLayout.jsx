@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 //___ Components ___//
@@ -7,10 +7,12 @@ const Header = lazy(() => import("../Components/Header/Header"));
 const Footer = lazy(() => import("../Components/Footer/Footer"));
 
 const GuestLayout = () => {
+  const [toggle, setToggle] = useState(false);
+
   return (
-    <div className="main">
+    <div className={`main ${toggle == true ? "overlay" : "main"}`}>
       <Suspense fallback={<Loader />}>
-        <Header />
+        <Header toggle={toggle} setToggle={setToggle} />
       </Suspense>
       <div className="container">
         <Outlet />

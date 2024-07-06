@@ -1,7 +1,8 @@
 .Header {
   background: var(--light-1);
   box-shadow: var(--shadow);
-  position: sticky;
+  width: 100%;
+  position: fixed;
   top: 0;
   padding: 10px 30px;
   z-index: 1000;
@@ -33,12 +34,6 @@
   justify-content: space-between;
   gap: 50px;
 }
-/* .Header ul:nth-of-type(1) {
-  flex-basis: 50%;
-} */
-/* .Header ul:last-child {
-  flex-basis: 25%;
-} */
 .Header ul a {
   transition: var(--trans);
   text-transform: capitalize;
@@ -49,6 +44,35 @@
 .Header ul .search {
   justify-content: center;
   width: 20px;
+}
+.Header .toggler {
+  background: var(--light-1);
+  width: 35px;
+  height: 3px;
+  display: none;
+}
+.Header .toggler div {
+  width: 100%;
+  height: 100%;
+  background: var(--dark-1);
+  border-radius: 10px;
+  position: relative;
+  z-index: 999;
+}
+.Header .toggler div::after,
+.Header .toggler div::before {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background: var(--dark-1);
+  border-radius: 10px;
+  position: absolute;
+}
+.Header .toggler div::after {
+  top: 9px;
+}
+.Header .toggler div::before {
+  bottom: 9px;
 }
 
 /*___ Responsive ___*/
@@ -78,4 +102,22 @@
   }
 }
 @media screen and (max-width: 1000px) {
+  .Header ul {
+    flex-direction: column;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    right: -200px;
+    background: var(--light-1);
+    height: 100vh;
+    width: 150px;
+    transition: var(--trans);
+    z-index: 998;
+  }
+  .Header ul.active {
+    right: 0;
+  }
+  .Header .toggler {
+    display: block;
+  }
 }

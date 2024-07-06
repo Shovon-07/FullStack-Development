@@ -1,4 +1,4 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 
 //___ Images __//
 import Logo from "../../assets/Images/logo.svg";
@@ -10,7 +10,12 @@ import "./Header.css";
 import Loader from "../Loader/Loader";
 const My_Modal = lazy(() => import("../Search_Modal/Search_Modal"));
 
-const Header = () => {
+const Header = (props) => {
+  const { toggle, setToggle } = props;
+  const handleNavToggle = () => {
+    setToggle((prev) => !prev);
+  };
+
   return (
     <div className="Header">
       <div className="headerContainer d-flex">
@@ -20,7 +25,7 @@ const Header = () => {
             ready <span>plot</span>
           </p>
         </div>
-        <ul className="d-flex">
+        <ul className={`d-flex ${toggle == true ? "active" : ""}`}>
           <li>
             <a href="">Buy</a>
           </li>
@@ -51,7 +56,9 @@ const Header = () => {
             </Suspense>
           </li>
         </ul>
-        {/* <ul className="d-flex"></ul> */}
+        <div className="toggler c_pointer" onClick={handleNavToggle}>
+          <div></div>
+        </div>
       </div>
     </div>
   );
