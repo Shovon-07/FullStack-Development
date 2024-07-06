@@ -39,20 +39,19 @@ const Header = () => {
           <li>
             <a href="">News & Insights</a>
           </li>
-        </ul>
-        <ul className="d-flex">
-          <li className="search d-flex">
-            <Suspense fallback={<Loader />}>
-              <My_Modal />
-            </Suspense>
-          </li>
           <li>
             <a href="">Manage rentals</a>
           </li>
           <li>
             <a href="">Advertise</a>
           </li>
+          <li className="search d-flex">
+            <Suspense fallback={<Loader />}>
+              <My_Modal />
+            </Suspense>
+          </li>
         </ul>
+        {/* <ul className="d-flex"></ul> */}
       </div>
     </div>
   );

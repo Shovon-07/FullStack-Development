@@ -1,13 +1,15 @@
 .Home .homeImg {
-  background: url("/src/assets/Images/Banner.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   width: 100%;
-  max-width: 3000px;
+  /* max-width: 2500px; */
   min-height: 500px;
   justify-content: center;
   position: relative;
+}
+.Home .homeImg .bannerImg {
+  width: 100%;
+}
+.Home .homeImg .lazy-load-image-background {
+  width: 100%;
 }
 .Home .overlay {
   z-index: 1;
@@ -18,6 +20,7 @@
   width: 60%;
   flex-direction: column;
   justify-content: center;
+  position: absolute;
   z-index: 2;
 }
 .Home .homeImg .txt h1 {

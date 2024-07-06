@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
 import "./My_Carousel.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 function My_Carousel(props) {
   const { data } = props;
@@ -14,7 +16,7 @@ function My_Carousel(props) {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: false, // true
+    autoplay: true, // false
     autoplaySpeed: 5000,
     pauseOnHover: true,
     responsive: [
@@ -50,7 +52,13 @@ function My_Carousel(props) {
         {data.map((items, index) => (
           <div className="card" key={index}>
             <div className="img">
-              <img src={items.img} alt="" />
+              <LazyLoadImage
+                src={items.img}
+                effect="blur"
+                wrapperProps={{
+                  style: { transitionDelay: "1s" },
+                }}
+              />
             </div>
             <div className="txt">
               <h3 className="title">
@@ -58,11 +66,11 @@ function My_Carousel(props) {
                   ? items.title.slice(0, 33) + " ..."
                   : items.title}
               </h3>
-              <p className="description">
+              {/* <p className="description">
                 {items.description.length > 150
                   ? items.description.slice(0, 150) + " ..."
                   : items.description}
-              </p>
+              </p> */}
               <div style={{ textAlign: "center" }}>
                 <button className="readMoreBtn btn c_pointer">Read more</button>
               </div>

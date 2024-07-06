@@ -1,7 +1,9 @@
 import React, { lazy } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css __//
 import "./Home.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
 import { latestProject } from "../../assets/Js/Data";
@@ -16,6 +18,15 @@ const Home = () => {
   return (
     <div className="Home">
       <div className="homeImg d-flex">
+        <LazyLoadImage
+          src="/src/assets/Images/Banner.jpg"
+          effect="blur"
+          wrapperProps={{
+            style: { transitionDelay: "1s" },
+          }}
+          height={500}
+          className="bannerImg"
+        />
         <div className="overlay"></div>
         <div className="txt d-flex">
           <h1>রেডি প্লট</h1>
