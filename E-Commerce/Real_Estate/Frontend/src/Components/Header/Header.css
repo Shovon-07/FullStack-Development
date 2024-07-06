@@ -48,12 +48,12 @@
 .Header .toggler {
   background: var(--light-1);
   width: 35px;
-  height: 3px;
+  height: 35px;
   display: none;
 }
 .Header .toggler div {
   width: 100%;
-  height: 100%;
+  height: 3px;
   background: var(--dark-1);
   border-radius: 10px;
   position: relative;
@@ -118,6 +118,10 @@
     right: 0;
   }
   .Header .toggler {
-    display: block;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
