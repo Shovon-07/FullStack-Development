@@ -16,6 +16,7 @@
 }
 .Home .overlay {
   background: #00000094;
+  opacity: 1;
   z-index: 1;
 }
 .Home .homeImg .txt {

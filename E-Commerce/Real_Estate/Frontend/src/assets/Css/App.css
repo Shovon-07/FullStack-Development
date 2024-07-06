@@ -68,6 +68,9 @@ a {
   top: 0;
   left: 0;
   background: var(--overlay);
+  opacity: 0;
+  transition: var(--trans);
+  z-index: 999;
 }
 .btn {
   border: none;
@@ -92,6 +95,9 @@ a {
   height: 100%;
   min-height: 100vh;
   margin: 0 auto;
+}
+.container .overlay {
+  opacity: 1;
 }
 .page {
   margin-top: 70px;

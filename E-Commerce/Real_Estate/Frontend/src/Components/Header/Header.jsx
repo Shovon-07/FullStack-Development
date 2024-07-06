@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 //___ Images __//
 import Logo from "../../assets/Images/logo.svg";
 
+//___ Icons __//
+import { GoSearch } from "react-icons/go";
+
 //___ Css __//
 import "./Header.css";
 
@@ -13,8 +16,30 @@ const My_Modal = lazy(() => import("../Search_Modal/Search_Modal"));
 
 const Header = (props) => {
   const { toggle, setToggle } = props;
+  const [searchDropDownVal, setSearchDropDownVal] = useState(false);
+
   const handleNavToggle = () => {
     setToggle((prev) => !prev);
+  };
+  const closeToggle = () => {
+    setToggle((prev) => (prev = false));
+  };
+  const closePopUp = () => {
+    setSearchDropDownVal(false);
+  };
+
+  document.onkeydown = function (evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+      isEscape = evt.key === "Escape" || evt.key === "Esc";
+    } else {
+      isEscape = evt.keyCode === 27;
+    }
+    if (isEscape) {
+      closeToggle();
+      closePopUp();
+    }
   };
 
   return (
@@ -27,7 +52,7 @@ const Header = (props) => {
           </p>
         </div>
         <ul className={`d-flex ${toggle == true ? "active" : ""}`}>
-          <li>
+          <li onClick={closeToggle}>
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "isActive" : "")}
@@ -35,7 +60,7 @@ const Header = (props) => {
               Home
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeToggle}>
             <NavLink
               to="/buy"
               className={({ isActive }) => (isActive ? "isActive" : "")}
@@ -43,7 +68,7 @@ const Header = (props) => {
               Buy
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeToggle}>
             <NavLink
               to="/sell"
               className={({ isActive }) => (isActive ? "isActive" : "")}
@@ -51,7 +76,7 @@ const Header = (props) => {
               Sell
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeToggle}>
             <NavLink
               to="/rent"
               className={({ isActive }) => (isActive ? "isActive" : "")}
@@ -59,7 +84,7 @@ const Header = (props) => {
               Rent
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeToggle}>
             <NavLink
               to="/news"
               className={({ isActive }) => (isActive ? "isActive" : "")}
@@ -67,7 +92,7 @@ const Header = (props) => {
               News & Insights
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeToggle}>
             <NavLink
               to="/manage-rentals"
               className={({ isActive }) => (isActive ? "isActive" : "")}
@@ -75,7 +100,7 @@ const Header = (props) => {
               Manage rentals
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeToggle}>
             <NavLink
               to="/advertise"
               className={({ isActive }) => (isActive ? "isActive" : "")}
@@ -83,9 +108,33 @@ const Header = (props) => {
               Advertise
             </NavLink>
           </li>
-          <Suspense fallback={<Loader />}>
-            <My_Modal />
-          </Suspense>
+          <li onClick={closeToggle} className="search d-flex">
+            <GoSearch
+              size={25}
+              className="c_pointer"
+              onClick={() => {
+                setSearchDropDownVal((prev) => !prev);
+              }}
+            />
+            <div
+              id="overlay"
+              className={searchDropDownVal == true ? "overlay" : ""}
+              onClick={closePopUp}
+            ></div>
+            <div
+              className={`searchDropDown ${
+                searchDropDownVal == true ? "active" : ""
+              }`}
+            >
+              <div className="inputBox">
+                <label>Search</label>
+                <input type="text" placeholder="Search hear" />
+              </div>
+              <div className="resultBox">
+                <p>Search result</p>
+              </div>
+            </div>
+          </li>
         </ul>
         <div className="toggler c_pointer" onClick={handleNavToggle}>
           <div></div>
