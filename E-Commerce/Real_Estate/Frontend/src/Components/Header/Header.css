@@ -1,10 +1,10 @@
 .Header {
   background: var(--light-1);
   box-shadow: var(--shadow);
-  width: 100%;
-  position: fixed;
-  top: 0;
   padding: 10px 30px;
+  width: 100%;
+  position: sticky;
+  top: 0;
   z-index: 1000;
 }
 .Header .headerContainer {
@@ -43,7 +43,6 @@
 }
 .Header ul .search {
   justify-content: center;
-  width: 20px;
 }
 .Header .toggler {
   background: var(--light-1);
@@ -87,7 +86,7 @@
   }
 }
 @media screen and (max-width: 970px) {
-  .Header ul {
+  /* .Header ul {
     flex-direction: column;
     gap: 20px;
     position: fixed;
@@ -108,5 +107,5 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+  } */
 }

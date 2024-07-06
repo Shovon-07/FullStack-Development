@@ -10,7 +10,7 @@ const GuestLayout = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <div className={`main ${toggle == true ? "overlay" : "main"}`}>
+    <div className={`main ${toggle == true ? "overlay" : ""}`}>
       <Suspense fallback={<Loader />}>
         <Header toggle={toggle} setToggle={setToggle} />
       </Suspense>

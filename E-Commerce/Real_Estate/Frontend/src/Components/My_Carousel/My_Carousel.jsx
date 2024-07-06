@@ -16,7 +16,7 @@ function My_Carousel(props) {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true, // false
+    autoplay: false, //true
     autoplaySpeed: 5000,
     pauseOnHover: true,
     responsive: [
@@ -60,7 +60,8 @@ function My_Carousel(props) {
                 }}
               />
             </div>
-            <div className="txt">
+            <div className="txt d-flex">
+              {/* <div className="txtBox"> */}
               <h3 className="title">
                 {items.title.length > 33
                   ? items.title.slice(0, 33) + " ..."
@@ -74,6 +75,7 @@ function My_Carousel(props) {
               <div style={{ textAlign: "center" }}>
                 <button className="readMoreBtn btn c_pointer">Read more</button>
               </div>
+              {/* </div> */}
             </div>
           </div>
         ))}

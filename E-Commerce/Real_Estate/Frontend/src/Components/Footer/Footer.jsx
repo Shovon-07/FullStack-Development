@@ -45,7 +45,11 @@ const Footer = () => {
             <p className="bolded fs-4">Contact Info</p>
             <p className="address">Horogram, Charkhutar mor, Rajshahi</p>
             <div className="footer-icons" style={{ marginTop: "25px" }}>
-              <a href="" className="link-hovered">
+              <a
+                href="https://www.facebook.com/profile.php?id=100093853449456&mibextid=ZbWKwL"
+                target="_blank"
+                className="link-hovered"
+              >
                 <FaFacebook size={25} />
               </a>
               <a href="" className="link-hovered">
@@ -169,7 +173,7 @@ const Footer = () => {
               <span className="bolded">Ready plot</span>-All Right Reserved
             </p>
           </div>
-          <div className="payment-img">
+          <div className="payment-img d-flex">
             <LazyLoadImage
               src={Bkash}
               effect="blur"

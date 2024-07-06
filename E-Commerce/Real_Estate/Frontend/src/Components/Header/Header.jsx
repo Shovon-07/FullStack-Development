@@ -83,11 +83,9 @@ const Header = (props) => {
               Advertise
             </NavLink>
           </li>
-          <li className="search d-flex">
-            <Suspense fallback={<Loader />}>
-              <My_Modal />
-            </Suspense>
-          </li>
+          <Suspense fallback={<Loader />}>
+            <My_Modal />
+          </Suspense>
         </ul>
         <div className="toggler c_pointer" onClick={handleNavToggle}>
           <div></div>
