@@ -82,8 +82,7 @@ a {
 .container {
   display: flex;
   flex-direction: column;
-  /* width: 95%; */
-  max-width: 3000px;
+  max-width: 2000px;
   height: 100%;
   min-height: 100vh;
   margin: 0 auto;
@@ -94,6 +93,3 @@ a {
   height: 100%;
   padding: 0 30px;
 }
-/* .container.large {
-  padding-left: 0;
-} */

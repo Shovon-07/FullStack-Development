@@ -146,7 +146,7 @@ const Footer = () => {
           <div>
             <p className="d-flex gap-10">
               <FaRegCopyright size={20} />
-              <span className="bolded">Village Mart</span>-All Right Reserved
+              <span className="bolded">Ready plot</span>-All Right Reserved
             </p>
           </div>
           <div className="payment-img">
