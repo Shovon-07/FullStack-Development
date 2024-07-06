@@ -73,6 +73,9 @@ a {
   border: none;
   outline: none;
 }
+.isActive {
+  color: var(--main-color);
+}
 
 /*___ Admin Layout ___*/
 .main {
@@ -91,7 +94,7 @@ a {
   margin: 0 auto;
 }
 .page {
-  margin-top: 45px;
+  margin-top: 70px;
 }
 .content {
   width: 100%;

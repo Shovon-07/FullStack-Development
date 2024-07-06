@@ -1,3 +1,5 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 //___ Icons ___//
 import { FaHeadset, FaLinkedin, FaSquareInstagram } from "react-icons/fa6";
 import {
@@ -108,7 +110,13 @@ const Footer = () => {
                 className="link-hovered"
                 target="_blank"
               >
-                <img src={Faisal} alt="" />
+                <LazyLoadImage
+                  src={Faisal}
+                  effect="blur"
+                  wrapperProps={{
+                    style: { transitionDelay: "1s" },
+                  }}
+                />
                 <p>
                   Faisal Mahmud <br /> Rank: CEO
                 </p>
@@ -120,7 +128,13 @@ const Footer = () => {
                 className="link-hovered"
                 target="_blank"
               >
-                <img src={Faisal} alt="" />
+                <LazyLoadImage
+                  src={Faisal}
+                  effect="blur"
+                  wrapperProps={{
+                    style: { transitionDelay: "1s" },
+                  }}
+                />
                 <p>
                   Faisal Mahmud <br /> Rank: CEO
                 </p>
@@ -132,7 +146,13 @@ const Footer = () => {
                 className="link-hovered"
                 target="_blank"
               >
-                <img src={Faisal} alt="" />
+                <LazyLoadImage
+                  src={Faisal}
+                  effect="blur"
+                  wrapperProps={{
+                    style: { transitionDelay: "1s" },
+                  }}
+                />
                 <p>
                   Faisal Mahmud <br /> Rank: CEO
                 </p>
@@ -150,10 +170,34 @@ const Footer = () => {
             </p>
           </div>
           <div className="payment-img">
-            <img src={Bkash} alt="" />
-            <img src={Nagad} alt="" />
-            <img src={Roket} alt="" />
-            <img src={Visa} alt="" />
+            <LazyLoadImage
+              src={Bkash}
+              effect="blur"
+              wrapperProps={{
+                style: { transitionDelay: "1s" },
+              }}
+            />
+            <LazyLoadImage
+              src={Nagad}
+              effect="blur"
+              wrapperProps={{
+                style: { transitionDelay: "1s" },
+              }}
+            />
+            <LazyLoadImage
+              src={Roket}
+              effect="blur"
+              wrapperProps={{
+                style: { transitionDelay: "1s" },
+              }}
+            />
+            <LazyLoadImage
+              src={Visa}
+              effect="blur"
+              wrapperProps={{
+                style: { transitionDelay: "1s" },
+              }}
+            />
           </div>
         </div>
       </div>

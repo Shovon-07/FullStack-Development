@@ -1,4 +1,5 @@
 import { Suspense, lazy, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 //___ Images __//
 import Logo from "../../assets/Images/logo.svg";
@@ -27,28 +28,60 @@ const Header = (props) => {
         </div>
         <ul className={`d-flex ${toggle == true ? "active" : ""}`}>
           <li>
-            <a href="">Buy</a>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <a href="">Sell</a>
+            <NavLink
+              to="/buy"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Buy
+            </NavLink>
           </li>
           <li>
-            <a href="">Rent</a>
+            <NavLink
+              to="/sell"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Sell
+            </NavLink>
           </li>
           <li>
-            <a href="">Mortgage</a>
+            <NavLink
+              to="/rent"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Rent
+            </NavLink>
           </li>
           <li>
-            <a href="">Find realtor</a>
+            <NavLink
+              to="/news"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              News & Insights
+            </NavLink>
           </li>
           <li>
-            <a href="">News & Insights</a>
+            <NavLink
+              to="/manage-rentals"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Manage rentals
+            </NavLink>
           </li>
           <li>
-            <a href="">Manage rentals</a>
-          </li>
-          <li>
-            <a href="">Advertise</a>
+            <NavLink
+              to="/advertise"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Advertise
+            </NavLink>
           </li>
           <li className="search d-flex">
             <Suspense fallback={<Loader />}>
