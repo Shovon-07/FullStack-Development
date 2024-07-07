@@ -1,6 +1,9 @@
 import React, { lazy, useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
+//___ Images __//
+import Banner from "../../assets/Images/Banner.jpg";
+
 //___ Css __//
 import "./Home.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -23,7 +26,7 @@ const Home = () => {
     <div className="Home page">
       <div className="homeImg d-flex">
         <LazyLoadImage
-          src="/src/assets/Images/Banner.jpg"
+          src={Banner}
           effect="blur"
           wrapperProps={{
             style: { transitionDelay: "1s" },
