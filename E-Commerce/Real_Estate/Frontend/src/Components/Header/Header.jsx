@@ -130,13 +130,34 @@ const Header = (props) => {
                 <label>Search</label>
                 <input type="text" placeholder="Search hear" />
               </div>
-              <div className="resultBox">
-                <p>Search result</p>
+              <div className="resultBox d-flex">
+                <h3>Search result</h3>
+                <NavLink className="result">Shovon</NavLink>
+                <NavLink className="result">Rittika</NavLink>
+                <NavLink className="result">Shemonthy</NavLink>
+
+                <NavLink className="result">Shovon</NavLink>
+                <NavLink className="result">Rittika</NavLink>
+                <NavLink className="result">Shemonthy</NavLink>
+                <NavLink className="result">Shovon</NavLink>
+                <NavLink className="result">Rittika</NavLink>
+                <NavLink className="result">Shemonthy</NavLink>
+                <NavLink className="result">Shovon</NavLink>
+                <NavLink className="result">Rittika</NavLink>
+                <NavLink className="result">Shemonthy</NavLink>
+                <NavLink className="result">Shovon</NavLink>
+                <NavLink className="result">Rittika</NavLink>
+                <NavLink className="result">Shemonthy</NavLink>
               </div>
             </div>
           </li>
         </ul>
-        <div className="toggler c_pointer" onClick={handleNavToggle}>
+        <div
+          className={`toggler c_pointer ${
+            searchDropDownVal == true ? "z-index-1" : ""
+          }`}
+          onClick={handleNavToggle}
+        >
           <div></div>
         </div>
       </div>
