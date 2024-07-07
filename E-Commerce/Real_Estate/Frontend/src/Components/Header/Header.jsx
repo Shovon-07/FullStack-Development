@@ -132,22 +132,12 @@ const Header = (props) => {
               </div>
               <div className="resultBox d-flex">
                 <h3>Search result</h3>
-                <NavLink className="result">Shovon</NavLink>
-                <NavLink className="result">Rittika</NavLink>
-                <NavLink className="result">Shemonthy</NavLink>
-
-                <NavLink className="result">Shovon</NavLink>
-                <NavLink className="result">Rittika</NavLink>
-                <NavLink className="result">Shemonthy</NavLink>
-                <NavLink className="result">Shovon</NavLink>
-                <NavLink className="result">Rittika</NavLink>
-                <NavLink className="result">Shemonthy</NavLink>
-                <NavLink className="result">Shovon</NavLink>
-                <NavLink className="result">Rittika</NavLink>
-                <NavLink className="result">Shemonthy</NavLink>
-                <NavLink className="result">Shovon</NavLink>
-                <NavLink className="result">Rittika</NavLink>
-                <NavLink className="result">Shemonthy</NavLink>
+                <NavLink className="result">Rajshahi</NavLink>
+                <NavLink className="result">Dhaka</NavLink>
+                <NavLink className="result">Chittagong</NavLink>
+                <NavLink className="result">Comilla</NavLink>
+                <NavLink className="result">Khulna</NavLink>
+                <NavLink className="result">Barisal</NavLink>
               </div>
             </div>
           </li>

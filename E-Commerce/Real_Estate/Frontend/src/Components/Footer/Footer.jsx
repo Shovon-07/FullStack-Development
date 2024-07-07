@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Icons ___//
@@ -74,34 +75,39 @@ const Footer = () => {
           <h3 className="footer-title">Find It Fast</h3>
           <ul>
             <li>
-              <a href="" className="link-hovered">
+              <NavLink to="" className="link-hovered">
                 Rajshahi
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="" className="link-hovered">
+              <NavLink to="" className="link-hovered">
                 Dhaka
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="" className="link-hovered">
+              <NavLink to="" className="link-hovered">
                 Chittagong
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="" className="link-hovered">
-                Kumilla
-              </a>
+              <NavLink to="" className="link-hovered">
+                Comilla
+              </NavLink>
             </li>
             <li>
-              <a href="" className="link-hovered">
+              <NavLink to="" className="link-hovered">
                 Sylhet
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a href="" className="link-hovered">
+              <NavLink to="" className="link-hovered">
                 Khulna
-              </a>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="" className="link-hovered">
+                Barisal
+              </NavLink>
             </li>
           </ul>
         </div>
