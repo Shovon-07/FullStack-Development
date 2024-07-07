@@ -117,26 +117,28 @@ const Footer = () => {
         <div>
           <h3 className="footer-title">Membership</h3>
           <ul>
-            {Membership.map((items, index) => (
-              <li key={index}>
-                <a
-                  href={items.facebook}
-                  className="link-hovered"
-                  target="_blank"
-                >
-                  <LazyLoadImage
-                    src={items.img}
-                    effect="blur"
-                    wrapperProps={{
-                      style: { transitionDelay: "1s" },
-                    }}
-                  />
-                  <p>
-                    {items.name} <br /> {items.rank}
-                  </p>
-                </a>
-              </li>
-            ))}
+            {Membership.map((items, index) => {
+              return (
+                <li key={index}>
+                  <a
+                    href={items.facebook}
+                    className="link-hovered"
+                    target="_blank"
+                  >
+                    <LazyLoadImage
+                      src={items.img}
+                      effect="blur"
+                      wrapperProps={{
+                        style: { transitionDelay: "1s" },
+                      }}
+                    />
+                    <p>
+                      {items.name} <br /> {items.rank}
+                    </p>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
