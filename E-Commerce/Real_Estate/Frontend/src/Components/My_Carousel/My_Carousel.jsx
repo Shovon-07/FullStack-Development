@@ -8,6 +8,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
+import b from "../../assets/Images/lagestProject/latestProject-1.jpg";
+
 function My_Carousel(props) {
   const { data } = props;
 

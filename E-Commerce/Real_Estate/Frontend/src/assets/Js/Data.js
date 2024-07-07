@@ -1,7 +1,15 @@
+import latestProject_1 from "../Images/lagestProject/latestProject-1.jpg";
+import latestProject_2 from "../Images/lagestProject/latestProject-2.jpg";
+import latestProject_3 from "../Images/lagestProject/latestProject-3.jpg";
+import latestProject_4 from "../Images/lagestProject/latestProject-4.jpg";
+import latestProject_5 from "../Images/lagestProject/latestProject-5.jpg";
+import latestProject_6 from "../Images/lagestProject/latestProject-6.jpg";
+import latestProject_7 from "../Images/lagestProject/latestProject-7.jpg";
+
 export const latestProject = [
   {
     id: 1,
-    img: "/src/assets/Images/lagestProject/latestProject-1.jpg",
+    img: latestProject_1,
     title: "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
       "জীবের মধ্যে সবচেয়ে সম্পূর্ণতা মানুষের। কিন্তু সবচেয়ে অসম্পূর্ণ হয়ে সে জন্মগ্রহণ করে। বাঘ ভালুক তার জীবনযাত্রার পনেরো- আনা মূলধন নিয়ে আসে প্রকৃতির মালখানা থেকে। জীবরঙ্গভূমিতে মানুষ এসে দেখা দেয় দুই শূন্য হাতে মুঠো বেঁধে।",
@@ -9,7 +17,7 @@ export const latestProject = [
   },
   {
     id: 2,
-    img: "/src/assets/Images/lagestProject/latestProject-2.jpg",
+    img: latestProject_2,
     title: "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
       "মানুষকে দেখতে হল খুব ছোটো, কিন্তু সেটা একটা কৌশল মাত্র। এবারকার জীবযাত্রার পালায় বিপুলতাকে করা হল বহুলতায় পরিণত। মহাকায় জন্তু ছিল প্রকাণ্ড একলা, মানুষ হল দূরপ্রসারিত অনেক।",
@@ -17,7 +25,7 @@ export const latestProject = [
   },
   {
     id: 3,
-    img: "/src/assets/Images/lagestProject/latestProject-3.jpg",
+    img: latestProject_3,
     title: "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
       "মানুষ আসবার পূর্বেই জীবসৃষ্টিযজ্ঞে প্রকৃতির ভূরিব্যয়ের পালা শেষ হয়ে এসেছে। বিপুল মাংস, কঠিন বর্ম, প্রকাণ্ড লেজ নিয়ে জলে স্থলে পৃথুল দেহের যে অমিতাচার প্রবল হয়ে উঠেছিল তাতে ধরিত্রীকে দিলে ক্লান্ত করে। প্রমাণ হল আতিশয্যের পরাভব অনিবার্য। পরীক্ষায় এটাও স্থির হয়ে গেল যে, প্রশ্রয়ের পরিমাণ যত বেশি হয় দুর্বলতার বোঝাও তত দুর্বহ হয়ে ওঠে। নূতন পর্বে প্রকৃতি যথাসম্ভব মানুষের বরাদ্দ কম করে দিয়ে নিজে রইল নেপথ্যে।",
@@ -25,7 +33,7 @@ export const latestProject = [
   },
   {
     id: 4,
-    img: "/src/assets/Images/lagestProject/latestProject-4.jpg",
+    img: latestProject_4,
     title: "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
       "মানুষকে দেখতে হল খুব ছোটো, কিন্তু সেটা একটা কৌশল মাত্র। এবারকার জীবযাত্রার পালায় বিপুলতাকে করা হল বহুলতায় পরিণত। মহাকায় জন্তু ছিল প্রকাণ্ড একলা, মানুষ হল দূরপ্রসারিত অনেক।",
@@ -33,7 +41,7 @@ export const latestProject = [
   },
   {
     id: 5,
-    img: "/src/assets/Images/lagestProject/latestProject-5.jpg",
+    img: latestProject_5,
     title: "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
       "মানুষকে দেখতে হল খুব ছোটো, কিন্তু সেটা একটা কৌশল মাত্র। এবারকার জীবযাত্রার পালায় বিপুলতাকে করা হল বহুলতায় পরিণত। মহাকায় জন্তু ছিল প্রকাণ্ড একলা, মানুষ হল দূরপ্রসারিত অনেক।",
@@ -41,7 +49,7 @@ export const latestProject = [
   },
   {
     id: 6,
-    img: "/src/assets/Images/lagestProject/latestProject-6.jpg",
+    img: latestProject_6,
     title: "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
       "মানুষকে দেখতে হল খুব ছোটো, কিন্তু সেটা একটা কৌশল মাত্র। এবারকার জীবযাত্রার পালায় বিপুলতাকে করা হল বহুলতায় পরিণত। মহাকায় জন্তু ছিল প্রকাণ্ড একলা, মানুষ হল দূরপ্রসারিত অনেক।",
@@ -49,7 +57,7 @@ export const latestProject = [
   },
   {
     id: 7,
-    img: "/src/assets/Images/lagestProject/latestProject-7.jpg",
+    img: latestProject_7,
     title: "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
       "মানুষকে দেখতে হল খুব ছোটো, কিন্তু সেটা একটা কৌশল মাত্র। এবারকার জীবযাত্রার পালায় বিপুলতাকে করা হল বহুলতায় পরিণত। মহাকায় জন্তু ছিল প্রকাণ্ড একলা, মানুষ হল দূরপ্রসারিত অনেক।",
@@ -57,24 +65,25 @@ export const latestProject = [
   },
 ];
 
+import Ceo from "../Images/Membership/Faisal_mahmud.jpg";
 export const Membership = [
   {
     id: 1,
-    img: "/src/assets/Images/Membership/Faisal_mahmud.jpg",
+    img: Ceo,
     name: "Faisal Mahmud",
     rank: "CEO",
     facebook: "https://www.facebook.com/faisal.mahmud.7393264",
   },
   {
     id: 2,
-    img: "/src/assets/Images/Membership/Faisal_mahmud.jpg",
+    img: Ceo,
     name: "Faisal Mahmud",
     rank: "CEO",
     facebook: "https://www.facebook.com/faisal.mahmud.7393264",
   },
   {
     id: 3,
-    img: "/src/assets/Images/Membership/Faisal_mahmud.jpg",
+    img: Ceo,
     name: "Faisal Mahmud",
     rank: "CEO",
     facebook: "https://www.facebook.com/faisal.mahmud.7393264",
