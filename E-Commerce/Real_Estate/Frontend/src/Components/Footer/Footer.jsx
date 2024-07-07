@@ -12,14 +12,17 @@ import {
 import { RiWhatsappFill } from "react-icons/ri";
 
 //___ Images ___//
-import Bkash from "../../assets/Images/bkash.png";
-import Nagad from "../../assets/Images/nagad.png";
-import Roket from "../../assets/Images/roket.png";
-import Visa from "../../assets/Images/visa.png";
-import Faisal from "../../assets/Images/Faisal_mahmud.jpg";
+import Bkash from "../../assets/Images/Icons/bkash.png";
+import Nagad from "../../assets/Images/Icons/nagad.png";
+import Roket from "../../assets/Images/Icons/roket.png";
+import Visa from "../../assets/Images/Icons/visa.png";
+// import Faisal from "../../assets/Images/Membership/Faisal_mahmud.jpg";
 
 //___ Css ___//
 import "./Footer.css";
+
+//___ Additional utilitis ___//
+import { Membership } from "../../assets/Js/Data";
 
 const Footer = () => {
   return (
@@ -114,60 +117,26 @@ const Footer = () => {
         <div>
           <h3 className="footer-title">Membership</h3>
           <ul>
-            <li>
-              <a
-                href="https://www.facebook.com/faisal.mahmud.7393264"
-                className="link-hovered"
-                target="_blank"
-              >
-                <LazyLoadImage
-                  src={Faisal}
-                  effect="blur"
-                  wrapperProps={{
-                    style: { transitionDelay: "1s" },
-                  }}
-                />
-                <p>
-                  Faisal Mahmud <br /> Rank: CEO
-                </p>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.facebook.com/faisal.mahmud.7393264"
-                className="link-hovered"
-                target="_blank"
-              >
-                <LazyLoadImage
-                  src={Faisal}
-                  effect="blur"
-                  wrapperProps={{
-                    style: { transitionDelay: "1s" },
-                  }}
-                />
-                <p>
-                  Faisal Mahmud <br /> Rank: CEO
-                </p>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.facebook.com/faisal.mahmud.7393264"
-                className="link-hovered"
-                target="_blank"
-              >
-                <LazyLoadImage
-                  src={Faisal}
-                  effect="blur"
-                  wrapperProps={{
-                    style: { transitionDelay: "1s" },
-                  }}
-                />
-                <p>
-                  Faisal Mahmud <br /> Rank: CEO
-                </p>
-              </a>
-            </li>
+            {Membership.map((items, index) => (
+              <li key={index}>
+                <a
+                  href={items.facebook}
+                  className="link-hovered"
+                  target="_blank"
+                >
+                  <LazyLoadImage
+                    src={items.img}
+                    effect="blur"
+                    wrapperProps={{
+                      style: { transitionDelay: "1s" },
+                    }}
+                  />
+                  <p>
+                    {items.name} <br /> {items.rank}
+                  </p>
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

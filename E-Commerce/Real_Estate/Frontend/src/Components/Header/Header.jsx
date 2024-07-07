@@ -1,18 +1,11 @@
-import { Suspense, lazy, useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
-//___ Images __//
-import Logo from "../../assets/Images/logo.svg";
 
 //___ Icons __//
 import { GoSearch } from "react-icons/go";
 
 //___ Css __//
 import "./Header.css";
-
-//___ Components ___//
-import Loader from "../Loader/Loader";
-const My_Modal = lazy(() => import("../Search_Modal/Search_Modal"));
 
 const Header = (props) => {
   const { toggle, setToggle } = props;
