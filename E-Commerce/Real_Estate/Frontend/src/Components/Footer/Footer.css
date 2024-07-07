@@ -72,7 +72,6 @@
 }
 
 /*_____ Responsive _____*/
-/*=== Medium screen===*/
 @media screen and (max-width: 768px) {
   .footer .footer-title {
     margin-top: 80px;
@@ -84,7 +83,7 @@
     padding: 0 40px 20px 40px;
   }
   .footer .footer-top h3 {
-    font-size: 40px;
+    font-size: 2rem;
   }
   .footer .footer-bottom .payment-img img {
     width: 50px;
@@ -94,13 +93,33 @@
 .link-hovered:hover {
   color: var(--main-color);
 }
-
-/*=== Small screen ===*/
-@media screen and (max-width: 576px) {
-  .footer .footer-bottom {
-    flex-direction: column-reverse;
+@media screen and (max-width: 580px) {
+  .footer .footer-bottom .footer-bottom-item {
+    flex-direction: column;
+    gap: 15px;
   }
-  .footer .footer-bottom .payment-img {
-    margin: 0 0 25px 0;
+}
+@media screen and (max-width: 350px) {
+  .footer .brand .footer-title {
+    font-size: 1.5rem;
+  }
+  .footer .footer-top h3 {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 275px) {
+  .footer .brand .footer-title {
+    font-size: 1.2rem;
+  }
+  .footer .footer-top h3 {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 282px) {
+  .footer .footer-bottom .footer-bottom-item p {
+    font-size: 0.8rem;
+  }
+  .footer .footer-bottom .payment-img img {
+    width: 35px;
   }
 }

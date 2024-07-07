@@ -133,7 +133,7 @@ const Footer = () => {
                       }}
                     />
                     <p>
-                      {items.name} <br /> {items.rank}
+                      {items.name} <br /> Rank: {items.rank}
                     </p>
                   </a>
                 </li>

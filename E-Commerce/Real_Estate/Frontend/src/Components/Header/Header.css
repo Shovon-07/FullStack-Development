@@ -49,8 +49,8 @@
 }
 .Header .toggler {
   background: transparent;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 25px;
   display: none;
   opacity: 1;
   transition: var(--trans);
@@ -183,7 +183,7 @@
     color: var(--light-1);
   }
   .Header .toggler {
-    width: 35px;
+    width: 30px;
     height: 25px;
     display: flex;
     align-items: center;
@@ -195,5 +195,10 @@
   }
   .Header .headerContainer .searchDropDown.active {
     top: 108%;
+  }
+}
+@media screen and (max-width: 340px) {
+  .Header .logo p {
+    font-size: 0.98rem;
   }
 }
