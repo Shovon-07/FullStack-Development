@@ -15,7 +15,7 @@ const My_Carousel = lazy(() =>
 );
 
 const Home = () => {
-  const [c, setC] = useState(0);
+  // const [c, setC] = useState(0);
   useEffect(() => {
     // setC((prev) => (prev += 1));
   });
@@ -35,7 +35,7 @@ const Home = () => {
         <div className="txt d-flex">
           <h1>রেডি প্লট</h1>
           <p>আমরা দিচ্ছি সর্বোচ্চ সুযোগ সুবিধা সহ রেডি প্লট</p>
-          <p>{c}</p>
+          {/* <p>{c}</p> */}
         </div>
       </div>
 
