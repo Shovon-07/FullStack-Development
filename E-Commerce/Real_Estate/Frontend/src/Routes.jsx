@@ -14,50 +14,50 @@ const Routes = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       {
-        path: "/buy",
+        path: "/ongoing-project",
         element: (
           <div className="page content">
-            <h1>Buy page</h1>
+            <h1>Ongoing Project page</h1>
           </div>
         ),
       },
       {
-        path: "/sell",
+        path: "/upcoming-project",
         element: (
           <div className="page content">
-            <h1>Sell page</h1>
+            <h1>Upcoming Project page</h1>
           </div>
         ),
       },
       {
-        path: "/rent",
+        path: "/completed-project",
         element: (
           <div className="page content">
-            <h1>Rent page</h1>
+            <h1>Completed Project page</h1>
           </div>
         ),
       },
       {
-        path: "/news",
+        path: "/gallery",
         element: (
           <div className="page content">
-            <h1>News page</h1>
+            <h1>Gallery page</h1>
           </div>
         ),
       },
       {
-        path: "/manage-rentals",
+        path: "/news-event",
         element: (
           <div className="page content">
-            <h1>Manage-rentals page</h1>
+            <h1>News and Event page</h1>
           </div>
         ),
       },
       {
-        path: "/advertise",
+        path: "/about-us",
         element: (
           <div className="page content">
-            <h1>Advertise page</h1>
+            <h1>About us</h1>
           </div>
         ),
       },

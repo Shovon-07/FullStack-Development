@@ -48,7 +48,7 @@ const Header = (props) => {
         <div className="logo">
           {/* <img src={Logo} alt="" /> */}
           <p>
-            ready <span>plot</span>
+            Molla <span>Properties</span>
           </p>
         </div>
         <ul className={`d-flex ${toggle == true ? "active" : ""}`}>
@@ -62,50 +62,50 @@ const Header = (props) => {
           </li>
           <li onClick={closeToggle}>
             <NavLink
-              to="/buy"
+              to="/ongoing-project"
               className={({ isActive }) => (isActive ? "isActive" : "")}
             >
-              Buy
+              Ongoing Project
             </NavLink>
           </li>
           <li onClick={closeToggle}>
             <NavLink
-              to="/sell"
+              to="/upcoming-project"
               className={({ isActive }) => (isActive ? "isActive" : "")}
             >
-              Sell
+              Upcoming Project
             </NavLink>
           </li>
           <li onClick={closeToggle}>
             <NavLink
-              to="/rent"
+              to="/completed-project"
               className={({ isActive }) => (isActive ? "isActive" : "")}
             >
-              Rent
+              Completed Project
             </NavLink>
           </li>
           <li onClick={closeToggle}>
             <NavLink
-              to="/news"
+              to="/gallery"
               className={({ isActive }) => (isActive ? "isActive" : "")}
             >
-              News & Insights
+              Gallery
             </NavLink>
           </li>
           <li onClick={closeToggle}>
             <NavLink
-              to="/manage-rentals"
+              to="/news-event"
               className={({ isActive }) => (isActive ? "isActive" : "")}
             >
-              Manage rentals
+              News and Event
             </NavLink>
           </li>
           <li onClick={closeToggle}>
             <NavLink
-              to="/advertise"
+              to="/about-us"
               className={({ isActive }) => (isActive ? "isActive" : "")}
             >
-              Advertise
+              About us
             </NavLink>
           </li>
           <li onClick={closeToggle} className="search d-flex">

@@ -28,7 +28,7 @@ const Footer = () => {
         <div>
           <div className="brand">
             <h3 className="footer-title">
-              Ready <span>Plot</span>
+              Molla <span>Properties</span>
             </h3>
           </div>
           <div className="d-flex">
