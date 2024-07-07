@@ -16,7 +16,7 @@ function My_Carousel(props) {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: false, //true
+    autoplay: true, // false
     autoplaySpeed: 5000,
     pauseOnHover: true,
     responsive: [

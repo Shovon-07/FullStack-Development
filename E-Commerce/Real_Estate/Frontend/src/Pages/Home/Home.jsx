@@ -1,4 +1,4 @@
-import React, { lazy, useEffect, useState } from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Images __//
@@ -45,7 +45,9 @@ const Home = () => {
       <div className="content">
         <section className="latestProject">
           <h3 className="pageTitle">Our latest projects</h3>
-          <My_Carousel data={latestProject} />
+          <Suspense fallback={<Loader />}>
+            <My_Carousel data={latestProject} />
+          </Suspense>
         </section>
 
         <section className="ourLocation">
