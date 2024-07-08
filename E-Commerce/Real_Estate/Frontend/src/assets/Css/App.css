@@ -111,3 +111,10 @@ a {
 section {
   margin-top: 80px;
 }
+
+/*___ Responsive ____*/
+@media screen and (max-width: 275px) {
+  .pageTitle {
+    font-size: 1.2rem;
+  }
+}
