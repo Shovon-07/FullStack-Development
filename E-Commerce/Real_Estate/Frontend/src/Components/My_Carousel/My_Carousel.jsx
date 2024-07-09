@@ -65,8 +65,8 @@ function My_Carousel(props) {
               <div className="txt d-flex">
                 {/* <div className="txtBox"> */}
                 <h3 className="title">
-                  {items.title.length > 33
-                    ? items.title.slice(0, 33) + " ..."
+                  {items.title.length > 70
+                    ? items.title.slice(0, 70) + " ..."
                     : items.title}
                 </h3>
                 {/* <p className="description">
