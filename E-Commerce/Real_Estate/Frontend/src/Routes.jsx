@@ -6,6 +6,8 @@ import GuestLayout from "./Layouts/GuestLayout";
 //___ Pages ___//
 import Home from "./Pages/Home/Home";
 import OngoingProject from "./Pages/OngoingProject/OngoingProject";
+import UpcomingProject from "./Pages/UpcomingProject/UpcomingProject";
+import CompletedProject from "./Pages/CompletedProject/CompletedProject";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
@@ -20,19 +22,11 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/upcoming-project",
-        element: (
-          <div className="page content">
-            <h1>Upcoming Project page</h1>
-          </div>
-        ),
+        element: <UpcomingProject />,
       },
       {
         path: "/completed-project",
-        element: (
-          <div className="page content">
-            <h1>Completed Project page</h1>
-          </div>
-        ),
+        element: <CompletedProject />,
       },
       {
         path: "/gallery",

@@ -9,7 +9,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 //___ Additional utilitis ___//
 import { ProjectData } from "../../assets/Js/Data";
 
-const OngoingProject = () => {
+const UpcomingProject = () => {
   const [numberOfElement, setNumberOfElement] = useState(8);
 
   const slicedData = ProjectData.slice(0, numberOfElement);
@@ -18,8 +18,8 @@ const OngoingProject = () => {
   };
 
   return (
-    <div className="OngoingProject page content">
-      <h3 className="pageTitle">Ongoing Projects</h3>
+    <div className="UpcomingProject page content">
+      <h3 className="pageTitle">Upcoming Projects</h3>
       <div className="cardWrapper d-flex gap-20">
         {slicedData.map((items, index) => {
           return (
@@ -57,4 +57,4 @@ const OngoingProject = () => {
   );
 };
 
-export default OngoingProject;
+export default UpcomingProject;

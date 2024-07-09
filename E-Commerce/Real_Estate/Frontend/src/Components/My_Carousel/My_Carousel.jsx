@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { NavLink } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
@@ -75,9 +76,9 @@ function My_Carousel(props) {
                 : items.description}
             </p> */}
                 <div style={{ textAlign: "center" }}>
-                  <button className="readMoreBtn btn c_pointer">
+                  <NavLink to="/" className="readMoreBtn btn c_pointer">
                     Read more
-                  </button>
+                  </NavLink>
                 </div>
                 {/* </div> */}
               </div>
