@@ -8,6 +8,7 @@ import Home from "./Pages/Home/Home";
 import OngoingProject from "./Pages/OngoingProject/OngoingProject";
 import UpcomingProject from "./Pages/UpcomingProject/UpcomingProject";
 import CompletedProject from "./Pages/CompletedProject/CompletedProject";
+import Gallery from "./Pages/Gallery/Gallery";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
@@ -30,11 +31,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/gallery",
-        element: (
-          <div className="page content">
-            <h1>Gallery page</h1>
-          </div>
-        ),
+        element: <Gallery />,
       },
       {
         path: "/news-event",
