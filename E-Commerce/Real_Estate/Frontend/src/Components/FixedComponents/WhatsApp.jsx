@@ -10,7 +10,7 @@ const WhatsApp = () => {
   return (
     <div className="FixedComponents" style={{ bottom: "110px" }}>
       <Link
-        to="https://wa.me/01788300918"
+        to="https://wa.me/+8801788300918"
         className="d-flex"
         style={{ background: "var(--green)", color: "var(--light-1)" }}
       >

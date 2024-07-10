@@ -1,0 +1,54 @@
+/* .Gallery img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Gallery .gridWrapper > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Gallery .gridWrapper > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+.Gallery .gridWrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-flow: dense;
+}
+
+.Gallery .gridWrapper .wide {
+  grid-column: span 2;
+}
+.Gallery .gridWrapper .tall {
+  grid-row: span 2;
+}
+.Gallery .gridWrapper .big {
+  grid-column: span 2;
+  grid-row: span 2;
+} */
+
+.Gallery .lg-react-element {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.Gallery a {
+  width: 300px;
+  height: 350px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.Gallery img {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+}
