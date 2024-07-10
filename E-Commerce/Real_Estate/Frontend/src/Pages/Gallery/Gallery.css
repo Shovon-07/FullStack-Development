@@ -41,14 +41,37 @@
   gap: 20px;
   flex-wrap: wrap;
 }
+.lg-outer.lg-components-open:not(.lg-zoomed) .lg-components {
+  display: none;
+}
 .Gallery a {
   width: 300px;
   height: 350px;
   border-radius: 12px;
   box-shadow: var(--shadow);
+  position: relative;
 }
 .Gallery img {
   width: 100%;
   height: 100%;
   border-radius: 12px;
+}
+.Gallery .overlay {
+  border-radius: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card-overlay) !important;
+  opacity: 0 !important;
+}
+.Gallery a:hover .overlay {
+  opacity: 1 !important;
+}
+.Gallery .overlay::after {
+  content: "View";
+  color: var(--light-1);
+  font-size: 1.3rem;
+  border: var(--border);
+  padding: 5px 20px;
 }

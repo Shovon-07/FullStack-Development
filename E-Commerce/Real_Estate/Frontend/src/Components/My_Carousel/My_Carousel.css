@@ -7,7 +7,7 @@
 }
 .slider-container .card {
   background: var(--light-1);
-  box-shadow: var(--shadow);
+  box-shadow: 1px 1px 2px var(--light-3);
   border-radius: 12px;
   height: 250px;
   overflow: hidden;

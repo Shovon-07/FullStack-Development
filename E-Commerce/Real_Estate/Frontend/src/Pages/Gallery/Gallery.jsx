@@ -18,7 +18,7 @@ import "lightgallery/css/lg-thumbnail.css";
 import { ProjectData } from "../../assets/Js/Data";
 
 const Gallery = () => {
-  const [numberOfElement, setNumberOfElement] = useState(8);
+  const [numberOfElement, setNumberOfElement] = useState(100);
 
   const slicedData = ProjectData.slice(0, numberOfElement);
   const loadMore = () => {
@@ -37,15 +37,16 @@ const Gallery = () => {
         {slicedData.map((items, index) => {
           return (
             <a href={items.img} key={index}>
-              {/* <LazyLoadImage
+              <LazyLoadImage
                 alt={items.img}
                 src={items.img}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
                 }}
-              /> */}
-              <img alt={items.img} src={items.img} />
+              />
+              {/* <img alt={items.img} src={items.img} /> */}
+              <div className="overlay">{/* <h3>View</h3> */}</div>
             </a>
           );
         })}
