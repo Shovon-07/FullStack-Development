@@ -87,6 +87,14 @@ const Header = (props) => {
           </li>
           <li onClick={closeToggle}>
             <NavLink
+              to="/honorable-client"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Honorable client
+            </NavLink>
+          </li>
+          <li onClick={closeToggle}>
+            <NavLink
               to="/news-event"
               className={({ isActive }) => (isActive ? "isActive" : "")}
             >
@@ -99,6 +107,22 @@ const Header = (props) => {
               className={({ isActive }) => (isActive ? "isActive" : "")}
             >
               About us
+            </NavLink>
+          </li>
+          <li onClick={closeToggle}>
+            <NavLink
+              to="/blog"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Blog
+            </NavLink>
+          </li>
+          <li onClick={closeToggle}>
+            <NavLink
+              to="/contact-us"
+              className={({ isActive }) => (isActive ? "isActive" : "")}
+            >
+              Contact us
             </NavLink>
           </li>
           <li onClick={closeToggle} className="search d-flex">

@@ -201,27 +201,28 @@ export const ProjectData = [
   },
 ];
 
-import Ceo from "../Images/Membership/Faisal_mahmud.jpg";
+import User from "../Images/Icons/user.png";
+import Assistant_Director from "../Images/Membership/Faisal_mahmud.jpg";
 export const Membership = [
   {
     id: 1,
-    img: Ceo,
-    name: "Faisal Mahmud",
-    rank: "CEO",
+    img: User,
+    name: "Abdus Samad Molla",
+    rank: "Chairman ",
     facebook: "https://www.facebook.com/faisal.mahmud.7393264",
   },
   {
     id: 2,
-    img: Ceo,
-    name: "Faisal Mahmud",
-    rank: "CEO",
-    facebook: "https://www.facebook.com/faisal.mahmud.7393264",
+    img: User,
+    name: "Farhad Hossain",
+    rank: "Director",
+    facebook: "https://www.facebook.com/forhad.rony.31?mibextid=ZbWKwL",
   },
   {
     id: 3,
-    img: Ceo,
+    img: Assistant_Director,
     name: "Faisal Mahmud",
-    rank: "CEO",
+    rank: "Assistant Director",
     facebook: "https://www.facebook.com/faisal.mahmud.7393264",
   },
 ];

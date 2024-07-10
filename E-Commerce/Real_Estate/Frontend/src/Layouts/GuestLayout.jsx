@@ -4,6 +4,8 @@ import { Outlet } from "react-router-dom";
 //___ Components ___//
 import Loader from "../Components/Loader/Loader";
 const Header = lazy(() => import("../Components/Header/Header"));
+const CallNow = lazy(() => import("../Components/FixedComponents/CallNow"));
+const WhatsApp = lazy(() => import("../Components/FixedComponents/WhatsApp"));
 const Footer = lazy(() => import("../Components/Footer/Footer"));
 
 const GuestLayout = () => {
@@ -17,6 +19,12 @@ const GuestLayout = () => {
       <div className={`container `}>
         <Outlet />
       </div>
+      <Suspense fallback={<Loader />}>
+        <WhatsApp />
+      </Suspense>
+      <Suspense fallback={<Loader />}>
+        <CallNow />
+      </Suspense>
       <Suspense fallback={<Loader />}>
         <Footer />
       </Suspense>

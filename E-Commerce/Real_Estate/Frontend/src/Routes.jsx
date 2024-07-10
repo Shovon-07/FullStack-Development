@@ -34,6 +34,14 @@ const Routes = createBrowserRouter([
         element: <Gallery />,
       },
       {
+        path: "/honorable-client",
+        element: (
+          <div className="page content">
+            <h1>Honorable client</h1>
+          </div>
+        ),
+      },
+      {
         path: "/news-event",
         element: (
           <div className="page content">
@@ -46,6 +54,22 @@ const Routes = createBrowserRouter([
         element: (
           <div className="page content">
             <h1>About us</h1>
+          </div>
+        ),
+      },
+      {
+        path: "/blog",
+        element: (
+          <div className="page content">
+            <h1>Blog</h1>
+          </div>
+        ),
+      },
+      {
+        path: "/contact-us",
+        element: (
+          <div className="page content">
+            <h1>Contact us</h1>
           </div>
         ),
       },

@@ -24,13 +24,13 @@
   font-weight: 600;
   cursor: default;
 
-  background: linear-gradient(to right, var(--blue), var(--main-color));
+  /* background: linear-gradient(to right, var(--blue), var(--main-color));
   background-clip: text;
-  color: transparent;
+  color: transparent; */
 }
-/* .Header .logo p span {
+.Header .logo p span {
   color: var(--main-color);
-} */
+}
 .Header ul {
   justify-content: space-between;
   gap: 30px;
@@ -144,14 +144,12 @@
 }
 
 /*___ Responsive ___*/
-@media screen and (max-width: 1400px) {
-}
-@media screen and (max-width: 1250px) {
+/* @media screen and (max-width: 1250px) {
   .Header .logo p {
     font-size: 1.2rem;
   }
-}
-@media screen and (max-width: 1200px) {
+} */
+@media screen and (max-width: 1540px) {
   .Header ul {
     flex-direction: column;
     gap: 20px;
@@ -163,7 +161,7 @@
     /* right: -200px; */
     /* height: 100vh; */
     /* width: 150px; */
-    top: -420px;
+    top: -600px;
     left: 0;
     width: 100%;
     /* height: 100px; */
@@ -194,7 +192,7 @@
     z-index: 1000;
   }
   .Header .headerContainer .searchDropDown.active {
-    top: 108%;
+    top: 610px;
   }
 }
 @media screen and (max-width: 340px) {

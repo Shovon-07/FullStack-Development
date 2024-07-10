@@ -41,13 +41,22 @@ const Footer = () => {
               style={{ marginRight: "20px" }}
             />
             <div>
-              <p>Got Questions? Call us 24/7</p>
-              <p>01790238340</p>
+              <p style={{ marginBottom: "5px", fontWeight: "500" }}>
+                Got Questions? Call us 24/7
+              </p>
+              <p style={{ fontSize: "0.9rem", marginTop: "2px" }}>
+                01788300918
+              </p>
+              <p style={{ fontSize: "0.9rem", marginTop: "2px" }}>
+                mollaproperties@gmail.com
+              </p>
             </div>
           </div>
           <div style={{ marginTop: "15px" }}>
-            <p className="bolded fs-4">Contact Info</p>
+            <p className="bolded">Our location</p>
             <p className="address">Horogram, Charkhutar mor, Rajshahi</p>
+            {/* <p>01788300918</p>
+            <p className="address">mollaproperties@gmail.com</p> */}
             <div className="footer-icons" style={{ marginTop: "25px" }}>
               <a
                 href="https://www.facebook.com/profile.php?id=100093853449456&mibextid=ZbWKwL"
@@ -133,7 +142,7 @@ const Footer = () => {
                       }}
                     />
                     <p>
-                      {items.name} <br /> Rank: {items.rank}
+                      {items.name} <br /> - {items.rank}
                     </p>
                   </a>
                 </li>
@@ -147,7 +156,8 @@ const Footer = () => {
           <div>
             <p className="d-flex gap-10">
               <FaRegCopyright size={20} />
-              <span className="bolded"> Molla properties </span>-All Right Reserved
+              <span className="bolded"> Molla properties </span>-All Right
+              Reserved
             </p>
           </div>
           <div className="payment-img d-flex">
