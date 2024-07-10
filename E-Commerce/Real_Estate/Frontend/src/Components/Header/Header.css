@@ -87,6 +87,9 @@
 }
 
 /*___ Search Dropdown ___*/
+.Header .lastChild {
+  justify-content: space-between;
+}
 .Header .search #overlay.overlay {
   position: fixed;
   opacity: 1;
@@ -155,7 +158,7 @@
 @media screen and (max-width: 1540px) {
   .Header ul {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     padding: 50px 0 30px 0;
     position: absolute;
     background: var(--light-1);
@@ -194,10 +197,6 @@
   }
   .Header .headerContainer .searchDropDown {
     padding: 10px 20px;
-    z-index: 1000;
-  }
-  .Header .headerContainer .searchDropDown.active {
-    top: 610px;
   }
 }
 @media screen and (max-width: 340px) {

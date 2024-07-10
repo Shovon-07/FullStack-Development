@@ -34,7 +34,7 @@ const Footer = () => {
               Molla <span>Properties</span>
             </h3>
           </div>
-          <div className="d-flex">
+          <div className="d-flex-start">
             <FaHeadset
               size={50}
               className="headset"
@@ -67,7 +67,7 @@ const Footer = () => {
                 <FaTwitter size={25} />
               </a> */}
               <a href="https://wa.me/01788300918" className="link-hovered">
-                <RiWhatsappFill size={25} />
+                <RiWhatsappFill size={27} />
               </a>
               {/* <a href="" className="link-hovered">
                 <FaLinkedin size={25} />
@@ -80,7 +80,7 @@ const Footer = () => {
                 target="_blank"
                 className="link-hovered"
               >
-                <FaYoutube size={25} />
+                <FaYoutube size={27} />
               </a>
             </div>
           </div>
@@ -127,10 +127,13 @@ const Footer = () => {
         </div>
         <div>
           <h3 className="footer-title">Membership</h3>
-          <ul>
+          <ul
+            className="d-flex-start gap-10"
+            style={{ flexDirection: "column" }}
+          >
             {Membership.map((items, index) => {
               return (
-                <li key={index}>
+                <li key={index} style={{ textAlign: "left" }}>
                   <a
                     href={items.facebook}
                     className="link-hovered"
@@ -144,7 +147,8 @@ const Footer = () => {
                       }}
                     />
                     <p>
-                      {items.name} <br /> - {items.rank}
+                      {items.name} <br />{" "}
+                      <span style={{ fontSize: "0.8rem" }}>- {items.rank}</span>
                     </p>
                   </a>
                 </li>

@@ -74,7 +74,7 @@
 /*_____ Responsive _____*/
 @media screen and (max-width: 768px) {
   .footer .footer-title {
-    margin-top: 80px;
+    margin-top: 50px;
   }
   .footer .footer-top {
     flex-direction: column;
@@ -99,12 +99,27 @@
     gap: 15px;
   }
 }
+@media screen and (max-width: 363px) {
+  .footer .footer-top .headset {
+    width: 40px;
+    height: 40px;
+  }
+}
 @media screen and (max-width: 350px) {
   .footer .brand .footer-title {
     font-size: 1.5rem;
   }
   .footer .footer-top h3 {
     font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 322px) {
+  .footer .footer-bottom .footer-bottom-item p {
+    font-size: 0.86rem;
+  }
+  .footer .footer-bottom .footer-bottom-item img {
+    width: 35px;
+    height: auto;
   }
 }
 @media screen and (max-width: 275px) {

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { lazy, Suspense, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 //___ Icons __//
 import { GoSearch } from "react-icons/go";
@@ -44,7 +44,7 @@ const Header = (props) => {
             Molla <span>Properties</span>
           </p>
         </div>
-        <ul className={`d-flex ${toggle == true ? "active" : ""}`}>
+        <ul className={`d-flex menus ${toggle == true ? "active" : ""}`}>
           <li onClick={closeToggle}>
             <NavLink
               to="/"
@@ -125,6 +125,9 @@ const Header = (props) => {
               Contact us
             </NavLink>
           </li>
+        </ul>
+
+        <div className="lastChild d-flex gap-30">
           <li onClick={closeToggle} className="search d-flex">
             <GoSearch
               size={25}
@@ -149,23 +152,26 @@ const Header = (props) => {
               </div>
               <div className="resultBox d-flex">
                 <h3>Search result</h3>
-                <NavLink className="result">Rajshahi</NavLink>
-                <NavLink className="result">Dhaka</NavLink>
-                <NavLink className="result">Chittagong</NavLink>
-                <NavLink className="result">Comilla</NavLink>
-                <NavLink className="result">Khulna</NavLink>
-                <NavLink className="result">Barisal</NavLink>
+                <Link className="result">Rajshahi</Link>
+                <Link className="result">Dhaka</Link>
+                <Link className="result">Chittagong</Link>
+                <Link className="result">Comilla</Link>
+                <Link className="result">Khulna</Link>
+                <Link className="result">Barisal</Link>
               </div>
             </div>
           </li>
-        </ul>
-        <div
-          className={`toggler c_pointer ${
-            searchDropDownVal == true ? "z-index-1" : ""
-          }`}
-          onClick={handleNavToggle}
-        >
-          <div></div>
+
+          <li style={{ zIndex: 1000, position: "sticky" }}>
+            <div
+              className={`toggler c_pointer ${
+                searchDropDownVal == true ? "z-index-1" : ""
+              }`}
+              onClick={handleNavToggle}
+            >
+              <div></div>
+            </div>
+          </li>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@
   transition: var(--trans);
 }
 .card .txt {
-  background: var(--overlay);
+  background: var(--card-overlay);
   backdrop-filter: blur(5px);
   color: var(--light-1);
   border-radius: 12px;

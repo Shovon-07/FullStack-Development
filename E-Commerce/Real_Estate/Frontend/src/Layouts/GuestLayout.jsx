@@ -17,6 +17,13 @@ const GuestLayout = () => {
         <Header toggle={toggle} setToggle={setToggle} />
       </Suspense>
       <div className={`container `}>
+        <div
+          className={toggle == true ? "overlay" : ""}
+          style={{ zIndex: "997", position: "fixed" }}
+          onClick={() => {
+            setToggle(false);
+          }}
+        ></div>
         <Outlet />
       </div>
       <Suspense fallback={<Loader />}>

@@ -18,6 +18,7 @@ const My_Carousel = lazy(() =>
 );
 
 const Home = () => {
+  // const { toggle } = props;
   // const [c, setC] = useState(0);
   useEffect(() => {
     // setC((prev) => (prev += 1));
