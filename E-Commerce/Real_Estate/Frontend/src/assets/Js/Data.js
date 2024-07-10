@@ -202,6 +202,7 @@ export const ProjectData = [
 ];
 
 import User from "../Images/Icons/user.png";
+import Director from "../Images/Membership/Director.jpg";
 import Assistant_Director from "../Images/Membership/Faisal_mahmud.jpg";
 export const Membership = [
   {
@@ -213,7 +214,7 @@ export const Membership = [
   },
   {
     id: 2,
-    img: User,
+    img: Director,
     name: "Farhad Hossain",
     rank: "Director",
     facebook: "https://www.facebook.com/forhad.rony.31?mibextid=ZbWKwL",

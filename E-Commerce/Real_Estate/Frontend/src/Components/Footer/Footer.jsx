@@ -55,8 +55,6 @@ const Footer = () => {
           <div style={{ marginTop: "15px" }}>
             <p className="bolded">Our location</p>
             <p className="address">Horogram, Charkhutar mor, Rajshahi</p>
-            {/* <p>01788300918</p>
-            <p className="address">mollaproperties@gmail.com</p> */}
             <div className="footer-icons" style={{ marginTop: "25px" }}>
               <a
                 href="https://www.facebook.com/profile.php?id=100093853449456&mibextid=ZbWKwL"
@@ -65,19 +63,23 @@ const Footer = () => {
               >
                 <FaFacebook size={25} />
               </a>
-              <a href="" className="link-hovered">
+              {/* <a href="" className="link-hovered">
                 <FaTwitter size={25} />
-              </a>
-              <a href="" className="link-hovered">
+              </a> */}
+              <a href="https://wa.me/01788300918" className="link-hovered">
                 <RiWhatsappFill size={25} />
               </a>
-              <a href="" className="link-hovered">
+              {/* <a href="" className="link-hovered">
                 <FaLinkedin size={25} />
-              </a>
-              <a href="" className="link-hovered">
+              </a> */}
+              {/* <a href="" className="link-hovered">
                 <FaSquareInstagram size={25} />
-              </a>
-              <a href="" className="link-hovered">
+              </a> */}
+              <a
+                href="https://youtube.com/@mollaagroandproperties?si=FdOtJ-jjfgDStOSh"
+                target="_blank"
+                className="link-hovered"
+              >
                 <FaYoutube size={25} />
               </a>
             </div>
