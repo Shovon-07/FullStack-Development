@@ -248,3 +248,22 @@ export const Membership = [
     facebook: "https://www.facebook.com/faisal.mahmud.7393264",
   },
 ];
+
+export const Blogs = [
+  {
+    id: 1,
+    link: "https://www.youtube.com/embed/EkEr-D-ISes?si=wlGa8mxGWpZJ8rss",
+  },
+  {
+    id: 2,
+    link: "https://www.youtube.com/embed/xsIJTLq3EAY?si=RBHl9NEISAxusirV",
+  },
+  {
+    id: 3,
+    link: "https://www.youtube.com/embed/1z5cMT5rtqU?si=rALzZLHyRnPfGP5C",
+  },
+  {
+    id: 4,
+    link: "https://www.youtube.com/embed/JthLK5Mgl-s?si=Mz1Bp0GXT9ADqCfi",
+  },
+];

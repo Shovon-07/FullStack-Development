@@ -45,7 +45,7 @@ const Footer = () => {
                 Got Questions? Call us 24/7
               </p>
               <p style={{ fontSize: "0.9rem", marginTop: "2px" }}>
-                01788300918
+                01788300918 <br /> 01829674216
               </p>
               <p style={{ fontSize: "0.9rem", marginTop: "2px" }}>
                 mollaproperties@gmail.com

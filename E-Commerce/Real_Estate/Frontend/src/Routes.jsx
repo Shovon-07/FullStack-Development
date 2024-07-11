@@ -10,6 +10,8 @@ import UpcomingProject from "./Pages/UpcomingProject/UpcomingProject";
 import CompletedProject from "./Pages/CompletedProject/CompletedProject";
 import Gallery from "./Pages/Gallery/Gallery";
 import HonorableClient from "./Pages/HonorableClient/HonorableClient";
+import NewsAndEvent from "./Pages/NewsAndEvent/NewsAndEvent";
+import Blog from "./Pages/Blog/Blog";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
@@ -40,11 +42,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/news-event",
-        element: (
-          <div className="page content">
-            <h1>News and Event page</h1>
-          </div>
-        ),
+        element: <NewsAndEvent />,
       },
       {
         path: "/about-us",
@@ -56,11 +54,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: (
-          <div className="page content">
-            <h1>Blog</h1>
-          </div>
-        ),
+        element: <Blog />,
       },
       {
         path: "/contact-us",
