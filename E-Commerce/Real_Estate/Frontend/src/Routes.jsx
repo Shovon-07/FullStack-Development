@@ -9,6 +9,7 @@ import OngoingProject from "./Pages/OngoingProject/OngoingProject";
 import UpcomingProject from "./Pages/UpcomingProject/UpcomingProject";
 import CompletedProject from "./Pages/CompletedProject/CompletedProject";
 import Gallery from "./Pages/Gallery/Gallery";
+import HonorableClient from "./Pages/HonorableClient/HonorableClient";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
@@ -35,11 +36,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/honorable-client",
-        element: (
-          <div className="page content">
-            <h1>Honorable client</h1>
-          </div>
-        ),
+        element: <HonorableClient />,
       },
       {
         path: "/news-event",

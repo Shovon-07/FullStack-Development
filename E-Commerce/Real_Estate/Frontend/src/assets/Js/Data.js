@@ -201,6 +201,27 @@ export const ProjectData = [
   },
 ];
 
+import HonorableClient_1 from "../Images/HonorableClient/HonorableClient-1.jpg";
+import HonorableClient_2 from "../Images/HonorableClient/HonorableClient-2.jpg";
+import HonorableClient_3 from "../Images/HonorableClient/HonorableClient-3.jpg";
+export const honorableClient = [
+  {
+    id: 1,
+    img: HonorableClient_1,
+    name: "মো: রাশেদুল ইসলাম",
+  },
+  {
+    id: 2,
+    img: HonorableClient_2,
+    name: "মো: ফেরদৌস আলম",
+  },
+  {
+    id: 3,
+    img: HonorableClient_3,
+    name: "মো: বেদারুল ইসলাম, মোছা: সিরাজুম মুনিরা সুমাইয়া",
+  },
+];
+
 import User from "../Images/Icons/user.png";
 import Director from "../Images/Membership/Director.jpg";
 import Assistant_Director from "../Images/Membership/Faisal_mahmud.jpg";

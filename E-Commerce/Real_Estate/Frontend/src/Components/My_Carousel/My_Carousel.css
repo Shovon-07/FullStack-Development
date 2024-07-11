@@ -49,6 +49,7 @@
   line-height: 2rem;
   margin-bottom: 7px;
   text-align: center;
+  font-size: 0.97rem;
 }
 .slider-container .card .readMoreBtn {
   background: var(--blue);

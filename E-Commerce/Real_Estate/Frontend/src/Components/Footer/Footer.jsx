@@ -54,7 +54,7 @@ const Footer = () => {
           </div>
           <div style={{ marginTop: "15px" }}>
             <p className="bolded">Our location</p>
-            <p className="address">Horogram, Charkhutar mor, Rajshahi</p>
+            <p className="address">Dangipara, Paba, Rajshahi</p>
             <div className="footer-icons" style={{ marginTop: "25px" }}>
               <a
                 href="https://www.facebook.com/profile.php?id=100093853449456&mibextid=ZbWKwL"
@@ -90,37 +90,17 @@ const Footer = () => {
           <ul>
             <li>
               <NavLink to="" className="link-hovered">
-                Rajshahi
+                Molla Foundation
               </NavLink>
             </li>
             <li>
               <NavLink to="" className="link-hovered">
-                Dhaka
+                Molla Agro
               </NavLink>
             </li>
             <li>
               <NavLink to="" className="link-hovered">
-                Chittagong
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="" className="link-hovered">
-                Comilla
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="" className="link-hovered">
-                Sylhet
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="" className="link-hovered">
-                Khulna
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="" className="link-hovered">
-                Barisal
+                Molla Homes
               </NavLink>
             </li>
           </ul>

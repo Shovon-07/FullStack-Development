@@ -71,7 +71,7 @@ a {
   background: var(--overlay);
   opacity: 0;
   transition: var(--trans);
-  z-index: 999;
+  z-index: 998;
 }
 .btn {
   border: none;

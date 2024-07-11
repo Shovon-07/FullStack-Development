@@ -6,6 +6,7 @@
   width: 350px;
   height: 350px;
   border-radius: 12px;
+  box-shadow: var(--shadow);
   overflow: hidden;
   position: relative;
 }

@@ -3,6 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 
 //___ Icons __//
 import { GoSearch } from "react-icons/go";
+import { FaBars } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
 //___ Css __//
 import "./Header.css";
@@ -169,9 +171,11 @@ const Header = (props) => {
               }`}
               onClick={handleNavToggle}
             >
-              <div
+              <FaBars size={25} className={toggle == false ? "" : "d-none"} />
+              <RxCross2 size={30} className={toggle == true ? "" : "d-none"} />
+              {/* <div
                 className={`c_pointer ${toggle == true ? "cross" : ""}`}
-              ></div>
+              ></div> */}
             </div>
           </li>
         </div>
