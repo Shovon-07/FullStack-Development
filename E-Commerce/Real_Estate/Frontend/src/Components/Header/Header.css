@@ -15,7 +15,6 @@
   margin: 0 auto;
 }
 .Header .logo {
-  /* width: 270px; */
   height: auto;
 }
 .Header .logo p {
@@ -23,10 +22,6 @@
   text-transform: uppercase;
   font-weight: 600;
   cursor: default;
-
-  /* background: linear-gradient(to right, var(--blue), var(--main-color));
-  background-clip: text;
-  color: transparent; */
 }
 .Header .logo p span {
   color: var(--main-color);
@@ -52,8 +47,8 @@
 }
 .Header .toggler {
   background: transparent;
-  width: 30px;
-  height: 25px;
+  width: 25px;
+  height: 20px;
   display: none;
   opacity: 1;
   transition: var(--trans);
@@ -78,13 +73,26 @@
   background: var(--dark-1);
   border-radius: 10px;
   position: absolute;
+  transition: var(--trans);
 }
 .Header .toggler div::after {
-  top: 9px;
+  top: 7px;
 }
 .Header .toggler div::before {
-  bottom: 9px;
+  bottom: 7px;
 }
+
+/* .Header .toggler div.cross {
+  width: 0;
+}
+.Header .toggler div.cross::after {
+  transform: rotate(-50deg);
+  top: 2px;
+}
+.Header .toggler div.cross::before {
+  transform: rotate(50deg);
+  bottom: -2px;
+} */
 
 /*___ Search Dropdown ___*/
 .Header .lastChild {
@@ -158,7 +166,6 @@
 @media screen and (max-width: 1540px) {
   .Header ul {
     flex-direction: column;
-    gap: 15px;
     padding: 50px 0 30px 0;
     position: absolute;
     background: var(--light-1);
@@ -189,8 +196,6 @@
     color: var(--light-1);
   }
   .Header .toggler {
-    width: 30px;
-    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -199,8 +204,16 @@
     padding: 10px 20px;
   }
 }
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 450px) {
   .Header .logo p {
     font-size: 0.98rem;
   }
+  .Header .lastChild {
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 340px) {
+  /* .Header .logo p {
+    font-size: 0.9rem;
+  } */
 }

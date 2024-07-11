@@ -130,7 +130,7 @@ const Header = (props) => {
         <div className="lastChild d-flex gap-30">
           <li onClick={closeToggle} className="search d-flex">
             <GoSearch
-              size={25}
+              size={20}
               className="c_pointer"
               onClick={() => {
                 setSearchDropDownVal((prev) => !prev);
@@ -169,7 +169,9 @@ const Header = (props) => {
               }`}
               onClick={handleNavToggle}
             >
-              <div></div>
+              <div
+                className={`c_pointer ${toggle == true ? "cross" : ""}`}
+              ></div>
             </div>
           </li>
         </div>
