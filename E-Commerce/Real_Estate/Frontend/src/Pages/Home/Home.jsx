@@ -1,5 +1,11 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
+
+//___ Icons __//
+import { RiHomeOfficeFill } from "react-icons/ri";
+import { GrNotes } from "react-icons/gr";
+import { GiMoneyStack } from "react-icons/gi";
 
 //___ Images __//
 import Banner from "../../assets/Images/Banner.jpg";
@@ -58,15 +64,36 @@ const Home = () => {
             width="100%"
             height="450"
             style={{
-              border: "0",
+              border: "1px solid var(--light-2)",
               outline: "0",
               borderRadius: "12px",
-              boxShadow: "var(--shadow)",
+              // boxShadow: "var(--shadow)",
             }}
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
+        </section>
+
+        <section className="ourMisionVision d-flex gap-30">
+          <Link to="" className="card d-flex gap-20">
+            <div className="icon">
+              <RiHomeOfficeFill size={30} />
+            </div>
+            <h3>Our Vision</h3>
+          </Link>
+          <Link to="" className="card d-flex gap-20">
+            <div className="icon">
+              <GrNotes size={30} />
+            </div>
+            <h3>Our Mision</h3>
+          </Link>
+          <Link to="" className="card d-flex gap-20">
+            <div className="icon">
+              <GiMoneyStack size={40} />
+            </div>
+            <h3>Invest with us </h3>
+          </Link>
         </section>
       </div>
     </div>
