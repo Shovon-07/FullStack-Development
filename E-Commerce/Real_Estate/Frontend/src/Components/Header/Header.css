@@ -214,6 +214,9 @@
   }
 }
 @media screen and (max-width: 450px) {
+  .Header {
+    height: 48px;
+  }
   .Header .logo p {
     font-size: 0.98rem;
   }

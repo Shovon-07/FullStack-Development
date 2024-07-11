@@ -1,5 +1,6 @@
-import { lazy, Suspense, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import axios from "axios";
 
 //___ Icons __//
 import { GoSearch } from "react-icons/go";
@@ -35,6 +36,23 @@ const Header = (props) => {
       closeToggle();
       closePopUp();
     }
+  };
+
+  const [data, setData] = useState([]);
+  const [records, setRecords] = useState(data);
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => {
+        setData(res.data);
+        setRecords(res.data);
+        // console.log(res.data);
+      })
+      .catch((e) => console.error(e));
+  }, []);
+  const handleSearchInput = (e) => {
+    setRecords.filter((f) => f.name.toLowerCase().includes(e.target.value));
+    // console.log(e.target.value);
   };
 
   return (
@@ -150,16 +168,25 @@ const Header = (props) => {
             >
               <div className="inputBox">
                 <label>Search</label>
-                <input type="text" placeholder="Search hear" />
+                <input
+                  type="text"
+                  placeholder="Search hear"
+                  onChange={handleSearchInput}
+                />
               </div>
               <div className="resultBox d-flex">
                 <h3>Search result</h3>
-                <Link className="result">Rajshahi</Link>
-                <Link className="result">Dhaka</Link>
+                {records.map((items, index) => {
+                  <Link className="result" key={index}>
+                    {items.name}
+                  </Link>;
+                })}
+
+                {/* <Link className="result">Dhaka</Link>
                 <Link className="result">Chittagong</Link>
                 <Link className="result">Comilla</Link>
                 <Link className="result">Khulna</Link>
-                <Link className="result">Barisal</Link>
+                <Link className="result">Barisal</Link> */}
               </div>
             </div>
           </li>
@@ -173,9 +200,6 @@ const Header = (props) => {
             >
               <FaBars size={25} className={toggle == false ? "" : "d-none"} />
               <RxCross2 size={30} className={toggle == true ? "" : "d-none"} />
-              {/* <div
-                className={`c_pointer ${toggle == true ? "cross" : ""}`}
-              ></div> */}
             </div>
           </li>
         </div>
