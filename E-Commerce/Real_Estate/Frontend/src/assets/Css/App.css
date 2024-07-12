@@ -61,6 +61,7 @@ a {
   font-weight: 500;
   margin-bottom: 30px;
   color: var(--dark-2);
+  text-align: center;
 }
 .overlay {
   width: 100%;
@@ -112,7 +113,7 @@ a {
   margin: 0 auto;
 }
 .page {
-  margin-top: 70px;
+  margin-top: 80px;
   z-index: 900;
 }
 .content {
@@ -128,7 +129,7 @@ section {
 /*___ Responsive ____*/
 @media screen and (max-width: 450px) {
   .page {
-    margin-top: 60px;
+    margin-top: 70px;
   }
 }
 @media screen and (max-width: 275px) {

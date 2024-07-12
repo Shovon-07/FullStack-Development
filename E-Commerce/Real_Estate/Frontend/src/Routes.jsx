@@ -10,8 +10,10 @@ import UpcomingProject from "./Pages/UpcomingProject/UpcomingProject";
 import CompletedProject from "./Pages/CompletedProject/CompletedProject";
 import Gallery from "./Pages/Gallery/Gallery";
 import HonorableClient from "./Pages/HonorableClient/HonorableClient";
+import AboutUs from "./Pages/AboutUs/AboutUs";
 import NewsAndEvent from "./Pages/NewsAndEvent/NewsAndEvent";
 import Blog from "./Pages/Blog/Blog";
+import ContactUs from "./Pages/ContactUs/ContactUs";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
@@ -46,11 +48,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: (
-          <div className="page content">
-            <h1>About us</h1>
-          </div>
-        ),
+        element: <AboutUs />,
       },
       {
         path: "/blog",
@@ -58,11 +56,7 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/contact-us",
-        element: (
-          <div className="page content">
-            <h1>Contact us</h1>
-          </div>
-        ),
+        element: <ContactUs />,
       },
     ],
   },

@@ -2,27 +2,24 @@ import { NavLink } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Icons ___//
-import { FaHeadset, FaLinkedin, FaSquareInstagram } from "react-icons/fa6";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaYoutube,
-  FaRegCopyright,
-} from "react-icons/fa";
+import { FaHeadset } from "react-icons/fa6";
+import { FaFacebook, FaYoutube, FaRegCopyright } from "react-icons/fa";
 import { RiWhatsappFill } from "react-icons/ri";
 
 //___ Images ___//
 import Bkash from "../../assets/Images/Icons/bkash.png";
 import Nagad from "../../assets/Images/Icons/nagad.png";
-import Roket from "../../assets/Images/Icons/roket.png";
+import Roket from "../../assets/Images/Icons/rocket.png";
 import Visa from "../../assets/Images/Icons/visa.png";
-// import Faisal from "../../assets/Images/Membership/Faisal_mahmud.jpg";
 
 //___ Css ___//
 import "./Footer.css";
 
 //___ Additional utilitis ___//
 import { Membership } from "../../assets/Js/Data";
+
+//___ Components ___//
+import Credits from "../Credits/Credits";
 
 const Footer = () => {
   return (
@@ -178,6 +175,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <Credits />
     </div>
   );
 };
