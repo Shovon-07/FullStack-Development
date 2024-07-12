@@ -1,2 +1,11 @@
 .ContactUs {
 }
+.ContactUs .contactWrapper {
+  justify-content: space-between;
+}
+.ContactUs .left {
+  flex-basis: 50%;
+}
+.ContactUs .right {
+  flex-basis: 50%;
+}

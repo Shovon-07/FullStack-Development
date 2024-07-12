@@ -16,7 +16,8 @@
   transition: var(--trans);
   font-weight: 500;
 }
-input:focus::placeholder {
+input:focus::placeholder,
+textarea:focus::placeholder {
   padding-left: 10px;
 }
 
