@@ -19,7 +19,7 @@ const GuestLayout = () => {
       <div className={`container `}>
         <div
           className={toggle == true ? "overlay" : ""}
-          style={{ zIndex: "997", position: "fixed" }}
+          style={{ zIndex: "997", position: "fixed", opacity: 1 }}
           onClick={() => {
             setToggle(false);
           }}

@@ -1,2 +1,46 @@
 .NewsAndEvent {
 }
+.NewsAndEvent .newsBox {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.NewsAndEvent .newsBox .card {
+  width: 40%;
+  height: 500px;
+  border-radius: 0 !important;
+  transition: var(--trans);
+}
+.NewsAndEvent .newsBox .card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0 !important;
+}
+.NewsAndEvent .newsBox .card:hover {
+  transform: translateY(-10px);
+}
+
+/*___ Responsiv ___*/
+@media screen and (max-width: 1000px) {
+  .NewsAndEvent .newsBox .card {
+    height: 300px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .NewsAndEvent .newsBox .card {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .NewsAndEvent .newsBox {
+    flex-direction: column;
+  }
+  .NewsAndEvent .newsBox .card {
+    width: 100%;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .NewsAndEvent .newsBox .card {
+    height: 200px;
+  }
+}

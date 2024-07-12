@@ -65,82 +65,92 @@ const Header = (props) => {
           </p>
         </div>
         <ul className={`d-flex menus ${toggle == true ? "active" : ""}`}>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               Home
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/ongoing-project"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               Ongoing Project
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/upcoming-project"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               Upcoming Project
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/completed-project"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               Completed Project
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/gallery"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               Gallery
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/honorable-client"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               Honorable client
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/news-event"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               News and Event
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/about-us"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               About us
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/blog"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               Blog
             </NavLink>
           </li>
-          <li onClick={closeToggle}>
+          <li>
             <NavLink
               to="/contact-us"
               className={({ isActive }) => (isActive ? "isActive" : "")}
+              onClick={closeToggle}
             >
               Contact us
             </NavLink>

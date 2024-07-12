@@ -80,6 +80,14 @@
     line-height: 1.8rem;
   }
 }
+@media screen and (max-width: 450px) {
+  .Home.page {
+    margin-top: 49px;
+  }
+  .Home .ourMisionVision .card {
+    width: 90%;
+  }
+}
 @media screen and (max-width: 325px) {
   .Home .homeImg .txt h1 {
     font-size: 1.8rem;

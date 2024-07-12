@@ -48,6 +48,7 @@ const CompletedProject = () => {
           );
         })}
       </div>
+
       <div style={{ textAlign: "center", marginTop: "100px" }}>
         <button className="btn" onClick={loadMore}>
           Load More

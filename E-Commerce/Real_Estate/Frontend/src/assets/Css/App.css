@@ -111,11 +111,9 @@ a {
   min-height: 100vh;
   margin: 0 auto;
 }
-.container .overlay {
-  opacity: 1;
-}
 .page {
   margin-top: 70px;
+  z-index: 900;
 }
 .content {
   width: 100%;
@@ -128,6 +126,11 @@ section {
 }
 
 /*___ Responsive ____*/
+@media screen and (max-width: 450px) {
+  .page {
+    margin-top: 60px;
+  }
+}
 @media screen and (max-width: 275px) {
   .pageTitle {
     font-size: 1.2rem;
