@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import axios from "axios";
 
@@ -38,21 +38,21 @@ const Header = (props) => {
     }
   };
 
-  const [data, setData] = useState([]);
-  const [records, setRecords] = useState(data);
-  useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/users")
-      .then((res) => {
-        setData(res.data);
-        setRecords(res.data);
-        // console.log(res.data);
-      })
-      .catch((e) => console.error(e));
-  }, []);
-  const handleSearchInput = (e) => {
-    setRecords.filter((f) => f.name.toLowerCase().includes(e.target.value));
-    // console.log(e.target.value);
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const fetchSearchData = (value) => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+      const result = res.data.filter((user) => {
+        return (
+          value && user && user.name && user.name.toLowerCase().includes(value)
+        );
+      });
+      setSearchResult(result);
+    });
+  };
+  const handleSearchInput = (value) => {
+    setSearchInput(value);
+    fetchSearchData(value);
   };
 
   return (
@@ -180,16 +180,20 @@ const Header = (props) => {
                 <label>Search</label>
                 <input
                   type="text"
-                  placeholder="Search hear"
-                  onChange={handleSearchInput}
+                  placeholder="Search district"
+                  onChange={(e) =>
+                    handleSearchInput(e.target.value.toLocaleLowerCase())
+                  }
                 />
               </div>
               <div className="resultBox d-flex">
                 <h3>Search result</h3>
-                {records.map((items, index) => {
-                  <Link className="result" key={index}>
-                    {items.name}
-                  </Link>;
+                {searchResult.map((items, index) => {
+                  return (
+                    <div className="result" key={index}>
+                      {items.name}
+                    </div>
+                  );
                 })}
 
                 {/* <Link className="result">Dhaka</Link>
