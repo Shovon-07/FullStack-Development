@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-//___ Css ___/
+//___ Images ___//
+import WhatsApp from "../../assets/Images/whatsApp-qr.png";
+
+//___ Css ___//
 import "./ContactUs.css";
 
 const ContactUs = () => {
@@ -22,8 +25,19 @@ const ContactUs = () => {
   return (
     <div className="ContactUs page content">
       <h3 className="pageTitle">Contact us</h3>
-      <div className="contactWrapper d-flex gap-20">
-        <div className="left">1</div>
+      <div className="contactWrapper d-flex-start gap-20">
+        <div className="left d-flex">
+          <div className="scanNow d-flex">
+            <h3>Scann now</h3>
+            <img src={WhatsApp} alt="" />
+          </div>
+          <div className="contactInfo">
+            <h1>Dangipara, Paba, Rajshahi</h1>
+            <p>Email : mollaproperties@gmail.com</p>
+            <p>Phone : 01788300918</p>
+            <p>Phone : 01829674216</p>
+          </div>
+        </div>
         <div className="right d-flex">
           <form className="d-flex gap-30" onSubmit={handleSubmit}>
             <h3>Send message</h3>

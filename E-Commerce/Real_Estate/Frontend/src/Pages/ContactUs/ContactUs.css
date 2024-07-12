@@ -2,15 +2,42 @@
   justify-content: space-between;
 }
 .ContactUs .left {
-  flex-basis: 50%;
+  flex-basis: 40%;
+  justify-content: center;
+  flex-direction: column;
+}
+.ContactUs .left .scanNow {
+  justify-content: center;
+  flex-direction: column;
+}
+.ContactUs .left .scanNow h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.ContactUs .left .scanNow img {
+  width: 300px;
+  height: auto;
+}
+.ContactUs .left .contactInfo {
+  margin-top: 50px;
+}
+.ContactUs .left .contactInfo h1 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+.ContactUs .left .contactInfo p {
+  line-height: 1.5rem;
 }
 
 .ContactUs .right {
-  flex-basis: 50%;
+  flex-basis: 60%;
   justify-content: center;
 }
 .ContactUs .right form {
   width: 70%;
+  max-width: 500px;
   justify-content: center;
   flex-direction: column;
   box-shadow: var(--shadow);
@@ -37,4 +64,16 @@
 .ContactUs .right .btn {
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+/*___ Responsive ____*/
+@media screen and (max-width: 830px) {
+  .ContactUs .left .scanNow img {
+    width: 200px;
+  }
+  .ContactUs .left .contactInfo h1 {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 780px) {
 }
