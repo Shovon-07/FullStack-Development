@@ -1,11 +1,40 @@
-.ContactUs {
-}
 .ContactUs .contactWrapper {
   justify-content: space-between;
 }
 .ContactUs .left {
   flex-basis: 50%;
 }
+
 .ContactUs .right {
   flex-basis: 50%;
+  justify-content: center;
+}
+.ContactUs .right form {
+  width: 70%;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  padding: 25px 35px;
+  border-radius: 8px;
+}
+.ContactUs .right form h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.ContactUs .right .inputWrapper {
+  width: 100%;
+}
+.ContactUs .right .inputWrapper input,
+.ContactUs .right .inputWrapper textarea {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  outline: none;
+  border: var(--border);
+  border-radius: 5px;
+  resize: vertical;
+}
+.ContactUs .right .btn {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
