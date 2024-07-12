@@ -5,11 +5,13 @@ import latestProject_4 from "../Images/lagestProject/latestProject-4.jpg";
 import latestProject_5 from "../Images/lagestProject/latestProject-5.jpg";
 import latestProject_6 from "../Images/lagestProject/latestProject-6.jpg";
 import latestProject_7 from "../Images/lagestProject/latestProject-7.jpg";
+import Project_1 from "../Images/lagestProject/Project-1.jpeg";
+import Project_2 from "../Images/lagestProject/Project-2.png";
 
 export const latestProject = [
   {
     id: 1,
-    img: latestProject_1,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -18,7 +20,7 @@ export const latestProject = [
   },
   {
     id: 2,
-    img: latestProject_2,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -27,7 +29,7 @@ export const latestProject = [
   },
   {
     id: 3,
-    img: latestProject_3,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -36,7 +38,7 @@ export const latestProject = [
   },
   {
     id: 4,
-    img: latestProject_4,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -45,7 +47,7 @@ export const latestProject = [
   },
   {
     id: 5,
-    img: latestProject_5,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -54,7 +56,7 @@ export const latestProject = [
   },
   {
     id: 6,
-    img: latestProject_6,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -63,7 +65,7 @@ export const latestProject = [
   },
   {
     id: 7,
-    img: latestProject_7,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -75,7 +77,7 @@ export const latestProject = [
 export const ProjectData = [
   {
     id: 1,
-    img: latestProject_1,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -84,7 +86,7 @@ export const ProjectData = [
   },
   {
     id: 2,
-    img: latestProject_2,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -93,7 +95,7 @@ export const ProjectData = [
   },
   {
     id: 3,
-    img: latestProject_3,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -102,7 +104,7 @@ export const ProjectData = [
   },
   {
     id: 4,
-    img: latestProject_4,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -111,7 +113,7 @@ export const ProjectData = [
   },
   {
     id: 5,
-    img: latestProject_5,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -120,7 +122,7 @@ export const ProjectData = [
   },
   {
     id: 6,
-    img: latestProject_6,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -129,7 +131,7 @@ export const ProjectData = [
   },
   {
     id: 7,
-    img: latestProject_7,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -138,7 +140,7 @@ export const ProjectData = [
   },
   {
     id: 8,
-    img: latestProject_1,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -147,7 +149,7 @@ export const ProjectData = [
   },
   {
     id: 9,
-    img: latestProject_2,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -156,7 +158,7 @@ export const ProjectData = [
   },
   {
     id: 10,
-    img: latestProject_3,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -165,7 +167,7 @@ export const ProjectData = [
   },
   {
     id: 11,
-    img: latestProject_4,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -174,7 +176,7 @@ export const ProjectData = [
   },
   {
     id: 12,
-    img: latestProject_5,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -183,7 +185,7 @@ export const ProjectData = [
   },
   {
     id: 13,
-    img: latestProject_6,
+    img: Project_1,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:
@@ -192,7 +194,7 @@ export const ProjectData = [
   },
   {
     id: 14,
-    img: latestProject_7,
+    img: Project_2,
     title:
       "রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে। রাজশাহীতে সুলভ মূল্যে জমি বিক্রয় হ্ইবে",
     description:

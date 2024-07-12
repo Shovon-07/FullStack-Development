@@ -68,6 +68,10 @@
 
 /*___ Responsive ____*/
 @media screen and (max-width: 830px) {
+  .ContactUs .right,
+  .ContactUs .left {
+    flex-basis: 100%;
+  }
   .ContactUs .left .scanNow img {
     width: 200px;
   }
@@ -76,4 +80,12 @@
   }
 }
 @media screen and (max-width: 780px) {
+  .ContactUs .contactWrapper {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .ContactUs .right form {
+    width: 100%;
+    padding: 25px 20px;
+  }
 }
