@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LatestProjectController;
+use App\Http\Controllers\ContactUsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,10 @@ Route::prefix("/")->group(function () {
     Route::controller(LatestProjectController::class)->group(function () {
         Route::get("/latest-project", "LatestProject");
         Route::post("/create-latest-project", "CreateLatestProject");
+    });
+
+    Route::controller(ContactUsController::class)->group(function () {
+        Route::post("send-mail", "SendMail");
     });
 });
 

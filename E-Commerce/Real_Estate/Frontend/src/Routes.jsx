@@ -14,6 +14,7 @@ import AboutUs from "./Pages/AboutUs/AboutUs";
 import NewsAndEvent from "./Pages/NewsAndEvent/NewsAndEvent";
 import Blog from "./Pages/Blog/Blog";
 import ContactUs from "./Pages/ContactUs/ContactUs";
+import ProjectView from "./Pages/ProjectView/ProjectView";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
@@ -57,6 +58,10 @@ const Routes = createBrowserRouter([
       {
         path: "/contact-us",
         element: <ContactUs />,
+      },
+      {
+        path: "/project-details/:id",
+        element: <ProjectView />,
       },
     ],
   },
