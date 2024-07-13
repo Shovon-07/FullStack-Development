@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
 import LightGallery from "lightgallery/react";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
@@ -9,7 +7,6 @@ import lgZoom from "lightgallery/plugins/zoom";
 //___ Css ___//
 import "./Gallery.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
-
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
@@ -26,7 +23,7 @@ const Gallery = () => {
   };
 
   const onInit = () => {
-    console.log("lightGallery has been initialized");
+    // console.log("lightGallery has been initialized");
   };
 
   return (

@@ -1,11 +1,19 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import LightGallery from "lightgallery/react";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
 
 //___ Images ___//
 import Img from "../../assets/Images/lagestProject/Project-2.png";
 
 //___ Css ___//
 import "./ProjectView.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
 
 const ProjectView = () => {
   const { id } = useParams();
@@ -15,6 +23,10 @@ const ProjectView = () => {
     setTabVal(e.target.id);
     let tabId = tabVal;
     return tabId;
+  };
+
+  const onInit = () => {
+    // console.log("lightGallery has been initialized");
   };
 
   return (
@@ -70,19 +82,22 @@ const ProjectView = () => {
               <img src={Img} alt="" />
             </div>
             <div className="right">
-              <h2>Details</h2>
+              <h2 style={{ marginBottom: "15px" }}>Details</h2>
               <table>
                 <tbody>
                   <tr>
-                    <td>Developer :</td>
+                    <td>Developer</td>
+                    <td>:</td>
                     <td>MOLLA PROPERTIES</td>
                   </tr>
                   <tr>
-                    <td>Location :</td>
+                    <td>Location</td>
+                    <td>:</td>
                     <td>House : 103, Paradise para, Tangail</td>
                   </tr>
                   <tr>
-                    <td>Land area :</td>
+                    <td>Land area</td>
+                    <td>:</td>
                     <td>8.00 ktha</td>
                   </tr>
                 </tbody>
@@ -110,120 +125,62 @@ const ProjectView = () => {
           </div>
           {/* Map end */}
 
-          <div className={`contentItems ${tabVal == 3 ? "active" : ""}`}>
-            <div className="content-card">
-              <img src="./assets/img/pt-1.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+          <div
+            className={`contentItems gallery gap-30 ${
+              tabVal == 3 ? "active" : ""
+            }`}
+          >
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-2.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-3.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-2.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
-            </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-3.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
-            </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-1.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
           </div>
-          <div className={`contentItems ${tabVal == 4 ? "active" : ""}`}>
-            <div className="content-card">
-              <img src="./assets/img/pt-1.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+          <div
+            className={`contentItems gallery gap-30 ${
+              tabVal == 4 ? "active" : ""
+            }`}
+          >
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-2.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-3.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-2.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
-            </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-3.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
-            </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-1.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
           </div>
-          <div className={`contentItems ${tabVal == 5 ? "active" : ""}`}>
-            <div className="content-card">
-              <img src="./assets/img/pt-1.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+          {/* Gallery start */}
+          <div
+            className={`contentItems gallery gap-30 ${
+              tabVal == 5 ? "active" : ""
+            }`}
+          >
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-2.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-3.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-2.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
-            </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-3.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
-            </div>
-            <div className="content-card">
-              <img src="./assets/img/pt-1.jpg" alt="" />
-              <a href="#">
-                <i className="fa-solid fa-eye" id="viewProject"></i>
-              </a>
+            <div className="card">
+              <img alt={Img} src={Img} />
             </div>
           </div>
+          {/* Gallery end */}
         </div>
       </div>
     </div>

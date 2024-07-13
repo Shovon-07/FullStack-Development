@@ -10,9 +10,13 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  gap: 50px;
+  gap: 40px;
+  min-width: 500px;
   margin-bottom: 35px;
-  /* border-bottom: var(--border); */
+  overflow-x: scroll;
+}
+.tab-container .tab-box::-webkit-scrollbar {
+  display: none;
 }
 .tab-container .tab-box .tab-btn {
   color: var(--dark-2);
@@ -123,62 +127,96 @@
 .tab-container .content-box .briefOutlineContent .left {
   flex-basis: 35%;
 }
-.tab-container .content-box .briefOutlineContent .right {
-  flex-basis: 63%;
-}
 .tab-container .content-box .briefOutlineContent .left img {
   width: 100%;
   height: 100%;
   max-height: 500px;
   box-shadow: var(--shadow);
 }
+.tab-container .content-box .briefOutlineContent .right {
+  flex-basis: 63%;
+}
+.tab-container .content-box .briefOutlineContent .right table tr td {
+  padding: 8px;
+  font-size: 1.2rem;
+  color: var(--dark-2);
+  vertical-align: baseline;
+}
+.tab-container
+  .content-box
+  .briefOutlineContent
+  .right
+  table
+  tr
+  td:first-child {
+  padding-left: 0;
+}
+
 /*___ Brief outline end ___*/
 
+/*___ Gallery start ___*/
+.tab-container .content-box .gallery {
+  justify-content: center;
+}
+.tab-container .content-box .gallery .card {
+  width: 450px;
+  height: 350px;
+}
+.tab-container .content-box .gallery .card img {
+  width: 100%;
+}
+/*___ Gallery end ___*/
+
 /*___ Responsive ___*/
-@media screen and (max-width: 800px) {
-  .tab-container .tab-box .tab-btn {
-    font-size: 15px;
-    padding: 8px 20px;
+@media screen and (max-width: 1030px) {
+  .tab-container .content-box .gallery .card {
+    width: 350px;
+    height: 250px;
   }
+}
+@media screen and (max-width: 830px) {
+  .tab-container .content-box .gallery .card {
+    width: 250px;
+    height: 170px;
+  }
+}
+@media screen and (max-width: 800px) {
   .tab-container .content-box .contentItems .content-card {
     width: 200px;
     height: 100px;
   }
 }
 @media screen and (max-width: 650px) {
-  .tab-container .tab-box {
-    justify-content: space-between;
-  }
   .tab-container .tab-box .tab-btn {
     font-size: 14px;
   }
+  .tab-container .content-box .briefOutlineContent {
+    gap: 50px;
+  }
+  .tab-container .content-box .briefOutlineContent .left,
+  .tab-container .content-box .briefOutlineContent .right {
+    flex-basis: 100%;
+  }
+  .tab-container .content-box .gallery .card {
+    width: 100%;
+    height: 350px;
+  }
 }
 @media screen and (max-width: 560px) {
-  .tab-container .tab-box .tab-btn {
-    font-size: 12px;
-  }
   .tab-container .content-box .contentItems .content-card {
     width: 100%;
     height: 100%;
   }
 }
-@media screen and (max-width: 560px) {
-  .tab-container .tab-box .tab-btn {
-    padding: 8px;
-  }
-}
 @media screen and (max-width: 450px) {
-  .tab-container .tab-box .tab-btn {
-    padding: 3px;
-  }
-}
-@media screen and (max-width: 440px) {
-  .tab-container .tab-box .tab-btn {
-    font-size: 10px;
+  .tab-container .content-box .gallery .card {
+    width: 100%;
+    height: 200px;
   }
 }
 @media screen and (max-width: 390px) {
-  .tab-container .tab-box .tab-btn {
-    font-size: 8px;
+  .tab-container .content-box .gallery .card {
+    width: 100%;
+    height: 150px;
   }
 }
