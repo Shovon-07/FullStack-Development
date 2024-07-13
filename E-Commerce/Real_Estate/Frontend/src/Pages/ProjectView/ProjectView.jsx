@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import LightGallery from "lightgallery/react";
-import lgThumbnail from "lightgallery/plugins/thumbnail";
-import lgZoom from "lightgallery/plugins/zoom";
 
 //___ Images ___//
 import Img from "../../assets/Images/lagestProject/Project-2.png";
@@ -11,9 +8,6 @@ import Img from "../../assets/Images/lagestProject/Project-2.png";
 //___ Css ___//
 import "./ProjectView.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import "lightgallery/css/lightgallery.css";
-import "lightgallery/css/lg-zoom.css";
-import "lightgallery/css/lg-thumbnail.css";
 
 const ProjectView = () => {
   const { id } = useParams();
@@ -79,7 +73,13 @@ const ProjectView = () => {
             }`}
           >
             <div className="left">
-              <img src={Img} alt="" />
+              <LazyLoadImage
+                src={Img}
+                effect="blur"
+                wrapperProps={{
+                  style: { transitionDelay: "1s" },
+                }}
+              />
             </div>
             <div className="right">
               <h2 style={{ marginBottom: "15px" }}>Details</h2>

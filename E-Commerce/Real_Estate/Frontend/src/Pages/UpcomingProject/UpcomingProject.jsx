@@ -39,7 +39,10 @@ const UpcomingProject = () => {
                     : items.title}
                 </h3>
                 <div style={{ textAlign: "center" }}>
-                  <NavLink to="/" className="readMoreBtn btn c_pointer">
+                  <NavLink
+                    to={`/project-details/${items.id}`}
+                    className="readMoreBtn btn c_pointer"
+                  >
                     Read more
                   </NavLink>
                 </div>
