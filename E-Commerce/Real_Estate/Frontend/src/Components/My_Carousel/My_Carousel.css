@@ -5,6 +5,12 @@
   border-radius: 10px;
   gap: 50px;
 }
+.slider-container .slick-prev,
+.slider-container .slick-prev::before,
+.slider-container .slick-next,
+.slider-container .slick-next::before {
+  display: none !important;
+}
 .slider-container .card {
   background: var(--light-1);
   box-shadow: 1px 1px 2px var(--light-3);
