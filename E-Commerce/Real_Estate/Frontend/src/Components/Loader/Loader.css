@@ -1,9 +1,6 @@
-/* Common */
-#loader.d-none {
-  display: none;
-}
+/* <div className="loader"></div> */
 
-/*Line Progress*/
+/* Don't delete */
 .LoadingOverlay {
   position: fixed;
   display: flex;
@@ -19,6 +16,8 @@
   background: #0f0e0ebe !important;
   opacity: 1 !important;
 }
+/* Don't delete */
+
 .loader {
   width: 50px;
   aspect-ratio: 1;

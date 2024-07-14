@@ -1,6 +1,5 @@
 .tab-container {
   background: var(--light-1);
-  padding: 20px;
   overflow: hidden;
 }
 .tab-container h2 {
