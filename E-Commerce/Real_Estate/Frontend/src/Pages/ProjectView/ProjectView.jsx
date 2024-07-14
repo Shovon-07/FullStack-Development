@@ -33,7 +33,7 @@ const ProjectView = () => {
             id="1"
             className={`tab-btn ${tabVal == 1 ? "active" : ""}`}
           >
-            Brief Outline
+            Info
           </button>
           <button
             onClick={handleTab}

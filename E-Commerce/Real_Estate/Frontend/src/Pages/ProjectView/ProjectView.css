@@ -11,7 +11,6 @@
   align-items: center;
   justify-content: left;
   gap: 40px;
-  min-width: 500px;
   margin-bottom: 35px;
   overflow-x: scroll;
 }
@@ -138,7 +137,7 @@
 }
 .tab-container .content-box .briefOutlineContent .right table tr td {
   padding: 8px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: var(--dark-2);
   vertical-align: baseline;
 }
@@ -188,7 +187,7 @@
 }
 @media screen and (max-width: 650px) {
   .tab-container .tab-box .tab-btn {
-    font-size: 14px;
+    font-size: 1rem;
   }
   .tab-container .content-box .briefOutlineContent {
     gap: 50px;
@@ -206,6 +205,9 @@
   .tab-container .content-box .contentItems .content-card {
     width: 100%;
     height: 100%;
+  }
+  .tab-container .content-box .briefOutlineContent .right table tr td {
+    padding: 4px;
   }
 }
 @media screen and (max-width: 450px) {

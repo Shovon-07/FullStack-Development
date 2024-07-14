@@ -31,7 +31,7 @@ const Footer = () => {
               Molla <span>Properties</span>
             </h3>
           </div>
-          <div className="d-flex-start">
+          <div className="d-flex-start headsetSec">
             <FaHeadset
               size={50}
               className="headset"

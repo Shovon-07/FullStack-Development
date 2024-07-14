@@ -11,7 +11,7 @@
   color: var(--dark-2);
 }
 .footer .brand .footer-title {
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 .footer .brand .footer-title span {
   color: var(--main-color);
@@ -85,6 +85,11 @@
   .footer .footer-top h3 {
     font-size: 2rem;
   }
+  .footer .footer-top .headsetSec {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 15px;
+  }
   .footer .footer-bottom .payment-img img {
     width: 50px;
   }
@@ -106,9 +111,6 @@
   }
 }
 @media screen and (max-width: 350px) {
-  .footer .brand .footer-title {
-    font-size: 1.5rem;
-  }
   .footer .footer-top h3 {
     font-size: 1.4rem;
   }
