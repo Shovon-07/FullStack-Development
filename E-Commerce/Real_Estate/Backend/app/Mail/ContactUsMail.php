@@ -29,7 +29,7 @@ class ContactUsMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Us',
+            subject: 'Contact Us Mail',
         );
     }
 
@@ -39,7 +39,7 @@ class ContactUsMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.MailTemplate',
+            view: 'MailTemplate',
         );
     }
 
