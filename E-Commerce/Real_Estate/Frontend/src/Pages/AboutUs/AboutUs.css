@@ -1,2 +1,17 @@
-.AboutUs {
+.AboutUs .aboutusTitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 50px;
+}
+.AboutUs .aboutusTitle:first-child {
+  margin-top: 0;
+}
+.AboutUs p {
+  line-height: 1.5rem;
+  margin-top: 20px;
+  text-align: justify;
+}
+.AboutUs a {
+  font-weight: 600;
+  display: inline-block;
 }

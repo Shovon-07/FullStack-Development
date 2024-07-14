@@ -18,7 +18,7 @@ function My_Carousel(props) {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true, // false
-    autoplaySpeed: 5000,
+    autoplaySpeed: 3000,
     pauseOnHover: true,
     responsive: [
       {
@@ -64,17 +64,11 @@ function My_Carousel(props) {
                 />
               </div>
               <div className="txt d-flex">
-                {/* <div className="txtBox"> */}
                 <h3 className="title">
                   {items.title.length > 70
                     ? items.title.slice(0, 70) + " ..."
                     : items.title}
                 </h3>
-                {/* <p className="description">
-              {items.description.length > 150
-                ? items.description.slice(0, 150) + " ..."
-                : items.description}
-            </p> */}
                 <div style={{ textAlign: "center" }}>
                   <NavLink
                     to={`/project-details/${items.id}`}
@@ -83,7 +77,6 @@ function My_Carousel(props) {
                     Read more
                   </NavLink>
                 </div>
-                {/* </div> */}
               </div>
             </div>
           );
