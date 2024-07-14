@@ -27,9 +27,9 @@ const ProjectView = () => {
     <div className="ProjectView page content">
       <h3 className="pageTitle">Preview project {id}</h3>
       <input
-        type="text"
+        type="file"
         autoFocus
-        style={{ height: 0, opacity: 0, pointerEvents: "none" }}
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
       />
       <div className="tab-container">
         <div className="tab-box">
