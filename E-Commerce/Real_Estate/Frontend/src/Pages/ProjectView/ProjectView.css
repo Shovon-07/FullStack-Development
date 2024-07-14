@@ -124,16 +124,16 @@
 
 /*___ Brief outline start ___*/
 .tab-container .content-box .briefOutlineContent .left {
-  flex-basis: 35%;
+  flex-basis: 40%;
 }
 .tab-container .content-box .briefOutlineContent .left img {
   width: 100%;
   height: 100%;
-  max-height: 500px;
+  max-height: 400px;
   box-shadow: var(--shadow);
 }
 .tab-container .content-box .briefOutlineContent .right {
-  flex-basis: 63%;
+  flex-basis: 55%;
 }
 .tab-container .content-box .briefOutlineContent .right table tr td {
   padding: 8px;
@@ -184,6 +184,9 @@
     width: 200px;
     height: 100px;
   }
+  .tab-container .content-box .briefOutlineContent .left img {
+    max-height: 250px;
+  }
 }
 @media screen and (max-width: 650px) {
   .tab-container .tab-box .tab-btn {
@@ -195,6 +198,9 @@
   .tab-container .content-box .briefOutlineContent .left,
   .tab-container .content-box .briefOutlineContent .right {
     flex-basis: 100%;
+  }
+  .tab-container .content-box .briefOutlineContent .left img {
+    max-height: 400px;
   }
   .tab-container .content-box .gallery .card {
     width: 100%;
@@ -211,6 +217,9 @@
   }
 }
 @media screen and (max-width: 450px) {
+  .tab-container .content-box .briefOutlineContent .left img {
+    max-height: 300px;
+  }
   .tab-container .content-box .gallery .card {
     width: 100%;
     height: 200px;

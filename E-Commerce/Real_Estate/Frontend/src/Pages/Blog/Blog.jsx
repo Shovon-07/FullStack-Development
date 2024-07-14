@@ -7,7 +7,7 @@ import "./Blog.css";
 import { Blogs } from "../../assets/Js/Data";
 
 const Blog = () => {
-  const [numberOfElement, setNumberOfElement] = useState(4);
+  const [numberOfElement, setNumberOfElement] = useState(2);
 
   const slicedData = Blogs.slice(0, numberOfElement);
   const loadMore = () => {
