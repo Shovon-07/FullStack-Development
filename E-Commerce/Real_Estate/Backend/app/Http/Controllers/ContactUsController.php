@@ -21,6 +21,7 @@ class ContactUsController extends Controller
             $mailData = [
                 "name" => $request->input("name"),
                 "email" => $request->input("email"),
+                "subject" => $request->input("subject"),
                 "message" => $request->input("message"),
                 "appName" => env("APP_NAME"),
             ];

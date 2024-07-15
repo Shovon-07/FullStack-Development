@@ -41,6 +41,11 @@
       <td>{{$mailData["name"]}}</td>
     </tr>
     <tr>
+      <td>Subject</td>
+      <td>:</td>
+      <td>{{$mailData["subject"]}}</td>
+    </tr>
+    <tr>
       <td>Email</td>
       <td>:</td>
       <td>{{$mailData["email"]}}</td>

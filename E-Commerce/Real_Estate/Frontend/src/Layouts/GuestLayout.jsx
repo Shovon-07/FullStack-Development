@@ -10,6 +10,7 @@ const Footer = lazy(() => import("../Components/Footer/Footer"));
 
 const GuestLayout = () => {
   const [toggle, setToggle] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   return (
     <div className={`main`}>
@@ -24,7 +25,8 @@ const GuestLayout = () => {
             setToggle(false);
           }}
         ></div>
-        <Outlet />
+        {loader && <Loader />}
+        <Outlet context={[setLoader]} />
       </div>
       <Suspense fallback={<Loader />}>
         <WhatsApp />

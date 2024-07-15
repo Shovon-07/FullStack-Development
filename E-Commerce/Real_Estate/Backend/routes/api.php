@@ -28,7 +28,7 @@ Route::prefix("/")->group(function () {
     });
 
     Route::controller(ContactUsController::class)->group(function () {
-        Route::post("send-mail", "SendMail");
+        Route::post("/send-mail", "SendMail");
     });
 });
 

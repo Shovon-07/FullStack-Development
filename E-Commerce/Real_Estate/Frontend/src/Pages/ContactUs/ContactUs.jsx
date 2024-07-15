@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import AxiosClient from "../../assets/Js/AxiosClient";
+import { ToastContainer, toast } from "react-toastify";
 
 //___ Images ___//
 import WhatsApp from "../../assets/Images/whatsApp-qr.png";
 
 //___ Css ___//
 import "./ContactUs.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactUs = () => {
+  const [setLoader] = useOutletContext();
+
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -18,8 +24,24 @@ const ContactUs = () => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const payload = {
+      name: input.name,
+      subject: input.subject,
+      email: input.email,
+      message: input.message,
+    };
+    setLoader(true);
+    await AxiosClient.post("/send-mail", payload).then((res) => {
+      if (res.data.status == true) {
+        toast.success(res.data.msg);
+        setLoader(false);
+      } else {
+        toast.error(res.data.msg);
+        setLoader(false);
+      }
+    });
   };
 
   return (
@@ -86,6 +108,19 @@ const ContactUs = () => {
           </form>
         </div>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };
