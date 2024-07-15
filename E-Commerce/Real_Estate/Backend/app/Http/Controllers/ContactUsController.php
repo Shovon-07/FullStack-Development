@@ -11,8 +11,28 @@ class ContactUsController extends Controller
 {
     public function SendMail(Request $request)
     {
-        $mailData = ["Title" => "Test title", "Body" => "This test body"];
-        Mail::to("mman35230@gmail.com")->send(new ContactUsMail($mailData));
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'message' => 'required|string',
+            ]);
+
+            $mailData = [
+                "name" => $request->input("name"),
+                "email" => $request->input("email"),
+                "message" => $request->input("message"),
+                "appName" => env("APP_NAME"),
+            ];
+            $email = Mail::to("aljubairshovon@gmail.com")->send(new ContactUsMail($mailData));
+            if ($email) {
+                return response()->json(["status" => true, "msg" => "Email sent successful",]);
+            } else {
+                return response()->json(["status" => false, "msg" => "Something went wrong !"]);
+            }
+        } catch (Exception $e) {
+            return response()->json(["status" => false, "msg" => $e]);
+        }
 
 
         // try {
