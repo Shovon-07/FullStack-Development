@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Images ___//
-import Img from "../../assets/Images/lagestProject/Project-2.png";
+// import "" from "../../assets/Images/lagestProject/Project-2.png";
 
 //___ Css ___//
 import "./ProjectView.css";
@@ -81,7 +81,7 @@ const ProjectView = () => {
           >
             <div className="left">
               <LazyLoadImage
-                src={Img}
+                src={""}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
@@ -160,7 +160,7 @@ const ProjectView = () => {
             }`}
           >
             <div className="">
-              {/* <img alt={Img} src={Img} /> */}
+              {/* <"" alt={""} src={""} /> */}
               <p>
                 ১. ৩৬*৫০ = ২.৫ কাঠা ২. ৩০*৫০= ২ কাঠা ৩. ৩২* ৫০= ২.২৫ কাঠা ৪.
                 ২৮*৪৮= ১.৮৫ কাঠা ৫. ৩৬* ৪০= ২ কাঠা ৬. ৩০* ৪০= ১.৬৫ কাঠা ৭. ৩০*
@@ -206,7 +206,7 @@ const ProjectView = () => {
           >
             <div className="card">
               <LazyLoadImage
-                src={Img}
+                src={""}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
@@ -215,7 +215,7 @@ const ProjectView = () => {
             </div>
             <div className="card">
               <LazyLoadImage
-                src={Img}
+                src={""}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
@@ -224,7 +224,7 @@ const ProjectView = () => {
             </div>
             <div className="card">
               <LazyLoadImage
-                src={Img}
+                src={""}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
@@ -233,7 +233,7 @@ const ProjectView = () => {
             </div>
             <div className="card">
               <LazyLoadImage
-                src={Img}
+                src={""}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },

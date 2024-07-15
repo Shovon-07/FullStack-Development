@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useOutletContext } from "react-router-dom";
 
 //___ Css __//
 import "../../assets/Css/Card.css";
@@ -10,12 +11,33 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import AxiosClient from "../../assets/Js/AxiosClient";
 
 const OngoingProject = () => {
-  const [numberOfElement, setNumberOfElement] = useState(8);
+  const [setLoader] = useOutletContext();
 
-  const slicedData = ProjectData.slice(0, numberOfElement);
+  const [ongoingProjectData,setOngoingProjectData] = useState([]);
+  const [numberOfElement, setNumberOfElement] = useState(8);
+  const slicedData = ongoingProjectData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
+
+  useEffect(()=>{
+    try {
+      setLoader(true);
+      AxiosClient.get("/on-going-projects").then((res) => {
+        if (res.data.status == true) {
+          // console.log(res.data.data);
+          // setOngoingProjectData(res.data.data);
+          console.log(res.data.data);
+          setLoader(false);
+        } else {
+          toast.error(res.data.msg);
+          setLoader(false);
+        }
+      });
+    } catch {
+      toast.error(res.data.msg);
+    }
+  },[])
 
   return (
     <div className="OngoingProject page content">
