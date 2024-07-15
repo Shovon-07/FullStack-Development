@@ -1,0 +1,3 @@
+==> Next work
+-- contact page:
+    make lazy image (whats app img)
