@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\LatestProjectController;
+use App\Http\Controllers\ProjectsController;
+// use App\Http\Controllers\LatestProjectController;
 use App\Http\Controllers\ContactUsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //___ Basic panel ___//
 Route::prefix("/")->group(function () {
-    Route::controller(LatestProjectController::class)->group(function () {
-        Route::get("/latest-project", "LatestProject");
-        Route::post("/create-latest-project", "CreateLatestProject");
+    // Route::controller(LatestProjectController::class)->group(function () {
+    //     Route::get("/latest-project", "LatestProject");
+    //     Route::post("/create-latest-project", "CreateLatestProject");
+    // });
+
+    Route::controller(ProjectsController::class)->group(function () {
+        Route::get("/on-going-projects", "OnGoingProject");
+        Route::post("/project-view", "ProjectView");
     });
 
     Route::controller(ContactUsController::class)->group(function () {

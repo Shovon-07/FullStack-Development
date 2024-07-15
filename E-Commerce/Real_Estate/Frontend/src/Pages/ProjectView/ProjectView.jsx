@@ -90,6 +90,7 @@ const ProjectView = () => {
             </div>
             <div className="right">
               <h2 style={{ marginBottom: "15px" }}>Details</h2>
+              <h4 style={{ margin: "20px 0 15px 0" }}>Title</h4>
               <table>
                 <tbody>
                   <tr>
@@ -100,7 +101,7 @@ const ProjectView = () => {
                   <tr>
                     <td>Developer</td>
                     <td>:</td>
-                    <td>Molla properties </td>
+                    <td>Molla properties</td>
                   </tr>
                   <tr>
                     <td>Location</td>
@@ -121,6 +122,11 @@ const ProjectView = () => {
                     <td>Contact</td>
                     <td>:</td>
                     <td>01788300918</td>
+                  </tr>
+                  <tr>
+                    <td>Status</td>
+                    <td>:</td>
+                    <td>Available</td>
                   </tr>
                 </tbody>
               </table>

@@ -7,7 +7,7 @@ import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
-import { ProjectData } from "../../assets/Js/Data";
+import AxiosClient from "../../assets/Js/AxiosClient";
 
 const OngoingProject = () => {
   const [numberOfElement, setNumberOfElement] = useState(8);
