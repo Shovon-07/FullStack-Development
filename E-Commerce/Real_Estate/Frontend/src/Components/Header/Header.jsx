@@ -205,7 +205,7 @@ const Header = (props) => {
             </div>
           </li>
 
-          <li style={{ zIndex: 1000, position: "sticky" }}>
+          <li style={{ zIndex: 999, position: "sticky" }}>
             <div
               className={`toggler c_pointer ${
                 searchDropDownVal == true ? "z-index-1" : ""

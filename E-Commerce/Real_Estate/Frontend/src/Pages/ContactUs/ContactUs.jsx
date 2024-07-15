@@ -26,22 +26,36 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const payload = {
-      name: input.name,
-      subject: input.subject,
-      email: input.email,
-      message: input.message,
-    };
-    setLoader(true);
-    await AxiosClient.post("/send-mail", payload).then((res) => {
-      if (res.data.status == true) {
-        toast.success(res.data.msg);
-        setLoader(false);
-      } else {
+    if (input.name == "") {
+      toast.error("Please enter your name");
+    } else if (input.email == "") {
+      toast.error("Please enter your email");
+    } else if (input.subject == "") {
+      toast.error("Please enter subject");
+    } else if (input.message == "") {
+      toast.error("Please type some text");
+    } else {
+      try {
+        const payload = {
+          name: input.name,
+          subject: input.subject,
+          email: input.email,
+          message: input.message,
+        };
+        setLoader(true);
+        await AxiosClient.post("/send-mail", payload).then((res) => {
+          if (res.data.status == true) {
+            toast.success(res.data.msg);
+            setLoader(false);
+          } else {
+            toast.error(res.data.msg);
+            setLoader(false);
+          }
+        });
+      } catch {
         toast.error(res.data.msg);
-        setLoader(false);
       }
-    });
+    }
   };
 
   return (
@@ -110,7 +124,7 @@ const ContactUs = () => {
       </div>
 
       <ToastContainer
-        position="top-center"
+        position="bottom-center"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
