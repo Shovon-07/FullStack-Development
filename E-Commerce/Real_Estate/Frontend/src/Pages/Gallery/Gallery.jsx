@@ -29,7 +29,13 @@ const Gallery = () => {
   return (
     <div className="Gallery page content">
       <h3 className="pageTitle">Gallery</h3>
-
+      {/* For go to top */}
+      <input
+        type="file"
+        autoFocus
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
+      />
+      {/* For go to top */}
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
         {slicedData.map((items, index) => {
           return (

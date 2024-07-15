@@ -19,6 +19,13 @@ const HonorableClient = () => {
   return (
     <div className="HonorableClient page content">
       <h3 className="pageTitle">Honorable Client</h3>
+      {/* For go to top */}
+      <input
+        type="file"
+        autoFocus
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
+      />
+      {/* For go to top */}
       <div className="cardWrapper d-flex gap-20">
         {slicedData.map((items, index) => {
           return (

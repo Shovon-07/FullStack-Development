@@ -6,6 +6,13 @@ const AboutUs = () => {
   return (
     <div className="AboutUs page content">
       <h3 className="pageTitle">About us</h3>
+      {/* For go to top */}
+      <input
+        type="file"
+        autoFocus
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
+      />
+      {/* For go to top */}
       <div>
         <h4 className="aboutusTitle">
           We take pride in introducing ourselves.

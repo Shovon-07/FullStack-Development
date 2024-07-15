@@ -26,11 +26,13 @@ const ProjectView = () => {
   return (
     <div className="ProjectView page content">
       <h3 className="pageTitle">Preview project {id}</h3>
+      {/* For go to top */}
       <input
         type="file"
         autoFocus
         style={{ height: "0", opacity: 0, pointerEvents: "none" }}
       />
+      {/* For go to top */}
       <div className="tab-container">
         <div className="tab-box">
           <button

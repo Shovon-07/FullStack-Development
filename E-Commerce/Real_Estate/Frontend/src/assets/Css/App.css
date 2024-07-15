@@ -20,7 +20,10 @@ input:focus::placeholder,
 textarea:focus::placeholder {
   padding-left: 10px;
 }
-
+body,
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Rubik", sans-serif;
   background: var(--light-1);
@@ -60,7 +63,7 @@ a {
 .pageTitle {
   font-size: 1.8rem;
   font-weight: 500;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: var(--dark-2);
   text-align: center;
 }

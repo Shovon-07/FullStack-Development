@@ -17,6 +17,13 @@ const Blog = () => {
   return (
     <div className="Blog page content">
       <h3 className="pageTitle">Blogs</h3>
+      {/* For go to top */}
+      <input
+        type="file"
+        autoFocus
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
+      />
+      {/* For go to top */}
       <div className="videos d-flex gap-10">
         {slicedData.map((items, index) => {
           return (

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
-import AxiosClient from "../../assets/Js/AxiosClient";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ToastContainer, toast } from "react-toastify";
 
 //___ Images ___//
@@ -9,6 +9,10 @@ import WhatsApp from "../../assets/Images/whatsApp-qr.png";
 //___ Css ___//
 import "./ContactUs.css";
 import "react-toastify/dist/ReactToastify.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
+//___ Additional utilitis ___//
+import AxiosClient from "../../assets/Js/AxiosClient";
 
 const ContactUs = () => {
   const [setLoader] = useOutletContext();
@@ -61,11 +65,24 @@ const ContactUs = () => {
   return (
     <div className="ContactUs page content">
       <h3 className="pageTitle">Contact us</h3>
+      {/* For go to top */}
+      <input
+        type="file"
+        autoFocus
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
+      />
+      {/* For go to top */}
       <div className="contactWrapper d-flex-start gap-20">
         <div className="left d-flex">
           <div className="scanNow d-flex">
             <h3>Scann now</h3>
-            <img src={WhatsApp} alt="" />
+            <LazyLoadImage
+              src={WhatsApp}
+              effect="blur"
+              wrapperProps={{
+                style: { transitionDelay: "1s" },
+              }}
+            />
           </div>
           <div className="contactInfo">
             <h1>Dangipara, Paba, Rajshahi</h1>
