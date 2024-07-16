@@ -28,7 +28,7 @@ const Gallery = () => {
   const getOnGoingData = async () => {
     try {
       setLoader(true);
-      await AxiosClient.get("/up-coming-projects").then((res) => {
+      await AxiosClient.get("/all-galleries-img").then((res) => {
         if (res.data.status == true) {
           console.log(res.data.data);
           setUpComingProjectData(res.data.data);
@@ -64,10 +64,10 @@ const Gallery = () => {
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
         {slicedData.map((items, index) => {
           return (
-            <a href={items.Gallery_img} key={index}>
+            <a href={`http://localhost:8000/${items.Gallery_img}`} key={index}>
               <LazyLoadImage
                 alt={items.Gallery_img}
-                src={items.Gallery_img}
+                src={`http://localhost:8000/${items.Gallery_img}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
