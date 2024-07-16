@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\PlotController;
 // use App\Http\Controllers\LatestProjectController;
 use App\Http\Controllers\ContactUsController;
 use Illuminate\Http\Request;
@@ -31,6 +32,10 @@ Route::prefix("/")->group(function () {
     Route::controller(ProjectsController::class)->group(function () {
         Route::get("/on-going-projects", "OnGoingProject");
         Route::post("/project-view", "ProjectView");
+    });
+
+    Route::controller(PlotController::class)->group(function () {
+        Route::post("/plots", "Plots");
     });
 
     Route::controller(ContactUsController::class)->group(function () {
