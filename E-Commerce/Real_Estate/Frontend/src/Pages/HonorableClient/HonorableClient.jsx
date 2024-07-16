@@ -23,18 +23,18 @@ const HonorableClient = () => {
   const getOnGoingData = async () => {
     try {
       setLoader(true);
-      await AxiosClient.get("/all-galleries-img").then((res) => {
+      await AxiosClient.get("/all-honorable-clients").then((res) => {
         if (res.data.status == true) {
           console.log(res.data.data);
           setHonorableClientData(res.data.data);
           setLoader(false);
         } else {
-          toast.error(res.data.msg);
+          console.log(res.data.msg);
           setLoader(false);
         }
       });
     } catch (err) {
-      toast.error(err);
+      console.log(err);
     }
   };
 
@@ -53,11 +53,11 @@ const HonorableClient = () => {
       />
       {/* For go to top */}
       <div className="cardWrapper d-flex gap-20">
-        {/* {slicedData.map((items, index) => {
+        {slicedData.map((items, index) => {
           return (
             <div className="card" key={index}>
               <LazyLoadImage
-                src={items.img}
+                src={`${imgPath}${items.HonorableClientName_img}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
@@ -66,15 +66,15 @@ const HonorableClient = () => {
 
               <div className="txt d-flex">
                 <h3 className="title">
-                  {items.name.length > 70
-                    ? items.name.slice(0, 70) + " ..."
-                    : items.name}
+                  {items.HonorableClientName.length > 70
+                    ? items.HonorableClientName.slice(0, 70) + " ..."
+                    : items.HonorableClientName}
                 </h3>
                 <div style={{ textAlign: "center" }}></div>
               </div>
             </div>
           );
-        })} */}
+        })}
       </div>
       <div style={{ textAlign: "center", marginTop: "100px" }}>
         <button className="btn" onClick={loadMore}>

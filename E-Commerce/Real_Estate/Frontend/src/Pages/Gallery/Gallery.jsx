@@ -34,12 +34,12 @@ const Gallery = () => {
           setUpComingProjectData(res.data.data);
           setLoader(false);
         } else {
-          toast.error(res.data.msg);
+          console.log(res.data.msg);
           setLoader(false);
         }
       });
     } catch (err) {
-      toast.error(err);
+      console.log(err);
     }
   };
 

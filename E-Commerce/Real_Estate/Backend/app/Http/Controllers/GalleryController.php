@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use App\Models\HonorableClient;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,16 @@ class GalleryController extends Controller
         try {
             $gallery_img = Gallery::get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $gallery_img]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    public function AllHonorableClients()
+    {
+        try {
+            $honorableClient = HonorableClient::get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $honorableClient]);
 
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
