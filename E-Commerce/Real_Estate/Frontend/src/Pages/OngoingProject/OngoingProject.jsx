@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink,useOutletContext } from "react-router-dom";
+import { NavLink, useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css __//
@@ -12,17 +12,17 @@ import AxiosClient from "../../assets/Js/AxiosClient";
 const OngoingProject = () => {
   const [setLoader] = useOutletContext();
 
-  const [ongoingProjectData,setOngoingProjectData] = useState([]);
+  const [ongoingProjectData, setOngoingProjectData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(8);
   const slicedData = ongoingProjectData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  useEffect(()=>{
+  const getOnGoingData = async () => {
     try {
       setLoader(true);
-      AxiosClient.get("/on-going-projects").then((res) => {
+      await AxiosClient.get("/on-going-projects").then((res) => {
         if (res.data.status == true) {
           // console.log(res.data.data);
           setOngoingProjectData(res.data.data);
@@ -35,7 +35,11 @@ const OngoingProject = () => {
     } catch (err) {
       toast.error(err);
     }
-  },[])
+  };
+
+  useEffect(() => {
+    getOnGoingData();
+  }, []);
 
   return (
     <div className="OngoingProject page content">

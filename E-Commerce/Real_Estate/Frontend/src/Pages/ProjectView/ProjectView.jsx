@@ -25,10 +25,10 @@ const ProjectView = () => {
   };
 
   const [projectViewData, setProjectViewData] = useState([]);
-  useEffect(() => {
+  const getProjectViewData = async () => {
     try {
       setLoader(true);
-      AxiosClient.post("/project-view", { id: id }).then((res) => {
+      await AxiosClient.post("/project-view", { id: id }).then((res) => {
         if (res.data.status == true) {
           // console.log(res.data.data);
           setProjectViewData(res.data.data);
@@ -39,6 +39,10 @@ const ProjectView = () => {
       // toast.error(err);
       console.log(err);
     }
+  };
+
+  useEffect(() => {
+    getProjectViewData();
   }, []);
 
   return (
