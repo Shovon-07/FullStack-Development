@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { useOutletContext } from "react-router-dom";
 
 //___ Css __//
 import "../../assets/Css/Card.css";
@@ -26,16 +25,15 @@ const OngoingProject = () => {
       AxiosClient.get("/on-going-projects").then((res) => {
         if (res.data.status == true) {
           // console.log(res.data.data);
-          // setOngoingProjectData(res.data.data);
-          console.log(res.data.data);
+          setOngoingProjectData(res.data.data);
           setLoader(false);
         } else {
           toast.error(res.data.msg);
           setLoader(false);
         }
       });
-    } catch {
-      toast.error(res.data.msg);
+    } catch (err) {
+      toast.error(err);
     }
   },[])
 
@@ -54,7 +52,7 @@ const OngoingProject = () => {
           return (
             <div className="card" key={index}>
               <LazyLoadImage
-                src={items.img}
+                src={`http://localhost:8000/${items.Image}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
@@ -63,9 +61,9 @@ const OngoingProject = () => {
 
               <div className="txt d-flex">
                 <h3 className="title">
-                  {items.title.length > 70
-                    ? items.title.slice(0, 70) + "..."
-                    : items.title}
+                  {items.Title.length > 70
+                    ? items.Title.slice(0, 70) + "..."
+                    : items.Title}
                 </h3>
                 <div style={{ textAlign: "center" }}>
                   <NavLink
