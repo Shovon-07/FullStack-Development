@@ -2,9 +2,6 @@
   background: var(--light-1);
   overflow: hidden;
 }
-.tab-container h2 {
-  color: var(--dark-2);
-}
 .tab-container .tab-box {
   display: flex;
   align-items: center;

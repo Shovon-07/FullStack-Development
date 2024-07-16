@@ -41,8 +41,25 @@ const ProjectView = () => {
     }
   };
 
+  const [plotData, setPlotData] = useState([]);
+  const getPlotData = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.post("/plots", { project_id: id }).then((res) => {
+        if (res.data.status == true) {
+          console.log(res.data.data);
+          setPlotData(res.data.data);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getProjectViewData();
+    getPlotData();
   }, []);
 
   return (
@@ -76,19 +93,12 @@ const ProjectView = () => {
             id="3"
             className={`tab-btn ${tabVal == 3 ? "active" : ""}`}
           >
-            Plot
+            Features
           </button>
           <button
             onClick={handleTab}
             id="4"
             className={`tab-btn ${tabVal == 4 ? "active" : ""}`}
-          >
-            Features
-          </button>
-          <button
-            onClick={handleTab}
-            id="5"
-            className={`tab-btn ${tabVal == 5 ? "active" : ""}`}
           >
             Gallery
           </button>
@@ -111,8 +121,10 @@ const ProjectView = () => {
               />
             </div>
             <div className="right">
-              <h2 style={{ marginBottom: "15px" }}>Details</h2>
-              <h4 style={{ margin: "20px 0 15px 0" }}>
+              <h2 style={{ marginBottom: "15px", fontSize: "1.8rem" }}>
+                Details
+              </h2>
+              <h4 style={{ margin: "20px 0 15px 0", fontSize: "1.2rem" }}>
                 {projectViewData.Title}
               </h4>
               <table>
@@ -152,6 +164,18 @@ const ProjectView = () => {
                     <td>:</td>
                     <td>{projectViewData.Status}</td>
                   </tr>
+                  <h4 style={{ margin: "50px 0 5px 0", fontSize: "1.5rem" }}>
+                    Plots
+                  </h4>
+                  {plotData.map((items, index) => {
+                    return (
+                      <tr key={index}>
+                        <td>Plot</td>
+                        <td>:</td>
+                        <td>{items.Plot}</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -177,23 +201,10 @@ const ProjectView = () => {
           </div>
           {/* Map end */}
 
-          {/* Plot start */}
-          <div
-            className={`contentItems gallery gap-30 ${
-              tabVal == 3 ? "active" : ""
-            }`}
-          >
-            <div className="">
-              {/* <"" alt={""} src={""} /> */}
-              <p>{projectViewData.Plot}</p>
-            </div>
-          </div>
-          {/* Plot end */}
-
           {/* Feature start */}
           <div
             className={`contentItems gallery gap-30 ${
-              tabVal == 4 ? "active" : ""
+              tabVal == 3 ? "active" : ""
             }`}
           >
             <div className="">
@@ -217,7 +228,7 @@ const ProjectView = () => {
           {/* Gallery start */}
           <div
             className={`contentItems gallery gap-30 ${
-              tabVal == 5 ? "active" : ""
+              tabVal == 4 ? "active" : ""
             }`}
           >
             {/* {projectViewData.map((items, index) => {
