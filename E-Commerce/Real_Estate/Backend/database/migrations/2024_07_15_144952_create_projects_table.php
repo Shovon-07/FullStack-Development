@@ -19,14 +19,13 @@ return new class extends Migration {
             $table->string("Land_area");
             $table->string("Total_plot");
             $table->string("Contact_no");
-            // $table->longText("Plot");
             $table->longText("Features");
             $table->longText("Project_map");
 
             $table->longText("Image");
 
             $table->enum("ProjectType", ["ongoing", "completed", "upcoming"]);
-            $table->enum("Status", ["Available", "Sold", "Rejected"]);
+            $table->enum("Status", ["Available", "Not available", "Sold", "Rejected"]);
 
             $table->timestamp("Created_at")->useCurrent();
             $table->timestamp("Updated_at")->useCurrent()->useCurrentOnUpdate();

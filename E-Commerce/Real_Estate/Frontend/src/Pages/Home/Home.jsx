@@ -15,7 +15,7 @@ import "./Home.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
-import { latestProject } from "../../assets/Js/Data";
+// import { latestProject } from "../../assets/Js/Data";
 
 //___ Components ___//
 import Loader from "../../Components/Loader/Loader";
@@ -53,7 +53,7 @@ const Home = () => {
         <section className="latestProject">
           <h3 className="pageTitle">Our latest projects</h3>
           <Suspense fallback={<Loader />}>
-            <My_Carousel data={latestProject} />
+            {/* <My_Carousel data={latestProject} /> */}
           </Suspense>
         </section>
 

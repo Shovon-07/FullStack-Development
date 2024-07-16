@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useOutletContext } from "react-router-dom";
 import LightGallery from "lightgallery/react";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
@@ -12,15 +13,39 @@ import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
 
 //___ Additional utilitis ___//
-import { ProjectData } from "../../assets/Js/Data";
+import AxiosClient from "../../assets/Js/AxiosClient";
 
 const Gallery = () => {
-  const [numberOfElement, setNumberOfElement] = useState(100);
+  const [setLoader] = useOutletContext();
 
-  const slicedData = ProjectData.slice(0, numberOfElement);
+  const [upComingProjectData, setUpComingProjectData] = useState([]);
+  const [numberOfElement, setNumberOfElement] = useState(8);
+  const slicedData = upComingProjectData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
+
+  const getOnGoingData = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.get("/up-coming-projects").then((res) => {
+        if (res.data.status == true) {
+          console.log(res.data.data);
+          setUpComingProjectData(res.data.data);
+          setLoader(false);
+        } else {
+          toast.error(res.data.msg);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      toast.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getOnGoingData();
+  }, []);
 
   const onInit = () => {
     // console.log("lightGallery has been initialized");
@@ -39,17 +64,16 @@ const Gallery = () => {
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
         {slicedData.map((items, index) => {
           return (
-            <a href={items.img} key={index}>
+            <a href={items.Gallery_img} key={index}>
               <LazyLoadImage
-                alt={items.img}
-                src={items.img}
+                alt={items.Gallery_img}
+                src={items.Gallery_img}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
                 }}
               />
-              {/* <img alt={items.img} src={items.img} /> */}
-              <div className="overlay">{/* <h3>View</h3> */}</div>
+              <div className="overlay"></div>
             </a>
           );
         })}

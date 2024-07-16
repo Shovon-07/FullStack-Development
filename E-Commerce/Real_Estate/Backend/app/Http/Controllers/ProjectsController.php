@@ -21,8 +21,7 @@ class ProjectsController extends Controller
     public function UpComingProject()
     {
         try {
-            // Status = Not available
-            $onGoingProject = Projects::where("ProjectType", "=", "upcoming")->where("Status", "=", "Available")->get();
+            $onGoingProject = Projects::where("ProjectType", "=", "upcoming")->where("Status", "=", "Not available")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $onGoingProject]);
 
         } catch (Exception $exception) {

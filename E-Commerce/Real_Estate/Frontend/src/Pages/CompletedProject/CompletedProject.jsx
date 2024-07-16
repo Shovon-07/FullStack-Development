@@ -12,9 +12,9 @@ import AxiosClient from "../../assets/Js/AxiosClient";
 const CompletedProject = () => {
   const [setLoader] = useOutletContext();
 
-  const [ongoingProjectData, setOngoingProjectData] = useState([]);
+  const [completedProjectData, setCompletedProjectData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(8);
-  const slicedData = ongoingProjectData.slice(0, numberOfElement);
+  const slicedData = completedProjectData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
@@ -24,7 +24,7 @@ const CompletedProject = () => {
       setLoader(true);
       await AxiosClient.get("/completed-project").then((res) => {
         if (res.data.status == true) {
-          setOngoingProjectData(res.data.data);
+          setCompletedProjectData(res.data.data);
           setLoader(false);
         } else {
           toast.error(res.data.msg);

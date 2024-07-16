@@ -19,4 +19,14 @@ class GalleryController extends Controller
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
+    public function AllGallerysImg()
+    {
+        try {
+            $gallery_img = Gallery::get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $gallery_img]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
 }

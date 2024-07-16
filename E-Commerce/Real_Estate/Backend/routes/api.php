@@ -43,6 +43,7 @@ Route::prefix("/")->group(function () {
 
     Route::controller(GalleryController::class)->group(function () {
         Route::post("/galleries", "Gallerys");
+        Route::get("/all-galleries-img", "AllGallerysImg");
     });
 
     Route::controller(ContactUsController::class)->group(function () {
