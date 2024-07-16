@@ -8,6 +8,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
 
 const OngoingProject = () => {
   const [setLoader] = useOutletContext();
@@ -56,7 +57,7 @@ const OngoingProject = () => {
           return (
             <div className="card" key={index}>
               <LazyLoadImage
-                src={`http://localhost:8000/${items.Image}`}
+                src={`${imgPath}${items.Image}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },

@@ -14,6 +14,7 @@ import "lightgallery/css/lg-thumbnail.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
 
 const Gallery = () => {
   const [setLoader] = useOutletContext();
@@ -30,7 +31,6 @@ const Gallery = () => {
       setLoader(true);
       await AxiosClient.get("/all-galleries-img").then((res) => {
         if (res.data.status == true) {
-          console.log(res.data.data);
           setUpComingProjectData(res.data.data);
           setLoader(false);
         } else {
@@ -64,10 +64,10 @@ const Gallery = () => {
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
         {slicedData.map((items, index) => {
           return (
-            <a href={`http://localhost:8000/${items.Gallery_img}`} key={index}>
+            <a href={`${imgPath}${items.Gallery_img}`} key={index}>
               <LazyLoadImage
                 alt={items.Gallery_img}
-                src={`http://localhost:8000/${items.Gallery_img}`}
+                src={`${imgPath}${items.Gallery_img}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },

@@ -8,6 +8,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
 
 const ProjectView = () => {
   const { id } = useParams();
@@ -133,7 +134,7 @@ const ProjectView = () => {
           >
             <div className="left">
               <LazyLoadImage
-                src={`http://localhost:8000/${projectViewData.Image}`}
+                src={`${imgPath}${projectViewData.Image}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
@@ -264,7 +265,7 @@ const ProjectView = () => {
               return (
                 <div className="card" key={index}>
                   <LazyLoadImage
-                    src={`http://localhost:8000/${items.Gallery_img}`}
+                    src={`${imgPath}${items.Gallery_img}`}
                     effect="blur"
                     wrapperProps={{
                       style: { transitionDelay: "1s" },

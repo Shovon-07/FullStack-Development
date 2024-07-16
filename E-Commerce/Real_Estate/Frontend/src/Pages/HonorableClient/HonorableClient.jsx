@@ -1,20 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useOutletContext } from "react-router-dom";
 
 //___ Css __//
 import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
-import { honorableClient } from "../../assets/Js/Data";
+import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
 
 const HonorableClient = () => {
-  const [numberOfElement, setNumberOfElement] = useState(8);
+  const [setLoader] = useOutletContext();
 
-  const slicedData = honorableClient.slice(0, numberOfElement);
+  const [honorableClientData, setHonorableClientData] = useState([]);
+  const [numberOfElement, setNumberOfElement] = useState(8);
+  const slicedData = honorableClientData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
+
+  const getOnGoingData = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.get("/all-galleries-img").then((res) => {
+        if (res.data.status == true) {
+          console.log(res.data.data);
+          setHonorableClientData(res.data.data);
+          setLoader(false);
+        } else {
+          toast.error(res.data.msg);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      toast.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getOnGoingData();
+  }, []);
 
   return (
     <div className="HonorableClient page content">
@@ -27,7 +53,7 @@ const HonorableClient = () => {
       />
       {/* For go to top */}
       <div className="cardWrapper d-flex gap-20">
-        {slicedData.map((items, index) => {
+        {/* {slicedData.map((items, index) => {
           return (
             <div className="card" key={index}>
               <LazyLoadImage
@@ -48,7 +74,7 @@ const HonorableClient = () => {
               </div>
             </div>
           );
-        })}
+        })} */}
       </div>
       <div style={{ textAlign: "center", marginTop: "100px" }}>
         <button className="btn" onClick={loadMore}>
