@@ -12,7 +12,27 @@ class ProjectsController extends Controller
     {
         try {
             $onGoingProject = Projects::where("ProjectType", "=", "ongoing")->where("Status", "=", "Available")->get();
-            // $onGoingProject = Projects::get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $onGoingProject]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    public function UpComingProject()
+    {
+        try {
+            // Status = Not available
+            $onGoingProject = Projects::where("ProjectType", "=", "upcoming")->where("Status", "=", "Available")->get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $onGoingProject]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    public function CompletedProject()
+    {
+        try {
+            $onGoingProject = Projects::where("ProjectType", "=", "Completed")->where("Status", "=", "Sold")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $onGoingProject]);
 
         } catch (Exception $exception) {

@@ -47,8 +47,24 @@ const ProjectView = () => {
       setLoader(true);
       await AxiosClient.post("/plots", { project_id: id }).then((res) => {
         if (res.data.status == true) {
-          console.log(res.data.data);
+          // console.log(res.data.data);
           setPlotData(res.data.data);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const [galleryData, setGalleryData] = useState([]);
+  const getGalleryData = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.post("/galleries", { project_id: id }).then((res) => {
+        if (res.data.status == true) {
+          // console.log(res.data.data);
+          setGalleryData(res.data.data);
           setLoader(false);
         }
       });
@@ -60,6 +76,7 @@ const ProjectView = () => {
   useEffect(() => {
     getProjectViewData();
     getPlotData();
+    // getGalleryData();
   }, []);
 
   return (
@@ -96,7 +113,10 @@ const ProjectView = () => {
             Features
           </button>
           <button
-            onClick={handleTab}
+            onClick={(e) => {
+              handleTab(e);
+              getGalleryData();
+            }}
             id="4"
             className={`tab-btn ${tabVal == 4 ? "active" : ""}`}
           >
@@ -164,9 +184,19 @@ const ProjectView = () => {
                     <td>:</td>
                     <td>{projectViewData.Status}</td>
                   </tr>
-                  <h4 style={{ margin: "50px 0 5px 0", fontSize: "1.5rem" }}>
-                    Plots
-                  </h4>
+                  <tr>
+                    <td
+                      style={{
+                        fontSize: "1.5rem",
+                        fontWeight: "600",
+                        padding: "50px 0 5px 0",
+                      }}
+                    >
+                      Plots
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
                   {plotData.map((items, index) => {
                     return (
                       <tr key={index}>
@@ -192,7 +222,6 @@ const ProjectView = () => {
                 border: "1px solid var(--light-2)",
                 outline: "0",
                 borderRadius: "12px",
-                // boxShadow: "var(--shadow)",
               }}
               allowFullScreen=""
               loading="lazy"
@@ -231,11 +260,11 @@ const ProjectView = () => {
               tabVal == 4 ? "active" : ""
             }`}
           >
-            {/* {projectViewData.map((items, index) => {
+            {galleryData.map((items, index) => {
               return (
                 <div className="card" key={index}>
                   <LazyLoadImage
-                    src={items.Image}
+                    src={`http://localhost:8000/${items.Gallery_img}`}
                     effect="blur"
                     wrapperProps={{
                       style: { transitionDelay: "1s" },
@@ -243,34 +272,7 @@ const ProjectView = () => {
                   />
                 </div>
               );
-            })} */}
-            {/* <div className="card">
-              <LazyLoadImage
-                src={""}
-                effect="blur"
-                wrapperProps={{
-                  style: { transitionDelay: "1s" },
-                }}
-              />
-            </div>
-            <div className="card">
-              <LazyLoadImage
-                src={""}
-                effect="blur"
-                wrapperProps={{
-                  style: { transitionDelay: "1s" },
-                }}
-              />
-            </div>
-            <div className="card">
-              <LazyLoadImage
-                src={""}
-                effect="blur"
-                wrapperProps={{
-                  style: { transitionDelay: "1s" },
-                }}
-              />
-            </div> */}
+            })}
           </div>
           {/* Gallery end */}
         </div>

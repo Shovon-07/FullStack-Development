@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\PlotController;
+use App\Http\Controllers\GalleryController;
 // use App\Http\Controllers\LatestProjectController;
 use App\Http\Controllers\ContactUsController;
 use Illuminate\Http\Request;
@@ -31,11 +32,17 @@ Route::prefix("/")->group(function () {
 
     Route::controller(ProjectsController::class)->group(function () {
         Route::get("/on-going-projects", "OnGoingProject");
+        Route::get("/up-coming-projects", "UpComingProject");
+        Route::get("/completed-project", "CompletedProject");
         Route::post("/project-view", "ProjectView");
     });
 
     Route::controller(PlotController::class)->group(function () {
         Route::post("/plots", "Plots");
+    });
+
+    Route::controller(GalleryController::class)->group(function () {
+        Route::post("/galleries", "Gallerys");
     });
 
     Route::controller(ContactUsController::class)->group(function () {
