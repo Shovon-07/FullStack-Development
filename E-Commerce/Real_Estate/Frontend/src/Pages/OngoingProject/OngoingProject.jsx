@@ -20,7 +20,7 @@ const OngoingProject = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  const getOnGoingData = async () => {
+  const getOnGoingProjectData = async () => {
     try {
       setLoader(true);
       await AxiosClient.get("/on-going-projects").then((res) => {
@@ -39,7 +39,7 @@ const OngoingProject = () => {
   };
 
   useEffect(() => {
-    getOnGoingData();
+    getOnGoingProjectData();
   }, []);
 
   return (

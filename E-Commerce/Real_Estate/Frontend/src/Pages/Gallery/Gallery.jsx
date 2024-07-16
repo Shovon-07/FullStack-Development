@@ -19,19 +19,19 @@ import { imgPath } from "../../assets/Js/Data";
 const Gallery = () => {
   const [setLoader] = useOutletContext();
 
-  const [upComingProjectData, setUpComingProjectData] = useState([]);
+  const [galleryData, setGalleryData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(8);
-  const slicedData = upComingProjectData.slice(0, numberOfElement);
+  const slicedData = galleryData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  const getOnGoingData = async () => {
+  const getGalleryData = async () => {
     try {
       setLoader(true);
       await AxiosClient.get("/all-galleries-img").then((res) => {
         if (res.data.status == true) {
-          setUpComingProjectData(res.data.data);
+          setGalleryData(res.data.data);
           setLoader(false);
         } else {
           console.log(res.data.msg);
@@ -44,7 +44,7 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    getOnGoingData();
+    getGalleryData();
   }, []);
 
   const onInit = () => {

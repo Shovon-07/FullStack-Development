@@ -20,7 +20,7 @@ const CompletedProject = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  const getOnGoingData = async () => {
+  const getCompletedProjectData = async () => {
     try {
       setLoader(true);
       await AxiosClient.get("/completed-project").then((res) => {
@@ -28,17 +28,17 @@ const CompletedProject = () => {
           setCompletedProjectData(res.data.data);
           setLoader(false);
         } else {
-          toast.error(res.data.msg);
+          console.log(res.data.msg);
           setLoader(false);
         }
       });
     } catch (err) {
-      toast.error(err);
+      console.log(err);
     }
   };
 
   useEffect(() => {
-    getOnGoingData();
+    getCompletedProjectData();
   }, []);
 
   return (

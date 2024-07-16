@@ -20,12 +20,11 @@ const HonorableClient = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  const getOnGoingData = async () => {
+  const getHonorableClientData = async () => {
     try {
       setLoader(true);
       await AxiosClient.get("/all-honorable-clients").then((res) => {
         if (res.data.status == true) {
-          console.log(res.data.data);
           setHonorableClientData(res.data.data);
           setLoader(false);
         } else {
@@ -39,7 +38,7 @@ const HonorableClient = () => {
   };
 
   useEffect(() => {
-    getOnGoingData();
+    getHonorableClientData();
   }, []);
 
   return (

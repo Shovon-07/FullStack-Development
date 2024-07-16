@@ -20,26 +20,25 @@ const UpcomingProject = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  const getOnGoingData = async () => {
+  const getUpComingProjectData = async () => {
     try {
       setLoader(true);
       await AxiosClient.get("/up-coming-projects").then((res) => {
         if (res.data.status == true) {
-          // console.log(res.data.data);
           setUpComingProjectData(res.data.data);
           setLoader(false);
         } else {
-          toast.error(res.data.msg);
+          console.log(res.data.msg);
           setLoader(false);
         }
       });
     } catch (err) {
-      toast.error(err);
+      console.log(err);
     }
   };
 
   useEffect(() => {
-    getOnGoingData();
+    getUpComingProjectData();
   }, []);
 
   return (
