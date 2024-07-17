@@ -11,11 +11,17 @@ const Footer = lazy(() => import("../Components/Footer/Footer"));
 const GuestLayout = () => {
   const [toggle, setToggle] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [theme, setTheme] = useState(localStorage.getItem("THEME"));
 
   return (
-    <div className={`main`}>
+    <div className={!theme ? "main" : "main dark"}>
       <Suspense fallback={<Loader />}>
-        <Header toggle={toggle} setToggle={setToggle} />
+        <Header
+          toggle={toggle}
+          setToggle={setToggle}
+          theme={theme}
+          setTheme={setTheme}
+        />
       </Suspense>
       <div className={`container `}>
         <div

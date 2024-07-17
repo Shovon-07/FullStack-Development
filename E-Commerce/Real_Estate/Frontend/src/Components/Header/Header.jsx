@@ -3,7 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 import axios from "axios";
 
 //___ Icons __//
-import { GoSearch } from "react-icons/go";
+// import { GoSearch } from "react-icons/go";
+import { IoMoonSharp } from "react-icons/io5";
+import { IoMdSunny } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 
@@ -11,7 +13,7 @@ import { RxCross2 } from "react-icons/rx";
 import "./Header.css";
 
 const Header = (props) => {
-  const { toggle, setToggle } = props;
+  const { toggle, setToggle, theme, setTheme } = props;
   const [searchDropDownVal, setSearchDropDownVal] = useState(false);
 
   const handleNavToggle = () => {
@@ -38,22 +40,22 @@ const Header = (props) => {
     }
   };
 
-  const [searchInput, setSearchInput] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-  const fetchSearchData = (value) => {
-    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-      const result = res.data.filter((user) => {
-        return (
-          value && user && user.name && user.name.toLowerCase().includes(value)
-        );
-      });
-      setSearchResult(result);
-    });
-  };
-  const handleSearchInput = (value) => {
-    setSearchInput(value);
-    fetchSearchData(value);
-  };
+  // const [searchInput, setSearchInput] = useState("");
+  // const [searchResult, setSearchResult] = useState([]);
+  // const fetchSearchData = (value) => {
+  //   axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+  //     const result = res.data.filter((user) => {
+  //       return (
+  //         value && user && user.name && user.name.toLowerCase().includes(value)
+  //       );
+  //     });
+  //     setSearchResult(result);
+  //   });
+  // };
+  // const handleSearchInput = (value) => {
+  //   setSearchInput(value);
+  //   fetchSearchData(value);
+  // };
 
   return (
     <div className="Header">
@@ -158,7 +160,7 @@ const Header = (props) => {
         </ul>
 
         <div className="lastChild d-flex gap-30">
-          <li onClick={closeToggle} className="search d-flex">
+          {/* <li onClick={closeToggle} className="search d-flex">
             <GoSearch
               size={20}
               className="c_pointer"
@@ -195,15 +197,34 @@ const Header = (props) => {
                     </div>
                   );
                 })}
-
-                {/* <Link className="result">Dhaka</Link>
-                <Link className="result">Chittagong</Link>
-                <Link className="result">Comilla</Link>
-                <Link className="result">Khulna</Link>
-                <Link className="result">Barisal</Link> */}
               </div>
             </div>
+          </li> */}
+
+          {/* Theme start */}
+          <li className="c_pointer">
+            <a>
+              <IoMdSunny
+                size={25}
+                className={theme ? "" : "d-none"}
+                onClick={(e) => {
+                  // e.preventDefault();
+                  setTheme((prev) => !prev);
+                  localStorage.removeItem("THEME");
+                }}
+              />
+              <IoMoonSharp
+                size={25}
+                className={!theme ? "" : "d-none"}
+                onClick={(e) => {
+                  // e.preventDefault();
+                  setTheme((prev) => !prev);
+                  localStorage.setItem("THEME", true);
+                }}
+              />
+            </a>
           </li>
+          {/* Theme end */}
 
           <li style={{ zIndex: 999, position: "sticky" }}>
             <div

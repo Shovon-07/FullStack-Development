@@ -32,7 +32,7 @@
   font-size: 3rem;
   letter-spacing: 0.1rem;
   font-weight: 600;
-  color: var(--light-1);
+  color: #ffffff;
 }
 /* .Home .txt h2 {
   font-size: 2rem;
@@ -45,6 +45,7 @@
   font-weight: 500;
   letter-spacing: 0.03rem;
   font-size: 1.2rem;
+  color: #ffffff;
 }
 
 .Home .ourMisionVision {

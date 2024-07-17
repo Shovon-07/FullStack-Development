@@ -39,14 +39,14 @@
 }
 .card .title {
   line-height: 2rem;
-  color: var(--light-1);
+  color: #ffffff;
   font-weight: 500;
   margin-bottom: 7px;
   text-align: center;
 }
 .card .readMoreBtn {
   background: var(--blue);
-  color: var(--light-1);
+  color: #ffffff;
   border: 1px solid var(--blue);
   font-size: 1rem;
   padding: 5px 15px;
@@ -58,7 +58,7 @@
 .card .readMoreBtn:hover {
   background: transparent;
   border: var(--border);
-  color: var(--light-1);
+  color: #ffffff;
 }
 
 /*___ Responsiv ___*/

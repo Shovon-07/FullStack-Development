@@ -13,7 +13,7 @@ const CallNow = () => {
       <NavLink
         to="tel:01767692422" // 01788300918
         className="d-flex"
-        style={{ background: "var(--light-2)" }}
+        style={{ background: "var(--dark-2)", color: "var(--light-1)" }}
       >
         <PiPhoneCall size={25} />
       </NavLink>

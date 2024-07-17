@@ -34,7 +34,7 @@
 }
 .Gallery .overlay::after {
   content: "View";
-  color: var(--light-1);
+  color: #ffffff;
   font-size: 1.3rem;
   border: var(--border);
   padding: 5px 20px;

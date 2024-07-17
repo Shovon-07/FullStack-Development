@@ -12,7 +12,7 @@ const WhatsApp = () => {
       <Link
         to="https://wa.me/+8801788300918"
         className="d-flex"
-        style={{ background: "var(--green)", color: "var(--light-1)" }}
+        style={{ background: "var(--green)", color: "#ffff" }}
       >
         <FaWhatsapp size={25} />
       </Link>
