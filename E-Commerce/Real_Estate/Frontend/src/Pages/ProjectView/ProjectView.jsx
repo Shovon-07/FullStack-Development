@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import moment from "moment";
 
 //___ Css ___//
 import "./ProjectView.css";
@@ -82,7 +83,7 @@ const ProjectView = () => {
 
   return (
     <div className="ProjectView page content">
-      <h3 className="pageTitle">Preview project {id}</h3>
+      <h3 className="pageTitle">Preview project</h3>
       {/* For go to top */}
       <input
         type="file"
@@ -90,6 +91,9 @@ const ProjectView = () => {
         style={{ height: "0", opacity: 0, pointerEvents: "none" }}
       />
       {/* For go to top */}
+      <p className="date">
+        Uploaded : {moment(projectViewData.Created_at).fromNow()}
+      </p>
       <div className="tab-container">
         <div className="tab-box">
           <button
