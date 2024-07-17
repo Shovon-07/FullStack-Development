@@ -6,10 +6,11 @@ use App\Models\Gallery;
 use App\Models\HonorableClient;
 use App\Models\NewsAndEvent;
 use App\Models\Blog;
+use App\Models\Owner;
 use Exception;
 use Illuminate\Http\Request;
 
-class GalleryController extends Controller
+class CommonController extends Controller
 {
     //___ Gallery start ___//
     public function Gallerys(Request $request)
@@ -73,4 +74,17 @@ class GalleryController extends Controller
         }
     }
     //___ Blogs end ___//
+
+    //___ Owners start ___//
+    public function Owners()
+    {
+        try {
+            $owners = Owner::get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $owners]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    //___ Owners end ___//
 }

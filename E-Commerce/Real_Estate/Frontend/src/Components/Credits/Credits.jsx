@@ -1,8 +1,8 @@
 //___ Css ___//
 import "./Credits.css";
 
-//___ Images ___//
-import Shovon from "../../assets/Images/Membership/Shovon.jpg";
+//___ Additional utilitis ___//
+import { imgPath } from "../../assets/Js/Data";
 
 const Credits = () => {
   return (
@@ -10,7 +10,7 @@ const Credits = () => {
       <div className="credits-wrapper">
         <div className="item d-flex gap-10">
           <a href="https://www.facebook.com/aljubair.shovon/">
-            <img src={Shovon} alt="" />
+            <img src={`${imgPath}Owner/Shovon.jpg`} alt="" />
           </a>
           <div>
             <h2 className="name">
@@ -28,7 +28,7 @@ const Credits = () => {
 
         <div className="item d-flex gap-10">
           <a href="https://www.facebook.com/aljubair.shovon/">
-            <img src={Shovon} alt="" />
+            <img src={`${imgPath}Owner/Shovon.jpg`} alt="" />
           </a>
           <div>
             <h2 className="name">

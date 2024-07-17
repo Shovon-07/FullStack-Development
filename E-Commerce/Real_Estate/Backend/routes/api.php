@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\PlotController;
-use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\CommonController;
 // use App\Http\Controllers\LatestProjectController;
 use App\Http\Controllers\ContactUsController;
 use Illuminate\Http\Request;
@@ -30,12 +30,13 @@ Route::prefix("/")->group(function () {
         Route::post("/plots", "Plots");
     });
 
-    Route::controller(GalleryController::class)->group(function () {
+    Route::controller(CommonController::class)->group(function () {
         Route::post("/galleries", "Gallerys");
         Route::get("/all-galleries-img", "AllGallerysImg");
         Route::get("/all-honorable-clients", "AllHonorableClients");
         Route::get("/all-news-and-events", "AllNewsAndEvents");
         Route::get("/all-blog-video", "AllBlogVideo");
+        Route::get("/owners", "Owners");
     });
 
     Route::controller(ContactUsController::class)->group(function () {

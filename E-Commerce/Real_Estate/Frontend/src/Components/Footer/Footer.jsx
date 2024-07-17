@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -16,12 +17,32 @@ import Visa from "../../assets/Images/Icons/visa.png";
 import "./Footer.css";
 
 //___ Additional utilitis ___//
-import { Membership } from "../../assets/Js/Data";
+import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
 
 //___ Components ___//
 import Credits from "../Credits/Credits";
 
 const Footer = () => {
+  const [ownersData, setOwnersData] = useState([]);
+  const getOwnersData = async () => {
+    try {
+      await AxiosClient.get("/owners").then((res) => {
+        if (res.data.status == true) {
+          setOwnersData(res.data.data);
+        } else {
+          console.log(res.data.msg);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getOwnersData();
+  }, []);
+
   return (
     <div className="footer">
       <div className="footer-top">
@@ -108,24 +129,26 @@ const Footer = () => {
             className="d-flex-start gap-10"
             style={{ flexDirection: "column" }}
           >
-            {Membership.map((items, index) => {
+            {ownersData.map((items, index) => {
               return (
                 <li key={index} style={{ textAlign: "left" }}>
                   <a
-                    href={items.facebook}
+                    href={items.Owner_facebook_link}
                     className="link-hovered"
                     target="_blank"
                   >
                     <LazyLoadImage
-                      src={items.img}
+                      src={`${imgPath}${items.Owner_img}`}
                       effect="blur"
                       wrapperProps={{
                         style: { transitionDelay: "1s" },
                       }}
                     />
                     <p>
-                      {items.name} <br />{" "}
-                      <span style={{ fontSize: "0.8rem" }}>- {items.rank}</span>
+                      {items.Owner_name} <br />{" "}
+                      <span style={{ fontSize: "0.8rem" }}>
+                        - {items.Owner_rank}
+                      </span>
                     </p>
                   </a>
                 </li>
