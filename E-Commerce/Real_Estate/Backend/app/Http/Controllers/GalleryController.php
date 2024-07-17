@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use App\Models\HonorableClient;
 use App\Models\NewsAndEvent;
+use App\Models\Blog;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -59,4 +60,17 @@ class GalleryController extends Controller
         }
     }
     //___ News And Events end ___//
+
+    //___ Blogs start ___//
+    public function AllBlogVideo()
+    {
+        try {
+            $blogs = Blog::get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $blogs]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    //___ Blogs end ___//
 }

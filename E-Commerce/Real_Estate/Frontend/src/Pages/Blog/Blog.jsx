@@ -1,18 +1,42 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 
 //___ Css ___//
 import "./Blog.css";
 
 //___ Additional utilitis ___//
-import { Blogs } from "../../assets/Js/Data";
+import AxiosClient from "../../assets/Js/AxiosClient";
 
 const Blog = () => {
-  const [numberOfElement, setNumberOfElement] = useState(2);
+  const [setLoader] = useOutletContext();
 
-  const slicedData = Blogs.slice(0, numberOfElement);
+  const [blogData, setBlogData] = useState([]);
+  const [numberOfElement, setNumberOfElement] = useState(2);
+  const slicedData = blogData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
+
+  const getBlogData = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.get("/all-blog-video").then((res) => {
+        if (res.data.status == true) {
+          setBlogData(res.data.data);
+          setLoader(false);
+        } else {
+          console.log(res.data.msg);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getBlogData();
+  }, []);
 
   return (
     <div className="Blog page content">
@@ -29,7 +53,7 @@ const Blog = () => {
           return (
             <iframe
               key={index}
-              src={items.link}
+              src={items.Blog_video}
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

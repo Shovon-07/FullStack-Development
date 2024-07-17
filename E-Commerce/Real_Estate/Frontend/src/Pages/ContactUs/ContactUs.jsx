@@ -95,7 +95,6 @@ const ContactUs = () => {
           <form className="d-flex gap-30" onSubmit={handleSubmit}>
             <h3>Send message</h3>
             <div className="inputWrapper">
-              {/* <label htmlFor="name">Name</label> <br /> */}
               <input
                 type="text"
                 id="name"
@@ -105,7 +104,6 @@ const ContactUs = () => {
               />
             </div>
             <div className="inputWrapper">
-              {/* <label htmlFor="email">Email</label> <br /> */}
               <input
                 type="text"
                 id="email"
@@ -115,7 +113,6 @@ const ContactUs = () => {
               />
             </div>
             <div className="inputWrapper">
-              {/* <label htmlFor="subject">Subject</label> <br /> */}
               <input
                 type="text"
                 id="subject"
@@ -125,7 +122,6 @@ const ContactUs = () => {
               />
             </div>
             <div className="inputWrapper">
-              {/* <label htmlFor="message">Message</label> <br /> */}
               <textarea
                 id="message"
                 name="message"

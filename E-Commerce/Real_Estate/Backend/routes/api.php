@@ -35,6 +35,7 @@ Route::prefix("/")->group(function () {
         Route::get("/all-galleries-img", "AllGallerysImg");
         Route::get("/all-honorable-clients", "AllHonorableClients");
         Route::get("/all-news-and-events", "AllNewsAndEvents");
+        Route::get("/all-blog-video", "AllBlogVideo");
     });
 
     Route::controller(ContactUsController::class)->group(function () {

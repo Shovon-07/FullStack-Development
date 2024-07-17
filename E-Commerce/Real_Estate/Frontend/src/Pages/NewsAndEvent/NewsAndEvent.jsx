@@ -13,19 +13,19 @@ import { imgPath } from "../../assets/Js/Data";
 const NewsAndEvent = () => {
   const [setLoader] = useOutletContext();
 
-  const [galleryData, setGalleryData] = useState([]);
+  const [newsData, setNewsData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(4);
-  const slicedData = galleryData.slice(0, numberOfElement);
+  const slicedData = newsData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  const getGalleryData = async () => {
+  const getNewsData = async () => {
     try {
       setLoader(true);
       await AxiosClient.get("/all-news-and-events").then((res) => {
         if (res.data.status == true) {
-          setGalleryData(res.data.data);
+          setNewsData(res.data.data);
           setLoader(false);
         } else {
           console.log(res.data.msg);
@@ -38,7 +38,7 @@ const NewsAndEvent = () => {
   };
 
   useEffect(() => {
-    getGalleryData();
+    getNewsData();
   }, []);
 
   return (
