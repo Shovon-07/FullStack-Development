@@ -1,18 +1,45 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useOutletContext } from "react-router-dom";
 
 //___ Css ___//
 import "./NewsAndEvent.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
-import { News } from "../../assets/Js/Data";
+import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
 
 const NewsAndEvent = () => {
-  const [numberOfElement, setNumberOfElement] = useState(2);
+  const [setLoader] = useOutletContext();
 
-  const slicedData = News.slice(0, numberOfElement);
+  const [galleryData, setGalleryData] = useState([]);
+  const [numberOfElement, setNumberOfElement] = useState(4);
+  const slicedData = galleryData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
+
+  const getGalleryData = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.get("/all-news-and-events").then((res) => {
+        if (res.data.status == true) {
+          setGalleryData(res.data.data);
+          setLoader(false);
+        } else {
+          console.log(res.data.msg);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getGalleryData();
+  }, []);
 
   return (
     <div className="NewsAndEvent page content">
@@ -28,7 +55,14 @@ const NewsAndEvent = () => {
         {slicedData.map((items, index) => {
           return (
             <div key={index} className="card">
-              <img src={items.img} alt="" />
+              <LazyLoadImage
+                alt={items.img}
+                src={`${imgPath}${items.News_img}`}
+                effect="blur"
+                wrapperProps={{
+                  style: { transitionDelay: "1s" },
+                }}
+              />
             </div>
           );
         })}

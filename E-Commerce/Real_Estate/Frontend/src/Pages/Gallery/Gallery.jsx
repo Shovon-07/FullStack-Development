@@ -20,7 +20,7 @@ const Gallery = () => {
   const [setLoader] = useOutletContext();
 
   const [galleryData, setGalleryData] = useState([]);
-  const [numberOfElement, setNumberOfElement] = useState(8);
+  const [numberOfElement, setNumberOfElement] = useState(4);
   const slicedData = galleryData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);

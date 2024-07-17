@@ -45,24 +45,3 @@ export const Blogs = [
     link: "https://www.youtube.com/embed/JthLK5Mgl-s?si=Mz1Bp0GXT9ADqCfi",
   },
 ];
-
-import News_1 from "../Images/News/News-1.png";
-import News_2 from "../Images/News/News-2.png";
-export const News = [
-  {
-    id: 1,
-    img: News_1,
-  },
-  {
-    id: 2,
-    img: News_2,
-  },
-  {
-    id: 1,
-    img: News_1,
-  },
-  {
-    id: 2,
-    img: News_2,
-  },
-];
