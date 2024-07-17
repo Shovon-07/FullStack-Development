@@ -6,16 +6,19 @@
   <style>
     .body {
       background: #efefef;
+      padding: 10px 20px;
     }
 
-    .title {
+    .title span {
       text-transform: capitalize;
-      color: rgb(255, 115, 0);
+      color: #0fa802;
     }
 
     table tr td {
       padding: 10px;
-      font-size: 1.2rem;
+      font-size: 1rem;
+      vertical-align: baseline;
+      text-align: justify;
     }
 
     hr {
@@ -33,7 +36,7 @@
 </head>
 
 <body class="body">
-  <h1 class="title">{{$mailData["name"]}} contact with us</h1>
+  <h1 class="title"><span>{{$mailData["name"]}}</span> contact with us</h1>
   <table>
     <tr>
       <td>Name</td>

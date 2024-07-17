@@ -131,6 +131,7 @@ const ContactUs = () => {
                 name="message"
                 placeholder="Message"
                 onChange={handleInput}
+                rows={5}
               ></textarea>
             </div>
             <button type="submit" className="btn">
