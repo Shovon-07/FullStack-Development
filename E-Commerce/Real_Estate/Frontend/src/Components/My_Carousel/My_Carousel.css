@@ -16,6 +16,7 @@
   box-shadow: 1px 1px 2px var(--light-3);
   border-radius: 10px;
   height: 250px;
+  width: 100% !important;
   overflow: hidden;
   outline: none;
   position: relative;

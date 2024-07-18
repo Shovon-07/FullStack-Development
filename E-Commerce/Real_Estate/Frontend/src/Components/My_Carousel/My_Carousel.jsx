@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 function My_Carousel(props) {
-  const { data } = props;
+  const { latestProjectData,imgPath } = props;
 
   var settings = {
     dots: true,
@@ -51,12 +51,12 @@ function My_Carousel(props) {
   return (
     <div className="slider-container My_Carousel">
       <Slider {...settings}>
-        {data.map((items, index) => {
+        {latestProjectData.map((items, index) => {
           return (
             <div className="card" key={index}>
               <div className="img">
                 <LazyLoadImage
-                  src={items.img}
+                  src={`${imgPath}${items.Image}`}
                   effect="blur"
                   wrapperProps={{
                     style: { transitionDelay: "1s" },
@@ -65,9 +65,9 @@ function My_Carousel(props) {
               </div>
               <div className="txt d-flex">
                 <h3 className="title">
-                  {items.title.length > 70
-                    ? items.title.slice(0, 70) + " ..."
-                    : items.title}
+                  {items.Title.length > 70
+                    ? items.Title.slice(0, 70) + " ..."
+                    : items.Title}
                 </h3>
                 <div style={{ textAlign: "center" }}>
                   <NavLink

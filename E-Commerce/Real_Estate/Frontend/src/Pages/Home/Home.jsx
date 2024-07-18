@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Link } from "react-router-dom";
+import { Link,useOutletContext } from "react-router-dom";
 
 //___ Icons __//
 import { RiHomeOfficeFill } from "react-icons/ri";
@@ -15,7 +15,8 @@ import "./Home.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
-// import { latestProject } from "../../assets/Js/Data";
+import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
 
 //___ Components ___//
 import Loader from "../../Components/Loader/Loader";
@@ -24,11 +25,30 @@ const My_Carousel = lazy(() =>
 );
 
 const Home = () => {
-  // const { toggle } = props;
-  // const [c, setC] = useState(0);
+  const [setLoader] = useOutletContext();
+
+  const [latestProjectData, setLatestProjectData] = useState([]);
+  const getLatestProjectData = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.get("/latest-project").then((res) => {
+        if (res.data.status == true) {
+          setLatestProjectData(res.data.data);
+          setLoader(false);
+        } else {
+          console.log(res.data.msg);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    // setC((prev) => (prev += 1));
-  });
+    getLatestProjectData();
+  }, []);
+
   return (
     <div className="Home page">
       <div className="homeImg d-flex">
@@ -53,7 +73,7 @@ const Home = () => {
         <section className="latestProject">
           <h3 className="pageTitle">Our latest projects</h3>
           <Suspense fallback={<Loader />}>
-            {/* <My_Carousel data={latestProject} /> */}
+            <My_Carousel latestProjectData={latestProjectData} imgPath={imgPath} />
           </Suspense>
         </section>
 

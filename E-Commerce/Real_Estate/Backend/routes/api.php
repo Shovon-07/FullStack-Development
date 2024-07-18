@@ -24,6 +24,7 @@ Route::prefix("/")->group(function () {
         Route::get("/up-coming-projects", "UpComingProject");
         Route::get("/completed-project", "CompletedProject");
         Route::post("/project-view", "ProjectView");
+        Route::get("/latest-project", "LatestProject");
     });
 
     Route::controller(PlotController::class)->group(function () {

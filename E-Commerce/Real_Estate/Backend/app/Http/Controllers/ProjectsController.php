@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Projects;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -21,8 +22,8 @@ class ProjectsController extends Controller
     public function UpComingProject()
     {
         try {
-            $onGoingProject = Projects::where("ProjectType", "=", "upcoming")->where("Status", "=", "Not available")->get();
-            return response()->json(["status" => true, "msg" => "Data founded", "data" => $onGoingProject]);
+            $upComingProject = Projects::where("ProjectType", "=", "upcoming")->where("Status", "=", "Not available")->get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $upComingProject]);
 
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
@@ -31,8 +32,8 @@ class ProjectsController extends Controller
     public function CompletedProject()
     {
         try {
-            $onGoingProject = Projects::where("ProjectType", "=", "Completed")->where("Status", "=", "Sold")->get();
-            return response()->json(["status" => true, "msg" => "Data founded", "data" => $onGoingProject]);
+            $completedProject = Projects::where("ProjectType", "=", "completed")->where("Status", "=", "Sold")->get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $completedProject]);
 
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
@@ -45,6 +46,16 @@ class ProjectsController extends Controller
             $projectView = Projects::where("id", $id)->first();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $projectView]);
 
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    public function LatestProject()
+    {
+        try {
+            $oneYearAgo = Carbon::now()->subYear();
+            $latestProject = Projects::where('Updated_at', '>=', $oneYearAgo)->where("ProjectType", "=", "ongoing")->where("Status", "=", "Available")->get();
+            return response()->json(["status" => true, "msg" => $oneYearAgo, "data" => $latestProject]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
