@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Link,useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 //___ Icons __//
 import { RiHomeOfficeFill } from "react-icons/ri";
@@ -22,6 +22,9 @@ import { imgPath } from "../../assets/Js/Data";
 import Loader from "../../Components/Loader/Loader";
 const My_Carousel = lazy(() =>
   import("../../Components/My_Carousel/My_Carousel")
+);
+const OurMissionVission = lazy(() =>
+  import("../../Components/OurMissionVission/OurMissionVission")
 );
 
 const Home = () => {
@@ -73,7 +76,10 @@ const Home = () => {
         <section className="latestProject">
           <h3 className="pageTitle">Our latest projects</h3>
           <Suspense fallback={<Loader />}>
-            <My_Carousel latestProjectData={latestProjectData} imgPath={imgPath} />
+            <My_Carousel
+              latestProjectData={latestProjectData}
+              imgPath={imgPath}
+            />
           </Suspense>
         </section>
 
@@ -94,7 +100,7 @@ const Home = () => {
           ></iframe>
         </section>
 
-        <section className="ourMisionVision d-flex gap-30">
+        {/* <section className="ourMisionVision d-flex gap-30">
           <Link to="" className="card d-flex gap-20">
             <div className="icon">
               <RiHomeOfficeFill size={30} />
@@ -113,7 +119,10 @@ const Home = () => {
             </div>
             <h3>Invest with us </h3>
           </Link>
-        </section>
+        </section> */}
+        <Suspense fallback={<Loader />}>
+          <OurMissionVission />
+        </Suspense>
       </div>
     </div>
   );
