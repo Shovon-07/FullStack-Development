@@ -1,1 +1,1 @@
-export const imgPath = "https://molla-properties.com/backend/public/";
+export const imgPath = "https://molla-properties.com/backend/public/Images/";
