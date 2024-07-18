@@ -87,7 +87,6 @@ const Home = () => {
               border: "1px solid var(--light-2)",
               outline: "0",
               borderRadius: "12px",
-              // boxShadow: "var(--shadow)",
             }}
             allowFullScreen=""
             loading="lazy"
