@@ -10,4 +10,14 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 ------------------
 
-# Youtube data->
+# Database settig ->
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mollapro_molla_pro
+DB_USERNAME=mollapro_molla_pro_user
+DB_PASSWORD=yx&sUKU,u1M%
+
+------------------
+
+
