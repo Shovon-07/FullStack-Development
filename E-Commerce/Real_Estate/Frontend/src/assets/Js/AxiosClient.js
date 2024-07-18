@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosClient = axios.create({
-  baseURL: "https://molla-properties.com/Backend/public/api",
+  baseURL: "https://molla-properties.com/backend/public/api",
 });
 
 AxiosClient.interceptors.request.use((config) => {
