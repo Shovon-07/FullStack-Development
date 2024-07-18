@@ -53,6 +53,7 @@
 }
 .ContactUs .right .inputWrapper input,
 .ContactUs .right .inputWrapper textarea {
+  color: #efefef;
   width: 100%;
   padding: 10px 15px;
   font-size: 1rem;
