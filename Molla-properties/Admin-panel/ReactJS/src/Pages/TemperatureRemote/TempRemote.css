@@ -1,0 +1,104 @@
+.TempRemote {
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+.TempRemote h2 {
+  margin-bottom: 30px;
+}
+.TempRemote .remoteBox {
+  background: #fff;
+  box-shadow: 1px 1px 10px #7c7b7b;
+  border-radius: 5px;
+  padding: 5px 5px 20px 5px;
+  width: 25%;
+  height: 100%;
+}
+.TempRemote .display {
+  background: #fff;
+  color: #7c7c7c;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 35px;
+  text-align: center;
+  box-shadow: inset 1px 1px 10px #5e5c5c;
+  position: relative;
+  cursor: default;
+}
+.TempRemote .display .status {
+  font-size: 11px;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.TempRemote .display .indicator {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.TempRemote .companyTag {
+  color: #7c7c7c;
+  text-transform: uppercase;
+  font-size: 10px;
+  text-align: center;
+  margin-top: 5px;
+}
+.TempRemote .btn {
+  justify-content: center;
+  margin-top: 30px;
+  flex-direction: column;
+}
+.TempRemote .btn .button {
+  background: #fff;
+  color: #7c7c7c;
+  border: 0;
+  outline: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 1px 1px 10px #7c7b7b;
+  cursor: pointer;
+}
+.TempRemote .btn .plus,
+.TempRemote .btn .minus {
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  border-radius: 50%;
+}
+.TempRemote .btn .button:active {
+  box-shadow: inset 1px 1px 10px #5e5c5c;
+}
+.TempRemote .flexBtn {
+  width: 100%;
+  justify-content: space-around;
+}
+.TempRemote .blockBtn {
+  margin-top: 40px;
+}
+.TempRemote .blockBtn .button {
+  padding: 10px 25px;
+}
+
+/* Colors */
+.green {
+  background: #01ad01;
+}
+.lightBlue {
+  background: rgb(83, 199, 245);
+}
+.blue {
+  background: rgb(5, 21, 247);
+}
+.lightRed {
+  background: rgb(248, 147, 100);
+}
+.red {
+  background: rgb(248, 107, 107);
+}
+.deepRed {
+  background: rgb(223, 1, 1);
+}

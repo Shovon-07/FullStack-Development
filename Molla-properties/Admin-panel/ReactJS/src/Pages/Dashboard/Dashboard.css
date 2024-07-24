@@ -1,0 +1,86 @@
+.Dashboard {
+}
+.Dashboard .mainBox {
+  justify-content: space-between;
+}
+.Dashboard .left {
+  border: var(--border);
+  border-radius: 8px;
+  padding: 15px;
+  flex-basis: 70%;
+  overflow: hidden;
+}
+.Dashboard .right {
+  flex-basis: 30%;
+  flex-direction: column;
+}
+.Dashboard .right .item {
+  border: var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.Dashboard .item .tag {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation-name: animateTag;
+  animation-duration: 2s;
+}
+.Dashboard .item .tag p {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 10px 20px;
+  font-size: 0.8rem;
+}
+.Dashboard .item .tag p span {
+  width: 10px;
+  height: 10px;
+  background: red;
+  display: inline-flex;
+}
+.Dashboard .item .tag p:nth-child(1) span {
+  background: #00c49f;
+}
+.Dashboard .item .tag p:nth-child(2) span {
+  background: #ffbb28;
+}
+.Dashboard .item .tag p:nth-child(3) span {
+  background: #0088fe;
+}
+.Dashboard .item .tag p:nth-child(1) span {
+  background: #ff8042;
+}
+
+@keyframes animateTag {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.Dashboard .topContributor li {
+  border-bottom: 1px solid var(--light-3);
+  padding: 10px 0;
+}
+.Dashboard .topContributor li:last-child {
+  border-bottom: none;
+}
+.Dashboard .topContributor li .description {
+  font-size: 0.85rem;
+  margin: 5px 0;
+}
+.Dashboard .topContributor li img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

@@ -1,0 +1,78 @@
+.Home.page {
+  margin-top: 53px;
+}
+.Home .homeImg {
+  width: 100%;
+  /* max-width: 2500px; */
+  min-height: 500px;
+  justify-content: center;
+  position: relative;
+}
+.Home .homeImg .bannerImg {
+  width: 100%;
+  height: 500px;
+}
+.Home .homeImg .lazy-load-image-background {
+  width: 100%;
+  height: 500px;
+}
+.Home .overlay {
+  background: #0000008c;
+  opacity: 1;
+  z-index: 1;
+}
+.Home .homeImg .txt {
+  color: var(--light-1);
+  font-weight: 500;
+  width: 60%;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+}
+.Home .homeImg .txt h1 {
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+.Home .homeImg .txt p {
+  line-height: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 0.03rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 475px) {
+  .Home .homeImg .txt h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .Home .homeImg .txt p {
+    font-size: 1rem;
+    line-height: 1.8rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .Home.page {
+    margin-top: 49px;
+  }
+  .Home .ourMisionVision .card {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 325px) {
+  .Home .homeImg .txt h1 {
+    font-size: 1.8rem;
+  }
+  .Home .homeImg .txt p {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+}
+@media screen and (max-width: 295px) {
+  .Home .homeImg .txt h1 {
+    font-size: 1.3rem;
+  }
+}

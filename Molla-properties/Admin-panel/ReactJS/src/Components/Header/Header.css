@@ -1,0 +1,121 @@
+.Header {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  background: var(--dark-2);
+  box-shadow: var(--shadow);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  transition: var(--trans);
+  z-index: 999;
+  position: fixed;
+  top: 0;
+}
+.Header .profile {
+  font-weight: 500;
+}
+.Header .profile img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+.Header .profile span {
+  font-weight: 600;
+}
+.Header .profile .arrow {
+  transform: rotate(90deg);
+  margin-top: 3px;
+  transition: var(--trans);
+}
+.Header .profile .arrow.fliped {
+  transform: rotate(-90deg);
+}
+
+.Header .dorwpDownParent {
+  position: relative;
+}
+.Header .dorpdown {
+  background: var(--dark-2);
+  box-shadow: var(--shadow);
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: var(--trans);
+  top: 47px;
+  right: 0;
+  z-index: 998;
+}
+.Header .dorpdown .dropdownTitle {
+  color: var(--light-2);
+  padding: 5px 20px;
+  border-bottom: 1px solid var(--light-3);
+}
+.Header .dorpdown li a:hover {
+  background: var(--dark-1);
+}
+.Header .dorpdown.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.Header .notification .dorpdown,
+.Header .message .dorpdown {
+  width: 300px;
+  top: 42px;
+}
+.Header .notification .dorpdown li,
+.Header .message .dorpdown li {
+  padding: 10px 20px;
+}
+.Header .notification .dorpdown li:hover,
+.Header .message .dorpdown li:hover {
+  background: var(--dark-1);
+}
+.Header .notification .dorpdown li .msgUserPic,
+.Header .message .dorpdown li .msgUserPic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.Header .notification .dorpdown li .description,
+.Header .message .dorpdown li .description {
+  margin: 7px 0;
+  font-size: 0.9rem;
+}
+
+.Header .profile .dorpdown li a {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+.Header .notification .dorpdown li a {
+  width: 100%;
+  display: block;
+}
+.Header .message .dorpdown li a {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.count {
+  background: red;
+  color: #fff;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: -9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

@@ -1,0 +1,29 @@
+.AddProject .formTop {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.AddProject .formTop .inputWrapper {
+  flex-basis: 45%;
+}
+.AddProject .inputWrapper input,
+.AddProject .formTop select {
+  width: 100%;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: var(--border);
+  outline: none;
+  background: transparent;
+  color: var(--light-1);
+}
+/* .AddProject .inputWrapper input[type="file"] {
+  background-color: var(--light-1);
+  padding: 5px;
+  border: none;
+} */
+.AddProject .formTop select {
+  color: var(--light-2);
+}
+.AddProject .formTop select option {
+  background: var(--dark-2);
+  color: var(--light-1);
+}

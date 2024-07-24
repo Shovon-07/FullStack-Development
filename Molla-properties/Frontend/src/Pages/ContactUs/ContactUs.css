@@ -1,0 +1,105 @@
+.ContactUs .contactWrapper {
+  justify-content: space-between;
+  gap: 50px;
+}
+.ContactUs .left {
+  flex-basis: 40%;
+  justify-content: center;
+  flex-direction: column;
+}
+.ContactUs .left .scanNow {
+  justify-content: center;
+  flex-direction: column;
+}
+.ContactUs .left .scanNow h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.ContactUs .left .scanNow img {
+  width: 300px;
+  height: auto;
+}
+.ContactUs .left .contactInfo {
+  margin-top: 50px;
+}
+.ContactUs .left .contactInfo h1 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+.ContactUs .left .contactInfo p {
+  line-height: 1.5rem;
+}
+
+.ContactUs .right {
+  flex-basis: 60%;
+  justify-content: center;
+}
+.ContactUs .right form {
+  width: 70%;
+  max-width: 500px;
+  min-width: 350px;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  padding: 25px 35px;
+  border-radius: 8px;
+}
+.ContactUs .right form h3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+.ContactUs .right .inputWrapper {
+  width: 100%;
+}
+.ContactUs .right .inputWrapper input,
+.ContactUs .right .inputWrapper textarea {
+  color: var(--dark-2);
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1rem;
+  outline: none;
+  border: var(--border);
+  background: transparent;
+  border-radius: 5px;
+  resize: vertical;
+}
+.ContactUs .right .btn {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/*___ Responsive ____*/
+@media screen and (max-width: 930px) {
+  .ContactUs .left .contactInfo h1 {
+    font-size: 1.3rem;
+  }
+}
+@media screen and (max-width: 830px) {
+  .ContactUs .right,
+  .ContactUs .left {
+    flex-basis: 100%;
+  }
+  .ContactUs .left .scanNow img {
+    width: 200px;
+  }
+  .ContactUs .left .contactInfo h1 {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 780px) {
+  .ContactUs .contactWrapper {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .ContactUs .right form {
+    width: 100%;
+    padding: 25px 20px;
+  }
+  .ContactUs .right,
+  .ContactUs .right {
+    width: 100%;
+  }
+}
