@@ -1,10 +1,15 @@
 <?php
 
+//___ Basic panel Controllers ___//
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\PlotController;
 use App\Http\Controllers\CommonController;
 // use App\Http\Controllers\LatestProjectController;
 use App\Http\Controllers\ContactUsController;
+
+//___ Admin panel Controllers ___//
+use App\Http\Controllers\AdminController\AuthController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -48,4 +53,14 @@ Route::prefix("/")->group(function () {
 });
 
 //___ Admin panel ___//
-// Route::prefix("/admin")->group(function () { });
+Route::prefix("/admin")->group(function () {
+    Route::controller(AuthController::class)->group(function () {
+        //___ Before Authentiction ___//
+        Route::post("/signup","SignUp");
+        Route::post("/signin","SignIn");
+
+        Route::middleware(["ApiKeyVerify"])->group(function () {
+            Route::get("/home", "Home");
+        });
+    });
+});

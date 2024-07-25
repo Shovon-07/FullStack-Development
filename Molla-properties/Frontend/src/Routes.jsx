@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 //___ Layout ___//
-import GuestLayout from "./Layouts/GuestLayout";
+import WebLayout from "./Layouts/WebLayout";
 
 //___ Pages ___//
 import Home from "./Pages/Home/Home";
@@ -15,12 +15,13 @@ import NewsAndEvent from "./Pages/NewsAndEvent/NewsAndEvent";
 import Blog from "./Pages/Blog/Blog";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import ProjectView from "./Pages/ProjectView/ProjectView";
+
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
-    element: <GuestLayout />,
+    element: <WebLayout />,
     children: [
       { path: "/", element: <Home /> },
       {
