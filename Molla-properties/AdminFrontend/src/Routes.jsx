@@ -14,7 +14,6 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Documentation from "./Pages/Documentation/Documentation";
 import Profle from "./Pages/Profle/Profle";
 
-import ToDo_App from "./Pages/ToDo-App/ToDo_App";
 import Home from "./Pages/Home/Home";
 import AddProject from "./Pages/AddProject/AddProject";
 import AddPlot from "./Pages/AddPlot/AddPlot";
@@ -36,7 +35,6 @@ const Routes = createBrowserRouter([
       { path: "/documentation", element: <Documentation /> },
       { path: "/profile", element: <Profle /> },
       { path: "/settings", element: <h3 className="pageTitle">Settings</h3> },
-      { path: "/todo-app", element: <ToDo_App /> },
       { path: "/home", element: <Home /> },
       { path: "/add-project", element: <AddProject /> },
       { path: "/add-plot", element: <AddPlot /> },

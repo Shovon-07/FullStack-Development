@@ -45,11 +45,6 @@ const SideNav = (props) => {
         <div className="menuSection">
           <h4 className="menuTitle">Sections</h4>
           <li>
-            <NavLink to="/todo-app">
-              <FaClipboardList size={18} /> ToDo App
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/home">
               <FaClipboardList size={18} /> Home
             </NavLink>

@@ -7,6 +7,8 @@
   position: fixed;
   right: 10px;
   bottom: 70px;
+  background: var(--green);
+  padding: 7px;
 }
 
 .toDoAppBox {
@@ -32,9 +34,9 @@
   opacity: 1;
   z-index: 1000;
   width: 50%;
-  max-width: 600px;
-  height: 100%;
-  max-height: 80%;
+  /* max-width: 600px; */
+  height: 80%;
+  /* max-height: 80%; */
 }
 .toDoAppBox .closeIcon {
   justify-content: flex-end;
@@ -83,12 +85,13 @@
   background: var(--dark-2);
   position: sticky;
   top: 0;
-  padding: 20px;
+  padding: 10px 20px;
+  transition: var(--trans);
 }
 .ToDoApp .todoBox .addTask {
   background: #dddddd;
   border-radius: 50px;
-  margin: 15px 0 25px 0;
+  margin: 10px 0 10px 0;
 }
 .ToDoApp .todoBox .addTask input {
   width: 80%;
@@ -114,8 +117,8 @@
 }
 
 .ToDo_Items {
-  margin-bottom: 200px;
-  padding: 20px;
+  /* margin-bottom: 10px; */
+  padding: 10px 20px;
 }
 .ToDo_Items .toDoOnlyOneItems {
   flex: 1;

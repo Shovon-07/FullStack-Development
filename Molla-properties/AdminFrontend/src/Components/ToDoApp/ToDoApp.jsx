@@ -5,11 +5,8 @@ import ToDo_Items from "./ToDo_Items";
 //___ Icons ___//
 import { IoCalculatorSharp } from "react-icons/io5";
 import { LuExpand } from "react-icons/lu";
-import { FaMinus } from "react-icons/fa6";
+import { FaRegCalendarPlus, FaMinus } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
-
-//___ Images ___//
-import ToDo_Icon from "../../assets/Images/Icons/todo_icon.png";
 
 //___ Css ___//
 import "./ToDoApp.css";
@@ -80,7 +77,7 @@ const ToDoApp = () => {
     <div className="ToDoApp">
       <Tooltip title="ToDo App">
         <div className="iconBox d-flex c_pointer" onClick={handleActive}>
-          <IoCalculatorSharp size={25} />
+          <FaRegCalendarPlus size={25} />
         </div>
       </Tooltip>
 
@@ -119,7 +116,7 @@ const ToDoApp = () => {
           <div className="addTaskBox">
             <div className="d-flex gap-10">
               <div>
-                <img src={ToDo_Icon} alt="" className="todoIcon" />
+                <FaRegCalendarPlus size={20} />
               </div>
               <div>
                 <h3 className="toDoTitle">To-Do List</h3>
