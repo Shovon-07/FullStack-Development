@@ -7,6 +7,7 @@ import Loader from "../Components/Loader/Loader";
 const SideNav = lazy(() => import("../Components/SideNav/SideNav"));
 const Header = lazy(() => import("../Components/Header/Header"));
 const Footer = lazy(() => import("../Components/Footer/Footer"));
+const FixedToDo = lazy(() => import("../Components/ToDoApp/ToDoApp"));
 
 const AdminLayout = () => {
   const { token, SetToken, setUser } = UseAuthContext();
@@ -37,6 +38,9 @@ const AdminLayout = () => {
         </Suspense>
         <div className="content">
           <Outlet context={[toggleVal]} />
+          <Suspense fallback={<Loader />}>
+            <FixedToDo />
+          </Suspense>
         </div>
         <Suspense fallback={<Loader />}>
           <Footer />

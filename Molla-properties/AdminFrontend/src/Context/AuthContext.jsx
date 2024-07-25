@@ -18,6 +18,7 @@ export const AuthContext = ({ children }) => {
       localStorage.setItem("USER", user);
     } else {
       localStorage.removeItem("ACCESS_TOKEN");
+      localStorage.removeItem("USER");
     }
   };
 

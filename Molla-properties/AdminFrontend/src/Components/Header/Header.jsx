@@ -63,7 +63,7 @@ const Header = (props) => {
 
   const handleLogout = () => {
     SetToken(null);
-    // setUser(null);
+    localStorage.removeItem("USER");
   };
 
   return (

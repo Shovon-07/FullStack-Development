@@ -54,14 +54,10 @@ const Form = (props) => {
         };
         AxiosClient.post("/signin", payload).then((res) => {
           if (res.data.status == true) {
-            toast.success(res.data.message);
-            setInterval(() => {
-              SetToken(res.data.userName, res.data.token);
-            }, 1000);
-            // SetToken(res.data.userName, res.data.token);
+            // toast.success(res.data.message);
+            SetToken(res.data.userName, res.data.token);
           } else {
             toast.error(res.data.message);
-            // console.log(res.data.message);
           }
         });
       }
