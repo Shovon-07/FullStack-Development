@@ -1,8 +1,8 @@
-.AddPlot .plotInput .addRemBtn {
+.AddPlot .addRemBtn {
   width: 100%;
   justify-content: center;
 }
-.AddPlot .plotInput .addRemBtn button {
+.AddPlot .addRemBtn button {
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
