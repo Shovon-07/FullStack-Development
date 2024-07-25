@@ -3,7 +3,6 @@ import Tooltip from "@mui/material/Tooltip";
 import ToDo_Items from "./ToDo_Items";
 
 //___ Icons ___//
-import { IoCalculatorSharp } from "react-icons/io5";
 import { LuExpand } from "react-icons/lu";
 import { FaRegCalendarPlus, FaMinus } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
