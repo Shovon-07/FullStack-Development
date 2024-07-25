@@ -1,11 +1,16 @@
 .AddProject .formTop {
-  flex-wrap: wrap;
   justify-content: center;
+  flex-direction: column;
 }
 .AddProject .formTop .inputWrapper {
-  flex-basis: 45%;
+  width: 100%;
+}
+.AddProject .formTop .inputWrapper label {
+  margin-bottom: 10px;
+  display: inline-block;
 }
 .AddProject .inputWrapper input,
+.AddProject .inputWrapper textarea,
 .AddProject .formTop select {
   width: 100%;
   font-size: 1rem;
@@ -14,12 +19,14 @@
   outline: none;
   background: transparent;
   color: var(--light-1);
+  resize: vertical;
 }
-/* .AddProject .inputWrapper input[type="file"] {
+.AddProject .inputWrapper input[type="file"] {
   background-color: var(--light-1);
   padding: 5px;
   border: none;
-} */
+  width: 50%;
+}
 .AddProject .formTop select {
   color: var(--light-2);
 }

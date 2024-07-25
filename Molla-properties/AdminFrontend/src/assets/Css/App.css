@@ -15,7 +15,8 @@
   color: var(--light-2);
   transition: var(--trans);
 }
-input:focus::placeholder {
+input:focus::placeholder,
+textarea:focus::placeholder {
   padding-left: 10px;
 }
 

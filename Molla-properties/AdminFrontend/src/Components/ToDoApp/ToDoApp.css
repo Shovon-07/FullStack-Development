@@ -6,7 +6,7 @@
   justify-content: center;
   position: fixed;
   right: 10px;
-  bottom: 70px;
+  bottom: 50%;
   background: var(--green);
   padding: 7px;
 }

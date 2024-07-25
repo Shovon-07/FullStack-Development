@@ -14,7 +14,7 @@ const FixedToDo = () => {
   const [openTodo, setOpenToDo] = useState(false);
 
   return (
-    <div className="FixedComponents" style={{ bottom: "50px" }}>
+    <div className="FixedComponents" style={{ bottom: "0px" }}>
       <MdEditDocument
         size={20}
         style={{ background: "var(--green)" }}
