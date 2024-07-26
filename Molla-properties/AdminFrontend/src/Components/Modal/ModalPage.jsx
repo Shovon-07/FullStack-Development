@@ -87,37 +87,55 @@ const ModalPage = (props) => {
   const handleForm = async (e) => {
     e.preventDefault();
     try {
-      const payload = {
-        id: id,
-        title: inputValue.title,
-        project_name: inputValue.project_name,
-        developer: inputValue.developer,
-        location: inputValue.location,
-        land_area: inputValue.land_area,
-        total_plot: inputValue.total_plot,
-        contact_no: inputValue.contact_no,
-        project_map: inputValue.project_map,
-        features: inputValue.features,
+      const formData = new FormData();
+      formData.append("title", inputValue.title);
+      formData.append("project_name", inputValue.project_name);
+      formData.append("developer", inputValue.developer);
+      formData.append("location", inputValue.location);
+      formData.append("land_area", inputValue.land_area);
+      formData.append("total_plot", inputValue.total_plot);
+      formData.append("contact_no", inputValue.contact_no);
+      formData.append("contact_no", inputValue.contact_no);
+      formData.append("project_map", inputValue.project_map);
+      formData.append("features", inputValue.features);
+      formData.append("status", inputValue.status);
 
-        project_image: inputValue.project_image,
-        gallery_image: inputValue.gallery_image,
+      // var files = e.target[0].files;
+      // for (let i = 0; i < files.length; i++) {
+      //   formData.append("gallery_image[]", gallery_image[1]);
+      // }
 
-        status: inputValue.status,
-      };
+      // const payload = {
+      //   id: id,
+      //   // title: inputValue.title,
+      //   // project_name: inputValue.project_name,
+      //   // developer: inputValue.developer,
+      //   // location: inputValue.location,
+      //   // land_area: inputValue.land_area,
+      //   // total_plot: inputValue.total_plot,
+      //   // contact_no: inputValue.contact_no,
+      //   // project_map: inputValue.project_map,
+      //   // features: inputValue.features,
+
+      //   // project_image: inputValue.project_image,
+      //   // gallery_image: inputValue.gallery_image,
+
+      //   status: inputValue.status,
+      // };
       setLoader(true);
-      await AxiosClient.post(api, payload).then((response) => {
-        if (response.data.status == true) {
-          handleClose();
-          setLoader(false);
-          // setRelodeTable((prev) => !prev);
-        } else {
-          handleClose();
-          setLoader(false);
-          alert("You don't add duplicate data !");
-        }
-      });
-      console.log(payload);
-      setLoader(false);
+      // await AxiosClient.post(api, formData).then((response) => {
+      //   if (response.data.status == true) {
+      //     handleClose();
+      //     setLoader(false);
+      //     // setRelodeTable((prev) => !prev);
+      //   } else {
+      //     handleClose();
+      //     setLoader(false);
+      //     alert("You don't add duplicate data !");
+      //   }
+      // });
+      console.log(formData);
+      // setLoader(false);
     } catch (error) {
       console.error(error);
     }
