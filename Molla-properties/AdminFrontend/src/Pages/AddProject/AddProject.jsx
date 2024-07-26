@@ -48,21 +48,77 @@ const AddProject = () => {
   // Input For modal
   const inputFieldsForAddProjects = [
     {
-      field: "name",
+      field: "title",
       type: "text",
-      placeholder: "Enter material name",
+      label: "Title",
+      placeholder: "Enter project title",
       className: "inputBox",
     },
     {
-      field: "stock",
+      field: "project_name",
       type: "text",
-      placeholder: "Enter initial meters available",
+      label: "Project name",
+      placeholder: "Enter project name",
       className: "inputBox",
     },
     {
-      field: "price",
+      field: "developer",
       type: "text",
-      placeholder: "Enter buy price",
+      label: "Developer",
+      placeholder: "Enter developer name",
+      className: "inputBox",
+    },
+    {
+      field: "location",
+      type: "text",
+      label: "Location",
+      placeholder: "Enter location",
+      className: "inputBox",
+    },
+    {
+      field: "land_area",
+      type: "text",
+      label: "Land area",
+      placeholder: "Enter land area",
+      className: "inputBox",
+    },
+    {
+      field: "total_plot",
+      type: "text",
+      label: "Total plot",
+      placeholder: "Enter total plot",
+      className: "inputBox",
+    },
+    {
+      field: "contact_no",
+      type: "text",
+      label: "Contact no",
+      placeholder: "Enter contact no",
+      className: "inputBox",
+    },
+    {
+      field: "project_map",
+      type: "text",
+      label: "Project map",
+      placeholder: "Enter project map",
+      className: "inputBox",
+    },
+    {
+      field: "features",
+      type: "text",
+      placeholder: "Features",
+      className: "inputBox",
+    },
+    {
+      field: "project_image",
+      type: "file",
+      label: "Project image",
+      className: "inputBox",
+    },
+    {
+      field: "gallery_image",
+      type: "file",
+      label: "Gallery image",
       className: "inputBox",
     },
   ];
@@ -82,58 +138,6 @@ const AddProject = () => {
   return (
     <div className="AddProject">
       <h3 className="pageTitle">Add Project</h3>
-      {/* <form>
-        <div className="formTop d-flex gap-30">
-          <div className="inputWrapper">
-            <input type="text" placeholder="Title" />
-          </div>
-          <div className="inputWrapper">
-            <input type="text" placeholder="Project name" />
-          </div>
-          <div className="inputWrapper">
-            <input type="text" placeholder="Developer" />
-          </div>
-          <div className="inputWrapper">
-            <input type="text" placeholder="Location" />
-          </div>
-          <div className="inputWrapper">
-            <input type="text" placeholder="Land area" />
-          </div>
-          <div className="inputWrapper">
-            <input type="text" placeholder="Total plot" />
-          </div>
-          <div className="inputWrapper">
-            <input type="text" placeholder="Contact no" />
-          </div>
-          <div className="inputWrapper">
-            <input type="text" placeholder="Project map" />
-          </div>
-          <div className="inputWrapper">
-            <input type="text" placeholder="Total plot" />
-          </div>
-          <div className="inputWrapper">
-            <select name="" id="">
-              <option value="" defaultChecked>
-                Project type
-              </option>
-              <option value="">Ongoing</option>
-              <option value="">Completed</option>
-              <option value="">Upcoming</option>
-            </select>
-          </div>
-          <div className="inputWrapper">
-            <textarea name="" placeholder="Features" rows="5"></textarea>
-          </div>
-          <div className="inputWrapper" style={{ textAlign: "center" }}>
-            <label>Main image</label> <br />
-            <input type="file" placeholder="Project image" />
-          </div>
-          <div className="inputWrapper" style={{ textAlign: "center" }}>
-            <label>Gallery image</label> <br />
-            <input type="file" placeholder="Project image" />
-          </div>
-        </div>
-      </form> */}
       {/* For go to top */}
       <input
         type="file"

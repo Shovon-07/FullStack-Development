@@ -1,4 +1,5 @@
 import React, { useState, lazy, Suspense } from "react";
+import { useOutletContext } from "react-router-dom";
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
 const Box = lazy(() => import("@mui/material/Box"));
 const Modal = lazy(() => import("@mui/material/Modal"));
@@ -27,6 +28,7 @@ import AxiosClient from "../../assets/Js/AxiosClient";
 import Loader from "../Loader/Loader";
 
 const ModalPage = (props) => {
+  const [setLoader] = useOutletContext();
   const {
     id,
     slug,
@@ -45,13 +47,18 @@ const ModalPage = (props) => {
   const handleClose = () => setOpen(false);
 
   const [inputValue, setInputValue] = useState({
-    name: "1",
-    stock: "2",
-    price: "3",
-    deduct: "4",
-
-    delivery_date: "",
-    collection: viewDue,
+    title: "",
+    project_name: "",
+    developer: "",
+    location: "",
+    land_area: "",
+    total_plot: "",
+    contact_no: "",
+    project_map: "",
+    features: "",
+    project_image: "",
+    gallery_image: "",
+    status: "",
   });
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -59,29 +66,38 @@ const ModalPage = (props) => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    const data = {
+    const payload = {
       id: id,
-      name: inputValue.name,
-      stock: inputValue.stock,
-      price: inputValue.price,
-      deduct: inputValue.deduct,
-      // priceForStock: 0,
-      delivery_date: inputValue.deliveryDate,
-      collection: viewDue,
+      title: inputValue.title,
+      project_name: inputValue.project_name,
+      developer: inputValue.developer,
+      location: inputValue.location,
+      land_area: inputValue.land_area,
+      total_plot: inputValue.total_plot,
+      contact_no: inputValue.contact_no,
+      project_map: inputValue.project_map,
+      features: inputValue.features,
+
+      project_image: inputValue.project_image,
+      gallery_image: inputValue.gallery_image,
+
+      status: inputValue.status,
     };
-    setLoading(true);
+    // setLoader(true);
     try {
-      http.post(api, data).then((response) => {
-        if (response.data === "success") {
-          handleClose();
-          setLoading(false);
-          setRelodeTable((prev) => !prev);
-        } else {
-          handleClose();
-          setLoading(false);
-          alert("You don't add duplicate data !");
-        }
-      });
+      // http.post(api, data).then((response) => {
+      //   if (response.data === "success") {
+      //     handleClose();
+      //     setLoading(false);
+      //     setRelodeTable((prev) => !prev);
+      //   } else {
+      //     handleClose();
+      //     setLoading(false);
+      //     alert("You don't add duplicate data !");
+      //   }
+      // });
+      console.log(payload);
+      // setLoader(false);
     } catch (error) {
       console.error(error);
     }
@@ -151,6 +167,31 @@ const ModalPage = (props) => {
                         </div>
                       );
                     })}
+
+                    {slug == "Add New Project" ? (
+                      <div style={{ width: "100%", marginTop: "28px" }}>
+                        <p
+                          style={{
+                            color: "var(--light-1)",
+                            fontSize: "1rem",
+                            marginBottom: "8px",
+                            cursor: "default",
+                          }}
+                        >
+                          Status
+                        </p>
+                        <select name="status" id="" onChange={handleInputValue}>
+                          <option value="0" defaultChecked>
+                            Project type
+                          </option>
+                          <option value="1">Ongoing</option>
+                          <option value="2">Completed</option>
+                          <option value="3">Upcoming</option>
+                        </select>
+                      </div>
+                    ) : (
+                      ""
+                    )}
 
                     <div>
                       <button type="submit" className="button c_pointer">
