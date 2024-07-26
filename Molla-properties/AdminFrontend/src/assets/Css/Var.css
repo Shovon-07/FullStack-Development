@@ -14,7 +14,8 @@
   --yellow: #d3ad04;
   --orange: #f37a38;
 
-  /* --temp-remote-bg: #e0dddd; */
+  --overlay: #1f1f1fb3;
+  --card-overlay: #1f1f1f78;
 
   --border: 1px solid var(--light-2);
   --shadow: 1px 1px 10px #0b0b0b;

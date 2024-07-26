@@ -74,6 +74,17 @@ a {
   margin-bottom: 20px;
   color: var(--dark-2);
   text-align: center;
+  width: max-content;
+  position: relative;
+}
+.pageTitle::after {
+  content: "";
+  width: 70%;
+  height: 3px;
+  background: var(--main-color);
+  position: absolute;
+  left: 0;
+  bottom: -10px;
 }
 .overlay {
   width: 100%;
