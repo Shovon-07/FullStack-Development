@@ -28,7 +28,7 @@ import AxiosClient from "../../assets/Js/AxiosClient";
 import Loader from "../Loader/Loader";
 
 const ModalPage = (props) => {
-  const [setLoader] = useOutletContext();
+  // const [setLoader] = useOutletContext();
   const {
     id,
     slug,
@@ -38,7 +38,7 @@ const ModalPage = (props) => {
     api,
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
-    setLoading,
+    setLoader,
     setRelodeTable,
   } = props;
 
@@ -83,8 +83,8 @@ const ModalPage = (props) => {
 
       status: inputValue.status,
     };
-    // setLoader(true);
     try {
+      setLoader(true);
       // http.post(api, data).then((response) => {
       //   if (response.data === "success") {
       //     handleClose();
@@ -97,7 +97,7 @@ const ModalPage = (props) => {
       //   }
       // });
       console.log(payload);
-      // setLoader(false);
+      setLoader(false);
     } catch (error) {
       console.error(error);
     }

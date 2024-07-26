@@ -153,7 +153,7 @@ const AddProject = () => {
             ModalOpenBtnTitle="Add New Project"
             ModalOpenBtnStyle={modalOpenBtnStyle}
             api={"/store"}
-            // setLoading={setLoading}
+            setLoader={setLoader}
             // setRelodeTable={setRelodeTable}
           />
         </Suspense>
