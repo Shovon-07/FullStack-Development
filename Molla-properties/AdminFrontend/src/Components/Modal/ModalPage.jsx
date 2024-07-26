@@ -1,5 +1,5 @@
 import React, { useState, lazy, Suspense } from "react";
-import { useOutletContext } from "react-router-dom";
+// import { useOutletContext } from "react-router-dom";
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
 const Box = lazy(() => import("@mui/material/Box"));
 const Modal = lazy(() => import("@mui/material/Modal"));
@@ -47,6 +47,7 @@ const ModalPage = (props) => {
   const handleClose = () => setOpen(false);
 
   const [inputValue, setInputValue] = useState({
+    id: "",
     title: "",
     project_name: "",
     developer: "",
@@ -66,38 +67,38 @@ const ModalPage = (props) => {
 
   const handleForm = async (e) => {
     e.preventDefault();
-    const payload = {
-      id: id,
-      title: inputValue.title,
-      project_name: inputValue.project_name,
-      developer: inputValue.developer,
-      location: inputValue.location,
-      land_area: inputValue.land_area,
-      total_plot: inputValue.total_plot,
-      contact_no: inputValue.contact_no,
-      project_map: inputValue.project_map,
-      features: inputValue.features,
-
-      project_image: inputValue.project_image,
-      gallery_image: inputValue.gallery_image,
-
-      status: inputValue.status,
-    };
     try {
+      const payload = {
+        id: id,
+        title: inputValue.title,
+        project_name: inputValue.project_name,
+        developer: inputValue.developer,
+        location: inputValue.location,
+        land_area: inputValue.land_area,
+        total_plot: inputValue.total_plot,
+        contact_no: inputValue.contact_no,
+        project_map: inputValue.project_map,
+        features: inputValue.features,
+
+        project_image: inputValue.project_image,
+        gallery_image: inputValue.gallery_image,
+
+        status: inputValue.status,
+      };
       setLoader(true);
-      // http.post(api, data).then((response) => {
-      //   if (response.data === "success") {
-      //     handleClose();
-      //     setLoading(false);
-      //     setRelodeTable((prev) => !prev);
-      //   } else {
-      //     handleClose();
-      //     setLoading(false);
-      //     alert("You don't add duplicate data !");
-      //   }
-      // });
+      await AxiosClient.post(api, payload).then((response) => {
+        if (response.data.status == true) {
+          handleClose();
+          setLoader(false);
+          // setRelodeTable((prev) => !prev);
+        } else {
+          handleClose();
+          setLoader(false);
+          alert("You don't add duplicate data !");
+        }
+      });
       console.log(payload);
-      setLoader(false);
+      // setLoader(false);
     } catch (error) {
       console.error(error);
     }
@@ -154,7 +155,7 @@ const ModalPage = (props) => {
                             <input
                               type={items.type}
                               name={items.field}
-                              required
+                              // required
                               placeholder={`${items.placeholder}`}
                               onChange={handleInputValue}
                               value={

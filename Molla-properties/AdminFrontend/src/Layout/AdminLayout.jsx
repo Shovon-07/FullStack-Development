@@ -13,6 +13,7 @@ const AdminLayout = () => {
   const { token, SetToken, setUser } = UseAuthContext();
   const [toggleVal, setToggleVal] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("THEME"));
+  const [loader, setLoader] = useState(false);
 
   const userName = localStorage.getItem("USER");
 
@@ -37,7 +38,8 @@ const AdminLayout = () => {
           />
         </Suspense>
         <div className="content">
-          <Outlet context={[toggleVal]} />
+          {loader && <Loader />}
+          <Outlet context={[toggleVal, setLoader]} />
           <Suspense fallback={<Loader />}>
             <FixedToDo />
           </Suspense>

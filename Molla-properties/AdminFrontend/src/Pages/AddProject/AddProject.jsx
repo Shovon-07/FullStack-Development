@@ -244,6 +244,14 @@ const AddProject = () => {
           Load More
         </button>
       </div>
+
+      <button
+        onClick={() => {
+          setLoader(true);
+        }}
+      >
+        Loading
+      </button>
     </div>
   );
 };
