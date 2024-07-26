@@ -26,31 +26,31 @@
 .modalContent {
   padding: 0 20px 20px 20px;
 }
-.modalTitle {
+.modalContent .modalTitle {
   margin-bottom: 20px;
   font-size: 18px;
   text-transform: capitalize;
   color: #fff;
 }
-form {
+.modalContent form {
   width: 100%;
   height: 100%;
   justify-content: center;
   flex-direction: column;
 }
-form label {
+.modalContent form label {
   color: #dddddd;
   display: inline-block;
   margin: 25px 0 8px 0;
   font-size: 14px;
 }
-form .inputBox,
-form select {
+.modalContent form .inputBox,
+.modalContent form select {
   border: 1px solid #7d7d7d;
   width: 100%;
   border-radius: 5px;
 }
-form .inputBox input {
+.modalContent form .inputBox input {
   border: none;
   outline: none;
   color: #fff;
@@ -60,10 +60,10 @@ form .inputBox input {
   height: 100%;
   padding: 10px 15px;
 }
-form .inputBox input:focus::placeholder {
+.modalContent form .inputBox input:focus::placeholder {
   padding-left: 10px;
 }
-form select {
+.modalContent form select {
   background: var(--dark-1);
   color: var(--light-1);
   font-size: 1rem;
@@ -71,10 +71,22 @@ form select {
   outline: none;
   padding: 10px 15px;
 }
-form .inputBox input .showHide {
+.modalContent form .showImages {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.modalContent form .showImages img {
+  width: 80px;
+  height: 80px;
+}
+.modalContent form .inputBox input .showHide {
   cursor: pointer;
 }
-form .button {
+.modalContent form .button {
   padding: 10px 30px;
   margin-top: 40px;
   font-weight: 700;
@@ -86,24 +98,24 @@ form .button {
   outline: none;
   text-transform: capitalize;
 }
-form .button:hover {
+.modalContent form .button:hover {
   background: transparent;
   color: var(--light-1);
 }
-.form-bottom {
+.modalContent .form-bottom {
   width: 100%;
   justify-content: flex-end;
   margin-top: 20px;
 }
-.form-bottom a {
+.modalContent .form-bottom a {
   font-size: 14px;
   transition: 0.3s all ease;
   color: #f8f9fa;
 }
-.form-bottom a.hover {
+.modalContent .form-bottom a.hover {
   color: #fd5203;
 }
-.form-bottom span {
+.modalContent .form-bottom span {
   margin: 0 10px;
   color: #f8f9fa;
 }

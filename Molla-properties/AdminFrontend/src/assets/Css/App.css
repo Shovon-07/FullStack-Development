@@ -80,7 +80,7 @@ a {
 }
 .pageTitle::after {
   content: "";
-  width: 70%;
+  width: 100%;
   height: 3px;
   background: var(--main-color);
   position: absolute;

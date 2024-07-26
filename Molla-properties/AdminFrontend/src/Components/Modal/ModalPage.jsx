@@ -65,6 +65,25 @@ const ModalPage = (props) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
+  // Gallery image
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const handleImageInput = (e) => {
+    setSelectedFiles([]);
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+      setSelectedFiles((prevImg) => prevImg.concat(filesArray));
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    }
+  };
+
+  const renderPhotos = (source) => {
+    return source.map((photo) => {
+      return <img src={photo} key={photo}></img>;
+    });
+  };
+
   const handleForm = async (e) => {
     e.preventDefault();
     try {
@@ -141,7 +160,11 @@ const ModalPage = (props) => {
                 <div className="modalContent">
                   <h3 className="modalTitle">{slug}</h3>
                   <input type="text" value={id} className="d-none" readOnly />
-                  <form className="d-flex" onSubmit={handleForm}>
+                  <form
+                    className="d-flex"
+                    onSubmit={handleForm}
+                    encType="multipart/form-data"
+                  >
                     {inputFields.map((items, index) => {
                       return (
                         <div style={{ width: "100%" }} key={index}>
@@ -164,6 +187,27 @@ const ModalPage = (props) => {
                       );
                     })}
 
+                    {/* Gallery image */}
+                    {slug == "Add New Project" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Gallery image</label>
+                        <div className="inputBox">
+                          <input
+                            type="file"
+                            name="gallery_image[]"
+                            multiple
+                            onChange={handleImageInput}
+                          />
+                        </div>
+                        <div className="showImages">
+                          {renderPhotos(selectedFiles)}
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
+                    {/* Project status select */}
                     {slug == "Add New Project" ? (
                       <div style={{ width: "100%", marginTop: "28px" }}>
                         <p

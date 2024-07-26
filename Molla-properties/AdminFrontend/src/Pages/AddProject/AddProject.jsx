@@ -115,12 +115,6 @@ const AddProject = () => {
       label: "Project image",
       className: "inputBox",
     },
-    {
-      field: "gallery_image",
-      type: "file",
-      label: "Gallery image",
-      className: "inputBox",
-    },
   ];
 
   // Style for modal
