@@ -5,11 +5,14 @@ const AuthInfo = createContext({
   token: null,
   setUser: () => {},
   SetToken: () => {},
+  loader: "",
+  setLoader: () => {},
 });
 
 export const AuthContext = ({ children }) => {
   const [user, setUser] = useState(localStorage.getItem("USER"));
   const [token, setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+  const [loader, setLoader] = useState(false);
 
   const SetToken = (user, token) => {
     setToken(token);
@@ -23,7 +26,9 @@ export const AuthContext = ({ children }) => {
   };
 
   return (
-    <AuthInfo.Provider value={{ user, token, setUser, SetToken }}>
+    <AuthInfo.Provider
+      value={{ user, token, setUser, SetToken, loader, setLoader }}
+    >
       {children}
     </AuthInfo.Provider>
   );

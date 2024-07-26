@@ -10,10 +10,9 @@ const Footer = lazy(() => import("../Components/Footer/Footer"));
 const FixedToDo = lazy(() => import("../Components/ToDoApp/ToDoApp"));
 
 const AdminLayout = () => {
-  const { token, SetToken, setUser } = UseAuthContext();
+  const { token, SetToken, setUser, loader, setLoader } = UseAuthContext();
   const [toggleVal, setToggleVal] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("THEME"));
-  const [loader, setLoader] = useState(false);
 
   const userName = localStorage.getItem("USER");
 
@@ -39,7 +38,7 @@ const AdminLayout = () => {
         </Suspense>
         <div className="content">
           {loader && <Loader />}
-          <Outlet context={[toggleVal, setLoader]} />
+          <Outlet context={[toggleVal]} />
           <Suspense fallback={<Loader />}>
             <FixedToDo />
           </Suspense>

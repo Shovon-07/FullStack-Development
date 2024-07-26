@@ -1,5 +1,7 @@
 import React, { useState, lazy, Suspense } from "react";
-// import { useOutletContext } from "react-router-dom";
+import { UseAuthContext } from "../../Context/AuthContext";
+
+//___ Modals utilities ___//
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
 const Box = lazy(() => import("@mui/material/Box"));
 const Modal = lazy(() => import("@mui/material/Modal"));
@@ -23,22 +25,20 @@ const style = {
   p: 4,
 };
 
-//___ Additional utility ___//
+//___ Additional utilities ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
 import Loader from "../Loader/Loader";
 
 const ModalPage = (props) => {
-  // const [setLoader] = useOutletContext();
+  const { setLoader } = UseAuthContext();
+
   const {
     id,
     slug,
-    viewPrice,
-    viewDue,
     inputFields,
     api,
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
-    setLoader,
     setRelodeTable,
   } = props;
 
@@ -98,7 +98,7 @@ const ModalPage = (props) => {
         }
       });
       console.log(payload);
-      // setLoader(false);
+      setLoader(false);
     } catch (error) {
       console.error(error);
     }
@@ -141,11 +141,6 @@ const ModalPage = (props) => {
                 <div className="modalContent">
                   <h3 className="modalTitle">{slug}</h3>
                   <input type="text" value={id} className="d-none" readOnly />
-                  <p
-                    className={`${
-                      viewPrice == null ? "d-none" : "color-light"
-                    }`}
-                  >{`Current price = ${viewPrice}`}</p>
                   <form className="d-flex" onSubmit={handleForm}>
                     {inputFields.map((items, index) => {
                       return (
