@@ -1,6 +1,6 @@
 // export const imgPath = "https://molla-properties.com/backend/public/Images/AdminPanel/";
 export const imgPath =
-  "http://localhost:8000/backend/public/Images/AdminPanel/";
+  "http://localhost:8000/backend/public/Images/";
 
 export const userData = [
   {

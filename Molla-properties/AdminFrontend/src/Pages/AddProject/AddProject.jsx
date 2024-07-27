@@ -17,19 +17,19 @@ const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 const AddProject = () => {
   const [setLoader] = useOutletContext();
 
-  const [completedProjectData, setCompletedProjectData] = useState([]);
+  const [projectData, setProjectData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(2);
-  const slicedData = completedProjectData.slice(0, numberOfElement);
+  const slicedData = projectData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  // const getCompletedProjectData = async () => {
+  // const getProjectData = async () => {
   //   try {
   //     setLoader(true);
   //     await AxiosClient.get("/completed-project").then((res) => {
   //       if (res.data.status == true) {
-  //         setCompletedProjectData(res.data.data);
+  //         setProjectData(res.data.data);
   //         setLoader(false);
   //       } else {
   //         console.log(res.data.msg);
@@ -42,7 +42,7 @@ const AddProject = () => {
   // };
 
   // useEffect(() => {
-  //   getCompletedProjectData();
+  //   getProjectData();
   // }, []);
 
   // Input For modal
@@ -123,6 +123,17 @@ const AddProject = () => {
     marginBottom: "50px",
   };
 
+  const [projectImage, setProjectImage] = useState();
+  const HandleSubmitForm = (e) => {
+    e.preventDefault();
+    const payload = new FormData();
+    payload.append("project_image", projectImage);
+    AxiosClient.post("/add-project", payload).then((res) => {
+      console.log(res.data.msg);
+      console.log(projectImage);
+    });
+  };
+
   return (
     <div className="AddProject">
       <h3 className="pageTitle">Add Project</h3>
@@ -133,7 +144,7 @@ const AddProject = () => {
         style={{ height: "0", opacity: 0, pointerEvents: "none" }}
       />
       {/* For go to top */}
-      <div className="modalBtn" style={{ textAlign: "end" }}>
+      {/* <div className="modalBtn" style={{ textAlign: "end" }}>
         <Suspense fallback={<Loader />}>
           <ModalPage
             slug={"Add New Project"}
@@ -145,7 +156,7 @@ const AddProject = () => {
             // setRelodeTable={setRelodeTable}
           />
         </Suspense>
-      </div>
+      </div> */}
       <div className="cardWrapper d-flex gap-20">
         <div className="card">
           <LazyLoadImage
@@ -224,22 +235,24 @@ const AddProject = () => {
         })} */}
       </div>
 
+      <form encType="multipart/form-data" onSubmit={HandleSubmitForm}>
+        <input
+          type="file"
+          name="project_image"
+          id=""
+          onChange={(e) => setProjectImage(e.target.files[0])}
+        />
+        <button type="submit">submit</button>
+      </form>
+
       <div
-        className={completedProjectData.length > 2 ? "" : "d-none"}
+        className={projectData.length > 2 ? "" : "d-none"}
         style={{ textAlign: "center", marginTop: "100px" }}
       >
         <button className="btn" onClick={loadMore}>
           Load More
         </button>
       </div>
-
-      <button
-        onClick={() => {
-          setLoader(true);
-        }}
-      >
-        Loading
-      </button>
     </div>
   );
 };

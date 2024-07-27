@@ -39,7 +39,7 @@ const ModalPage = (props) => {
     api,
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
-    setRelodeTable,
+    // setRelodeTable,
   } = props;
 
   const [open, setOpen] = React.useState(false);
@@ -57,8 +57,6 @@ const ModalPage = (props) => {
     contact_no: "",
     project_map: "",
     features: "",
-    // project_image: "",
-    // gallery_image: "",
     status: "",
   });
   const handleInputValue = (e) => {
@@ -73,30 +71,30 @@ const ModalPage = (props) => {
   //___ Project image end ___//
 
   //___ Gallery image start ___//
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const handleImageInput = (e) => {
-    setSelectedFiles([]);
-    if (e.target.files) {
-      const filesArray = Array.from(e.target.files).map((file) =>
-        URL.createObjectURL(file)
-      );
-      setSelectedFiles((prevImg) => prevImg.concat(filesArray));
-      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
-    }
-  };
+  // const [selectedFiles, setSelectedFiles] = useState([]);
+  // const handleImageInput = (e) => {
+  //   setSelectedFiles([]);
+  //   if (e.target.files) {
+  //     const filesArray = Array.from(e.target.files).map((file) =>
+  //       URL.createObjectURL(file)
+  //     );
+  //     setSelectedFiles((prevImg) => prevImg.concat(filesArray));
+  //     Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+  //   }
+  // };
 
-  const renderPhotos = (source) => {
-    return source.map((photo) => {
-      return <img src={photo} key={photo}></img>;
-    });
-  };
+  // const renderPhotos = (source) => {
+  //   return source.map((photo) => {
+  //     return <img src={photo} key={photo}></img>;
+  //   });
+  // };
   //___ Gallery image end ___//
 
   const HandleForm = async (e) => {
     e.preventDefault();
     try {
       const payload = new FormData();
-      payload.append("id", inputValue.id);
+      // payload.append("id", inputValue.id);
       payload.append("title", inputValue.title);
       payload.append("project_name", inputValue.project_name);
       payload.append("developer", inputValue.developer);
@@ -106,7 +104,7 @@ const ModalPage = (props) => {
       payload.append("contact_no", inputValue.contact_no);
       payload.append("project_map", inputValue.project_map);
       payload.append("features", inputValue.features);
-      payload.append("status", inputValue.status);
+      payload.append("project_status", inputValue.status);
       payload.append("project_image", projectImage);
 
       // var files = e.target[0].files;
@@ -170,11 +168,11 @@ const ModalPage = (props) => {
                   <h3 className="modalTitle">{slug}</h3>
                   <input type="text" value={id} className="d-none" readOnly />
                   <form
+                  encType="multipart/form-data"
                     className="d-flex"
                     onSubmit={(e) => {
                       HandleForm(e);
                     }}
-                    encType="multipart/form-data"
                   >
                     {inputFields.map((items, index) => {
                       return (
@@ -205,7 +203,7 @@ const ModalPage = (props) => {
                         <div className="inputBox">
                           <input
                             type="file"
-                            // name="project_image"
+                            name="project_image"
                             onChange={handleProjectImageInput}
                           />
                         </div>
@@ -218,7 +216,7 @@ const ModalPage = (props) => {
                     )}
 
                     {/* Gallery image */}
-                    {api == "/add-project" ? (
+                    {/* {api == "/add-project" ? (
                       <div style={{ width: "100%" }}>
                         <label>Gallery image</label>
                         <div className="inputBox">
@@ -235,7 +233,7 @@ const ModalPage = (props) => {
                       </div>
                     ) : (
                       ""
-                    )}
+                    )} */}
 
                     {/* Project status select */}
                     {api == "/add-project" ? (
@@ -251,9 +249,7 @@ const ModalPage = (props) => {
                           Status
                         </p>
                         <select name="status" id="" onChange={handleInputValue}>
-                          <option value="0" defaultChecked>
-                            Project type
-                          </option>
+                          <option value="0">Project type</option>
                           <option value="1">Ongoing</option>
                           <option value="2">Completed</option>
                           <option value="3">Upcoming</option>
