@@ -9,6 +9,7 @@ use App\Http\Controllers\ContactUsController;
 
 //___ Admin panel Controllers ___//
 use App\Http\Controllers\AdminController\AuthController;
+use App\Http\Controllers\AdminController\ProductController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -56,11 +57,15 @@ Route::prefix("/")->group(function () {
 Route::prefix("/admin")->group(function () {
     Route::controller(AuthController::class)->group(function () {
         //___ Before Authentiction ___//
-        Route::post("/signup","SignUp");
-        Route::post("/signin","SignIn");
+        Route::post("/signup", "SignUp");
+        Route::post("/signin", "SignIn");
+    });
 
+    Route::controller(ProductController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home", "Home");
+            Route::post("/add-project", "AddProject");
         });
     });
+
 });

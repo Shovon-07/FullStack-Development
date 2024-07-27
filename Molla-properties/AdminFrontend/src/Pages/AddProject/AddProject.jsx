@@ -109,12 +109,6 @@ const AddProject = () => {
       placeholder: "Features",
       className: "inputBox",
     },
-    {
-      field: "project_image",
-      type: "file",
-      label: "Project image",
-      className: "inputBox",
-    },
   ];
 
   // Style for modal
@@ -146,7 +140,7 @@ const AddProject = () => {
             inputFields={inputFieldsForAddProjects}
             ModalOpenBtnTitle="Add New Project"
             ModalOpenBtnStyle={modalOpenBtnStyle}
-            api={"/store"}
+            api={"/add-project"}
             setLoader={setLoader}
             // setRelodeTable={setRelodeTable}
           />

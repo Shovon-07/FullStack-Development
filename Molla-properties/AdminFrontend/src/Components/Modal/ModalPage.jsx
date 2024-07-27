@@ -57,15 +57,22 @@ const ModalPage = (props) => {
     contact_no: "",
     project_map: "",
     features: "",
-    project_image: "",
-    gallery_image: "",
+    // project_image: "",
+    // gallery_image: "",
     status: "",
   });
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
-  // Gallery image
+  //___ Project image start ___//
+  const [projectImage, setProjectImage] = useState();
+  const handleProjectImageInput = (e) => {
+    setProjectImage(e.target.files[0]);
+  };
+  //___ Project image end ___//
+
+  //___ Gallery image start ___//
   const [selectedFiles, setSelectedFiles] = useState([]);
   const handleImageInput = (e) => {
     setSelectedFiles([]);
@@ -83,59 +90,43 @@ const ModalPage = (props) => {
       return <img src={photo} key={photo}></img>;
     });
   };
+  //___ Gallery image end ___//
 
-  const handleForm = async (e) => {
+  const HandleForm = async (e) => {
     e.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append("title", inputValue.title);
-      formData.append("project_name", inputValue.project_name);
-      formData.append("developer", inputValue.developer);
-      formData.append("location", inputValue.location);
-      formData.append("land_area", inputValue.land_area);
-      formData.append("total_plot", inputValue.total_plot);
-      formData.append("contact_no", inputValue.contact_no);
-      formData.append("contact_no", inputValue.contact_no);
-      formData.append("project_map", inputValue.project_map);
-      formData.append("features", inputValue.features);
-      formData.append("status", inputValue.status);
+      const payload = new FormData();
+      payload.append("id", inputValue.id);
+      payload.append("title", inputValue.title);
+      payload.append("project_name", inputValue.project_name);
+      payload.append("developer", inputValue.developer);
+      payload.append("location", inputValue.location);
+      payload.append("land_area", inputValue.land_area);
+      payload.append("total_plot", inputValue.total_plot);
+      payload.append("contact_no", inputValue.contact_no);
+      payload.append("project_map", inputValue.project_map);
+      payload.append("features", inputValue.features);
+      payload.append("status", inputValue.status);
+      payload.append("project_image", projectImage);
 
       // var files = e.target[0].files;
       // for (let i = 0; i < files.length; i++) {
-      //   formData.append("gallery_image[]", gallery_image[1]);
+      //   formData.append("file[]", files[1]);
       // }
 
-      // const payload = {
-      //   id: id,
-      //   // title: inputValue.title,
-      //   // project_name: inputValue.project_name,
-      //   // developer: inputValue.developer,
-      //   // location: inputValue.location,
-      //   // land_area: inputValue.land_area,
-      //   // total_plot: inputValue.total_plot,
-      //   // contact_no: inputValue.contact_no,
-      //   // project_map: inputValue.project_map,
-      //   // features: inputValue.features,
-
-      //   // project_image: inputValue.project_image,
-      //   // gallery_image: inputValue.gallery_image,
-
-      //   status: inputValue.status,
-      // };
       setLoader(true);
-      // await AxiosClient.post(api, formData).then((response) => {
-      //   if (response.data.status == true) {
-      //     handleClose();
-      //     setLoader(false);
-      //     // setRelodeTable((prev) => !prev);
-      //   } else {
-      //     handleClose();
-      //     setLoader(false);
-      //     alert("You don't add duplicate data !");
-      //   }
-      // });
-      console.log(formData);
-      // setLoader(false);
+      await AxiosClient.post(api, payload).then((response) => {
+        if (response.data.status == true) {
+          handleClose();
+          setLoader(false);
+          // setRelodeTable((prev) => !prev);
+          // console.log(response.data.msg);
+        } else {
+          handleClose();
+          setLoader(false);
+          alert("You don't add duplicate data !");
+        }
+      });
     } catch (error) {
       console.error(error);
     }
@@ -180,7 +171,9 @@ const ModalPage = (props) => {
                   <input type="text" value={id} className="d-none" readOnly />
                   <form
                     className="d-flex"
-                    onSubmit={handleForm}
+                    onSubmit={(e) => {
+                      HandleForm(e);
+                    }}
                     encType="multipart/form-data"
                   >
                     {inputFields.map((items, index) => {
@@ -205,14 +198,33 @@ const ModalPage = (props) => {
                       );
                     })}
 
+                    {/* Project image */}
+                    {api == "/add-project" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Project image</label>
+                        <div className="inputBox">
+                          <input
+                            type="file"
+                            name="project_image"
+                            onChange={handleProjectImageInput}
+                          />
+                        </div>
+                        {/* <div className="showImages">
+                          {renderPhotos(selectedFiles)}
+                        </div> */}
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
                     {/* Gallery image */}
-                    {slug == "Add New Project" ? (
+                    {api == "/add-project" ? (
                       <div style={{ width: "100%" }}>
                         <label>Gallery image</label>
                         <div className="inputBox">
                           <input
                             type="file"
-                            name="gallery_image[]"
+                            name="file[]" //gallery_image[]
                             multiple
                             onChange={handleImageInput}
                           />
@@ -226,7 +238,7 @@ const ModalPage = (props) => {
                     )}
 
                     {/* Project status select */}
-                    {slug == "Add New Project" ? (
+                    {api == "/add-project" ? (
                       <div style={{ width: "100%", marginTop: "28px" }}>
                         <p
                           style={{

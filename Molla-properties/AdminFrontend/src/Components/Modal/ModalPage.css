@@ -1,9 +1,10 @@
 .css-15nnif {
   background: #222222 !important;
   padding: 20px !important;
+  width: 70% !important;
+  height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 100%;
 }
 .css-15nnif::-webkit-scrollbar {
   display: none;
