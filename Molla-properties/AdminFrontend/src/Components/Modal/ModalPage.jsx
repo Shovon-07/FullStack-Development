@@ -120,7 +120,7 @@ const ModalPage = (props) => {
           handleClose();
           setLoader(false);
           // setRelodeTable((prev) => !prev);
-          // console.log(response.data.msg);
+          console.log(response.data.msg);
         } else {
           handleClose();
           setLoader(false);
@@ -205,7 +205,7 @@ const ModalPage = (props) => {
                         <div className="inputBox">
                           <input
                             type="file"
-                            name="project_image"
+                            // name="project_image"
                             onChange={handleProjectImageInput}
                           />
                         </div>
