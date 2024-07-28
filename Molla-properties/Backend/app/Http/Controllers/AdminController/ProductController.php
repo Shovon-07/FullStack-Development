@@ -35,13 +35,23 @@ class ProductController extends Controller
             // $features = $request->input("features");
             // $project_status = $request->input("project_status");
 
-            $project_image = $request->file("project_image");
-            $projectImgName = "Projects/" . time() . "_" . md5(time()) . "_" . $project_image->getClientOriginalName() . "." . $project_image->getClientOriginalExtension();
+            // if($request->file("project_image")) {
+            //     $project_image = $request->file("project_image");
+            // $projectImgName = "Projects/" . time() . "_" . md5(time()) . "_" . $project_image->getClientOriginalName() . "." . $project_image->getClientOriginalExtension();
 
-            $project_image->move("Images/Projects", $projectImgName);
+            // $project_image->move("Images/Projects", $projectImgName);
 
-            // $ = $request->input("");
-            return response()->json(["status" => true, "msg" => $projectImgName]);
+            // // $ = $request->input("");
+            // return response()->json(["status" => true, "msg" => $projectImgName]);
+            // } else {
+            //     return response()->json(["status" => true, "msg" => "Error ocoured!"]);
+            // }
+
+            $project_name = $request->input("project_name");
+            $project_image = $request->file("project_image")->store("Projects");
+            
+            return response()->json(["status" => true,"Project name" => $project_name, "Project image" => $project_image]);
+
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);
         }

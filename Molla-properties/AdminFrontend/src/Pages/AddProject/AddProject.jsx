@@ -123,16 +123,16 @@ const AddProject = () => {
     marginBottom: "50px",
   };
 
-  const [projectImage, setProjectImage] = useState();
-  const HandleSubmitForm = (e) => {
-    e.preventDefault();
-    const payload = new FormData();
-    payload.append("project_image", projectImage);
-    AxiosClient.post("/add-project", payload).then((res) => {
-      console.log(res.data.msg);
-      console.log(projectImage);
-    });
-  };
+  // const [projectImage, setProjectImage] = useState();
+  // const HandleSubmitForm = (e) => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("project_image", projectImage);
+  //   AxiosClient.post("/add-project", formData).then((res) => {
+  //     console.log(res.data.msg);
+  //     console.log(projectImage);
+  //   });
+  // };
 
   return (
     <div className="AddProject">
@@ -235,7 +235,7 @@ const AddProject = () => {
         })} */}
       </div>
 
-      <form encType="multipart/form-data" onSubmit={HandleSubmitForm}>
+      {/* <form encType="multipart/form-data" onSubmit={HandleSubmitForm}>
         <input
           type="file"
           name="project_image"
@@ -243,7 +243,7 @@ const AddProject = () => {
           onChange={(e) => setProjectImage(e.target.files[0])}
         />
         <button type="submit">submit</button>
-      </form>
+      </form> */}
 
       <div
         className={projectData.length > 2 ? "" : "d-none"}
