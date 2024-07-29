@@ -67,6 +67,7 @@ const ModalPage = (props) => {
   const [projectImage, setProjectImage] = useState();
   const handleProjectImageInput = (e) => {
     setProjectImage(e.target.files[0]);
+    console.log(e.target.files[0]);
   };
   //___ Project image end ___//
 
@@ -92,28 +93,29 @@ const ModalPage = (props) => {
 
   const HandleForm = async (e) => {
     e.preventDefault();
-    try {
-      const payload = new FormData();
-      // payload.append("id", inputValue.id);
-      payload.append("title", inputValue.title);
-      payload.append("project_name", inputValue.project_name);
-      payload.append("developer", inputValue.developer);
-      payload.append("location", inputValue.location);
-      payload.append("land_area", inputValue.land_area);
-      payload.append("total_plot", inputValue.total_plot);
-      payload.append("contact_no", inputValue.contact_no);
-      payload.append("project_map", inputValue.project_map);
-      payload.append("features", inputValue.features);
-      payload.append("project_status", inputValue.status);
-      payload.append("project_image", projectImage);
+    const payload = new FormData();
+    // payload.append("id", inputValue.id);
+    payload.append("title", inputValue.title);
+    payload.append("project_name", inputValue.project_name);
+    payload.append("developer", inputValue.developer);
+    payload.append("location", inputValue.location);
+    payload.append("land_area", inputValue.land_area);
+    payload.append("total_plot", inputValue.total_plot);
+    payload.append("contact_no", inputValue.contact_no);
+    payload.append("project_map", inputValue.project_map);
+    payload.append("features", inputValue.features);
+    payload.append("project_status", inputValue.status);
+    payload.append("project_image", projectImage);
 
-      // var files = e.target[0].files;
-      // for (let i = 0; i < files.length; i++) {
-      //   formData.append("file[]", files[1]);
-      // }
+    // var files = e.target[0].files;
+    // for (let i = 0; i < files.length; i++) {
+    //   formData.append("file[]", files[1]);
+    // }
 
-      setLoader(true);
-      await AxiosClient.post(api, payload).then((response) => {
+    setLoader(true);
+
+    await AxiosClient.post(api, payload)
+      .then((response) => {
         if (response.data.status == true) {
           handleClose();
           setLoader(false);
@@ -124,10 +126,10 @@ const ModalPage = (props) => {
           setLoader(false);
           alert("You don't add duplicate data !");
         }
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
       });
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   return (
@@ -168,7 +170,7 @@ const ModalPage = (props) => {
                   <h3 className="modalTitle">{slug}</h3>
                   <input type="text" value={id} className="d-none" readOnly />
                   <form
-                  encType="multipart/form-data"
+                    encType="multipart/form-data"
                     className="d-flex"
                     onSubmit={(e) => {
                       HandleForm(e);

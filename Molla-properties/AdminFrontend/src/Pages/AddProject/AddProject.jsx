@@ -123,17 +123,6 @@ const AddProject = () => {
     marginBottom: "50px",
   };
 
-  // const [projectImage, setProjectImage] = useState();
-  // const HandleSubmitForm = (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("project_image", projectImage);
-  //   AxiosClient.post("/add-project", formData).then((res) => {
-  //     console.log(res.data.msg);
-  //     console.log(projectImage);
-  //   });
-  // };
-
   return (
     <div className="AddProject">
       <h3 className="pageTitle">Add Project</h3>
@@ -144,7 +133,7 @@ const AddProject = () => {
         style={{ height: "0", opacity: 0, pointerEvents: "none" }}
       />
       {/* For go to top */}
-      {/* <div className="modalBtn" style={{ textAlign: "end" }}>
+      <div className="modalBtn" style={{ textAlign: "end" }}>
         <Suspense fallback={<Loader />}>
           <ModalPage
             slug={"Add New Project"}
@@ -156,7 +145,7 @@ const AddProject = () => {
             // setRelodeTable={setRelodeTable}
           />
         </Suspense>
-      </div> */}
+      </div>
       <div className="cardWrapper d-flex gap-20">
         <div className="card">
           <LazyLoadImage
@@ -234,16 +223,6 @@ const AddProject = () => {
           );
         })} */}
       </div>
-
-      {/* <form encType="multipart/form-data" onSubmit={HandleSubmitForm}>
-        <input
-          type="file"
-          name="project_image"
-          id=""
-          onChange={(e) => setProjectImage(e.target.files[0])}
-        />
-        <button type="submit">submit</button>
-      </form> */}
 
       <div
         className={projectData.length > 2 ? "" : "d-none"}

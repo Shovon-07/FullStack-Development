@@ -5,52 +5,31 @@ namespace App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     public function AddProject(Request $request)
     {
         try {
-            // $request->validate([
-            //     "title" => "required",
-            //     "project_name" => "required",
-            //     "developer" => "required",
-            //     "location" => "required",
-            //     "land_area" => "required",
-            //     "total_plot" => "required",
-            //     "contact_no" => "required",
-            //     "project_map" => "required",
-            //     "features" => "required",
-            //     "status" => "required",
-            // ], ["title.required" => "Title is required", "project_name.required" => "Project name is required", "developer.required" => "Developer is required", "location.required" => "Location is required", "land_area.required" => "Land area is required", "total_plot.required" => "Total plot is required", "contact_no.required" => "Contact no is required", "project_map.required" => "Project map is required", "features.required" => "Features is required", "status.required" => "Status is required",]);
+            $request->validate([
+                'project_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:51200',
+            ]);
 
-            // $title = $request->input("title");
-            // $project_name = $request->input("project_name");
-            // $developer = $request->input("developer");
-            // $location = $request->input("location");
-            // $land_area = $request->input("land_area");
-            // $total_plot = $request->input("total_plot");
-            // $contact_no = $request->input("contact_no");
-            // $project_map = $request->input("project_map");
-            // $features = $request->input("features");
-            // $project_status = $request->input("project_status");
-
-            // if($request->file("project_image")) {
-            //     $project_image = $request->file("project_image");
-            // $projectImgName = "Projects/" . time() . "_" . md5(time()) . "_" . $project_image->getClientOriginalName() . "." . $project_image->getClientOriginalExtension();
-
-            // $project_image->move("Images/Projects", $projectImgName);
-
-            // // $ = $request->input("");
-            // return response()->json(["status" => true, "msg" => $projectImgName]);
-            // } else {
-            //     return response()->json(["status" => true, "msg" => "Error ocoured!"]);
-            // }
-
+            $title = $request->input("title");
             $project_name = $request->input("project_name");
+            $developer = $request->input("developer");
+            $location = $request->input("location");
+            $land_area = $request->input("land_area");
+            $total_plot = $request->input("total_plot");
+            $contact_no = $request->input("contact_no");
+            $project_map = $request->input("project_map");
+            $features = $request->input("features");
+            $project_status = $request->input("project_status");
+
             $project_image = $request->file("project_image")->store("Projects");
-            
-            return response()->json(["status" => true,"Project name" => $project_name, "Project image" => $project_image]);
+
+            return response()->json(["status" => true,"msg"=>$request->all()]);
 
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);
