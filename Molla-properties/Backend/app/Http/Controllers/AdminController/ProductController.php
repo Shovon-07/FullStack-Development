@@ -39,19 +39,20 @@ class ProductController extends Controller
     public function AddGalleryImage(Request $request)
     {
         try {
-            $request->validate([
-                'gallery_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            ]);
+            // $request->validate([
+            //     'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+            // ]);
 
-            if ($request->hasFile('gallery_image')) {
-                foreach ($request->file('gallery_image') as $image) {
-                    $images = $image->store("GalleryImages");
-                    
-                    // Image::create(['filename' => $images]);
-                }
-            }
+            // $images = array();
+            // if ($files = $request->file('images')) {
+            //     foreach ($files as $file) {
+            //         $name = $file->getClientOriginalName();
+            //         $file->store("GalleryImages");
+            //         $images[] = $name;
+            //     }
+            // }
+            return response()->json(["status" => true, "msg" => "images"]);
 
-            return response()->json(["status" => true, "msg" => $images]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);
         }

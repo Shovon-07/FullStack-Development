@@ -74,21 +74,23 @@ const ModalPage = (props) => {
   //___ Add Gallery Page Start ___//
   const [selectedFiles, setSelectedFiles] = useState([]);
   const handleGalleryImageInput = (e) => {
-    setSelectedFiles([]);
-    if (e.target.files) {
-      const filesArray = Array.from(e.target.files).map((file) =>
-        URL.createObjectURL(file)
-      );
-      setSelectedFiles((prevImg) => prevImg.concat(filesArray));
-      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
-    }
+    // setSelectedFiles([]);
+    // if (e.target.files) {
+    //   const filesArray = Array.from(e.target.files).map((file) =>
+    //     URL.createObjectURL(file)
+    //   );
+    //   setSelectedFiles((prevImg) => prevImg.concat(filesArray));
+    //   Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    // }
+
+    setSelectedFiles(e.target.files);
   };
 
-  const renderPhotos = (source) => {
-    return source.map((photo) => {
-      return <img src={photo} key={photo}></img>;
-    });
-  };
+  // const renderPhotos = (source) => {
+  //   return source.map((photo) => {
+  //     return <img src={photo} key={photo}></img>;
+  //   });
+  // };
   //___ Add Gallery Page End ___//
 
   const HandleForm = async (e) => {
@@ -113,22 +115,21 @@ const ModalPage = (props) => {
           if (response.data.status == true) {
             handleClose();
             setLoader(false);
-            // setRelodeTable((prev) => !prev);
             console.log(response.data.msg);
           } else {
             handleClose();
             setLoader(false);
-            alert("You don't add duplicate data !");
+            console.log(response.data.msg);
           }
         })
         .catch((e) => {
           console.log(`Error = ${e}`);
         });
     } else if (api == "/add-gallery-img") {
+      // var files = e.target[0].files;
       const payload = new FormData();
-      var files = e.target[0].files;
-      for (let i = 0; i < files.length; i++) {
-        formData.append("gallery_image[]", files[1]);
+      for (let i = 0; i < selectedFiles.length; i++) {
+        payload.append(`gallery_image[${i}]`, selectedFiles[1]);
       }
 
       setLoader(true);
@@ -142,7 +143,7 @@ const ModalPage = (props) => {
           } else {
             handleClose();
             setLoader(false);
-            alert("You don't add duplicate data !");
+            console.log(response.data.msg);
           }
         })
         .catch((e) => {
@@ -289,9 +290,9 @@ const ModalPage = (props) => {
                             onChange={handleGalleryImageInput}
                           />
                         </div>
-                        <div className="showImages">
+                        {/* <div className="showImages">
                           {renderPhotos(selectedFiles)}
-                        </div>
+                        </div> */}
                       </div>
                     ) : (
                       ""
