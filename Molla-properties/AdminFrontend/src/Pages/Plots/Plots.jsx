@@ -26,7 +26,7 @@ const Plots = () => {
   };
 
   return (
-    <div className="AddPlot">
+    <div className="Plots">
       <h3 className="pageTitle">Add plot</h3>
       {inputList.map((x, i) => {
         return (

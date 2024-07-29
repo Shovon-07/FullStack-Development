@@ -15,6 +15,9 @@
 }
 .addBtn {
   box-shadow: var(--shadow);
+  text-transform: capitalize;
+  background: var(--main-color) !important;
+  font-size: 1rem !important;
 }
 .modalCloseBtn {
   text-align: right;

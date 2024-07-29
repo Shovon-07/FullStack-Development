@@ -35,4 +35,25 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => $exception]);
         }
     }
+
+    public function AddGalleryImage(Request $request)
+    {
+        try {
+            $request->validate([
+                'gallery_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            ]);
+
+            if ($request->hasFile('gallery_image')) {
+                foreach ($request->file('gallery_image') as $image) {
+                    $images = $image->store("GalleryImages");
+                    
+                    // Image::create(['filename' => $images]);
+                }
+            }
+
+            return response()->json(["status" => true, "msg" => $images]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => $exception]);
+        }
+    }
 }

@@ -56,6 +56,14 @@ return [
             'throw' => false,
         ],
 
+    //     'GalleryImage' => [
+    //     'driver' => 'local',
+    //     'root' => storage_path('app/GalleryImage'),
+    //     'url' => env('APP_URL') . '/storage',
+    //     'visibility' => 'GalleryImage',
+    // ],
+
+
     ],
 
     /*
@@ -71,6 +79,7 @@ return [
 
     'links' => [
         public_path('Projects') => storage_path('app/Projects'),
+        public_path('GalleryImages') => storage_path('app/GalleryImages'),
     ],
 
 ];
