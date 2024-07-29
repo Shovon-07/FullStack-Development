@@ -29,7 +29,7 @@ class ProductController extends Controller
 
             $project_image = $request->file("project_image")->store("Projects");
 
-            return response()->json(["status" => true,"msg"=>$request->all()]);
+            return response()->json(["status" => true, "msg" => $request->all()]);
 
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);

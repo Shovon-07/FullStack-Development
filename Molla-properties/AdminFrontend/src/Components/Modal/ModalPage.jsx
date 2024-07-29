@@ -72,23 +72,23 @@ const ModalPage = (props) => {
   //___ Project image end ___//
 
   //___ Gallery image start ___//
-  // const [selectedFiles, setSelectedFiles] = useState([]);
-  // const handleImageInput = (e) => {
-  //   setSelectedFiles([]);
-  //   if (e.target.files) {
-  //     const filesArray = Array.from(e.target.files).map((file) =>
-  //       URL.createObjectURL(file)
-  //     );
-  //     setSelectedFiles((prevImg) => prevImg.concat(filesArray));
-  //     Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
-  //   }
-  // };
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const handleGalleryImageInput = (e) => {
+    setSelectedFiles([]);
+    if (e.target.files) {
+      const filesArray = Array.from(e.target.files).map((file) =>
+        URL.createObjectURL(file)
+      );
+      setSelectedFiles((prevImg) => prevImg.concat(filesArray));
+      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
+    }
+  };
 
-  // const renderPhotos = (source) => {
-  //   return source.map((photo) => {
-  //     return <img src={photo} key={photo}></img>;
-  //   });
-  // };
+  const renderPhotos = (source) => {
+    return source.map((photo) => {
+      return <img src={photo} key={photo}></img>;
+    });
+  };
   //___ Gallery image end ___//
 
   const HandleForm = async (e) => {
@@ -180,7 +180,7 @@ const ModalPage = (props) => {
                       return (
                         <div style={{ width: "100%" }} key={index}>
                           <label>{items.label}</label>
-                          <div className="inputBox">
+                          <div className={items.className}>
                             <input
                               type={items.type}
                               name={items.field}
@@ -209,33 +209,10 @@ const ModalPage = (props) => {
                             onChange={handleProjectImageInput}
                           />
                         </div>
-                        {/* <div className="showImages">
-                          {renderPhotos(selectedFiles)}
-                        </div> */}
                       </div>
                     ) : (
                       ""
                     )}
-
-                    {/* Gallery image */}
-                    {/* {api == "/add-project" ? (
-                      <div style={{ width: "100%" }}>
-                        <label>Gallery image</label>
-                        <div className="inputBox">
-                          <input
-                            type="file"
-                            name="file[]" //gallery_image[]
-                            multiple
-                            onChange={handleImageInput}
-                          />
-                        </div>
-                        <div className="showImages">
-                          {renderPhotos(selectedFiles)}
-                        </div>
-                      </div>
-                    ) : (
-                      ""
-                    )} */}
 
                     {/* Project status select */}
                     {api == "/add-project" ? (
@@ -256,6 +233,26 @@ const ModalPage = (props) => {
                           <option value="2">Completed</option>
                           <option value="3">Upcoming</option>
                         </select>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
+                    {/* Gallery image */}
+                    {api == "/add-gallery-img" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Gallery image</label>
+                        <div className="inputBox">
+                          <input
+                            type="file"
+                            name="file[]" //gallery_image[]
+                            multiple
+                            onChange={handleGalleryImageInput}
+                          />
+                        </div>
+                        <div className="showImages">
+                          {renderPhotos(selectedFiles)}
+                        </div>
                       </div>
                     ) : (
                       ""

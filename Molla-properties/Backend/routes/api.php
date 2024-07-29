@@ -65,6 +65,7 @@ Route::prefix("/admin")->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home", "Home");
             Route::post("/add-project", "AddProject");
+            Route::post("/add-gallery-img", "AddGalleryImage");
         });
     });
 

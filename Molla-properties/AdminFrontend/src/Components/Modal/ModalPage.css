@@ -81,8 +81,8 @@
   gap: 30px;
 }
 .modalContent form .showImages img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: auto;
 }
 .modalContent form .inputBox input .showHide {
   cursor: pointer;
