@@ -72,7 +72,7 @@ const ModalPage = (props) => {
   //___ Project image end ___//
 
   //___ Add Gallery Page Start ___//
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [files, setFiles] = useState();
   const handleGalleryImageInput = (e) => {
     // setSelectedFiles([]);
     // if (e.target.files) {
@@ -83,7 +83,7 @@ const ModalPage = (props) => {
     //   Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
     // }
 
-    setSelectedFiles(e.target.files);
+    setFiles(e.target.files);
   };
 
   // const renderPhotos = (source) => {
@@ -128,8 +128,8 @@ const ModalPage = (props) => {
     } else if (api == "/add-gallery-img") {
       // var files = e.target[0].files;
       const payload = new FormData();
-      for (let i = 0; i < selectedFiles.length; i++) {
-        payload.append(`gallery_image[${i}]`, selectedFiles[1]);
+      for (let i = 0; i < files.length; i++) {
+        payload.append(`gallery_image[${i}]`, files[0]);
       }
 
       setLoader(true);

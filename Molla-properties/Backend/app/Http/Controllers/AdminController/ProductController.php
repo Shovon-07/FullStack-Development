@@ -44,14 +44,14 @@ class ProductController extends Controller
             // ]);
 
             // $images = array();
-            // if ($files = $request->file('images')) {
-            //     foreach ($files as $file) {
-            //         $name = $file->getClientOriginalName();
-            //         $file->store("GalleryImages");
-            //         $images[] = $name;
-            //     }
-            // }
-            return response()->json(["status" => true, "msg" => "images"]);
+            if ($files = $request->file('gallery_image')) {
+                foreach ($files as $file) {
+                    $name = $file->getClientOriginalName();
+                    $file->store("GalleryImages");
+                    // $images[] = $name;
+                }
+            }
+            return response()->json(["status" => true, "msg" => "Image upload successfull"]);
 
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);
