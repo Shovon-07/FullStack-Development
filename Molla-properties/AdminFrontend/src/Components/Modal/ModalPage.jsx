@@ -71,7 +71,7 @@ const ModalPage = (props) => {
   };
   //___ Project image end ___//
 
-  //___ Gallery image start ___//
+  //___ Add Gallery Page Start ___//
   const [selectedFiles, setSelectedFiles] = useState([]);
   const handleGalleryImageInput = (e) => {
     setSelectedFiles([]);
@@ -89,47 +89,66 @@ const ModalPage = (props) => {
       return <img src={photo} key={photo}></img>;
     });
   };
-  //___ Gallery image end ___//
+  //___ Add Gallery Page End ___//
 
   const HandleForm = async (e) => {
     e.preventDefault();
-    const payload = new FormData();
-    // payload.append("id", inputValue.id);
-    payload.append("title", inputValue.title);
-    payload.append("project_name", inputValue.project_name);
-    payload.append("developer", inputValue.developer);
-    payload.append("location", inputValue.location);
-    payload.append("land_area", inputValue.land_area);
-    payload.append("total_plot", inputValue.total_plot);
-    payload.append("contact_no", inputValue.contact_no);
-    payload.append("project_map", inputValue.project_map);
-    payload.append("features", inputValue.features);
-    payload.append("project_status", inputValue.status);
-    payload.append("project_image", projectImage);
+    if (api == "/add-project") {
+      const payload = new FormData();
+      payload.append("title", inputValue.title);
+      payload.append("project_name", inputValue.project_name);
+      payload.append("developer", inputValue.developer);
+      payload.append("location", inputValue.location);
+      payload.append("land_area", inputValue.land_area);
+      payload.append("total_plot", inputValue.total_plot);
+      payload.append("contact_no", inputValue.contact_no);
+      payload.append("features", inputValue.features);
+      payload.append("project_map", inputValue.project_map);
+      payload.append("project_status", inputValue.status);
+      payload.append("project_image", projectImage);
 
-    // var files = e.target[0].files;
-    // for (let i = 0; i < files.length; i++) {
-    //   formData.append("file[]", files[1]);
-    // }
+      setLoader(true);
+      await AxiosClient.post(api, payload)
+        .then((response) => {
+          if (response.data.status == true) {
+            handleClose();
+            setLoader(false);
+            // setRelodeTable((prev) => !prev);
+            console.log(response.data.msg);
+          } else {
+            handleClose();
+            setLoader(false);
+            alert("You don't add duplicate data !");
+          }
+        })
+        .catch((e) => {
+          console.log(`Error = ${e}`);
+        });
+    } else if (api == "/add-gallery-img") {
+      const payload = new FormData();
+      var files = e.target[0].files;
+      for (let i = 0; i < files.length; i++) {
+        formData.append("gallery_image[]", files[1]);
+      }
 
-    setLoader(true);
-
-    await AxiosClient.post(api, payload)
-      .then((response) => {
-        if (response.data.status == true) {
-          handleClose();
-          setLoader(false);
-          // setRelodeTable((prev) => !prev);
-          console.log(response.data.msg);
-        } else {
-          handleClose();
-          setLoader(false);
-          alert("You don't add duplicate data !");
-        }
-      })
-      .catch((e) => {
-        console.log(`Error = ${e}`);
-      });
+      setLoader(true);
+      await AxiosClient.post(api, payload)
+        .then((response) => {
+          if (response.data.status == true) {
+            handleClose();
+            setLoader(false);
+            // setRelodeTable((prev) => !prev);
+            console.log(response.data.msg);
+          } else {
+            handleClose();
+            setLoader(false);
+            alert("You don't add duplicate data !");
+          }
+        })
+        .catch((e) => {
+          console.log(`Error = ${e}`);
+        });
+    }
   };
 
   return (
@@ -198,6 +217,24 @@ const ModalPage = (props) => {
                       );
                     })}
 
+                    {/* ___ Add Project Page  ___ */}
+                    {/* Project features */}
+                    {api == "/add-project" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Features</label>
+                        <div className="inputBox">
+                          <textarea
+                            name="features"
+                            id=""
+                            rows={10}
+                            onChange={handleInputValue}
+                          ></textarea>
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
                     {/* Project image */}
                     {api == "/add-project" ? (
                       <div style={{ width: "100%" }}>
@@ -237,7 +274,9 @@ const ModalPage = (props) => {
                     ) : (
                       ""
                     )}
+                    {/* ___ Add Project Page  ___ */}
 
+                    {/* ___ Add Gallery Page Start  ___ */}
                     {/* Gallery image */}
                     {api == "/add-gallery-img" ? (
                       <div style={{ width: "100%" }}>
@@ -245,7 +284,7 @@ const ModalPage = (props) => {
                         <div className="inputBox">
                           <input
                             type="file"
-                            name="file[]" //gallery_image[]
+                            name="gallery_image[]" //gallery_image[]
                             multiple
                             onChange={handleGalleryImageInput}
                           />
@@ -257,6 +296,7 @@ const ModalPage = (props) => {
                     ) : (
                       ""
                     )}
+                    {/* ___ Add Gallery Page End  ___ */}
 
                     <div>
                       <button type="submit" className="button c_pointer">

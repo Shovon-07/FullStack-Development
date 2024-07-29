@@ -52,13 +52,13 @@ const SideNav = (props) => {
 
           <li>
             <NavLink to="/add-project">
-              <FaClipboardList size={18} /> Add project
+              <FaClipboardList size={18} /> Projects
             </NavLink>
           </li>
           <li>
             <NavLink to="/add-plot">
               <FaClipboardList size={18} />
-              Add plot
+              Plots
             </NavLink>
           </li>
           <li>

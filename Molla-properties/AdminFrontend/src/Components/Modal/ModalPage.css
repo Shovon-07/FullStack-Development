@@ -47,12 +47,12 @@
 }
 .modalContent form .inputBox,
 .modalContent form select {
-  border: 1px solid #7d7d7d;
   width: 100%;
-  border-radius: 5px;
 }
-.modalContent form .inputBox input {
-  border: none;
+.modalContent form .inputBox input,
+.modalContent form .inputBox textarea {
+  border: 1px solid #7d7d7d;
+  border-radius: 5px;
   outline: none;
   color: #fff;
   background: transparent;
@@ -60,6 +60,7 @@
   width: 100%;
   height: 100%;
   padding: 10px 15px;
+  resize: vertical;
 }
 .modalContent form .inputBox input:focus::placeholder {
   padding-left: 10px;

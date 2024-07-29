@@ -1,16 +1,16 @@
-.AddPlot .addRemBtn {
+.Plots .addRemBtn {
   width: 100%;
   justify-content: center;
 }
-.AddPlot .addRemBtn button {
+.Plots .addRemBtn button {
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
 }
-.AddPlot .inputWrapper {
+.Plots .inputWrapper {
   width: 100%;
 }
-.AddPlot .inputWrapper input {
+.Plots .inputWrapper input {
   margin-bottom: 30px;
   width: 100%;
   font-size: 1rem;

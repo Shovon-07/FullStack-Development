@@ -15,9 +15,9 @@ import Documentation from "./Pages/Documentation/Documentation";
 import Profle from "./Pages/Profle/Profle";
 
 import Home from "./Pages/Home/Home";
-import AddProject from "./Pages/AddProject/AddProject";
-import AddPlot from "./Pages/AddPlot/AddPlot";
-import AddGallery from "./Pages/AddGallery/AddGallery";
+import Projects from "./Pages/Projects/Projects";
+import Plots from "./Pages/Plots/Plots";
+import Gallery from "./Pages/Gallery/Gallery";
 import HonorableClient from "./Pages/HonorableClient/HonorableClient";
 import NewsAndEvent from "./Pages/NewsAndEvent/NewsAndEvent";
 import AboutUs from "./Pages/AboutUs/AboutUs";
@@ -36,9 +36,9 @@ const Routes = createBrowserRouter([
       { path: "/profile", element: <Profle /> },
       { path: "/settings", element: <h3 className="pageTitle">Settings</h3> },
       { path: "/home", element: <Home /> },
-      { path: "/add-project", element: <AddProject /> },
-      { path: "/add-plot", element: <AddPlot /> },
-      { path: "/gallery", element: <AddGallery /> },
+      { path: "/add-project", element: <Projects /> },
+      { path: "/add-plot", element: <Plots /> },
+      { path: "/gallery", element: <Gallery /> },
       { path: "/honorable-client", element: <HonorableClient /> },
       { path: "/news-and-event", element: <NewsAndEvent /> },
       { path: "/about-us", element: <AboutUs /> },

@@ -1,19 +1,19 @@
-.AddGallery {
+.Gallery {
 }
 
-.AddGallery .galleryImgInput .addRemBtn {
+.Gallery .galleryImgInput .addRemBtn {
   width: 100%;
   justify-content: center;
 }
-.AddGallery .galleryImgInput .addRemBtn button {
+.Gallery .galleryImgInput .addRemBtn button {
   font-size: 2rem;
   color: #fff;
   cursor: pointer;
 }
-.AddGallery .inputWrapper {
+.Gallery .inputWrapper {
   width: 100%;
 }
-.AddGallery .inputWrapper input {
+.Gallery .inputWrapper input {
   margin-bottom: 30px;
   width: 100%;
   font-size: 1rem;

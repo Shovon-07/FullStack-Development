@@ -23,8 +23,8 @@ class ProductController extends Controller
             $land_area = $request->input("land_area");
             $total_plot = $request->input("total_plot");
             $contact_no = $request->input("contact_no");
-            $project_map = $request->input("project_map");
             $features = $request->input("features");
+            $project_map = $request->input("project_map");
             $project_status = $request->input("project_status");
 
             $project_image = $request->file("project_image")->store("Projects");

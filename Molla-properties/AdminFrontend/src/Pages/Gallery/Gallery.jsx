@@ -2,7 +2,7 @@ import { lazy, Suspense, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 //___ Css ___//
-import "./AddGallery.css";
+import "./Gallery.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -12,7 +12,7 @@ import Loader from "../../Components/Loader/Loader";
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
-const AddGallery = () => {
+const Gallery = () => {
   const [setLoader] = useOutletContext();
 
   const [galleryData, setGalleryData] = useState([]);
@@ -63,14 +63,14 @@ const AddGallery = () => {
   };
 
   return (
-    <div className="AddGallery">
+    <div className="Gallery">
       <h3 className="pageTitle">Gallery</h3>
       <div className="modalBtn" style={{ textAlign: "end" }}>
         <Suspense fallback={<Loader />}>
           <ModalPage
-            slug={"Add New Project"}
+            slug={"Add Gallery Image"}
             inputFields={inputFieldsForAddProjects}
-            ModalOpenBtnTitle="Add New Project"
+            ModalOpenBtnTitle="Add Gallery Image"
             ModalOpenBtnStyle={modalOpenBtnStyle}
             api={"/add-gallery-img"}
             setLoader={setLoader}
@@ -91,4 +91,4 @@ const AddGallery = () => {
   );
 };
 
-export default AddGallery;
+export default Gallery;

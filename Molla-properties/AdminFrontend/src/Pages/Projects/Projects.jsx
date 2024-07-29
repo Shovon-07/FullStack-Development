@@ -3,7 +3,7 @@ import { NavLink, useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
-import "./AddProject.css";
+import "./Projects.css";
 import "../../assets/Css/Card.css";
 
 //___ Additional utilitis ___//
@@ -14,7 +14,7 @@ import Loader from "../../Components/Loader/Loader";
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
-const AddProject = () => {
+const Projects = () => {
   const [setLoader] = useOutletContext();
 
   const [projectData, setProjectData] = useState([]);
@@ -103,12 +103,6 @@ const AddProject = () => {
       placeholder: "Enter project map",
       className: "inputBox",
     },
-    {
-      field: "features",
-      type: "text",
-      placeholder: "Features",
-      className: "inputBox",
-    },
   ];
 
   // Style for modal
@@ -124,7 +118,7 @@ const AddProject = () => {
   };
 
   return (
-    <div className="AddProject">
+    <div className="Projects">
       <h3 className="pageTitle">Add Project</h3>
       {/* For go to top */}
       <input
@@ -236,4 +230,4 @@ const AddProject = () => {
   );
 };
 
-export default AddProject;
+export default Projects;

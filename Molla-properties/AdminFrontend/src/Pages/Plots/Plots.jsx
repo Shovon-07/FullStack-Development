@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 //___ Css ___//
-import "./AddPlot.css";
+import "./Plots.css";
 
-const AddPlot = () => {
+const Plots = () => {
   const [inputList, setinputList] = useState([{ plot: "" }]);
 
   const handleinputchange = (e, index) => {
@@ -62,4 +62,4 @@ const AddPlot = () => {
   );
 };
 
-export default AddPlot;
+export default Plots;
