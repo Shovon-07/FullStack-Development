@@ -84,6 +84,7 @@ const ModalPage = (props) => {
     // }
 
     setFiles(e.target.files);
+    console.log(e.target.files);
   };
 
   // const renderPhotos = (source) => {
@@ -138,8 +139,8 @@ const ModalPage = (props) => {
           if (response.data.status == true) {
             handleClose();
             setLoader(false);
-            // setRelodeTable((prev) => !prev);
             console.log(response.data.msg);
+            console.log(payload);
           } else {
             handleClose();
             setLoader(false);
@@ -148,6 +149,8 @@ const ModalPage = (props) => {
         })
         .catch((e) => {
           console.log(`Error = ${e}`);
+          setLoader(false);
+          handleClose();
         });
     }
   };

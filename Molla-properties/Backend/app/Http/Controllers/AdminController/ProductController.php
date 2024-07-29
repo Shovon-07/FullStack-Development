@@ -39,9 +39,9 @@ class ProductController extends Controller
     public function AddGalleryImage(Request $request)
     {
         try {
-            // $request->validate([
-            //     'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
-            // ]);
+            $request->validate([
+                'gallery_image.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg'
+            ]);
 
             // $images = array();
             if ($files = $request->file('gallery_image')) {
@@ -51,10 +51,12 @@ class ProductController extends Controller
                     // $images[] = $name;
                 }
             }
-            return response()->json(["status" => true, "msg" => "Image upload successfull"]);
+            return response()->json(["status" => true, "msg" => "Image uploaded successfull"]);
 
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);
         }
     }
 }
+
+// $file->store("GalleryImages");
