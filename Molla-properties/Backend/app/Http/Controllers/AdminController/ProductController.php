@@ -13,13 +13,12 @@ class ProductController extends Controller
     //___ Projects start ___//
     public function Projects()
     {
-        $projects = Projects::get();
+        $projects = Projects::latest("id")->get();
         if ($projects) {
             return response()->json(["status" => true, "data" => $projects]);
         } else {
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
-
     }
     public function AddProject(Request $request)
     {
@@ -40,12 +39,31 @@ class ProductController extends Controller
             $project_status = $request->input("project_status");
 
             $project_image = $request->file("project_image");
-            $projectImgName = time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
+            $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
 
-            $project_image->move(public_path("/Images/Projects"), $projectImgName);
+            // // $project_image->move(public_path("/Images/Projects"), $projectImgName);
+            // return response()->json(["status" => true, "msg" => $request->all()]);
 
-            return response()->json(["status" => true, "msg" => "New project uploaded"]);
+            $store = Projects::create([
+                "Title" => $title,
+                "Project_name" => $project_name,
+                "Developer" => $developer,
+                "Location" => $location,
+                "Land_area" => $land_area,
+                "Total_plot" => $total_plot,
+                "Contact_no" => $contact_no,
+                "Features" => $features,
+                "Project_map" => $project_map,
+                "Status" => $project_status,
+                "Image" => $projectImgName,
+            ]);
 
+            if ($store) {
+                $project_image->move(public_path("/Images/Projects"), $projectImgName);
+                return response()->json(["status" => true, "msg" => "New project uploaded"]);
+            } else {
+                return response()->json(["status" => false, "msg" => "Something went wrong"]);
+            }
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);
         }

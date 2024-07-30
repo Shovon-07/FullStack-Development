@@ -4,8 +4,8 @@ import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
-import "./Projects.css";
 import "../../assets/Css/Card.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -17,7 +17,9 @@ const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Projects = () => {
   const { setLoader } = UseAuthContext();
+
   const [msg, setMsg] = useState();
+  const [relodeData,setRelodeData]=useState();
 
   const [projectData, setProjectData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(2);
@@ -41,7 +43,7 @@ const Projects = () => {
 
   useEffect(() => {
     getProjectData();
-  }, []);
+  }, [relodeData]);
 
   // Input For modal
   const inputFieldsForAddProjects = [
@@ -135,7 +137,7 @@ const Projects = () => {
             api={"/add-project"}
             setLoader={setLoader}
             setMsg={setMsg}
-            // setRelodeTable={setRelodeTable}
+            setRelodeData={setRelodeData}
           />
         </Suspense>
       </div>

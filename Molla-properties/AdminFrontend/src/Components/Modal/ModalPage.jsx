@@ -40,7 +40,7 @@ const ModalPage = (props) => {
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
     setMsg,
-    // setRelodeTable,
+    setRelodeData,
   } = props;
 
   const [open, setOpen] = React.useState(false);
@@ -58,7 +58,7 @@ const ModalPage = (props) => {
     contact_no: "",
     project_map: "",
     features: "",
-    status: "",
+    project_status: "",
   });
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -98,21 +98,13 @@ const ModalPage = (props) => {
       payload.append("contact_no", inputValue.contact_no);
       payload.append("features", inputValue.features);
       payload.append("project_map", inputValue.project_map);
-      payload.append("project_status", inputValue.status);
+      payload.append("project_status", inputValue.project_status);
       payload.append("project_image", projectImage);
 
       setLoader(true);
       await AxiosClient.post(api, payload)
         .then((response) => {
           if (response.data.status == true) {
-            handleClose();
-            setLoader(false);
-
-            setMsg(response.data.msg);
-            setInterval(() => {
-              setMsg("");
-            }, 5000);
-
             setInputValue({
               id: "",
               title: "",
@@ -124,14 +116,24 @@ const ModalPage = (props) => {
               contact_no: "",
               project_map: "",
               features: "",
-              status: "",
+              project_status: "",
             });
             setProjectImage();
+            handleClose();
+
+            setLoader(false);
+            setRelodeData(true);
+
+            setMsg(response.data.msg);
+            setInterval(() => {
+              setMsg("");
+            }, 5000);
           } else {
             handleClose();
             setLoader(false);
 
-            setMsg(response.data.msg);
+            console.log(response.data.msg);
+            // setMsg(response.data.msg);
             setInterval(() => {
               setMsg("");
             }, 5000);
@@ -139,6 +141,8 @@ const ModalPage = (props) => {
         })
         .catch((e) => {
           console.log(`Error = ${e}`);
+          setLoader(false);
+          handleClose();
         });
     } else if (api == "/add-gallery-img") {
       const payload = new FormData();
@@ -151,9 +155,11 @@ const ModalPage = (props) => {
         .then((response) => {
           if (response.data.status == true) {
             handleClose();
-            setLoader(false);
             setFiles();
             setPreviewUrls([]);
+
+            setLoader(false);
+            setRelodeData(true);
 
             setMsg(response.data.msg);
             setInterval(() => {
@@ -290,7 +296,7 @@ const ModalPage = (props) => {
                         >
                           Status
                         </p>
-                        <select name="status" id="" onChange={handleInputValue}>
+                        <select name="project_status" id="" onChange={handleInputValue}>
                           <option value="0">Project type</option>
                           <option value="1">Ongoing</option>
                           <option value="2">Completed</option>
