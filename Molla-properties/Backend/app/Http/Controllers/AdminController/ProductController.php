@@ -40,7 +40,7 @@ class ProductController extends Controller
     {
         $name = $request->input("name");
 
-        $images = $request->file("images");
+        $images = $request->file("gallery_image");
         $imageName = "";
 
         foreach ($images as $image) {

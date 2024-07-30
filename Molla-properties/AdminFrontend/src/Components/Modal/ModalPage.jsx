@@ -130,7 +130,7 @@ const ModalPage = (props) => {
       // var files = e.target[0].files;
       const payload = new FormData();
       for (let i = 0; i < files.length; i++) {
-        payload.append(`gallery_image[${i}]`, files[0]);
+        payload.append(`gallery_image[${i}]`, files[i]);
       }
 
       setLoader(true);
