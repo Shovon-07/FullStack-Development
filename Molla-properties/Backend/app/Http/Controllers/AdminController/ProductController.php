@@ -109,16 +109,41 @@ class ProductController extends Controller
             }
 
             $imageDB = $imageName;
-            $store = Gallery::create([
-                "Project_id" => $id,
-                "Gallery_img" => $imageDB
-            ]);
-            if ($store) {
-                return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
-            }
+            // $store = Gallery::create([
+            //     "Project_id" => $id,
+            //     "Gallery_img" => $imageName
+            // ]);
+            // if ($store) {
+            //     return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
+            // }
+            return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
+
+        // try {
+        //     $id = $request->input("project_id");
+        //     $images = $request->file("gallery_image");
+        //     $imageName = "";
+
+        //     foreach ($images as $image) {
+        //         $new_name = time() . "_" . rand() . "." . $image->getClientOriginalExtension();
+        //         $image->move(public_path("/Images/Gallery"), $new_name);
+        //         $imageName = $imageName . $new_name . ",";
+        //     }
+
+        //     $imageDB = $imageName;
+        //     // $store = Gallery::create([
+        //     //     "Project_id" => $id,
+        //     //     "Gallery_img" => $imageName
+        //     // ]);
+        //     // if ($store) {
+        //     //     return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
+        //     // }
+        //     return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
+        // } catch (Exception $exception) {
+        //     return response()->json(["status" => false, "msg" => $exception]);
+        // }
     }
     //___ Gallery end ___//
 }
