@@ -1,5 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from "react";
-import { NavLink, useOutletContext } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
@@ -15,7 +16,7 @@ import Loader from "../../Components/Loader/Loader";
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Projects = () => {
-  const [setLoader] = useOutletContext();
+  const { setLoader } = UseAuthContext();
   const [msg, setMsg] = useState();
 
   const [projectData, setProjectData] = useState([]);
@@ -25,26 +26,22 @@ const Projects = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  // const getProjectData = async () => {
-  //   try {
-  //     setLoader(true);
-  //     await AxiosClient.get("/completed-project").then((res) => {
-  //       if (res.data.status == true) {
-  //         setProjectData(res.data.data);
-  //         setLoader(false);
-  //       } else {
-  //         console.log(res.data.msg);
-  //         setLoader(false);
-  //       }
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const getProjectData = async () => {
+    setLoader(true);
+    await AxiosClient.get("/projects")
+      .then((res) => {
+        setProjectData(res.data.data);
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
 
-  // useEffect(() => {
-  //   getProjectData();
-  // }, []);
+  useEffect(() => {
+    getProjectData();
+  }, []);
 
   // Input For modal
   const inputFieldsForAddProjects = [
@@ -156,53 +153,7 @@ const Projects = () => {
       </p>
 
       <div className="cardWrapper d-flex gap-20">
-        <div className="card">
-          <LazyLoadImage
-            src={`${imgPath}`}
-            effect="blur"
-            wrapperProps={{
-              style: { transitionDelay: "1s" },
-            }}
-          />
-
-          <div className="txt d-flex">
-            <h3 className="title">
-              A wonderful serenity has taken possession of my entire soul
-            </h3>
-            <div style={{ textAlign: "center" }}>
-              <NavLink
-                to={`/project-details/id`}
-                className="readMoreBtn btn c_pointer"
-              >
-                Read more
-              </NavLink>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <LazyLoadImage
-            src={`${imgPath}`}
-            effect="blur"
-            wrapperProps={{
-              style: { transitionDelay: "1s" },
-            }}
-          />
-
-          <div className="txt d-flex">
-            <h3 className="title">
-              A wonderful serenity has taken possession of my entire soul
-            </h3>
-            <div style={{ textAlign: "center" }}>
-              <NavLink
-                to={`/project-details/id`}
-                className="readMoreBtn btn c_pointer"
-              >
-                Read more
-              </NavLink>
-            </div>
-          </div>
-        </div>
-        {/* {slicedData.map((items, index) => {
+        {slicedData.map((items, index) => {
           return (
             <div className="card" key={index}>
               <LazyLoadImage
@@ -230,7 +181,7 @@ const Projects = () => {
               </div>
             </div>
           );
-        })} */}
+        })}
       </div>
 
       <div

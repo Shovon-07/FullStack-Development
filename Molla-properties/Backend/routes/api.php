@@ -64,7 +64,10 @@ Route::prefix("/admin")->group(function () {
     Route::controller(ProductController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home", "Home");
+
+            Route::get("/projects","Projects");
             Route::post("/add-project", "AddProject");
+
             Route::post("/add-gallery-img", "AddGalleryImage");
         });
     });

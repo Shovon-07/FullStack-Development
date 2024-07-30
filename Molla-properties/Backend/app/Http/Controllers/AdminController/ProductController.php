@@ -4,11 +4,23 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use Exception;
+use App\Models\Projects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    //___ Projects start ___//
+    public function Projects()
+    {
+        $projects = Projects::get();
+        if ($projects) {
+            return response()->json(["status" => true, "data" => $projects]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+
+    }
     public function AddProject(Request $request)
     {
         try {
@@ -38,6 +50,7 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => $exception]);
         }
     }
+    //___ Projects end ___//
 
     public function AddGalleryImage(Request $request)
     {
@@ -50,7 +63,7 @@ class ProductController extends Controller
             $imageName = $imageName . $new_name . ",";
         }
         $imageDB = $imageName;
-        return response()->json(["status" => true, "msg" => "Image uploaded successfull","Images" => $imageDB]);
+        return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $imageDB]);
     }
 }
 

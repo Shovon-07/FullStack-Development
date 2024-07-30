@@ -45,7 +45,7 @@ a {
 .btn:hover {
   background: transparent;
   border: var(--border);
-  color: var(--dark-1);
+  color: var(--light-1);
 }
 
 .d-none {
