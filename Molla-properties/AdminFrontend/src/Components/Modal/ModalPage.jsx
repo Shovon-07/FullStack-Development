@@ -52,7 +52,6 @@ const ModalPage = (props) => {
   const handleClose = () => setOpen(false);
 
   const [inputValue, setInputValue] = useState({
-    id: "",
     title: "",
     project_name: "",
     developer: "",
@@ -135,7 +134,6 @@ const ModalPage = (props) => {
           .then((response) => {
             if (response.data.status == true) {
               setInputValue({
-                id: "",
                 title: "",
                 project_name: "",
                 developer: "",
@@ -166,7 +164,7 @@ const ModalPage = (props) => {
           .catch((e) => {
             console.log(`Error = ${e}`);
             setLoader(false);
-            handleClose();
+            // handleClose();
           });
       }
     } else if (api == "/add-gallery-img") {
@@ -186,8 +184,10 @@ const ModalPage = (props) => {
           .then((response) => {
             if (response.data.status == true) {
               handleClose();
+
               setFiles();
               setPreviewUrls([]);
+              setInputValue({ project_id: "" });
 
               setLoader(false);
               setRelodeData(true);
@@ -200,12 +200,18 @@ const ModalPage = (props) => {
             } else {
               setLoader(false);
               console.log(response.data.msg);
+              alert(
+                "Please select image file ( jpg, png, jpeg or anythin else )"
+              );
             }
           })
           .catch((e) => {
             console.log(`Error = ${e}`);
             setLoader(false);
-            handleClose();
+            // handleClose();
+            // setFiles();
+            // setPreviewUrls([]);
+            // setInputValue({ project_id: "" });
           });
       }
     }

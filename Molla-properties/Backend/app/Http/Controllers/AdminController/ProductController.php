@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
 use Exception;
 use App\Models\Projects;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -93,7 +94,7 @@ class ProductController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'project_id' => 'required',
-            'project_image.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:51200',
+            'gallery_image.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         if (!$validator->fails()) {
@@ -106,8 +107,15 @@ class ProductController extends Controller
                 $image->move(public_path("/Images/Gallery"), $new_name);
                 $imageName = $imageName . $new_name . ",";
             }
+
             $imageDB = $imageName;
-            return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
+            $store = Gallery::create([
+                "Project_id" => $id,
+                "Gallery_img" => $imageDB
+            ]);
+            if ($store) {
+                return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
+            }
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
