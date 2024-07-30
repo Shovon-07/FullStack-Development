@@ -1,8 +1,10 @@
-import { lazy, Suspense, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { UseAuthContext } from "../../Context/AuthContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
 import "./Gallery.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -13,8 +15,10 @@ import Loader from "../../Components/Loader/Loader";
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Gallery = () => {
-  const [setLoader] = useOutletContext();
-  const [msg, setMsg] = useState();
+  const { setLoader } = UseAuthContext();
+
+  const [msg, setMsg] = useState([]);
+  const [relodeData, setRelodeData] = useState();
 
   const [galleryData, setGalleryData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(2);
@@ -23,23 +27,24 @@ const Gallery = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  const [selectedFiles, setSelectedFiles] = useState([]);
-  const handleImageInput = (e) => {
-    setSelectedFiles([]);
-    if (e.target.files) {
-      const filesArray = Array.from(e.target.files).map((file) =>
-        URL.createObjectURL(file)
-      );
-      setSelectedFiles((prevImg) => prevImg.concat(filesArray));
-      Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
-    }
+  // Get project data
+  const [projectData, setProjectData] = useState([]);
+  const getProjectData = async () => {
+    setLoader(true);
+    await AxiosClient.get("/projects-name")
+      .then((res) => {
+        setProjectData(res.data.data);
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
   };
 
-  const renderPhotos = (source) => {
-    return source.map((photo) => {
-      return <img src={photo} key={photo}></img>;
-    });
-  };
+  useEffect(() => {
+    getProjectData();
+  }, [relodeData]);
 
   const inputFieldsForAddProjects = [
     {
@@ -76,7 +81,8 @@ const Gallery = () => {
             api={"/add-gallery-img"}
             setLoader={setLoader}
             setMsg={setMsg}
-            // setRelodeTable={setRelodeTable}
+            setRelodeData={setRelodeData}
+            projectData={projectData}
           />
         </Suspense>
       </div>
@@ -92,6 +98,38 @@ const Gallery = () => {
       >
         {msg}
       </p>
+
+      <div className="cardWrapper d-flex gap-20">
+        {slicedData.map((items, index) => {
+          return (
+            <div className="card" key={index}>
+              <LazyLoadImage
+                src={`${imgPath}${items.Image}`}
+                effect="blur"
+                wrapperProps={{
+                  style: { transitionDelay: "1s" },
+                }}
+              />
+
+              <div className="txt d-flex">
+                <h3 className="title">
+                  {items.Title.length > 70
+                    ? items.Title.slice(0, 70) + "..."
+                    : items.Title}
+                </h3>
+                <div style={{ textAlign: "center" }}>
+                  <NavLink
+                    to={`/project-details/${items.id}`}
+                    className="readMoreBtn btn c_pointer"
+                  >
+                    Read more
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
 
       <div
         className={galleryData.length > 2 ? "" : "d-none"}

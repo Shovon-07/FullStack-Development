@@ -65,10 +65,11 @@ Route::prefix("/admin")->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home", "Home");
 
-            Route::get("/projects","Projects");
+            Route::get("/projects", "Projects");
             Route::post("/add-project", "AddProject");
             Route::post("/project-details", "ProjectDetails");
 
+            Route::get("/projects-name", "ProjectsName");
             Route::post("/add-gallery-img", "AddGalleryImage");
         });
     });

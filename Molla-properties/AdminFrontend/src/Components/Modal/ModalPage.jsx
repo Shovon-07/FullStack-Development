@@ -1,5 +1,6 @@
 import React, { useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Modals utilities ___//
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
@@ -13,6 +14,7 @@ import { RxCross2 } from "react-icons/rx";
 
 //___ Css ___//
 import "./ModalPage.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const style = {
   position: "absolute",
@@ -41,6 +43,8 @@ const ModalPage = (props) => {
     ModalOpenBtnStyle,
     setMsg,
     setRelodeData,
+
+    projectData,
   } = props;
 
   const [open, setOpen] = React.useState(false);
@@ -59,6 +63,8 @@ const ModalPage = (props) => {
     project_map: "",
     features: "",
     project_status: "",
+
+    project_id: "",
   });
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -150,7 +156,7 @@ const ModalPage = (props) => {
               setMsg(response.data.msg);
               setInterval(() => {
                 setMsg("");
-              }, 5000);
+              }, 10000);
             } else {
               setLoader(false);
               console.log(response.data.msg);
@@ -158,47 +164,50 @@ const ModalPage = (props) => {
             }
           })
           .catch((e) => {
-            console.log(e);
+            console.log(`Error = ${e}`);
             setLoader(false);
             handleClose();
           });
       }
     } else if (api == "/add-gallery-img") {
-      const payload = new FormData();
-      for (let i = 0; i < files.length; i++) {
-        payload.append(`gallery_image[${i}]`, files[i]);
+      if (inputValue.project_id == "") {
+        alert("Please select a project");
+      } else if (files == null) {
+        alert("Please select images");
+      } else {
+        const payload = new FormData();
+        payload.append("project_id", inputValue.project_id);
+        for (let i = 0; i < files.length; i++) {
+          payload.append(`gallery_image[${i}]`, files[i]);
+        }
+
+        setLoader(true);
+        await AxiosClient.post(api, payload)
+          .then((response) => {
+            if (response.data.status == true) {
+              handleClose();
+              setFiles();
+              setPreviewUrls([]);
+
+              setLoader(false);
+              setRelodeData(true);
+
+              console.log(response.data.Images);
+              setMsg(response.data.msg);
+              setInterval(() => {
+                setMsg("");
+              }, 10000);
+            } else {
+              setLoader(false);
+              console.log(response.data.msg);
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
+            setLoader(false);
+            handleClose();
+          });
       }
-
-      setLoader(true);
-      await AxiosClient.post(api, payload)
-        .then((response) => {
-          if (response.data.status == true) {
-            handleClose();
-            setFiles();
-            setPreviewUrls([]);
-
-            setLoader(false);
-            setRelodeData(true);
-
-            setMsg(response.data.msg);
-            setInterval(() => {
-              setMsg("");
-            }, 5000);
-          } else {
-            handleClose();
-            setLoader(false);
-
-            setMsg(response.data.msg);
-            setInterval(() => {
-              setMsg("");
-            }, 5000);
-          }
-        })
-        .catch((e) => {
-          console.log(`Error = ${e}`);
-          setLoader(false);
-          handleClose();
-        });
     }
   };
 
@@ -332,6 +341,25 @@ const ModalPage = (props) => {
                     {/* ___ Add Project Page  ___ */}
 
                     {/* ___ Add Gallery Page Start  ___ */}
+                    {/* Select project */}
+                    {api == "/add-gallery-img" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Select project</label>
+                        <select name="project_id" onChange={handleInputValue}>
+                          <option value="1">Select project</option>
+                          {projectData.map((items, index) => {
+                            return (
+                              <option key={index} value={items.id}>
+                                {items.Project_name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
                     {/* Gallery image */}
                     {api == "/add-gallery-img" ? (
                       <div style={{ width: "100%" }}>
@@ -346,11 +374,15 @@ const ModalPage = (props) => {
                         </div>
                         <div className="showImages">
                           {previewUrls.map((url, index) => (
-                            <img
+                            <LazyLoadImage
                               key={index}
                               src={url}
                               alt={`Preview ${index}`}
                               width="100"
+                              effect="blur"
+                              wrapperProps={{
+                                style: { transitionDelay: "1s" },
+                              }}
                             />
                           ))}
                         </div>
