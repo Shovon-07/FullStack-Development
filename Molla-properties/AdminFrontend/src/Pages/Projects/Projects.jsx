@@ -18,8 +18,8 @@ const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 const Projects = () => {
   const { setLoader } = UseAuthContext();
 
-  const [msg, setMsg] = useState();
-  const [relodeData,setRelodeData]=useState();
+  const [msg, setMsg] = useState([]);
+  const [relodeData, setRelodeData] = useState();
 
   const [projectData, setProjectData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(2);

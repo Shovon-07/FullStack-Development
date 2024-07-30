@@ -1,0 +1,263 @@
+.ProjectView .date {
+  font-size: 1.1rem;
+  text-align: right;
+  color: var(--green);
+}
+.ProjectView .tab-container {
+  background: var(--dakr-1);
+  overflow: hidden;
+}
+.ProjectView .tab-container .tab-box {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 40px;
+  margin-bottom: 35px;
+  overflow-x: scroll;
+}
+.ProjectView .tab-container .tab-box::-webkit-scrollbar {
+  display: none;
+}
+.ProjectView .tab-container .tab-box .tab-btn {
+  color: var(--light-1);
+  background: transparent;
+  border-radius: 12px;
+  outline: none;
+  border: 0;
+  padding: 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.ProjectView .tab-container .tab-box .tab-btn::after {
+  content: "";
+  background: var(--main-color);
+  border-radius: 12px;
+  width: 100%;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: var(--trans);
+  z-index: -1;
+}
+.ProjectView .tab-container .tab-box .tab-btn.active::after {
+  opacity: 1;
+}
+.ProjectView .tab-container .content-box {
+  overflow: hidden;
+}
+.ProjectView .tab-container .content-box .contentItems {
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  /* max-width: 1100px; */
+  display: none;
+  animation: moving 1s ease;
+}
+@keyframes moving {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.ProjectView .tab-container .content-box .contentItems.active {
+  display: flex;
+}
+.ProjectView .tab-container .content-box .contentItems .content-card {
+  width: 300px;
+  height: 150px;
+  margin: 20px 10px;
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+.ProjectView .tab-container .content-box .contentItems .content-card::after {
+  content: "";
+  backdrop-filter: blur(8px);
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: var(--trans);
+  border-radius: 10px;
+  z-index: 1;
+}
+.ProjectView .tab-container .content-box .contentItems .content-card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.ProjectView
+  .tab-container
+  .content-box
+  .contentItems
+  .content-card
+  #viewProject {
+  color: var(--text);
+  font-size: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: var(--trans);
+  z-index: 2;
+}
+.ProjectView
+  .tab-container
+  .content-box
+  .contentItems
+  .content-card:hover:after {
+  opacity: 1;
+}
+.ProjectView
+  .tab-container
+  .content-box
+  .contentItems
+  .content-card:hover
+  #viewProject {
+  opacity: 1;
+  transition: var(--trans);
+}
+
+.ProjectView .projects .dot-img {
+  margin: 30px auto 0 auto;
+}
+
+/*___ Brief outline start ___*/
+.ProjectView .tab-container .content-box .briefOutlineContent .left {
+  flex-basis: 40%;
+}
+.ProjectView .tab-container .content-box .briefOutlineContent .left img {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  /* box-shadow: var(--shadow); */
+}
+.ProjectView .tab-container .content-box .briefOutlineContent .right {
+  flex-basis: 55%;
+}
+.ProjectView
+  .tab-container
+  .content-box
+  .briefOutlineContent
+  .right
+  table
+  tr
+  td {
+  padding: 8px;
+  font-size: 1rem;
+  color: var(--light-2);
+  vertical-align: baseline;
+}
+.ProjectView
+  .tab-container
+  .content-box
+  .briefOutlineContent
+  .right
+  table
+  tr
+  td:first-child {
+  padding-left: 0;
+}
+
+/*___ Brief outline end ___*/
+
+/*___ Gallery start ___*/
+.ProjectView .tab-container .content-box .gallery {
+  justify-content: center;
+}
+.ProjectView .tab-container .content-box .gallery .card {
+  width: 450px;
+  height: 350px;
+}
+.ProjectView .tab-container .content-box .gallery .card img {
+  width: 100%;
+}
+/*___ Gallery end ___*/
+
+/*___ Responsive ___*/
+@media screen and (max-width: 1030px) {
+  .ProjectView .tab-container .content-box .gallery .card {
+    width: 350px;
+    height: 250px;
+  }
+}
+@media screen and (max-width: 830px) {
+  .ProjectView .tab-container .content-box .gallery .card {
+    width: 250px;
+    height: 170px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .ProjectView .tab-container .content-box .contentItems .content-card {
+    width: 200px;
+    height: 100px;
+  }
+  .ProjectView .tab-container .content-box .briefOutlineContent .left img {
+    max-height: 250px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .ProjectView .tab-container .tab-box .tab-btn {
+    font-size: 1rem;
+  }
+  .ProjectView .tab-container .content-box .briefOutlineContent {
+    gap: 50px;
+  }
+  .ProjectView .tab-container .content-box .briefOutlineContent .left,
+  .ProjectView .tab-container .content-box .briefOutlineContent .right {
+    flex-basis: 100%;
+  }
+  .ProjectView .tab-container .content-box .briefOutlineContent .left img {
+    max-height: 400px;
+  }
+  .ProjectView .tab-container .content-box .gallery .card {
+    width: 100%;
+    height: 350px;
+  }
+}
+@media screen and (max-width: 560px) {
+  .ProjectView .tab-container .content-box .contentItems .content-card {
+    width: 100%;
+    height: 100%;
+  }
+  .ProjectView
+    .tab-container
+    .content-box
+    .briefOutlineContent
+    .right
+    table
+    tr
+    td {
+    padding: 4px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .ProjectView .tab-container .content-box .briefOutlineContent .left img {
+    max-height: 300px;
+  }
+  .ProjectView .tab-container .content-box .gallery .card {
+    width: 100%;
+    height: 200px;
+  }
+}
+@media screen and (max-width: 390px) {
+  .ProjectView .tab-container .content-box .gallery .card {
+    width: 100%;
+    height: 150px;
+  }
+}

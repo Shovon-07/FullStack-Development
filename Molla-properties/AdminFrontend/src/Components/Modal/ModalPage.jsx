@@ -88,62 +88,81 @@ const ModalPage = (props) => {
   const HandleForm = async (e) => {
     e.preventDefault();
     if (api == "/add-project") {
-      const payload = new FormData();
-      payload.append("title", inputValue.title);
-      payload.append("project_name", inputValue.project_name);
-      payload.append("developer", inputValue.developer);
-      payload.append("location", inputValue.location);
-      payload.append("land_area", inputValue.land_area);
-      payload.append("total_plot", inputValue.total_plot);
-      payload.append("contact_no", inputValue.contact_no);
-      payload.append("features", inputValue.features);
-      payload.append("project_map", inputValue.project_map);
-      payload.append("project_status", inputValue.project_status);
-      payload.append("project_image", projectImage);
+      if (inputValue.title == "") {
+        alert("Please enter title");
+      } else if (inputValue.project_name == "") {
+        alert("Please enter project name");
+      } else if (inputValue.developer == "") {
+        alert("Please enter developer name");
+      } else if (inputValue.location == "") {
+        alert("Please enter location");
+      } else if (inputValue.land_area == "") {
+        alert("Please enter land area");
+      } else if (inputValue.total_plot == "") {
+        alert("Please enter total plot");
+      } else if (inputValue.contact_no == "") {
+        alert("Please enter contact no");
+      } else if (inputValue.project_map == "") {
+        alert("Please enter project map");
+      } else if (inputValue.features == "") {
+        alert("Please enter features");
+      } else if (inputValue.projectImage == "") {
+        alert("Please enter project image");
+      } else if (inputValue.project_status == "") {
+        alert("Please enter project status");
+      } else {
+        const payload = new FormData();
+        payload.append("title", inputValue.title);
+        payload.append("project_name", inputValue.project_name);
+        payload.append("developer", inputValue.developer);
+        payload.append("location", inputValue.location);
+        payload.append("land_area", inputValue.land_area);
+        payload.append("total_plot", inputValue.total_plot);
+        payload.append("contact_no", inputValue.contact_no);
+        payload.append("features", inputValue.features);
+        payload.append("project_map", inputValue.project_map);
+        payload.append("project_status", inputValue.project_status);
+        payload.append("project_image", projectImage);
 
-      setLoader(true);
-      await AxiosClient.post(api, payload)
-        .then((response) => {
-          if (response.data.status == true) {
-            setInputValue({
-              id: "",
-              title: "",
-              project_name: "",
-              developer: "",
-              location: "",
-              land_area: "",
-              total_plot: "",
-              contact_no: "",
-              project_map: "",
-              features: "",
-              project_status: "",
-            });
-            setProjectImage();
-            handleClose();
+        setLoader(true);
+        await AxiosClient.post(api, payload)
+          .then((response) => {
+            if (response.data.status == true) {
+              setInputValue({
+                id: "",
+                title: "",
+                project_name: "",
+                developer: "",
+                location: "",
+                land_area: "",
+                total_plot: "",
+                contact_no: "",
+                project_map: "",
+                features: "",
+                project_status: "",
+              });
+              setProjectImage();
+              handleClose();
 
+              setLoader(false);
+              setRelodeData(true);
+
+              setMsg(response.data.msg);
+              setInterval(() => {
+                setMsg("");
+              }, 5000);
+            } else {
+              setLoader(false);
+              console.log(response.data.msg);
+              alert(response.data.msg.project_image[1]);
+            }
+          })
+          .catch((e) => {
+            console.log(e);
             setLoader(false);
-            setRelodeData(true);
-
-            setMsg(response.data.msg);
-            setInterval(() => {
-              setMsg("");
-            }, 5000);
-          } else {
             handleClose();
-            setLoader(false);
-
-            console.log(response.data.msg);
-            // setMsg(response.data.msg);
-            setInterval(() => {
-              setMsg("");
-            }, 5000);
-          }
-        })
-        .catch((e) => {
-          console.log(`Error = ${e}`);
-          setLoader(false);
-          handleClose();
-        });
+          });
+      }
     } else if (api == "/add-gallery-img") {
       const payload = new FormData();
       for (let i = 0; i < files.length; i++) {
@@ -296,7 +315,11 @@ const ModalPage = (props) => {
                         >
                           Status
                         </p>
-                        <select name="project_status" id="" onChange={handleInputValue}>
+                        <select
+                          name="project_status"
+                          id=""
+                          onChange={handleInputValue}
+                        >
                           <option value="0">Project type</option>
                           <option value="1">Ongoing</option>
                           <option value="2">Completed</option>

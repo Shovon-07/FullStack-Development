@@ -22,6 +22,7 @@ import HonorableClient from "./Pages/HonorableClient/HonorableClient";
 import NewsAndEvent from "./Pages/NewsAndEvent/NewsAndEvent";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Blog from "./Pages/Blog/Blog";
+import ProjectView from "./Pages/ProjectView/ProjectView";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
@@ -43,6 +44,10 @@ const Routes = createBrowserRouter([
       { path: "/news-and-event", element: <NewsAndEvent /> },
       { path: "/about-us", element: <AboutUs /> },
       { path: "/blog", element: <Blog /> },
+      {
+        path: "/project-details/:id",
+        element: <ProjectView />,
+      },
     ],
   },
   {
