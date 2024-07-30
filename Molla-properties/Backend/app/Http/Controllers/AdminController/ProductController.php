@@ -100,22 +100,26 @@ class ProductController extends Controller
         if (!$validator->fails()) {
             $id = $request->input("project_id");
             $images = $request->file("gallery_image");
-            $imageName = "";
+            $imageData = [];
 
             foreach ($images as $image) {
-                $new_name = time() . "_" . rand() . "." . $image->getClientOriginalExtension();
+                $new_name = "Gallery/" . time() . "_" . rand() . "." . $image->getClientOriginalExtension();
                 $image->move(public_path("/Images/Gallery"), $new_name);
-                $imageName = $imageName . $new_name . ",";
+
+                $imageData[] = [
+                    "Project_id" => $id,
+                    "Gallery_img" => $new_name
+                ];
             }
 
-            $imageDB = $imageName;
             // $store = Gallery::create([
             //     "Project_id" => $id,
-            //     "Gallery_img" => $imageName
+            //     "Gallery_img" => $imageDB
             // ]);
             // if ($store) {
             //     return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
             // }
+            Gallery::insert($imageData);
             return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);
