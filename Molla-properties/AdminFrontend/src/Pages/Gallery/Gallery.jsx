@@ -28,7 +28,7 @@ const Gallery = () => {
   const [relodeData, setRelodeData] = useState();
 
   const [galleryData, setGalleryData] = useState([]);
-  const [numberOfElement, setNumberOfElement] = useState(2);
+  const [numberOfElement, setNumberOfElement] = useState(3);
   const slicedData = galleryData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
@@ -177,7 +177,7 @@ const Gallery = () => {
       </LightGallery>
 
       <div
-        className={galleryData.length > 2 ? "" : "d-none"}
+        className={galleryData.length > 3 ? "" : "d-none"}
         style={{ textAlign: "center", marginTop: "100px" }}
       >
         <button className="btn" onClick={loadMore}>

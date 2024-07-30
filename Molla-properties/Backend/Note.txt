@@ -20,4 +20,8 @@ DB_PASSWORD=yx&sUKU,u1M%
 
 ------------------
 
-
+# Increese file uploade size
+go to -> vendor/laravel/sail/runtimes/8.0 or 8.1 or 8.2 or 8.3/php.ini
+Change value :
+post_max_size = 1024M
+upload_max_filesize = 1024M
