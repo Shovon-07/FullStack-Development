@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 
 //___ Css ___//
 import "./HonorableClient.css";
@@ -7,57 +8,51 @@ import "./HonorableClient.css";
 import AxiosClient from "../../assets/Js/AxiosClient";
 
 const HonorableClient = () => {
-  const [projectImg, setProjectImg] = useState();
-  const handleProjectImg = (evt) => {
-    setProjectImg(evt.target.files[0]);
-    console.log(evt.target.files[0]);
+  const [name, setName] = useState();
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [previewUrls, setPreviewUrls] = useState([]);
+
+  const handleFileSelect = (event) => {
+    const files = Array.from(event.target.files);
+    setSelectedFiles(files);
+
+    const fileUrls = files.map((file) => URL.createObjectURL(file));
+    setPreviewUrls(fileUrls);
   };
 
-  const HandleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const formData = new FormData();
-    formData.append("project_image", projectImg);
-    AxiosClient.post("/add-project", formData)
-      .then((res) => {
-        console.log(res.data.status);
-      })
-      .catch((e) => {
-        console.log(`Error = ${e}`);
-      });
-    console.log(projectImg);
+
+    formData.append("name",name);
+
+    selectedFiles.forEach((file) => {
+      formData.append('images', file);
+    });
+
+    try {
+      const response = await AxiosClient.post('http://127.0.0.1:8000/api/admin/add-gallery-img', formData);
+      console.log('Upload successful', response.data);
+      console.log(selectedFiles);
+    } catch (error) {
+      console.error('Error uploading files', error);
+    }
   };
-
-  // const myHeaders = new Headers();
-  // myHeaders.append("API_KEY", "83b6349651735fb8b3c6b20b1bc882ba");
-
-  // const HandleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   const formdata = new FormData();
-  //   formdata.append("project_name", "my data");
-  //   formdata.append("project_image", projectImg);
-
-  //   const requestOptions = {
-  //     method: "POST",
-  //     headers: myHeaders,
-  //     body: formdata,
-  //     redirect: "follow",
-  //   };
-
-  //   fetch("http://127.0.0.1:8000/api/admin/add-project", requestOptions)
-  //     .then((response) => response.text())
-  //     .then((result) => console.log(result))
-  //     .catch((error) => console.error(error));
-  // };
 
   return (
     <div className="HonorableClient">
       <h3 className="pageTitle">HonorableClient</h3>
 
-      <form encType="multipart/form-data" onSubmit={(e) => HandleSubmit(e)}>
-        <input type="file" onChange={handleProjectImg} />
-        <input type="submit" value="Send" />
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <input type="text" name="name" onChange={(e)=>{setName(e.target.value)}} />
+        <input type="file" name="images[]" multiple onChange={handleFileSelect} />
+        <button type="submit">Upload</button>
       </form>
+      <div>
+        {previewUrls.map((url, index) => (
+          <img key={index} src={url} alt={`Preview ${index}`} width="100" />
+        ))}
+      </div>
     </div>
   );
 };

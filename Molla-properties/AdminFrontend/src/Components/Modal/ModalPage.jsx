@@ -288,7 +288,7 @@ const ModalPage = (props) => {
                         <div className="inputBox">
                           <input
                             type="file"
-                            name="gallery_image[]" //gallery_image[]
+                            name="gallery_image[]"
                             multiple
                             onChange={handleGalleryImageInput}
                           />
