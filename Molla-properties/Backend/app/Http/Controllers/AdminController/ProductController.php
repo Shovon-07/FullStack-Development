@@ -90,6 +90,15 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
     }
+    public function GalleryImg()
+    {
+        $images = Gallery::latest("id")->get();
+        if ($images) {
+            return response()->json(["status" => true, "data" => $images]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
     public function AddGalleryImage(Request $request)
     {
         $validator = Validator::make($request->all(), [

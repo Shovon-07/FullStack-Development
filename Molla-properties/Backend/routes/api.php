@@ -70,6 +70,7 @@ Route::prefix("/admin")->group(function () {
             Route::post("/project-details", "ProjectDetails");
 
             Route::get("/projects-name", "ProjectsName");
+            Route::get("/gallery-img", "GalleryImg");
             Route::post("/add-gallery-img", "AddGalleryImage");
         });
     });

@@ -2,9 +2,16 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
+import LightGallery from "lightgallery/react";
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
+
 //___ Css ___//
 import "./Gallery.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -29,7 +36,7 @@ const Gallery = () => {
 
   // Get project data
   const [projectData, setProjectData] = useState([]);
-  const getProjectData = async () => {
+  const GetProjectData = async () => {
     setLoader(true);
     await AxiosClient.get("/projects-name")
       .then((res) => {
@@ -42,9 +49,29 @@ const Gallery = () => {
       });
   };
 
+  // Get project data
+  const GetGalleryData = async () => {
+    setLoader(true);
+    await AxiosClient.get("/gallery-img")
+      .then((res) => {
+        setGalleryData(res.data.data);
+        console.log(res.data.data);
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+
   useEffect(() => {
-    getProjectData();
+    GetProjectData();
+    GetGalleryData();
   }, [relodeData]);
+
+  const onInit = () => {
+    // console.log("lightGallery has been initialized");
+  };
 
   const inputFieldsForAddProjects = [
     {
@@ -99,7 +126,7 @@ const Gallery = () => {
         {msg}
       </p>
 
-      <div className="cardWrapper d-flex gap-20">
+      {/* <div className="cardWrapper d-flex gap-20">
         {slicedData.map((items, index) => {
           return (
             <div className="card" key={index}>
@@ -129,7 +156,25 @@ const Gallery = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
+
+      <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
+        {slicedData.map((items, index) => {
+          return (
+            <a href={`${imgPath}${items.Gallery_img}`} key={index}>
+              <LazyLoadImage
+                alt={items.Gallery_img}
+                src={`${imgPath}${items.Gallery_img}`}
+                effect="blur"
+                wrapperProps={{
+                  style: { transitionDelay: "1s" },
+                }}
+              />
+              <div className="overlay"></div>
+            </a>
+          );
+        })}
+      </LightGallery>
 
       <div
         className={galleryData.length > 2 ? "" : "d-none"}
