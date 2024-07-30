@@ -16,6 +16,7 @@ const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Projects = () => {
   const [setLoader] = useOutletContext();
+  const [msg, setMsg] = useState();
 
   const [projectData, setProjectData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(2);
@@ -136,10 +137,24 @@ const Projects = () => {
             ModalOpenBtnStyle={modalOpenBtnStyle}
             api={"/add-project"}
             setLoader={setLoader}
+            setMsg={setMsg}
             // setRelodeTable={setRelodeTable}
           />
         </Suspense>
       </div>
+
+      {/* Show message */}
+      <p
+        style={{
+          textAlign: "center",
+          marginBottom: "30px",
+          fontSize: "1.5rem",
+          color: "var(--green)",
+        }}
+      >
+        {msg}
+      </p>
+
       <div className="cardWrapper d-flex gap-20">
         <div className="card">
           <LazyLoadImage

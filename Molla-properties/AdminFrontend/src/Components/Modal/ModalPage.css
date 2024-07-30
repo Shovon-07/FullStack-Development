@@ -15,7 +15,7 @@
 }
 .addBtn {
   box-shadow: var(--shadow);
-  text-transform: capitalize;
+  text-transform: capitalize !important;
   background: var(--main-color) !important;
   font-size: 1rem !important;
 }

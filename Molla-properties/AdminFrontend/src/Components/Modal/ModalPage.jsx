@@ -39,6 +39,7 @@ const ModalPage = (props) => {
     api,
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
+    setMsg,
     // setRelodeTable,
   } = props;
 
@@ -67,31 +68,21 @@ const ModalPage = (props) => {
   const [projectImage, setProjectImage] = useState();
   const handleProjectImageInput = (e) => {
     setProjectImage(e.target.files[0]);
-    console.log(e.target.files[0]);
   };
   //___ Project image end ___//
 
   //___ Add Gallery Page Start ___//
   const [files, setFiles] = useState();
+  const [previewUrls, setPreviewUrls] = useState([]);
+
   const handleGalleryImageInput = (e) => {
-    // setSelectedFiles([]);
-    // if (e.target.files) {
-    //   const filesArray = Array.from(e.target.files).map((file) =>
-    //     URL.createObjectURL(file)
-    //   );
-    //   setSelectedFiles((prevImg) => prevImg.concat(filesArray));
-    //   Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
-    // }
-
     setFiles(e.target.files);
-    console.log(e.target.files);
-  };
 
-  // const renderPhotos = (source) => {
-  //   return source.map((photo) => {
-  //     return <img src={photo} key={photo}></img>;
-  //   });
-  // };
+    const files = Array.from(e.target.files);
+    const fileUrls = files.map((file) => URL.createObjectURL(file));
+    setPreviewUrls(fileUrls);
+    // console.log(fileUrls);
+  };
   //___ Add Gallery Page End ___//
 
   const HandleForm = async (e) => {
@@ -116,18 +107,40 @@ const ModalPage = (props) => {
           if (response.data.status == true) {
             handleClose();
             setLoader(false);
-            console.log(response.data.msg);
+
+            setMsg(response.data.msg);
+            setInterval(() => {
+              setMsg("");
+            }, 5000);
+
+            setInputValue({
+              id: "",
+              title: "",
+              project_name: "",
+              developer: "",
+              location: "",
+              land_area: "",
+              total_plot: "",
+              contact_no: "",
+              project_map: "",
+              features: "",
+              status: "",
+            });
+            setProjectImage();
           } else {
             handleClose();
             setLoader(false);
-            console.log(response.data.msg);
+
+            setMsg(response.data.msg);
+            setInterval(() => {
+              setMsg("");
+            }, 5000);
           }
         })
         .catch((e) => {
           console.log(`Error = ${e}`);
         });
     } else if (api == "/add-gallery-img") {
-      // var files = e.target[0].files;
       const payload = new FormData();
       for (let i = 0; i < files.length; i++) {
         payload.append(`gallery_image[${i}]`, files[i]);
@@ -139,12 +152,21 @@ const ModalPage = (props) => {
           if (response.data.status == true) {
             handleClose();
             setLoader(false);
-            console.log(response.data.msg);
-            console.log(payload);
+            setFiles();
+            setPreviewUrls([]);
+
+            setMsg(response.data.msg);
+            setInterval(() => {
+              setMsg("");
+            }, 5000);
           } else {
             handleClose();
             setLoader(false);
-            console.log(response.data.msg);
+
+            setMsg(response.data.msg);
+            setInterval(() => {
+              setMsg("");
+            }, 5000);
           }
         })
         .catch((e) => {
@@ -293,9 +315,16 @@ const ModalPage = (props) => {
                             onChange={handleGalleryImageInput}
                           />
                         </div>
-                        {/* <div className="showImages">
-                          {renderPhotos(selectedFiles)}
-                        </div> */}
+                        <div className="showImages">
+                          {previewUrls.map((url, index) => (
+                            <img
+                              key={index}
+                              src={url}
+                              alt={`Preview ${index}`}
+                              width="100"
+                            />
+                          ))}
+                        </div>
                       </div>
                     ) : (
                       ""

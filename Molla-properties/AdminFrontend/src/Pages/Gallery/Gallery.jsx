@@ -14,6 +14,7 @@ const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Gallery = () => {
   const [setLoader] = useOutletContext();
+  const [msg, setMsg] = useState();
 
   const [galleryData, setGalleryData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(2);
@@ -74,10 +75,23 @@ const Gallery = () => {
             ModalOpenBtnStyle={modalOpenBtnStyle}
             api={"/add-gallery-img"}
             setLoader={setLoader}
+            setMsg={setMsg}
             // setRelodeTable={setRelodeTable}
           />
         </Suspense>
       </div>
+
+      {/* Show message */}
+      <p
+        style={{
+          textAlign: "center",
+          marginBottom: "30px",
+          fontSize: "1.5rem",
+          color: "var(--green)",
+        }}
+      >
+        {msg}
+      </p>
 
       <div
         className={galleryData.length > 2 ? "" : "d-none"}
