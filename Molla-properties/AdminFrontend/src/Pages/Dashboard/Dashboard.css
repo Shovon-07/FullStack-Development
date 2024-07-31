@@ -1,6 +1,30 @@
-.Dashboard {
+.Dashboard .dashboardTxt {
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.Dashboard .mainBox {
+.Dashboard .dashboardTxt .txt {
+  background: linear-gradient(to right, var(--main-color), cyan);
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+  line-height: 2.5rem;
+}
+.Dashboard .dashboardTxt h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  background: -webkit-linear-gradient(rgb(59, 59, 250), cyan);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(-3px 3px var(--light-3));
+}
+
+/* .Dashboard .mainBox {
   justify-content: space-between;
 }
 .Dashboard .left {
@@ -83,4 +107,4 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-}
+} */

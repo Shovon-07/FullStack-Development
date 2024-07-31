@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="Footer">
       &#169; All rights reserved by{" "}
       <a href="https://www.facebook.com/aljubair.shovon/" target="_blank">
-        Al jubair shovon
+        Molla properties
       </a>
     </div>
   );

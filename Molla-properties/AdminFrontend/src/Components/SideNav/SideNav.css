@@ -8,6 +8,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   transition: var(--trans);
+  z-index: 9;
 }
 .SideNav.sideNavHide {
   width: 0;

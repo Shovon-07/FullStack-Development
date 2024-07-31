@@ -76,36 +76,10 @@ const Dashboard = () => {
         </div>
       </div> */}
 
-      <div
-        className="d-flex"
-        style={{
-          flexDirection: "column",
-          justifyContent: "center",
-          height: "100%",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          lineHeight: "3rem",
-        }}
-      >
-        <h1
-          style={{
-            background: "linear-gradient(to right, #4646f3,cyan)",
-            backgroundClip: "text",
-            color: "transparent",
-          }}
-        >
-          This is admin panel
-        </h1>
-        <h2
-          style={{
-            background: "linear-gradient( #4646f3,cyan)",
-            backgroundClip: "text",
-            color: "transparent",
-          }}
-        >
-          You can manage your website
+      <div className="dashboardTxt d-flex">
+        <h1 className="txt">Molla properties</h1>
+        <h2 className="txt">
+          This is admin panel <br /> You can manage your website
         </h2>
       </div>
     </div>
