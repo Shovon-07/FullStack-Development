@@ -11,6 +11,7 @@
 }
 .Form .card {
   width: 50%;
+  height: auto;
   /* background: var(--dark-1); */
   box-shadow: var(--shadow);
   padding: 30px;
@@ -94,5 +95,11 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media screen and(max-width:800px) {
+  .Form .card {
+    width: 80%;
   }
 }

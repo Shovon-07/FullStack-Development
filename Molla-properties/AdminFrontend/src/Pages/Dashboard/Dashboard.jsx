@@ -82,7 +82,6 @@ const Dashboard = () => {
           flexDirection: "column",
           justifyContent: "center",
           height: "100%",
-          height: "100%",
           position: "absolute",
           top: "50%",
           left: "50%",
