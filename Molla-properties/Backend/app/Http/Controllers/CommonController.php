@@ -17,7 +17,7 @@ class CommonController extends Controller
     {
         try {
             $Project_id = $request->input("project_id");
-            $gallery = Gallery::where("Project_id", $Project_id)->get();
+            $gallery = Gallery::where("Project_id", $Project_id)->latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $gallery]);
 
         } catch (Exception $exception) {
@@ -27,7 +27,7 @@ class CommonController extends Controller
     public function AllGallerysImg()
     {
         try {
-            $gallery_img = Gallery::get();
+            $gallery_img = Gallery::latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $gallery_img]);
 
         } catch (Exception $exception) {
@@ -40,7 +40,7 @@ class CommonController extends Controller
     public function AllHonorableClients()
     {
         try {
-            $honorableClient = HonorableClient::get();
+            $honorableClient = HonorableClient::latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $honorableClient]);
 
         } catch (Exception $exception) {
@@ -53,7 +53,7 @@ class CommonController extends Controller
     public function AllNewsAndEvents()
     {
         try {
-            $news = NewsAndEvent::get();
+            $news = NewsAndEvent::latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $news]);
 
         } catch (Exception $exception) {
@@ -66,7 +66,7 @@ class CommonController extends Controller
     public function AllBlogVideo()
     {
         try {
-            $blogs = Blog::get();
+            $blogs = Blog::latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $blogs]);
 
         } catch (Exception $exception) {

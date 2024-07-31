@@ -4,7 +4,6 @@
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\PlotController;
 use App\Http\Controllers\CommonController;
-// use App\Http\Controllers\LatestProjectController;
 use App\Http\Controllers\ContactUsController;
 
 //___ Admin panel Controllers ___//
@@ -20,11 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //___ Basic panel ___//
 Route::prefix("/")->group(function () {
-    // Route::controller(LatestProjectController::class)->group(function () {
-    //     Route::get("/latest-project", "LatestProject");
-    //     Route::post("/create-latest-project", "CreateLatestProject");
-    // });
-
     Route::middleware(["ApiKeyVerify"])->group(function () {
         Route::controller(ProjectsController::class)->group(function () {
             Route::get("/on-going-projects", "OnGoingProject");
@@ -65,14 +59,15 @@ Route::prefix("/admin")->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home", "Home");
 
+            // Project
             Route::get("/projects", "Projects");
             Route::post("/add-project", "AddProject");
             Route::post("/project-details", "ProjectDetails");
 
+            // Gallery
             Route::get("/projects-name", "ProjectsName");
             Route::get("/gallery-img", "GalleryImg");
             Route::post("/add-gallery-img", "AddGalleryImage");
         });
     });
-
 });

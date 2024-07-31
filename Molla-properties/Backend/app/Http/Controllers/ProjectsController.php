@@ -12,7 +12,7 @@ class ProjectsController extends Controller
     public function OnGoingProject()
     {
         try {
-            $onGoingProject = Projects::where("Status", "=", "ongoing")->get();
+            $onGoingProject = Projects::where("Status", "=", "ongoing")->latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $onGoingProject]);
 
         } catch (Exception $exception) {
@@ -22,7 +22,7 @@ class ProjectsController extends Controller
     public function UpComingProject()
     {
         try {
-            $upComingProject = Projects::where("Status", "=", "upcoming")->get();
+            $upComingProject = Projects::where("Status", "=", "upcoming")->latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $upComingProject]);
 
         } catch (Exception $exception) {
@@ -32,7 +32,7 @@ class ProjectsController extends Controller
     public function CompletedProject()
     {
         try {
-            $completedProject = Projects::where("Status", "=", "completed")->get();
+            $completedProject = Projects::where("Status", "=", "completed")->latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $completedProject]);
 
         } catch (Exception $exception) {
@@ -54,7 +54,7 @@ class ProjectsController extends Controller
     {
         try {
             $oneYearAgo = Carbon::now()->subYear();
-            $latestProject = Projects::where('Updated_at', '>=', $oneYearAgo)->where("Status", "=", "ongoing")->get();
+            $latestProject = Projects::where('Updated_at', '>=', $oneYearAgo)->where("Status", "=", "ongoing")->latest("id")->get();
             return response()->json(["status" => true, "msg" => $oneYearAgo, "data" => $latestProject]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
