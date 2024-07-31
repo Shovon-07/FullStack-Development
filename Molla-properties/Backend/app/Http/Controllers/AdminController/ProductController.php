@@ -66,6 +66,11 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
     }
+    public function DeleteProject(Request $request)
+    {
+        $id = $request->input("project_id");
+        return response()->json(["status" => true, "msg" => "Project deleted"]);
+    }
     public function ProjectDetails(Request $request)
     {
         try {

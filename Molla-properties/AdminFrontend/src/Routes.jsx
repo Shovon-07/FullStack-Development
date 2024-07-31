@@ -23,6 +23,7 @@ import NewsAndEvent from "./Pages/NewsAndEvent/NewsAndEvent";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Blog from "./Pages/Blog/Blog";
 import ProjectView from "./Pages/ProjectView/ProjectView";
+import ProjectEdit from "./Pages/ProjectEdit/ProjectEdit";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
@@ -47,6 +48,10 @@ const Routes = createBrowserRouter([
       {
         path: "/project-details/:id",
         element: <ProjectView />,
+      },
+      {
+        path: "/project-edit/:id",
+        element: <ProjectEdit />,
       },
     ],
   },

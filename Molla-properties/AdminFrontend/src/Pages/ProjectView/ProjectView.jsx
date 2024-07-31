@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import moment from "moment";
+import Tooltip from "@mui/material/Tooltip";
+
+//___ Icons ___//
+import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
 
 //___ Css ___//
 import "./ProjectView.css";
@@ -15,7 +19,9 @@ import { imgPath } from "../../assets/Js/Data";
 const ProjectView = () => {
   const { id } = useParams();
   const { setLoader } = UseAuthContext();
+  const navigate = useNavigate();
 
+  // Handle navigation tab
   const [tabVal, setTabVal] = useState(1);
   const handleTab = (e) => {
     setTabVal(e.target.id);
@@ -27,51 +33,73 @@ const ProjectView = () => {
     // console.log("lightGallery has been initialized");
   };
 
+  // Get project data
   const [projectViewData, setProjectViewData] = useState([]);
   const getProjectViewData = async () => {
-    try {
-      setLoader(true);
-      await AxiosClient.post("/project-details", { id: id }).then((res) => {
+    setLoader(true);
+    await AxiosClient.post("/project-details", { id: id })
+      .then((res) => {
         if (res.data.status == true) {
           setProjectViewData(res.data.data);
           setLoader(false);
         }
+      })
+      .catch((err) => {
+        console.log(`Error ${err}`);
       });
-    } catch (err) {
-      console.log(err);
-    }
   };
 
+  // Get plot data
   const [plotData, setPlotData] = useState([]);
   const getPlotData = async () => {
-    try {
-      setLoader(true);
-      await AxiosClient.post("/plots", { project_id: id }).then((res) => {
+    setLoader(true);
+    await AxiosClient.post("/plots", { project_id: id })
+      .then((res) => {
         if (res.data.status == true) {
-          // console.log(res.data.data);
           setPlotData(res.data.data);
           setLoader(false);
         }
+      })
+      .catch((err) => {
+        console.log(`Error ${err}`);
+        setLoader(false);
       });
-    } catch (err) {
-      console.log(err);
-    }
   };
 
+  // Get gallery data
   const [galleryData, setGalleryData] = useState([]);
   const getGalleryData = async () => {
-    try {
-      setLoader(true);
-      await AxiosClient.post("/galleries", { project_id: id }).then((res) => {
+    setLoader(true);
+    await AxiosClient.post("/galleries", { project_id: id })
+      .then((res) => {
         if (res.data.status == true) {
-          // console.log(res.data.data);
           setGalleryData(res.data.data);
           setLoader(false);
         }
+      })
+      .catch((err) => {
+        console.log(`Error ${err}`);
+        setLoader(false);
       });
-    } catch (err) {
-      console.log(err);
-    }
+  };
+
+  // Delete Project
+  const DeleteProject = async (id) => {
+    confirm("Do you want to delete this project ?");
+    navigate("/add-project");
+    // setLoader(true);
+    // await AxiosClient.post("/delete-project", { project_id: id })
+    //   .then((res) => {
+    //     if (res.data.status == true) {
+    //       console.log(res.data.msg);
+    //       setLoader(false);
+    //       navigate("/add-project");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(`Error ${err}`);
+    //     setLoader(false);
+    //   });
   };
 
   useEffect(() => {
@@ -93,6 +121,28 @@ const ProjectView = () => {
       <p className="date">
         {id} Uploaded : {moment(projectViewData.Created_at).fromNow()}
       </p>
+
+      <div className="editOrDelete d-flex gap-30">
+        <Tooltip title={`Edit ${id}`}>
+          <Link to={`/project-edit/${id}`}>
+            <FaEdit
+              size={25}
+              className="c_pointer"
+              style={{ color: "var(--green)" }}
+            />
+          </Link>
+        </Tooltip>
+        <Tooltip title={`Delete ${id}`}>
+          <button onClick={() => DeleteProject(id)}>
+            <FaRegTrashAlt
+              size={23}
+              className="c_pointer"
+              style={{ color: "var(--red)" }}
+            />
+          </button>
+        </Tooltip>
+      </div>
+
       <div className="tab-container">
         <div className="tab-box">
           <button

@@ -18,6 +18,15 @@
 .ProjectView .tab-container .tab-box::-webkit-scrollbar {
   display: none;
 }
+.ProjectView .editOrDelete {
+  justify-content: flex-start;
+  margin: 20px 0 40px 0;
+}
+.ProjectView .editOrDelete button {
+  background: transparent;
+  border: none;
+  outline: none;
+}
 .ProjectView .tab-container .tab-box .tab-btn {
   color: var(--light-1);
   background: transparent;

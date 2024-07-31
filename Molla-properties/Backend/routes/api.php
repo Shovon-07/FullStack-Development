@@ -63,6 +63,7 @@ Route::prefix("/admin")->group(function () {
             Route::get("/projects", "Projects");
             Route::post("/add-project", "AddProject");
             Route::post("/project-details", "ProjectDetails");
+            Route::post("/delete-project", "DeleteProject");
 
             // Gallery
             Route::get("/projects-name", "ProjectsName");

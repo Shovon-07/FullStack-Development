@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-//___ Iconst ___//
+//___ Icons ___//
 import { MdEditDocument } from "react-icons/md";
 
 //___ Css ___//
