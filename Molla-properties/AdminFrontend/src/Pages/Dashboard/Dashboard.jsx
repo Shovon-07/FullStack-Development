@@ -4,21 +4,17 @@ import React, { Suspense, lazy } from "react";
 import "./Dashboard.css";
 
 //___ Components ___//
-import Loader from "../../Components/Loader/Loader";
-const MyAreaChart = lazy(() => import("../../Components/MyAreaChart"));
-const MyPieChart = lazy(() => import("../../Components/MyPieChart"));
-
-//___ Data ___//
-import { messageData } from "../../assets/Js/Data";
+// import Loader from "../../Components/Loader/Loader";
+// const MyAreaChart = lazy(() => import("../../Components/MyAreaChart"));
+// const MyPieChart = lazy(() => import("../../Components/MyPieChart"));
 
 //___ Additional utilitis ___//
-import AxiosClient from "../../assets/Js/AxiosClient";
 
 const Dashboard = () => {
   return (
     <div className="Dashboard">
       <h3 className="pageTitle">Dashboard</h3>
-      <div className="mainBox d-flex-start gap-10">
+      {/* <div className="mainBox d-flex-start gap-10">
         <div className="left">
           <h4 style={{ marginBottom: "30px" }}>Earned</h4>
           <Suspense fallback={<Loader />}>
@@ -78,6 +74,40 @@ const Dashboard = () => {
             </ul>
           </div>
         </div>
+      </div> */}
+
+      <div
+        className="d-flex"
+        style={{
+          flexDirection: "column",
+          justifyContent: "center",
+          height: "100%",
+          height: "100%",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+          lineHeight: "3rem",
+        }}
+      >
+        <h1
+          style={{
+            background: "linear-gradient(to right, #4646f3,cyan)",
+            backgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          This is admin panel
+        </h1>
+        <h2
+          style={{
+            background: "linear-gradient( #4646f3,cyan)",
+            backgroundClip: "text",
+            color: "transparent",
+          }}
+        >
+          You can manage your website
+        </h2>
       </div>
     </div>
   );
