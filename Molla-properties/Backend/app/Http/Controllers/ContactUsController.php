@@ -6,18 +6,20 @@ use App\Mail\ContactUsMail;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class ContactUsController extends Controller
 {
     public function SendMail(Request $request)
     {
-        try {
-            $request->validate([
-                'name' => 'required|string|max:255',
-                'email' => 'required|email|max:255',
-                'message' => 'required|string',
-            ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'subject' => 'required|email|max:255',
+            'message' => 'required|string',
+        ]);
 
+        if (!$validator->fails()) {
             $mailData = [
                 "name" => $request->input("name"),
                 "email" => $request->input("email"),
@@ -31,40 +33,8 @@ class ContactUsController extends Controller
             } else {
                 return response()->json(["status" => false, "msg" => "Something went wrong !"]);
             }
-        } catch (Exception $e) {
-            return response()->json(["status" => false, "msg" => $e]);
+        } else {
+            return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
-
-
-        // try {
-        //     $request->validate([
-        //         'name' => 'required|string|max:255',
-        //         'email' => 'required|email|max:255',
-        //         'message' => 'required|string',
-        //     ]);
-
-        //     $mailData = [
-        //         'name' => $request->input("name"),
-        //         'email' => $request->input("email"),
-        //         'message' => $request->input("message"),
-        //     ];
-
-        //     Mail::to('aljubairshovon@gmail.com')->send(new ContactUsMail($mailData));
-
-        //     return response()->json(["status" => true, "msg" => "success", "data" => $mailData]);
-
-        //     // $details = request()->validate([
-        //     //     "name" => "required|string",
-        //     //     "email" => "required|email",
-        //     //     "message" => "required|string",
-        //     // ]);
-
-        //     // $sent = Mail::to("aljubairshovon@gmail.com")->send(new ContactUsMail($details));
-        //     // if ($sent) {
-        //     //     return response()->json(["status" => true, "msg" => "success", "data" => $request->all()]);
-        //     // }
-        // } catch (Exception $e) {
-        //     return response()->json(["status" => false, "msg" => $e]);
-        // }
     }
 }

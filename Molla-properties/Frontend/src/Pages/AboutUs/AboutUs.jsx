@@ -5,7 +5,9 @@ import "./AboutUs.css";
 const AboutUs = () => {
   return (
     <div className="AboutUs page content">
-      <h3 className="pageTitle">About us</h3>
+      <div className="d-flex pageTitle">
+        <h3>About us</h3>
+      </div>
       {/* For go to top */}
       <input
         type="file"

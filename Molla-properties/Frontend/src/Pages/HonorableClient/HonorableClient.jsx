@@ -43,7 +43,9 @@ const HonorableClient = () => {
 
   return (
     <div className="HonorableClient page content">
-      <h3 className="pageTitle">Honorable Client</h3>
+      <div className="d-flex pageTitle">
+        <h3>Honorable Client</h3>
+      </div>
       {/* For go to top */}
       <input
         type="file"

@@ -43,7 +43,9 @@ const NewsAndEvent = () => {
 
   return (
     <div className="NewsAndEvent page content">
-      <h3 className="pageTitle">News And Events</h3>
+      <div className="d-flex pageTitle">
+        <h3>News And Events</h3>
+      </div>
       {/* For go to top */}
       <input
         type="file"

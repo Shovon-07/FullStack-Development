@@ -35,17 +35,17 @@ const ContactUs = () => {
     } else if (input.subject == "") {
       toast.error("Please enter subject");
     } else if (input.message == "") {
-      toast.error("Please type some text");
+      toast.error("Please type some text message");
     } else {
-      try {
-        const payload = {
-          name: input.name,
-          subject: input.subject,
-          email: input.email,
-          message: input.message,
-        };
-        setLoader(true);
-        await AxiosClient.post("/send-mail", payload).then((res) => {
+      const payload = {
+        name: input.name,
+        email: input.email,
+        subject: input.subject,
+        message: input.message,
+      };
+      setLoader(true);
+      await AxiosClient.post("/send-mail", payload)
+        .then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
             setInput({ name: "", email: "", subject: "", message: "" });
@@ -53,18 +53,21 @@ const ContactUs = () => {
             setLoader(false);
           } else {
             toast.error(res.data.msg);
+            console.log(res.data.msg);
             setLoader(false);
           }
+        })
+        .catch((err) => {
+          console.log(`Error = ${err}`);
         });
-      } catch {
-        toast.error(res.data.msg);
-      }
     }
   };
 
   return (
     <div className="ContactUs page content">
-      <h3 className="pageTitle">Contact us</h3>
+      <div className="d-flex pageTitle">
+        <h3>Contact us</h3>
+      </div>
       {/* For go to top */}
       <input
         type="file"
@@ -97,7 +100,6 @@ const ContactUs = () => {
             <div className="inputWrapper">
               <input
                 type="text"
-                id="name"
                 name="name"
                 placeholder="Enter your name"
                 onChange={handleInput}
@@ -106,7 +108,6 @@ const ContactUs = () => {
             <div className="inputWrapper">
               <input
                 type="email"
-                id="email"
                 name="email"
                 placeholder="Enter your email"
                 onChange={handleInput}
@@ -115,7 +116,6 @@ const ContactUs = () => {
             <div className="inputWrapper">
               <input
                 type="text"
-                id="subject"
                 name="subject"
                 placeholder="Type subject"
                 onChange={handleInput}
@@ -123,7 +123,6 @@ const ContactUs = () => {
             </div>
             <div className="inputWrapper">
               <textarea
-                id="message"
                 name="message"
                 placeholder="Message"
                 onChange={handleInput}

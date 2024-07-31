@@ -44,7 +44,9 @@ const OngoingProject = () => {
 
   return (
     <div className="OngoingProject page content">
-      <h3 className="pageTitle">Ongoing Projects</h3>
+      <div className="d-flex pageTitle">
+        <h3>Ongoing Projects</h3>
+      </div>
       {/* For go to top */}
       <input
         type="file"

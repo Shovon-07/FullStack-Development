@@ -83,7 +83,9 @@ const ProjectView = () => {
 
   return (
     <div className="ProjectView page content">
-      <h3 className="pageTitle">Preview project</h3>
+      <div className="d-flex pageTitle">
+        <h3>Preview project</h3>
+      </div>
       {/* For go to top */}
       <input
         type="file"

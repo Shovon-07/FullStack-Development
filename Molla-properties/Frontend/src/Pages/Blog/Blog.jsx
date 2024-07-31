@@ -40,7 +40,9 @@ const Blog = () => {
 
   return (
     <div className="Blog page content">
-      <h3 className="pageTitle">Blogs</h3>
+      <div className="d-flex pageTitle">
+        <h3>Our Blogs</h3>
+      </div>
       {/* For go to top */}
       <input
         type="file"

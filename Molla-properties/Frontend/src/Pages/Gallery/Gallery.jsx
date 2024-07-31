@@ -21,11 +21,11 @@ const Gallery = () => {
   const [setLoader] = useOutletContext();
 
   const [galleryData, setGalleryData] = useState([]);
-  const [numberOfElement, setNumberOfElement] = useState(4);
-  const slicedData = galleryData.slice(0, numberOfElement);
-  const loadMore = () => {
-    setNumberOfElement((prev) => prev * 2);
-  };
+  // const [numberOfElement, setNumberOfElement] = useState(4);
+  // const slicedData = galleryData.slice(0, numberOfElement);
+  // const loadMore = () => {
+  //   setNumberOfElement((prev) => prev * 2);
+  // };
 
   const getGalleryData = async () => {
     try {
@@ -54,7 +54,9 @@ const Gallery = () => {
 
   return (
     <div className="Gallery page content">
-      <h3 className="pageTitle">Gallery</h3>
+      <div className="d-flex pageTitle">
+        <h3>Image Gallery</h3>
+      </div>
       {/* For go to top */}
       <input
         type="file"
@@ -63,7 +65,7 @@ const Gallery = () => {
       />
       {/* For go to top */}
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
-        {slicedData.map((items, index) => {
+        {galleryData.map((items, index) => {
           return (
             <a href={`${imgPath}${items.Gallery_img}`} key={index}>
               <LazyLoadImage
@@ -80,14 +82,14 @@ const Gallery = () => {
         })}
       </LightGallery>
 
-      <div
+      {/* <div
         className={galleryData.length > 4 ? "" : "d-none"}
         style={{ textAlign: "center", marginTop: "100px" }}
       >
         <button className="btn" onClick={loadMore}>
           Load More
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
