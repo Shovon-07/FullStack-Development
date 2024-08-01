@@ -18,7 +18,7 @@
 .Dashboard .dashboardTxt h1 {
   font-size: 3rem;
   margin-bottom: 30px;
-  background: -webkit-linear-gradient(rgb(59, 59, 250), cyan);
+  background: -webkit-linear-gradient(var(--main-color), #05a2fd);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(-3px 3px var(--light-3));

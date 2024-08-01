@@ -64,11 +64,14 @@ Route::prefix("/admin")->group(function () {
             Route::post("/add-project", "AddProject");
             Route::post("/project-details", "ProjectDetails");
             Route::post("/delete-project", "DeleteProject");
+            Route::get("/projects-name", "ProjectsName");
 
             // Gallery
-            Route::get("/projects-name", "ProjectsName");
             Route::get("/gallery-img", "GalleryImg");
             Route::post("/add-gallery-img", "AddGalleryImage");
+
+            // Plot
+            Route::post("/add-plot", "AddPlot");
         });
     });
 });

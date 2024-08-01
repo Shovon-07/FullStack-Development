@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Exception;
 use App\Models\Projects;
 use App\Models\Gallery;
+use App\Models\Plot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -132,4 +133,20 @@ class ProductController extends Controller
         }
     }
     //___ Gallery end ___//
+
+    //___ Plot start ___//
+    public function AddPlot(Request $request)
+    {
+        $project_id = $request->input('project_id');
+        $plots = $request->input('plot');
+
+        foreach ($plots as $EachPlot) {
+            Plot::create([
+                "Plot" => $EachPlot,
+                "Project_id" => $project_id,
+            ]);
+        }
+        return response()->json(["status" => true, "msg" => "Plots created successfully"]);
+    }
+    //___ Plot end ___//
 }
