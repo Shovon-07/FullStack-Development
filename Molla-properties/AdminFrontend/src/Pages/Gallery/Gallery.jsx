@@ -25,14 +25,14 @@ const Gallery = () => {
   const { setLoader } = UseAuthContext();
 
   const [msg, setMsg] = useState([]);
-  const [relodeData, setRelodeData] = useState();
+  const [relodeData, setRelodeData] = useState(false);
 
   const [galleryData, setGalleryData] = useState([]);
-  const [numberOfElement, setNumberOfElement] = useState(3);
-  const slicedData = galleryData.slice(0, numberOfElement);
-  const loadMore = () => {
-    setNumberOfElement((prev) => prev * 2);
-  };
+  // const [numberOfElement, setNumberOfElement] = useState(3);
+  // const slicedData = galleryData.slice(0, numberOfElement);
+  // const loadMore = () => {
+  //   setNumberOfElement((prev) => prev * 2);
+  // };
 
   // Get project data
   const [projectData, setProjectData] = useState([]);
@@ -66,6 +66,11 @@ const Gallery = () => {
   useEffect(() => {
     GetProjectData();
     GetGalleryData();
+    if (relodeData == true) {
+      setInterval(() => {
+        setRelodeData(false);
+      }, 1000);
+    }
   }, [relodeData]);
 
   const onInit = () => {
@@ -126,7 +131,7 @@ const Gallery = () => {
       </p>
 
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
-        {slicedData.map((items, index) => {
+        {galleryData.map((items, index) => {
           return (
             <a href={`${imgPath}${items.Gallery_img}`} key={items.id}>
               <LazyLoadImage
@@ -143,14 +148,14 @@ const Gallery = () => {
         })}
       </LightGallery>
 
-      <div
+      {/* <div
         className={galleryData.length > 3 ? "" : "d-none"}
         style={{ textAlign: "center", marginTop: "100px" }}
       >
         <button className="btn" onClick={loadMore}>
           Load More
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

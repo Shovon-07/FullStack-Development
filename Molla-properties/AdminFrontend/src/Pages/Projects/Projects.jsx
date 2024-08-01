@@ -19,7 +19,7 @@ const Projects = () => {
   const { setLoader } = UseAuthContext();
 
   const [msg, setMsg] = useState([]);
-  const [relodeData, setRelodeData] = useState();
+  const [relodeData, setRelodeData] = useState(false);
 
   const [projectData, setProjectData] = useState([]);
   const [numberOfElement, setNumberOfElement] = useState(2);
@@ -43,6 +43,11 @@ const Projects = () => {
 
   useEffect(() => {
     getProjectData();
+    if (relodeData == true) {
+      setInterval(() => {
+        setRelodeData(false);
+      }, 1000);
+    }
   }, [relodeData]);
 
   // Input For modal

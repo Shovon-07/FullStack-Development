@@ -69,8 +69,20 @@ class ProductController extends Controller
     }
     public function DeleteProject(Request $request)
     {
-        $id = $request->input("project_id");
-        return response()->json(["status" => true, "msg" => "Project deleted"]);
+        try {
+            $id = $request->input("project_id");
+            $data = Projects::find($id);
+            $imagePath = public_path("Images/" . $data->Image);
+
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            Projects::find($data->id)->delete();
+
+            return response()->json(["status" => true, "msg" => $data]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
     }
     public function ProjectDetails(Request $request)
     {

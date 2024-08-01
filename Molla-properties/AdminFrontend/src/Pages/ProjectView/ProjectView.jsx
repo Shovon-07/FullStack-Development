@@ -42,6 +42,9 @@ const ProjectView = () => {
         if (res.data.status == true) {
           setProjectViewData(res.data.data);
           setLoader(false);
+        } else {
+          setLoader(false);
+          console.log(response.data.msg);
         }
       })
       .catch((err) => {
@@ -86,14 +89,18 @@ const ProjectView = () => {
   // Delete Project
   const DeleteProject = async (id) => {
     confirm("Do you want to delete this project ?");
-    // navigate("/add-project");
     setLoader(true);
     await AxiosClient.post("/delete-project", { project_id: id })
       .then((res) => {
         if (res.data.status == true) {
           console.log(res.data.msg);
           setLoader(false);
+          window.history.back();
           navigate("/add-project");
+          console.clear();
+        } else {
+          setLoader(false);
+          console.log(res.data.msg);
         }
       })
       .catch((err) => {
