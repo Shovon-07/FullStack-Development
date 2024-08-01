@@ -10,46 +10,7 @@ import AxiosClient from "../../assets/Js/AxiosClient";
 const Plots = () => {
   const { setLoader } = UseAuthContext();
 
-  // const [inputList, setinputList] = useState([{ plot: "" }]);
-
-  // const handleinputchange = (e, index) => {
-  //   const { name, value } = e.target;
-  //   const list = [...inputList];
-  //   list[index][name] = value;
-  //   setinputList(list);
-  // };
-
-  // const handleremove = () => {
-  //   if (inputList.length == 1) {
-  //     return;
-  //   } else {
-  //     setinputList(inputList.slice(0, -1));
-  //   }
-  // };
-
-  // const handleaddclick = () => {
-  //   setinputList([...inputList, { plot: "" }]);
-  // };
-
-  // const HandleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const plotData = inputList.map((eachPlot) => eachPlot.plot);
-
-  //   const payload = {
-  //     project_id: "1",
-  //     plot: plotData,
-  //   };
-  //   await AxiosClient.post("/add-plot", payload)
-  //     .then((res) => {
-  //       console.log(res.data.msg);
-  //     })
-  //     .catch((err) => {
-  //       console.log(`Error = ${err}`);
-  //     });
-  // };
-
-  const [projectId, setProjectId] = useState();
+  const [projectId, setProjectId] = useState("0");
 
   // Dynamically add or remove input
   const [inputs, setInputs] = useState([{ value: "" }]);
@@ -91,23 +52,33 @@ const Plots = () => {
     event.preventDefault();
     const data = inputs.map((input) => input.value);
 
-    const payload = {
-      project_id: projectId,
-      plot: data,
-    };
+    if (projectId <= "0") {
+      alert("Please select a project");
+    } else {
+      const payload = {
+        project_id: projectId,
+        plot: data,
+      };
 
-    setLoader(true);
-    await AxiosClient.post("/add-plot", payload)
-      .then((res) => {
-        console.log(res.data.msg);
-        setProjectId("");
-        setInputs([{ value: "" }]);
-        setLoader(false);
-      })
-      .catch((err) => {
-        console.log(`Error = ${err}`);
-        setLoader(false);
-      });
+      setLoader(true);
+      await AxiosClient.post("/add-plot", payload)
+        .then((res) => {
+          if (res.data.status == true) {
+            console.log(res.data.msg);
+            setProjectId("");
+            setInputs([{ value: "" }]);
+            setLoader(false);
+          } else {
+            setLoader(false);
+            console.log(res.data.msg);
+            alert("You didn't add plot value");
+          }
+        })
+        .catch((err) => {
+          console.log(`Error = ${err}`);
+          setLoader(false);
+        });
+    }
   };
 
   useEffect(() => {
@@ -117,45 +88,6 @@ const Plots = () => {
   return (
     <div className="Plots">
       <h3 className="pageTitle">Add plot</h3>
-      {/* <form onSubmit={HandleSubmit}>
-        <div className="submitBtnBox">
-          <button type="submit" className="btn">
-            Submit
-          </button>
-        </div>
-
-        {inputList.map((x, i) => {
-          return (
-            <div className="inputWrapper" key={i}>
-              <input
-                type="text"
-                name="plot"
-                placeholder={`Plot ${i + 1}`}
-                onChange={(e) => handleinputchange(e, i)}
-              />
-            </div>
-          );
-        })}
-      </form>
-      <div className="addRemBtn d-flex gap-30">
-        <button
-          type="button"
-          className="minus"
-          style={{ background: "#ec0202", padding: "0 15px" }}
-          onClick={handleremove}
-        >
-          -
-        </button>
-        <button
-          type="button"
-          className="plus"
-          style={{ background: "#029802", padding: "0 10px" }}
-          onClick={handleaddclick}
-        >
-          +
-        </button>
-      </div> */}
-
       <form onSubmit={HandleSubmit}>
         <select
           name="project_id"
@@ -163,7 +95,9 @@ const Plots = () => {
             setProjectId(e.target.value);
           }}
         >
-          <option value="0">Select project</option>
+          <option value="0" defaultChecked>
+            Select project
+          </option>
           {projectData.map((items, index) => {
             return (
               <option key={index} value={items.id}>

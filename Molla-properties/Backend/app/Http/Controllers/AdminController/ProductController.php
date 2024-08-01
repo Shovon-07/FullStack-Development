@@ -137,16 +137,25 @@ class ProductController extends Controller
     //___ Plot start ___//
     public function AddPlot(Request $request)
     {
-        $project_id = $request->input('project_id');
-        $plots = $request->input('plot');
+        $validator = Validator::make($request->all(), [
+            'project_id' => 'required',
+            'plot.*' => 'required',
+        ]);
 
-        foreach ($plots as $EachPlot) {
-            Plot::create([
-                "Plot" => $EachPlot,
-                "Project_id" => $project_id,
-            ]);
+        if (!$validator->fails()) {
+            $project_id = $request->input('project_id');
+            $plots = $request->input('plot');
+
+            foreach ($plots as $EachPlot) {
+                Plot::create([
+                    "Plot" => $EachPlot,
+                    "Project_id" => $project_id,
+                ]);
+            }
+            return response()->json(["status" => true, "msg" => "Plots added"]);
+        } else {
+            return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
-        return response()->json(["status" => true, "msg" => "Plots created successfully"]);
     }
     //___ Plot end ___//
 }
