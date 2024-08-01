@@ -152,7 +152,7 @@ class ProductController extends Controller
                     "Project_id" => $project_id,
                 ]);
             }
-            return response()->json(["status" => true, "msg" => "Plots added"]);
+            return response()->json(["status" => true, "msg" => "Plots added succesfully"]);
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }

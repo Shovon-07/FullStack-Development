@@ -1,6 +1,7 @@
 import React, { useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { ToastContainer, toast } from "react-toastify";
 
 //___ Modals utilities ___//
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
@@ -15,6 +16,7 @@ import { RxCross2 } from "react-icons/rx";
 //___ Css ___//
 import "./ModalPage.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const style = {
   position: "absolute",
@@ -93,27 +95,27 @@ const ModalPage = (props) => {
     e.preventDefault();
     if (api == "/add-project") {
       if (inputValue.title == "") {
-        alert("Please enter title");
+        toast.error("Please enter title");
       } else if (inputValue.project_name == "") {
-        alert("Please enter project name");
+        toast.error("Please enter project name");
       } else if (inputValue.developer == "") {
-        alert("Please enter developer name");
+        toast.error("Please enter developer name");
       } else if (inputValue.location == "") {
-        alert("Please enter location");
+        toast.error("Please enter location");
       } else if (inputValue.land_area == "") {
-        alert("Please enter land area");
+        toast.error("Please enter land area");
       } else if (inputValue.total_plot == "") {
-        alert("Please enter total plot");
+        toast.error("Please enter total plot");
       } else if (inputValue.contact_no == "") {
-        alert("Please enter contact no");
+        toast.error("Please enter contact no");
       } else if (inputValue.project_map == "") {
-        alert("Please enter project map");
+        toast.error("Please enter project map");
       } else if (inputValue.features == "") {
-        alert("Please enter features");
+        toast.error("Please enter features");
       } else if (inputValue.projectImage == "") {
-        alert("Please enter project image");
+        toast.error("Please enter project image");
       } else if (inputValue.project_status == "") {
-        alert("Please enter project status");
+        toast.error("Please enter project status");
       } else {
         const payload = new FormData();
         payload.append("title", inputValue.title);
@@ -151,10 +153,7 @@ const ModalPage = (props) => {
               setRelodeData(true);
               console.clear();
 
-              setMsg(response.data.msg);
-              setInterval(() => {
-                setMsg("");
-              }, 10000);
+              toast.success(response.data.msg);
             } else {
               setLoader(false);
               console.log(response.data.msg);
@@ -169,9 +168,9 @@ const ModalPage = (props) => {
       }
     } else if (api == "/add-gallery-img") {
       if (inputValue.project_id == "") {
-        alert("Please select a project");
+        toast.error("Please select a project");
       } else if (files == null) {
-        alert("Please select images");
+        toast.error("Please select images");
       } else {
         const payload = new FormData();
         payload.append("project_id", inputValue.project_id);
@@ -193,10 +192,7 @@ const ModalPage = (props) => {
               setRelodeData(true);
               console.clear();
 
-              setMsg(response.data.msg);
-              setInterval(() => {
-                setMsg("");
-              }, 10000);
+              toast.success(response.data.msg);
             } else {
               setLoader(false);
               console.log(response.data.msg);
@@ -409,6 +405,19 @@ const ModalPage = (props) => {
             </Fade>
           </Modal>
         </Suspense>
+
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       </div>
     </>
   );

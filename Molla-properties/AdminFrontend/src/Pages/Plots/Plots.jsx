@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 
 //___ Css ___//
 import "./Plots.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -57,7 +59,7 @@ const Plots = () => {
     const data = inputs.map((input) => input.value);
 
     if (projectId <= "0") {
-      alert("Please select a project");
+      toast.error("Please select a project");
     } else {
       const payload = {
         project_id: projectId,
@@ -68,7 +70,7 @@ const Plots = () => {
       await AxiosClient.post("/add-plot", payload)
         .then((res) => {
           if (res.data.status == true) {
-            alert(res.data.msg);
+            toast.success(res.data.msg);
             setProjectId("");
             setInputs([{ value: "" }]);
             setLoader(false);
@@ -76,7 +78,7 @@ const Plots = () => {
           } else {
             setLoader(false);
             console.log(res.data.msg);
-            alert("You didn't add plot value");
+            toast.error("You didn't add plot value");
           }
         })
         .catch((err) => {
@@ -144,6 +146,19 @@ const Plots = () => {
           </button>
         </div>
       </form>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

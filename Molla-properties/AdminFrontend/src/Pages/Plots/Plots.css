@@ -36,5 +36,5 @@
   margin-left: 20px;
 }
 .Plots .addBtn {
-  background: var(--green);
+  background: var(--green) !important;
 }
