@@ -77,13 +77,13 @@ const SideNav = (props) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about-us">
-              <FaClipboardList size={18} /> About us
+            <NavLink to="/blog">
+              <FaClipboardList size={18} /> Blog
             </NavLink>
           </li>
           <li>
-            <NavLink to="/blog">
-              <FaClipboardList size={18} /> Blog
+            <NavLink to="/about-us">
+              <FaClipboardList size={18} /> About us
             </NavLink>
           </li>
         </div>

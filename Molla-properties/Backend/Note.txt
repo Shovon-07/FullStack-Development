@@ -30,3 +30,4 @@ upload_max_filesize = 1024M
 
 ==>> Problems:
 # How can i select project in gallery image selection page?
+# Add Gallery : Multiple image select problem
