@@ -149,6 +149,7 @@ const ModalPage = (props) => {
 
               setLoader(false);
               setRelodeData(true);
+              console.clear();
 
               setMsg(response.data.msg);
               setInterval(() => {
@@ -190,6 +191,7 @@ const ModalPage = (props) => {
 
               setLoader(false);
               setRelodeData(true);
+              console.clear();
 
               setMsg(response.data.msg);
               setInterval(() => {

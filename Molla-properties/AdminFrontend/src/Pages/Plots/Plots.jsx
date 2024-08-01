@@ -64,10 +64,11 @@ const Plots = () => {
       await AxiosClient.post("/add-plot", payload)
         .then((res) => {
           if (res.data.status == true) {
-            console.log(res.data.msg);
+            alert(res.data.msg);
             setProjectId("");
             setInputs([{ value: "" }]);
             setLoader(false);
+            console.clear();
           } else {
             setLoader(false);
             console.log(res.data.msg);
@@ -95,7 +96,7 @@ const Plots = () => {
             setProjectId(e.target.value);
           }}
         >
-          <option value="0" defaultChecked>
+          <option value="0"  selected={projectId <= 0 ? "true" : ""}>
             Select project
           </option>
           {projectData.map((items, index) => {
