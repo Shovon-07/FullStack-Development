@@ -1,13 +1,19 @@
-.Plots .addRemBtn {
-  width: 100%;
-  justify-content: center;
+.Plots form select {
+  width: 20%;
+  padding: 5px 10px;
+  margin: 10px 0 40px 0;
+  background: var(--dark-1);
 }
-.Plots .addRemBtn button {
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  border: none;
+.Plots input,
+.Plots select {
+  margin-bottom: 30px;
+  width: 90%;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: var(--border);
   outline: none;
+  background: transparent;
+  color: var(--light-1);
 }
 .Plots .submitBtnBox {
   text-align: center;
@@ -15,16 +21,20 @@
 .Plots .submitBtnBox button {
   margin-top: 20px;
 }
-.Plots .inputWrapper {
-  width: 100%;
-}
-.Plots .inputWrapper input {
-  margin-bottom: 30px;
-  width: 100%;
-  font-size: 1rem;
-  padding: 10px 20px;
-  border: var(--border);
+
+.Plots .addOrRemoveBtn {
+  padding: 5px 10px;
+  border: none;
   outline: none;
-  background: transparent;
-  color: var(--light-1);
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.Plots .removeBtn {
+  background: var(--red);
+  height: 42px;
+  margin-left: 20px;
+}
+.Plots .addBtn {
+  background: var(--green);
 }

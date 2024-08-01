@@ -28,9 +28,13 @@ const Plots = () => {
   };
 
   const handleRemoveField = (index) => {
-    const values = [...inputs];
-    values.splice(index, 1);
-    setInputs(values);
+    if (index <= 0) {
+      return;
+    } else {
+      const values = [...inputs];
+      values.splice(index, 1);
+      setInputs(values);
+    }
   };
 
   // Get project data
@@ -90,37 +94,48 @@ const Plots = () => {
     <div className="Plots">
       <h3 className="pageTitle">Add plot</h3>
       <form onSubmit={HandleSubmit}>
-        <select
-          name="project_id"
-          onChange={(e) => {
-            setProjectId(e.target.value);
-          }}
-        >
-          <option value="0"  selected={projectId <= 0 ? "true" : ""}>
-            Select project
-          </option>
-          {projectData.map((items, index) => {
-            return (
-              <option key={index} value={items.id}>
-                {items.Project_name}
-              </option>
-            );
-          })}
-        </select>
+        <div style={{ textAlign: "right" }}>
+          <select
+            name="project_id"
+            onChange={(e) => {
+              setProjectId(e.target.value);
+            }}
+          >
+            <option value="0" selected={projectId <= 0 ? "true" : ""}>
+              Select project
+            </option>
+            {projectData.map((items, index) => {
+              return (
+                <option key={index} value={items.id}>
+                  {items.Project_name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
 
         {inputs.map((input, index) => (
           <div key={index}>
             <input
               type="text"
               value={input.value}
+              placeholder={`Enter plot value ${index + 1}`}
               onChange={(event) => handleInputChange(index, event)}
             />
-            <button type="button" onClick={() => handleRemoveField(index)}>
-              -
+            <button
+              type="button"
+              className="addOrRemoveBtn removeBtn"
+              onClick={() => handleRemoveField(index)}
+            >
+              Remove
             </button>
           </div>
         ))}
-        <button type="button" onClick={handleAddField}>
+        <button
+          type="button"
+          className="addOrRemoveBtn addBtn"
+          onClick={handleAddField}
+        >
           Add Field
         </button>
         <div className="submitBtnBox">
