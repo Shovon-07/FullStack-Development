@@ -10,10 +10,10 @@
   outline: none;
 }
 .Plots .submitBtnBox {
-  text-align: end;
+  text-align: center;
 }
-.Plots button[type="submit"] {
-  margin-bottom: 20px;
+.Plots .submitBtnBox button {
+  margin-top: 20px;
 }
 .Plots .inputWrapper {
   width: 100%;

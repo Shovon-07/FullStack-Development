@@ -86,7 +86,6 @@ const ModalPage = (props) => {
     const files = Array.from(e.target.files);
     const fileUrls = files.map((file) => URL.createObjectURL(file));
     setPreviewUrls(fileUrls);
-    // console.log(fileUrls);
   };
   //___ Add Gallery Page End ___//
 
@@ -192,7 +191,6 @@ const ModalPage = (props) => {
               setLoader(false);
               setRelodeData(true);
 
-              console.log(response.data.Images);
               setMsg(response.data.msg);
               setInterval(() => {
                 setMsg("");

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { UseAuthContext } from "../../Context/AuthContext";
 
 //___ Css ___//
 import "./Plots.css";
@@ -7,6 +8,8 @@ import "./Plots.css";
 import AxiosClient from "../../assets/Js/AxiosClient";
 
 const Plots = () => {
+  const { setLoader } = UseAuthContext();
+
   // const [inputList, setinputList] = useState([{ plot: "" }]);
 
   // const handleinputchange = (e, index) => {
@@ -46,6 +49,9 @@ const Plots = () => {
   //     });
   // };
 
+  const [projectId, setProjectId] = useState();
+
+  // Dynamically add or remove input
   const [inputs, setInputs] = useState([{ value: "" }]);
 
   const handleInputChange = (index, event) => {
@@ -66,22 +72,47 @@ const Plots = () => {
     setInputs(values);
   };
 
-  const handleSubmit = async (event) => {
+  // Get project data
+  const [projectData, setProjectData] = useState([]);
+  const GetProjectData = async () => {
+    setLoader(true);
+    await AxiosClient.get("/projects-name")
+      .then((res) => {
+        setProjectData(res.data.data);
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+
+  const HandleSubmit = async (event) => {
     event.preventDefault();
     const data = inputs.map((input) => input.value);
 
     const payload = {
-      project_id: "27",
+      project_id: projectId,
       plot: data,
     };
 
-    try {
-      const response = await AxiosClient.post("/add-plot", payload);
-      console.log("Response:", response.data);
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    setLoader(true);
+    await AxiosClient.post("/add-plot", payload)
+      .then((res) => {
+        console.log(res.data.msg);
+        setProjectId("");
+        setInputs([{ value: "" }]);
+        setLoader(false);
+      })
+      .catch((err) => {
+        console.log(`Error = ${err}`);
+        setLoader(false);
+      });
   };
+
+  useEffect(() => {
+    GetProjectData();
+  }, []);
 
   return (
     <div className="Plots">
@@ -125,7 +156,23 @@ const Plots = () => {
         </button>
       </div> */}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={HandleSubmit}>
+        <select
+          name="project_id"
+          onChange={(e) => {
+            setProjectId(e.target.value);
+          }}
+        >
+          <option value="0">Select project</option>
+          {projectData.map((items, index) => {
+            return (
+              <option key={index} value={items.id}>
+                {items.Project_name}
+              </option>
+            );
+          })}
+        </select>
+
         {inputs.map((input, index) => (
           <div key={index}>
             <input
@@ -141,7 +188,11 @@ const Plots = () => {
         <button type="button" onClick={handleAddField}>
           Add Field
         </button>
-        <button type="submit">Submit</button>
+        <div className="submitBtnBox">
+          <button type="submit" className="btn">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );

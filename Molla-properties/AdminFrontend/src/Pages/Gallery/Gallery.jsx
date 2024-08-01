@@ -55,7 +55,6 @@ const Gallery = () => {
     await AxiosClient.get("/gallery-img")
       .then((res) => {
         setGalleryData(res.data.data);
-        console.log(res.data.data);
         setLoader(false);
       })
       .catch((e) => {
@@ -126,42 +125,10 @@ const Gallery = () => {
         {msg}
       </p>
 
-      {/* <div className="cardWrapper d-flex gap-20">
-        {slicedData.map((items, index) => {
-          return (
-            <div className="card" key={index}>
-              <LazyLoadImage
-                src={`${imgPath}${items.Image}`}
-                effect="blur"
-                wrapperProps={{
-                  style: { transitionDelay: "1s" },
-                }}
-              />
-
-              <div className="txt d-flex">
-                <h3 className="title">
-                  {items.Title.length > 70
-                    ? items.Title.slice(0, 70) + "..."
-                    : items.Title}
-                </h3>
-                <div style={{ textAlign: "center" }}>
-                  <NavLink
-                    to={`/project-details/${items.id}`}
-                    className="readMoreBtn btn c_pointer"
-                  >
-                    Read more
-                  </NavLink>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div> */}
-
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
         {slicedData.map((items, index) => {
           return (
-            <a href={`${imgPath}${items.Gallery_img}`} key={index}>
+            <a href={`${imgPath}${items.Gallery_img}`} key={items.id}>
               <LazyLoadImage
                 alt={items.Gallery_img}
                 src={`${imgPath}${items.Gallery_img}`}

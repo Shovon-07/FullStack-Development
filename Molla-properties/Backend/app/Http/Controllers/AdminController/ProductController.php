@@ -83,9 +83,6 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
-    //___ Projects end ___//
-
-    //___ Gallery start ___//
     public function ProjectsName()
     {
         $projects = Projects::select("id", "Project_name")->get();
@@ -95,6 +92,9 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
     }
+    //___ Projects end ___//
+
+    //___ Gallery start ___//
     public function GalleryImg()
     {
         $images = Gallery::latest("id")->get();
