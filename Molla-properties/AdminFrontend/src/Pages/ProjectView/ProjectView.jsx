@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { ToastContainer, toast } from "react-toastify";
 import moment from "moment";
 import Tooltip from "@mui/material/Tooltip";
 
@@ -11,6 +12,7 @@ import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
 //___ Css ___//
 import "./ProjectView.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -73,7 +75,7 @@ const ProjectView = () => {
   const [galleryData, setGalleryData] = useState([]);
   const getGalleryData = async () => {
     setLoader(true);
-    await AxiosClient.post("/galleries", { project_id: id })
+    await AxiosClient.post("/get-project-gallery", { project_id: id })
       .then((res) => {
         if (res.data.status == true) {
           setGalleryData(res.data.data);
@@ -97,7 +99,8 @@ const ProjectView = () => {
           setLoader(false);
           window.history.back();
           navigate("/add-project");
-          console.clear();
+          toast.success(res.data.msg);
+          // console.clear();
         } else {
           setLoader(false);
           console.log(res.data.msg);
@@ -326,6 +329,19 @@ const ProjectView = () => {
           {/* Gallery end */}
         </div>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

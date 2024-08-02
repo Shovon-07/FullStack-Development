@@ -69,6 +69,7 @@ Route::prefix("/admin")->group(function () {
             // Gallery
             Route::get("/gallery-img", "GalleryImg");
             Route::post("/add-gallery-img", "AddGalleryImage");
+            Route::post("/get-project-gallery", "GetProjectGallery");
 
             // Plot
             Route::post("/add-plot", "AddPlot");

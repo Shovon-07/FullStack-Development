@@ -67,23 +67,6 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
     }
-    public function DeleteProject(Request $request)
-    {
-        try {
-            $id = $request->input("project_id");
-            $data = Projects::find($id);
-            $imagePath = public_path("Images/" . $data->Image);
-
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
-            }
-            Projects::find($data->id)->delete();
-
-            return response()->json(["status" => true, "msg" => $data]);
-        } catch (Exception $exception) {
-            return response()->json(["status" => false, "msg" => "No Data founded"]);
-        }
-    }
     public function ProjectDetails(Request $request)
     {
         try {
@@ -102,6 +85,43 @@ class ProductController extends Controller
             return response()->json(["status" => true, "data" => $projects]);
         } else {
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
+
+    public function DeleteProject(Request $request)
+    {
+        try {
+            $id = $request->input("project_id");
+
+            $projectData = Projects::find($id);
+            $projectImagePath = public_path("Images/" . $projectData->Image);
+
+            $plotData = Plot::where("Project_id", $id)->get();
+
+            $galleryData = Gallery::where("Project_id", $id)->get();
+            $eachGalleryImagePath = [];
+
+            foreach ($galleryData as $eachGalleryData) {
+                $galleryImagePath = public_path("Images/" . $eachGalleryData->Gallery_img);
+                $eachGalleryImagePath[] = $galleryImagePath;
+            }
+
+            if (file_exists($projectImagePath) || $eachGalleryImagePath != null) {
+                // unlink($projectImagePath);
+                unlink($eachGalleryImagePath);
+                return response()->json(["status" => true, "msg" => $eachGalleryImagePath]);
+            }
+
+            // unlink($projectImagePath);
+            // unlink($galleryImagePath);
+
+            // Plot::where("Project_id", $id)->delete();
+            // Gallery::where("Project_id", $id)->delete();
+            // Projects::find($projectData->id)->delete();
+
+            // return response()->json(["status" => true, "msg" => "Project deleted"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
     //___ Projects end ___//
@@ -128,8 +148,8 @@ class ProductController extends Controller
             $images = $request->file("gallery_image");
             $imageData = [];
 
-            foreach ($images as $image) {
-                $new_name = "Gallery/" . time() . "_" . rand() . "." . $image->getClientOriginalExtension();
+            foreach ($images as $key => $image) {
+                $new_name = "Gallery/" . $key . "_" . time() . "_" . rand() . "." . $image->getClientOriginalExtension();
                 $image->move(public_path("/Images/Gallery"), $new_name);
 
                 $imageData[] = [
@@ -142,6 +162,17 @@ class ProductController extends Controller
             return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);
+        }
+    }
+    public function GetProjectGallery(Request $request)
+    {
+        try {
+            $Project_id = $request->input("project_id");
+            $gallery = Gallery::where("Project_id", $Project_id)->latest("id")->get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $gallery]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
     //___ Gallery end ___//
