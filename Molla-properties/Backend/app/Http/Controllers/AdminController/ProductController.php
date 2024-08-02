@@ -9,6 +9,8 @@ use App\Models\Gallery;
 use App\Models\Plot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -104,22 +106,19 @@ class ProductController extends Controller
             foreach ($galleryData as $eachGalleryData) {
                 $galleryImagePath = public_path("Images/" . $eachGalleryData->Gallery_img);
                 $eachGalleryImagePath[] = $galleryImagePath;
+                File::delete($eachGalleryImagePath);
             }
 
-            if (file_exists($projectImagePath) || $eachGalleryImagePath != null) {
+            if (file_exists($projectImagePath)) {
                 // unlink($projectImagePath);
-                unlink($eachGalleryImagePath);
-                return response()->json(["status" => true, "msg" => $eachGalleryImagePath]);
+                File::delete($projectImagePath);
             }
 
-            // unlink($projectImagePath);
-            // unlink($galleryImagePath);
+            Plot::where("Project_id", $id)->delete();
+            Gallery::where("Project_id", $id)->delete();
+            Projects::find($projectData->id)->delete();
 
-            // Plot::where("Project_id", $id)->delete();
-            // Gallery::where("Project_id", $id)->delete();
-            // Projects::find($projectData->id)->delete();
-
-            // return response()->json(["status" => true, "msg" => "Project deleted"]);
+            return response()->json(["status" => true, "msg" => "Project deleted"]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
