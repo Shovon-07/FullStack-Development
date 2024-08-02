@@ -12,8 +12,8 @@ import { IoMdSettings, IoIosArrowForward, IoMdSunny } from "react-icons/io";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 
-//___ Images ___//
-import User from "../../assets/Images/User.jpg";
+//___ Additional utilitis ___//
+import { imgPath } from "../../assets/Js/Data";
 
 //___ Data ___//
 import { notificationData, messageData } from "../../assets/Js/Data";
@@ -212,7 +212,7 @@ const Header = (props) => {
           onClick={handleProfileDropdown}
         >
           <a className="d-flex gap-10">
-            <img src={User} alt="" />
+            <img src={`${imgPath}Utility/Logo.png`} alt="" />
             <span>{user.length > 15 ? user.slice(0, 15) + "..." : user}</span>
             <IoIosArrowForward
               className={profileDropdownVal != false ? "arrow fliped" : "arrow"}
