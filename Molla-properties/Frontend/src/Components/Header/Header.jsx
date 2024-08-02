@@ -9,6 +9,9 @@ import { IoMdSunny } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 
+//___ Images __//
+import Logo from "../../assets/Images/Logo.png";
+
 //___ Css __//
 import "./Header.css";
 
@@ -61,10 +64,10 @@ const Header = (props) => {
     <div className="Header">
       <div className="headerContainer d-flex">
         <div className="logo">
-          {/* <img src={Logo} alt="" /> */}
-          <p>
+          <img src={Logo} alt="" />
+          {/* <p>
             Molla <span>Properties</span>
-          </p>
+          </p> */}
         </div>
         <ul className={`d-flex menus ${toggle == true ? "active" : ""}`}>
           <li>
