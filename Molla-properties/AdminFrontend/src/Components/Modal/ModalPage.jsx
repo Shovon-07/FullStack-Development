@@ -184,15 +184,16 @@ const ModalPage = (props) => {
             if (response.data.status == true) {
               handleClose();
 
+              setLoader(false);
+              setRelodeData(true);
+
               setFiles();
               setPreviewUrls([]);
               setInputValue({ project_id: "" });
 
-              setLoader(false);
-              setRelodeData(true);
-              console.clear();
-
               toast.success(response.data.msg);
+              console.log(response.data.msg);
+              // console.clear();
             } else {
               setLoader(false);
               console.log(response.data.msg);

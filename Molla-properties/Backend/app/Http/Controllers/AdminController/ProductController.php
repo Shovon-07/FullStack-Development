@@ -158,6 +158,7 @@ class ProductController extends Controller
 
             Gallery::insert($imageData);
             return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
+            // return response()->json(["status" => true, "msg" => $imageData]);
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
