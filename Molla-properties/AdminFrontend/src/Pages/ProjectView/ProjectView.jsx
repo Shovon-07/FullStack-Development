@@ -100,7 +100,7 @@ const ProjectView = () => {
           window.history.back();
           navigate("/add-project");
           toast.success(res.data.msg);
-          // console.clear();
+          console.clear();
         } else {
           setLoader(false);
           console.log(res.data.msg);
@@ -115,7 +115,6 @@ const ProjectView = () => {
   useEffect(() => {
     getProjectViewData();
     getPlotData();
-    // getGalleryData();
   }, []);
 
   return (

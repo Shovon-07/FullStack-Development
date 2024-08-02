@@ -110,7 +110,6 @@ class ProductController extends Controller
             }
 
             if (file_exists($projectImagePath)) {
-                // unlink($projectImagePath);
                 File::delete($projectImagePath);
             }
 
