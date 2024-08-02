@@ -56,7 +56,7 @@ const ProjectView = () => {
   const [plotData, setPlotData] = useState([]);
   const getPlotData = async () => {
     setLoader(true);
-    await AxiosClient.post("/plots", { project_id: id })
+    await AxiosClient.post("/get-plots", { project_id: id })
       .then((res) => {
         if (res.data.status == true) {
           setPlotData(res.data.data);
@@ -126,7 +126,7 @@ const ProjectView = () => {
       />
       {/* For go to top */}
       <p className="date">
-        {id} Uploaded : {moment(projectViewData.Created_at).fromNow()}
+        Uploaded : {moment(projectViewData.Created_at).fromNow()}
       </p>
 
       <div className="editOrDelete d-flex gap-30">
@@ -261,7 +261,7 @@ const ProjectView = () => {
                   {plotData.map((items, index) => {
                     return (
                       <tr key={index}>
-                        <td>Plot</td>
+                        <td>Plot {` - ${index + 1}`}</td>
                         <td>:</td>
                         <td>{items.Plot}</td>
                       </tr>

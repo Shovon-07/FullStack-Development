@@ -207,7 +207,7 @@ const ProjectView = () => {
                   {plotData.map((items, index) => {
                     return (
                       <tr key={index}>
-                        <td>Plot</td>
+                        <td>Plot {` - ${index + 1}`}</td>
                         <td>:</td>
                         <td>{items.Plot}</td>
                       </tr>

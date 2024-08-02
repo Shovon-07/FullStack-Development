@@ -169,5 +169,16 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
     }
+    public function GetPlots(Request $request)
+    {
+        try {
+            $Project_id = $request->input("project_id");
+            $plot = Plot::where("Project_id", $Project_id)->get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $plot]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
     //___ Plot end ___//
 }

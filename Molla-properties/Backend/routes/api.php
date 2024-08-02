@@ -72,6 +72,7 @@ Route::prefix("/admin")->group(function () {
 
             // Plot
             Route::post("/add-plot", "AddPlot");
+            Route::post("/get-plots", "GetPlots");
         });
     });
 });
