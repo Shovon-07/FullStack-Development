@@ -65,9 +65,6 @@ const Header = (props) => {
       <div className="headerContainer d-flex">
         <div className="logo">
           <img src={Logo} alt="" />
-          {/* <p>
-            Molla <span>Properties</span>
-          </p> */}
         </div>
         <ul className={`d-flex menus ${toggle == true ? "active" : ""}`}>
           <li>

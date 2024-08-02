@@ -21,15 +21,6 @@
   width: 70px;
   height: auto;
 }
-/* .Header .logo p {
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  cursor: default;
-}
-.Header .logo p span {
-  color: var(--main-color);
-} */
 .Header ul {
   justify-content: space-between;
   gap: 30px;
@@ -178,10 +169,11 @@
 }
 @media screen and (max-width: 450px) {
   .Header {
-    height: 48px;
+    height: 58px;
   }
-  .Header .logo p {
-    font-size: 0.98rem;
+  .Header .logo img {
+    width: 60px;
+    height: auto;
   }
   .Header .lastChild {
     gap: 20px;
