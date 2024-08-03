@@ -117,7 +117,7 @@ const HonorableClient = () => {
           return (
             <div className="card" key={index}>
               <LazyLoadImage
-                src={`${imgPath}${items.Image}`}
+                src={`${imgPath}${items.HonorableClient_img}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
@@ -126,18 +126,11 @@ const HonorableClient = () => {
 
               <div className="txt d-flex">
                 <h3 className="title">
-                  {items.Title.length > 70
-                    ? items.Title.slice(0, 70) + "..."
-                    : items.Title}
+                  {items.HonorableClientName.length > 70
+                    ? items.HonorableClientName.slice(0, 70) + " ..."
+                    : items.HonorableClientName}
                 </h3>
-                <div style={{ textAlign: "center" }}>
-                  <NavLink
-                    to={`/project-details/${items.id}`}
-                    className="readMoreBtn btn c_pointer"
-                  >
-                    Read more
-                  </NavLink>
-                </div>
+                <div style={{ textAlign: "center" }}></div>
               </div>
             </div>
           );

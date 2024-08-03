@@ -228,5 +228,34 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
     }
+    public function AddHonClient(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'honClient_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:51200',
+        ]);
+
+        if (!$validator->fails()) {
+            $Project_id = $request->input("project_id");
+            $honClient_name = $request->input("honClient_name");
+
+            $honClient_image = $request->file("honClient_image");
+            $honClientImageName = "HonorableClient/" . time() . "_" . rand() . "." . $honClient_image->getClientOriginalExtension();
+
+            $store = HonorableClient::create([
+                "Project_id" => $Project_id,
+                "HonorableClientName" => $honClient_name,
+                "HonorableClient_img" => $honClientImageName,
+            ]);
+
+            if ($store) {
+                $honClient_image->move(public_path("/Images/HonorableClient"), $honClientImageName);
+                return response()->json(["status" => true, "msg" => "New Honorable client added"]);
+            } else {
+                return response()->json(["status" => false, "msg" => "Something went wrong"]);
+            }
+        } else {
+            return response()->json(["status" => false, "msg" => $validator->errors()]);
+        }
+    }
     //___ Honorable Client end ___//
 }

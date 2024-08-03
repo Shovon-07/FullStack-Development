@@ -126,7 +126,7 @@
 }
 
 .Toastify__toast-body {
-  flex: none;
+  flex: none !important;
 }
 
 @media screen and (max-width: 650px) {

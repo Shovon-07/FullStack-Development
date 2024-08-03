@@ -171,7 +171,6 @@ const ModalPage = (props) => {
           .catch((e) => {
             console.log(`Error = ${e}`);
             setLoader(false);
-            // handleClose();
           });
       }
     } else if (api == "/add-gallery-img") {
@@ -213,23 +212,20 @@ const ModalPage = (props) => {
           .catch((e) => {
             console.log(`Error = ${e}`);
             setLoader(false);
-            // handleClose();
-            // setFiles();
-            // setPreviewUrls([]);
-            // setInputValue({ project_id: "" });
           });
       }
     } else if (api == "/add-hon-client") {
       if (inputValue.project_id == "") {
         toast.error("Please select a project");
-      } else if (files == null) {
-        toast.error("Please select images");
+      } else if (inputValue.honClient_name == "") {
+        toast.error("Please enter client name");
+      } else if (honClientImage == null) {
+        toast.error("Please select client image");
       } else {
         const payload = new FormData();
         payload.append("project_id", inputValue.project_id);
-        for (let i = 0; i < files.length; i++) {
-          payload.append(`gallery_image[${i}]`, files[i]);
-        }
+        payload.append("honClient_name", inputValue.honClient_name);
+        payload.append("honClient_image", honClientImage);
 
         setLoader(true);
         await AxiosClient.post(api, payload)
@@ -245,8 +241,7 @@ const ModalPage = (props) => {
               setInputValue({ project_id: "" });
 
               toast.success(response.data.msg);
-              console.log(response.data.msg);
-              // console.clear();
+              console.clear();
             } else {
               setLoader(false);
               console.log(response.data.msg);
@@ -258,10 +253,6 @@ const ModalPage = (props) => {
           .catch((e) => {
             console.log(`Error = ${e}`);
             setLoader(false);
-            // handleClose();
-            // setFiles();
-            // setPreviewUrls([]);
-            // setInputValue({ project_id: "" });
           });
       }
     }
