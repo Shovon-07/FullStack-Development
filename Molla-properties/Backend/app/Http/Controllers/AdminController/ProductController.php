@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use App\Models\HonorableClient;
+use App\Models\NewsAndEvent;
 use Exception;
 use App\Models\Projects;
 use App\Models\Gallery;
@@ -249,7 +250,7 @@ class ProductController extends Controller
 
             if ($store) {
                 $honClient_image->move(public_path("/Images/HonorableClient"), $honClientImageName);
-                return response()->json(["status" => true, "msg" => "New Honorable client added"]);
+                return response()->json(["status" => true, "msg" => "New client added"]);
             } else {
                 return response()->json(["status" => false, "msg" => "Something went wrong"]);
             }
@@ -258,4 +259,43 @@ class ProductController extends Controller
         }
     }
     //___ Honorable Client end ___//
+
+    //___ News and event start ___//
+    public function GetNewsEvent()
+    {
+        $newsEvent = NewsAndEvent::latest("id")->get();
+        if ($newsEvent) {
+            return response()->json(["status" => true, "data" => $newsEvent]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
+    public function AddNewsEvent(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'newsEvent_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:51200',
+        ]);
+
+        if (!$validator->fails()) {
+            $Project_id = $request->input("project_id");
+
+            $newsEvent_image = $request->file("newsEvent_image");
+            $newsEventImageName = "News/" . time() . "_" . rand() . "." . $newsEvent_image->getClientOriginalExtension();
+
+            $store = HonorableClient::create([
+                "Project_id" => $Project_id,
+                "News_img" => $newsEventImageName,
+            ]);
+
+            if ($store) {
+                $newsEvent_image->move(public_path("/Images/News"), $newsEventImageName);
+                return response()->json(["status" => true, "msg" => "News and event added"]);
+            } else {
+                return response()->json(["status" => false, "msg" => "Something went wrong"]);
+            }
+        } else {
+            return response()->json(["status" => false, "msg" => $validator->errors()]);
+        }
+    }
+    //___ News and event end ___//
 }

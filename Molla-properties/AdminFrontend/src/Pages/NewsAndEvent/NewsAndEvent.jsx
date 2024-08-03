@@ -1,12 +1,143 @@
-import React from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
+import { NavLink } from "react-router-dom";
+import { UseAuthContext } from "../../Context/AuthContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
 import "./NewsAndEvent.css";
+// import "../../assets/Css/Card.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
+//___ Additional utilitis ___//
+import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
+import Loader from "../../Components/Loader/Loader";
+
+//___ Components ___//
+const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const NewsAndEvent = () => {
+  const { setLoader } = UseAuthContext();
+  const [relodeData, setRelodeData] = useState(false);
+
+  const [neswEventData, setNeswEventData] = useState([]);
+  const [numberOfElement, setNumberOfElement] = useState(2);
+  const slicedData = neswEventData.slice(0, numberOfElement);
+  const loadMore = () => {
+    setNumberOfElement((prev) => prev * 2);
+  };
+
+  // Get project data
+  const [projectData, setProjectData] = useState([]);
+  const GetProjectData = async () => {
+    setLoader(true);
+    await AxiosClient.get("/projects-name")
+      .then((res) => {
+        setProjectData(res.data.data);
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+
+  const GetNeswEventDataData = async () => {
+    setLoader(true);
+    await AxiosClient.get("/get-news-event")
+      .then((res) => {
+        setNeswEventData(res.data.data);
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+
+  useEffect(() => {
+    GetProjectData();
+    GetNeswEventDataData();
+    if (relodeData == true) {
+      setInterval(() => {
+        setRelodeData(false);
+      }, 1000);
+    }
+  }, [relodeData]);
+
+  // Input For modal
+  const inputFieldsForNewsEvent = [
+    {
+      field: "",
+      type: "text",
+      label: "",
+      placeholder: "",
+      className: "d-none",
+    },
+  ];
+
+  // Style for modal
+  const modalOpenBtnStyle = {
+    fontSize: "0.9rem",
+    fontWeight: "600",
+    color: "#fff",
+    width: "200px",
+    height: "40px",
+    background: "#424242",
+    paddingBottom: "3px",
+    marginBottom: "50px",
+  };
+
   return (
     <div className="NewsAndEvent">
-      <h3 className="pageTitle">NewsAndEvent</h3>
+      <h3 className="pageTitle">News And Event</h3>
+      {/* For go to top */}
+      <input
+        type="file"
+        autoFocus
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
+      />
+      {/* For go to top */}
+      <div className="modalBtn" style={{ textAlign: "end" }}>
+        <Suspense fallback={<Loader />}>
+          <ModalPage
+            slug={"Add news and event"}
+            inputFields={inputFieldsForNewsEvent}
+            ModalOpenBtnTitle="Add News and Event"
+            ModalOpenBtnStyle={modalOpenBtnStyle}
+            api={"/add-news-event"}
+            setLoader={setLoader}
+            setRelodeData={setRelodeData}
+            projectData={projectData}
+          />
+        </Suspense>
+      </div>
+
+      <div className="newsBox d-flex-start gap-20">
+        {slicedData.map((items, index) => {
+          return (
+            <div key={index} className="card">
+              <LazyLoadImage
+                alt={items.img}
+                src={`${imgPath}${items.News_img}`}
+                effect="blur"
+                wrapperProps={{
+                  style: { transitionDelay: "1s" },
+                }}
+              />
+            </div>
+          );
+        })}
+      </div>
+
+      <div
+        className={neswEventData.length > 2 ? "" : "d-none"}
+        style={{ textAlign: "center", marginTop: "100px" }}
+      >
+        <button className="btn" onClick={loadMore}>
+          Load More
+        </button>
+      </div>
     </div>
   );
 };

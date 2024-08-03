@@ -72,12 +72,12 @@ const ModalPage = (props) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
-  //___ Honorable client image start ___//
-  const [honClientImage, setHonClientImage] = useState();
-  const handleHonClientImageInput = (e) => {
-    setHonClientImage(e.target.files[0]);
+  //___ Project image start ___//
+  const [projectImage, setProjectImage] = useState();
+  const handleProjectImageInput = (e) => {
+    setProjectImage(e.target.files[0]);
   };
-  //___ Honorable client image end ___//
+  //___ Project image end ___//
 
   //___ Add Gallery Page Start ___//
   const [files, setFiles] = useState();
@@ -92,12 +92,19 @@ const ModalPage = (props) => {
   };
   //___ Add Gallery Page End ___//
 
-  //___ Project image start ___//
-  const [projectImage, setProjectImage] = useState();
-  const handleProjectImageInput = (e) => {
-    setProjectImage(e.target.files[0]);
+  //___ Honorable client image start ___//
+  const [honClientImage, setHonClientImage] = useState();
+  const handleHonClientImageInput = (e) => {
+    setHonClientImage(e.target.files[0]);
   };
-  //___ Project image end ___//
+  //___ Honorable client image end ___//
+
+  //___ News and event image start ___//
+  const [newsEventImage, setNewsEventImage] = useState();
+  const handleNewsEventImageInput = (e) => {
+    setNewsEventImage(e.target.files[0]);
+  };
+  //___ News and event image end ___//
 
   const HandleForm = async (e) => {
     e.preventDefault();
@@ -236,8 +243,44 @@ const ModalPage = (props) => {
               setLoader(false);
               setRelodeData(true);
 
-              setFiles();
-              setPreviewUrls([]);
+              setHonClientImage("");
+              setInputValue({ project_id: "" });
+
+              toast.success(response.data.msg);
+              console.clear();
+            } else {
+              setLoader(false);
+              console.log(response.data.msg);
+              alert(
+                "Please select image file ( jpg, png, jpeg or anythin else )"
+              );
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
+            setLoader(false);
+          });
+      }
+    } else if (api == "/add-news-event") {
+      if (inputValue.project_id == "") {
+        toast.error("Please select a project");
+      } else if (newsEventImage == null) {
+        toast.error("Please select news image");
+      } else {
+        const payload = new FormData();
+        payload.append("project_id", inputValue.project_id);
+        payload.append("newsEvent_image", newsEventImage);
+
+        setLoader(true);
+        await AxiosClient.post(api, payload)
+          .then((response) => {
+            if (response.data.status == true) {
+              handleClose();
+
+              setLoader(false);
+              setRelodeData(true);
+
+              setNewsEventImage("");
               setInputValue({ project_id: "" });
 
               toast.success(response.data.msg);
@@ -492,6 +535,43 @@ const ModalPage = (props) => {
                       ""
                     )}
                     {/* ___ Add Honorable Client Page Start  ___ */}
+
+                    {/* ___ Add News and event Page Start  ___ */}
+                    {/* Select project */}
+                    {api == "/add-news-event" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Select project</label>
+                        <select name="project_id" onChange={handleInputValue}>
+                          <option value="1">Select project</option>
+                          {projectData.map((items, index) => {
+                            return (
+                              <option key={index} value={items.id}>
+                                {items.Project_name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
+                    {/* News and event image */}
+                    {api == "/add-news-event" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>News and event image</label>
+                        <div className="inputBox">
+                          <input
+                            type="file"
+                            name="newsEvent_image"
+                            onChange={handleNewsEventImageInput}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    {/* ___ Add News and event Page Start  ___ */}
 
                     <div>
                       <button type="submit" className="button c_pointer">

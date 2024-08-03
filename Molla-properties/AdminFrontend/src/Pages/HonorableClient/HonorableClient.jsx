@@ -1,5 +1,4 @@
 import { useEffect, useState, lazy, Suspense } from "react";
-import { NavLink } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
@@ -80,7 +79,7 @@ const HonorableClient = () => {
     fontSize: "0.9rem",
     fontWeight: "600",
     color: "#fff",
-    width: "200px",
+    width: "245px",
     height: "40px",
     background: "#424242",
     paddingBottom: "3px",
@@ -102,7 +101,7 @@ const HonorableClient = () => {
           <ModalPage
             slug={"Add honorable client"}
             inputFields={inputFieldsForHonClient}
-            ModalOpenBtnTitle="Add New Project"
+            ModalOpenBtnTitle="Add new honorable client"
             ModalOpenBtnStyle={modalOpenBtnStyle}
             api={"/add-hon-client"}
             setLoader={setLoader}
