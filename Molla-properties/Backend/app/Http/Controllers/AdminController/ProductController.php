@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\HonorableClient;
 use Exception;
 use App\Models\Projects;
 use App\Models\Gallery;
@@ -124,6 +125,42 @@ class ProductController extends Controller
     }
     //___ Projects end ___//
 
+    //___ Plot start ___//
+    public function AddPlot(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'project_id' => 'required',
+            'plot.*' => 'required',
+        ]);
+
+        if (!$validator->fails()) {
+            $project_id = $request->input('project_id');
+            $plots = $request->input('plot');
+
+            foreach ($plots as $EachPlot) {
+                Plot::create([
+                    "Plot" => $EachPlot,
+                    "Project_id" => $project_id,
+                ]);
+            }
+            return response()->json(["status" => true, "msg" => "Plots added succesfully"]);
+        } else {
+            return response()->json(["status" => false, "msg" => $validator->errors()]);
+        }
+    }
+    public function GetPlots(Request $request)
+    {
+        try {
+            $Project_id = $request->input("project_id");
+            $plot = Plot::where("Project_id", $Project_id)->get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $plot]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    //___ Plot end ___//
+
     //___ Gallery start ___//
     public function GalleryImg()
     {
@@ -181,39 +218,15 @@ class ProductController extends Controller
     }
     //___ Gallery end ___//
 
-    //___ Plot start ___//
-    public function AddPlot(Request $request)
+    //___ Honorable Client start ___//
+    public function GetHonClient()
     {
-        $validator = Validator::make($request->all(), [
-            'project_id' => 'required',
-            'plot.*' => 'required',
-        ]);
-
-        if (!$validator->fails()) {
-            $project_id = $request->input('project_id');
-            $plots = $request->input('plot');
-
-            foreach ($plots as $EachPlot) {
-                Plot::create([
-                    "Plot" => $EachPlot,
-                    "Project_id" => $project_id,
-                ]);
-            }
-            return response()->json(["status" => true, "msg" => "Plots added succesfully"]);
+        $honClient = HonorableClient::latest("id")->get();
+        if ($honClient) {
+            return response()->json(["status" => true, "data" => $honClient]);
         } else {
-            return response()->json(["status" => false, "msg" => $validator->errors()]);
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
     }
-    public function GetPlots(Request $request)
-    {
-        try {
-            $Project_id = $request->input("project_id");
-            $plot = Plot::where("Project_id", $Project_id)->get();
-            return response()->json(["status" => true, "msg" => "Data founded", "data" => $plot]);
-
-        } catch (Exception $exception) {
-            return response()->json(["status" => false, "msg" => "No Data founded"]);
-        }
-    }
-    //___ Plot end ___//
+    //___ Honorable Client end ___//
 }

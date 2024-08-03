@@ -17,8 +17,6 @@ const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Projects = () => {
   const { setLoader } = UseAuthContext();
-
-  const [msg, setMsg] = useState([]);
   const [relodeData, setRelodeData] = useState(false);
 
   const [projectData, setProjectData] = useState([]);
@@ -28,7 +26,7 @@ const Projects = () => {
     setNumberOfElement((prev) => prev * 2);
   };
 
-  const getProjectData = async () => {
+  const GetProjectData = async () => {
     setLoader(true);
     await AxiosClient.get("/projects")
       .then((res) => {
@@ -42,7 +40,7 @@ const Projects = () => {
   };
 
   useEffect(() => {
-    getProjectData();
+    GetProjectData();
     if (relodeData == true) {
       setInterval(() => {
         setRelodeData(false);
@@ -124,7 +122,7 @@ const Projects = () => {
 
   return (
     <div className="Projects">
-      <h3 className="pageTitle">Add Project</h3>
+      <h3 className="pageTitle">Projects</h3>
       {/* For go to top */}
       <input
         type="file"
@@ -141,23 +139,10 @@ const Projects = () => {
             ModalOpenBtnStyle={modalOpenBtnStyle}
             api={"/add-project"}
             setLoader={setLoader}
-            setMsg={setMsg}
             setRelodeData={setRelodeData}
           />
         </Suspense>
       </div>
-
-      {/* Show message */}
-      <p
-        style={{
-          textAlign: "center",
-          marginBottom: "30px",
-          fontSize: "1.5rem",
-          color: "var(--green)",
-        }}
-      >
-        {msg}
-      </p>
 
       <div className="cardWrapper d-flex gap-20">
         {slicedData.map((items, index) => {

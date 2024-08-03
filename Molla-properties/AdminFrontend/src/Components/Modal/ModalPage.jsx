@@ -43,7 +43,6 @@ const ModalPage = (props) => {
     api,
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
-    setMsg,
     setRelodeData,
 
     projectData,
@@ -54,6 +53,8 @@ const ModalPage = (props) => {
   const handleClose = () => setOpen(false);
 
   const [inputValue, setInputValue] = useState({
+    project_id: "",
+
     title: "",
     project_name: "",
     developer: "",
@@ -65,18 +66,18 @@ const ModalPage = (props) => {
     features: "",
     project_status: "",
 
-    project_id: "",
+    honClient_name: "",
   });
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
-  //___ Project image start ___//
-  const [projectImage, setProjectImage] = useState();
-  const handleProjectImageInput = (e) => {
-    setProjectImage(e.target.files[0]);
+  //___ Honorable client image start ___//
+  const [honClientImage, setHonClientImage] = useState();
+  const handleHonClientImageInput = (e) => {
+    setHonClientImage(e.target.files[0]);
   };
-  //___ Project image end ___//
+  //___ Honorable client image end ___//
 
   //___ Add Gallery Page Start ___//
   const [files, setFiles] = useState();
@@ -90,6 +91,13 @@ const ModalPage = (props) => {
     setPreviewUrls(fileUrls);
   };
   //___ Add Gallery Page End ___//
+
+  //___ Project image start ___//
+  const [projectImage, setProjectImage] = useState();
+  const handleProjectImageInput = (e) => {
+    setProjectImage(e.target.files[0]);
+  };
+  //___ Project image end ___//
 
   const HandleForm = async (e) => {
     e.preventDefault();
@@ -167,6 +175,51 @@ const ModalPage = (props) => {
           });
       }
     } else if (api == "/add-gallery-img") {
+      if (inputValue.project_id == "") {
+        toast.error("Please select a project");
+      } else if (files == null) {
+        toast.error("Please select images");
+      } else {
+        const payload = new FormData();
+        payload.append("project_id", inputValue.project_id);
+        for (let i = 0; i < files.length; i++) {
+          payload.append(`gallery_image[${i}]`, files[i]);
+        }
+
+        setLoader(true);
+        await AxiosClient.post(api, payload)
+          .then((response) => {
+            if (response.data.status == true) {
+              handleClose();
+
+              setLoader(false);
+              setRelodeData(true);
+
+              setFiles();
+              setPreviewUrls([]);
+              setInputValue({ project_id: "" });
+
+              toast.success(response.data.msg);
+              console.log(response.data.msg);
+              // console.clear();
+            } else {
+              setLoader(false);
+              console.log(response.data.msg);
+              alert(
+                "Please select image file ( jpg, png, jpeg or anythin else )"
+              );
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
+            setLoader(false);
+            // handleClose();
+            // setFiles();
+            // setPreviewUrls([]);
+            // setInputValue({ project_id: "" });
+          });
+      }
+    } else if (api == "/add-hon-client") {
       if (inputValue.project_id == "") {
         toast.error("Please select a project");
       } else if (files == null) {
@@ -394,6 +447,60 @@ const ModalPage = (props) => {
                       ""
                     )}
                     {/* ___ Add Gallery Page End  ___ */}
+
+                    {/* ___ Add Honorable Client Page Start  ___ */}
+                    {/* Select project */}
+                    {api == "/add-hon-client" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Select project</label>
+                        <select name="project_id" onChange={handleInputValue}>
+                          <option value="1">Select project</option>
+                          {projectData.map((items, index) => {
+                            return (
+                              <option key={index} value={items.id}>
+                                {items.Project_name}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
+                    {/* Honorable client name */}
+                    {api == "/add-hon-client" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Honorable client name</label>
+                        <div className="inputBox">
+                          <input
+                            type="text"
+                            name="honClient_name"
+                            placeholder="Enter honorable client name"
+                            onChange={handleInputValue}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+
+                    {/* Honorable client image */}
+                    {api == "/add-hon-client" ? (
+                      <div style={{ width: "100%" }}>
+                        <label>Honorable client image</label>
+                        <div className="inputBox">
+                          <input
+                            type="file"
+                            name="honClient_image"
+                            onChange={handleHonClientImageInput}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      ""
+                    )}
+                    {/* ___ Add Honorable Client Page Start  ___ */}
 
                     <div>
                       <button type="submit" className="button c_pointer">

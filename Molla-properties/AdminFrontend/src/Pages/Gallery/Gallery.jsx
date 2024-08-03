@@ -23,8 +23,6 @@ const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Gallery = () => {
   const { setLoader } = UseAuthContext();
-
-  const [msg, setMsg] = useState([]);
   const [relodeData, setRelodeData] = useState(false);
 
   const [galleryData, setGalleryData] = useState([]);
@@ -77,7 +75,7 @@ const Gallery = () => {
     // console.log("lightGallery has been initialized");
   };
 
-  const inputFieldsForAddProjects = [
+  const inputFieldsForAddGallery = [
     {
       field: "",
       type: "text",
@@ -106,29 +104,16 @@ const Gallery = () => {
         <Suspense fallback={<Loader />}>
           <ModalPage
             slug={"Add Gallery Image"}
-            inputFields={inputFieldsForAddProjects}
+            inputFields={inputFieldsForAddGallery}
             ModalOpenBtnTitle="Add Gallery Image"
             ModalOpenBtnStyle={modalOpenBtnStyle}
             api={"/add-gallery-img"}
             setLoader={setLoader}
-            setMsg={setMsg}
             setRelodeData={setRelodeData}
             projectData={projectData}
           />
         </Suspense>
       </div>
-
-      {/* Show message */}
-      <p
-        style={{
-          textAlign: "center",
-          marginBottom: "30px",
-          fontSize: "1.5rem",
-          color: "var(--green)",
-        }}
-      >
-        {msg}
-      </p>
 
       <LightGallery onInit={onInit} speed={500} plugins={[lgThumbnail, lgZoom]}>
         {galleryData.map((items, index) => {

@@ -66,14 +66,18 @@ Route::prefix("/admin")->group(function () {
             Route::post("/delete-project", "DeleteProject");
             Route::get("/projects-name", "ProjectsName");
 
+            // Plot
+            Route::post("/add-plot", "AddPlot");
+            Route::post("/get-plots", "GetPlots");
+
             // Gallery
             Route::get("/gallery-img", "GalleryImg");
             Route::post("/add-gallery-img", "AddGalleryImage");
             Route::post("/get-project-gallery", "GetProjectGallery");
 
-            // Plot
-            Route::post("/add-plot", "AddPlot");
-            Route::post("/get-plots", "GetPlots");
+            // Honorable Client
+            Route::get("/get-hon-client", "GetHonClient");
+            Route::post("/add-hon-client", "AddHonClient");
         });
     });
 });
