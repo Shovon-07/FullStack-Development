@@ -195,7 +195,7 @@ class ProductController extends Controller
                 ];
             }
 
-            // Gallery::insert($imageData);
+            Gallery::insert($imageData);
             return response()->json([
                 "status" => true,
                 "msg" => "Image uploaded successfull",
