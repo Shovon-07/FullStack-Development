@@ -97,11 +97,7 @@ class ProductController extends Controller
         try {
             $id = $request->input("project_id");
 
-            $projectData = Projects::find($id);
-            $projectImagePath = public_path("Images/" . $projectData->Image);
-
-            $plotData = Plot::where("Project_id", $id)->get();
-
+            // Gallery
             $galleryData = Gallery::where("Project_id", $id)->get();
             $eachGalleryImagePath = [];
 
@@ -111,24 +107,42 @@ class ProductController extends Controller
                 File::delete($eachGalleryImagePath);
             }
 
+            // Honorable Client
             $honClientData = HonorableClient::where("Project_id", $id)->get();
-            $eachHonClientDataImagePath = [];
+            $eachHonClientImagePath = [];
 
             foreach ($honClientData as $eachHonClientData) {
-                $honClientImagePath = public_path("Images/" . $eachHonClientData->Gallery_img);
-                $eachHonClientDataImagePath[] = $honClientImagePath;
-                File::delete($eachHonClientDataImagePath);
+                $honClientImagePath = public_path("Images/" . $eachHonClientData->HonorableClient_img);
+                $eachHonClientImagePath[] = $honClientImagePath;
+                File::delete($eachHonClientImagePath);
             }
 
+            // News and event
+            $newsData = NewsAndEvent::where("Project_id", $id)->get();
+            $eachNewsImagePath = [];
+
+            foreach ($newsData as $eachNewsData) {
+                $newsImagePath = public_path("Images/" . $eachNewsData->News_img);
+                $eachNewsImagePath[] = $newsImagePath;
+                File::delete($eachNewsImagePath);
+            }
+
+            // Projects
+            $projectData = Projects::find($id);
+            $projectImagePath = public_path("Images/" . $projectData->Image);
             if (file_exists($projectImagePath)) {
                 File::delete($projectImagePath);
             }
 
+            // Delete from database
             Plot::where("Project_id", $id)->delete();
             Gallery::where("Project_id", $id)->delete();
+            HonorableClient::where("Project_id", $id)->delete();
+            NewsAndEvent::where("Project_id", $id)->delete();
             Projects::find($projectData->id)->delete();
 
             return response()->json(["status" => true, "msg" => "Project deleted"]);
+            // return response()->json(["status" => true, "Project" => $projectImagePath, "Gallery" => $eachGalleryImagePath, "Hon" => $eachHonClientImagePath, "News" => $eachNewsImagePath]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
