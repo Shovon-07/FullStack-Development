@@ -282,7 +282,7 @@ class ProductController extends Controller
             $newsEvent_image = $request->file("newsEvent_image");
             $newsEventImageName = "News/" . time() . "_" . rand() . "." . $newsEvent_image->getClientOriginalExtension();
 
-            $store = HonorableClient::create([
+            $store = NewsAndEvent::create([
                 "Project_id" => $Project_id,
                 "News_img" => $newsEventImageName,
             ]);
