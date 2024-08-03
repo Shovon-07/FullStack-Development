@@ -85,7 +85,7 @@ Route::prefix("/admin")->group(function () {
 
             // Blog
             Route::get("/get-blog", "GetBlog");
-            Route::post("/add-news-event", "AddNewsEvent");
+            Route::post("/add-blog", "AddBlog");
         });
     });
 });

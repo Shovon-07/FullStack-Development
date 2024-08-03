@@ -27,9 +27,9 @@ const Blog = () => {
 
   const GetBlogData = async () => {
     setLoader(true);
-    await AxiosClient.get("/get-news-event")
+    await AxiosClient.get("/get-blog")
       .then((res) => {
-        setNeswEventData(res.data.data);
+        setBlogData(res.data.data);
         setLoader(false);
       })
       .catch((e) => {
@@ -48,13 +48,13 @@ const Blog = () => {
   }, [relodeData]);
 
   // Input For modal
-  const inputFieldsForNewsEvent = [
+  const inputFieldsForBlog = [
     {
-      field: "",
+      field: "blog_link",
       type: "text",
-      label: "",
-      placeholder: "",
-      className: "d-none",
+      label: "Blog link",
+      placeholder: "Enter blog link",
+      className: "inputBox",
     },
   ];
 
@@ -63,7 +63,7 @@ const Blog = () => {
     fontSize: "0.9rem",
     fontWeight: "600",
     color: "#fff",
-    width: "200px",
+    width: "150px",
     height: "40px",
     background: "#424242",
     paddingBottom: "3px",
@@ -84,11 +84,11 @@ const Blog = () => {
       <div className="modalBtn" style={{ textAlign: "end" }}>
         <Suspense fallback={<Loader />}>
           <ModalPage
-            slug={"Add news and event"}
-            inputFields={inputFieldsForNewsEvent}
-            ModalOpenBtnTitle="Add News and Event"
+            slug={"Add New Blog"}
+            inputFields={inputFieldsForBlog}
+            ModalOpenBtnTitle="Add Blog"
             ModalOpenBtnStyle={modalOpenBtnStyle}
-            api={"/add-news-event"}
+            api={"/add-blog"}
             setLoader={setLoader}
             setRelodeData={setRelodeData}
           />

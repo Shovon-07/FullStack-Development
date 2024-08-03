@@ -328,9 +328,31 @@ class ProductController extends Controller
     {
         $blogs = Blog::latest("id")->get();
         if ($blogs) {
-            return response()->json(["status" => true, "data" => $blogs]);
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $blogs]);
         } else {
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
+    public function AddBlog(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'blog_link' => 'required',
+        ]);
+
+        if (!$validator->fails()) {
+            $blog_link = $request->input("blog_link");
+
+            $store = Blog::create([
+                "Blog_video" => $blog_link,
+            ]);
+
+            if ($store) {
+                return response()->json(["status" => true, "msg" => "New blog added"]);
+            } else {
+                return response()->json(["status" => false, "msg" => "Something went wrong"]);
+            }
+        } else {
+            return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
     }
     //___ Blog end ___//

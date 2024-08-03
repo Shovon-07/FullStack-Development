@@ -44,7 +44,6 @@ const ModalPage = (props) => {
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
     setRelodeData,
-
     projectData,
   } = props;
 
@@ -67,6 +66,8 @@ const ModalPage = (props) => {
     project_status: "",
 
     honClient_name: "",
+
+    blog_link: "",
   });
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
@@ -244,7 +245,7 @@ const ModalPage = (props) => {
               setRelodeData(true);
 
               setHonClientImage("");
-              setInputValue({ project_id: "" });
+              setInputValue({ project_id: "", honClient_name: "" });
 
               toast.success(response.data.msg);
               console.clear();
@@ -291,6 +292,36 @@ const ModalPage = (props) => {
               alert(
                 "Please select image file ( jpg, png, jpeg or anythin else )"
               );
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
+            setLoader(false);
+          });
+      }
+    } else if (api == "/add-blog") {
+      if (inputValue.blog_link == "") {
+        toast.error("Please enter blog link");
+      } else {
+        const payload = new FormData();
+        payload.append("blog_link", inputValue.blog_link);
+
+        setLoader(true);
+        await AxiosClient.post(api, payload)
+          .then((response) => {
+            if (response.data.status == true) {
+              handleClose();
+
+              setLoader(false);
+              setRelodeData(true);
+
+              setInputValue({ blog_link: "" });
+
+              toast.success(response.data.msg);
+              console.clear();
+            } else {
+              setLoader(false);
+              console.log(response.data.msg);
             }
           })
           .catch((e) => {
