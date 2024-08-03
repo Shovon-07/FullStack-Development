@@ -147,7 +147,8 @@ class ProductController extends Controller
             $imageData = [];
 
             foreach ($images as $key => $image) {
-                $new_name = "Gallery/" . $key . "_" . time() . "_" . rand() . "." . $image->getClientOriginalExtension();
+                $new_name = "Gallery/" . $key . "_" . time() . "_" . rand() . "."
+                    . $image->getClientOriginalExtension();
                 $image->move(public_path("/Images/Gallery"), $new_name);
 
                 $imageData[] = [
@@ -156,8 +157,12 @@ class ProductController extends Controller
                 ];
             }
 
-            Gallery::insert($imageData);
-            return response()->json(["status" => true, "msg" => "Image uploaded successfull", "Images" => $id]);
+            // Gallery::insert($imageData);
+            return response()->json([
+                "status" => true,
+                "msg" => "Image uploaded successfull",
+                "Images" => $imageData
+            ]);
             // return response()->json(["status" => true, "msg" => $imageData]);
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);
