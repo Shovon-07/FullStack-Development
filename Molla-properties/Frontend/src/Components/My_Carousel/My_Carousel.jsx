@@ -10,12 +10,12 @@ import "slick-carousel/slick/slick-theme.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 function My_Carousel(props) {
-  const { latestProjectData,imgPath } = props;
+  const { dbData, imgPath } = props;
 
   var settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true, // false
     autoplaySpeed: 3000,
@@ -39,7 +39,7 @@ function My_Carousel(props) {
         },
       },
       {
-        breakpoint: 550,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -51,32 +51,43 @@ function My_Carousel(props) {
   return (
     <div className="slider-container My_Carousel">
       <Slider {...settings}>
-        {latestProjectData.map((items, index) => {
+        {dbData.map((items, index) => {
           return (
+            // <div className="card" key={index}>
+            //   <div className="img">
+            //     <LazyLoadImage
+            //       src={`${imgPath}${items.Image}`}
+            //       effect="blur"
+            //       wrapperProps={{
+            //         style: { transitionDelay: "1s" },
+            //       }}
+            //     />
+            //   </div>
+            //   <div className="txt d-flex">
+            //     <h3 className="title">
+            //       {items.Title.length > 70
+            //         ? items.Title.slice(0, 70) + " ..."
+            //         : items.Title}
+            //     </h3>
+            //     <div style={{ textAlign: "center" }}>
+            //       <NavLink
+            //         to={`/project-details/${items.id}`}
+            //         className="readMoreBtn btn c_pointer"
+            //       >
+            //         Read more
+            //       </NavLink>
+            //     </div>
+            //   </div>
+            // </div>
             <div className="card" key={index}>
               <div className="img">
                 <LazyLoadImage
-                  src={`${imgPath}${items.Image}`}
+                  src={`${imgPath}${items.Gallery_img}`}
                   effect="blur"
                   wrapperProps={{
                     style: { transitionDelay: "1s" },
                   }}
                 />
-              </div>
-              <div className="txt d-flex">
-                <h3 className="title">
-                  {items.Title.length > 70
-                    ? items.Title.slice(0, 70) + " ..."
-                    : items.Title}
-                </h3>
-                <div style={{ textAlign: "center" }}>
-                  <NavLink
-                    to={`/project-details/${items.id}`}
-                    className="readMoreBtn btn c_pointer"
-                  >
-                    Read more
-                  </NavLink>
-                </div>
               </div>
             </div>
           );

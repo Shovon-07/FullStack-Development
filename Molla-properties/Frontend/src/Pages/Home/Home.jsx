@@ -22,13 +22,31 @@ const OurMissionVission = lazy(() =>
 const Home = () => {
   const [setLoader] = useOutletContext();
 
-  const [latestProjectData, setLatestProjectData] = useState([]);
-  const getLatestProjectData = async () => {
+  // const [latestProjectData, setLatestProjectData] = useState([]);
+  // const GetLatestProjectData = async () => {
+  //   try {
+  //     setLoader(true);
+  //     await AxiosClient.get("/latest-project").then((res) => {
+  //       if (res.data.status == true) {
+  //         setLatestProjectData(res.data.data);
+  //         setLoader(false);
+  //       } else {
+  //         console.log(res.data.msg);
+  //         setLoader(false);
+  //       }
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  const [imagesData, setImagesData] = useState([]);
+  const GetImagesData = async () => {
     try {
       setLoader(true);
-      await AxiosClient.get("/latest-project").then((res) => {
+      await AxiosClient.get("/all-galleries-img").then((res) => {
         if (res.data.status == true) {
-          setLatestProjectData(res.data.data);
+          setImagesData(res.data.data);
           setLoader(false);
         } else {
           console.log(res.data.msg);
@@ -41,7 +59,8 @@ const Home = () => {
   };
 
   useEffect(() => {
-    getLatestProjectData();
+    // GetLatestProjectData();
+    GetImagesData();
   }, []);
 
   return (
@@ -60,12 +79,11 @@ const Home = () => {
         <div className="txt d-flex">
           <h1>মোল্লা প্রপার্টিস</h1>
           <p>আমরা দিচ্ছি সর্বোচ্চ সুযোগ সুবিধা সহ রেডি প্লট</p>
-          {/* <p>{c}</p> */}
         </div>
       </div>
 
       <div className="content">
-        <section className="latestProject">
+        {/* <section className="latestProject">
           <div className="d-flex pageTitle">
             <h3>Latest Projects</h3>
           </div>
@@ -74,6 +92,15 @@ const Home = () => {
               latestProjectData={latestProjectData}
               imgPath={imgPath}
             />
+          </Suspense>
+        </section> */}
+
+        <section className="latestProject">
+          <div className="d-flex pageTitle">
+            <h3>Our Images</h3>
+          </div>
+          <Suspense fallback={<Loader />}>
+            <My_Carousel dbData={imagesData} imgPath={imgPath} />
           </Suspense>
         </section>
 
