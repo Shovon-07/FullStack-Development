@@ -1,12 +1,124 @@
-import React from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
+import { UseAuthContext } from "../../Context/AuthContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
 import "./Blog.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
+//___ Additional utilitis ___//
+import AxiosClient from "../../assets/Js/AxiosClient";
+import { imgPath } from "../../assets/Js/Data";
+import Loader from "../../Components/Loader/Loader";
+
+//___ Components ___//
+const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Blog = () => {
+  const { setLoader } = UseAuthContext();
+  const [relodeData, setRelodeData] = useState(false);
+
+  const [blogData, setBlogData] = useState([]);
+  const [numberOfElement, setNumberOfElement] = useState(2);
+  const slicedData = blogData.slice(0, numberOfElement);
+  const loadMore = () => {
+    setNumberOfElement((prev) => prev * 2);
+  };
+
+  const GetBlogData = async () => {
+    setLoader(true);
+    await AxiosClient.get("/get-news-event")
+      .then((res) => {
+        setNeswEventData(res.data.data);
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+
+  useEffect(() => {
+    GetBlogData();
+    if (relodeData == true) {
+      setInterval(() => {
+        setRelodeData(false);
+      }, 1000);
+    }
+  }, [relodeData]);
+
+  // Input For modal
+  const inputFieldsForNewsEvent = [
+    {
+      field: "",
+      type: "text",
+      label: "",
+      placeholder: "",
+      className: "d-none",
+    },
+  ];
+
+  // Style for modal
+  const modalOpenBtnStyle = {
+    fontSize: "0.9rem",
+    fontWeight: "600",
+    color: "#fff",
+    width: "200px",
+    height: "40px",
+    background: "#424242",
+    paddingBottom: "3px",
+    marginBottom: "50px",
+  };
+
   return (
     <div className="Blog">
       <h3 className="pageTitle">Blog</h3>
+
+      {/* For go to top */}
+      <input
+        type="file"
+        autoFocus
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
+      />
+      {/* For go to top */}
+      <div className="modalBtn" style={{ textAlign: "end" }}>
+        <Suspense fallback={<Loader />}>
+          <ModalPage
+            slug={"Add news and event"}
+            inputFields={inputFieldsForNewsEvent}
+            ModalOpenBtnTitle="Add News and Event"
+            ModalOpenBtnStyle={modalOpenBtnStyle}
+            api={"/add-news-event"}
+            setLoader={setLoader}
+            setRelodeData={setRelodeData}
+          />
+        </Suspense>
+      </div>
+
+      <div className="videos d-flex gap-10">
+        {slicedData.map((items, index) => {
+          return (
+            <iframe
+              key={index}
+              src={items.Blog_video}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          );
+        })}
+      </div>
+
+      <div
+        className={blogData.length > 2 ? "" : "d-none"}
+        style={{ textAlign: "center", marginTop: "100px" }}
+      >
+        <button className="btn" onClick={loadMore}>
+          Load More
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,9 @@
 import { useEffect, useState, lazy, Suspense } from "react";
-import { NavLink } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
 import "./NewsAndEvent.css";
-// import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
@@ -42,7 +40,8 @@ const NewsAndEvent = () => {
       });
   };
 
-  const GetNeswEventDataData = async () => {
+  // Get news data
+  const GetNeswEventData = async () => {
     setLoader(true);
     await AxiosClient.get("/get-news-event")
       .then((res) => {
@@ -57,7 +56,7 @@ const NewsAndEvent = () => {
 
   useEffect(() => {
     GetProjectData();
-    GetNeswEventDataData();
+    GetNeswEventData();
     if (relodeData == true) {
       setInterval(() => {
         setRelodeData(false);

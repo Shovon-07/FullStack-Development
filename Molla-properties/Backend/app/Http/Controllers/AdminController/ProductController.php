@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\HonorableClient;
 use App\Models\NewsAndEvent;
 use Exception;
@@ -321,4 +322,16 @@ class ProductController extends Controller
         }
     }
     //___ News and event end ___//
+
+    //___ Blog start ___//
+    public function GetBlog()
+    {
+        $blogs = Blog::latest("id")->get();
+        if ($blogs) {
+            return response()->json(["status" => true, "data" => $blogs]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
+    //___ Blog end ___//
 }
