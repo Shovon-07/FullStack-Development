@@ -111,6 +111,15 @@ class ProductController extends Controller
                 File::delete($eachGalleryImagePath);
             }
 
+            $honClientData = HonorableClient::where("Project_id", $id)->get();
+            $eachHonClientDataImagePath = [];
+
+            foreach ($honClientData as $eachHonClientData) {
+                $honClientImagePath = public_path("Images/" . $eachHonClientData->Gallery_img);
+                $eachHonClientDataImagePath[] = $honClientImagePath;
+                File::delete($eachHonClientDataImagePath);
+            }
+
             if (file_exists($projectImagePath)) {
                 File::delete($projectImagePath);
             }
