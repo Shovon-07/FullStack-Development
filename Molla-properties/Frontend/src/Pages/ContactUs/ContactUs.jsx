@@ -101,6 +101,7 @@ const ContactUs = () => {
               <input
                 type="text"
                 name="name"
+                value={input.name}
                 placeholder="Enter your name"
                 onChange={handleInput}
               />
@@ -110,6 +111,7 @@ const ContactUs = () => {
                 type="email"
                 name="email"
                 placeholder="Enter your email"
+                value={input.email}
                 onChange={handleInput}
               />
             </div>
@@ -118,6 +120,7 @@ const ContactUs = () => {
                 type="text"
                 name="subject"
                 placeholder="Type subject"
+                value={input.subject}
                 onChange={handleInput}
               />
             </div>
@@ -125,6 +128,7 @@ const ContactUs = () => {
               <textarea
                 name="message"
                 placeholder="Message"
+                value={input.message}
                 onChange={handleInput}
                 rows={5}
               ></textarea>

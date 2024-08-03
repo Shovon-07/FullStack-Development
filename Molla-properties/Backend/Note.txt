@@ -3,9 +3,18 @@ MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
 MAIL_PORT=587
 MAIL_USERNAME=mollaproperties@gmail.com
-MAIL_PASSWORD=epnvwqkyrdcdgwuy
+MAIL_PASSWORD=xhgumukwxnrmpibc
 MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="mollaproperties@gmail.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+MAIL_MAILER=smtp
+MAIL_HOST=backend.molla-properties.com
+MAIL_PORT=465
+MAIL_USERNAME=mail@backend.molla-properties.com
+MAIL_PASSWORD=_N~##RE_]Yhj / Hu[#d-y#]qxS
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="mail@backend.molla-properties.com"
 MAIL_FROM_NAME="${APP_NAME}"
 
 ------------------

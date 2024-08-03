@@ -15,7 +15,7 @@ class ContactUsController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'subject' => 'required|email|max:255',
+            'subject' => 'required|string',
             'message' => 'required|string',
         ]);
 
@@ -27,6 +27,7 @@ class ContactUsController extends Controller
                 "message" => $request->input("message"),
                 "appName" => env("APP_NAME"),
             ];
+            
             $email = Mail::to("mollaproperties@gmail.com")->send(new ContactUsMail($mailData));
             if ($email) {
                 return response()->json(["status" => true, "msg" => "Email sent successful",]);
