@@ -143,7 +143,6 @@ class ProductController extends Controller
             Projects::find($projectData->id)->delete();
 
             return response()->json(["status" => true, "msg" => "Project deleted"]);
-            // return response()->json(["status" => true, "Project" => $projectImagePath, "Gallery" => $eachGalleryImagePath, "Hon" => $eachHonClientImagePath, "News" => $eachNewsImagePath]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
@@ -237,6 +236,25 @@ class ProductController extends Controller
             $gallery = Gallery::where("Project_id", $Project_id)->latest("id")->get();
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $gallery]);
 
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    public function DeleteImg(Request $request)
+    {
+        try {
+            $project_id = $request->input("project_id");
+            $img_id = $request->input("img_id");
+
+            $galleryData = Gallery::where("id", $img_id)->where("Project_id", $project_id)->first();
+
+            $galleryImagePath = public_path("Images/" . $galleryData->Gallery_img);
+            File::delete($galleryImagePath);
+
+            // Delete from database
+            Gallery::where("id", $img_id)->where("Project_id", $project_id)->delete();
+
+            return response()->json(["status" => true, "msg" => "Image deleted"]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }

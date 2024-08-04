@@ -10,6 +10,7 @@ import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 //___ Css ___//
 import "./ProjectView.css";
+import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -21,6 +22,7 @@ const ProjectView = () => {
   const { id } = useParams();
   const { setLoader } = UseAuthContext();
   const navigate = useNavigate();
+  const [relodeData, setRelodeData] = useState(false);
 
   // Handle navigation tab
   const [tabVal, setTabVal] = useState(1);
@@ -152,6 +154,32 @@ const ProjectView = () => {
     }
   };
 
+  // Delete image
+  const DeleteImage = async (imgId) => {
+    if (confirm("Do you want to delete this image ?")) {
+      setLoader(true);
+      await AxiosClient.post("/delete-img", { img_id: imgId, project_id: id })
+        .then((res) => {
+          if (res.data.status == true) {
+            console.log(res.data.msg);
+            setLoader(false);
+            setRelodeData(true);
+            toast.success(res.data.msg);
+            console.clear();
+          } else {
+            setLoader(false);
+            console.log(res.data.msg);
+          }
+        })
+        .catch((err) => {
+          console.log(`Error ${err}`);
+          setLoader(false);
+        });
+    } else {
+      toast.error("You cancel this execution");
+    }
+  };
+
   // Edit section
   const handleInputValue = (e) => {
     setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
@@ -163,15 +191,17 @@ const ProjectView = () => {
     console.log(newPlot);
   };
 
-  let counter = "";
   useEffect(() => {
     getProjectViewData();
     getPlotData();
+    getGalleryData();
 
-    for (let i = 1; i <= plotData.length; i++) {
-      counter = i;
+    if (relodeData == true) {
+      setInterval(() => {
+        setRelodeData(false);
+      }, 1000);
     }
-  }, []);
+  }, [relodeData]);
 
   return (
     <div className="ProjectView page content">
@@ -236,7 +266,6 @@ const ProjectView = () => {
           <button
             onClick={(e) => {
               handleTab(e);
-              getGalleryData();
             }}
             id="4"
             className={`tab-btn ${tabVal == 4 ? "active" : ""}`}
@@ -437,26 +466,30 @@ const ProjectView = () => {
 
           {/* Gallery start */}
           <div
-            className={`contentItems gallery gap-30 ${
-              tabVal == 4 ? "active" : ""
-            }`}
+            className={`contentItems gallery ${tabVal == 4 ? "active" : ""}`}
           >
-            {galleryData.map((items, index) => {
-              return (
-                <div className="card" key={index}>
-                  <LazyLoadImage
-                    src={`${imgPath}${items.Gallery_img}`}
-                    effect="blur"
-                    wrapperProps={{
-                      style: { transitionDelay: "1s" },
-                    }}
-                  />
-                  <div className="overlay">
-                    <RxCross2 />
+            <div className="cardWrapper d-flex gap-20">
+              {galleryData.map((items, index) => {
+                return (
+                  <div className="card" key={index}>
+                    <LazyLoadImage
+                      src={`${imgPath}${items.Gallery_img}`}
+                      effect="blur"
+                      wrapperProps={{
+                        style: { transitionDelay: "1s" },
+                      }}
+                    />
+                    <div className="txt d-flex">
+                      <Tooltip title={`Delete ${items.id}`}>
+                        <a onClick={() => DeleteImage(items.id)}>
+                          <RxCross2 size={50} className="cross" />
+                        </a>
+                      </Tooltip>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
           {/* Gallery end */}
         </div>

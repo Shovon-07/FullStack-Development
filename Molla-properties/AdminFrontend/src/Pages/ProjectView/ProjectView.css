@@ -205,6 +205,10 @@
 .ProjectView .tab-container .content-box .gallery .card img {
   width: 100%;
 }
+.ProjectView .tab-container .content-box .gallery .card .cross {
+  color: var(--red);
+  cursor: pointer;
+}
 /*___ Gallery end ___*/
 
 /*___ Responsive ___*/
