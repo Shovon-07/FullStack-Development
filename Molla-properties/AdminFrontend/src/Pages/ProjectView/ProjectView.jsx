@@ -8,6 +8,7 @@ import Tooltip from "@mui/material/Tooltip";
 //___ Icons ___//
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
+
 //___ Css ___//
 import "./ProjectView.css";
 import "../../assets/Css/Card.css";
@@ -134,7 +135,6 @@ const ProjectView = () => {
       await AxiosClient.post("/delete-project", { project_id: id })
         .then((res) => {
           if (res.data.status == true) {
-            console.log(res.data.msg);
             setLoader(false);
             window.history.back();
             navigate("/add-project");

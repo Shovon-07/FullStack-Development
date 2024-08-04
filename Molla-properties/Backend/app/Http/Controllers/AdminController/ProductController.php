@@ -300,6 +300,25 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
     }
+    public function DeleteClient(Request $request)
+    {
+        try {
+            $project_id = $request->input("project_id");
+            $client_id = $request->input("client_id");
+
+            $clientData = HonorableClient::where("id", $client_id)->where("Project_id", $project_id)->first();
+
+            $clientImagePath = public_path("Images/" . $clientData->HonorableClient_img);
+            File::delete($clientImagePath);
+
+            // Delete from database
+            HonorableClient::where("id", $client_id)->where("Project_id", $project_id)->delete();
+
+            return response()->json(["status" => true, "msg" => "Client deleted"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
     //___ Honorable Client end ___//
 
     //___ News and event start ___//

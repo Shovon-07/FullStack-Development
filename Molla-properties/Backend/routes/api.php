@@ -79,6 +79,7 @@ Route::prefix("/admin")->group(function () {
             // Honorable Client
             Route::get("/get-hon-client", "GetHonClient");
             Route::post("/add-hon-client", "AddHonClient");
+            Route::post("/delete-client", "DeleteClient");
 
             // News and event
             Route::get("/get-news-event", "GetNewsEvent");
