@@ -37,12 +37,14 @@ const ProjectView = () => {
 
   // Get project data
   const [projectViewData, setProjectViewData] = useState([]);
+  const [projectDate, setProjectDate] = useState();
   const getProjectViewData = async () => {
     setLoader(true);
     await AxiosClient.post("/project-details", { id: id })
       .then((res) => {
         if (res.data.status == true) {
           setProjectViewData(res.data.data);
+          setProjectDate(res.data.data.Created_at.substr(0, 10));
           setLoader(false);
         } else {
           setLoader(false);
@@ -127,9 +129,11 @@ const ProjectView = () => {
         style={{ height: "0", opacity: 0, pointerEvents: "none" }}
       />
       {/* For go to top */}
-      <p className="date">
+      {/* <p className="date">
         Uploaded : {moment(projectViewData.Created_at).fromNow()}
-      </p>
+      </p> */}
+
+      <p className="date">Uploaded : {projectDate}</p>
 
       <div className="editOrDelete d-flex gap-30">
         <Tooltip title={`Edit ${id}`}>
