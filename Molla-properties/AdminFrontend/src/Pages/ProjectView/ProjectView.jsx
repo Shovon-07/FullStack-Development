@@ -3,7 +3,6 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ToastContainer, toast } from "react-toastify";
-import moment from "moment";
 import Tooltip from "@mui/material/Tooltip";
 
 //___ Icons ___//
@@ -93,6 +92,7 @@ const ProjectView = () => {
       Plot_16: "",
     },
   ]);
+  // const [plotData, setPlotData] = useState();
   const getPlotData = async () => {
     setLoader(true);
     await AxiosClient.post("/get-plots", { project_id: id })
@@ -157,10 +157,19 @@ const ProjectView = () => {
   const handleInputValue = (e) => {
     setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
   };
+  const handlePlotInput = (e) => {
+    // setPlotData([{ ...plotData, [e.target.name]: e.target.value }]);
+    console.log(e.target.value);
+  };
 
+  let counter = "";
   useEffect(() => {
     getProjectViewData();
     getPlotData();
+
+    for (let i = 1; i <= plotData.length; i++) {
+      counter = i;
+    }
   }, []);
 
   return (
@@ -372,7 +381,7 @@ const ProjectView = () => {
                             type="text"
                             name={`Plot_${index + 1}`}
                             value={`${items.Plot}`}
-                            onChange={handleInputValue}
+                            onChange={(e) => handlePlotInput(e)}
                           />
                         </td>
                       </tr>
