@@ -63,11 +63,12 @@ const NewsAndEvent = () => {
   // Delete news
   const DeleteNews = async (newsId, projectId) => {
     if (confirm("Do you want to delete this news ?")) {
-      setLoader(true);
-      await AxiosClient.post("/delete-news", {
+      const payload = {
         news_id: newsId,
         project_id: projectId,
-      })
+      };
+      setLoader(true);
+      await AxiosClient.post("/delete-news", payload)
         .then((res) => {
           if (res.data.status == true) {
             console.log(res.data.msg);

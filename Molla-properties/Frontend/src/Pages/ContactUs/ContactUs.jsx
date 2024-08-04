@@ -96,7 +96,9 @@ const ContactUs = () => {
         </div>
         <div className="right d-flex">
           <form className="d-flex gap-30" onSubmit={handleSubmit}>
-            <h3>Send message</h3>
+            <h3>
+              Send <span>message</span>
+            </h3>
             <div className="inputWrapper">
               <input
                 type="text"

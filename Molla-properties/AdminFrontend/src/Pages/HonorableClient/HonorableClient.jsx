@@ -63,14 +63,14 @@ const HonorableClient = () => {
   // Delete client
   const DeleteClient = async (clientId, projectId) => {
     if (confirm("Do you want to delete this client ?")) {
-      setLoader(true);
-      await AxiosClient.post("/delete-client", {
+      const payload = {
         client_id: clientId,
         project_id: projectId,
-      })
+      };
+      setLoader(true);
+      await AxiosClient.post("/delete-client", payload)
         .then((res) => {
           if (res.data.status == true) {
-            console.log(res.data.msg);
             setLoader(false);
             setRelodeData(true);
             toast.success(res.data.msg);

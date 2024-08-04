@@ -75,7 +75,7 @@ a {
 .pageTitle h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: var(--dark-2);
   cursor: default;
   width: max-content;
@@ -146,7 +146,7 @@ a {
   margin: 0 auto;
 }
 .page {
-  margin-top: 100px;
+  margin-top: 110px;
   z-index: 900;
 }
 .content {
