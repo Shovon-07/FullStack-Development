@@ -59,6 +59,16 @@
 .ProjectView .tab-container .content-box {
   overflow: hidden;
 }
+.ProjectView .tab-container .content-box input,
+.ProjectView .tab-container .content-box textarea {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 5px 10px;
+  background: transparent;
+  border: var(--border);
+  outline: none;
+  color: var(--light-1);
+}
 .ProjectView .tab-container .content-box .contentItems {
   align-items: flex-start;
   justify-content: space-between;

@@ -36,7 +36,22 @@ const ProjectView = () => {
   };
 
   // Get project data
-  const [projectViewData, setProjectViewData] = useState([]);
+  const [projectViewData, setProjectViewData] = useState([
+    {
+      project_id: "",
+
+      Title: "",
+      Project_name: "",
+      Developer: "",
+      Location: "",
+      Land_area: "",
+      Total_plot: "",
+      Contact_no: "",
+      Project_map: "",
+      Features: "",
+      Project_status: "",
+    },
+  ]);
   const [projectDate, setProjectDate] = useState();
   const getProjectViewData = async () => {
     setLoader(true);
@@ -92,26 +107,34 @@ const ProjectView = () => {
 
   // Delete Project
   const DeleteProject = async (id) => {
-    confirm("Do you want to delete this project ?");
-    setLoader(true);
-    await AxiosClient.post("/delete-project", { project_id: id })
-      .then((res) => {
-        if (res.data.status == true) {
-          console.log(res.data.msg);
+    if (confirm("Do you want to delete this project ?")) {
+      setLoader(true);
+      await AxiosClient.post("/delete-project", { project_id: id })
+        .then((res) => {
+          if (res.data.status == true) {
+            console.log(res.data.msg);
+            setLoader(false);
+            window.history.back();
+            navigate("/add-project");
+            toast.success(res.data.msg);
+            console.clear();
+          } else {
+            setLoader(false);
+            console.log(res.data.msg);
+          }
+        })
+        .catch((err) => {
+          console.log(`Error ${err}`);
           setLoader(false);
-          window.history.back();
-          navigate("/add-project");
-          toast.success(res.data.msg);
-          console.clear();
-        } else {
-          setLoader(false);
-          console.log(res.data.msg);
-        }
-      })
-      .catch((err) => {
-        console.log(`Error ${err}`);
-        setLoader(false);
-      });
+        });
+    } else {
+      toast.error("You cancel this execution");
+    }
+  };
+
+  // Edit section
+  const handleInputValue = (e) => {
+    setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
@@ -212,44 +235,98 @@ const ProjectView = () => {
                 Details
               </h2>
               <h4 style={{ margin: "20px 0 15px 0", fontSize: "1.2rem" }}>
-                {projectViewData.Title}
+                <input
+                  type="text"
+                  name="Title"
+                  value={projectViewData.Title}
+                  onChange={handleInputValue}
+                />
               </h4>
               <table>
                 <tbody>
                   <tr>
                     <td>Project Name</td>
                     <td>:</td>
-                    <td>{projectViewData.Project_name}</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="Project_name"
+                        value={projectViewData.Project_name}
+                        onChange={handleInputValue}
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td>Developer</td>
                     <td>:</td>
-                    <td>{projectViewData.Developer}</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="Developer"
+                        value={projectViewData.Developer}
+                        onChange={handleInputValue}
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td>Location</td>
                     <td>:</td>
-                    <td>{projectViewData.Location}</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="Location"
+                        value={projectViewData.Location}
+                        onChange={handleInputValue}
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td>Land area</td>
                     <td>:</td>
-                    <td>{projectViewData.Land_area}</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="Land_area"
+                        value={projectViewData.Land_area}
+                        onChange={handleInputValue}
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td>Total plot</td>
                     <td>:</td>
-                    <td>{projectViewData.Total_plot}</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="Total_plot"
+                        value={projectViewData.Total_plot}
+                        onChange={handleInputValue}
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td>Contact</td>
                     <td>:</td>
-                    <td>{projectViewData.Contact_no}</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="Contact_no"
+                        value={projectViewData.Contact_no}
+                        onChange={handleInputValue}
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td>Status</td>
                     <td>:</td>
-                    <td>{projectViewData.Status}</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="Status"
+                        value={projectViewData.Status}
+                        onChange={handleInputValue}
+                      />
+                    </td>
                   </tr>
                   <tr>
                     <td
@@ -269,7 +346,14 @@ const ProjectView = () => {
                       <tr key={index}>
                         <td>Plot {` - ${index + 1}`}</td>
                         <td>:</td>
-                        <td>{items.Plot}</td>
+                        <td>
+                          <input
+                            type="text"
+                            name="Plot"
+                            value={items.Plot}
+                            onChange={handleInputValue}
+                          />
+                        </td>
                       </tr>
                     );
                   })}
@@ -294,6 +378,13 @@ const ProjectView = () => {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
+            <input
+              style={{ marginTop: "30px" }}
+              type="text"
+              name="Project_map"
+              value={projectViewData.Project_map}
+              onChange={handleInputValue}
+            />
           </div>
           {/* Map end */}
 
@@ -303,8 +394,12 @@ const ProjectView = () => {
               tabVal == 3 ? "active" : ""
             }`}
           >
-            <div className="">
-              <p>{projectViewData.Features}</p>
+            <div style={{ width: "100%" }}>
+              <textarea
+                name=""
+                rows={10}
+                value={projectViewData.Features}
+              ></textarea>
             </div>
           </div>
           {/* Feature end */}
