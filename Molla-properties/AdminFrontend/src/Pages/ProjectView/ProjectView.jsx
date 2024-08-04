@@ -53,6 +53,7 @@ const ProjectView = () => {
     },
   ]);
   const [projectDate, setProjectDate] = useState();
+
   const getProjectViewData = async () => {
     setLoader(true);
     await AxiosClient.post("/project-details", { id: id })
@@ -72,12 +73,32 @@ const ProjectView = () => {
   };
 
   // Get plot data
-  const [plotData, setPlotData] = useState([]);
+  const [plotData, setPlotData] = useState([
+    {
+      Plot_1: "",
+      Plot_2: "",
+      Plot_3: "",
+      Plot_4: "",
+      Plot_5: "",
+      Plot_6: "",
+      Plot_7: "",
+      Plot_8: "",
+      Plot_9: "",
+      Plot_10: "",
+      Plot_11: "",
+      Plot_12: "",
+      Plot_13: "",
+      Plot_14: "",
+      Plot_15: "",
+      Plot_16: "",
+    },
+  ]);
   const getPlotData = async () => {
     setLoader(true);
     await AxiosClient.post("/get-plots", { project_id: id })
       .then((res) => {
         if (res.data.status == true) {
+          // setPlotData([...plotData, ([e.target.name] = e.target.value)]);
           setPlotData(res.data.data);
           setLoader(false);
         }
@@ -349,8 +370,8 @@ const ProjectView = () => {
                         <td>
                           <input
                             type="text"
-                            name="Plot"
-                            value={items.Plot}
+                            name={`Plot_${index + 1}`}
+                            value={`${items.Plot}`}
                             onChange={handleInputValue}
                           />
                         </td>
