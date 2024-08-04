@@ -7,7 +7,7 @@ import Tooltip from "@mui/material/Tooltip";
 
 //___ Icons ___//
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
-
+import { RxCross2 } from "react-icons/rx";
 //___ Css ___//
 import "./ProjectView.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -72,33 +72,32 @@ const ProjectView = () => {
   };
 
   // Get plot data
-  const [plotData, setPlotData] = useState([
-    {
-      Plot_1: "",
-      Plot_2: "",
-      Plot_3: "",
-      Plot_4: "",
-      Plot_5: "",
-      Plot_6: "",
-      Plot_7: "",
-      Plot_8: "",
-      Plot_9: "",
-      Plot_10: "",
-      Plot_11: "",
-      Plot_12: "",
-      Plot_13: "",
-      Plot_14: "",
-      Plot_15: "",
-      Plot_16: "",
-    },
-  ]);
-  // const [plotData, setPlotData] = useState();
+  // const [plotData, setPlotData] = useState([
+  //   {
+  //     Plot_1: "",
+  //     Plot_2: "",
+  //     Plot_3: "",
+  //     Plot_4: "",
+  //     Plot_5: "",
+  //     Plot_6: "",
+  //     Plot_7: "",
+  //     Plot_8: "",
+  //     Plot_9: "",
+  //     Plot_10: "",
+  //     Plot_11: "",
+  //     Plot_12: "",
+  //     Plot_13: "",
+  //     Plot_14: "",
+  //     Plot_15: "",
+  //     Plot_16: "",
+  //   },
+  // ]);
+  const [plotData, setPlotData] = useState([]);
   const getPlotData = async () => {
     setLoader(true);
     await AxiosClient.post("/get-plots", { project_id: id })
       .then((res) => {
         if (res.data.status == true) {
-          // setPlotData([...plotData, ([e.target.name] = e.target.value)]);
           setPlotData(res.data.data);
           setLoader(false);
         }
@@ -157,9 +156,11 @@ const ProjectView = () => {
   const handleInputValue = (e) => {
     setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
   };
-  const handlePlotInput = (e) => {
-    // setPlotData([{ ...plotData, [e.target.name]: e.target.value }]);
-    console.log(e.target.value);
+  const handlePlotInput = (index, event) => {
+    const newPlot = [...plotData];
+    newPlot[index].value = event.target.value;
+    setPlotData(newPlot);
+    console.log(newPlot);
   };
 
   let counter = "";
@@ -380,8 +381,8 @@ const ProjectView = () => {
                           <input
                             type="text"
                             name={`Plot_${index + 1}`}
-                            value={`${items.Plot}`}
-                            onChange={(e) => handlePlotInput(e)}
+                            value={items.Plot}
+                            onChange={(event) => handlePlotInput(index, event)}
                           />
                         </td>
                       </tr>
@@ -450,6 +451,9 @@ const ProjectView = () => {
                       style: { transitionDelay: "1s" },
                     }}
                   />
+                  <div className="overlay">
+                    <RxCross2 />
+                  </div>
                 </div>
               );
             })}
@@ -475,3 +479,51 @@ const ProjectView = () => {
 };
 
 export default ProjectView;
+
+/*
+
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the backend
+    axios.get('http://localhost:5000/items')
+      .then(response => {
+        setItems(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  const handleChange = (index, event) => {
+    const newItems = [...items];
+    newItems[index].value = event.target.value;
+    setItems(newItems);
+  };
+
+  return (
+    <div>
+      <h1>Edit Items</h1>
+      {items.map((item, index) => (
+        <div key={index}>
+          <label>
+            {item.name}:
+            <input
+              type="text"
+              value={item.value}
+              onChange={(event) => handleChange(index, event)}
+            />
+          </label>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default App;
+
+*/
