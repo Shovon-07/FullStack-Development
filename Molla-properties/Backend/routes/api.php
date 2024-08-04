@@ -84,6 +84,7 @@ Route::prefix("/admin")->group(function () {
             // News and event
             Route::get("/get-news-event", "GetNewsEvent");
             Route::post("/add-news-event", "AddNewsEvent");
+            Route::post("/delete-news", "DeleteNews");
 
             // Blog
             Route::get("/get-blog", "GetBlog");

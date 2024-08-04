@@ -358,6 +358,25 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
     }
+    public function DeleteNews(Request $request)
+    {
+        try {
+            $project_id = $request->input("project_id");
+            $news_id = $request->input("news_id");
+
+            $newsData = NewsAndEvent::where("id", $news_id)->where("Project_id", $project_id)->first();
+
+            $newsImagePath = public_path("Images/" . $newsData->News_img);
+            File::delete($newsImagePath);
+
+            // Delete from database
+            NewsAndEvent::where("id", $news_id)->where("Project_id", $project_id)->delete();
+
+            return response()->json(["status" => true, "msg" => "News deleted"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
     //___ News and event end ___//
 
     //___ Blog start ___//

@@ -1,10 +1,16 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import Tooltip from "@mui/material/Tooltip";
+import { ToastContainer, toast } from "react-toastify";
+
+//___ Icons ___//
+import { RxCross2 } from "react-icons/rx";
 
 //___ Css ___//
-import "./NewsAndEvent.css";
+import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -52,6 +58,35 @@ const NewsAndEvent = () => {
         console.log(`Error = ${e}`);
         setLoader(false);
       });
+  };
+
+  // Delete news
+  const DeleteNews = async (newsId, projectId) => {
+    if (confirm("Do you want to delete this news ?")) {
+      setLoader(true);
+      await AxiosClient.post("/delete-news", {
+        news_id: newsId,
+        project_id: projectId,
+      })
+        .then((res) => {
+          if (res.data.status == true) {
+            console.log(res.data.msg);
+            setLoader(false);
+            setRelodeData(true);
+            toast.success(res.data.msg);
+            console.clear();
+          } else {
+            setLoader(false);
+            console.log(res.data.msg);
+          }
+        })
+        .catch((err) => {
+          console.log(`Error ${err}`);
+          setLoader(false);
+        });
+    } else {
+      toast.error("You cancel this execution");
+    }
   };
 
   useEffect(() => {
@@ -112,18 +147,25 @@ const NewsAndEvent = () => {
         </Suspense>
       </div>
 
-      <div className="newsBox d-flex-start gap-20">
+      <div className="cardWrapper d-flex gap-20">
         {slicedData.map((items, index) => {
           return (
-            <div key={index} className="card">
+            <div className="card" key={index}>
               <LazyLoadImage
-                alt={items.img}
                 src={`${imgPath}${items.News_img}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
                 }}
               />
+
+              <div className="txt d-flex">
+                <Tooltip title={`Delete ${items.id}`}>
+                  <a onClick={() => DeleteNews(items.id, items.Project_id)}>
+                    <RxCross2 size={50} className="cross" />
+                  </a>
+                </Tooltip>
+              </div>
             </div>
           );
         })}
@@ -137,6 +179,19 @@ const NewsAndEvent = () => {
           Load More
         </button>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };
