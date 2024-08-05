@@ -15,6 +15,13 @@ const MyToast = (props) => {
     setMsg("");
   };
 
+  document.onkeydown = function (evt) {
+    evt = evt || window.event;
+    if (evt.keyCode == 27) {
+      CloseMyToast();
+    }
+  };
+
   useEffect(() => {
     if (!msg) {
       setMyToast(false);

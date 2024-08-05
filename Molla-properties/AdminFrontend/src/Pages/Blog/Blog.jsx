@@ -3,7 +3,7 @@ import { UseAuthContext } from "../../Context/AuthContext";
 import Tooltip from "@mui/material/Tooltip";
 
 //___ Icons ___//
-import { RxCross2 } from "react-icons/rx";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 //___ Css ___//
 import "./Blog.css";
@@ -134,7 +134,7 @@ const Blog = () => {
             <div className="eachViedo" key={index}>
               <Tooltip title={`Delete ${items.id}`}>
                 <a onClick={() => DeleteBlog(items.id)}>
-                  <RxCross2 size={50} className="deleteBlog" />
+                  <FaRegTrashAlt size={25} className="deleteBlog" />
                 </a>
               </Tooltip>
               <iframe

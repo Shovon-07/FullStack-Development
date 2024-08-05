@@ -7,7 +7,7 @@ import Tooltip from "@mui/material/Tooltip";
 
 //___ Icons ___//
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
-import { RxCross2 } from "react-icons/rx";
+// import { RxCross2 } from "react-icons/rx";
 
 //___ Css ___//
 import "./ProjectView.css";
@@ -482,7 +482,7 @@ const ProjectView = () => {
                     <div className="txt d-flex">
                       <Tooltip title={`Delete ${items.id}`}>
                         <a onClick={() => DeleteImage(items.id)}>
-                          <RxCross2 size={50} className="cross" />
+                          <FaRegTrashAlt size={40} className="cross" />
                         </a>
                       </Tooltip>
                     </div>

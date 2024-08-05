@@ -4,7 +4,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import Tooltip from "@mui/material/Tooltip";
 
 //___ Icons ___//
-import { RxCross2 } from "react-icons/rx";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 //___ Css ___//
 import "../../assets/Css/Card.css";
@@ -169,7 +169,7 @@ const HonorableClient = () => {
                 </h3>
                 <Tooltip title={`Delete ${items.id}`}>
                   <a onClick={() => DeleteClient(items.id, items.Project_id)}>
-                    <RxCross2 size={50} className="cross" />
+                    <FaRegTrashAlt size={40} className="cross" />
                   </a>
                 </Tooltip>
               </div>
