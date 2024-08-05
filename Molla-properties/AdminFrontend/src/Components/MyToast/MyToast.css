@@ -1,29 +1,16 @@
 .MyToast {
-  width: 30%;
-  height: 50px;
+  width: auto;
+  height: auto;
   background: var(--yellow);
   padding: 10px 20px;
   border-radius: 5px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  gap: 50px;
   position: fixed;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-
   z-index: 1000;
-
-  /* animation: showToast 0.2s linear; */
 }
-
-/* @keyframes showToast {
-  0% {
-    top: -100px;
-  }
-  100% {
-    top: 0%;
-  }
-} */

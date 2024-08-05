@@ -17,7 +17,7 @@ import Loader from "../../Components/Loader/Loader";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
-import MyToast from "../../Components/MyToast/MyToast";
+const MyToast = lazy(() => import("../../Components/MyToast/MyToast"));
 
 const HonorableClient = () => {
   const { setLoader } = UseAuthContext();
@@ -71,8 +71,8 @@ const HonorableClient = () => {
       await AxiosClient.post("/delete-client", payload)
         .then((res) => {
           if (res.data.status == true) {
-            setLoader(false);
             setDeleteMsg(res.data.msg);
+            setLoader(false);
             setRelodeData(true);
             console.clear();
           } else {

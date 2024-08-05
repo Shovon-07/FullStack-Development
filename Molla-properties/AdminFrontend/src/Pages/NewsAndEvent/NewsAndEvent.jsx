@@ -17,6 +17,7 @@ import Loader from "../../Components/Loader/Loader";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
+const MyToast = lazy(() => import("../../Components/MyToast/MyToast"));
 
 const NewsAndEvent = () => {
   const { setLoader } = UseAuthContext();
@@ -59,6 +60,7 @@ const NewsAndEvent = () => {
   };
 
   // Delete news
+  const [deleteMsg, setDeleteMsg] = useState();
   const DeleteNews = async (newsId, projectId) => {
     if (confirm("Do you want to delete this news ?")) {
       const payload = {
@@ -69,7 +71,7 @@ const NewsAndEvent = () => {
       await AxiosClient.post("/delete-news", payload)
         .then((res) => {
           if (res.data.status == true) {
-            console.log(res.data.msg);
+            setDeleteMsg(res.data.msg);
             setLoader(false);
             setRelodeData(true);
             console.clear();
@@ -83,7 +85,7 @@ const NewsAndEvent = () => {
           setLoader(false);
         });
     } else {
-      alert("You cancel this execution");
+      setDeleteMsg("You cancel this execution");
     }
   };
 
@@ -122,6 +124,8 @@ const NewsAndEvent = () => {
 
   return (
     <div className="NewsAndEvent">
+      <MyToast msg={deleteMsg} setMsg={setDeleteMsg} />
+
       <h3 className="pageTitle">News And Event</h3>
       {/* For go to top */}
       <input
