@@ -28,7 +28,7 @@ class ContactUsController extends Controller
                 "appName" => env("APP_NAME"),
             ];
             
-            $email = Mail::to("mollaproperties@gmail.com")->send(new ContactUsMail($mailData));
+            $email = Mail::to("support@molla-properties.com")->send(new ContactUsMail($mailData));
             if ($email) {
                 return response()->json(["status" => true, "msg" => "Email sent successful",]);
             } else {
