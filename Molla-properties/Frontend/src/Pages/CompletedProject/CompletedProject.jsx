@@ -14,7 +14,7 @@ const CompletedProject = () => {
   const [setLoader] = useOutletContext();
 
   const [completedProjectData, setCompletedProjectData] = useState([]);
-  const [numberOfElement, setNumberOfElement] = useState(2);
+  const [numberOfElement, setNumberOfElement] = useState(3);
   const slicedData = completedProjectData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
@@ -86,7 +86,7 @@ const CompletedProject = () => {
       </div>
 
       <div
-        className={completedProjectData.length > 2 ? "" : "d-none"}
+        className={completedProjectData.length > 3 ? "" : "d-none"}
         style={{ textAlign: "center", marginTop: "100px" }}
       >
         <button className="btn" onClick={loadMore}>

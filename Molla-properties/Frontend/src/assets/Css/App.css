@@ -105,7 +105,7 @@ a {
   background: var(--overlay);
   opacity: 0;
   transition: var(--trans);
-  z-index: 998;
+  z-index: 98;
 }
 .btn {
   border: none;
@@ -129,6 +129,10 @@ a {
   color: var(--main-color);
 }
 
+/* .Toastify__toast-body {
+  background: yellow;
+} */
+
 /*___ Admin Layout ___*/
 .main {
   background: var(--light-1);
@@ -147,7 +151,7 @@ a {
 }
 .page {
   margin-top: 110px;
-  z-index: 900;
+  z-index: 80;
 }
 .content {
   width: 100%;

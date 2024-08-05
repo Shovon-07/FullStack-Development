@@ -14,7 +14,7 @@ const UpcomingProject = () => {
   const [setLoader] = useOutletContext();
 
   const [upComingProjectData, setUpComingProjectData] = useState([]);
-  const [numberOfElement, setNumberOfElement] = useState(2);
+  const [numberOfElement, setNumberOfElement] = useState(3);
   const slicedData = upComingProjectData.slice(0, numberOfElement);
   const loadMore = () => {
     setNumberOfElement((prev) => prev * 2);
@@ -86,7 +86,7 @@ const UpcomingProject = () => {
       </div>
 
       <div
-        className={upComingProjectData.length > 2 ? "" : "d-none"}
+        className={upComingProjectData.length > 3 ? "" : "d-none"}
         style={{ textAlign: "center", marginTop: "100px" }}
       >
         <button className="btn" onClick={loadMore}>

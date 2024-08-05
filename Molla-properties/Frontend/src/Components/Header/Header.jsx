@@ -208,7 +208,6 @@ const Header = (props) => {
                 size={25}
                 className={theme ? "" : "d-none"}
                 onClick={(e) => {
-                  // e.preventDefault();
                   setTheme((prev) => !prev);
                   localStorage.removeItem("THEME");
                 }}
@@ -217,7 +216,6 @@ const Header = (props) => {
                 size={25}
                 className={!theme ? "" : "d-none"}
                 onClick={(e) => {
-                  // e.preventDefault();
                   setTheme((prev) => !prev);
                   localStorage.setItem("THEME", true);
                 }}
@@ -226,7 +224,7 @@ const Header = (props) => {
           </li>
           {/* Theme end */}
 
-          <li style={{ zIndex: 999, position: "sticky" }}>
+          <li style={{ zIndex: 100, position: "sticky" }}>
             <div
               className={`toggler c_pointer ${
                 searchDropDownVal == true ? "z-index-1" : ""
@@ -234,7 +232,11 @@ const Header = (props) => {
               onClick={handleNavToggle}
             >
               <FaBars size={25} className={toggle == false ? "" : "d-none"} />
-              <RxCross2 size={30} className={toggle == true ? "" : "d-none"} />
+              <RxCross2
+                size={30}
+                className={toggle == true ? "" : "d-none"}
+                style={{ background: "var(--light-1)" }}
+              />
             </div>
           </li>
         </div>

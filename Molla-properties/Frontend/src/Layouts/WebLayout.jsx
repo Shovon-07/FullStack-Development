@@ -26,7 +26,7 @@ const WebLayout = () => {
       <div className={`container `}>
         <div
           className={toggle == true ? "overlay" : ""}
-          style={{ zIndex: "997", position: "fixed", opacity: 1 }}
+          style={{ zIndex: "98", position: "fixed", opacity: 1 }}
           onClick={() => {
             setToggle(false);
           }}
