@@ -1,4 +1,5 @@
 import React, { useState, lazy, Suspense } from "react";
+import { useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ToastContainer, toast } from "react-toastify";
@@ -35,6 +36,7 @@ import Loader from "../Loader/Loader";
 
 const ModalPage = (props) => {
   const { setLoader } = UseAuthContext();
+  const navigate = useNavigate();
 
   const {
     id,
@@ -315,6 +317,9 @@ const ModalPage = (props) => {
               setRelodeData(true);
 
               setInputValue({ blog_link: "" });
+
+              window.history.back();
+              navigate("/blog");
 
               toast.success(response.data.msg);
               console.clear();

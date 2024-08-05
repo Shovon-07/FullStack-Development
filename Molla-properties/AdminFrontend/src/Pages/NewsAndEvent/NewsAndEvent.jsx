@@ -2,7 +2,6 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Tooltip from "@mui/material/Tooltip";
-import { ToastContainer, toast } from "react-toastify";
 
 //___ Icons ___//
 import { RxCross2 } from "react-icons/rx";
@@ -10,7 +9,6 @@ import { RxCross2 } from "react-icons/rx";
 //___ Css ___//
 import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -180,19 +178,6 @@ const NewsAndEvent = () => {
           Load More
         </button>
       </div>
-
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </div>
   );
 };
