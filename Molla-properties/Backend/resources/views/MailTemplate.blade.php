@@ -9,43 +9,35 @@
         box-sizing: border-box;
       }
       .body {
-        background: #303030;
+        background: #1f1f1f;
         color: #efefef;
         padding: 20px;
       }
-
       .title span {
         text-transform: capitalize;
-        color: rgb(255, 115, 0);
+        color: rgb(1, 212, 1);
       }
-
       .msgBody {
         margin: 30px 0;
       }
       .msgBody div {
         margin: 30px 0;
       }
+      .msgBody div h3 {
+        color: rgb(1, 212, 1);
+        font-weight: bold;
+      }
       .msgBody p {
         font-size: 1.2rem;
         margin-top: 5px;
       }
-
-      table tr td {
-        padding: 10px;
-        font-size: 1rem;
-        vertical-align: baseline;
-        text-align: justify;
-      }
-
       hr {
         border: 1px solid rgb(255, 115, 0);
       }
-
       .regards {
         text-align: right;
         margin-top: 20px;
       }
-
       .regards p {
         font-size: 1rem;
         margin-top: 10px;
