@@ -207,13 +207,12 @@ const ModalPage = (props) => {
               setInputValue({ project_id: "" });
 
               toast.success(response.data.msg);
-              console.log(response.data.msg);
-              // console.clear();
+              console.clear();
             } else {
               setLoader(false);
               console.log(response.data.msg);
               alert(
-                "Please select image file ( jpg, png, jpeg or anythin else )"
+                "Please select image file ( jpg, png, jpeg or anything else )"
               );
             }
           })
@@ -253,7 +252,7 @@ const ModalPage = (props) => {
               setLoader(false);
               console.log(response.data.msg);
               alert(
-                "Please select image file ( jpg, png, jpeg or anythin else )"
+                "Please select image file ( jpg, png, jpeg or anything else )"
               );
             }
           })
@@ -290,7 +289,7 @@ const ModalPage = (props) => {
               setLoader(false);
               console.log(response.data.msg);
               alert(
-                "Please select image file ( jpg, png, jpeg or anythin else )"
+                "Please select image file ( jpg, png, jpeg or anything else )"
               );
             }
           })

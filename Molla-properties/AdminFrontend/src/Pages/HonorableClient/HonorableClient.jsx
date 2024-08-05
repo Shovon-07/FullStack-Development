@@ -72,8 +72,8 @@ const HonorableClient = () => {
         .then((res) => {
           if (res.data.status == true) {
             setLoader(false);
-            setRelodeData(true);
             toast.success(res.data.msg);
+            setRelodeData(true);
             console.clear();
           } else {
             setLoader(false);

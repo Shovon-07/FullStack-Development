@@ -17,6 +17,7 @@ import "lightgallery/css/lg-thumbnail.css";
 import AxiosClient from "../../assets/Js/AxiosClient";
 import { imgPath } from "../../assets/Js/Data";
 import Loader from "../../Components/Loader/Loader";
+import { toast } from "react-toastify";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
@@ -47,7 +48,7 @@ const Gallery = () => {
       });
   };
 
-  // Get project data
+  // Get gallery data
   const GetGalleryData = async () => {
     setLoader(true);
     await AxiosClient.get("/gallery-img")
