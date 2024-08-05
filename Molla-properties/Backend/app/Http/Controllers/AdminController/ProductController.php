@@ -411,5 +411,18 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => $validator->errors()]);
         }
     }
+    public function DeleteBlog(Request $request)
+    {
+        try {
+            $blog_id = $request->input("blog_id");
+
+            // Delete from database
+            Blog::where("id", $blog_id)->delete();
+
+            return response()->json(["status" => true, "msg" => "Blog deleted"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
     //___ Blog end ___//
 }

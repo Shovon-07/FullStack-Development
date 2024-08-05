@@ -2,9 +2,23 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.Blog .videos iframe {
+.Blog .videos .eachViedo {
   width: 40%;
   height: 350px;
+  margin-top: 50px;
+}
+.Blog .videos .eachViedo iframe {
+  width: 100%;
+  height: 100%;
+}
+.Blog .videos .eachViedo .deleteBlog {
+  color: var(--red);
+  cursor: pointer;
+  transition: var(--trans);
+  opacity: 0;
+}
+.Blog .videos .eachViedo:hover .deleteBlog {
+  opacity: 1;
 }
 
 /*___ Responsive ___*/

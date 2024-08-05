@@ -136,7 +136,7 @@ const Header = (props) => {
         {/* Message end */}
 
         {/* Notification start */}
-        <div className="notification dorwpDownParent">
+        {/* <div className="notification dorwpDownParent">
           <a>
             <IoNotifications
               size={28}
@@ -178,7 +178,7 @@ const Header = (props) => {
               );
             })}
           </ul>
-        </div>
+        </div> */}
         {/* Notification end */}
 
         {/* Theme start */}

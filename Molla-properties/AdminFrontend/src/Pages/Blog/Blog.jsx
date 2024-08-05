@@ -1,6 +1,9 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import Tooltip from "@mui/material/Tooltip";
+
+//___ Icons ___//
+import { RxCross2 } from "react-icons/rx";
 
 //___ Css ___//
 import "./Blog.css";
@@ -8,11 +11,11 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
-import { imgPath } from "../../assets/Js/Data";
 import Loader from "../../Components/Loader/Loader";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
+const MyToast = lazy(() => import("../../Components/MyToast/MyToast"));
 
 const Blog = () => {
   const { setLoader } = UseAuthContext();
@@ -36,6 +39,35 @@ const Blog = () => {
         console.log(`Error = ${e}`);
         setLoader(false);
       });
+  };
+
+  // Delete blog
+  const [deleteMsg, setDeleteMsg] = useState();
+  const DeleteBlog = async (blogId) => {
+    if (confirm("Do you want to delete this blog ?")) {
+      const payload = {
+        blog_id: blogId,
+      };
+      setLoader(true);
+      await AxiosClient.post("/delete-blog", payload)
+        .then((res) => {
+          if (res.data.status == true) {
+            setDeleteMsg(res.data.msg);
+            setLoader(false);
+            setRelodeData(true);
+            console.clear();
+          } else {
+            setLoader(false);
+            console.log(res.data.msg);
+          }
+        })
+        .catch((err) => {
+          console.log(`Error ${err}`);
+          setLoader(false);
+        });
+    } else {
+      setDeleteMsg("You cancel this execution");
+    }
   };
 
   useEffect(() => {
@@ -67,13 +99,14 @@ const Blog = () => {
     height: "40px",
     background: "#424242",
     paddingBottom: "3px",
-    marginBottom: "50px",
+    // marginBottom: "50px",
   };
 
   return (
     <div className="Blog">
-      <h3 className="pageTitle">Blog</h3>
+      <MyToast msg={deleteMsg} setMsg={setDeleteMsg} />
 
+      <h3 className="pageTitle">Blog</h3>
       {/* For go to top */}
       <input
         type="file"
@@ -98,15 +131,21 @@ const Blog = () => {
       <div className="videos d-flex gap-10">
         {slicedData.map((items, index) => {
           return (
-            <iframe
-              key={index}
-              src={items.Blog_video}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
+            <div className="eachViedo" key={index}>
+              <Tooltip title={`Delete ${items.id}`}>
+                <a onClick={() => DeleteBlog(items.id)}>
+                  <RxCross2 size={50} className="deleteBlog" />
+                </a>
+              </Tooltip>
+              <iframe
+                src={items.Blog_video}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </div>
           );
         })}
       </div>
