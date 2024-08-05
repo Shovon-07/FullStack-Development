@@ -17,6 +17,7 @@ import Loader from "../../Components/Loader/Loader";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
+import MyToast from "../../Components/MyToast/MyToast";
 
 const HonorableClient = () => {
   const { setLoader } = UseAuthContext();
@@ -59,6 +60,7 @@ const HonorableClient = () => {
   };
 
   // Delete client
+  const [deleteMsg, setDeleteMsg] = useState();
   const DeleteClient = async (clientId, projectId) => {
     if (confirm("Do you want to delete this client ?")) {
       const payload = {
@@ -70,7 +72,7 @@ const HonorableClient = () => {
         .then((res) => {
           if (res.data.status == true) {
             setLoader(false);
-            // toast.success(res.data.msg);
+            setDeleteMsg(res.data.msg);
             setRelodeData(true);
             console.clear();
           } else {
@@ -83,7 +85,10 @@ const HonorableClient = () => {
           setLoader(false);
         });
     } else {
-      // toast.error("You cancel this execution");
+      setDeleteMsg("You cancel this execution");
+      // setInterval(() => {
+      //   setDeleteMsg("");
+      // }, 5000);
     }
   };
 
@@ -122,6 +127,9 @@ const HonorableClient = () => {
 
   return (
     <div className="HonorableClient">
+      {/* {deleteMsg && <MyToast msg={deleteMsg} />} */}
+      <MyToast msg={deleteMsg} setMsg={setDeleteMsg} />
+
       <h3 className="pageTitle">Honorable Clients</h3>
       {/* For go to top */}
       <input

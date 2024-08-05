@@ -72,7 +72,6 @@ const NewsAndEvent = () => {
             console.log(res.data.msg);
             setLoader(false);
             setRelodeData(true);
-            toast.success(res.data.msg);
             console.clear();
           } else {
             setLoader(false);
@@ -84,7 +83,7 @@ const NewsAndEvent = () => {
           setLoader(false);
         });
     } else {
-      toast.error("You cancel this execution");
+      alert("You cancel this execution");
     }
   };
 
