@@ -86,9 +86,6 @@ const HonorableClient = () => {
         });
     } else {
       setDeleteMsg("You cancel this execution");
-      // setInterval(() => {
-      //   setDeleteMsg("");
-      // }, 5000);
     }
   };
 
@@ -127,7 +124,6 @@ const HonorableClient = () => {
 
   return (
     <div className="HonorableClient">
-      {/* {deleteMsg && <MyToast msg={deleteMsg} />} */}
       <MyToast msg={deleteMsg} setMsg={setDeleteMsg} />
 
       <h3 className="pageTitle">Honorable Clients</h3>
