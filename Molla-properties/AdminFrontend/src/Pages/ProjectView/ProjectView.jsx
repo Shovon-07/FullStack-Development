@@ -55,6 +55,7 @@ const ProjectView = () => {
     },
   ]);
   const [projectDate, setProjectDate] = useState();
+  const [projectImage, setProjectImage] = useState();
 
   const getProjectViewData = async () => {
     setLoader(true);
@@ -63,6 +64,7 @@ const ProjectView = () => {
         if (res.data.status == true) {
           setProjectViewData(res.data.data);
           setProjectDate(res.data.data.Created_at.substr(0, 10));
+          setProjectImage(res.data.data.Image);
           setLoader(false);
         } else {
           setLoader(false);
@@ -184,11 +186,16 @@ const ProjectView = () => {
   const handleInputValue = (e) => {
     setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
   };
+
   const handlePlotInput = (index, event) => {
     const newPlot = [...plotData];
     newPlot[index].value = event.target.value;
     setPlotData(newPlot);
     console.log(newPlot);
+  };
+
+  const handleProjectImageInput = (e) => {
+    setProjectImage(e.target.files[0]);
   };
 
   useEffect(() => {
@@ -238,6 +245,14 @@ const ProjectView = () => {
             />
           </button>
         </Tooltip>
+        <button
+          className="btn resetBtn"
+          onClick={() => {
+            setRelodeData(true);
+          }}
+        >
+          Clear changes
+        </button>
       </div>
 
       <div className="tab-container">
@@ -283,11 +298,18 @@ const ProjectView = () => {
           >
             <div className="left">
               <LazyLoadImage
-                src={`${imgPath}${projectViewData.Image}`}
+                src={`${imgPath}${projectImage}`}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
                 }}
+              />
+              <input
+                type="file"
+                name=""
+                id=""
+                style={{ marginTop: "50px" }}
+                onChange={handleProjectImageInput}
               />
             </div>
             <div className="right">
@@ -383,9 +405,18 @@ const ProjectView = () => {
                       <input
                         type="text"
                         name="Status"
+                        className="typeStatus"
+                        // placeholder="Type Ongoing / Upcomming / Completed"
+                        readOnly
                         value={projectViewData.Status}
                         onChange={handleInputValue}
                       />
+                      <select name="Status" onChange={handleInputValue}>
+                        <option value="0">Project status</option>
+                        <option value="1">1. Ongoing</option>
+                        <option value="2">2. Upcomming</option>
+                        <option value="3">3. Completed</option>
+                      </select>
                     </td>
                   </tr>
                   <tr>

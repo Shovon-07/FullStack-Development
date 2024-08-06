@@ -27,6 +27,9 @@
   border: none;
   outline: none;
 }
+.ProjectView .editOrDelete .resetBtn {
+  background: var(--red);
+}
 .ProjectView .tab-container .tab-box .tab-btn {
   color: var(--light-1);
   background: transparent;
@@ -190,6 +193,46 @@
   tr
   td:first-child {
   padding-left: 0;
+}
+.ProjectView
+  .tab-container
+  .content-box
+  .briefOutlineContent
+  .right
+  table
+  tr
+  td:last-child {
+  width: 75%;
+}
+.ProjectView
+  .tab-container
+  .content-box
+  .briefOutlineContent
+  .right
+  table
+  tr
+  td
+  select {
+  font-size: 1rem;
+  width: 100%;
+  padding: 6px;
+  margin-top: 15px;
+  color: var(--light-1);
+  border: var(--border);
+  outline: none;
+  background: var(--dark-2);
+}
+.ProjectView
+  .tab-container
+  .content-box
+  .briefOutlineContent
+  .right
+  table
+  tr
+  td
+  .typeStatus::placeholder {
+  font-size: 0.9rem;
+  padding: 0;
 }
 
 /*___ Brief outline end ___*/
