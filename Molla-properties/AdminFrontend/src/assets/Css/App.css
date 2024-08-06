@@ -96,7 +96,7 @@ a {
   background: var(--overlay);
   opacity: 0;
   transition: var(--trans);
-  z-index: 998;
+  z-index: 98;
 }
 
 /*___ Admin Layout ___*/

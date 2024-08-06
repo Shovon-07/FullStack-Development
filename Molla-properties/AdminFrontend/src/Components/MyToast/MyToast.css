@@ -10,7 +10,8 @@
   gap: 50px;
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 10px;
+  /* left: 50%;
+  transform: translateX(-50%); */
   z-index: 1000;
 }

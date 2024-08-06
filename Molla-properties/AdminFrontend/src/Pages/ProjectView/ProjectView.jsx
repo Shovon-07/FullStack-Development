@@ -456,9 +456,10 @@ const ProjectView = () => {
           >
             <div style={{ width: "100%" }}>
               <textarea
-                name=""
+                name="Features"
                 rows={10}
                 value={projectViewData.Features}
+                onChange={handleInputValue}
               ></textarea>
             </div>
           </div>

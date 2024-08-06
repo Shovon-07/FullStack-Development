@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { UseAuthContext } from "../Context/AuthContext";
 
@@ -12,6 +12,7 @@ const FixedToDo = lazy(() => import("../Components/ToDoApp/ToDoApp"));
 const AdminLayout = () => {
   const { token, SetToken, setUser, loader, setLoader } = UseAuthContext();
   const [toggleVal, setToggleVal] = useState(false);
+  // const [toggleOverlay, setToggleOverlay] = React.useState(false);
   const [theme, setTheme] = useState(localStorage.getItem("THEME"));
 
   const userName = localStorage.getItem("USER");
@@ -26,6 +27,14 @@ const AdminLayout = () => {
         <SideNav toggleVal={toggleVal} />
       </Suspense>
       <div className={toggleVal == false ? "container" : "container large"}>
+        {/* <div
+          className={toggleOverlay == true ? "overlay" : ""}
+          style={{ zIndex: "98", position: "fixed", opacity: 1 }}
+          onClick={() => {
+            setToggleOverlay(false);
+          }}
+        ></div> */}
+
         <Suspense fallback={<Loader />}>
           <Header
             user={userName}

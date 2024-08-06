@@ -19,7 +19,7 @@ import { imgPath } from "../../assets/Js/Data";
 import { notificationData, messageData } from "../../assets/Js/Data";
 
 const Header = (props) => {
-  const { user, setToggleVal, theme, setTheme, SetToken, setUser } = props;
+  const { user, setToggleVal, theme, setTheme, SetToken } = props;
   // const [user, setUser] = useState("Al jubair shovon");
   const navigate = useNavigate();
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
@@ -88,7 +88,7 @@ const Header = (props) => {
         </div>
 
         {/* Message start */}
-        <div className="message dorwpDownParent">
+        {/* <div className="message dorwpDownParent">
           <a>
             <AiFillMessage
               size={26}
@@ -133,11 +133,11 @@ const Header = (props) => {
               );
             })}
           </ul>
-        </div>
+        </div> */}
         {/* Message end */}
 
         {/* Notification start */}
-        {/* <div className="notification dorwpDownParent">
+        <div className="notification dorwpDownParent">
           <a>
             <IoNotifications
               size={28}
@@ -179,7 +179,7 @@ const Header = (props) => {
               );
             })}
           </ul>
-        </div> */}
+        </div>
         {/* Notification end */}
 
         {/* Theme start */}
