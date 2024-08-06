@@ -1,0 +1,136 @@
+.css-15nnif {
+  background: #222222 !important;
+  padding: 20px !important;
+  width: 70% !important;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.css-15nnif::-webkit-scrollbar {
+  display: none;
+}
+.css-sox5kk-MuiBackdrop-root {
+  background: var(--overlay) !important;
+  opacity: 1 !important;
+}
+.addBtn {
+  box-shadow: var(--shadow);
+  text-transform: capitalize !important;
+  background: var(--main-color) !important;
+  font-size: 1rem !important;
+}
+.modalCloseBtn {
+  text-align: right;
+}
+.modalCloseBtn span {
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+}
+.modalContent {
+  padding: 0 20px 20px 20px;
+}
+.modalContent .modalTitle {
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-transform: capitalize;
+  color: #fff;
+}
+.modalContent form {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+.modalContent form label {
+  color: #dddddd;
+  display: inline-block;
+  margin: 25px 0 8px 0;
+  font-size: 14px;
+}
+.modalContent form .inputBox,
+.modalContent form select {
+  width: 100%;
+}
+.modalContent form .inputBox input,
+.modalContent form .inputBox textarea {
+  border: 1px solid #7d7d7d;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  background: transparent;
+  font-size: 1rem;
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px;
+  resize: vertical;
+}
+.modalContent form .inputBox input:focus::placeholder {
+  padding-left: 10px;
+}
+.modalContent form select {
+  background: var(--dark-1);
+  color: var(--light-1);
+  font-size: 1rem;
+  width: 100%;
+  outline: none;
+  padding: 10px 15px;
+}
+.modalContent form .showImages {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.modalContent form .showImages img {
+  width: 100px;
+  height: auto;
+}
+.modalContent form .inputBox input .showHide {
+  cursor: pointer;
+}
+.modalContent form .button {
+  padding: 10px 30px;
+  margin-top: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  display: inline-block;
+  /* background: transparent; */
+  background: var(--light-1);
+  border: 1px solid var(--light-1);
+  outline: none;
+  text-transform: capitalize;
+}
+.modalContent form .button:hover {
+  background: transparent;
+  color: var(--light-1);
+}
+.modalContent .form-bottom {
+  width: 100%;
+  /* justify-content: flex-end; */
+  margin-top: 20px;
+}
+.modalContent .form-bottom a {
+  font-size: 14px;
+  transition: 0.3s all ease;
+  color: #f8f9fa;
+}
+.modalContent .form-bottom a.hover {
+  color: #fd5203;
+}
+.modalContent .form-bottom span {
+  margin: 0 10px;
+  color: #f8f9fa;
+}
+
+.Toastify__toast-body {
+  flex: none !important;
+}
+
+@media screen and (max-width: 650px) {
+  .css-15nnif {
+    width: 90% !important;
+  }
+}

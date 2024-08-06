@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -18,6 +18,9 @@ import "react-toastify/dist/ReactToastify.css";
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
 import { imgPath } from "../../assets/Js/Data";
+
+//___ Components ___//
+const PlotModal = lazy(() => import("../../Components/PlotModal/PlotModal"));
 
 const ProjectView = () => {
   const { id } = useParams();
@@ -97,13 +100,12 @@ const ProjectView = () => {
   //     Plot_16: "",
   //   },
   // ]);
-  const [plotData, setPlotData] = useState([{ plotValue: "" }]);
+  const [plotData, setPlotData] = useState([]);
   const getPlotData = async () => {
     setLoader(true);
     await AxiosClient.post("/get-plots", { project_id: id })
       .then((res) => {
         if (res.data.status == true) {
-          // setPlotData([...plotData,[e.target.name]=e.target.value]);
           setPlotData(res.data.data);
           setLoader(false);
         }
@@ -131,6 +133,7 @@ const ProjectView = () => {
       });
   };
 
+  //___ Delete start ___//
   // Delete Project
   const DeleteProject = async (id) => {
     if (confirm("Do you want to delete this project ?")) {
@@ -211,17 +214,11 @@ const ProjectView = () => {
       toast.error("You cancel this execution");
     }
   };
+  //___ Delete end ___//
 
   // Edit section
   const handleInputValue = (e) => {
     setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
-  };
-
-  const handlePlotInput = (index, event) => {
-    const newPlot = [...plotData];
-    newPlot[index].value = event.target.value;
-    setPlotData(newPlot);
-    console.log(newPlot);
   };
 
   const handleProjectImageInput = (e) => {
@@ -443,12 +440,13 @@ const ProjectView = () => {
                       </select>
                     </td>
                   </tr>
+                  <PlotModal />
                   <tr>
                     <td
                       style={{
                         fontSize: "1.5rem",
                         fontWeight: "600",
-                        padding: "50px 0 5px 0",
+                        padding: "0 0 5px 0",
                       }}
                     >
                       Plots
@@ -463,7 +461,7 @@ const ProjectView = () => {
                         <td>:</td>
                         <td className="d-flex gap-30">
                           {items.Plot}{" "}
-                          <Tooltip title={`Delete ${items.id}`}>
+                          <Tooltip title={`Delete ${index + 1}`}>
                             <a onClick={() => DeletePlot(items.id)}>
                               <RxCross2 size={20} className="cross" />
                             </a>
