@@ -58,7 +58,6 @@ const ProjectView = () => {
   ]);
   const [projectDate, setProjectDate] = useState();
   const [projectImage, setProjectImage] = useState();
-  const [projectStatus, setProjectStatus] = useState();
 
   const getProjectViewData = async () => {
     setLoader(true);
@@ -70,14 +69,14 @@ const ProjectView = () => {
           setProjectImage(res.data.data.Image);
 
           // Set Project Status
-          setProjectStatus(res.data.data.Status);
-          if (projectStatus == "Ongoing") {
-            setProjectStatus("1");
-          } else if (projectStatus == "Completed") {
-            setProjectStatus("2");
-          } else if (projectStatus == "Upcoming") {
-            setProjectStatus("3");
-          }
+          // setProjectStatus(res.data.data.Status);
+          // if (projectStatus == "Ongoing") {
+          //   setProjectStatus("1");
+          // } else if (projectStatus == "Completed") {
+          //   setProjectStatus("2");
+          // } else if (projectStatus == "Upcoming") {
+          //   setProjectStatus("3");
+          // }
 
           setLoader(false);
         } else {
@@ -214,6 +213,7 @@ const ProjectView = () => {
   const handleProjectImageInput = (e) => {
     setProjectImage(e.target.files[0]);
   };
+  const [projectStatus, setProjectStatus] = useState(0);
   const handleProjectStatus = (e) => {
     setProjectStatus(e.target.value);
   };
@@ -237,7 +237,7 @@ const ProjectView = () => {
       toast.error("Please enter project map");
     } else if (projectViewData.Features == "") {
       toast.error("Please enter features");
-    } else if (projectStatus > "3" || projectStatus < "1") {
+    } else if (projectStatus <= "0") {
       toast.error("Please enter project status");
     } else {
       const payload = new FormData();
@@ -271,6 +271,7 @@ const ProjectView = () => {
               Features: "",
             });
             setProjectImage();
+            setProjectStatus("0");
 
             setLoader(false);
             setRelodeData(true);
@@ -494,14 +495,14 @@ const ProjectView = () => {
                         type="text"
                         name="Status"
                         readOnly
-                        value={projectStatus} //--
-                        onChange={handleProjectStatus}
+                        value={projectViewData.Status} //--
+                        onChange={handleInputValue}
                       />
                       <select name="Status" onChange={handleProjectStatus}>
-                        <option value="0">0. Project status</option>
-                        <option value="1">1. Ongoing</option>
-                        <option value="2">2. Completed</option>
-                        <option value="3">3. Upcoming</option>
+                        <option value="0">Project status</option>
+                        <option value="1">Ongoing</option>
+                        <option value="2">Completed</option>
+                        <option value="3">Upcoming</option>
                       </select>
                     </td>
                   </tr>

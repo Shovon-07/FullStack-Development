@@ -149,6 +149,9 @@ class ProductController extends Controller
     }
     public function UpdateProject(Request $request)
     {
+        $id = $request->input("project_id");
+        $projectData = Projects::find($id);
+
         $title = $request->input("title");
         $project_name = $request->input("project_name");
         $developer = $request->input("developer");
@@ -160,14 +163,21 @@ class ProductController extends Controller
         $project_map = $request->input("project_map");
         $project_status = $request->input("project_status");
 
-        if ($request->hasfile("project_image")) {
-            $project_image = $request->file("project_image");
-            $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
-        }
+        $previesImgPath = public_path("Images/" . $projectData->Image);
 
-        return response()->json(["status" => true, "msg" => $request->all()]);
+        return response()->json(["status" => true, "msg" => $project_status]);
 
-        // $store = Projects::create([
+        // if ($request->hasfile("project_image")) {
+        //     if (file_exists($previesImgPath)) {
+        //         File::delete($previesImgPath);
+        //     }
+
+        //     $project_image = $request->file("project_image");
+        //     $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
+        //     $project_image->move(public_path("/Images/Projects"), $projectImgName);
+        // }
+
+        // $update = Projects::where("id", $id)->update([
         //     "Title" => $title,
         //     "Project_name" => $project_name,
         //     "Developer" => $developer,
@@ -181,9 +191,10 @@ class ProductController extends Controller
         //     "Image" => $projectImgName,
         // ]);
 
-        // if ($store) {
-        //     $project_image->move(public_path("/Images/Projects"), $projectImgName);
-        //     return response()->json(["status" => true, "msg" => "New project created"]);
+        // $update = Projects::where("id", $id)->update();
+
+        // if ($update) {
+        //     return response()->json(["status" => true, "msg" => "Project updated"]);
         // } else {
         //     return response()->json(["status" => false, "msg" => "Something went wrong"]);
         // }
