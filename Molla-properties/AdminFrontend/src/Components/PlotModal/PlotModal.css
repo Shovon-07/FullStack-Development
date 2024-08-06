@@ -48,12 +48,12 @@
   margin: 25px 0 8px 0;
   font-size: 14px;
 }
-.modalContent form .inputBox,
+.modalContent form .plotInputBox,
 .modalContent form select {
   width: 100%;
   margin-top: 20px;
 }
-.modalContent form .inputBox input {
+.modalContent form .plotInputBox input {
   border: 1px solid #7d7d7d;
   border-radius: 5px;
   outline: none;
@@ -65,7 +65,7 @@
   padding: 10px 15px;
   resize: vertical;
 }
-.modalContent form .inputBox input:focus::placeholder {
+.modalContent form .plotInputBox input:focus::placeholder {
   padding-left: 10px;
 }
 .modalContent form select {

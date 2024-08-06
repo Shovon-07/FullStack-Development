@@ -160,7 +160,7 @@ const PlotModal = (plotProps) => {
                     }}
                   >
                     {inputs.map((input, index) => (
-                      <div key={index} className="inputBox">
+                      <div key={index} className="plotInputBox">
                         <input
                           type="text"
                           value={input.value}
