@@ -163,41 +163,38 @@ class ProductController extends Controller
         $project_map = $request->input("project_map");
         $project_status = $request->input("project_status");
 
-        $previesImgPath = public_path("Images/" . $projectData->Image);
+        if ($request->hasfile("project_image")) {
+            $previesImgPath = public_path("Images/" . $projectData->Image);
+            if (file_exists($previesImgPath)) {
+                File::delete($previesImgPath);
+            }
 
-        return response()->json(["status" => true, "msg" => $project_status]);
+            $project_image = $request->file("project_image");
+            $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
+            $project_image->move(public_path("/Images/Projects"), $projectImgName);
 
-        // if ($request->hasfile("project_image")) {
-        //     if (file_exists($previesImgPath)) {
-        //         File::delete($previesImgPath);
-        //     }
+            return response()->json(["status" => true, "msg" => $project_image]);
+        }
 
-        //     $project_image = $request->file("project_image");
-        //     $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
-        //     $project_image->move(public_path("/Images/Projects"), $projectImgName);
-        // }
+        $update = Projects::where("id", $id)->update([
+            "Title" => $title,
+            "Project_name" => $project_name,
+            "Developer" => $developer,
+            "Location" => $location,
+            "Land_area" => $land_area,
+            "Total_plot" => $total_plot,
+            "Contact_no" => $contact_no,
+            "Features" => $features,
+            "Project_map" => $project_map,
+            "Status" => $project_status,
+            // "Image" => $projectImgName,
+        ]);
 
-        // $update = Projects::where("id", $id)->update([
-        //     "Title" => $title,
-        //     "Project_name" => $project_name,
-        //     "Developer" => $developer,
-        //     "Location" => $location,
-        //     "Land_area" => $land_area,
-        //     "Total_plot" => $total_plot,
-        //     "Contact_no" => $contact_no,
-        //     "Features" => $features,
-        //     "Project_map" => $project_map,
-        //     "Status" => $project_status,
-        //     "Image" => $projectImgName,
-        // ]);
-
-        // $update = Projects::where("id", $id)->update();
-
-        // if ($update) {
-        //     return response()->json(["status" => true, "msg" => "Project updated"]);
-        // } else {
-        //     return response()->json(["status" => false, "msg" => "Something went wrong"]);
-        // }
+        if ($update) {
+            return response()->json(["status" => true, "msg" => "Project updated"]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
     }
     //___ Projects end ___//
 
