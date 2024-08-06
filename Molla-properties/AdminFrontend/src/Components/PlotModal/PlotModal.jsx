@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
+// import { ToastContainer, toast } from "react-toastify";
 
 //___ Modals utilities ___//
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
@@ -33,12 +33,10 @@ const style = {
 import AxiosClient from "../../assets/Js/AxiosClient";
 import Loader from "../Loader/Loader";
 
-const PlotModal = (props) => {
+const PlotModal = (plotProps) => {
   const { setLoader } = UseAuthContext();
-  const navigate = useNavigate();
 
-  const { id, slug, inputFields, api, ModalOpenBtnTitle, setRelodeData } =
-    props;
+  const { id, setRelodeData, toast } = plotProps;
 
   const modalOpenBtnStyle = {
     fontSize: "0.9rem",
@@ -55,8 +53,6 @@ const PlotModal = (props) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const [projectId, setProjectId] = useState("0");
 
   // Dynamically add or remove input
   const [inputs, setInputs] = useState([{ value: "" }]);
@@ -83,30 +79,15 @@ const PlotModal = (props) => {
     }
   };
 
-  // Get project data
-  const [projectData, setProjectData] = useState([]);
-  const GetProjectData = async () => {
-    setLoader(true);
-    await AxiosClient.get("/projects-name")
-      .then((res) => {
-        setProjectData(res.data.data);
-        setLoader(false);
-      })
-      .catch((e) => {
-        console.log(`Error = ${e}`);
-        setLoader(false);
-      });
-  };
-
   const HandleSubmit = async (event) => {
     event.preventDefault();
     const data = inputs.map((input) => input.value);
 
-    if (projectId <= "0") {
-      toast.error("Please select a project");
+    if (id == "") {
+      toast.error("Project not found");
     } else {
       const payload = {
-        project_id: projectId,
+        project_id: id,
         plot: data,
       };
 
@@ -115,9 +96,11 @@ const PlotModal = (props) => {
         .then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
-            setProjectId("");
             setInputs([{ value: "" }]);
+            setRelodeData(true);
             setLoader(false);
+
+            handleClose();
             console.clear();
           } else {
             setLoader(false);
@@ -131,10 +114,6 @@ const PlotModal = (props) => {
         });
     }
   };
-
-  useEffect(() => {
-    GetProjectData();
-  }, []);
 
   return (
     <>
@@ -171,7 +150,7 @@ const PlotModal = (props) => {
                   />
                 </div>
                 <div className="modalContent">
-                  <h3 className="modalTitle"> Add New Plots</h3>
+                  <h3 className="modalTitle"> Add New Plots {id}</h3>
                   <input type="text" value={id} className="d-none" readOnly />
                   <form
                     encType="multipart/form-data"
@@ -180,31 +159,8 @@ const PlotModal = (props) => {
                       HandleSubmit(e);
                     }}
                   >
-                    <div style={{ textAlign: "right" }}>
-                      <select
-                        name="project_id"
-                        onChange={(e) => {
-                          setProjectId(e.target.value);
-                        }}
-                      >
-                        <option
-                          value="0"
-                          selected={projectId <= 0 ? "true" : ""}
-                        >
-                          Select project
-                        </option>
-                        {projectData.map((items, index) => {
-                          return (
-                            <option key={index} value={items.id}>
-                              {items.Project_name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-
                     {inputs.map((input, index) => (
-                      <div key={index}>
+                      <div key={index} className="inputBox">
                         <input
                           type="text"
                           value={input.value}
@@ -221,13 +177,15 @@ const PlotModal = (props) => {
                       </div>
                     ))}
 
-                    <button
-                      type="button"
-                      className="addOrRemoveBtn addBtn"
-                      onClick={handleAddField}
-                    >
-                      Add Field
-                    </button>
+                    <div style={{ width: "100%" }}>
+                      <button
+                        type="button"
+                        className="addOrRemoveBtn addBtn"
+                        onClick={handleAddField}
+                      >
+                        Add Field
+                      </button>
+                    </div>
 
                     <div>
                       <button type="submit" className="button c_pointer">
@@ -240,19 +198,6 @@ const PlotModal = (props) => {
             </Fade>
           </Modal>
         </Suspense>
-
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
       </div>
     </>
   );

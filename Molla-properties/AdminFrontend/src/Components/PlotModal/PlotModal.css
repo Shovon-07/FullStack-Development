@@ -51,16 +51,16 @@
 .modalContent form .inputBox,
 .modalContent form select {
   width: 100%;
+  margin-top: 20px;
 }
-.modalContent form .inputBox input,
-.modalContent form .inputBox textarea {
+.modalContent form .inputBox input {
   border: 1px solid #7d7d7d;
   border-radius: 5px;
   outline: none;
   color: #fff;
   background: transparent;
   font-size: 1rem;
-  width: 100%;
+  width: 85%;
   height: 100%;
   padding: 10px 15px;
   resize: vertical;
@@ -76,21 +76,24 @@
   outline: none;
   padding: 10px 15px;
 }
-.modalContent form .showImages {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-.modalContent form .showImages img {
-  width: 100px;
-  height: auto;
-}
-.modalContent form .inputBox input .showHide {
+.modalContent .addOrRemoveBtn {
+  padding: 5px 10px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 0.9rem;
   cursor: pointer;
 }
+.modalContent .removeBtn {
+  background: var(--red);
+  height: 42px;
+  margin-left: 20px;
+}
+.modalContent .addBtn {
+  background: var(--green) !important;
+  margin-top: 30px;
+}
+
 .modalContent form .button {
   padding: 10px 30px;
   margin-top: 40px;

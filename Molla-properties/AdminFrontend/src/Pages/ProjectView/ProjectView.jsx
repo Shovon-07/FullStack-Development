@@ -440,7 +440,11 @@ const ProjectView = () => {
                       </select>
                     </td>
                   </tr>
-                  <PlotModal />
+                  <PlotModal
+                    id={id}
+                    setRelodeData={setRelodeData}
+                    toast={toast}
+                  />
                   <tr>
                     <td
                       style={{
