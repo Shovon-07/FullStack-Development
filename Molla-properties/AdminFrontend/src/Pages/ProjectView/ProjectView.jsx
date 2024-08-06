@@ -249,6 +249,7 @@ const ProjectView = () => {
           className="btn resetBtn"
           onClick={() => {
             setRelodeData(true);
+            // setProjectImage();
           }}
         >
           Clear changes
@@ -405,14 +406,12 @@ const ProjectView = () => {
                       <input
                         type="text"
                         name="Status"
-                        className="typeStatus"
-                        // placeholder="Type Ongoing / Upcomming / Completed"
                         readOnly
                         value={projectViewData.Status}
                         onChange={handleInputValue}
                       />
                       <select name="Status" onChange={handleInputValue}>
-                        <option value="0">Project status</option>
+                        <option value="0">0. Project status</option>
                         <option value="1">1. Ongoing</option>
                         <option value="2">2. Upcomming</option>
                         <option value="3">3. Completed</option>

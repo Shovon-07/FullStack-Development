@@ -222,18 +222,6 @@
   outline: none;
   background: var(--dark-2);
 }
-.ProjectView
-  .tab-container
-  .content-box
-  .briefOutlineContent
-  .right
-  table
-  tr
-  td
-  .typeStatus::placeholder {
-  font-size: 0.9rem;
-  padding: 0;
-}
 
 /*___ Brief outline end ___*/
 
