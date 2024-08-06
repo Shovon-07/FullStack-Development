@@ -147,6 +147,47 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
+    public function UpdateProject(Request $request)
+    {
+        $title = $request->input("title");
+        $project_name = $request->input("project_name");
+        $developer = $request->input("developer");
+        $location = $request->input("location");
+        $land_area = $request->input("land_area");
+        $total_plot = $request->input("total_plot");
+        $contact_no = $request->input("contact_no");
+        $features = $request->input("features");
+        $project_map = $request->input("project_map");
+        $project_status = $request->input("project_status");
+
+        if ($request->hasfile("project_image")) {
+            $project_image = $request->file("project_image");
+            $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
+        }
+
+        return response()->json(["status" => true, "msg" => $request->all()]);
+
+        // $store = Projects::create([
+        //     "Title" => $title,
+        //     "Project_name" => $project_name,
+        //     "Developer" => $developer,
+        //     "Location" => $location,
+        //     "Land_area" => $land_area,
+        //     "Total_plot" => $total_plot,
+        //     "Contact_no" => $contact_no,
+        //     "Features" => $features,
+        //     "Project_map" => $project_map,
+        //     "Status" => $project_status,
+        //     "Image" => $projectImgName,
+        // ]);
+
+        // if ($store) {
+        //     $project_image->move(public_path("/Images/Projects"), $projectImgName);
+        //     return response()->json(["status" => true, "msg" => "New project created"]);
+        // } else {
+        //     return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        // }
+    }
     //___ Projects end ___//
 
     //___ Plot start ___//

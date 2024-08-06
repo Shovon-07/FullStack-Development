@@ -118,7 +118,7 @@ const ToDoApp = () => {
                 <FaRegCalendarPlus size={20} />
               </div>
               <div>
-                <h3 className="toDoTitle">To-Do List</h3>
+                <h3 className="toDoTitle">Tasks</h3>
               </div>
             </div>
             <div className="addTask d-flex">

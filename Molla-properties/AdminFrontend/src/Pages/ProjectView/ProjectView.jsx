@@ -44,7 +44,6 @@ const ProjectView = () => {
   const [projectViewData, setProjectViewData] = useState([
     {
       project_id: "",
-
       Title: "",
       Project_name: "",
       Developer: "",
@@ -80,26 +79,6 @@ const ProjectView = () => {
   };
 
   // Get plot data
-  // const [plotData, setPlotData] = useState([
-  //   {
-  //     Plot_1: "",
-  //     Plot_2: "",
-  //     Plot_3: "",
-  //     Plot_4: "",
-  //     Plot_5: "",
-  //     Plot_6: "",
-  //     Plot_7: "",
-  //     Plot_8: "",
-  //     Plot_9: "",
-  //     Plot_10: "",
-  //     Plot_11: "",
-  //     Plot_12: "",
-  //     Plot_13: "",
-  //     Plot_14: "",
-  //     Plot_15: "",
-  //     Plot_16: "",
-  //   },
-  // ]);
   const [plotData, setPlotData] = useState([]);
   const getPlotData = async () => {
     setLoader(true);
@@ -225,6 +204,79 @@ const ProjectView = () => {
     setProjectImage(e.target.files[0]);
   };
 
+  const EditProject = async () => {
+    if (projectViewData.Title == "") {
+      toast.error("Please enter title");
+    } else if (projectViewData.Project_name == "") {
+      toast.error("Please enter project name");
+    } else if (projectViewData.Developer == "") {
+      toast.error("Please enter developer name");
+    } else if (projectViewData.Location == "") {
+      toast.error("Please enter location");
+    } else if (projectViewData.Land_area == "") {
+      toast.error("Please enter land area");
+    } else if (projectViewData.Total_plot == "") {
+      toast.error("Please enter total plot");
+    } else if (projectViewData.Contact_no == "") {
+      toast.error("Please enter contact no");
+    } else if (projectViewData.Project_map == "") {
+      toast.error("Please enter project map");
+    } else if (projectViewData.Features == "") {
+      toast.error("Please enter features");
+    } else if (projectViewData.Project_status == "") {
+      toast.error("Please enter project status");
+    } else {
+      const payload = new FormData();
+      payload.append("project_id", id);
+      payload.append("title", projectViewData.Title);
+      payload.append("project_name", projectViewData.Project_name);
+      payload.append("developer", projectViewData.Developer);
+      payload.append("location", projectViewData.Location);
+      payload.append("land_area", projectViewData.Land_area);
+      payload.append("total_plot", projectViewData.Total_plot);
+      payload.append("contact_no", projectViewData.Contact_no);
+      payload.append("project_map", projectViewData.Project_map);
+      payload.append("features", projectViewData.Features);
+      payload.append("project_status", projectViewData.Project_status);
+      payload.append("project_image", projectImage);
+
+      setLoader(true);
+      await AxiosClient.post("update-project", payload)
+        .then((response) => {
+          if (response.data.status == true) {
+            setProjectViewData({
+              project_id: "",
+              Title: "",
+              Project_name: "",
+              Developer: "",
+              Location: "",
+              Land_area: "",
+              Total_plot: "",
+              Contact_no: "",
+              Project_map: "",
+              Features: "",
+              Project_status: "",
+            });
+            setProjectImage();
+
+            setLoader(false);
+            setRelodeData(true);
+            // console.clear();
+            toast.success(response.data.msg);
+            console.log(response.data.msg);
+          } else {
+            setLoader(false);
+            console.log(response.data.msg);
+            alert(response.data.msg.project_image[1]);
+          }
+        })
+        .catch((e) => {
+          console.log(`Error = ${e}`);
+          setLoader(false);
+        });
+    }
+  };
+
   useEffect(() => {
     getProjectViewData();
     getPlotData();
@@ -251,14 +303,14 @@ const ProjectView = () => {
       <p className="date">Uploaded : {projectDate}</p>
 
       <div className="editOrDelete d-flex gap-30">
-        <Tooltip title={`Edit ${id}`}>
-          <Link to={`/project-edit/${id}`}>
+        <Tooltip title={`Update ${id}`}>
+          <button onClick={() => EditProject(id)}>
             <FaEdit
               size={25}
               className="c_pointer"
               style={{ color: "var(--green)" }}
             />
-          </Link>
+          </button>
         </Tooltip>
         <Tooltip title={`Delete ${id}`}>
           <button onClick={() => DeleteProject(id)}>
@@ -435,8 +487,8 @@ const ProjectView = () => {
                       <select name="Status" onChange={handleInputValue}>
                         <option value="0">0. Project status</option>
                         <option value="1">1. Ongoing</option>
-                        <option value="2">2. Upcomming</option>
-                        <option value="3">3. Completed</option>
+                        <option value="2">2. Completed</option>
+                        <option value="3">3. Upcoming</option>
                       </select>
                     </td>
                   </tr>
