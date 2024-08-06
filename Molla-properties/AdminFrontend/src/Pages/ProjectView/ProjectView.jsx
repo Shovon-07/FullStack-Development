@@ -275,9 +275,9 @@ const ProjectView = () => {
 
             setLoader(false);
             setRelodeData(true);
-            // console.clear();
+            console.clear();
             toast.success(response.data.msg);
-            console.log(response.data.msg);
+            // console.log(response.data.msg);
           } else {
             setLoader(false);
             console.log(response.data.msg);
