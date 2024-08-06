@@ -1,11 +1,13 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { NavLink } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
 import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -140,6 +142,7 @@ const Projects = () => {
             api={"/add-project"}
             setLoader={setLoader}
             setRelodeData={setRelodeData}
+            toast={toast}
           />
         </Suspense>
       </div>
@@ -184,6 +187,19 @@ const Projects = () => {
           Load More
         </button>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

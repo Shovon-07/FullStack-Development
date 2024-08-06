@@ -2,7 +2,6 @@ import React, { useState, lazy, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import { ToastContainer, toast } from "react-toastify";
 
 //___ Modals utilities ___//
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
@@ -17,7 +16,6 @@ import { RxCross2 } from "react-icons/rx";
 //___ Css ___//
 import "./ModalPage.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import "react-toastify/dist/ReactToastify.css";
 
 const style = {
   position: "absolute",
@@ -46,6 +44,7 @@ const ModalPage = (props) => {
     ModalOpenBtnTitle,
     ModalOpenBtnStyle,
     setRelodeData,
+    toast,
     projectData,
   } = props;
 
@@ -619,19 +618,6 @@ const ModalPage = (props) => {
             </Fade>
           </Modal>
         </Suspense>
-
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
       </div>
     </>
   );

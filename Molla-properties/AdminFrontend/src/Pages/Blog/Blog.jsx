@@ -1,6 +1,7 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import Tooltip from "@mui/material/Tooltip";
+import { ToastContainer, toast } from "react-toastify";
 
 //___ Icons ___//
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -8,6 +9,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 //___ Css ___//
 import "./Blog.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -15,7 +17,6 @@ import Loader from "../../Components/Loader/Loader";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
-const MyToast = lazy(() => import("../../Components/MyToast/MyToast"));
 
 const Blog = () => {
   const { setLoader } = UseAuthContext();
@@ -42,7 +43,6 @@ const Blog = () => {
   };
 
   // Delete blog
-  const [deleteMsg, setDeleteMsg] = useState();
   const DeleteBlog = async (blogId) => {
     if (confirm("Do you want to delete this blog ?")) {
       const payload = {
@@ -52,7 +52,7 @@ const Blog = () => {
       await AxiosClient.post("/delete-blog", payload)
         .then((res) => {
           if (res.data.status == true) {
-            setDeleteMsg(res.data.msg);
+            toast.success(res.data.msg);
             setLoader(false);
             setRelodeData(true);
             console.clear();
@@ -66,7 +66,7 @@ const Blog = () => {
           setLoader(false);
         });
     } else {
-      setDeleteMsg("You cancel this execution");
+      toast.error("You cancel this execution");
     }
   };
 
@@ -104,8 +104,6 @@ const Blog = () => {
 
   return (
     <div className="Blog">
-      <MyToast msg={deleteMsg} setMsg={setDeleteMsg} />
-
       <h3 className="pageTitle">Blog</h3>
       {/* For go to top */}
       <input
@@ -124,6 +122,7 @@ const Blog = () => {
             api={"/add-blog"}
             setLoader={setLoader}
             setRelodeData={setRelodeData}
+            toast={toast}
           />
         </Suspense>
       </div>
@@ -158,6 +157,19 @@ const Blog = () => {
           Load More
         </button>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

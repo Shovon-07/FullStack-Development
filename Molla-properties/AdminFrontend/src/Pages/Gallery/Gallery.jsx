@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import LightGallery from "lightgallery/react";
@@ -12,12 +13,12 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
 import { imgPath } from "../../assets/Js/Data";
 import Loader from "../../Components/Loader/Loader";
-import { toast } from "react-toastify";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
@@ -112,6 +113,7 @@ const Gallery = () => {
             setLoader={setLoader}
             setRelodeData={setRelodeData}
             projectData={projectData}
+            toast={toast}
           />
         </Suspense>
       </div>
@@ -142,6 +144,19 @@ const Gallery = () => {
           Load More
         </button>
       </div> */}
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

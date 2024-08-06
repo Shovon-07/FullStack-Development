@@ -2,6 +2,7 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Tooltip from "@mui/material/Tooltip";
+import { ToastContainer, toast } from "react-toastify";
 
 //___ Icons ___//
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -9,6 +10,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 //___ Css ___//
 import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -17,7 +19,6 @@ import Loader from "../../Components/Loader/Loader";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
-const MyToast = lazy(() => import("../../Components/MyToast/MyToast"));
 
 const NewsAndEvent = () => {
   const { setLoader } = UseAuthContext();
@@ -60,7 +61,6 @@ const NewsAndEvent = () => {
   };
 
   // Delete news
-  const [deleteMsg, setDeleteMsg] = useState();
   const DeleteNews = async (newsId, projectId) => {
     if (confirm("Do you want to delete this news ?")) {
       const payload = {
@@ -71,7 +71,7 @@ const NewsAndEvent = () => {
       await AxiosClient.post("/delete-news", payload)
         .then((res) => {
           if (res.data.status == true) {
-            setDeleteMsg(res.data.msg);
+            toast.success(res.data.msg);
             setLoader(false);
             setRelodeData(true);
             console.clear();
@@ -85,7 +85,7 @@ const NewsAndEvent = () => {
           setLoader(false);
         });
     } else {
-      setDeleteMsg("You cancel this execution");
+      toast.error("You cancel this execution");
     }
   };
 
@@ -124,8 +124,6 @@ const NewsAndEvent = () => {
 
   return (
     <div className="NewsAndEvent">
-      <MyToast msg={deleteMsg} setMsg={setDeleteMsg} />
-
       <h3 className="pageTitle">News And Event</h3>
       {/* For go to top */}
       <input
@@ -145,6 +143,7 @@ const NewsAndEvent = () => {
             setLoader={setLoader}
             setRelodeData={setRelodeData}
             projectData={projectData}
+            toast={toast}
           />
         </Suspense>
       </div>
@@ -181,6 +180,19 @@ const NewsAndEvent = () => {
           Load More
         </button>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useEffect, useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import Tooltip from "@mui/material/Tooltip";
+import { ToastContainer, toast } from "react-toastify";
 
 //___ Icons ___//
 import { FaRegTrashAlt } from "react-icons/fa";
@@ -9,6 +10,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 //___ Css ___//
 import "../../assets/Css/Card.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -17,7 +19,6 @@ import Loader from "../../Components/Loader/Loader";
 
 //___ Components ___//
 const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
-const MyToast = lazy(() => import("../../Components/MyToast/MyToast"));
 
 const HonorableClient = () => {
   const { setLoader } = UseAuthContext();
@@ -60,7 +61,6 @@ const HonorableClient = () => {
   };
 
   // Delete client
-  const [deleteMsg, setDeleteMsg] = useState();
   const DeleteClient = async (clientId, projectId) => {
     if (confirm("Do you want to delete this client ?")) {
       const payload = {
@@ -71,7 +71,7 @@ const HonorableClient = () => {
       await AxiosClient.post("/delete-client", payload)
         .then((res) => {
           if (res.data.status == true) {
-            setDeleteMsg(res.data.msg);
+            toast.success(res.data.msg);
             setLoader(false);
             setRelodeData(true);
             console.clear();
@@ -85,7 +85,7 @@ const HonorableClient = () => {
           setLoader(false);
         });
     } else {
-      setDeleteMsg("You cancel this execution");
+      toast.error("You cancel this execution");
     }
   };
 
@@ -124,8 +124,6 @@ const HonorableClient = () => {
 
   return (
     <div className="HonorableClient">
-      <MyToast msg={deleteMsg} setMsg={setDeleteMsg} />
-
       <h3 className="pageTitle">Honorable Clients</h3>
       {/* For go to top */}
       <input
@@ -145,6 +143,7 @@ const HonorableClient = () => {
             setLoader={setLoader}
             setRelodeData={setRelodeData}
             projectData={projectData}
+            toast={toast}
           />
         </Suspense>
       </div>
@@ -186,6 +185,19 @@ const HonorableClient = () => {
           Load More
         </button>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };

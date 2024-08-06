@@ -29,7 +29,6 @@ const NewsAndEvent = lazy(() => import("./Pages/NewsAndEvent/NewsAndEvent"));
 const AboutUs = lazy(() => import("./Pages/AboutUs/AboutUs"));
 const Blog = lazy(() => import("./Pages/Blog/Blog"));
 const ProjectView = lazy(() => import("./Pages/ProjectView/ProjectView"));
-const ProjectEdit = lazy(() => import("./Pages/ProjectEdit/ProjectEdit"));
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
@@ -133,14 +132,6 @@ const Routes = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader />}>
             <ProjectView />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/project-edit/:id",
-        element: (
-          <Suspense fallback={<Loader />}>
-            <ProjectEdit />
           </Suspense>
         ),
       },
