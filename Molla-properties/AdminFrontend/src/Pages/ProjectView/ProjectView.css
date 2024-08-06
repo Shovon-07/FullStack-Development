@@ -72,6 +72,10 @@
   outline: none;
   color: var(--light-1);
 }
+.ProjectView .tab-container .content-box .cross {
+  color: var(--red);
+  cursor: pointer;
+}
 .ProjectView .tab-container .content-box .contentItems {
   align-items: flex-start;
   justify-content: space-between;
@@ -235,10 +239,6 @@
 }
 .ProjectView .tab-container .content-box .gallery .card img {
   width: 100%;
-}
-.ProjectView .tab-container .content-box .gallery .card .cross {
-  color: var(--red);
-  cursor: pointer;
 }
 /*___ Gallery end ___*/
 

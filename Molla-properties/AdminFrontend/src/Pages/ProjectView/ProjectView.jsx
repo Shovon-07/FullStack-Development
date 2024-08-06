@@ -7,7 +7,7 @@ import Tooltip from "@mui/material/Tooltip";
 
 //___ Icons ___//
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
-// import { RxCross2 } from "react-icons/rx";
+import { RxCross2 } from "react-icons/rx";
 
 //___ Css ___//
 import "./ProjectView.css";
@@ -97,12 +97,13 @@ const ProjectView = () => {
   //     Plot_16: "",
   //   },
   // ]);
-  const [plotData, setPlotData] = useState([]);
+  const [plotData, setPlotData] = useState([{ plotValue: "" }]);
   const getPlotData = async () => {
     setLoader(true);
     await AxiosClient.post("/get-plots", { project_id: id })
       .then((res) => {
         if (res.data.status == true) {
+          // setPlotData([...plotData,[e.target.name]=e.target.value]);
           setPlotData(res.data.data);
           setLoader(false);
         }
@@ -182,6 +183,35 @@ const ProjectView = () => {
     }
   };
 
+  // Delete plot
+  const DeletePlot = async (plotId) => {
+    if (confirm("Do you want to delete this plot ?")) {
+      setLoader(true);
+      await AxiosClient.post("/delete-plot", {
+        plot_id: plotId,
+        project_id: id,
+      })
+        .then((res) => {
+          if (res.data.status == true) {
+            console.log(res.data.msg);
+            setLoader(false);
+            setRelodeData(true);
+            toast.success(res.data.msg);
+            console.clear();
+          } else {
+            setLoader(false);
+            console.log(res.data.msg);
+          }
+        })
+        .catch((err) => {
+          console.log(`Error ${err}`);
+          setLoader(false);
+        });
+    } else {
+      toast.error("You cancel this execution");
+    }
+  };
+
   // Edit section
   const handleInputValue = (e) => {
     setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
@@ -220,9 +250,6 @@ const ProjectView = () => {
         style={{ height: "0", opacity: 0, pointerEvents: "none" }}
       />
       {/* For go to top */}
-      {/* <p className="date">
-        Uploaded : {moment(projectViewData.Created_at).fromNow()}
-      </p> */}
 
       <p className="date">Uploaded : {projectDate}</p>
 
@@ -307,8 +334,6 @@ const ProjectView = () => {
               />
               <input
                 type="file"
-                name=""
-                id=""
                 style={{ marginTop: "50px" }}
                 onChange={handleProjectImageInput}
               />
@@ -436,13 +461,13 @@ const ProjectView = () => {
                       <tr key={index}>
                         <td>Plot {` - ${index + 1}`}</td>
                         <td>:</td>
-                        <td>
-                          <input
-                            type="text"
-                            name={`Plot_${index + 1}`}
-                            value={items.Plot}
-                            onChange={(event) => handlePlotInput(index, event)}
-                          />
+                        <td className="d-flex gap-30">
+                          {items.Plot}{" "}
+                          <Tooltip title={`Delete ${items.id}`}>
+                            <a onClick={() => DeletePlot(items.id)}>
+                              <RxCross2 size={20} className="cross" />
+                            </a>
+                          </Tooltip>
                         </td>
                       </tr>
                     );

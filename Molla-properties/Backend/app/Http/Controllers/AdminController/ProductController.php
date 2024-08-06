@@ -183,6 +183,20 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
+    public function DeletePlot(Request $request)
+    {
+        try {
+            $project_id = $request->input("project_id");
+            $plot_id = $request->input("plot_id");
+
+            // Delete from database
+            Plot::where("id", $plot_id)->where("Project_id", $project_id)->delete();
+
+            return response()->json(["status" => true, "msg" => "Plot deleted"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
     //___ Plot end ___//
 
     //___ Gallery start ___//

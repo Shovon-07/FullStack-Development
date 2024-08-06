@@ -69,6 +69,7 @@ Route::prefix("/admin")->group(function () {
             // Plot
             Route::post("/add-plot", "AddPlot");
             Route::post("/get-plots", "GetPlots");
+            Route::post("/delete-plot", "DeletePlot");
 
             // Gallery
             Route::get("/gallery-img", "GalleryImg");
