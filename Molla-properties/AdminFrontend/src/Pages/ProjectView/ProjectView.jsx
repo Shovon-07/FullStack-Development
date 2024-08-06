@@ -53,11 +53,12 @@ const ProjectView = () => {
       Contact_no: "",
       Project_map: "",
       Features: "",
-      Project_status: "",
+      // Project_status: "",
     },
   ]);
   const [projectDate, setProjectDate] = useState();
   const [projectImage, setProjectImage] = useState();
+  const [projectStatus, setProjectStatus] = useState();
 
   const getProjectViewData = async () => {
     setLoader(true);
@@ -67,6 +68,17 @@ const ProjectView = () => {
           setProjectViewData(res.data.data);
           setProjectDate(res.data.data.Created_at.substr(0, 10));
           setProjectImage(res.data.data.Image);
+
+          // Set Project Status
+          setProjectStatus(res.data.data.Status);
+          if (projectStatus == "Ongoing") {
+            setProjectStatus("1");
+          } else if (projectStatus == "Completed") {
+            setProjectStatus("2");
+          } else if (projectStatus == "Upcoming") {
+            setProjectStatus("3");
+          }
+
           setLoader(false);
         } else {
           setLoader(false);
@@ -199,9 +211,11 @@ const ProjectView = () => {
   const handleInputValue = (e) => {
     setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
   };
-
   const handleProjectImageInput = (e) => {
     setProjectImage(e.target.files[0]);
+  };
+  const handleProjectStatus = (e) => {
+    setProjectStatus(e.target.value);
   };
 
   const EditProject = async () => {
@@ -223,7 +237,7 @@ const ProjectView = () => {
       toast.error("Please enter project map");
     } else if (projectViewData.Features == "") {
       toast.error("Please enter features");
-    } else if (projectViewData.Project_status == "") {
+    } else if (projectStatus > "3" || projectStatus < "1") {
       toast.error("Please enter project status");
     } else {
       const payload = new FormData();
@@ -237,7 +251,7 @@ const ProjectView = () => {
       payload.append("contact_no", projectViewData.Contact_no);
       payload.append("project_map", projectViewData.Project_map);
       payload.append("features", projectViewData.Features);
-      payload.append("project_status", projectViewData.Project_status);
+      payload.append("project_status", projectStatus);
       payload.append("project_image", projectImage);
 
       setLoader(true);
@@ -255,7 +269,6 @@ const ProjectView = () => {
               Contact_no: "",
               Project_map: "",
               Features: "",
-              Project_status: "",
             });
             setProjectImage();
 
@@ -481,10 +494,10 @@ const ProjectView = () => {
                         type="text"
                         name="Status"
                         readOnly
-                        value={projectViewData.Status}
-                        onChange={handleInputValue}
+                        value={projectStatus} //--
+                        onChange={handleProjectStatus}
                       />
-                      <select name="Status" onChange={handleInputValue}>
+                      <select name="Status" onChange={handleProjectStatus}>
                         <option value="0">0. Project status</option>
                         <option value="1">1. Ongoing</option>
                         <option value="2">2. Completed</option>
@@ -622,51 +635,3 @@ const ProjectView = () => {
 };
 
 export default ProjectView;
-
-/*
-
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-
-function App() {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    // Fetch data from the backend
-    axios.get('http://localhost:5000/items')
-      .then(response => {
-        setItems(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
-
-  const handleChange = (index, event) => {
-    const newItems = [...items];
-    newItems[index].value = event.target.value;
-    setItems(newItems);
-  };
-
-  return (
-    <div>
-      <h1>Edit Items</h1>
-      {items.map((item, index) => (
-        <div key={index}>
-          <label>
-            {item.name}:
-            <input
-              type="text"
-              value={item.value}
-              onChange={(event) => handleChange(index, event)}
-            />
-          </label>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-export default App;
-
-*/
