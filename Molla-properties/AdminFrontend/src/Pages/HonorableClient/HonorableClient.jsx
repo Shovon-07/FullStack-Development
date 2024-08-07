@@ -73,7 +73,7 @@ const HonorableClient = () => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
             setLoader(false);
-            setRelodeData(true);
+            setRelodeData((prev) => !prev);
             console.clear();
           } else {
             setLoader(false);
@@ -92,11 +92,6 @@ const HonorableClient = () => {
   useEffect(() => {
     GetProjectData();
     GetHonorableClientData();
-    if (relodeData == true) {
-      setInterval(() => {
-        setRelodeData(false);
-      }, 1000);
-    }
   }, [relodeData]);
 
   // Input For modal

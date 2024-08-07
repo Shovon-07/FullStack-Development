@@ -167,7 +167,7 @@ const ModalPage = (props) => {
               handleClose();
 
               setLoader(false);
-              setRelodeData(true);
+              setRelodeData((prev) => !prev);
               console.clear();
 
               toast.success(response.data.msg);
@@ -201,7 +201,7 @@ const ModalPage = (props) => {
               handleClose();
 
               setLoader(false);
-              setRelodeData(true);
+              setRelodeData((prev) => !prev);
 
               setFiles();
               setPreviewUrls([]);
@@ -242,7 +242,7 @@ const ModalPage = (props) => {
               handleClose();
 
               setLoader(false);
-              setRelodeData(true);
+              setRelodeData((prev) => !prev);
 
               setHonClientImage("");
               setInputValue({ project_id: "", honClient_name: "" });
@@ -279,7 +279,7 @@ const ModalPage = (props) => {
               handleClose();
 
               setLoader(false);
-              setRelodeData(true);
+              setRelodeData((prev) => !prev);
 
               setNewsEventImage("");
               setInputValue({ project_id: "" });
@@ -313,7 +313,7 @@ const ModalPage = (props) => {
               handleClose();
 
               setLoader(false);
-              setRelodeData(true);
+              setRelodeData((prev) => !prev);
 
               setInputValue({ blog_link: "" });
 

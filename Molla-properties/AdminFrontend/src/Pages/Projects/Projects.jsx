@@ -43,11 +43,6 @@ const Projects = () => {
 
   useEffect(() => {
     GetProjectData();
-    if (relodeData == true) {
-      setInterval(() => {
-        setRelodeData(false);
-      }, 1000);
-    }
   }, [relodeData]);
 
   // Input For modal

@@ -67,17 +67,6 @@ const ProjectView = () => {
           setProjectViewData(res.data.data);
           setProjectDate(res.data.data.Created_at.substr(0, 10));
           setProjectImage(res.data.data.Image);
-
-          // Set Project Status
-          // setProjectStatus(res.data.data.Status);
-          // if (projectStatus == "Ongoing") {
-          //   setProjectStatus("1");
-          // } else if (projectStatus == "Completed") {
-          //   setProjectStatus("2");
-          // } else if (projectStatus == "Upcoming") {
-          //   setProjectStatus("3");
-          // }
-
           setLoader(false);
         } else {
           setLoader(false);
@@ -159,7 +148,7 @@ const ProjectView = () => {
           if (res.data.status == true) {
             console.log(res.data.msg);
             setLoader(false);
-            setRelodeData(true);
+            setRelodeData((prev) => !prev);
             toast.success(res.data.msg);
             console.clear();
           } else {
@@ -188,7 +177,7 @@ const ProjectView = () => {
           if (res.data.status == true) {
             console.log(res.data.msg);
             setLoader(false);
-            setRelodeData(true);
+            setRelodeData((prev) => !prev);
             toast.success(res.data.msg);
             console.clear();
           } else {
@@ -272,7 +261,7 @@ const ProjectView = () => {
             setProjectStatus("0");
 
             setLoader(false);
-            setRelodeData(true);
+            setRelodeData((prev) => !prev);
             console.clear();
             toast.success(response.data.msg);
             // console.log(response.data.msg);
@@ -293,12 +282,6 @@ const ProjectView = () => {
     getProjectViewData();
     getPlotData();
     getGalleryData();
-
-    if (relodeData == true) {
-      setInterval(() => {
-        setRelodeData(false);
-      }, 1000);
-    }
   }, [relodeData]);
 
   return (
@@ -336,8 +319,8 @@ const ProjectView = () => {
         <button
           className="btn resetBtn"
           onClick={() => {
-            setRelodeData(true);
-            // setProjectImage();
+            setRelodeData((prev) => !prev);
+            setProjectImage(null);
           }}
         >
           Clear changes

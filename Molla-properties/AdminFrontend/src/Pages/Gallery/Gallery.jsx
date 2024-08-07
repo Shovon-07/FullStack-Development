@@ -66,11 +66,6 @@ const Gallery = () => {
   useEffect(() => {
     GetProjectData();
     GetGalleryData();
-    if (relodeData == true) {
-      setInterval(() => {
-        setRelodeData(false);
-      }, 1000);
-    }
   }, [relodeData]);
 
   const onInit = () => {
