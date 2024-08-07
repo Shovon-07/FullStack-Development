@@ -1,4 +1,5 @@
 import { useState, useEffect, lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
 import { UseAuthContext } from "../../Context/AuthContext";
 const DataTable = lazy(() => import("react-data-table-component"));
@@ -71,9 +72,9 @@ const Emails = () => {
         return (
           <div className="d-flex gap-20">
             <Tooltip title={`View ${row.id}`}>
-              <a className="c_pointer">
+              <Link to={`/view-email/${row.id}`} className="c_pointer">
                 <FaEye size={20} style={{ color: "var(--green)" }} />
-              </a>
+              </Link>
             </Tooltip>
             <Tooltip title={`Delete ${row.id}`}>
               <a className="c_pointer" onClick={() => DeleteEmail(row.id)}>

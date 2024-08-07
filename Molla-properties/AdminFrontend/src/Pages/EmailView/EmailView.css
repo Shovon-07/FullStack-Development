@@ -1,0 +1,28 @@
+.EmailView {
+}
+
+.EmailView .msgBody {
+  margin: 30px 0;
+}
+.EmailView .msgBody div {
+  margin: 30px 0;
+}
+.EmailView .msgBody div h3 {
+  color: rgb(1, 212, 1);
+  font-weight: bold;
+}
+.EmailView .msgBody p {
+  font-size: 1.2rem;
+  margin-top: 8px;
+}
+.EmailView hr {
+  border: 1px solid rgb(255, 115, 0);
+}
+.EmailView .regards {
+  text-align: right;
+  margin-top: 20px;
+}
+.EmailView .regards p {
+  font-size: 1rem;
+  margin-top: 10px;
+}

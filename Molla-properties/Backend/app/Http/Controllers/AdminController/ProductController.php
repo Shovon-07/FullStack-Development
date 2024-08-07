@@ -497,6 +497,15 @@ class ProductController extends Controller
     //___ Blog end ___//
 
     // 
+    public function GetSingleMail(Request $request)
+    {
+        $mail = MailForDb::where("id",$request->input("id"))->first();
+        if ($mail) {
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $mail]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
     public function GetMails()
     {
         $mails = MailForDb::latest("id")->get();

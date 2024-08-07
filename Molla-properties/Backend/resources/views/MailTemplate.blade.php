@@ -29,7 +29,7 @@
       }
       .msgBody p {
         font-size: 1.2rem;
-        margin-top: 5px;
+        margin-top: 8px;
       }
       hr {
         border: 1px solid rgb(255, 115, 0);

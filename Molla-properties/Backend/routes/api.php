@@ -59,6 +59,7 @@ Route::prefix("/admin")->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home", "Home");
             Route::get("/get-mails", "GetMails");
+            Route::post("/get-single-mail", "GetSingleMail");
             Route::post("/delete-email", "DeleteEmail");
 
             // Project
