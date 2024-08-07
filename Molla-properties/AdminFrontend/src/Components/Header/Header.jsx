@@ -193,7 +193,11 @@ const Header = (props) => {
                     </p> */}
                     <p
                       className="time"
-                      style={{ fontSize: "0.8rem", textAlign: "right" }}
+                      style={{
+                        fontSize: "0.8rem",
+                        textAlign: "right",
+                        marginTop: "10px",
+                      }}
                     >
                       {items.Created_at.slice(0, 10)}
                     </p>
