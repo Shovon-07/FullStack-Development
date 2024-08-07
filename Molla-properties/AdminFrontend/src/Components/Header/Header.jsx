@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import moment from "moment";
 
 //___ Css ___//
 import "./Header.css";
@@ -16,17 +17,12 @@ import { FaUser } from "react-icons/fa";
 import AxiosClient from "../../assets/Js/AxiosClient";
 import { imgPath } from "../../assets/Js/Data";
 
-//___ Data ___//
-// import { notificationData, messageData } from "../../assets/Js/Data";
-
 const Header = (props) => {
   const { user, setToggleVal, theme, setTheme, SetToken, setLoader } = props;
-  // const [user, setUser] = useState("Al jubair shovon");
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
 
   const [notificationDropdownVal, setNotificationDropdownVal] = useState(false);
-  // const [notificitionCount, setNotificitionCount] = useState(50);
 
   const handleProfileDropdown = () => {
     setProfileDropdownVal((prev) => !prev);
@@ -186,8 +182,8 @@ const Header = (props) => {
                         : items.Name}
                     </p>
                     <h4 className="title">
-                      {items.Subject.length > 50
-                        ? items.Subject.slice(0, 50) + "..."
+                      {items.Subject.length > 27
+                        ? items.Subject.slice(0, 27) + "..."
                         : items.Subject}
                     </h4>
                     {/* <p className="description">
@@ -199,7 +195,7 @@ const Header = (props) => {
                       className="time"
                       style={{ fontSize: "0.8rem", textAlign: "right" }}
                     >
-                      {items.time}
+                      {items.Created_at.slice(0, 10)}
                     </p>
                   </a>
                 </li>
@@ -215,8 +211,7 @@ const Header = (props) => {
             <IoMdSunny
               size={28}
               className={!theme ? "" : "d-none"}
-              onClick={(e) => {
-                // e.preventDefault();
+              onClick={() => {
                 setTheme((prev) => !prev);
                 localStorage.setItem("THEME", true);
               }}
@@ -224,8 +219,7 @@ const Header = (props) => {
             <IoMoonSharp
               size={28}
               className={theme ? "" : "d-none"}
-              onClick={(e) => {
-                // e.preventDefault();
+              onClick={() => {
                 setTheme((prev) => !prev);
                 localStorage.removeItem("THEME");
               }}
