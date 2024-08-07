@@ -237,8 +237,6 @@ const ProjectView = () => {
       toast.error("Please enter project map");
     } else if (projectViewData.Features == "") {
       toast.error("Please enter features");
-    } else if (projectStatus <= "0") {
-      toast.error("Please enter project status");
     } else {
       const payload = new FormData();
       payload.append("project_id", id);

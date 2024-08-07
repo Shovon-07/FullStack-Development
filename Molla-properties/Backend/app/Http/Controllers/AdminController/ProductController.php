@@ -149,52 +149,57 @@ class ProductController extends Controller
     }
     public function UpdateProject(Request $request)
     {
-        $id = $request->input("project_id");
-        $projectData = Projects::find($id);
+        try {
+            $id = $request->input("project_id");
+            $projectData = Projects::find($id);
 
-        $title = $request->input("title");
-        $project_name = $request->input("project_name");
-        $developer = $request->input("developer");
-        $location = $request->input("location");
-        $land_area = $request->input("land_area");
-        $total_plot = $request->input("total_plot");
-        $contact_no = $request->input("contact_no");
-        $features = $request->input("features");
-        $project_map = $request->input("project_map");
-        $project_status = $request->input("project_status");
+            $title = $request->input("title");
+            $project_name = $request->input("project_name");
+            $developer = $request->input("developer");
+            $location = $request->input("location");
+            $land_area = $request->input("land_area");
+            $total_plot = $request->input("total_plot");
+            $contact_no = $request->input("contact_no");
+            $features = $request->input("features");
+            $project_map = $request->input("project_map");
 
-        if ($request->hasfile("project_image")) {
-            $previesImgPath = public_path("Images/" . $projectData->Image);
-            if (file_exists($previesImgPath)) {
-                File::delete($previesImgPath);
+            if ($request->input("project_status")) {
+                $project_status = $request->input("project_status");
+                Projects::where("id", $id)->update([
+                    "Status" => $project_status,
+                ]);
             }
-            // 1722997323_1805323441.jpg
-            $project_image = $request->file("project_image");
-            $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
-            $project_image->move(public_path("/Images/Projects"), $projectImgName);
+
+            if ($request->hasfile("project_image")) {
+                $previesImgPath = public_path("Images/" . $projectData->Image);
+                if (file_exists($previesImgPath)) {
+                    File::delete($previesImgPath);
+                }
+
+                $project_image = $request->file("project_image");
+                $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
+                $project_image->move(public_path("/Images/Projects"), $projectImgName);
+
+                Projects::where("id", $id)->update([
+                    "Image" => $projectImgName,
+                ]);
+            }
 
             Projects::where("id", $id)->update([
-                "Image" => $projectImgName,
+                "Title" => $title,
+                "Project_name" => $project_name,
+                "Developer" => $developer,
+                "Location" => $location,
+                "Land_area" => $land_area,
+                "Total_plot" => $total_plot,
+                "Contact_no" => $contact_no,
+                "Features" => $features,
+                "Project_map" => $project_map,
             ]);
-        }
 
-        $update = Projects::where("id", $id)->update([
-            "Title" => $title,
-            "Project_name" => $project_name,
-            "Developer" => $developer,
-            "Location" => $location,
-            "Land_area" => $land_area,
-            "Total_plot" => $total_plot,
-            "Contact_no" => $contact_no,
-            "Features" => $features,
-            "Project_map" => $project_map,
-            "Status" => $project_status,
-        ]);
-
-        if ($update) {
             return response()->json(["status" => true, "msg" => "Project updated"]);
-        } else {
-            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => $exception]);
         }
     }
     //___ Projects end ___//
