@@ -186,8 +186,8 @@ const Header = (props) => {
                         : items.Name}
                     </p>
                     <h4 className="title">
-                      {items.Subject.length > 30
-                        ? items.Subject.slice(0, 30) + "..."
+                      {items.Subject.length > 50
+                        ? items.Subject.slice(0, 50) + "..."
                         : items.Subject}
                     </h4>
                     {/* <p className="description">
