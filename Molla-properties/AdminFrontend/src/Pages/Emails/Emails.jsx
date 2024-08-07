@@ -2,13 +2,14 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import Tooltip from "@mui/material/Tooltip";
 import { UseAuthContext } from "../../Context/AuthContext";
 const DataTable = lazy(() => import("react-data-table-component"));
+import { ToastContainer, toast } from "react-toastify";
 
 //___ Icons ___//
 import { FaRegTrashAlt, FaEye } from "react-icons/fa";
 
 //___ Css ___//
-// import "./Emails.css";
 import "../../assets/Css/DataTable.css";
+import "react-toastify/dist/ReactToastify.css";
 
 //___ Components ___//
 import Loader from "../../Components/Loader/Loader";
@@ -58,7 +59,10 @@ const Emails = () => {
     {
       name: "Subject",
       field: "Subject",
-      selector: (row) => row.Subject,
+      selector: (row) =>
+        row.Subject.length >= 50
+          ? row.Subject.slice(0, 50) + "..."
+          : row.Subject,
     },
     {
       name: "Action",
@@ -66,13 +70,13 @@ const Emails = () => {
       cell: (row) => {
         return (
           <div className="d-flex gap-20">
-            <Tooltip title={`View`}>
+            <Tooltip title={`View ${row.id}`}>
               <a className="c_pointer">
                 <FaEye size={20} style={{ color: "var(--green)" }} />
               </a>
             </Tooltip>
-            <Tooltip title={`Delete`}>
-              <a className="c_pointer">
+            <Tooltip title={`Delete ${row.id}`}>
+              <a className="c_pointer" onClick={() => DeleteEmail(row.id)}>
                 <FaRegTrashAlt size={20} style={{ color: "var(--red)" }} />
               </a>
             </Tooltip>
@@ -82,9 +86,33 @@ const Emails = () => {
     },
   ];
 
-  useEffect(() => {
-    getApiData();
-  }, [relodeTable]);
+  // Delete email
+  const DeleteEmail = async (emailId) => {
+    if (confirm("Do you want to delete this email ?")) {
+      const payload = {
+        email_id: emailId,
+      };
+      setLoader(true);
+      await AxiosClient.post("/delete-email", payload)
+        .then((res) => {
+          if (res.data.status == true) {
+            toast.success(res.data.msg);
+            setLoader(false);
+            setRelodeTable((prev) => !prev);
+            console.clear();
+          } else {
+            setLoader(false);
+            console.log(res.data.msg);
+          }
+        })
+        .catch((err) => {
+          console.log(`Error ${err}`);
+          setLoader(false);
+        });
+    } else {
+      toast.error("You cancel this execution");
+    }
+  };
 
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {
@@ -94,6 +122,10 @@ const Emails = () => {
     });
     setFilteredApiData(result);
   }, [searchData]);
+
+  useEffect(() => {
+    getApiData();
+  }, [relodeTable]);
 
   return (
     <div className="Emails">
@@ -127,35 +159,18 @@ const Emails = () => {
         />
       </Suspense>
 
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Subject</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>shovon</td>
-            <td>shovon@mail</td>
-            <td>sub</td>
-            <td>
-              <Tooltip title={`View`}>
-                <a className="c_pointer">
-                  <FaEye size={20} />
-                </a>
-              </Tooltip>
-              <Tooltip title={`Delete`}>
-                <a className="c_pointer">
-                  <FaRegTrashAlt size={20} />
-                </a>
-              </Tooltip>
-            </td>
-          </tr>
-        </tbody>
-      </table> */}
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 };
