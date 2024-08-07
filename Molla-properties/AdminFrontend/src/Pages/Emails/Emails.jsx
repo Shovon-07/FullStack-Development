@@ -44,7 +44,7 @@ const Emails = () => {
       name: "Sl No",
       field: "SlNo",
       selector: (row, index) => index + 1,
-      width: "70px",
+      width: "100px",
     },
     {
       name: "Name",

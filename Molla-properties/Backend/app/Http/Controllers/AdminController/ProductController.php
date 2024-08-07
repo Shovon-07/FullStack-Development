@@ -506,4 +506,17 @@ class ProductController extends Controller
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
     }
+    public function DeleteEmail(Request $request)
+    {
+        try {
+            $email_id = $request->input("email_id");
+
+            // Delete from database
+            MailForDb::where("id", $email_id)->delete();
+
+            return response()->json(["status" => true, "msg" => "Email deleted"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
 }
