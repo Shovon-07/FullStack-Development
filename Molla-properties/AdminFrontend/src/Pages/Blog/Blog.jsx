@@ -1,5 +1,6 @@
 import { useEffect, useState, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -20,6 +21,7 @@ const ModalPage = lazy(() => import("../../Components/Modal/ModalPage"));
 
 const Blog = () => {
   const { setLoader } = UseAuthContext();
+  const navigate = useNavigate();
   const [relodeData, setRelodeData] = useState(false);
 
   const [blogData, setBlogData] = useState([]);

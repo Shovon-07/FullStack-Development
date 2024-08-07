@@ -314,11 +314,7 @@ const ModalPage = (props) => {
 
               setLoader(false);
               setRelodeData((prev) => !prev);
-
               setInputValue({ blog_link: "" });
-
-              window.history.back();
-              navigate("/blog");
 
               toast.success(response.data.msg);
               console.clear();
