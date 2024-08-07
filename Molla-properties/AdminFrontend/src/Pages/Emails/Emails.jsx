@@ -7,7 +7,8 @@ const DataTable = lazy(() => import("react-data-table-component"));
 import { FaRegTrashAlt, FaEye } from "react-icons/fa";
 
 //___ Css ___//
-import "./Emails.css";
+// import "./Emails.css";
+import "../../assets/Css/DataTable.css";
 
 //___ Components ___//
 import Loader from "../../Components/Loader/Loader";
@@ -27,8 +28,8 @@ const Emails = () => {
     setLoader(true);
     await AxiosClient.get("/get-mails")
       .then((response) => {
-        setApiData(response.data);
-        setFilteredApiData(response.data);
+        setApiData(response.data.data);
+        setFilteredApiData(response.data.data);
         setLoader(false);
       })
       .catch((e) => {
@@ -45,21 +46,39 @@ const Emails = () => {
       width: "70px",
     },
     {
+      name: "Name",
+      field: "Name",
+      selector: (row) => row.Name,
+    },
+    {
+      name: "Email",
+      field: "Email",
+      selector: (row) => row.Email,
+    },
+    {
+      name: "Subject",
+      field: "Subject",
+      selector: (row) => row.Subject,
+    },
+    {
       name: "Action",
-      cell: (row) => (
-        <div className="d-flex" style={{ gap: "3px" }}>
-          <Tooltip title={`View`}>
-            <a className="c_pointer">
-              <FaEye size={20} />
-            </a>
-          </Tooltip>
-          <Tooltip title={`Delete`}>
-            <a className="c_pointer">
-              <FaRegTrashAlt size={20} />
-            </a>
-          </Tooltip>
-        </div>
-      ),
+      width: "200px",
+      cell: (row) => {
+        return (
+          <div className="d-flex gap-20">
+            <Tooltip title={`View`}>
+              <a className="c_pointer">
+                <FaEye size={20} style={{ color: "var(--green)" }} />
+              </a>
+            </Tooltip>
+            <Tooltip title={`Delete`}>
+              <a className="c_pointer">
+                <FaRegTrashAlt size={20} style={{ color: "var(--red)" }} />
+              </a>
+            </Tooltip>
+          </div>
+        );
+      },
     },
   ];
 
@@ -67,13 +86,15 @@ const Emails = () => {
     getApiData();
   }, [relodeTable]);
 
-  //___ Searching function ___//
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {
-      return filteredApiData.name.toLowerCase().match(searchData.toLowerCase());
+      return filteredApiData.Email.toLowerCase().match(
+        searchData.toLowerCase()
+      );
     });
     setFilteredApiData(result);
   }, [searchData]);
+
   return (
     <div className="Emails">
       <h3 className="pageTitle">Emails</h3>
