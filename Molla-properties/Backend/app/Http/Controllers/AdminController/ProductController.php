@@ -172,6 +172,10 @@ class ProductController extends Controller
             $project_image = $request->file("project_image");
             $projectImgName = "Projects/" . time() . "_" . rand() . "." . $project_image->getClientOriginalExtension();
             $project_image->move(public_path("/Images/Projects"), $projectImgName);
+
+            Projects::where("id", $id)->update([
+                "Image" => $projectImgName,
+            ]);
         }
 
         $update = Projects::where("id", $id)->update([
@@ -185,11 +189,8 @@ class ProductController extends Controller
             "Features" => $features,
             "Project_map" => $project_map,
             "Status" => $project_status,
-            "Image" => $projectImgName,
         ]);
-        // 1722998643_2139709830.png
 
-        // 1722998735_1839676419.png
         if ($update) {
             return response()->json(["status" => true, "msg" => "Project updated"]);
         } else {
