@@ -9,7 +9,7 @@
   margin-bottom: 10px;
   border: 0;
   outline: 0;
-  color: var(--dark-2);
+  color: var(--light-1);
   background: transparent;
   border: var(--border);
 }
@@ -21,7 +21,7 @@
 /*** Table header***/
 .sc-elDIKY {
   background: #000216 !important;
-  color: var(--light-2) !important;
+  color: #fff !important;
   font-size: 1.2rem;
 }
 
