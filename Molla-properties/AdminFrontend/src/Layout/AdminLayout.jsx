@@ -43,6 +43,7 @@ const AdminLayout = () => {
             setTheme={setTheme}
             SetToken={SetToken}
             setUser={setUser}
+            setLoader={setLoader}
           />
         </Suspense>
         <div className="content">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use App\Models\HonorableClient;
+use App\Models\MailForDb;
 use App\Models\NewsAndEvent;
 use Exception;
 use App\Models\Projects;
@@ -494,4 +495,15 @@ class ProductController extends Controller
         }
     }
     //___ Blog end ___//
+
+    // 
+    public function GetMails()
+    {
+        $mails = MailForDb::latest("id")->get();
+        if ($mails) {
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $mails]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
 }

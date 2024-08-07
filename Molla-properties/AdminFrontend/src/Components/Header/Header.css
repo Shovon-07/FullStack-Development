@@ -80,6 +80,11 @@
   height: 40px;
   border-radius: 50%;
 }
+.Header .notification .dorpdown li .name {
+  color: var(--orange);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
 .Header .notification .dorpdown li .description,
 .Header .message .dorpdown li .description {
   margin: 7px 0;

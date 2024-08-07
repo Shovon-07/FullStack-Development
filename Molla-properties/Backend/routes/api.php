@@ -58,6 +58,7 @@ Route::prefix("/admin")->group(function () {
     Route::controller(ProductController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home", "Home");
+            Route::get("/get-mails", "GetMails");
 
             // Project
             Route::get("/projects", "Projects");
