@@ -97,6 +97,13 @@ const Gallery = () => {
   return (
     <div className="Gallery">
       <h3 className="pageTitle">Gallery</h3>
+      {/* For go to top */}
+      <input
+        type="file"
+        autoFocus
+        style={{ height: "0", opacity: 0, pointerEvents: "none" }}
+      />
+      {/* For go to top */}
       <div className="modalBtn" style={{ textAlign: "end" }}>
         <Suspense fallback={<Loader />}>
           <ModalPage

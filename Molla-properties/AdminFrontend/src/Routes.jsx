@@ -30,6 +30,8 @@ const AboutUs = lazy(() => import("./Pages/AboutUs/AboutUs"));
 const Blog = lazy(() => import("./Pages/Blog/Blog"));
 const ProjectView = lazy(() => import("./Pages/ProjectView/ProjectView"));
 
+const Emails = lazy(() => import("./Pages/Emails/Emails"));
+
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const Routes = createBrowserRouter([
@@ -132,6 +134,14 @@ const Routes = createBrowserRouter([
         element: (
           <Suspense fallback={<Loader />}>
             <ProjectView />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/emails",
+        element: (
+          <Suspense fallback={<Loader />}>
+            <Emails />
           </Suspense>
         ),
       },

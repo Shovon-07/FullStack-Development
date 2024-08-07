@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./SideNav.css";
 
 //___ Icons ___//
-import { MdDashboard, MdEditDocument } from "react-icons/md";
+import { MdDashboard, MdEditDocument, MdOutlineEmail } from "react-icons/md";
 import { FaUser, FaClipboardList } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 
@@ -38,6 +38,11 @@ const SideNav = (props) => {
           <li>
             <NavLink to="/settings">
               <IoMdSettings size={20} /> Settings
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/emails">
+              <MdOutlineEmail size={20} /> Emails
             </NavLink>
           </li>
         </div>
