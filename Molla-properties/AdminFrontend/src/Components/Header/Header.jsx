@@ -171,7 +171,7 @@ const Header = (props) => {
               notificationDropdownVal != false ? "dorpdown show" : "dorpdown"
             }
           >
-            <p className="dropdownTitle">Notifications</p>
+            <p className="dropdownTitle">Notification</p>
             {notificationData.map((items, index) => {
               return (
                 <li className="c_pointer" key={index}>
