@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactUsMail;
-use Exception;
+use App\Models\MailForDb;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -20,14 +20,26 @@ class ContactUsController extends Controller
         ]);
 
         if (!$validator->fails()) {
+            $name = $request->input("name");
+            $email = $request->input("email");
+            $subject = $request->input("subject");
+            $message = $request->input("message");
+
             $mailData = [
-                "name" => $request->input("name"),
+                "name" => $name,
                 "email" => $request->input("email"),
-                "subject" => $request->input("subject"),
-                "message" => $request->input("message"),
+                "subject" => $subject,
+                "message" => $message,
                 "appName" => env("APP_NAME"),
             ];
-            
+
+            MailForDb::create([
+                "Name" => $name,
+                "Email" => $email,
+                "Subject" => $subject,
+                "Message" => $message,
+            ]);
+
             $email = Mail::to("support@molla-properties.com")->send(new ContactUsMail($mailData));
             if ($email) {
                 return response()->json(["status" => true, "msg" => "Email sent successful",]);
