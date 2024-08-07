@@ -1,12 +1,79 @@
+import { useState, useEffect, lazy, Suspense } from "react";
 import Tooltip from "@mui/material/Tooltip";
+import { UseAuthContext } from "../../Context/AuthContext";
+const DataTable = lazy(() => import("react-data-table-component"));
 
 //___ Icons ___//
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt, FaEye } from "react-icons/fa";
 
 //___ Css ___//
 import "./Emails.css";
 
+//___ Components ___//
+import Loader from "../../Components/Loader/Loader";
+
+//___ Additional utilitis ___//
+import AxiosClient from "../../assets/Js/AxiosClient";
+
 const Emails = () => {
+  const { setLoader } = UseAuthContext();
+
+  const [apiData, setApiData] = useState([]);
+  const [searchData, setSearchData] = useState("");
+  const [filteredApiData, setFilteredApiData] = useState([]);
+  const [relodeTable, setRelodeTable] = useState(false);
+
+  const getApiData = async () => {
+    setLoader(true);
+    await AxiosClient.get("/get-mails")
+      .then((response) => {
+        setApiData(response.data);
+        setFilteredApiData(response.data);
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+
+  const columns = [
+    {
+      name: "Sl No",
+      field: "SlNo",
+      selector: (row, index) => index + 1,
+      width: "70px",
+    },
+    {
+      name: "Action",
+      cell: (row) => (
+        <div className="d-flex" style={{ gap: "3px" }}>
+          <Tooltip title={`View`}>
+            <a className="c_pointer">
+              <FaEye size={20} />
+            </a>
+          </Tooltip>
+          <Tooltip title={`Delete`}>
+            <a className="c_pointer">
+              <FaRegTrashAlt size={20} />
+            </a>
+          </Tooltip>
+        </div>
+      ),
+    },
+  ];
+
+  useEffect(() => {
+    getApiData();
+  }, [relodeTable]);
+
+  //___ Searching function ___//
+  useEffect(() => {
+    const result = apiData.filter((filteredApiData) => {
+      return filteredApiData.name.toLowerCase().match(searchData.toLowerCase());
+    });
+    setFilteredApiData(result);
+  }, [searchData]);
   return (
     <div className="Emails">
       <h3 className="pageTitle">Emails</h3>
@@ -18,23 +85,56 @@ const Emails = () => {
       />
       {/* For go to top */}
 
-      <table>
+      <div className="searchInput">
+        <input
+          type="text"
+          placeholder="Search by email address"
+          value={searchData}
+          onChange={(e) => {
+            setSearchData(e.target.value);
+          }}
+        />
+      </div>
+      <Suspense fallback={<Loader />}>
+        <DataTable
+          columns={columns}
+          data={filteredApiData}
+          pagination
+          // fixedHeader
+          // fixedHeaderScrollHeight="400px"
+          highlightOnHover
+        />
+      </Suspense>
+
+      {/* <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Subject</th>
-            <th>
-              <button>View</button>
-              <Tooltip title={`Delete`}>
-                <a>
-                  <FaRegTrashAlt size={20} className="cross" />
-                </a>
-              </Tooltip>
-            </th>
+            <th>Action</th>
           </tr>
         </thead>
-      </table>
+        <tbody>
+          <tr>
+            <td>shovon</td>
+            <td>shovon@mail</td>
+            <td>sub</td>
+            <td>
+              <Tooltip title={`View`}>
+                <a className="c_pointer">
+                  <FaEye size={20} />
+                </a>
+              </Tooltip>
+              <Tooltip title={`Delete`}>
+                <a className="c_pointer">
+                  <FaRegTrashAlt size={20} />
+                </a>
+              </Tooltip>
+            </td>
+          </tr>
+        </tbody>
+      </table> */}
     </div>
   );
 };

@@ -1,2 +1,16 @@
-.Emails {
+.Emails table {
+  width: 100%;
+  text-align: center;
+  background: var(--dark-1);
+  min-width: 500px;
+  overflow-x: scroll;
+  transition: var(--trans);
+}
+.Emails table th {
+  font-size: 1.1rem;
+}
+.Emails table th,
+.Emails table td {
+  border: var(--border);
+  padding: 10px 5px;
 }
