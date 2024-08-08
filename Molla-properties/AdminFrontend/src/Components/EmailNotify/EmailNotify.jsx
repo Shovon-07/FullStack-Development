@@ -14,6 +14,7 @@ const EmailNotify = (props) => {
   const { setLoader } = UseAuthContext();
   const { handleNotificationDropdown, notificationDropdownVal } = props;
 
+  // Get notification
   const [notificationData, setNotificationData] = useState([]);
   const GetNotificationData = async () => {
     setLoader(true);
@@ -28,6 +29,19 @@ const EmailNotify = (props) => {
       });
   };
 
+  // Update notification status
+  const [notificationStatus, setNotificationStatus] = useState();
+  const UpdateNotificationData = async () => {
+    await AxiosClient.post("/update-email-status")
+      .then((res) => {
+        setNotificationStatus(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+      });
+  };
+
   useEffect(() => {
     GetNotificationData();
   }, []);
@@ -35,14 +49,14 @@ const EmailNotify = (props) => {
   return (
     <div className="Notify">
       <div className="notification dorwpDownParent">
-        <a>
+        <a onClick={UpdateNotificationData}>
           <IoNotifications
             size={28}
             className="c_pointer"
             onClick={handleNotificationDropdown}
           />
           <span className="count" style={{ right: "-18px" }}>
-            {notificationData.length}
+            {notificationStatus == 0 ? "0" : notificationData.length}
           </span>
         </a>
         <ul

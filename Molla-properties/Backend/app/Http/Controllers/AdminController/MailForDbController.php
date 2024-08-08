@@ -40,4 +40,15 @@ class MailForDbController extends Controller
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
+    public function UpdateEmailStatus()
+    {
+        $update = MailForDb::where("Status",1)->update([
+            "Status"=>0
+        ]);
+        if ($update) {
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => 0]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
 }

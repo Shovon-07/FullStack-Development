@@ -101,6 +101,7 @@ Route::prefix("/admin")->group(function () {
             Route::get("/get-mails", "GetMails");
             Route::post("/get-single-mail", "GetSingleMail");
             Route::post("/delete-email", "DeleteEmail");
+            Route::post("/update-email-status", "UpdateEmailStatus");
         });
     });
 });
