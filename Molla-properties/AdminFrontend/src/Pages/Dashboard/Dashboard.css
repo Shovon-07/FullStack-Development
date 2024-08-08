@@ -1,12 +1,8 @@
 .Dashboard .dashboardTxt {
   flex-direction: column;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 100vh;
+  max-height: 450px;
 }
 .Dashboard .dashboardTxt .txt {
   background: linear-gradient(to right, var(--main-color), cyan);
@@ -108,3 +104,10 @@
   height: 40px;
   border-radius: 50%;
 } */
+
+/*___ Responsive ___*/
+@media screen and (max-width: 460px) {
+  .Dashboard .dashboardTxt h1 {
+    font-size: 2.3rem;
+  }
+}

@@ -1,14 +1,5 @@
-import React, { Suspense, lazy } from "react";
-
 //___ Css ___//
 import "./Dashboard.css";
-
-//___ Components ___//
-// import Loader from "../../Components/Loader/Loader";
-// const MyAreaChart = lazy(() => import("../../Components/MyAreaChart"));
-// const MyPieChart = lazy(() => import("../../Components/MyPieChart"));
-
-//___ Additional utilitis ___//
 
 const Dashboard = () => {
   return (
@@ -76,7 +67,7 @@ const Dashboard = () => {
         </div>
       </div> */}
 
-      <div className="dashboardTxt d-flex">
+      <div className="dashboardTxt d-flex gap-10">
         <h1 className="txt">Molla properties</h1>
         <h2 className="txt">
           This is admin panel <br /> You can manage your website

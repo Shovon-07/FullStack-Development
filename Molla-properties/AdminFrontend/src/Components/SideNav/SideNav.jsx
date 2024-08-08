@@ -9,7 +9,11 @@ import { FaUser, FaClipboardList } from "react-icons/fa";
 // import { IoMdSettings } from "react-icons/io";
 
 const SideNav = (props) => {
-  const { toggleVal } = props;
+  const { toggleVal, setToggleVal } = props;
+
+  const closeSideNav = () => {
+    setToggleVal((prev) => !prev);
+  };
 
   return (
     <div className={toggleVal == false ? "SideNav" : "SideNav sideNavShow"}>
@@ -21,7 +25,7 @@ const SideNav = (props) => {
               <MdDashboard size={20} /> Dashboard
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/documentation">
               <MdEditDocument size={20} /> Documentaton
             </NavLink>
@@ -30,17 +34,17 @@ const SideNav = (props) => {
 
         <div className="menuSection">
           <h4 className="menuTitle">Accessibility</h4>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/profile">
               <FaUser size={18} /> Profile
             </NavLink>
           </li>
-          {/* <li>
+          {/* <li onClick={closeSideNav}>
             <NavLink to="/settings">
               <IoMdSettings size={20} /> Settings
             </NavLink>
           </li> */}
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/emails">
               <MdOutlineEmail size={20} /> Emails
             </NavLink>
@@ -49,44 +53,44 @@ const SideNav = (props) => {
 
         <div className="menuSection">
           <h4 className="menuTitle">Sections</h4>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/home">
               <FaClipboardList size={18} /> Home
             </NavLink>
           </li>
 
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/add-project">
               <FaClipboardList size={18} /> Projects
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/add-plot">
               <FaClipboardList size={18} />
               Plots
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/gallery">
               <FaClipboardList size={18} /> Gallery
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/honorable-client">
               <FaClipboardList size={18} /> Honorable client
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/news-and-event">
               <FaClipboardList size={18} /> News and Event
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/blog">
               <FaClipboardList size={18} /> Blog
             </NavLink>
           </li>
-          <li>
+          <li onClick={closeSideNav}>
             <NavLink to="/about-us">
               <FaClipboardList size={18} /> About us
             </NavLink>
