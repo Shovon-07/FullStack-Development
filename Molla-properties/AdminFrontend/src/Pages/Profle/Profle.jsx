@@ -18,7 +18,7 @@ const Profle = () => {
     newPassword: "",
     confirmPassword: "",
   });
-  const [bannerImg, setBannerImg] = useState();
+  const [userImg, setUserImg] = useState();
 
   const handleInput = (e) => {
     setInputVal({ ...inputVal, [e.target.name]: e.target.value });
@@ -32,14 +32,15 @@ const Profle = () => {
       toast.error("You don't edit anything");
     } else {
       const payload = new FormData();
-      payload.append("user_name", userName);
+      payload.append("id", localStorage.getItem("UID"));
+      payload.append("user_name", inputVal.userName);
       payload.append("user_img", userImg);
 
       setLoader(true);
       await AxiosClient.post("/update-user-info", payload)
         .then((res) => {
           if (res.data.status == true) {
-            setProjectData(res.data.msg);
+            toast.success(res.data.msg);
             setLoader(false);
           } else {
             setLoader(false);
@@ -105,7 +106,7 @@ const Profle = () => {
           <input
             type="text"
             name="userName"
-            placeholder="Enter banner text"
+            placeholder="Enter user name"
             value={inputVal.userName}
             onChange={handleInput}
           />
@@ -114,7 +115,7 @@ const Profle = () => {
             name="bannerImg"
             placeholder="Enter banner image"
             onChange={(e) => {
-              setBannerImg(e.target.files[0]);
+              setUserImg(e.target.files[0]);
             }}
           />
           <button type="submit" className="btn">

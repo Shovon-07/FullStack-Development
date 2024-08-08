@@ -29,7 +29,7 @@ class AuthController extends Controller
 
             if ($data) {
                 $token = JwtToken::CreateToken(1, $request->input("email"));
-                return response()->json(["status" => true, "message" => "Login successfull", "userName" => $data->Name, "userId" => $data->id,"userImg" => $data->Image, "token" => $token]);
+                return response()->json(["status" => true, "message" => "Login successfull", "userName" => $data->Name, "userId" => $data->id, "userImg" => $data->Image, "token" => $token]);
             } else {
                 return response()->json(["status" => false, "message" => "Invalid user"]);
             }
@@ -66,6 +66,37 @@ class AuthController extends Controller
             }
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);
+        }
+    }
+    public function UpdateUserInfo(Request $request)
+    {
+        try {
+            $id = $request->input("id");
+            $data = AdminAuth::find($id);
+
+            if ($request->input("user_name")) {
+                $user_name = $request->input("user_name");
+                AdminAuth::where("id", $id)->update([
+                    "Name" => $user_name,
+                ]);
+            } else if ($request->hasfile("user_img")) {
+                $previesImgPath = public_path("Images/" . $data->Image);
+                if (file_exists($previesImgPath)) {
+                    File::delete($previesImgPath);
+                }
+
+                $user_img = $request->file("user_img");
+                $userImgName = "Utility/" . time() . "_" . rand() . "." . $user_img->getClientOriginalExtension();
+                $user_img->move(public_path("/Images/Utility"), $userImgName);
+
+                AdminAuth::where("id", $id)->update([
+                    "Image" => $userImgName,
+                ]);
+            }
+
+            return response()->json(["status" => true, "msg" => "Information updated"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => $exception]);
         }
     }
 }
