@@ -20,7 +20,7 @@
 
 /*** Table header***/
 .sc-elDIKY {
-  background: #000216 !important;
+  background: #0a0a0a !important;
   color: #fff !important;
   font-size: 1.2rem;
 }
@@ -29,15 +29,20 @@
 .iqMrkF::-webkit-scrollbar {
   height: 5px;
 }
-.gRfwAR {
+.gRfwAR,
+.bRWgBd {
   background: var(--dark-1) !important;
   color: var(--light-1) !important;
+  font-size: 1rem;
 }
-.gRfwAR:hover {
+.gRfwAR:hover,
+.bRWgBd:hover {
   outline: none !important;
   background: var(--dark-2) !important;
+  color: var(--light-1) !important;
 }
-.gRfwAR:not(:last-of-type) {
+.gRfwAR:not(:last-of-type),
+.bRWgBd:not(:last-of-type) {
   border-bottom: var(--border) !important;
 }
 .dKhQoE {
@@ -45,13 +50,18 @@
 }
 
 /*** pagination bar ***/
-.cgTKyH {
+.cgTKyH,
+.jdPBzn {
   background: var(--dark-1) !important;
   color: var(--light-2) !important;
 }
-.esggSK {
+.esggSK,
+.hfNZka {
   fill: var(--light-2) !important;
+  color: var(--light-2) !important;
 }
-.esggSK:disabled {
+.esggSK:disabled,
+.hfNZka:disabled {
   fill: var(--light-3) !important;
+  color: var(--light-2) !important;
 }
