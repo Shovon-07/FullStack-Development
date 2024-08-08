@@ -127,21 +127,21 @@ const Profle = () => {
         <h2 className="cardTitle">Change password</h2>
         <form onSubmit={SubmitPassword}>
           <input
-            type="text"
+            type="password"
             name="prevPassword"
             placeholder="Enter old password"
             value={inputVal.prevPassword}
             onChange={handleInput}
           />
           <input
-            type="text"
+            type="password"
             name="newPassword"
             placeholder="Enter new password"
             value={inputVal.newPassword}
             onChange={handleInput}
           />
           <input
-            type="text"
+            type="password"
             name="confirmPassword"
             placeholder="Confirm password"
             value={inputVal.confirmPassword}
