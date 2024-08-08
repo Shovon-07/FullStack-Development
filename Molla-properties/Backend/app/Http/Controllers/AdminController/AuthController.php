@@ -29,7 +29,7 @@ class AuthController extends Controller
 
             if ($data) {
                 $token = JwtToken::CreateToken(1, $request->input("email"));
-                return response()->json(["status" => true, "message" => "Login successfull", "userName" => $data->Name, "userId" => $data->id, "token" => $token]);
+                return response()->json(["status" => true, "message" => "Login successfull", "userName" => $data->Name, "userId" => $data->id,"userImg" => $data->Image, "token" => $token]);
             } else {
                 return response()->json(["status" => false, "message" => "Invalid user"]);
             }

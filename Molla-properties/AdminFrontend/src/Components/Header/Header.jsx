@@ -20,7 +20,8 @@ import Loader from "../Loader/Loader";
 const EmailNotify = lazy(() => import("../EmailNotify/EmailNotify"));
 
 const Header = (props) => {
-  const { user, setToggleVal, theme, setTheme, SetToken, setLoader } = props;
+  const { user, uimg, setToggleVal, theme, setTheme, SetToken, setLoader } =
+    props;
 
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
@@ -66,6 +67,7 @@ const Header = (props) => {
     SetToken(null);
     localStorage.removeItem("USER");
     localStorage.removeItem("UID");
+    localStorage.removeItem("UIMG");
   };
 
   return (
@@ -175,7 +177,7 @@ const Header = (props) => {
           onClick={handleProfileDropdown}
         >
           <a className="d-flex gap-10">
-            <img src={`${imgPath}Utility/Logo.png`} alt="" />
+            <img src={`${imgPath}${uimg}`} alt="" />
             <span>{user.length > 15 ? user.slice(0, 15) + "..." : user}</span>
             <IoIosArrowForward
               className={profileDropdownVal != false ? "arrow fliped" : "arrow"}

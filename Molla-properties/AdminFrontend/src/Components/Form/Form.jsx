@@ -47,7 +47,12 @@ const Form = (props) => {
         };
         AxiosClient.post("/signin", payload).then((res) => {
           if (res.data.status == true) {
-            SetToken(res.data.userId, res.data.userName, res.data.token);
+            SetToken(
+              res.data.userId,
+              res.data.userName,
+              res.data.userImg,
+              res.data.token
+            );
           } else {
             toast.error(res.data.message);
           }
