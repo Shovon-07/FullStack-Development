@@ -54,6 +54,11 @@ Route::prefix("/admin")->group(function () {
         //___ Before Authentiction ___//
         Route::post("/signup", "SignUp");
         Route::post("/signin", "SignIn");
+
+        //___ After Authentiction ___//
+        Route::middleware(["ApiKeyVerify"])->group(function () {
+            Route::post("/update-password", "UpdatePass");
+        });
     });
 
     Route::controller(ProductController::class)->group(function () {

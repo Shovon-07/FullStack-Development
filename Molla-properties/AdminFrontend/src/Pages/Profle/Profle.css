@@ -3,11 +3,12 @@
   height: auto;
   background: var(--dark-1);
   padding: 30px 20px;
+  margin-bottom: 50px;
 }
 .Profle .card .cardTitle {
   color: var(--light-1);
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+  font-size: 1.3rem;
+  margin-bottom: 30px;
   text-align: center;
 }
 .Profle .card form {

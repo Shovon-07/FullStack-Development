@@ -6,30 +6,40 @@ import { UseAuthContext } from "../../Context/AuthContext";
 import "./Profle.css";
 import "react-toastify/dist/ReactToastify.css";
 
+//___ Additional utilitis ___//
+import AxiosClient from "../../assets/Js/AxiosClient";
+
 const Profle = () => {
   const { setLoader } = UseAuthContext();
 
-  //___ Banner section start ___//
-  const [bannerTxt, setBannerTxt] = useState("");
+  const [inputVal, setInputVal] = useState({
+    userName: "",
+    prevPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
   const [bannerImg, setBannerImg] = useState();
 
-  const SubmitBannerSection = async (e) => {
+  const handleInput = (e) => {
+    setInputVal({ ...inputVal, [e.target.name]: e.target.value });
+  };
+
+  //___ User information start ___//
+  const SubmitUserInfo = async (e) => {
     e.preventDefault();
 
-    if (bannerTxt == "" && bannerImg == null) {
+    if (inputVal.userName == "" && inputVal.userImg == null) {
       toast.error("You don't edit anything");
     } else {
       const payload = new FormData();
-      payload.append("banner_txt", bannerTxt);
-      payload.append("banner_img", bannerImg);
+      payload.append("user_name", userName);
+      payload.append("user_img", userImg);
 
       setLoader(true);
-      await AxiosClient.post("/update-banner", payload)
+      await AxiosClient.post("/update-user-info", payload)
         .then((res) => {
           if (res.data.status == true) {
             setProjectData(res.data.msg);
-            setBannerTxt("");
-            setBannerImg(null);
             setLoader(false);
           } else {
             setLoader(false);
@@ -42,7 +52,46 @@ const Profle = () => {
         });
     }
   };
-  //___ Banner section start ___//
+  //___ User information end ___//
+
+  //___ Password start ___//
+  const SubmitPassword = async (e) => {
+    e.preventDefault();
+
+    if (inputVal.prevPassword == "") {
+      toast.error("Please enter old password");
+    } else if (inputVal.newPassword == "") {
+      toast.error("Please enter new password");
+    } else if (inputVal.newPassword != inputVal.confirmPassword) {
+      toast.error("Please confirm password");
+    } else {
+      const payload = new FormData();
+      payload.append("prev_pass", inputVal.prevPassword);
+      payload.append("new_pass", inputVal.newPassword);
+
+      setLoader(true);
+      await AxiosClient.post("/update-password", payload)
+        .then((res) => {
+          if (res.data.status == true) {
+            setProjectData(res.data.msg);
+            setInputVal({
+              prevPassword: "",
+              newPassword: "",
+              confirmPassword: "",
+            });
+            setLoader(false);
+          } else {
+            setLoader(false);
+            console.log(res.data.msg);
+          }
+        })
+        .catch((e) => {
+          console.log(`Error = ${e}`);
+          setLoader(false);
+        });
+    }
+  };
+  //___ Password end ___//
 
   return (
     <div className="Profle">
@@ -50,15 +99,13 @@ const Profle = () => {
 
       <div className="card">
         <h2 className="cardTitle">User information</h2>
-        <form encType="multipart/form-data" onSubmit={SubmitBannerSection}>
+        <form encType="multipart/form-data" onSubmit={SubmitUserInfo}>
           <input
             type="text"
-            name="bannerTxt"
+            name="userName"
             placeholder="Enter banner text"
-            value={bannerTxt}
-            onChange={(e) => {
-              setBannerTxt(e.target.value);
-            }}
+            value={inputVal.userName}
+            onChange={handleInput}
           />
           <input
             type="file"
@@ -67,6 +114,36 @@ const Profle = () => {
             onChange={(e) => {
               setBannerImg(e.target.files[0]);
             }}
+          />
+          <button type="submit" className="btn">
+            Save
+          </button>
+        </form>
+      </div>
+
+      <div className="card">
+        <h2 className="cardTitle">Change password</h2>
+        <form onSubmit={SubmitPassword}>
+          <input
+            type="password"
+            name="prevPassword"
+            placeholder="Enter old password"
+            value={inputVal.prevPassword}
+            onChange={handleInput}
+          />
+          <input
+            type="password"
+            name="newPassword"
+            placeholder="Enter new password"
+            value={inputVal.newPassword}
+            onChange={handleInput}
+          />
+          <input
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm password"
+            value={inputVal.confirmPassword}
+            onChange={handleInput}
           />
           <button type="submit" className="btn">
             Save
