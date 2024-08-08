@@ -12,6 +12,9 @@ import { imgPath } from "../../assets/Js/Data";
 
 //___ Components ___//
 import Loader from "../../Components/Loader/Loader";
+const Latest_Project_Carousel = lazy(() =>
+  import("../../Components/Latest_Project_Carousel/Latest_Project_Carousel")
+);
 const My_Carousel = lazy(() =>
   import("../../Components/My_Carousel/My_Carousel")
 );
@@ -22,23 +25,23 @@ const OurMissionVission = lazy(() =>
 const Home = () => {
   const [setLoader] = useOutletContext();
 
-  // const [latestProjectData, setLatestProjectData] = useState([]);
-  // const GetLatestProjectData = async () => {
-  //   try {
-  //     setLoader(true);
-  //     await AxiosClient.get("/latest-project").then((res) => {
-  //       if (res.data.status == true) {
-  //         setLatestProjectData(res.data.data);
-  //         setLoader(false);
-  //       } else {
-  //         console.log(res.data.msg);
-  //         setLoader(false);
-  //       }
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
+  const [latestProjectData, setLatestProjectData] = useState([]);
+  const GetLatestProjectData = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.get("/latest-project").then((res) => {
+        if (res.data.status == true) {
+          setLatestProjectData(res.data.data);
+          setLoader(false);
+        } else {
+          console.log(res.data.msg);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const [imagesData, setImagesData] = useState([]);
   const GetImagesData = async () => {
@@ -59,7 +62,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // GetLatestProjectData();
+    GetLatestProjectData();
     GetImagesData();
   }, []);
 
@@ -83,24 +86,15 @@ const Home = () => {
       </div>
 
       <div className="content">
-        {/* <section className="latestProject">
+        <section className="latestProject">
           <div className="d-flex pageTitle">
             <h3>Latest Projects</h3>
           </div>
           <Suspense fallback={<Loader />}>
-            <My_Carousel
-              latestProjectData={latestProjectData}
+            <Latest_Project_Carousel
+              dbData={latestProjectData}
               imgPath={imgPath}
             />
-          </Suspense>
-        </section> */}
-
-        <section className="latestProject">
-          <div className="d-flex pageTitle">
-            <h3>Our Images</h3>
-          </div>
-          <Suspense fallback={<Loader />}>
-            <My_Carousel dbData={imagesData} imgPath={imgPath} />
           </Suspense>
         </section>
 
@@ -122,6 +116,16 @@ const Home = () => {
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </section>
+
+        <section className="latestProject">
+          <div className="d-flex pageTitle">
+            <h3>Our Images</h3>
+          </div>
+          <Suspense fallback={<Loader />}>
+            <My_Carousel dbData={imagesData} imgPath={imgPath} />
+          </Suspense>
+        </section>
+
         <Suspense fallback={<Loader />}>
           <OurMissionVission />
         </Suspense>
