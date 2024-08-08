@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 //___ Css ___//
@@ -20,8 +20,7 @@ import Loader from "../Loader/Loader";
 const EmailNotify = lazy(() => import("../EmailNotify/EmailNotify"));
 
 const Header = (props) => {
-  const { user, uimg, setToggleVal, theme, setTheme, SetToken, setLoader } =
-    props;
+  const { user, setToggleVal, theme, setTheme, SetToken } = props;
 
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
@@ -177,7 +176,7 @@ const Header = (props) => {
           onClick={handleProfileDropdown}
         >
           <a className="d-flex gap-10">
-            <img src={`${imgPath}${uimg}`} alt="" />
+            <img src={`${imgPath}${localStorage.getItem("UIMG")}`} alt="" />
             <span>{user.length > 15 ? user.slice(0, 15) + "..." : user}</span>
             <IoIosArrowForward
               className={profileDropdownVal != false ? "arrow fliped" : "arrow"}
