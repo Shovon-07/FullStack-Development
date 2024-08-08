@@ -41,6 +41,16 @@ class AuthController extends Controller
     // {
     // }
 
+    public function GetUserInfo(Request $request)
+    {
+        try {
+            $id = $request->input("id");
+            $data = AdminAuth::find($id);
+            return response()->json(["status" => true, "data" => $data]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => $exception]);
+        }
+    }
     public function UpdatePass(Request $request)
     {
         $validator = validator::make($request->all(), [

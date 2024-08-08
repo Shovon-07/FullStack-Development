@@ -57,6 +57,7 @@ Route::prefix("/admin")->group(function () {
 
         //___ After Authentiction ___//
         Route::middleware(["ApiKeyVerify"])->group(function () {
+            Route::post("/get-user-info", "GetUserInfo");
             Route::post("/update-password", "UpdatePass");
             Route::post("/update-user-info", "UpdateUserInfo");
         });

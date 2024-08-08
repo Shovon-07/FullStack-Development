@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 //___ Css ___//
@@ -13,6 +13,7 @@ import { FaBarsStaggered } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 
 //___ Additional utilitis ___//
+import AxiosClient from "../../assets/Js/AxiosClient";
 import { imgPath } from "../../assets/Js/Data";
 
 //___ Components ___//
@@ -20,7 +21,7 @@ import Loader from "../Loader/Loader";
 const EmailNotify = lazy(() => import("../EmailNotify/EmailNotify"));
 
 const Header = (props) => {
-  const { user, setToggleVal, theme, setTheme, SetToken } = props;
+  const { user, setToggleVal, theme, setTheme, SetToken, setLoader } = props;
 
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
@@ -68,6 +69,31 @@ const Header = (props) => {
     localStorage.removeItem("UID");
     localStorage.removeItem("UIMG");
   };
+
+  const [userInfo, setUserInfo] = useState();
+  const GetUserInfo = async () => {
+    setLoader(true);
+    await AxiosClient.post("/get-user-info", {
+      id: localStorage.getItem("UID"),
+    })
+      .then((res) => {
+        if (res.data.status == true) {
+          setUserInfo(res.data.data);
+          setLoader(false);
+        } else {
+          setLoader(false);
+          console.log(res.data.msg);
+        }
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+
+  useEffect(() => {
+    GetUserInfo();
+  }, []);
 
   return (
     <div className="Header d-flex">
