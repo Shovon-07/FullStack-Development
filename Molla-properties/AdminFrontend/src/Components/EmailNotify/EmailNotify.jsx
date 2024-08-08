@@ -67,24 +67,6 @@ const EmailNotify = (props) => {
             className="c_pointer"
             onClick={handleNotificationDropdown}
           />
-          {/* {notificationStatus == undefined ? (
-            notificationStatus == 0 ? (
-              ""
-            ) : (
-              ""
-            )
-          ) : (
-            <span className="count" style={{ right: "-18px" }}>
-              {notificationStatus}
-            </span>
-          )} */}
-          {/* {notificationStatus == undefined ? (
-            ""
-          ) : (
-            <span className="count" style={{ right: "-18px" }}>
-              {notificationStatus != undefined ? notificationStatus : ""}
-            </span>
-          )} */}
           {(() => {
             if (notificationStatus == undefined || notificationStatus == 0) {
               return;
