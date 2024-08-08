@@ -99,6 +99,7 @@ Route::prefix("/admin")->group(function () {
     Route::controller(MailForDbController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/get-mails", "GetMails");
+            Route::get("/get-email-status", "GetEmailStatus");
             Route::post("/get-single-mail", "GetSingleMail");
             Route::post("/delete-email", "DeleteEmail");
             Route::post("/update-email-status", "UpdateEmailStatus");

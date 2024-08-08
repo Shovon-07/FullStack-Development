@@ -14,8 +14,10 @@ const EmailNotify = (props) => {
   const { setLoader } = UseAuthContext();
   const { handleNotificationDropdown, notificationDropdownVal } = props;
 
-  // Get notification
   const [notificationData, setNotificationData] = useState([]);
+  const [notificationStatus, setNotificationStatus] = useState();
+
+  // Get notification
   const GetNotificationData = async () => {
     setLoader(true);
     await AxiosClient.get("/get-mails")
@@ -29,13 +31,23 @@ const EmailNotify = (props) => {
       });
   };
 
+  const GetNotificationStatus = async () => {
+    await AxiosClient.get("/get-email-status")
+      .then((res) => {
+        setNotificationStatus(res.data.data);
+        console.log(res.data.data);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+
   // Update notification status
-  const [notificationStatus, setNotificationStatus] = useState();
   const UpdateNotificationData = async () => {
     await AxiosClient.post("/update-email-status")
       .then((res) => {
         setNotificationStatus(res.data.data);
-        console.log(res.data.data);
       })
       .catch((e) => {
         console.log(`Error = ${e}`);
@@ -44,6 +56,7 @@ const EmailNotify = (props) => {
 
   useEffect(() => {
     GetNotificationData();
+    GetNotificationStatus();
   }, []);
 
   return (

@@ -27,6 +27,15 @@ class MailForDbController extends Controller
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
     }
+    public function GetEmailStatus()
+    {
+        $emailStatus = MailForDb::where("Status",1)->get();
+        if ($emailStatus) {
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $emailStatus]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
     public function DeleteEmail(Request $request)
     {
         try {
