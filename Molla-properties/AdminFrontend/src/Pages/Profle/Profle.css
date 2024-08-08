@@ -1,2 +1,28 @@
-.Profle {
+.Profle .card {
+  width: 100%;
+  height: auto;
+  background: var(--dark-1);
+  padding: 30px 20px;
+}
+.Profle .card .cardTitle {
+  color: var(--light-1);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.Profle .card form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.Profle .card form input {
+  width: 100%;
+  background: transparent;
+  border: var(--border);
+  outline: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: var(--light-1);
 }

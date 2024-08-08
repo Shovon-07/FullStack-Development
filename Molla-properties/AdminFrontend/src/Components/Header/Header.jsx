@@ -190,11 +190,11 @@ const Header = (props) => {
                 <FaUser size={15} /> Profile
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/settings">
                 <IoMdSettings size={19} /> Settings
               </Link>
-            </li>
+            </li> */}
             <li>
               <a onClick={handleLogout}>
                 <IoLogOutOutline size={19} /> Logout

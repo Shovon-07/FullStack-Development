@@ -6,7 +6,7 @@ import "./SideNav.css";
 //___ Icons ___//
 import { MdDashboard, MdEditDocument, MdOutlineEmail } from "react-icons/md";
 import { FaUser, FaClipboardList } from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
+// import { IoMdSettings } from "react-icons/io";
 
 const SideNav = (props) => {
   const { toggleVal } = props;
@@ -35,11 +35,11 @@ const SideNav = (props) => {
               <FaUser size={18} /> Profile
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/settings">
               <IoMdSettings size={20} /> Settings
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/emails">
               <MdOutlineEmail size={20} /> Emails
