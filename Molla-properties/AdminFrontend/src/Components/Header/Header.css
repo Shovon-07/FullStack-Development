@@ -11,6 +11,9 @@
   position: fixed;
   top: 0;
 }
+.Header .left .toggleIcon {
+  display: none;
+}
 .Header .profile {
   font-weight: 500;
 }
@@ -93,4 +96,11 @@
   justify-content: center;
   font-size: 0.8rem;
   font-weight: 600;
+}
+
+/*___ Responsive ___*/
+@media screen and (max-width:1000px) {
+  .Header .left .toggleIcon {
+    display: block;
+  }
 }

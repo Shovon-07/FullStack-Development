@@ -12,7 +12,7 @@ const SideNav = (props) => {
   const { toggleVal } = props;
 
   return (
-    <div className={toggleVal == false ? "SideNav" : "SideNav sideNavHide"}>
+    <div className={toggleVal == false ? "SideNav" : "SideNav sideNavShow"}>
       <h3 className="logo">admin</h3>
       <ul className="menu">
         <div className="menuSection">

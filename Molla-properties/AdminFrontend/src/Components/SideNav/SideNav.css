@@ -10,9 +10,6 @@
   transition: var(--trans);
   z-index: 9;
 }
-.SideNav.sideNavHide {
-  width: 0;
-}
 .SideNav.sideNavHide .logo,
 .SideNav.sideNavHide .menuTitle,
 .SideNav.sideNavHide a {
@@ -60,4 +57,14 @@
   margin: 15px 0 5px 0;
   transition: var(--trans);
   cursor: default;
+}
+
+/*___ Responsive ___*/
+@media screen and (max-width:1000px) {
+  .SideNav {
+    width: 0;
+  }
+  .SideNav.sideNavShow {
+    width: 230px;
+  }
 }

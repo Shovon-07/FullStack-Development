@@ -102,7 +102,7 @@ const Header = (props) => {
         <a>
           <FaBarsStaggered
             size={25}
-            className="c_pointer"
+            className="c_pointer toggleIcon"
             onClick={() => {
               setToggleVal((prev) => !prev);
             }}
