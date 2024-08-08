@@ -89,7 +89,9 @@ class AuthController extends Controller
                 AdminAuth::where("id", $id)->update([
                     "Name" => $user_name,
                 ]);
-            } else if ($request->hasfile("user_img")) {
+            }
+            
+            if ($request->hasfile("user_img")) {
                 $previesImgPath = public_path("Images/" . $data->Image);
                 if (file_exists($previesImgPath)) {
                     File::delete($previesImgPath);
