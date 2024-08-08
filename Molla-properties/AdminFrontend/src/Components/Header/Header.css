@@ -18,6 +18,7 @@
   width: 35px;
   height: 35px;
   border-radius: 50%;
+  border: 2px solid var(--light-2);
 }
 .Header .profile span {
   font-weight: 600;

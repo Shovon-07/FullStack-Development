@@ -9,5 +9,5 @@ class AdminAuth extends Model
 {
     use HasFactory;
     protected $fillable = ["Name", "Email", "Password", "Otp", "Image", "Access_Token"];
-    protected $attributes = ["Otp" => 0, "Access_Token" => 0];
+    protected $attributes = ["Image" => "Utility/dummy-user-profile.png", "Otp" => 0, "Access_Token" => 0];
 }

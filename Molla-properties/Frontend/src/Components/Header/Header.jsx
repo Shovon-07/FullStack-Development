@@ -9,11 +9,11 @@ import { IoMdSunny } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 
-//___ Images __//
-import Logo from "../../assets/Images/Logo.png";
-
 //___ Css __//
 import "./Header.css";
+
+//___ Additional utilitis ___//
+import { imgPath } from "../../assets/Js/Data";
 
 const Header = (props) => {
   const { toggle, setToggle, theme, setTheme } = props;
@@ -64,7 +64,7 @@ const Header = (props) => {
     <div className="Header">
       <div className="headerContainer d-flex">
         <div className="logo">
-          <img src={Logo} alt="" />
+          <img src={`${imgPath}Utility/Logo.png`} alt="" />
         </div>
         <ul className={`d-flex menus ${toggle == true ? "active" : ""}`}>
           <li>

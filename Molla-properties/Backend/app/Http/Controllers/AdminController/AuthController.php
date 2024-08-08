@@ -90,11 +90,13 @@ class AuthController extends Controller
                     "Name" => $user_name,
                 ]);
             }
-            
+
             if ($request->hasfile("user_img")) {
                 $previesImgPath = public_path("Images/" . $data->Image);
-                if (file_exists($previesImgPath)) {
-                    File::delete($previesImgPath);
+                if ($previesImgPath != public_path("Images/" . "Utility/dummy-user-profile.png")) {
+                    if (file_exists($previesImgPath)) {
+                        File::delete($previesImgPath);
+                    }
                 }
 
                 $user_img = $request->file("user_img");
