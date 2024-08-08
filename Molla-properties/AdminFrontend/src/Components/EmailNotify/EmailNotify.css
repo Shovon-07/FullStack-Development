@@ -1,0 +1,64 @@
+.Notify .dorwpDownParent {
+  position: relative;
+}
+.Notify .dorpdown {
+  background: var(--dark-2);
+  box-shadow: var(--shadow);
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  transition: var(--trans);
+  top: 47px;
+  right: 0;
+  z-index: 998;
+}
+.Notify .dorpdown .dropdownTitle {
+  color: var(--light-2);
+  padding: 5px 20px;
+  border-bottom: 1px solid var(--light-3);
+  position: sticky;
+  top: 0;
+  background: var(--dark-2);
+}
+.Notify .dorpdown li a:hover {
+  background: var(--dark-1);
+}
+.Notify .dorpdown.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.Notify .notification .dorpdown {
+  width: 300px;
+  height: auto;
+  max-height: 300px;
+  top: 42px;
+  overflow-y: scroll;
+}
+.Notify .notification .dorpdown::-webkit-scrollbar {
+  display: none;
+}
+.Notify .notification .dorpdown li {
+  padding: 10px 20px;
+}
+.Notify .notification .dorpdown li:hover {
+  background: var(--dark-1);
+}
+.Notify .notification .dorpdown li .msgUserPic,
+.Notify .message .dorpdown li .msgUserPic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.Notify .notification .dorpdown li .name {
+  color: var(--orange);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.Notify .notification .dorpdown li .description {
+  margin: 7px 0;
+  font-size: 0.9rem;
+}

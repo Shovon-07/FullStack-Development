@@ -64,43 +64,6 @@
   visibility: visible;
 }
 
-.Header .notification .dorpdown,
-.Header .message .dorpdown {
-  width: 300px;
-  height: auto;
-  max-height: 300px;
-  top: 42px;
-  overflow-y: scroll;
-}
-.Header .notification .dorpdown::-webkit-scrollbar,
-.Header .message .dorpdown::-webkit-scrollbar {
-  display: none;
-}
-.Header .notification .dorpdown li,
-.Header .message .dorpdown li {
-  padding: 10px 20px;
-}
-.Header .notification .dorpdown li:hover,
-.Header .message .dorpdown li:hover {
-  background: var(--dark-1);
-}
-.Header .notification .dorpdown li .msgUserPic,
-.Header .message .dorpdown li .msgUserPic {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-.Header .notification .dorpdown li .name {
-  color: var(--orange);
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-.Header .notification .dorpdown li .description,
-.Header .message .dorpdown li .description {
-  margin: 7px 0;
-  font-size: 0.9rem;
-}
-
 .Header .profile .dorpdown li a {
   width: 100%;
   padding: 10px;

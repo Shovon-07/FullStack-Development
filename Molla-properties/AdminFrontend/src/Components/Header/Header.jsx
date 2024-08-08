@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 //___ Css ___//
@@ -6,15 +6,18 @@ import "./Header.css";
 
 //___ Icons ___//
 import { MdDashboard } from "react-icons/md";
-import { IoNotifications, IoLogOutOutline, IoMoonSharp } from "react-icons/io5";
+import { IoLogOutOutline, IoMoonSharp } from "react-icons/io5";
 // import { AiFillMessage } from "react-icons/ai";
 import { IoMdSettings, IoIosArrowForward, IoMdSunny } from "react-icons/io";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 
 //___ Additional utilitis ___//
-import AxiosClient from "../../assets/Js/AxiosClient";
 import { imgPath } from "../../assets/Js/Data";
+
+//___ Components ___//
+import Loader from "../Loader/Loader";
+const EmailNotify = lazy(() => import("../EmailNotify/EmailNotify"));
 
 const Header = (props) => {
   const { user, setToggleVal, theme, setTheme, SetToken, setLoader } = props;
@@ -39,20 +42,6 @@ const Header = (props) => {
   // };
 
   //___ Notifications start ___//
-  const [notificationData, setNotificationData] = useState([]);
-  const GetNotificationData = async () => {
-    setLoader(true);
-    await AxiosClient.get("/get-mails")
-      .then((res) => {
-        setNotificationData(res.data.data);
-        setLoader(false);
-      })
-      .catch((e) => {
-        console.log(`Error = ${e}`);
-        setLoader(false);
-      });
-  };
-
   const handleNotificationDropdown = () => {
     setNotificationDropdownVal((prev) => !prev);
     if (profileDropdownVal == true || messageDropdownVal == true) {
@@ -79,10 +68,6 @@ const Header = (props) => {
     SetToken(null);
     localStorage.removeItem("USER");
   };
-
-  useEffect(() => {
-    GetNotificationData();
-  }, []);
 
   return (
     <div className="Header d-flex">
@@ -154,58 +139,12 @@ const Header = (props) => {
         {/* Message end */}
 
         {/* Notification start */}
-        <div className="notification dorwpDownParent">
-          <a>
-            <IoNotifications
-              size={28}
-              className="c_pointer"
-              onClick={handleNotificationDropdown}
-            />
-            <span className="count" style={{ right: "-18px" }}>
-              {notificationData.length}
-            </span>
-          </a>
-          <ul
-            className={
-              notificationDropdownVal != false ? "dorpdown show" : "dorpdown"
-            }
-          >
-            <p className="dropdownTitle">Notification</p>
-            {notificationData.map((items, index) => {
-              return (
-                <li className="c_pointer" key={index}>
-                  <a>
-                    <p className="name">
-                      {items.Name.length > 30
-                        ? items.Name.slice(0, 30) + "..."
-                        : items.Name}
-                    </p>
-                    <h4 className="title">
-                      {items.Subject.length > 27
-                        ? items.Subject.slice(0, 27) + "..."
-                        : items.Subject}
-                    </h4>
-                    {/* <p className="description">
-                      {items.Message.length > 55
-                        ? items.Message.slice(0, 55) + "..."
-                        : items.Message}
-                    </p> */}
-                    <p
-                      className="time"
-                      style={{
-                        fontSize: "0.8rem",
-                        textAlign: "right",
-                        marginTop: "10px",
-                      }}
-                    >
-                      {items.Created_at.slice(0, 10)}
-                    </p>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <Suspense fallback={<Loader />}>
+          <EmailNotify
+            handleNotificationDropdown={handleNotificationDropdown}
+            notificationDropdownVal={notificationDropdownVal}
+          />
+        </Suspense>
         {/* Notification end */}
 
         {/* Theme start */}
