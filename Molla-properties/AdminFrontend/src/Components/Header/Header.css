@@ -71,16 +71,12 @@
   align-items: flex-start;
   gap: 5px;
 }
-.Header .notification .dorpdown li a {
-  width: 100%;
-  display: block;
-}
-.Header .message .dorpdown li a {
+/* .Header .message .dorpdown li a {
   width: 100%;
   display: flex;
   align-items: flex-start;
   gap: 10px;
-}
+} */
 
 .count {
   background: red;

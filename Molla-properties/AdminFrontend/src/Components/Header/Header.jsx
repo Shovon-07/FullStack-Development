@@ -21,9 +21,9 @@ const EmailNotify = lazy(() => import("../EmailNotify/EmailNotify"));
 
 const Header = (props) => {
   const { user, setToggleVal, theme, setTheme, SetToken, setLoader } = props;
+
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
-
   const [notificationDropdownVal, setNotificationDropdownVal] = useState(false);
 
   const handleProfileDropdown = () => {
@@ -41,7 +41,6 @@ const Header = (props) => {
   //   }
   // };
 
-  //___ Notifications start ___//
   const handleNotificationDropdown = () => {
     setNotificationDropdownVal((prev) => !prev);
     if (profileDropdownVal == true || messageDropdownVal == true) {
@@ -49,7 +48,6 @@ const Header = (props) => {
       setMessageDropdownVal(false);
     }
   };
-  //___ Notifications end ___//
 
   const closeAllDropdown = () => {
     setProfileDropdownVal(false);

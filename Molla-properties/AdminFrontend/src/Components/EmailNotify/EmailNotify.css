@@ -22,6 +22,7 @@
   position: sticky;
   top: 0;
   background: var(--dark-2);
+  transition: var(--trans);
 }
 .Notify .dorpdown li a:hover {
   background: var(--dark-1);
