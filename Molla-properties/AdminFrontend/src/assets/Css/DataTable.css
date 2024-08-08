@@ -1,3 +1,5 @@
+@import url("./Var.css");
+
 /*** Input field for search***/
 .searchInput {
   text-align: right;
@@ -26,7 +28,8 @@
 }
 
 /*** Table body ***/
-.iqMrkF::-webkit-scrollbar {
+.iqMrkF::-webkit-scrollbar,
+.sc-eEPDDI::-webkit-scrollbar {
   height: 5px;
 }
 .gRfwAR,
@@ -45,7 +48,9 @@
 .bRWgBd:not(:last-of-type) {
   border-bottom: var(--border) !important;
 }
-.dKhQoE {
+.dKhQoE,
+.esXiMy,
+.esXiMy {
   font-size: 1rem;
 }
 
