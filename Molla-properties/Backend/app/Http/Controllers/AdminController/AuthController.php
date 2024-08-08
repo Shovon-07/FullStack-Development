@@ -45,8 +45,8 @@ class AuthController extends Controller
     {
         $validator = validator::make($request->all(), [
             'id' => 'required',
-            'prev_pass' => 'required|string',
-            'new_pass' => 'required|string',
+            'prev_pass' => 'required',
+            'new_pass' => 'required',
         ]);
 
         if (!$validator->fails()) {
@@ -54,13 +54,15 @@ class AuthController extends Controller
             $prev_pass = $request->input("prev_pass");
             $new_pass = $request->input("new_pass");
 
-            $data = AdminAuth::where("id", $id)->select("password")->first();
+            $data= AdminAuth::find($id);
 
-
-            if ("store") {
-                return response()->json(["status" => true, "msg" => "New blog added"]);
+            if ($prev_pass == $data->Password) {
+                AdminAuth::where("id", $id)->update([
+                    "Password" => $new_pass
+                ]);
+                return response()->json(["status" => true, "msg" => "Password updated"]);
             } else {
-                return response()->json(["status" => false, "msg" => "Something went wrong"]);
+                return response()->json(["status" => false, "msg" => "Old password not valid"]);
             }
         } else {
             return response()->json(["status" => false, "msg" => $validator->errors()]);

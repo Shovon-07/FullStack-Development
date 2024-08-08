@@ -65,6 +65,7 @@ const Header = (props) => {
   const handleLogout = () => {
     SetToken(null);
     localStorage.removeItem("USER");
+    localStorage.removeItem("UID");
   };
 
   return (

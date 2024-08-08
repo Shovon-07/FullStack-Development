@@ -16,16 +16,9 @@ import AxiosClient from "../../assets/Js/AxiosClient";
 
 const Form = (props) => {
   const navigate = useNavigate();
-  const { setUser, SetToken } = UseAuthContext();
+  const { setUid, setUser, SetToken } = UseAuthContext();
 
-  const {
-    title,
-    inputFields,
-    api,
-    loginOrSingupUrl,
-    loginOrSingup,
-    setAuthMsg,
-  } = props;
+  const { title, inputFields, api, loginOrSingupUrl, loginOrSingup } = props;
 
   const [inputTypes, setInputTypes] = useState(false);
   const [inputData, setInputData] = useState({
@@ -54,8 +47,7 @@ const Form = (props) => {
         };
         AxiosClient.post("/signin", payload).then((res) => {
           if (res.data.status == true) {
-            // toast.success(res.data.message);
-            SetToken(res.data.userName, res.data.token);
+            SetToken(res.data.userId, res.data.userName, res.data.token);
           } else {
             toast.error(res.data.message);
           }

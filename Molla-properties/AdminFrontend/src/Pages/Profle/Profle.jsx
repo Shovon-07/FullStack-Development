@@ -66,6 +66,7 @@ const Profle = () => {
       toast.error("Please confirm password");
     } else {
       const payload = new FormData();
+      payload.append("id", localStorage.getItem("UID"));
       payload.append("prev_pass", inputVal.prevPassword);
       payload.append("new_pass", inputVal.newPassword);
 
@@ -73,7 +74,7 @@ const Profle = () => {
       await AxiosClient.post("/update-password", payload)
         .then((res) => {
           if (res.data.status == true) {
-            setProjectData(res.data.msg);
+            toast.success(res.data.msg);
             setInputVal({
               prevPassword: "",
               newPassword: "",
@@ -82,6 +83,7 @@ const Profle = () => {
             setLoader(false);
           } else {
             setLoader(false);
+            toast.error(res.data.msg);
             console.log(res.data.msg);
           }
         })
@@ -125,21 +127,21 @@ const Profle = () => {
         <h2 className="cardTitle">Change password</h2>
         <form onSubmit={SubmitPassword}>
           <input
-            type="password"
+            type="text"
             name="prevPassword"
             placeholder="Enter old password"
             value={inputVal.prevPassword}
             onChange={handleInput}
           />
           <input
-            type="password"
+            type="text"
             name="newPassword"
             placeholder="Enter new password"
             value={inputVal.newPassword}
             onChange={handleInput}
           />
           <input
-            type="password"
+            type="text"
             name="confirmPassword"
             placeholder="Confirm password"
             value={inputVal.confirmPassword}
