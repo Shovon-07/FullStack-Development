@@ -35,7 +35,6 @@ const EmailNotify = (props) => {
     await AxiosClient.get("/get-email-status")
       .then((res) => {
         setNotificationStatus(res.data.data);
-        console.log(res.data.data);
       })
       .catch((e) => {
         console.log(`Error = ${e}`);
@@ -68,9 +67,35 @@ const EmailNotify = (props) => {
             className="c_pointer"
             onClick={handleNotificationDropdown}
           />
-          <span className="count" style={{ right: "-18px" }}>
-            {notificationStatus == 0 ? "0" : notificationData.length}
-          </span>
+          {/* {notificationStatus == undefined ? (
+            notificationStatus == 0 ? (
+              ""
+            ) : (
+              ""
+            )
+          ) : (
+            <span className="count" style={{ right: "-18px" }}>
+              {notificationStatus}
+            </span>
+          )} */}
+          {/* {notificationStatus == undefined ? (
+            ""
+          ) : (
+            <span className="count" style={{ right: "-18px" }}>
+              {notificationStatus != undefined ? notificationStatus : ""}
+            </span>
+          )} */}
+          {(() => {
+            if (notificationStatus == undefined || notificationStatus == 0) {
+              return;
+            } else {
+              return (
+                <span className="count" style={{ right: "-18px" }}>
+                  {notificationStatus}
+                </span>
+              );
+            }
+          })()}
         </a>
         <ul
           className={

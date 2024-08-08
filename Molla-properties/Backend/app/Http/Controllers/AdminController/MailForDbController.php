@@ -29,7 +29,7 @@ class MailForDbController extends Controller
     }
     public function GetEmailStatus()
     {
-        $emailStatus = MailForDb::where("Status",1)->get();
+        $emailStatus = MailForDb::where("Status",1)->count();
         if ($emailStatus) {
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $emailStatus]);
         } else {
