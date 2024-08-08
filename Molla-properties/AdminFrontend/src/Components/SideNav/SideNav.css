@@ -60,7 +60,7 @@
 }
 
 /*___ Responsive ___*/
-@media screen and (max-width:1000px) {
+@media screen and (max-width: 800px) {
   .SideNav {
     width: 0;
   }
