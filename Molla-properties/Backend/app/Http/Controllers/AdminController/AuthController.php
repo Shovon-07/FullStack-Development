@@ -54,7 +54,7 @@ class AuthController extends Controller
             $prev_pass = $request->input("prev_pass");
             $new_pass = $request->input("new_pass");
 
-            $data= AdminAuth::find($id);
+            $data = AdminAuth::find($id);
 
             if ($prev_pass == $data->Password) {
                 AdminAuth::where("id", $id)->update([

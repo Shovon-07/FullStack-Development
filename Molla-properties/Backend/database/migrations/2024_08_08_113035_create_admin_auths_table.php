@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string("Email", 100)->unique();
             $table->string("Password");
             $table->string("Otp", 6);
+            $table->string("Image")->nullable();
             $table->string("Access_Token");
             $table->timestamp("Created_at")->useCurrent();
             $table->timestamp("Updated_at")->useCurrent()->useCurrentOnUpdate();

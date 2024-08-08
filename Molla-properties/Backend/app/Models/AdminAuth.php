@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AdminAuth extends Model
 {
     use HasFactory;
-    protected $fillable = ["Name", "Email", "Password", "Otp", "Access_Token"];
+    protected $fillable = ["Name", "Email", "Password", "Otp", "Image", "Access_Token"];
     protected $attributes = ["Otp" => 0, "Access_Token" => 0];
 }
