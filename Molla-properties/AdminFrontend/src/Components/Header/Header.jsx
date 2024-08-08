@@ -80,7 +80,6 @@ const Header = (props) => {
       .then((res) => {
         if (res.data.status == true) {
           setUserInfo(res.data.data);
-          console.log(res.data.data);
           setLoader(false);
         } else {
           setLoader(false);

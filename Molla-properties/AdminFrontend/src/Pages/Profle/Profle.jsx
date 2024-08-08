@@ -28,7 +28,7 @@ const Profle = () => {
   const SubmitUserInfo = async (e) => {
     e.preventDefault();
 
-    if (inputVal.userName == "" && inputVal.userImg == null) {
+    if (inputVal.userName == "" && userImg == null) {
       toast.error("You don't edit anything");
     } else {
       const payload = new FormData();
