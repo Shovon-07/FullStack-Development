@@ -54,6 +54,11 @@
   font-size: 1rem;
 }
 
+.gpwTNy {
+  background: var(--dark-1) !important;
+  color: var(--light-1) !important;
+}
+
 /*** pagination bar ***/
 .cgTKyH,
 .jdPBzn {

@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string("Email");
             $table->longText("Subject");
             $table->longText("Message");
+            $table->string("Status");
 
             $table->timestamp("Created_at")->useCurrent();
             $table->timestamp("Updated_at")->useCurrent()->useCurrentOnUpdate();

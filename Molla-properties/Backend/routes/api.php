@@ -9,6 +9,7 @@ use App\Http\Controllers\ContactUsController;
 //___ Admin panel Controllers ___//
 use App\Http\Controllers\AdminController\AuthController;
 use App\Http\Controllers\AdminController\ProductController;
+use App\Http\Controllers\AdminController\MailForDbController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -58,9 +59,6 @@ Route::prefix("/admin")->group(function () {
     Route::controller(ProductController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home", "Home");
-            Route::get("/get-mails", "GetMails");
-            Route::post("/get-single-mail", "GetSingleMail");
-            Route::post("/delete-email", "DeleteEmail");
 
             // Project
             Route::get("/projects", "Projects");
@@ -95,6 +93,14 @@ Route::prefix("/admin")->group(function () {
             Route::get("/get-blog", "GetBlog");
             Route::post("/add-blog", "AddBlog");
             Route::post("/delete-blog", "DeleteBlog");
+        });
+    });
+
+    Route::controller(MailForDbController::class)->group(function () {
+        Route::middleware(["ApiKeyVerify"])->group(function () {
+            Route::get("/get-mails", "GetMails");
+            Route::post("/get-single-mail", "GetSingleMail");
+            Route::post("/delete-email", "DeleteEmail");
         });
     });
 });
