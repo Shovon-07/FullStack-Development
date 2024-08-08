@@ -11,6 +11,8 @@ const AuthInfo = createContext({
   SetToken: () => {},
   loader: "",
   setLoader: () => {},
+  reloadData: "",
+  setReloadData: () => {},
 });
 
 export const AuthContext = ({ children }) => {
@@ -18,7 +20,9 @@ export const AuthContext = ({ children }) => {
   const [uid, setUid] = useState(localStorage.getItem("UID"));
   const [uimg, setUimg] = useState(localStorage.getItem("UIMG"));
   const [token, setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+
   const [loader, setLoader] = useState(false);
+  const [reloadData, setReloadData] = useState(false);
 
   const SetToken = (uid, user, uimg, token) => {
     setToken(token);
@@ -46,8 +50,12 @@ export const AuthContext = ({ children }) => {
         setUimg,
         setUser,
         SetToken,
+
         loader,
         setLoader,
+
+        reloadData,
+        setReloadData,
       }}
     >
       {children}

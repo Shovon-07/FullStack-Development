@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AxiosClient from "../../assets/Js/AxiosClient";
 
 const Profle = () => {
-  const { setLoader } = UseAuthContext();
+  const { setLoader, setReloadData } = UseAuthContext();
 
   const [inputVal, setInputVal] = useState({
     userName: "",
@@ -41,6 +41,7 @@ const Profle = () => {
         .then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
+            setReloadData((prev) => !prev);
             setLoader(false);
           } else {
             setLoader(false);
@@ -81,6 +82,7 @@ const Profle = () => {
               newPassword: "",
               confirmPassword: "",
             });
+            setReloadData((prev) => !prev);
             setLoader(false);
           } else {
             setLoader(false);

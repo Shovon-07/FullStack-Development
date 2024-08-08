@@ -21,7 +21,8 @@ import Loader from "../Loader/Loader";
 const EmailNotify = lazy(() => import("../EmailNotify/EmailNotify"));
 
 const Header = (props) => {
-  const { user, setToggleVal, theme, setTheme, SetToken, setLoader } = props;
+  const { setToggleVal, theme, setTheme, SetToken, setLoader, reloadData } =
+    props;
 
   const [profileDropdownVal, setProfileDropdownVal] = useState(false);
   const [messageDropdownVal, setMessageDropdownVal] = useState(false);
@@ -70,7 +71,7 @@ const Header = (props) => {
     localStorage.removeItem("UIMG");
   };
 
-  const [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState({ Name: "", Image: "" });
   const GetUserInfo = async () => {
     setLoader(true);
     await AxiosClient.post("/get-user-info", {
@@ -79,6 +80,7 @@ const Header = (props) => {
       .then((res) => {
         if (res.data.status == true) {
           setUserInfo(res.data.data);
+          console.log(res.data.data);
           setLoader(false);
         } else {
           setLoader(false);
@@ -93,7 +95,7 @@ const Header = (props) => {
 
   useEffect(() => {
     GetUserInfo();
-  }, []);
+  }, [reloadData]);
 
   return (
     <div className="Header d-flex">
@@ -202,8 +204,12 @@ const Header = (props) => {
           onClick={handleProfileDropdown}
         >
           <a className="d-flex gap-10">
-            <img src={`${imgPath}${localStorage.getItem("UIMG")}`} alt="" />
-            <span>{user.length > 15 ? user.slice(0, 15) + "..." : user}</span>
+            <img src={`${imgPath}${userInfo.Image}`} alt="" />
+            <span>
+              {userInfo.Name.length > 15
+                ? userInfo.Name.slice(0, 15) + "..."
+                : userInfo.Name}
+            </span>
             <IoIosArrowForward
               className={profileDropdownVal != false ? "arrow fliped" : "arrow"}
             />
