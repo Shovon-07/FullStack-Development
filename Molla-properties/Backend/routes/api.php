@@ -112,4 +112,10 @@ Route::prefix("/admin")->group(function () {
             Route::post("/update-email-status", "UpdateEmailStatus");
         });
     });
+
+    Route::controller(CommonController::class)->group(function () {
+        Route::middleware(["ApiKeyVerify"])->group(function () {
+            Route::post("/update-banner", "UpdateBanner");
+        });
+    });
 });
