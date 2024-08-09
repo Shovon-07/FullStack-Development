@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const AxiosClient = axios.create({
-  baseURL: "http://localhost:8000/api",
-  // baseURL: "https://backend.molla-properties.com/public/api",
+  // baseURL: "http://localhost:8000/api",
+  baseURL: "https://backend.molla-properties.com/public/api",
   headers: {
     "Content-type": "application/json",
     API_KEY: "83b6349651735fb8b3c6b20b1bc882ba",
