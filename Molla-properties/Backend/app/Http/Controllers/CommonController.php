@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use App\Models\HomeContent;
 use App\Models\HonorableClient;
 use App\Models\NewsAndEvent;
 use App\Models\Blog;
@@ -87,4 +88,17 @@ class CommonController extends Controller
         }
     }
     //___ Owners end ___//
+
+    //___ Home content start ___//
+    public function GetHomeContent()
+    {
+        try {
+            $homeContent = HomeContent::get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $homeContent]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    //___ Home content end ___//
 }

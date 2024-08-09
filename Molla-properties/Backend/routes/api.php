@@ -40,6 +40,9 @@ Route::prefix("/")->group(function () {
             Route::get("/all-news-and-events", "AllNewsAndEvents");
             Route::get("/all-blog-video", "AllBlogVideo");
             Route::get("/owners", "Owners");
+
+            // Home content
+            Route::get("/home-content", "GetHomeContent");
         });
 
         Route::controller(ContactUsController::class)->group(function () {
@@ -115,6 +118,7 @@ Route::prefix("/admin")->group(function () {
 
     Route::controller(CommonController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
+            Route::get("/home-content", "GetHomeContent");
             Route::post("/update-banner", "UpdateBanner");
         });
     });

@@ -11,10 +11,20 @@ use Illuminate\Http\Request;
 
 class CommonController extends Controller
 {
-    public function UpdateUserInfo(Request $request)
+    public function GetHomeContent(Request $request)
+    {
+        try {
+            $homeContent = HomeContent::get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $homeContent]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    public function UpdateBanner(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'project_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:51200',
+            'banner_img' => 'image|mimes:jpeg,png,jpg,gif,svg|max:51200',
         ]);
 
         if (!$validator->fails()) {

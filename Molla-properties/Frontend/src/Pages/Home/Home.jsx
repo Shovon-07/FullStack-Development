@@ -25,6 +25,28 @@ const OurMissionVission = lazy(() =>
 const Home = () => {
   const [setLoader] = useOutletContext();
 
+  // Get home content
+  const [homeContent, setHomeContent] = useState([]);
+  const GetHomeContent = async () => {
+    try {
+      setLoader(true);
+      await AxiosClient.get("/home-content").then((res) => {
+        if (res.data.status == true) {
+          setHomeContent(res.data.data[0]);
+          console.log(res.data.data[0].BannerImage);
+
+          setLoader(false);
+        } else {
+          console.log(res.data.msg);
+          setLoader(false);
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Get latest project
   const [latestProjectData, setLatestProjectData] = useState([]);
   const GetLatestProjectData = async () => {
     try {
@@ -43,6 +65,7 @@ const Home = () => {
     }
   };
 
+  // Get gallery data
   const [imagesData, setImagesData] = useState([]);
   const GetImagesData = async () => {
     try {
@@ -62,6 +85,7 @@ const Home = () => {
   };
 
   useEffect(() => {
+    GetHomeContent();
     GetLatestProjectData();
     GetImagesData();
   }, []);
@@ -70,7 +94,7 @@ const Home = () => {
     <div className="Home page">
       <div className="homeImg d-flex">
         <LazyLoadImage
-          src={`${imgPath}Utility/Banner.jpg`}
+          src={`${imgPath}${homeContent.BannerImage}`}
           effect="blur"
           wrapperProps={{
             style: { transitionDelay: "1s" },
@@ -80,8 +104,8 @@ const Home = () => {
         />
         <div className="overlay"></div>
         <div className="txt d-flex">
-          <h1>মোল্লা প্রপার্টিস</h1>
-          <p>আমরা দিচ্ছি সর্বোচ্চ সুযোগ সুবিধা সহ রেডি প্লট</p>
+          <h1>{homeContent.BannerTitle}</h1>
+          <p>{homeContent.BannerMoto}</p>
         </div>
       </div>
 
