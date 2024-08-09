@@ -16,7 +16,9 @@ import { IoMdArrowDropdown } from "react-icons/io";
 //___ Css ___//
 import "./OurMissionVission.css";
 
-const OurMissionVission = () => {
+const OurMissionVission = (props) => {
+  const { homeContent } = props;
+
   return (
     <section className="OurMissionVission d-flex gap-30">
       <Accordion defaultExpanded>
@@ -31,8 +33,7 @@ const OurMissionVission = () => {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <p className="accordianTxt">{homeContent.OurVission}</p>
         </AccordionDetails>
       </Accordion>
 
@@ -48,8 +49,7 @@ const OurMissionVission = () => {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <p className="accordianTxt">{homeContent.OurMission}</p>
         </AccordionDetails>
       </Accordion>
 
@@ -65,8 +65,7 @@ const OurMissionVission = () => {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <p className="accordianTxt">{homeContent.InvestWithUs}</p>
         </AccordionDetails>
       </Accordion>
     </section>
