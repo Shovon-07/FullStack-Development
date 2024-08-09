@@ -13,25 +13,44 @@ const Home = () => {
   const { setLoader } = UseAuthContext();
 
   //___ Banner section start ___//
-  const [bannerTxt, setBannerTxt] = useState("");
+  const [homeContentInput, setHomeContentInput] = useState({
+    banner_title: "",
+    banner_moto: "",
+  });
   const [bannerImg, setBannerImg] = useState();
+
+  const HandleHomeContentInput = (e) => {
+    setHomeContentInput({
+      ...homeContentInput,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const SubmitBannerSection = async (e) => {
     e.preventDefault();
 
-    if (bannerTxt == "" && bannerImg == null) {
+    if (
+      homeContentInput.banner_title == "" &&
+      homeContentInput.banner_moto == "" &&
+      bannerImg == null
+    ) {
       toast.error("You don't edit anything");
     } else {
       const payload = new FormData();
-      payload.append("banner_txt", bannerTxt);
+      payload.append("banner_title", homeContentInput.banner_title);
+      payload.append("banner_moto", homeContentInput.banner_moto);
       payload.append("banner_img", bannerImg);
 
       setLoader(true);
       await AxiosClient.post("/update-banner", payload)
         .then((res) => {
           if (res.data.status == true) {
-            setProjectData(res.data.msg);
-            setBannerTxt("");
+            toast.success(res.data.msg);
+            setHomeContentInput({
+              banner_title: "",
+              banner_moto: "",
+              banner_img: "",
+            });
             setBannerImg(null);
             setLoader(false);
           } else {
@@ -56,12 +75,17 @@ const Home = () => {
         <form encType="multipart/form-data" onSubmit={SubmitBannerSection}>
           <input
             type="text"
-            name="bannerTxt"
+            name="banner_title"
             placeholder="Enter banner text"
-            value={bannerTxt}
-            onChange={(e) => {
-              setBannerTxt(e.target.value);
-            }}
+            value={homeContentInput.banner_title}
+            onChange={HandleHomeContentInput}
+          />
+          <input
+            type="text"
+            name="banner_moto"
+            placeholder="Enter banner text"
+            value={homeContentInput.banner_moto}
+            onChange={HandleHomeContentInput}
           />
           <input
             type="file"

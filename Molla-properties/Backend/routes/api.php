@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\AdminController\AuthController;
 use App\Http\Controllers\AdminController\ProductController;
 use App\Http\Controllers\AdminController\MailForDbController;
+use App\Http\Controllers\AdminController\AdminCommonController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -68,8 +69,6 @@ Route::prefix("/admin")->group(function () {
 
     Route::controller(ProductController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
-            Route::get("/home", "Home");
-
             // Project
             Route::get("/projects", "Projects");
             Route::post("/add-project", "AddProject");
@@ -116,7 +115,7 @@ Route::prefix("/admin")->group(function () {
         });
     });
 
-    Route::controller(CommonController::class)->group(function () {
+    Route::controller(AdminCommonController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home-content", "GetHomeContent");
             Route::post("/update-banner", "UpdateBanner");
