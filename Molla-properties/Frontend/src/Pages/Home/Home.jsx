@@ -33,8 +33,6 @@ const Home = () => {
       await AxiosClient.get("/home-content").then((res) => {
         if (res.data.status == true) {
           setHomeContent(res.data.data[0]);
-          console.log(res.data.data[0].BannerImage);
-
           setLoader(false);
         } else {
           console.log(res.data.msg);
