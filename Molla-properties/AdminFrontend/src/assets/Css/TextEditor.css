@@ -1,0 +1,19 @@
+/* .jodit-container:not(.jodit_inline) {
+  border: 1px solid var(--light-1);
+}
+.jodit-toolbar__box:not(:empty) {
+  background: var(--dark-1) !important;
+  border-bottom: 1px solid var(--light-1);
+} */
+
+/* .jodit-container {
+  min-height: 300px !important;
+}
+.jodit .jodit-workplace .jodit-wysiwyg,
+.jodit-container .jodit-workplace .jodit-wysiwyg {
+  max-height: 300px !important;
+  background: var(--dark-1);
+} */
+.jodit-status-bar a.jodit-status-bar-link {
+  display: none !important;
+}

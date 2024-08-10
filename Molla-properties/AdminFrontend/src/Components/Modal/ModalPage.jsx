@@ -1,7 +1,7 @@
-import React, { useState, lazy, Suspense } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import JoditEditor from "jodit-react";
 
 //___ Modals utilities ___//
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
@@ -15,6 +15,7 @@ import { RxCross2 } from "react-icons/rx";
 
 //___ Css ___//
 import "./ModalPage.css";
+import "../../assets/Css/TextEditor.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 const style = {
@@ -34,7 +35,6 @@ import Loader from "../Loader/Loader";
 
 const ModalPage = (props) => {
   const { setLoader } = UseAuthContext();
-  const navigate = useNavigate();
 
   const {
     id,
@@ -52,6 +52,9 @@ const ModalPage = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const editor = useRef(null);
+  const [features, setFeatures] = useState("");
+
   const [inputValue, setInputValue] = useState({
     project_id: "",
 
@@ -63,7 +66,7 @@ const ModalPage = (props) => {
     total_plot: "",
     contact_no: "",
     project_map: "",
-    features: "",
+    // features: "",
     project_status: "",
 
     honClient_name: "",
@@ -127,7 +130,7 @@ const ModalPage = (props) => {
         toast.error("Please enter contact no");
       } else if (inputValue.project_map == "") {
         toast.error("Please enter project map");
-      } else if (inputValue.features == "") {
+      } else if (features == "") {
         toast.error("Please enter features");
       } else if (inputValue.projectImage == "") {
         toast.error("Please enter project image");
@@ -142,7 +145,7 @@ const ModalPage = (props) => {
         payload.append("land_area", inputValue.land_area);
         payload.append("total_plot", inputValue.total_plot);
         payload.append("contact_no", inputValue.contact_no);
-        payload.append("features", inputValue.features);
+        payload.append("features", features);
         payload.append("project_map", inputValue.project_map);
         payload.append("project_status", inputValue.project_status);
         payload.append("project_image", projectImage);
@@ -403,12 +406,14 @@ const ModalPage = (props) => {
                       <div style={{ width: "100%" }}>
                         <label>Features</label>
                         <div className="inputBox">
-                          <textarea
-                            name="features"
-                            id=""
-                            rows={10}
-                            onChange={handleInputValue}
-                          ></textarea>
+                          <JoditEditor
+                            ref={editor}
+                            value={features}
+                            // config={config}
+                            tabIndex={1} // tabIndex of textarea
+                            onBlur={(newContent) => setFeatures(newContent)} // preferred to use only this option to update the content for performance reasons
+                            onChange={(newContent) => {}}
+                          />
                         </div>
                       </div>
                     ) : (

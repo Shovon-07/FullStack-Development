@@ -1,9 +1,10 @@
-import { lazy, useEffect, useState } from "react";
+import { lazy, useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ToastContainer, toast } from "react-toastify";
 import Tooltip from "@mui/material/Tooltip";
+import JoditEditor from "jodit-react";
 
 //___ Icons ___//
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
@@ -12,6 +13,7 @@ import { RxCross2 } from "react-icons/rx";
 //___ Css ___//
 import "./ProjectView.css";
 import "../../assets/Css/Card.css";
+import "../../assets/Css/TextEditor.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -52,10 +54,12 @@ const ProjectView = () => {
       Total_plot: "",
       Contact_no: "",
       Project_map: "",
-      Features: "",
+      // Features: "",
       // Project_status: "",
     },
   ]);
+  const editor = useRef(null);
+  const [Features, setFeatures] = useState("");
   const [projectDate, setProjectDate] = useState();
   const [projectImage, setProjectImage] = useState();
 
@@ -67,6 +71,7 @@ const ProjectView = () => {
           setProjectViewData(res.data.data);
           setProjectDate(res.data.data.Created_at.substr(0, 10));
           setProjectImage(res.data.data.Image);
+          setFeatures(res.data.data.Features);
           setLoader(false);
         } else {
           setLoader(false);
@@ -224,7 +229,7 @@ const ProjectView = () => {
       toast.error("Please enter contact no");
     } else if (projectViewData.Project_map == "") {
       toast.error("Please enter project map");
-    } else if (projectViewData.Features == "") {
+    } else if (Features == "") {
       toast.error("Please enter features");
     } else {
       const payload = new FormData();
@@ -237,7 +242,7 @@ const ProjectView = () => {
       payload.append("total_plot", projectViewData.Total_plot);
       payload.append("contact_no", projectViewData.Contact_no);
       payload.append("project_map", projectViewData.Project_map);
-      payload.append("features", projectViewData.Features);
+      payload.append("features", Features);
       payload.append("project_status", projectStatus);
       payload.append("project_image", projectImage);
 
@@ -255,7 +260,7 @@ const ProjectView = () => {
               Total_plot: "",
               Contact_no: "",
               Project_map: "",
-              Features: "",
+              // Features: "",
             });
             setProjectImage();
             setProjectStatus("0");
@@ -559,12 +564,15 @@ const ProjectView = () => {
             }`}
           >
             <div style={{ width: "100%" }}>
-              <textarea
-                name="Features"
-                rows={10}
-                value={projectViewData.Features}
-                onChange={handleInputValue}
-              ></textarea>
+              {/* <div dangerouslySetInnerHTML={{ __html: Features }}></div> */}
+              <JoditEditor
+                ref={editor}
+                value={Features}
+                // config={config}
+                tabIndex={1} // tabIndex of textarea
+                onBlur={(newContent) => setFeatures(newContent)}
+                onChange={(newContent) => {}}
+              />
             </div>
           </div>
           {/* Feature end */}
