@@ -62,7 +62,7 @@
       </div>
       <div>
         <h3>Message :</h3>
-        <p>{{$mailData["message"]}}</p>
+        <p>{!! $mailData["message"] !!}</p>
       </div>
     </div>
     <hr />
