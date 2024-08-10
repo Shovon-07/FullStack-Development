@@ -122,6 +122,30 @@ const Emails = () => {
     }
   };
 
+  // Mark as unread
+  const MarkAsUnread = async (emailId) => {
+    const payload = {
+      email_id: emailId,
+    };
+    setLoader(true);
+    await AxiosClient.post("/mark-as-unread", payload)
+      .then((res) => {
+        if (res.data.status == true) {
+          toast.success(res.data.msg);
+          setLoader(false);
+          setRelodeTable((prev) => !prev);
+          console.clear();
+        } else {
+          setLoader(false);
+          console.log(res.data.msg);
+        }
+      })
+      .catch((err) => {
+        console.log(`Error ${err}`);
+        setLoader(false);
+      });
+  };
+
   useEffect(() => {
     const result = apiData.filter((filteredApiData) => {
       return filteredApiData.Email.toLowerCase().match(

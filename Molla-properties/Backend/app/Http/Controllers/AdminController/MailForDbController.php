@@ -29,7 +29,7 @@ class MailForDbController extends Controller
     }
     public function GetEmailStatus()
     {
-        $emailStatus = MailForDb::where("Status",1)->count();
+        $emailStatus = MailForDb::where("Status", 1)->count();
         if ($emailStatus) {
             return response()->json(["status" => true, "msg" => "Data founded", "data" => $emailStatus]);
         } else {
@@ -51,11 +51,23 @@ class MailForDbController extends Controller
     }
     public function UpdateEmailStatus()
     {
-        $update = MailForDb::where("Status",1)->update([
-            "Status"=>0
+        $update = MailForDb::where("Status", 1)->update([
+            "Status" => 0
         ]);
         if ($update) {
             return response()->json(["status" => true, "msg" => "Data founded", "data" => 0]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
+    public function MarkAsUnread(Request $request)
+    {
+        $email_id = $request->input("email_id");
+        $update = MailForDb::where("id", $email_id)->where("Status", 0)->update([
+            "Status" => 1
+        ]);
+        if ($update) {
+            return response()->json(["status" => true, "msg" => "Marked as unread",]);
         } else {
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
