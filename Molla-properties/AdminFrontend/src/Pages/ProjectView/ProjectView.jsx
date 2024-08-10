@@ -1,10 +1,11 @@
-import { lazy, useEffect, useState, useRef } from "react";
+import { lazy, Suspense, useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ToastContainer, toast } from "react-toastify";
 import Tooltip from "@mui/material/Tooltip";
-import JoditEditor from "jodit-react";
+// import JoditEditor from "jodit-react";
+const JoditEditor = lazy(() => import("jodit-react"));
 
 //___ Icons ___//
 import { FaRegTrashAlt, FaEdit } from "react-icons/fa";
@@ -20,6 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
 import { imgPath } from "../../assets/Js/Data";
+import Loader from "../../Components/Loader/Loader";
 
 //___ Components ___//
 const PlotModal = lazy(() => import("../../Components/PlotModal/PlotModal"));
@@ -565,14 +567,16 @@ const ProjectView = () => {
           >
             <div style={{ width: "100%", color: "var(--dark-1)" }}>
               {/* <div dangerouslySetInnerHTML={{ __html: Features }}></div> */}
-              <JoditEditor
-                ref={editor}
-                value={Features}
-                // config={config}
-                tabIndex={1} // tabIndex of textarea
-                onBlur={(newContent) => setFeatures(newContent)}
-                onChange={(newContent) => {}}
-              />
+              <Suspense fallback={<Loader />}>
+                <JoditEditor
+                  ref={editor}
+                  value={Features}
+                  // config={config}
+                  tabIndex={1} // tabIndex of textarea
+                  onBlur={(newContent) => setFeatures(newContent)}
+                  onChange={(newContent) => {}}
+                />
+              </Suspense>
             </div>
           </div>
           {/* Feature end */}

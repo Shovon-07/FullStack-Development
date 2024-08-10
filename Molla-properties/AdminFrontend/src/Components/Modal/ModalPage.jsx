@@ -1,7 +1,7 @@
 import React, { useState, useRef, lazy, Suspense } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import JoditEditor from "jodit-react";
+const JoditEditor = lazy(() => import("jodit-react"));
 
 //___ Modals utilities ___//
 const Backdrop = lazy(() => import("@mui/material/Backdrop"));
@@ -17,6 +17,9 @@ import { RxCross2 } from "react-icons/rx";
 import "./ModalPage.css";
 import "../../assets/Css/TextEditor.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
+
+//___ Components ___//
+// import Loader from "../Loader/Loader";
 
 const style = {
   position: "absolute",
@@ -406,14 +409,16 @@ const ModalPage = (props) => {
                       <div style={{ width: "100%" }}>
                         <label>Features</label>
                         <div className="inputBox">
-                          <JoditEditor
-                            ref={editor}
-                            value={features}
-                            // config={config}
-                            tabIndex={1} // tabIndex of textarea
-                            onBlur={(newContent) => setFeatures(newContent)} // preferred to use only this option to update the content for performance reasons
-                            onChange={(newContent) => {}}
-                          />
+                          <Suspense fallback={<Loader />}>
+                            <JoditEditor
+                              ref={editor}
+                              value={features}
+                              // config={config}
+                              tabIndex={1} // tabIndex of textarea
+                              onBlur={(newContent) => setFeatures(newContent)} // preferred to use only this option to update the content for performance reasons
+                              onChange={(newContent) => {}}
+                            />
+                          </Suspense>
                         </div>
                       </div>
                     ) : (
