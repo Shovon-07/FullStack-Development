@@ -23,6 +23,9 @@ const EmailNotify = (props) => {
     await AxiosClient.get("/get-mails")
       .then((res) => {
         setNotificationData(res.data.data);
+        res.data.data.map((items, index) => {
+          console.log(items);
+        });
         setLoader(false);
       })
       .catch((e) => {
@@ -43,7 +46,7 @@ const EmailNotify = (props) => {
   };
 
   // Update notification status
-  const UpdateNotificationData = async () => {
+  const UpdateNotificationStatus = async () => {
     await AxiosClient.post("/update-email-status")
       .then((res) => {
         setNotificationStatus(res.data.data);
@@ -61,13 +64,13 @@ const EmailNotify = (props) => {
   return (
     <div className="Notify">
       <div className="notification dorwpDownParent">
-        <a onClick={UpdateNotificationData}>
+        <a>
           <IoNotifications
             size={28}
             className="c_pointer"
             onClick={handleNotificationDropdown}
           />
-          {(() => {
+          {/* {(() => {
             if (notificationStatus == undefined || notificationStatus == 0) {
               return;
             } else {
@@ -77,7 +80,7 @@ const EmailNotify = (props) => {
                 </span>
               );
             }
-          })()}
+          })()} */}
         </a>
         <ul
           className={
@@ -88,10 +91,9 @@ const EmailNotify = (props) => {
           {notificationData.map((items, index) => {
             return (
               <li
-                className={
-                  notificationStatus == 1 ? "c_pointer unRead" : "c_pointer"
-                }
+                className={items.Status == 1 ? "c_pointer unRead" : "c_pointer"}
                 key={index}
+                onClick={UpdateNotificationStatus}
               >
                 <a>
                   <p className="name">

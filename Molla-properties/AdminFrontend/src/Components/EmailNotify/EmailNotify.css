@@ -44,10 +44,15 @@
 }
 .Notify .notification .dorpdown li {
   padding: 10px 20px;
+  border-bottom: 0.1px solid var(--light-3);
 }
-.Notify .notification .dorpdown li:hover {
+.Notify .notification .dorpdown li:last-child {
+  padding: 10px 20px;
+  border-bottom: none;
+}
+/* .Notify .notification .dorpdown li:hover {
   background: var(--dark-1);
-}
+} */
 .Notify .notification .dorpdown li .msgUserPic,
 .Notify .message .dorpdown li .msgUserPic {
   width: 40px;
@@ -66,4 +71,5 @@
 
 .Notify .notification .unRead {
   background: var(--dim-light);
+  font-weight: bold;
 }
