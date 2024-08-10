@@ -101,4 +101,17 @@ class CommonController extends Controller
         }
     }
     //___ Home content end ___//
+
+//___ About us content start ___//
+    public function GetAboutUs(Request $request)
+    {
+        try {
+            $aboutUsTxt = HomeContent::select("AboutUsTxt")->get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $aboutUsTxt]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    //___ About us content end ___//
 }

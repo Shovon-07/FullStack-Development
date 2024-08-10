@@ -34,6 +34,7 @@ const AboutUs = () => {
             toast.success(res.data.msg);
             setRloadData((prev) => !prev);
             setLoader(false);
+            console.clear();
           } else {
             setLoader(false);
             console.log(res.data.msg);
@@ -51,8 +52,7 @@ const AboutUs = () => {
     setLoader(true);
     await AxiosClient.get("/get-about-us")
       .then((response) => {
-        setAboutUsTxt(response.data.data);
-
+        setAboutUsTxt(response.data.data[0].AboutUsTxt);
         setLoader(false);
       })
       .catch((e) => {

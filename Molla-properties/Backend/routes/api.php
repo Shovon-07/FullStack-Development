@@ -44,6 +44,9 @@ Route::prefix("/")->group(function () {
 
             // Home content
             Route::get("/home-content", "GetHomeContent");
+            
+            // About us content
+            Route::get("/get-about-us", "GetAboutUs");
         });
 
         Route::controller(ContactUsController::class)->group(function () {
@@ -123,7 +126,7 @@ Route::prefix("/admin")->group(function () {
             Route::post("/update-mission-vission", "UpdateMissionVission");
 
             Route::get("/get-about-us", "GetAboutUs");
-            Route::get("/update-about-us", "UpdateAboutUs");
+            Route::post("/update-about-us", "UpdateAboutUs");
         });
     });
 });

@@ -108,13 +108,10 @@ class AdminCommonController extends Controller
     {
         try {
             $id = 1;
-
-            if ($request->input("aboutus_txt")) {
-                $aboutus_txt = $request->input("aboutus_txt");
+            $aboutus_txt = $request->input("aboutus_txt");
                 HomeContent::where("id", $id)->update([
                     "AboutUsTxt" => $aboutus_txt,
                 ]);
-            }
             return response()->json(["status" => true, "msg" => "Updated succesfull"]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);
