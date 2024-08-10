@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { UseAuthContext } from "../../Context/AuthContext";
+import { Link } from "react-router-dom";
 
 //___ Icons ___//
 import { IoNotifications } from "react-icons/io5";
@@ -96,7 +97,7 @@ const EmailNotify = (props) => {
                 key={index}
                 onClick={() => MarkRead(items.id)}
               >
-                <a>
+                <Link to={`/view-email/${items.id}`} className="c_pointer">
                   <p className="notifyName">
                     {items.Name.length > 30
                       ? items.Name.slice(0, 30) + "..."
@@ -117,7 +118,7 @@ const EmailNotify = (props) => {
                   >
                     {items.Created_at.slice(0, 10)}
                   </p>
-                </a>
+                </Link>
               </li>
             );
           })}
