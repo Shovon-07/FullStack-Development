@@ -33,7 +33,10 @@ const OurMissionVission = (props) => {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          <p className="accordianTxt">{homeContent.OurVission}</p>
+          <div
+            dangerouslySetInnerHTML={{ __html: homeContent.OurVission }}
+            className="accordianTxt"
+          ></div>
         </AccordionDetails>
       </Accordion>
 
@@ -49,7 +52,10 @@ const OurMissionVission = (props) => {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          <p className="accordianTxt">{homeContent.OurMission}</p>
+          <div
+            dangerouslySetInnerHTML={{ __html: homeContent.OurMission }}
+            className="accordianTxt"
+          ></div>
         </AccordionDetails>
       </Accordion>
 
@@ -65,7 +71,10 @@ const OurMissionVission = (props) => {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          <p className="accordianTxt">{homeContent.InvestWithUs}</p>
+          <div
+            dangerouslySetInnerHTML={{ __html: homeContent.InvestWithUs }}
+            className="accordianTxt"
+          ></div>
         </AccordionDetails>
       </Accordion>
     </section>

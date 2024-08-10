@@ -15,6 +15,8 @@ import AxiosClient from "../../assets/Js/AxiosClient";
 const Home = () => {
   const { setLoader } = UseAuthContext();
 
+  const [reloadData, setRloadData] = useState(false);
+
   //___ Banner section start ___//
   const [homeContentInput, setHomeContentInput] = useState({
     BannerTitle: "",
@@ -35,7 +37,7 @@ const Home = () => {
     if (
       homeContentInput.BannerTitle == "" &&
       homeContentInput.BannerMoto == "" &&
-      bannerImg == null
+      BannerImage == null
     ) {
       toast.error("You don't edit anything");
     } else {
@@ -50,6 +52,7 @@ const Home = () => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
             setBannerImg(null);
+            setRloadData((prev) => !prev);
             setLoader(false);
           } else {
             setLoader(false);
@@ -86,6 +89,7 @@ const Home = () => {
         .then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
+            setRloadData((prev) => !prev);
             setLoader(false);
           } else {
             setLoader(false);
@@ -121,7 +125,7 @@ const Home = () => {
 
   useEffect(() => {
     GetHomeContent();
-  }, []);
+  }, [reloadData]);
 
   return (
     <div className="Home">
