@@ -67,7 +67,6 @@ const Emails = () => {
     {
       name: "Action",
       width: "250px",
-      // style: "background:red",
       cell: (row) => {
         return (
           <div className="d-flex gap-20">
@@ -131,7 +130,6 @@ const Emails = () => {
     await AxiosClient.post("/mark-as-unread", payload)
       .then((res) => {
         if (res.data.status == true) {
-          // toast.success(res.data.msg);
           setLoader(false);
           setReloadData((prev) => !prev);
           console.clear();

@@ -23,9 +23,9 @@ const EmailNotify = (props) => {
     await AxiosClient.get("/get-mails")
       .then((res) => {
         setNotificationData(res.data.data);
-        res.data.data.map((items, index) => {
-          console.log(items);
-        });
+        // res.data.data.map((items, index) => {
+        //   console.log(items);
+        // });
         setLoader(false);
       })
       .catch((e) => {
@@ -92,23 +92,23 @@ const EmailNotify = (props) => {
           {notificationData.map((items, index) => {
             return (
               <li
-                className={items.Status == 1 ? "c_pointer unRead" : "c_pointer"}
+                className={`c_pointer ${items.Status == 1 ? "unRead" : ""}`}
                 key={index}
                 onClick={UpdateNotificationStatus}
               >
                 <a>
-                  <p className="name">
+                  <p className="notifyName">
                     {items.Name.length > 30
                       ? items.Name.slice(0, 30) + "..."
                       : items.Name}
                   </p>
-                  <h4 className="title">
+                  <h4 className="notifyTitle">
                     {items.Subject.length > 27
                       ? items.Subject.slice(0, 27) + "..."
                       : items.Subject}
                   </h4>
                   <p
-                    className="time"
+                    className="notifyTime"
                     style={{
                       fontSize: "0.8rem",
                       textAlign: "right",
