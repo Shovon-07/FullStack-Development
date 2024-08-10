@@ -5,7 +5,10 @@ const Loader = () => {
   return (
     <>
       <div id="loader" className="LoadingOverlay">
-        <div className="loader"></div>
+        {/* <div className="loader"></div> */}
+        <div className="Line-Progress">
+          <div className="indeterminate"></div>
+        </div>
       </div>
     </>
   );

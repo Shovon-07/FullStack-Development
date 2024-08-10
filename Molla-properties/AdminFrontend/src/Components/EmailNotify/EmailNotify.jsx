@@ -20,7 +20,6 @@ const EmailNotify = (props) => {
   } = props;
 
   const [notificationData, setNotificationData] = useState([]);
-  // const [notificationStatus, setNotificationStatus] = useState();
   const [unReadMsg, setUnReadMsg] = useState([]);
 
   // Get notification
@@ -52,7 +51,6 @@ const EmailNotify = (props) => {
   const MarkRead = async (emailId) => {
     await AxiosClient.post("/mark-as-read", { email_id: emailId })
       .then((res) => {
-        // setNotificationStatus(res.data.data);
         setNotificationDropdownVal(false);
         setReloadData((prev) => !prev);
       })
