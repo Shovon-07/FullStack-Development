@@ -26,13 +26,14 @@ const ProjectView = () => {
   };
 
   const [projectViewData, setProjectViewData] = useState([]);
+    const [projectDate, setProjectDate] = useState();
   const getProjectViewData = async () => {
     try {
       setLoader(true);
       await AxiosClient.post("/project-view", { id: id }).then((res) => {
         if (res.data.status == true) {
-          // console.log(res.data.data);
           setProjectViewData(res.data.data);
+          setProjectDate(res.data.data.Created_at.substr(0, 10));
           setLoader(false);
         }
       });
@@ -93,7 +94,7 @@ const ProjectView = () => {
       />
       {/* For go to top */}
       <p className="date">
-        Uploaded : {moment(projectViewData.Created_at).fromNow()}
+        Uploaded : {projectDate}
       </p>
       <div className="tab-container">
         <div className="tab-box">
