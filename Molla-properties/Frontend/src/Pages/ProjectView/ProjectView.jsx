@@ -244,7 +244,10 @@ const ProjectView = () => {
             }`}
           >
             <div className="">
-              <p>{projectViewData.Features}</p>
+              {/* <p>{projectViewData.Features}</p> */}
+              <div
+                dangerouslySetInnerHTML={{ __html: projectViewData.Features }}
+              ></div>
             </div>
           </div>
           {/* Feature end */}

@@ -119,7 +119,7 @@ a {
   transition: var(--trans);
   cursor: pointer;
 }
-.btn:hover {
+.btn:active {
   background: transparent;
   border: var(--border);
   color: var(--dark-1);
