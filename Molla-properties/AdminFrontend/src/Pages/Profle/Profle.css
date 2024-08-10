@@ -13,7 +13,7 @@
 }
 .Profle .card form {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   flex-direction: column;
   gap: 30px;
@@ -24,6 +24,7 @@
   border: var(--border);
   outline: none;
   padding: 10px 20px;
+  margin-top: 10px;
   font-size: 1rem;
   color: var(--light-1);
 }

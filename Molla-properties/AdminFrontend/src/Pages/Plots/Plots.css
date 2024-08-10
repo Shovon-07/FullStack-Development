@@ -1,13 +1,16 @@
 .Plots form select {
-  width: 20%;
+  width: 200px;
   padding: 5px 10px;
   margin: 10px 0 40px 0;
   background: var(--dark-1);
 }
+.Plots form .inpBox {
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
 .Plots input,
 .Plots select {
-  margin-bottom: 30px;
-  width: 90%;
+  width: 80%;
   font-size: 1rem;
   padding: 10px 20px;
   border: var(--border);

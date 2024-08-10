@@ -132,35 +132,46 @@ const Home = () => {
       <h3 className="pageTitle">Home</h3>
 
       <div className="card">
-        <h2 className="cardTitle" style={{ marginBottom: "30px" }}>
+        <h2 className="cardTitle" style={{ marginBottom: "10px" }}>
           Edit banner
         </h2>
         <form encType="multipart/form-data" onSubmit={SubmitBannerSection}>
-          <input
-            type="text"
-            name="BannerTitle"
-            placeholder="Enter banner title"
-            value={homeContentInput.BannerTitle}
-            onChange={HandleHomeContentInput}
-          />
-          <input
-            type="text"
-            name="BannerMoto"
-            placeholder="Enter moto"
-            value={homeContentInput.BannerMoto}
-            onChange={HandleHomeContentInput}
-          />
-          <input
-            type="file"
-            name="BannerImage"
-            placeholder="Enter banner image"
-            onChange={(e) => {
-              setBannerImg(e.target.files[0]);
-            }}
-          />
-          <button type="submit" className="btn">
-            Save
-          </button>
+          <div className="inpBox">
+            <label>Title</label>
+            <input
+              type="text"
+              name="BannerTitle"
+              placeholder="Enter banner title"
+              value={homeContentInput.BannerTitle}
+              onChange={HandleHomeContentInput}
+            />
+          </div>
+          <div className="inpBox">
+            <label>Moto</label>
+            <input
+              type="text"
+              name="BannerMoto"
+              placeholder="Enter moto"
+              value={homeContentInput.BannerMoto}
+              onChange={HandleHomeContentInput}
+            />
+          </div>
+          <div className="inpBox">
+            <label>Banner image</label>
+            <input
+              type="file"
+              name="BannerImage"
+              placeholder="Enter banner image"
+              onChange={(e) => {
+                setBannerImg(e.target.files[0]);
+              }}
+            />
+          </div>
+          <div className="inpBox" style={{ textAlign: "center" }}>
+            <button type="submit" className="btn">
+              Save
+            </button>
+          </div>
         </form>
       </div>
 
@@ -202,9 +213,11 @@ const Home = () => {
             />
           </Suspense>
 
-          <button type="submit" className="btn">
-            Save
-          </button>
+          <div className="inpBox" style={{ textAlign: "center" }}>
+            <button type="submit" className="btn">
+              Save
+            </button>
+          </div>
         </form>
       </div>
 

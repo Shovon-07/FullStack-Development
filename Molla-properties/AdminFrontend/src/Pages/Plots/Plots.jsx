@@ -117,7 +117,7 @@ const Plots = () => {
         </div>
 
         {inputs.map((input, index) => (
-          <div key={index}>
+          <div key={index} className="inpBox d-flex">
             <input
               type="text"
               value={input.value}

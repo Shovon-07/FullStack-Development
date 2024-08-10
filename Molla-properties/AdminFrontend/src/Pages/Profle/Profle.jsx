@@ -105,24 +105,32 @@ const Profle = () => {
       <div className="card">
         <h2 className="cardTitle">User information</h2>
         <form encType="multipart/form-data" onSubmit={SubmitUserInfo}>
-          <input
-            type="text"
-            name="userName"
-            placeholder="Enter user name"
-            value={inputVal.userName}
-            onChange={handleInput}
-          />
-          <input
-            type="file"
-            name="bannerImg"
-            placeholder="Enter banner image"
-            onChange={(e) => {
-              setUserImg(e.target.files[0]);
-            }}
-          />
-          <button type="submit" className="btn">
-            Save
-          </button>
+          <div className="inpBox">
+            <label>User name</label>
+            <input
+              type="text"
+              name="userName"
+              placeholder="Enter user name"
+              value={inputVal.userName}
+              onChange={handleInput}
+            />
+          </div>
+          <div className="inpBox">
+            <label>Profile picture</label>
+            <input
+              type="file"
+              name="bannerImg"
+              placeholder="Enter banner image"
+              onChange={(e) => {
+                setUserImg(e.target.files[0]);
+              }}
+            />
+          </div>
+          <div className="inpBox" style={{ textAlign: "center" }}>
+            <button type="submit" className="btn">
+              Save
+            </button>
+          </div>
         </form>
       </div>
 

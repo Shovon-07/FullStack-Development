@@ -150,7 +150,7 @@ const PlotModal = (plotProps) => {
                   />
                 </div>
                 <div className="modalContent">
-                  <h3 className="modalTitle"> Add New Plots {id}</h3>
+                  <h3 className="modalTitle"> Add New Plots</h3>
                   <input type="text" value={id} className="d-none" readOnly />
                   <form
                     encType="multipart/form-data"
@@ -160,7 +160,7 @@ const PlotModal = (plotProps) => {
                     }}
                   >
                     {inputs.map((input, index) => (
-                      <div key={index} className="plotInputBox">
+                      <div key={index} className="plotInputBox d-flex">
                         <input
                           type="text"
                           value={input.value}
