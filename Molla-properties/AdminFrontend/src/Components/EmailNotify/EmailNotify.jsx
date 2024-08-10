@@ -13,10 +13,15 @@ import AxiosClient from "../../assets/Js/AxiosClient";
 
 const EmailNotify = (props) => {
   const { setLoader, reloadData, setReloadData } = UseAuthContext();
-  const { handleNotificationDropdown, notificationDropdownVal } = props;
+  const {
+    handleNotificationDropdown,
+    notificationDropdownVal,
+    setNotificationDropdownVal,
+  } = props;
 
   const [notificationData, setNotificationData] = useState([]);
-  const [notificationStatus, setNotificationStatus] = useState();
+  // const [notificationStatus, setNotificationStatus] = useState();
+  const [unReadMsg, setUnReadMsg] = useState([]);
 
   // Get notification
   const GetNotificationData = async () => {
@@ -24,9 +29,6 @@ const EmailNotify = (props) => {
     await AxiosClient.get("/get-mails")
       .then((res) => {
         setNotificationData(res.data.data);
-        // res.data.data.map((items, index) => {
-        //   console.log(items);
-        // });
         setLoader(false);
       })
       .catch((e) => {
@@ -35,10 +37,10 @@ const EmailNotify = (props) => {
       });
   };
 
-  const GetNotificationStatus = async () => {
-    await AxiosClient.get("/get-email-status")
+  const GetUnReadMsgs = async () => {
+    await AxiosClient.get("/get-unread-email")
       .then((res) => {
-        setNotificationStatus(res.data.data);
+        setUnReadMsg(res.data.data);
       })
       .catch((e) => {
         console.log(`Error = ${e}`);
@@ -50,7 +52,8 @@ const EmailNotify = (props) => {
   const MarkRead = async (emailId) => {
     await AxiosClient.post("/mark-as-read", { email_id: emailId })
       .then((res) => {
-        setNotificationStatus(res.data.data);
+        // setNotificationStatus(res.data.data);
+        setNotificationDropdownVal(false);
         setReloadData((prev) => !prev);
       })
       .catch((e) => {
@@ -60,7 +63,7 @@ const EmailNotify = (props) => {
 
   useEffect(() => {
     GetNotificationData();
-    GetNotificationStatus();
+    GetUnReadMsgs();
   }, [reloadData]);
 
   return (
@@ -72,17 +75,17 @@ const EmailNotify = (props) => {
             className="c_pointer"
             onClick={handleNotificationDropdown}
           />
-          {/* {(() => {
-            if (notificationStatus == undefined || notificationStatus == 0) {
+          {(() => {
+            if (unReadMsg == undefined || unReadMsg == 0) {
               return;
             } else {
               return (
                 <span className="count" style={{ right: "-18px" }}>
-                  {notificationStatus}
+                  {unReadMsg}
                 </span>
               );
             }
-          })()} */}
+          })()}
         </a>
         <ul
           className={

@@ -170,6 +170,7 @@ const Header = (props) => {
           <EmailNotify
             handleNotificationDropdown={handleNotificationDropdown}
             notificationDropdownVal={notificationDropdownVal}
+            setNotificationDropdownVal={setNotificationDropdownVal}
           />
         </Suspense>
         {/* Notification end */}

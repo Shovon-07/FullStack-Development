@@ -27,15 +27,6 @@ class MailForDbController extends Controller
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
     }
-    public function GetEmailStatus()
-    {
-        $emailStatus = MailForDb::where("Status", 1)->count();
-        if ($emailStatus) {
-            return response()->json(["status" => true, "msg" => "Data founded", "data" => $emailStatus]);
-        } else {
-            return response()->json(["status" => false, "msg" => "Something went wrong"]);
-        }
-    }
     public function DeleteEmail(Request $request)
     {
         try {
@@ -49,10 +40,19 @@ class MailForDbController extends Controller
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
+    public function GetUnreadEmail()
+    {
+        $emailStatus = MailForDb::where("Status", 1)->count();
+        if ($emailStatus) {
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $emailStatus]);
+        } else {
+            return response()->json(["status" => false, "msg" => "Something went wrong"]);
+        }
+    }
     public function MarkAsRead(Request $request)
     {
         $email_id = $request->input("email_id");
-        $markRead = MailForDb::where("id", $email_id)->where("Status", 1)->update([
+        $markRead = MailForDb::where("id", $email_id)->update([
             "Status" => 0
         ]);
         if ($markRead) {

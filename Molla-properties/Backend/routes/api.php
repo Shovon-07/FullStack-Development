@@ -108,9 +108,9 @@ Route::prefix("/admin")->group(function () {
     Route::controller(MailForDbController::class)->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/get-mails", "GetMails");
-            Route::get("/get-email-status", "GetEmailStatus");
             Route::post("/get-single-mail", "GetSingleMail");
             Route::post("/delete-email", "DeleteEmail");
+            Route::get("/get-unread-email", "GetUnreadEmail");
             Route::post("/mark-as-read", "MarkAsRead");
             Route::post("/mark-as-unread", "MarkAsUnread");
         });
