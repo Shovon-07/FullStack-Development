@@ -39,6 +39,7 @@ const Emails = () => {
       });
   };
 
+  // Data table start
   const columns = [
     {
       name: "Sl No",
@@ -92,6 +93,18 @@ const Emails = () => {
       },
     },
   ];
+
+  const conditionalRowStyles = [
+    {
+      when: (row) => row.Status == 1,
+      style: {
+        backgroundColor: "var(--dim-light)",
+        color: "var(--light-1)",
+        fontWidth: "bold",
+      },
+    },
+  ];
+  // Data table end
 
   // Delete email
   const DeleteEmail = async (emailId) => {
@@ -185,7 +198,7 @@ const Emails = () => {
           pagination
           fixedHeader
           fixedHeaderScrollHeight="400px"
-          // highlightOnHover
+          conditionalRowStyles={conditionalRowStyles}
         />
       </Suspense>
 
