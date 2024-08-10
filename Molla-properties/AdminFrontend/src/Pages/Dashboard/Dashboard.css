@@ -3,6 +3,7 @@
   justify-content: center;
   height: 100vh;
   max-height: 450px;
+  overflow: hidden;
 }
 .Dashboard .dashboardTxt .txt {
   background: linear-gradient(to right, var(--main-color), cyan);

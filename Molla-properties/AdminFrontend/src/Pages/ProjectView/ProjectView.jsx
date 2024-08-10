@@ -563,7 +563,7 @@ const ProjectView = () => {
               tabVal == 3 ? "active" : ""
             }`}
           >
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%", color: "var(--dark-1)" }}>
               {/* <div dangerouslySetInnerHTML={{ __html: Features }}></div> */}
               <JoditEditor
                 ref={editor}
