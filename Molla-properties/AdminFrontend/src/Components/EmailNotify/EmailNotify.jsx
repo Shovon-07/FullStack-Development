@@ -47,7 +47,7 @@ const EmailNotify = (props) => {
       });
   };
 
-  // Update notification status
+  // Mark as read
   const MarkRead = async (emailId) => {
     await AxiosClient.post("/mark-as-read", { email_id: emailId })
       .then((res) => {

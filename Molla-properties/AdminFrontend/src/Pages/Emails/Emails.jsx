@@ -79,7 +79,11 @@ const Emails = () => {
               Mark as unread
             </a>
             <Tooltip title={`View ${row.id}`}>
-              <Link to={`/view-email/${row.id}`} className="c_pointer">
+              <Link
+                to={`/view-email/${row.id}`}
+                className="c_pointer"
+                onClick={() => MarkRead(row.id)}
+              >
                 <FaEye size={20} style={{ color: "var(--green)" }} />
               </Link>
             </Tooltip>
@@ -154,6 +158,24 @@ const Emails = () => {
       .catch((err) => {
         console.log(`Error ${err}`);
         setLoader(false);
+      });
+  };
+
+  // Mark as read
+  const MarkRead = async (emailId) => {
+    await AxiosClient.post("/mark-as-read", { email_id: emailId })
+      .then((res) => {
+        if (res.data.status == true) {
+          setLoader(false);
+          setReloadData((prev) => !prev);
+          console.clear();
+        } else {
+          setLoader(false);
+          console.log(res.data.msg);
+        }
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
       });
   };
 
