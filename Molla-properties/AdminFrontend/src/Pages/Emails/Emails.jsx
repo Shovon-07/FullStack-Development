@@ -67,10 +67,17 @@ const Emails = () => {
     },
     {
       name: "Action",
-      width: "200px",
+      width: "250px",
       cell: (row) => {
         return (
           <div className="d-flex gap-20">
+            <a
+              className="btn c_pointer"
+              style={{ fontSize: "0.8rem", padding: "5px" }}
+              onClick={() => MarkAsUnread(row.id)}
+            >
+              Mark as unread
+            </a>
             <Tooltip title={`View ${row.id}`}>
               <Link to={`/view-email/${row.id}`} className="c_pointer">
                 <FaEye size={20} style={{ color: "var(--green)" }} />

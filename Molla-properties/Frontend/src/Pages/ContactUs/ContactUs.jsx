@@ -1,16 +1,19 @@
-import { useState } from "react";
+import { useState, useRef, lazy, Suspense } from "react";
 import { useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ToastContainer, toast } from "react-toastify";
+const JoditEditor = lazy(() => import("jodit-react"));
 
 //___ Css ___//
 import "./ContactUs.css";
+import "../../assets/Css/TextEditor.css";
 import "react-toastify/dist/ReactToastify.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
 import { imgPath } from "../../assets/Js/Data";
+import Loader from "../../Components/Loader/Loader";
 
 const ContactUs = () => {
   const [setLoader] = useOutletContext();
@@ -19,8 +22,11 @@ const ContactUs = () => {
     name: "",
     email: "",
     subject: "",
-    message: "",
+    // message: "",
   });
+
+  const editor = useRef(null);
+  const [message, setMessage] = useState("");
 
   const handleInput = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
@@ -34,21 +40,22 @@ const ContactUs = () => {
       toast.error("Please enter your email");
     } else if (input.subject == "") {
       toast.error("Please enter subject");
-    } else if (input.message == "") {
+    } else if (message == "") {
       toast.error("Please type some text message");
     } else {
       const payload = {
         name: input.name,
         email: input.email,
         subject: input.subject,
-        message: input.message,
+        message: message,
       };
       setLoader(true);
       await AxiosClient.post("/send-mail", payload)
         .then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
-            setInput({ name: "", email: "", subject: "", message: "" });
+            setInput({ name: "", email: "", subject: "" });
+            setMessage("");
             console.clear();
             setLoader(false);
           } else {
@@ -127,13 +134,22 @@ const ContactUs = () => {
               />
             </div>
             <div className="inputWrapper">
-              <textarea
+              {/* <textarea
                 name="message"
                 placeholder="Message"
                 value={input.message}
                 onChange={handleInput}
                 rows={5}
-              ></textarea>
+              ></textarea> */}
+              <Suspense fallback={<Loader />}>
+                <JoditEditor
+                  ref={editor}
+                  value={message}
+                  tabIndex={1}
+                  onBlur={(newContent) => setMessage(newContent)}
+                  onChange={(newContent) => {}}
+                />
+              </Suspense>
             </div>
             <button type="submit" className="btn">
               send

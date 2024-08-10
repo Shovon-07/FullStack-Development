@@ -1,0 +1,14 @@
+/* .jodit-container:not(.jodit_inline) {
+  border: 1px solid var(--light-1);
+}
+.jodit-toolbar__box:not(:empty) {
+  background: var(--dark-1) !important;
+  border-bottom: 1px solid var(--light-1);
+} */
+
+.jodit-container:not(.jodit_inline) .jodit-workplace {
+  min-height: 250px !important;
+}
+.jodit-status-bar a.jodit-status-bar-link {
+  display: none !important;
+}

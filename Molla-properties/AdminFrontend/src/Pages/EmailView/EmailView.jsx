@@ -56,7 +56,7 @@ const EmailView = () => {
         </div>
         <div>
           <h3>Message :</h3>
-          <p>{emails.Message}</p>
+          <p dangerouslySetInnerHTML={{ __html: emails.Message }}></p>
         </div>
       </div>
       <hr />

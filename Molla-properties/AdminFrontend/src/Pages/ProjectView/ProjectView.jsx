@@ -59,6 +59,7 @@ const ProjectView = () => {
   ]);
   const editor = useRef(null);
   const [Features, setFeatures] = useState("");
+
   const [projectDate, setProjectDate] = useState();
   const [projectImage, setProjectImage] = useState();
 
@@ -563,13 +564,11 @@ const ProjectView = () => {
             }`}
           >
             <div style={{ width: "100%", color: "var(--dark-1)" }}>
-              {/* <div dangerouslySetInnerHTML={{ __html: Features }}></div> */}
               <Suspense fallback={<Loader />}>
                 <JoditEditor
                   ref={editor}
                   value={Features}
-                  // config={config}
-                  tabIndex={1} // tabIndex of textarea
+                  tabIndex={1}
                   onBlur={(newContent) => setFeatures(newContent)}
                   onChange={(newContent) => {}}
                 />

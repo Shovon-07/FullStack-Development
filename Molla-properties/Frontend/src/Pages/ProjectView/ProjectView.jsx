@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import moment from "moment";
 
 //___ Css ___//
 import "./ProjectView.css";
