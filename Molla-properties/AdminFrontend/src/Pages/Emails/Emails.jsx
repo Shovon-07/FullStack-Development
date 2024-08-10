@@ -108,6 +108,15 @@ const Emails = () => {
       },
     },
   ];
+  const myStyles = {
+    rows: {
+      style: {
+        backgroundColor: "var(--dark-1)",
+        color: "var(--light-1)",
+        borderBottom: "var(--border)",
+      },
+    },
+  };
   // Data table end
 
   // Delete email
@@ -221,6 +230,7 @@ const Emails = () => {
           fixedHeader
           fixedHeaderScrollHeight="400px"
           conditionalRowStyles={conditionalRowStyles}
+          customStyles={myStyles}
         />
       </Suspense>
 
