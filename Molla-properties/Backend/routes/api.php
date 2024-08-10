@@ -119,6 +119,7 @@ Route::prefix("/admin")->group(function () {
         Route::middleware(["ApiKeyVerify"])->group(function () {
             Route::get("/home-content", "GetHomeContent");
             Route::post("/update-banner", "UpdateBanner");
+            Route::post("/update-mission-vission", "UpdateMissionVission");
         });
     });
 });

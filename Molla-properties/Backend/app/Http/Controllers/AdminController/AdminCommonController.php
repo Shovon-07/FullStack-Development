@@ -24,19 +24,19 @@ class AdminCommonController extends Controller
     public function UpdateBanner(Request $request)
     {
         try {
-            $id=1;
+            $id = 1;
             $data = HomeContent::find($id);
 
             if ($request->input("banner_title")) {
                 $banner_title = $request->input("banner_title");
-                HomeContent::where("id",$id)->update([
+                HomeContent::where("id", $id)->update([
                     "BannerTitle" => $banner_title,
                 ]);
             }
 
             if ($request->input("banner_moto")) {
                 $banner_moto = $request->input("banner_moto");
-                HomeContent::where("id",$id)->update([
+                HomeContent::where("id", $id)->update([
                     "BannerMoto" => $banner_moto,
                 ]);
             }
@@ -51,12 +51,44 @@ class AdminCommonController extends Controller
                 $userImgName = "Utility/" . time() . "_" . rand() . "." . $banner_img->getClientOriginalExtension();
                 $banner_img->move(public_path("/Images/Utility"), $userImgName);
 
-                HomeContent::where("id",$id)->update([
+                HomeContent::where("id", $id)->update([
                     "BannerImage" => $userImgName,
                 ]);
             }
 
-            return response()->json(["status" => true, "msg" => "Information updated"]);
+            return response()->json(["status" => true, "msg" => "Updated succesfull"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => $exception]);
+        }
+    }
+    public function UpdateMissionVission(Request $request)
+    {
+        try {
+            $id = 1;
+            $data = HomeContent::find($id);
+
+            if ($request->input("vission_txt")) {
+                $vission_txt = $request->input("vission_txt");
+                HomeContent::where("id", $id)->update([
+                    "OurVission" => $vission_txt,
+                ]);
+            }
+
+            if ($request->input("mission_txt")) {
+                $mission_txt = $request->input("mission_txt");
+                HomeContent::where("id", $id)->update([
+                    "OurMission" => $mission_txt,
+                ]);
+            }
+
+            if ($request->input("investus_txt")) {
+                $investus_txt = $request->input("investus_txt");
+                HomeContent::where("id", $id)->update([
+                    "InvestWithUs" => $investus_txt,
+                ]);
+            }
+
+            return response()->json(["status" => true, "msg" => "Updated succesfull"]);
         } catch (Exception $exception) {
             return response()->json(["status" => false, "msg" => $exception]);
         }

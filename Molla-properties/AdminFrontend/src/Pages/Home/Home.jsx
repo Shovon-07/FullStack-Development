@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState, useRef } from "react";
+import { lazy, Suspense, useState, useRef, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { UseAuthContext } from "../../Context/AuthContext";
 const JoditEditor = lazy(() => import("jodit-react"));
@@ -17,10 +17,10 @@ const Home = () => {
 
   //___ Banner section start ___//
   const [homeContentInput, setHomeContentInput] = useState({
-    banner_title: "",
-    banner_moto: "",
+    BannerTitle: "",
+    BannerMoto: "",
   });
-  const [bannerImg, setBannerImg] = useState();
+  const [BannerImage, setBannerImg] = useState();
 
   const HandleHomeContentInput = (e) => {
     setHomeContentInput({
@@ -33,27 +33,22 @@ const Home = () => {
     e.preventDefault();
 
     if (
-      homeContentInput.banner_title == "" &&
-      homeContentInput.banner_moto == "" &&
+      homeContentInput.BannerTitle == "" &&
+      homeContentInput.BannerMoto == "" &&
       bannerImg == null
     ) {
       toast.error("You don't edit anything");
     } else {
       const payload = new FormData();
-      payload.append("banner_title", homeContentInput.banner_title);
-      payload.append("banner_moto", homeContentInput.banner_moto);
-      payload.append("banner_img", bannerImg);
+      payload.append("banner_title", homeContentInput.BannerTitle);
+      payload.append("banner_moto", homeContentInput.BannerMoto);
+      payload.append("banner_img", BannerImage);
 
       setLoader(true);
       await AxiosClient.post("/update-banner", payload)
         .then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
-            setHomeContentInput({
-              banner_title: "",
-              banner_moto: "",
-              banner_img: "",
-            });
             setBannerImg(null);
             setLoader(false);
           } else {
@@ -91,9 +86,6 @@ const Home = () => {
         .then((res) => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
-            setVissionTxt("");
-            setMissionTxt("");
-            setInvestUs("");
             setLoader(false);
           } else {
             setLoader(false);
@@ -108,6 +100,29 @@ const Home = () => {
   };
   //___ Mission vission section end ___//
 
+  //___ Get home content start ___//
+  const GetHomeContent = async () => {
+    setLoader(true);
+    await AxiosClient.get("/home-content")
+      .then((response) => {
+        setHomeContentInput(response.data.data[0]);
+        setVissionTxt(response.data.data[0].OurVission);
+        setMissionTxt(response.data.data[0].OurMission);
+        setInvestUs(response.data.data[0].InvestWithUs);
+
+        setLoader(false);
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+        setLoader(false);
+      });
+  };
+  //___ Get home content end ___//
+
+  useEffect(() => {
+    GetHomeContent();
+  }, []);
+
   return (
     <div className="Home">
       <h3 className="pageTitle">Home</h3>
@@ -119,21 +134,21 @@ const Home = () => {
         <form encType="multipart/form-data" onSubmit={SubmitBannerSection}>
           <input
             type="text"
-            name="banner_title"
+            name="BannerTitle"
             placeholder="Enter banner title"
-            value={homeContentInput.banner_title}
+            value={homeContentInput.BannerTitle}
             onChange={HandleHomeContentInput}
           />
           <input
             type="text"
-            name="banner_moto"
+            name="BannerMoto"
             placeholder="Enter moto"
-            value={homeContentInput.banner_moto}
+            value={homeContentInput.BannerMoto}
             onChange={HandleHomeContentInput}
           />
           <input
             type="file"
-            name="bannerImg"
+            name="BannerImage"
             placeholder="Enter banner image"
             onChange={(e) => {
               setBannerImg(e.target.files[0]);
