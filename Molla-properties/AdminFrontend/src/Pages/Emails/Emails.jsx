@@ -19,12 +19,11 @@ import Loader from "../../Components/Loader/Loader";
 import AxiosClient from "../../assets/Js/AxiosClient";
 
 const Emails = () => {
-  const { setLoader } = UseAuthContext();
+  const { setLoader, reloadData, setReloadData } = UseAuthContext();
 
   const [apiData, setApiData] = useState([]);
   const [searchData, setSearchData] = useState("");
   const [filteredApiData, setFilteredApiData] = useState([]);
-  const [relodeTable, setRelodeTable] = useState(false);
 
   const getApiData = async () => {
     setLoader(true);
@@ -68,6 +67,7 @@ const Emails = () => {
     {
       name: "Action",
       width: "250px",
+      // style: "background:red",
       cell: (row) => {
         return (
           <div className="d-flex gap-20">
@@ -106,7 +106,7 @@ const Emails = () => {
           if (res.data.status == true) {
             toast.success(res.data.msg);
             setLoader(false);
-            setRelodeTable((prev) => !prev);
+            setReloadData((prev) => !prev);
             console.clear();
           } else {
             setLoader(false);
@@ -131,9 +131,9 @@ const Emails = () => {
     await AxiosClient.post("/mark-as-unread", payload)
       .then((res) => {
         if (res.data.status == true) {
-          toast.success(res.data.msg);
+          // toast.success(res.data.msg);
           setLoader(false);
-          setRelodeTable((prev) => !prev);
+          setReloadData((prev) => !prev);
           console.clear();
         } else {
           setLoader(false);
@@ -157,7 +157,7 @@ const Emails = () => {
 
   useEffect(() => {
     getApiData();
-  }, [relodeTable]);
+  }, [reloadData]);
 
   return (
     <div className="Emails">

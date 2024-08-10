@@ -11,7 +11,7 @@ import "./EmailNotify.css";
 import AxiosClient from "../../assets/Js/AxiosClient";
 
 const EmailNotify = (props) => {
-  const { setLoader } = UseAuthContext();
+  const { setLoader, reloadData, setReloadData } = UseAuthContext();
   const { handleNotificationDropdown, notificationDropdownVal } = props;
 
   const [notificationData, setNotificationData] = useState([]);
@@ -50,6 +50,7 @@ const EmailNotify = (props) => {
     await AxiosClient.post("/update-email-status")
       .then((res) => {
         setNotificationStatus(res.data.data);
+        setReloadData((prev) => !prev);
       })
       .catch((e) => {
         console.log(`Error = ${e}`);
@@ -59,7 +60,7 @@ const EmailNotify = (props) => {
   useEffect(() => {
     GetNotificationData();
     GetNotificationStatus();
-  }, []);
+  }, [reloadData]);
 
   return (
     <div className="Notify">
