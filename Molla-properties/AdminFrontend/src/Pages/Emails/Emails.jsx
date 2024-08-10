@@ -185,7 +185,7 @@ const Emails = () => {
           pagination
           fixedHeader
           fixedHeaderScrollHeight="400px"
-          highlightOnHover
+          // highlightOnHover
         />
       </Suspense>
 
