@@ -87,7 +87,12 @@ const EmailNotify = (props) => {
           <p className="dropdownTitle">Notification</p>
           {notificationData.map((items, index) => {
             return (
-              <li className="c_pointer" key={index}>
+              <li
+                className={
+                  notificationStatus == 1 ? "c_pointer unRead" : "c_pointer"
+                }
+                key={index}
+              >
                 <a>
                   <p className="name">
                     {items.Name.length > 30
@@ -99,11 +104,6 @@ const EmailNotify = (props) => {
                       ? items.Subject.slice(0, 27) + "..."
                       : items.Subject}
                   </h4>
-                  {/* <p className="description">
-                      {items.Message.length > 55
-                        ? items.Message.slice(0, 55) + "..."
-                        : items.Message}
-                    </p> */}
                   <p
                     className="time"
                     style={{

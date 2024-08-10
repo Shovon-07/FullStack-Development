@@ -63,3 +63,7 @@
   margin: 7px 0;
   font-size: 0.9rem;
 }
+
+.Notify .notification .unRead {
+  background: var(--dim-light);
+}
