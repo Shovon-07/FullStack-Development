@@ -93,4 +93,31 @@ class AdminCommonController extends Controller
             return response()->json(["status" => false, "msg" => $exception]);
         }
     }
+
+    public function GetAboutUs(Request $request)
+    {
+        try {
+            $aboutUsTxt = HomeContent::select("AboutUsTxt")->get();
+            return response()->json(["status" => true, "msg" => "Data founded", "data" => $aboutUsTxt]);
+
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => "No Data founded"]);
+        }
+    }
+    public function UpdateAboutUs(Request $request)
+    {
+        try {
+            $id = 1;
+
+            if ($request->input("aboutus_txt")) {
+                $aboutus_txt = $request->input("aboutus_txt");
+                HomeContent::where("id", $id)->update([
+                    "AboutUsTxt" => $aboutus_txt,
+                ]);
+            }
+            return response()->json(["status" => true, "msg" => "Updated succesfull"]);
+        } catch (Exception $exception) {
+            return response()->json(["status" => false, "msg" => $exception]);
+        }
+    }
 }

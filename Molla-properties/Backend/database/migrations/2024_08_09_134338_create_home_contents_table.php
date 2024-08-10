@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->longText("OurVission");
             $table->longText("OurMission");
             $table->longText("InvestWithUs");
+            $table->longText("AboutUsTxt");
 
             $table->timestamp("Created_at")->useCurrent();
             $table->timestamp("Updated_at")->useCurrent()->useCurrentOnUpdate();

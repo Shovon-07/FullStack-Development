@@ -121,6 +121,9 @@ Route::prefix("/admin")->group(function () {
             Route::get("/home-content", "GetHomeContent");
             Route::post("/update-banner", "UpdateBanner");
             Route::post("/update-mission-vission", "UpdateMissionVission");
+
+            Route::get("/get-about-us", "GetAboutUs");
+            Route::get("/update-about-us", "UpdateAboutUs");
         });
     });
 });
