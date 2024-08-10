@@ -49,13 +49,14 @@ class MailForDbController extends Controller
             return response()->json(["status" => false, "msg" => "No Data founded"]);
         }
     }
-    public function UpdateEmailStatus()
+    public function MarkAsRead(Request $request)
     {
-        $update = MailForDb::where("Status", 1)->update([
+        $email_id = $request->input("email_id");
+        $markRead = MailForDb::where("id", $email_id)->where("Status", 1)->update([
             "Status" => 0
         ]);
-        if ($update) {
-            return response()->json(["status" => true, "msg" => "Data founded", "data" => 0]);
+        if ($markRead) {
+            return response()->json(["status" => true, "msg" => "Marked as read",]);
         } else {
             return response()->json(["status" => false, "msg" => "Something went wrong"]);
         }
@@ -63,10 +64,10 @@ class MailForDbController extends Controller
     public function MarkAsUnread(Request $request)
     {
         $email_id = $request->input("email_id");
-        $update = MailForDb::where("id", $email_id)->where("Status", 0)->update([
+        $markUnread = MailForDb::where("id", $email_id)->where("Status", 0)->update([
             "Status" => 1
         ]);
-        if ($update) {
+        if ($markUnread) {
             return response()->json(["status" => true, "msg" => "Marked as unread",]);
         } else {
             return response()->json(["status" => false, "msg" => "Something went wrong"]);

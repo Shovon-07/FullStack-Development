@@ -46,8 +46,8 @@ const EmailNotify = (props) => {
   };
 
   // Update notification status
-  const UpdateNotificationStatus = async () => {
-    await AxiosClient.post("/update-email-status")
+  const MarkRead = async (emailId) => {
+    await AxiosClient.post("/mark-as-read", { email_id: emailId })
       .then((res) => {
         setNotificationStatus(res.data.data);
         setReloadData((prev) => !prev);
@@ -94,7 +94,7 @@ const EmailNotify = (props) => {
               <li
                 className={`c_pointer ${items.Status == 1 ? "unRead" : ""}`}
                 key={index}
-                onClick={UpdateNotificationStatus}
+                onClick={() => MarkRead(items.id)}
               >
                 <a>
                   <p className="notifyName">
