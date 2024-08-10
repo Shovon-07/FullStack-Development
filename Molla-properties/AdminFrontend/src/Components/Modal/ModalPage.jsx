@@ -18,9 +18,6 @@ import "./ModalPage.css";
 import "../../assets/Css/TextEditor.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-//___ Components ___//
-// import Loader from "../Loader/Loader";
-
 const style = {
   position: "absolute",
   top: "50%",
@@ -69,7 +66,6 @@ const ModalPage = (props) => {
     total_plot: "",
     contact_no: "",
     project_map: "",
-    // features: "",
     project_status: "",
 
     honClient_name: "",
@@ -166,10 +162,10 @@ const ModalPage = (props) => {
                 total_plot: "",
                 contact_no: "",
                 project_map: "",
-                features: "",
                 project_status: "",
               });
-              setProjectImage();
+              setFeatures("");
+              setProjectImage(null);
               handleClose();
 
               setLoader(false);

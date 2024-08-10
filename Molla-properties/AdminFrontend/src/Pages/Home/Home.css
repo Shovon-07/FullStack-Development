@@ -3,11 +3,11 @@
   height: auto;
   background: var(--dark-1);
   padding: 30px 20px;
+  margin-bottom: 50px;
 }
 .Home .card .cardTitle {
   color: var(--light-1);
   font-size: 1.3rem;
-  margin-bottom: 20px;
   text-align: center;
 }
 .Home .card form {

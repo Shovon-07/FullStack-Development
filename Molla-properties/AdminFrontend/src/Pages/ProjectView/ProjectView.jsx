@@ -4,7 +4,6 @@ import { UseAuthContext } from "../../Context/AuthContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ToastContainer, toast } from "react-toastify";
 import Tooltip from "@mui/material/Tooltip";
-// import JoditEditor from "jodit-react";
 const JoditEditor = lazy(() => import("jodit-react"));
 
 //___ Icons ___//
@@ -56,8 +55,6 @@ const ProjectView = () => {
       Total_plot: "",
       Contact_no: "",
       Project_map: "",
-      // Features: "",
-      // Project_status: "",
     },
   ]);
   const editor = useRef(null);
@@ -262,9 +259,9 @@ const ProjectView = () => {
               Total_plot: "",
               Contact_no: "",
               Project_map: "",
-              // Features: "",
             });
-            setProjectImage();
+            setFeatures("");
+            setProjectImage(null);
             setProjectStatus("0");
 
             setLoader(false);
