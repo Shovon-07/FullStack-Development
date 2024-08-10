@@ -42,43 +42,41 @@
 .Notify .notification .dorpdown::-webkit-scrollbar {
   display: none;
 }
-.Notify .notification .dorpdown li {
-  border-bottom: 0.1px solid var(--light-3);
-}
-.Notify .notification .dorpdown li a {
+.Notify .notification .dorpdown a {
   width: 100%;
   display: inline-block;
   padding: 12px 20px 2px 20px;
-  pointer-events: none;
+  border-bottom: 0.1px solid var(--light-3);
+  transition: var(--trans);
 }
-.Notify .notification .dorpdown li:last-child {
+.Notify .notification .dorpdown a:last-child {
   border-bottom: none;
 }
-.Notify .notification .dorpdown li .msgUserPic,
-.Notify .message .dorpdown li .msgUserPic {
+.Notify .notification .dorpdown a .msgUserPic,
+.Notify .message .dorpdown a .msgUserPic {
   width: 40px;
   height: 40px;
   border-radius: 50%;
 }
-.Notify .notification .dorpdown li .notifyName {
+.Notify .notification .dorpdown a .notifyName {
   color: var(--orange);
   margin-bottom: 8px;
   font-weight: 400;
 }
-.Notify .dorpdown li .notifyTitle {
+.Notify .dorpdown a .notifyTitle {
   font-weight: 400;
 }
-.Notify .dorpdown li .notifyTime {
+.Notify .dorpdown a .notifyTime {
   margin: 7px 0;
   font-size: 0.9rem;
   font-weight: 400;
 }
 
-.Notify li.unRead {
+.Notify a.unRead {
   background: var(--dim-light);
 }
-.Notify li.unRead .notifyName,
-.Notify li.unRead .notifyTitle,
-.Notify li.unRead .notifyTime {
+.Notify a.unRead .notifyName,
+.Notify a.unRead .notifyTitle,
+.Notify a.unRead .notifyTime {
   font-weight: bold;
 }

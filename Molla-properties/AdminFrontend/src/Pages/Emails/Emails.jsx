@@ -72,7 +72,7 @@ const Emails = () => {
           <div className="d-flex gap-20">
             <a
               className="btn c_pointer"
-              style={{ fontSize: "0.8rem", padding: "5px" }}
+              style={{ fontSize: "0.9rem", padding: "5px" }}
               onClick={() => MarkAsUnread(row.id)}
             >
               Mark as unread

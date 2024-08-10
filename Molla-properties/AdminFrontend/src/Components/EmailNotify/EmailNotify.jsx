@@ -92,34 +92,33 @@ const EmailNotify = (props) => {
           <p className="dropdownTitle">Notification</p>
           {notificationData.map((items, index) => {
             return (
-              <li
+              <Link
+                to={`/view-email/${items.id}`}
                 className={`c_pointer ${items.Status == 1 ? "unRead" : ""}`}
                 key={index}
                 onClick={() => MarkRead(items.id)}
               >
-                <Link to={`/view-email/${items.id}`} className="c_pointer">
-                  <p className="notifyName">
-                    {items.Name.length > 30
-                      ? items.Name.slice(0, 30) + "..."
-                      : items.Name}
-                  </p>
-                  <h4 className="notifyTitle">
-                    {items.Subject.length > 27
-                      ? items.Subject.slice(0, 27) + "..."
-                      : items.Subject}
-                  </h4>
-                  <p
-                    className="notifyTime"
-                    style={{
-                      fontSize: "0.8rem",
-                      textAlign: "right",
-                      marginTop: "10px",
-                    }}
-                  >
-                    {items.Created_at.slice(0, 10)}
-                  </p>
-                </Link>
-              </li>
+                <p className="notifyName">
+                  {items.Name.length > 30
+                    ? items.Name.slice(0, 30) + "..."
+                    : items.Name}
+                </p>
+                <h4 className="notifyTitle">
+                  {items.Subject.length > 27
+                    ? items.Subject.slice(0, 27) + "..."
+                    : items.Subject}
+                </h4>
+                <p
+                  className="notifyTime"
+                  style={{
+                    fontSize: "0.8rem",
+                    textAlign: "right",
+                    marginTop: "10px",
+                  }}
+                >
+                  {items.Created_at.slice(0, 10)}
+                </p>
+              </Link>
             );
           })}
         </ul>
