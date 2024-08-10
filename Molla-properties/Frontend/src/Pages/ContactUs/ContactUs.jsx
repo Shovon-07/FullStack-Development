@@ -133,14 +133,7 @@ const ContactUs = () => {
                 onChange={handleInput}
               />
             </div>
-            <div className="inputWrapper">
-              {/* <textarea
-                name="message"
-                placeholder="Message"
-                value={input.message}
-                onChange={handleInput}
-                rows={5}
-              ></textarea> */}
+            <div className="inputWrapper textEditor">
               <Suspense fallback={<Loader />}>
                 <JoditEditor
                   ref={editor}

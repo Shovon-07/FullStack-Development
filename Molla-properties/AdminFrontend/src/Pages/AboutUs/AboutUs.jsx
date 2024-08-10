@@ -70,7 +70,7 @@ const AboutUs = () => {
     <div className="AboutUs">
       <h3 className="pageTitle">AboutUs</h3>
 
-      <div className="card" style={{ color: "var(--dark-1)" }}>
+      <div style={{ color: "var(--dark-1)" }}>
         <form encType="multipart/form-data" onSubmit={SubmitAboutUsTxt}>
           <h2 className="cardTitle">Vission</h2>
           <Suspense fallback={<Loader />}>

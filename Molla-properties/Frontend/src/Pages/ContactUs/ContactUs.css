@@ -37,8 +37,8 @@
   justify-content: center;
 }
 .ContactUs .right form {
-  width: 70%;
-  max-width: 500px;
+  width: 100%;
+  max-width: 700px;
   min-width: 350px;
   justify-content: center;
   flex-direction: column;
@@ -68,6 +68,9 @@
   border-radius: 5px;
   resize: vertical;
 }
+.ContactUs .right .textEditor {
+  color: var(--dark-1) !important;
+}
 .ContactUs .right .btn {
   font-size: 1.2rem;
   font-weight: 500;
@@ -85,14 +88,6 @@
   .ContactUs .left {
     flex-basis: 100%;
   }
-  .ContactUs .left .scanNow img {
-    width: 200px;
-  }
-  .ContactUs .left .contactInfo h1 {
-    font-size: 1.2rem;
-  }
-}
-@media screen and (max-width: 780px) {
   .ContactUs .contactWrapper {
     flex-direction: column-reverse;
     align-items: center;
@@ -105,4 +100,13 @@
   .ContactUs .right {
     width: 100%;
   }
+  .ContactUs .left .scanNow img {
+    width: 200px;
+  }
+  .ContactUs .left .contactInfo h1 {
+    font-size: 1.2rem;
+  }
 }
+/* @media screen and (max-width: 780px) {
+  
+} */
