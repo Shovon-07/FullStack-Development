@@ -9,6 +9,12 @@
 .jodit-container:not(.jodit_inline) .jodit-workplace {
   min-height: 250px !important;
 }
+.jodit .jodit-workplace .jodit-wysiwyg,
+.jodit .jodit-workplace .jodit-wysiwyg_iframe,
+.jodit-container .jodit-workplace .jodit-wysiwyg,
+.jodit-container .jodit-workplace .jodit-wysiwyg_iframe {
+  min-height: 250px !important;
+}
 .jodit-status-bar a.jodit-status-bar-link {
   display: none !important;
 }
