@@ -35,6 +35,8 @@ const AboutUs = () => {
     <div className="AboutUs page content">
       <Helmet>
         <title>About us</title>
+        <meta name="description" content="About molla properties" />
+        <meta name="keywords" content="About molla properties" />
       </Helmet>
 
       <div className="d-flex pageTitle">

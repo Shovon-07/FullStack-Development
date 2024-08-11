@@ -73,6 +73,10 @@ const ContactUs = () => {
 
   return (
     <div className="ContactUs page content">
+      <Helmet>
+        <title>Contact us</title>
+      </Helmet>
+
       <div className="d-flex pageTitle">
         <h3>Contact us</h3>
       </div>

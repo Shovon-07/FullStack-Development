@@ -45,11 +45,13 @@ const NewsAndEvent = () => {
   return (
     <div className="NewsAndEvent page content">
       <Helmet>
-        <title>News And Events</title>
+        <title>News And Event</title>
+        <meta name="description" content="এগুলো সব মোল্লা প্রোপারটির নিউজ" />
+        <meta name="keywords" content="মোল্লা প্রোপারটির নিউজ" />
       </Helmet>
 
       <div className="d-flex pageTitle">
-        <h3>News And Events</h3>
+        <h3>News And Event</h3>
       </div>
       {/* For go to top */}
       <input

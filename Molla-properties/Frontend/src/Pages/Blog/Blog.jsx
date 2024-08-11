@@ -43,6 +43,8 @@ const Blog = () => {
     <div className="Blog page content">
       <Helmet>
         <title>Our Blogs</title>
+        <meta name="description" content="এগুলো সব মোল্লা প্রোপারটির ব্লগ" />
+        <meta name="keywords" content="মোল্লা প্রোপারটির ব্লগ" />
       </Helmet>
 
       <div className="d-flex pageTitle">

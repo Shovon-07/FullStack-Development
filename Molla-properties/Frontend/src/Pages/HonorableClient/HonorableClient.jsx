@@ -46,6 +46,11 @@ const HonorableClient = () => {
     <div className="HonorableClient page content">
       <Helmet>
         <title>Honorable Client</title>
+        <meta
+          name="description"
+          content="এগুলো সব মোল্লা প্রোপারটির ক্লায়েন্ট"
+        />
+        <meta name="keywords" content="মোল্লা প্রোপারটির ক্লায়েন্ট" />
       </Helmet>
 
       <div className="d-flex pageTitle">

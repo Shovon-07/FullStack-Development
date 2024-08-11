@@ -47,6 +47,11 @@ const OngoingProject = () => {
     <div className="OngoingProject page content">
       <Helmet>
         <title>Ongoing Projects</title>
+        <meta
+          name="description"
+          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে"
+        />
+        <meta name="keywords" content="রাজশাহীতে প্লট ও জমি বিক্রয়" />
       </Helmet>
 
       <div className="d-flex pageTitle">

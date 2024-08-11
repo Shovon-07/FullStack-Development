@@ -57,6 +57,8 @@ const Gallery = () => {
     <div className="Gallery page content">
       <Helmet>
         <title>Image Gallery</title>
+        <meta name="description" content="এগুলো সব মোল্লা প্রোপারটির ছবি" />
+        <meta name="keywords" content="মোল্লা প্রোপারটির ছবি" />
       </Helmet>
 
       <div className="d-flex pageTitle">
