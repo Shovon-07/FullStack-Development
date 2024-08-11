@@ -63,14 +63,14 @@
   padding: 10px 15px;
   font-size: 1rem;
   outline: none;
-  border: 1px solid var(--light-2);
+  border: 1px solid var(--light-4);
   background: var(--light-0);
   border-radius: 5px;
   resize: vertical;
 }
-.ContactUs .right .textEditor {
+/* .ContactUs .right .textEditor {
   color: #1f1f1f !important;
-}
+} */
 .ContactUs .right .btn {
   font-size: 1.2rem;
   font-weight: 500;

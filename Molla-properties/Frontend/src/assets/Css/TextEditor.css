@@ -1,20 +1,26 @@
-/* .jodit-container:not(.jodit_inline) {
-  border: 1px solid var(--light-1);
-}
-.jodit-toolbar__box:not(:empty) {
-  background: var(--dark-1) !important;
-  border-bottom: 1px solid var(--light-1);
-} */
-
 .jodit-container:not(.jodit_inline) .jodit-workplace {
   min-height: 250px !important;
+}
+.jodit-toolbar__box:not(:empty):not(:empty),
+.jodit-status-bar {
+  background: var(--light-0) !important;
+  color: var(--dark-1) !important;
+  border-color: var(--light-0) !important;
 }
 .jodit .jodit-workplace .jodit-wysiwyg,
 .jodit .jodit-workplace .jodit-wysiwyg_iframe,
 .jodit-container .jodit-workplace .jodit-wysiwyg,
 .jodit-container .jodit-workplace .jodit-wysiwyg_iframe {
   min-height: 250px !important;
+  background: var(--light-0) !important;
+  color: var(--dark-1) !important;
+}
+.jodit-container:not(.jodit_inline) {
+  border: 1px solid var(--light-4) !important;
+  background: var(--light-0) !important;
 }
 .jodit-status-bar a.jodit-status-bar-link {
   display: none !important;
 }
+
+/* .jodit-toolbar-editor-collection_size_middle.jodit-toolbar-editor-collection_mode_horizontal {repeating-linear-gradient(transparent 0,transparent calc(calc(14px + calc((14px - 4px)*2) + 2px*2) - 1px),#dadada calc(14px + calc((14px - 4px)*2) + 2px*2))} */

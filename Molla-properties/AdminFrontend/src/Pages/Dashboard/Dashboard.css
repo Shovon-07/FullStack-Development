@@ -18,7 +18,10 @@
   background: -webkit-linear-gradient(var(--main-color), #05a2fd);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(-3px 3px var(--light-3));
+  filter: drop-shadow(-2px 2px var(--light-1));
+}
+.Dashboard .dashboardTxt h1::selection {
+  -webkit-text-fill-color: var(--light-1);
 }
 
 /* .Dashboard .mainBox {

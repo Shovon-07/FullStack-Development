@@ -206,8 +206,8 @@ const Header = (props) => {
           <a className="d-flex gap-10">
             <img src={`${imgPath}${userInfo.Image}`} alt="" />
             <span>
-              {userInfo.Name.length > 10
-                ? userInfo.Name.slice(0, 10) + "..."
+              {userInfo.Name.length > 15
+                ? userInfo.Name.slice(0, 15) + "..."
                 : userInfo.Name}
             </span>
             <IoIosArrowForward
