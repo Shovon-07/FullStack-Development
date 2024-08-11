@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useOutletContext } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 //___ Css ___//
 import "./NewsAndEvent.css";
@@ -43,6 +44,10 @@ const NewsAndEvent = () => {
 
   return (
     <div className="NewsAndEvent page content">
+      <Helmet>
+        <title>News And Events</title>
+      </Helmet>
+
       <div className="d-flex pageTitle">
         <h3>News And Events</h3>
       </div>

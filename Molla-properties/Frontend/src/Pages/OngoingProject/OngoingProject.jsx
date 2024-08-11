@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Helmet } from "react-helmet";
 
 //___ Css __//
 import "../../assets/Css/Card.css";
@@ -44,6 +45,10 @@ const OngoingProject = () => {
 
   return (
     <div className="OngoingProject page content">
+      <Helmet>
+        <title>Ongoing Projects</title>
+      </Helmet>
+
       <div className="d-flex pageTitle">
         <h3>Ongoing Projects</h3>
       </div>

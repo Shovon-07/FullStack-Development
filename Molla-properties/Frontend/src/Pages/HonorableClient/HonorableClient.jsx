@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useOutletContext } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 //___ Css __//
 import "../../assets/Css/Card.css";
@@ -43,6 +44,10 @@ const HonorableClient = () => {
 
   return (
     <div className="HonorableClient page content">
+      <Helmet>
+        <title>Honorable Client</title>
+      </Helmet>
+
       <div className="d-flex pageTitle">
         <h3>Honorable Client</h3>
       </div>

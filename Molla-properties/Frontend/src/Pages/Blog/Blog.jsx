@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 //___ Css ___//
 import "./Blog.css";
@@ -40,6 +41,10 @@ const Blog = () => {
 
   return (
     <div className="Blog page content">
+      <Helmet>
+        <title>Our Blogs</title>
+      </Helmet>
+
       <div className="d-flex pageTitle">
         <h3>Our Blogs</h3>
       </div>

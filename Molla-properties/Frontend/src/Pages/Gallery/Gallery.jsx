@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useOutletContext } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import LightGallery from "lightgallery/react";
 import lgThumbnail from "lightgallery/plugins/thumbnail";
@@ -54,6 +55,10 @@ const Gallery = () => {
 
   return (
     <div className="Gallery page content">
+      <Helmet>
+        <title>Image Gallery</title>
+      </Helmet>
+
       <div className="d-flex pageTitle">
         <h3>Image Gallery</h3>
       </div>

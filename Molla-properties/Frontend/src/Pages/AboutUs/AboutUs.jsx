@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { useOutletContext } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 //___ Css ___//
 import "./AboutUs.css";
@@ -33,6 +33,10 @@ const AboutUs = () => {
 
   return (
     <div className="AboutUs page content">
+      <Helmet>
+        <title>About us</title>
+      </Helmet>
+
       <div className="d-flex pageTitle">
         <h3>About us</h3>
       </div>
