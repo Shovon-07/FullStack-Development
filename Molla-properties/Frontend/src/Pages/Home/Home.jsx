@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useEffect, useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useOutletContext } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 //___ Css __//
 import "./Home.css";
@@ -90,6 +91,31 @@ const Home = () => {
 
   return (
     <div className="Home page">
+      <Helmet>
+        <title>Molla properties</title>
+        <meta
+          name="description"
+          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে"
+        />
+        <meta
+          name="keywords"
+          content="রাজশাহীতে প্লট ও জমি বিক্রয়,প্লট ও জমি,জমি বিক্রয়,প্লট বিক্রয়"
+        />
+        <meta
+          name="author"
+          content="Name: Al jubair shovon, Contact no: 01767692422, Email: aljubairshovon@gmail.com, Facebook: https://www.facebook.com/aljubair.shovon"
+        />
+        <meta property="og:title" content="প্লট আকারে জমি বিক্রয়" />
+        <meta
+          property="og:description"
+          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে"
+        />
+        <meta
+          property="og:image"
+          content="https://backend.molla-properties.com/public/Images/Utility/Logo.png"
+        />
+      </Helmet>
+      <h1 className="d-none">প্লট আকারে জমি বিক্রয়</h1>
       <div className="homeImg d-flex">
         <LazyLoadImage
           src={`${imgPath}${homeContent.BannerImage}`}

@@ -26,7 +26,7 @@ function My_Carousel(props) {
 
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1600,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -35,18 +35,23 @@ function My_Carousel(props) {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 1000,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 2,
+          infinite: true,
+          dots: true,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 1,
+          infinite: true,
+          dots: true,
         },
       },
     ],
@@ -97,7 +102,7 @@ function My_Carousel(props) {
       <Slider {...settings}>
         {dbData.map((items, index) => {
           return (
-            <div className="card" key={index}>
+            <div className="carousel-card" key={index}>
               <div className="img">
                 <LazyLoadImage
                   src={`${imgPath}${items.Image}`}

@@ -54,7 +54,7 @@ const HonorableClient = () => {
       </Helmet>
 
       <div className="d-flex pageTitle">
-        <h3>Honorable Client</h3>
+        <h1>Honorable Client</h1>
       </div>
       {/* For go to top */}
       <input

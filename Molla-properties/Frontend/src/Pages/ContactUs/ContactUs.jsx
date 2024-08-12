@@ -78,7 +78,7 @@ const ContactUs = () => {
       </Helmet>
 
       <div className="d-flex pageTitle">
-        <h3>Contact us</h3>
+        <h1>Contact us</h1>
       </div>
       {/* For go to top */}
       <input

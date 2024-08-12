@@ -51,7 +51,7 @@ const NewsAndEvent = () => {
       </Helmet>
 
       <div className="d-flex pageTitle">
-        <h3>News And Event</h3>
+        <h1>News And Event</h1>
       </div>
       {/* For go to top */}
       <input

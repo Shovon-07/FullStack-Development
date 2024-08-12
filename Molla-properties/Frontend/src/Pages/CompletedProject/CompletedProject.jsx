@@ -54,7 +54,7 @@ const CompletedProject = () => {
       </Helmet>
 
       <div className="d-flex pageTitle">
-        <h3>Completed Projects</h3>
+        <h1>Completed Projects</h1>
       </div>
       {/* For go to top */}
       <input

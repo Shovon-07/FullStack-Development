@@ -54,7 +54,7 @@ const UpcomingProject = () => {
       </Helmet>
 
       <div className="d-flex pageTitle">
-        <h3>Upcoming Projects</h3>
+        <h1>Upcoming Projects</h1>
       </div>
       {/* For go to top */}
       <input

@@ -48,7 +48,7 @@ const Blog = () => {
       </Helmet>
 
       <div className="d-flex pageTitle">
-        <h3>Our Blogs</h3>
+        <h1>Our Blogs</h1>
       </div>
       {/* For go to top */}
       <input

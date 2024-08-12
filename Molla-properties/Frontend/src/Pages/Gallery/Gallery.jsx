@@ -62,7 +62,7 @@ const Gallery = () => {
       </Helmet>
 
       <div className="d-flex pageTitle">
-        <h3>Image Gallery</h3>
+        <h1>Image Gallery</h1>
       </div>
       {/* For go to top */}
       <input
