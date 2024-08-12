@@ -48,37 +48,12 @@ function My_Carousel(props) {
       },
     ],
   };
+
   return (
     <div className="slider-container My_Carousel">
       <Slider {...settings}>
         {dbData.map((items, index) => {
           return (
-            // <div className="card" key={index}>
-            //   <div className="img">
-            //     <LazyLoadImage
-            //       src={`${imgPath}${items.Image}`}
-            //       effect="blur"
-            //       wrapperProps={{
-            //         style: { transitionDelay: "1s" },
-            //       }}
-            //     />
-            //   </div>
-            //   <div className="txt d-flex">
-            //     <h3 className="title">
-            //       {items.Title.length > 70
-            //         ? items.Title.slice(0, 70) + " ..."
-            //         : items.Title}
-            //     </h3>
-            //     <div style={{ textAlign: "center" }}>
-            //       <NavLink
-            //         to={`/project-details/${items.id}`}
-            //         className="readMoreBtn btn c_pointer"
-            //       >
-            //         Read more
-            //       </NavLink>
-            //     </div>
-            //   </div>
-            // </div>
             <div className="card" key={index}>
               <div className="img">
                 <LazyLoadImage

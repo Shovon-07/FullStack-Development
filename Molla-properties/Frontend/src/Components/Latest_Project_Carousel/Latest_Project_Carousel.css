@@ -1,10 +1,10 @@
 .Latest_Project_Carousel .slick-track {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-radius: 10px;
-  gap: 50px !important;
-  width: fit-content !important;
+  gap: 50px;
+  /* width: fit-content !important; */
 }
 .Latest_Project_Carousel .slick-prev,
 .Latest_Project_Carousel .slick-prev::before,
@@ -21,7 +21,7 @@
   border: 1px solid var(--light-4);
   border-radius: 10px;
   height: 350px;
-  width: fit-content !important;
+  width: 100% !important;
   overflow: hidden;
   outline: none;
   position: relative;
