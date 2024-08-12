@@ -69,6 +69,7 @@ const UpcomingProject = () => {
             <div className="card" key={index}>
               <LazyLoadImage
                 src={`${imgPath}${items.Image}`}
+                alt="রাজশাহীতে প্লট আকারে জমি বিক্রয়"
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },

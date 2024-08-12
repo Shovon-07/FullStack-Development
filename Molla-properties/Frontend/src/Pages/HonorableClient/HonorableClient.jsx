@@ -69,6 +69,7 @@ const HonorableClient = () => {
             <div className="card" key={index}>
               <LazyLoadImage
                 src={`${imgPath}${items.HonorableClient_img}`}
+                alt="রাজশাহীতে প্লট আকারে জমি ক্রেতা"
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },

@@ -119,6 +119,7 @@ const Home = () => {
       <div className="homeImg d-flex">
         <LazyLoadImage
           src={`${imgPath}${homeContent.BannerImage}`}
+          alt="Molla properties"
           effect="blur"
           wrapperProps={{
             style: { transitionDelay: "1s" },
