@@ -23,7 +23,6 @@ const ContactUs = () => {
     name: "",
     email: "",
     subject: "",
-    // message: "",
   });
 
   const editor = useRef(null);

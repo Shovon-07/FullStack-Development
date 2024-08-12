@@ -9,7 +9,5 @@ import "./assets/Css/Var.css";
 import "./assets/Css/ScrollBar.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={Routes} />
-  </React.StrictMode>
+  <RouterProvider router={Routes} />
 );

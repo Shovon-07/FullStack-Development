@@ -26,7 +26,7 @@ const ProjectView = () => {
   };
 
   const [projectViewData, setProjectViewData] = useState([]);
-    const [projectDate, setProjectDate] = useState();
+  const [projectDate, setProjectDate] = useState();
   const getProjectViewData = async () => {
     try {
       setLoader(true);
@@ -93,9 +93,7 @@ const ProjectView = () => {
         style={{ height: "0", opacity: 0, pointerEvents: "none" }}
       />
       {/* For go to top */}
-      <p className="date">
-        Uploaded : {projectDate}
-      </p>
+      <p className="date">Uploaded : {projectDate}</p>
       <div className="tab-container">
         <div className="tab-box">
           <button

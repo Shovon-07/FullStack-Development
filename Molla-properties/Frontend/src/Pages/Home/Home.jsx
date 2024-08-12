@@ -137,7 +137,7 @@ const Home = () => {
       <div className="content">
         <section className="latestProject">
           <div className="d-flex pageTitle">
-            <h3>Latest Projects</h3>
+            <h1>Latest Projects</h1>
           </div>
           <Suspense fallback={<Loader />}>
             <Latest_Project_Carousel
@@ -149,7 +149,7 @@ const Home = () => {
 
         <section className="ourLocation">
           <div className="d-flex pageTitle">
-            <h3>Our location</h3>
+            <h1>Our location</h1>
           </div>
           <iframe
             src={homeContent.Map}
@@ -168,7 +168,7 @@ const Home = () => {
 
         <section className="latestProject">
           <div className="d-flex pageTitle">
-            <h3>Our Images</h3>
+            <h1>Our Images</h1>
           </div>
           <Suspense fallback={<Loader />}>
             <My_Carousel dbData={imagesData} imgPath={imgPath} />
