@@ -147,7 +147,7 @@ const Home = () => {
           </Suspense>
         </section>
 
-        <section className="ourLocation">
+        {/* <section className="ourLocation">
           <div className="d-flex pageTitle">
             <h1>Our location</h1>
           </div>
@@ -164,16 +164,16 @@ const Home = () => {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
-        </section>
+        </section> */}
 
-        <section className="latestProject">
+        {/* <section className="latestProject">
           <div className="d-flex pageTitle">
             <h1>Our Images</h1>
           </div>
           <Suspense fallback={<Loader />}>
             <My_Carousel dbData={imagesData} imgPath={imgPath} />
           </Suspense>
-        </section>
+        </section> */}
 
         <Suspense fallback={<Loader />}>
           <OurMissionVission homeContent={homeContent} />

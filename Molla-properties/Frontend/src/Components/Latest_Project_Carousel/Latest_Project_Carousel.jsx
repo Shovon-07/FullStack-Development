@@ -12,41 +12,39 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 function Latest_Project_Carousel(props) {
   const { dbData, imgPath } = props;
 
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    speed: 500,
+    slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true, // false
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    responsive: [
-      {
-        breakpoint: 1600,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
+
+    // responsive: [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //       infinite: true,
+    //       dots: true,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //       initialSlide: 1,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    // ],
   };
 
   return (
@@ -54,8 +52,8 @@ function Latest_Project_Carousel(props) {
       <Slider {...settings}>
         {dbData.map((items, index) => {
           return (
-            <div className="carousel-card" key={index}>
-              <div className="img">
+            <div className="Latest_Project_Carousel_card">
+              <div className="left">
                 <LazyLoadImage
                   src={`${imgPath}${items.Image}`}
                   effect="blur"
@@ -64,20 +62,8 @@ function Latest_Project_Carousel(props) {
                   }}
                 />
               </div>
-              <div className="txt d-flex">
-                <h3 className="title">
-                  {items.Title.length > 70
-                    ? items.Title.slice(0, 70) + " ..."
-                    : items.Title}
-                </h3>
-                <div style={{ textAlign: "center" }}>
-                  <NavLink
-                    to={`/project-details/${items.id}`}
-                    className="readMoreBtn btn c_pointer"
-                  >
-                    Read more
-                  </NavLink>
-                </div>
+              <div className="right">
+                <h1>This is right</h1>
               </div>
             </div>
           );

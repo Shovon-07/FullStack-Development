@@ -1,7 +1,0 @@
-==> Image requirement...
-
-* All images must be of the same size (width: 130px; height: 50px).
-
-* All pictures will have white background inside the sape.
-
-× There will be no background outside the shape of all images.
