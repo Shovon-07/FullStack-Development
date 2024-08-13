@@ -70,7 +70,8 @@ const ProjectView = () => {
         if (res.data.status == true) {
           setProjectViewData(res.data.data);
           setProjectDate(res.data.data.Created_at.substr(0, 10));
-          setProjectImage(res.data.data.Image);
+          setProjectImage(imgPath + res.data.data.Image);
+          // setProjectImgPath()
           setFeatures(res.data.data.Features);
           setLoader(false);
         } else {
@@ -204,8 +205,11 @@ const ProjectView = () => {
   const handleInputValue = (e) => {
     setProjectViewData({ ...projectViewData, [e.target.name]: e.target.value });
   };
+
+  const [projectImgPath, setProjectImgPath] = useState();
   const handleProjectImageInput = (e) => {
     setProjectImage(e.target.files[0]);
+    setProjectImgPath(URL.createObjectURL(e.target.files[0]));
   };
   const [projectStatus, setProjectStatus] = useState(0);
   const handleProjectStatus = (e) => {
@@ -263,6 +267,7 @@ const ProjectView = () => {
             });
             setFeatures("");
             setProjectImage(null);
+            setProjectImgPath(null);
             setProjectStatus("0");
 
             setLoader(false);
@@ -375,15 +380,24 @@ const ProjectView = () => {
           >
             <div className="left">
               <LazyLoadImage
-                src={`${imgPath}${projectImage}`}
+                src={projectImage}
                 effect="blur"
                 wrapperProps={{
                   style: { transitionDelay: "1s" },
                 }}
               />
+              {projectImgPath && (
+                <LazyLoadImage
+                  src={projectImgPath}
+                  effect="blur"
+                  wrapperProps={{
+                    style: { transitionDelay: "1s" },
+                  }}
+                />
+              )}
               <input
                 type="file"
-                style={{ marginTop: "50px" }}
+                style={{ marginTop: "50px" }} //---
                 onChange={handleProjectImageInput}
               />
             </div>
