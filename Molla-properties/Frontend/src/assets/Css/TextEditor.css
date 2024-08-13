@@ -23,4 +23,6 @@
   display: none !important;
 }
 
-/* .jodit-toolbar-editor-collection_size_middle.jodit-toolbar-editor-collection_mode_horizontal {repeating-linear-gradient(transparent 0,transparent calc(calc(14px + calc((14px - 4px)*2) + 2px*2) - 1px),#dadada calc(14px + calc((14px - 4px)*2) + 2px*2))} */
+.jodit-ui-group_group_list {
+  display: none !important;
+}
