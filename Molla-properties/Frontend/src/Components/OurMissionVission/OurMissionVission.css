@@ -6,6 +6,7 @@
   box-shadow: var(--shadow);
   color: var(--dark-1);
   padding: 20px;
+  width: 100%;
   max-width: 1000px;
   overflow: hidden;
 }

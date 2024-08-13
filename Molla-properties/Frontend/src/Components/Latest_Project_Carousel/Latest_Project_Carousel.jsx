@@ -29,13 +29,16 @@ function Latest_Project_Carousel(props) {
           return (
             <div className="Latest_Project_Carousel_card" key={index}>
               <div className="left">
-                <LazyLoadImage
-                  src={`${imgPath}${items.Image}`}
-                  effect="blur"
-                  wrapperProps={{
-                    style: { transitionDelay: "1s" },
-                  }}
-                />
+                <div className="leftImg">
+                  <LazyLoadImage
+                    src={`${imgPath}${items.Image}`}
+                    alt={`${imgPath}${items.Image}`}
+                    effect="blur"
+                    wrapperProps={{
+                      style: { transitionDelay: "1s" },
+                    }}
+                  />
+                </div>
               </div>
               <div className="right">
                 <h3 className="title">
