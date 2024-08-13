@@ -577,17 +577,15 @@ const ProjectView = () => {
               tabVal == 3 ? "active" : ""
             }`}
           >
-            <div style={{ width: "100%", color: "var(--dark-1)" }}>
-              <Suspense fallback={<Loader />}>
-                <JoditEditor
-                  ref={editor}
-                  value={Features}
-                  tabIndex={1}
-                  onBlur={(newContent) => setFeatures(newContent)}
-                  onChange={(newContent) => {}}
-                />
-              </Suspense>
-            </div>
+            <Suspense fallback={<Loader />}>
+              <JoditEditor
+                ref={editor}
+                value={Features}
+                tabIndex={1}
+                onBlur={(newContent) => setFeatures(newContent)}
+                onChange={(newContent) => {}}
+              />
+            </Suspense>
           </div>
           {/* Feature end */}
 
