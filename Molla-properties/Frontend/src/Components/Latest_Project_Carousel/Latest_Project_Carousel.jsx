@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 //___ Css ___//
@@ -18,33 +18,6 @@ function Latest_Project_Carousel(props) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-
-    // responsive: [
-    //   {
-    //     breakpoint: 1024,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //       infinite: true,
-    //       dots: true,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 600,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //       initialSlide: 1,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 480,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //     },
-    //   },
-    // ],
   };
 
   return (
@@ -52,7 +25,7 @@ function Latest_Project_Carousel(props) {
       <Slider {...settings}>
         {dbData.map((items, index) => {
           return (
-            <div className="Latest_Project_Carousel_card">
+            <div className="Latest_Project_Carousel_card" key={index}>
               <div className="left">
                 <LazyLoadImage
                   src={`${imgPath}${items.Image}`}
@@ -63,7 +36,28 @@ function Latest_Project_Carousel(props) {
                 />
               </div>
               <div className="right">
-                <h1>This is right</h1>
+                <h3 className="title">
+                  {items.Title.length > 70
+                    ? items.Title.slice(0, 70) + " ..."
+                    : items.Title}
+                </h3>
+                <p
+                  className="description"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      items.Features.length > 300
+                        ? items.Features.slice(0, 300) + " ......"
+                        : items.Features,
+                  }}
+                ></p>
+                <div style={{ textAlign: "center" }}>
+                  <Link
+                    to={`/project-details/${items.id}`}
+                    className="readMoreBtn btn c_pointer"
+                  >
+                    Read more
+                  </Link>
+                </div>
               </div>
             </div>
           );
