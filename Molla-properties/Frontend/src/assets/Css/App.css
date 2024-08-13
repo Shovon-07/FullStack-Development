@@ -129,9 +129,39 @@ a {
   color: var(--main-color);
 }
 
-/* .Toastify__toast-body {
-  background: yellow;
-} */
+/* Text animation start */
+/* Anim 1 */
+.tracking-in-expand {
+  animation: tracking-in-expand 2s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Anim 2 */
+.text-focus-in {
+  animation: text-focus-in 2s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+/* Text animation end */
 
 /*___ Admin Layout ___*/
 .main {

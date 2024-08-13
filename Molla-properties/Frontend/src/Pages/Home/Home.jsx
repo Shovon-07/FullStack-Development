@@ -129,8 +129,8 @@ const Home = () => {
         />
         <div className="overlay"></div>
         <div className="txt d-flex">
-          <h1>{homeContent.BannerTitle}</h1>
-          <p>{homeContent.BannerMoto}</p>
+          <h1 className="tracking-in-expand">{homeContent.BannerTitle}</h1>
+          <p className="text-focus-in">{homeContent.BannerMoto}</p>
         </div>
       </div>
 
