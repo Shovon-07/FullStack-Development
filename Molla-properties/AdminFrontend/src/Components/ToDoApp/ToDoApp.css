@@ -1,5 +1,7 @@
 .ToDoApp {
   color: var(--light-1);
+  z-index: 1000;
+  position: sticky;
 }
 .ToDoApp .iconBox {
   border-radius: 50%;
