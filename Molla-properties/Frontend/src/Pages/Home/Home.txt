@@ -34,6 +34,8 @@ const Home = () => {
       await AxiosClient.get("/home-content").then((res) => {
         if (res.data.status == true) {
           setHomeContent(res.data.data[0]);
+          console.log(res.data.data[0]);
+
           setLoader(false);
         } else {
           console.log(res.data.msg);
@@ -53,6 +55,7 @@ const Home = () => {
       await AxiosClient.get("/latest-project").then((res) => {
         if (res.data.status == true) {
           setLatestProjectData(res.data.data);
+          console.log(res.data.data);
           setLoader(false);
         } else {
           console.log(res.data.msg);
@@ -72,6 +75,8 @@ const Home = () => {
       await AxiosClient.get("/all-galleries-img").then((res) => {
         if (res.data.status == true) {
           setImagesData(res.data.data);
+          console.log(res.data.data);
+
           setLoader(false);
         } else {
           console.log(res.data.msg);
@@ -88,6 +93,14 @@ const Home = () => {
     GetLatestProjectData();
     GetImagesData();
   }, []);
+
+  // Memoize the content data to avoid unnecessary recalculations
+  const memoizedHomeContent = useMemo(() => homeContent, [homeContent]);
+  const memoizedLatestProjectData = useMemo(
+    () => latestProjectData,
+    [latestProjectData]
+  );
+  const memoizedImagesData = useMemo(() => imagesData, [imagesData]);
 
   return (
     <div className="Home page">
@@ -118,7 +131,7 @@ const Home = () => {
       <h1 className="d-none">প্লট আকারে জমি বিক্রয়</h1>
       <div className="homeImg d-flex">
         <LazyLoadImage
-          src={`${imgPath}${homeContent.BannerImage}`}
+          src={`${imgPath}${memoizedHomeContent.BannerImage}`}
           alt="Molla properties"
           effect="blur"
           wrapperProps={{
@@ -129,8 +142,10 @@ const Home = () => {
         />
         <div className="overlay"></div>
         <div className="txt d-flex">
-          <h1 className="tracking-in-expand">{homeContent.BannerTitle}</h1>
-          <p className="text-focus-in">{homeContent.BannerMoto}</p>
+          <h1 className="tracking-in-expand">
+            {memoizedHomeContent.BannerTitle}
+          </h1>
+          <p className="text-focus-in">{memoizedHomeContent.BannerMoto}</p>
         </div>
       </div>
 
@@ -141,7 +156,7 @@ const Home = () => {
           </div>
           <Suspense fallback={<Loader />}>
             <Latest_Project_Carousel
-              dbData={latestProjectData}
+              dbData={memoizedLatestProjectData}
               imgPath={imgPath}
             />
           </Suspense>
@@ -152,7 +167,7 @@ const Home = () => {
             <h1>Our location</h1>
           </div>
           <iframe
-            src={homeContent.Map}
+            src={memoizedHomeContent.Map}
             width="100%"
             height="450"
             style={{
@@ -171,12 +186,12 @@ const Home = () => {
             <h1>Our Images</h1>
           </div>
           <Suspense fallback={<Loader />}>
-            <My_Carousel dbData={imagesData} imgPath={imgPath} />
+            <My_Carousel dbData={memoizedImagesData} imgPath={imgPath} />
           </Suspense>
         </section>
 
         <Suspense fallback={<Loader />}>
-          <OurMissionVission homeContent={homeContent} />
+          <OurMissionVission homeContent={memoizedHomeContent} />
         </Suspense>
       </div>
     </div>

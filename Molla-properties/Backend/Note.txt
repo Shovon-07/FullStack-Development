@@ -101,4 +101,4 @@ upload_max_filesize = 1024M
 => Optimisation react
 1. useMemo
 2. lazy load
-3. 
+3. useCallback
