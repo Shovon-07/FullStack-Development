@@ -2,8 +2,8 @@ import { useState, useRef, lazy, Suspense } from "react";
 import { useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { ToastContainer, toast } from "react-toastify";
-const JoditEditor = lazy(() => import("jodit-react"));
 import { Helmet } from "react-helmet";
+const JoditEditor = lazy(() => import("jodit-react"));
 
 //___ Css ___//
 import "./ContactUs.css";
