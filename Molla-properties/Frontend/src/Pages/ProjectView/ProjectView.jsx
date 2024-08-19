@@ -92,7 +92,7 @@ const ProjectView = () => {
         <meta property="og:title" content={projectViewData.Project_name} />
         <meta
           property="og:description"
-          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে for facebook"
+          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে"
         />
         <meta
           property="og:image"
@@ -101,7 +101,7 @@ const ProjectView = () => {
         {/* For twiter */}
         <meta
           name="twitter:card "
-          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে for twitter"
+          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে"
         />
         <meta name="twitter:title " content={projectViewData.Project_name} />
       </Helmet>
