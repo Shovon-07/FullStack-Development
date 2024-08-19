@@ -45,6 +45,7 @@ const NewsAndEvent = () => {
   return (
     <div className="NewsAndEvent page content">
       <Helmet>
+        <meta name="robots" content="index,follow" />
         <title>News And Event</title>
         <meta name="description" content="এগুলো সব মোল্লা প্রোপারটির নিউজ" />
         <meta name="keywords" content="মোল্লা প্রোপারটির নিউজ" />

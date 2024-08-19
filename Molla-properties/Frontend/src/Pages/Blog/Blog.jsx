@@ -42,6 +42,7 @@ const Blog = () => {
   return (
     <div className="Blog page content">
       <Helmet>
+        <meta name="robots" content="index,follow" />
         <title>Our Blogs</title>
         <meta name="description" content="এগুলো সব মোল্লা প্রোপারটির ব্লগ" />
         <meta name="keywords" content="মোল্লা প্রোপারটির ব্লগ" />

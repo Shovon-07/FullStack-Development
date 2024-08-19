@@ -50,6 +50,7 @@ const AboutUs = () => {
   return (
     <div className="AboutUs page content">
       <Helmet>
+        <meta name="robots" content="index,follow" />
         <title>About us</title>
         <meta name="description" content="About molla properties" />
         <meta name="keywords" content="About molla properties" />

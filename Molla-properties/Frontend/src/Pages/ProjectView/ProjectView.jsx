@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useOutletContext } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Helmet } from "react-helmet";
 
 //___ Css ___//
 import "./ProjectView.css";
@@ -38,7 +39,6 @@ const ProjectView = () => {
         }
       });
     } catch (err) {
-      // toast.error(err);
       console.log(err);
     }
   };
@@ -49,7 +49,6 @@ const ProjectView = () => {
       setLoader(true);
       await AxiosClient.post("/plots", { project_id: id }).then((res) => {
         if (res.data.status == true) {
-          // console.log(res.data.data);
           setPlotData(res.data.data);
           setLoader(false);
         }
@@ -65,7 +64,6 @@ const ProjectView = () => {
       setLoader(true);
       await AxiosClient.post("/galleries", { project_id: id }).then((res) => {
         if (res.data.status == true) {
-          // console.log(res.data.data);
           setGalleryData(res.data.data);
           setLoader(false);
         }
@@ -78,13 +76,38 @@ const ProjectView = () => {
   useEffect(() => {
     getProjectViewData();
     getPlotData();
-    // getGalleryData();
   }, []);
 
   return (
     <div className="ProjectView page content">
+      <Helmet>
+        <meta name="robots" content="index,follow" />
+        <title>{projectViewData.Project_name}</title>
+        <meta
+          name="description"
+          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে"
+        />
+        <meta name="keywords" content="রাজশাহীতে প্লট ও জমি বিক্রয়" />
+        {/* For facebook */}
+        <meta property="og:title" content={projectViewData.Project_name} />
+        <meta
+          property="og:description"
+          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে for facebook"
+        />
+        <meta
+          property="og:image"
+          content={`${imgPath}${projectViewData.Image}`}
+        />
+        {/* For twiter */}
+        <meta
+          name="twitter:card "
+          content="রাজশাহীতে সুলভ মুল্যে প্লট আকারে জমি বিক্রয় চলিতেছে for twitter"
+        />
+        <meta name="twitter:title " content={projectViewData.Project_name} />
+      </Helmet>
+
       <div className="d-flex pageTitle">
-        <h3>Preview project</h3>
+        <h1>Preview project</h1>
       </div>
       {/* For go to top */}
       <input

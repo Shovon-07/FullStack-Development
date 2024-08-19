@@ -22,12 +22,6 @@ const Gallery = () => {
   const [setLoader] = useOutletContext();
 
   const [galleryData, setGalleryData] = useState([]);
-  // const [numberOfElement, setNumberOfElement] = useState(4);
-  // const slicedData = galleryData.slice(0, numberOfElement);
-  // const loadMore = () => {
-  //   setNumberOfElement((prev) => prev * 2);
-  // };
-
   const getGalleryData = async () => {
     try {
       setLoader(true);
@@ -56,6 +50,7 @@ const Gallery = () => {
   return (
     <div className="Gallery page content">
       <Helmet>
+        <meta name="robots" content="index,follow" />
         <title>Image Gallery</title>
         <meta name="description" content="এগুলো সব মোল্লা প্রোপারটির ছবি" />
         <meta name="keywords" content="মোল্লা প্রোপারটির ছবি" />
@@ -88,15 +83,6 @@ const Gallery = () => {
           );
         })}
       </LightGallery>
-
-      {/* <div
-        className={galleryData.length > 4 ? "" : "d-none"}
-        style={{ textAlign: "center", marginTop: "100px" }}
-      >
-        <button className="btn" onClick={loadMore}>
-          Load More
-        </button>
-      </div> */}
     </div>
   );
 };

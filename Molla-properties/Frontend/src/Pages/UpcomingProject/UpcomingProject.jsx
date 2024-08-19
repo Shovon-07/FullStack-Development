@@ -45,6 +45,7 @@ const UpcomingProject = () => {
   return (
     <div className="UpcomingProject page content">
       <Helmet>
+        <meta name="robots" content="index,follow" />
         <title>Upcoming Projects</title>
         <meta
           name="description"

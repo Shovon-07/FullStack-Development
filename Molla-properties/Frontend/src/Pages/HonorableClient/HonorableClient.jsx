@@ -45,6 +45,7 @@ const HonorableClient = () => {
   return (
     <div className="HonorableClient page content">
       <Helmet>
+        <meta name="robots" content="index,follow" />
         <title>Honorable Client</title>
         <meta
           name="description"

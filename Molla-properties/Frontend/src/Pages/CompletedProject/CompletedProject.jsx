@@ -45,6 +45,7 @@ const CompletedProject = () => {
   return (
     <div className="CompletedProject page content">
       <Helmet>
+        <meta name="robots" content="index,follow" />
         <title>Completed Projects</title>
         <meta
           name="description"

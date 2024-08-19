@@ -73,6 +73,7 @@ const ContactUs = () => {
   return (
     <div className="ContactUs page content">
       <Helmet>
+        <meta name="robots" content="index,follow" />
         <title>Contact us</title>
       </Helmet>
 
