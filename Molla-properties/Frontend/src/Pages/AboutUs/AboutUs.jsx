@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import MemoBtn from "./MemoBtn";
-import MemoCount from "./MemoCount";
-import MemoTitle from "./MemoTitle";
-
 //___ Css ___//
 import "./AboutUs.css";
 
@@ -35,18 +31,6 @@ const AboutUs = () => {
     GetAboutUsData();
   }, []);
 
-  // Use memo
-  const [counter_1, setCounter_1] = useState(0);
-  const [counter_2, setCounter_2] = useState(0);
-
-  const incByOne = () => {
-    setCounter_1((prev) => prev + 1);
-  };
-
-  const incByFive = () => {
-    setCounter_2((prev) => prev + 5);
-  };
-
   return (
     <div className="AboutUs page content">
       <Helmet>
@@ -68,22 +52,6 @@ const AboutUs = () => {
       {/* For go to top */}
 
       <div dangerouslySetInnerHTML={{ __html: aboutUsTxt }}></div>
-
-      <br />
-      <br />
-      <br />
-      <br />
-
-      {/* Use memo */}
-      <MemoTitle />
-      <MemoCount counter={counter_1} title="Increment by one" />
-      <MemoBtn handleClick={incByOne}>Increment by one </MemoBtn>
-
-      <br />
-      <hr />
-
-      <MemoCount counter={counter_2} title="Increment by five" />
-      <MemoBtn handleClick={incByFive}>Increment by five button</MemoBtn>
     </div>
   );
 };
