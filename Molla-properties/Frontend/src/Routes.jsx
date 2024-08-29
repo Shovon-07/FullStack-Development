@@ -15,6 +15,7 @@ import NewsAndEvent from "./Pages/NewsAndEvent/NewsAndEvent";
 import Blog from "./Pages/Blog/Blog";
 import ContactUs from "./Pages/ContactUs/ContactUs";
 import ProjectView from "./Pages/ProjectView/ProjectView";
+import Credits from "./Components/Credits/Credits";
 
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
@@ -63,6 +64,10 @@ const Routes = createBrowserRouter([
       {
         path: "/project-details/:id",
         element: <ProjectView />,
+      },
+      {
+        path: "/credits",
+        element: <Credits />,
       },
     ],
   },

@@ -11,7 +11,7 @@ const CallNow = () => {
   return (
     <div className="FixedComponents" style={{ bottom: "50px" }}>
       <NavLink
-        to="tel:01767692422" // 01788300918
+        to="tel:01829674216"
         className="d-flex"
         style={{ background: "var(--dark-2)", color: "var(--light-1)" }}
       >

@@ -9,6 +9,7 @@ import { RiWhatsappFill } from "react-icons/ri";
 
 //___ Css ___//
 import "./Footer.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 //___ Additional utilitis ___//
 import AxiosClient from "../../assets/Js/AxiosClient";
@@ -158,8 +159,11 @@ const Footer = (props) => {
           <div>
             <p className="d-flex gap-10">
               <FaRegCopyright size={20} />
-              <span className="bolded"> Molla properties </span>-All Right
-              Reserved
+              <span className="bolded">
+                {" "}
+                <NavLink to="/credits">Molla properties</NavLink>{" "}
+              </span>
+              -All Right Reserved
             </p>
           </div>
           <div className="payment-img d-flex">
@@ -196,7 +200,9 @@ const Footer = (props) => {
           </div>
         </div>
       </div>
-      <Credits />
+      <div className="d-none">
+        <Credits />
+      </div>
     </div>
   );
 };

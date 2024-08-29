@@ -8,6 +8,11 @@
   flex-direction: column;
   margin: 20px 0;
   text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--light-3);
+}
+.Credits .item:last-child {
+  border-bottom: none;
 }
 .Credits .item img {
   width: 40px;
