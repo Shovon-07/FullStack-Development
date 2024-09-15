@@ -4,14 +4,12 @@ import localFont from "next/font/local";
 //___ Components ___//
 import Loader from "./Components/Loader/Loader";
 const Header = dynamic(() => import("./Components/Header/Header"), {
-  loading: () => <Loader />,
-});
-const Footer = dynamic(() => import("./Components/Footer/Footer"), {
-  loading: () => <Loader />,
+  loading: () => <p>Loading...</p>,
 });
 
 //___ Css ___//
-import "./globals.css";
+import "./Styles/var.css";
+import "./Styles/globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,7 +24,7 @@ const geistMono = localFont({
 
 export const metadata = {
   title: "E commerce",
-  description: "Developed by Al jubair shovon",
+  description: "Developed by Al jubair shovon using Next.JS",
 };
 
 export default function RootLayout({ children }) {
@@ -37,7 +35,6 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
-        <Footer />
       </body>
     </html>
   );

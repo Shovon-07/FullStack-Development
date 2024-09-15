@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: var(--dark-2);
+  color: var(--light-1);
+}
+
+::selection {
+  color: var(--dark-1);
+  background: var(--light-1);
+}

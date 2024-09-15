@@ -1,0 +1,23 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light-1: #fff;
+    --light-2: #f0f0ef;
+
+    --dark-1: #1a1a1a;
+    --dark-2: #272726;
+
+    --main-color: rgb(91, 148, 255);
+  }
+}
+
+@media (prefers-color-scheme: white) {
+  :root {
+    --light-1: #1a1a1a;
+    --light-2: #272726;
+
+    --dark-1: #fff;
+    --dark-2: #f0f0ef;
+
+    --main-color: rgb(91, 148, 255);
+  }
+}
