@@ -38,8 +38,8 @@ export default function AuthUser() {
   };
 
   const http = axios.create({
-    // baseURL: "https://project.preview.com.aljubairshovon.com/backend/public",
-    baseURL: "http://localhost:8000/",
+    baseURL: "https://project.molla-properties.com/backend/public/api",
+    // baseURL: "http://localhost:8000/",
     headers: {
       "Content-type": "application/json",
     },
