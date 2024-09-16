@@ -1,2 +1,284 @@
 .Header {
+  color: var(--light-1);
+  background: var(--header-color);
+  box-shadow: var(--shadow);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 998;
 }
+.firstHeader {
+  padding-bottom: 10px;
+}
+.firstHeader div {
+  justify-content: space-between;
+}
+.firstHeader .menus {
+  gap: 20px;
+  /* @include sm {
+    gap: 10px;
+  } */
+}
+.firstHeader .menus li a {
+  font-size: 0.8rem;
+  color: var(--light-1);
+  padding: 8px 0;
+  /* @include sm {
+      font-size: 0.5rem;
+    } */
+}
+.firstHeader .menus li a:hover {
+  color: var(--light-2);
+}
+.firstHeader .menus li .dropDownBox {
+  right: -100%;
+  /* @include sm {
+      right: -60%;
+      width: 200px !important;
+    } */
+}
+
+.firstHeader .appBtn {
+  background: var(--dark-1);
+  padding: 3px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-content: center;
+}
+.firstHeader .appBtn img {
+  width: 20px;
+  height: auto;
+  /* @include sm {
+    width: 15px;
+  } */
+}
+.firstHeader .appBtn p {
+  font-size: 13px;
+  /* @include sm {
+    font-size: 10px;
+  } */
+}
+
+.additionalSecondHeader {
+  display: none;
+  margin-top: 6px;
+  /* @include md {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } */
+}
+.additionalSecondHeader .logo img {
+  cursor: default;
+  width: 70px;
+  height: auto;
+}
+
+.firstHeader .toggler {
+  cursor: pointer;
+}
+
+.secondHeader {
+  padding-bottom: 15px;
+  justify-content: space-between;
+  transition: var(--trans);
+  /* @include md {
+    flex-direction: column-reverse;
+    background: $dark-1;
+    position: absolute;
+    right: -250px;
+    height: 100vh;
+    padding: 20px 0;
+  } */
+}
+.secondHeader .logo {
+  flex-basis: 10%;
+  margin-right: 10px;
+}
+.secondHeader .logo img {
+  cursor: default;
+  width: 100px;
+  height: auto;
+  /* @include md {
+    display: none;
+  } */
+}
+.secondHeader .searchBox {
+  flex-basis: 75%;
+  /* @include md {
+    width: 90%;
+  } */
+}
+.secondHeader .searchBox .searchItem {
+  width: 100%;
+  background: var(--light-1);
+  border-radius: 50px;
+  position: relative;
+}
+.secondHeader .searchBox .searchItem input {
+  width: 95%;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 0;
+  outline: 0;
+  font-size: 1rem;
+  color: var(--dark-1);
+  letter-spacing: 0.05rem;
+}
+.secondHeader .searchBtn {
+  color: var(--main-color);
+  background: var(--main-color-light);
+  width: 50px;
+  height: 100%;
+  font-weight: bold;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.secondHeader .menus {
+  flex-basis: 25%;
+  justify-content: space-between;
+  padding-left: 25px;
+  /* @include md {
+    flex-direction: column;
+    margin-bottom: 30px;
+  } */
+}
+.secondHeader .menus li {
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.secondHeader .menus li:hover a {
+  color: var(--light-2);
+}
+/* @include md {
+  font-size: 16px;
+} */
+.secondHeader .menus li a {
+  font-size: 14px;
+  color: var(--light-1);
+  font-weight: 500;
+  padding: 5px 0;
+  /* @include md {
+    font-size: 16px;
+  } */
+}
+.secondHeader .menus li .icon {
+  margin-right: 5px;
+}
+.secondHeader .menus li a .angle {
+  margin: -2px 0 0 2px;
+}
+.userImg {
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 8px;
+  /* @include xl {
+    width: 30px;
+  } */
+}
+/* &:hover .angle {
+  transform: rotate(180deg);
+} */
+.secondHeader .country .dropDownBox {
+  top: 34px;
+  right: -40%;
+}
+.secondHeader .country .dropDownBox .corner {
+  right: 25%;
+}
+.secondHeader .country .dropDownBox .dropDownItem {
+  color: var(--light-3);
+}
+.secondHeader .country .dropDownBox img {
+  width: 20px;
+  height: auto;
+}
+
+.secondHeader .cart {
+  position: relative;
+  cursor: pointer;
+}
+.secondHeader .cart span {
+  background: #fff;
+  color: #f85606;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -12px;
+  right: -15px;
+}
+.font-8 {
+  font-size: 8px;
+  font-weight: 700;
+}
+
+/* Drop down */
+.dropDownParent {
+  position: relative;
+}
+.dropDownParent .dropDownBox {
+  background: var(--light-1);
+  display: none;
+  opacity: 0;
+  position: absolute;
+  top: 30px;
+  /* // right: -80%; */
+  box-shadow: var(--shadow);
+  border-radius: 5px;
+  transition: var(--trans);
+  z-index: 999;
+}
+.dropDownParent .dropDownBox .dropDownItem {
+  color: var(--light-3);
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 14px;
+  z-index: 999;
+}
+.dropDownParent .dropDownBox .dropDownItem:hover {
+  color: var(--main-color);
+  background: var(--main-color-light);
+}
+.dropDownParent .dropDownBox .dropDownItem .icon {
+  font-size: 20px;
+}
+/* &:hover {
+  background: $main-color-light;
+} */
+
+.corner {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid var(--light-1);
+  position: absolute;
+  top: -10px;
+  right: 28%;
+  z-index: -1;
+}
+
+.dropDownParent:focus-within .dropDownBox {
+  display: block;
+  opacity: 1;
+}
+
+/* 
+&.active .secondHeader {
+  padding-bottom: 15px;
+  justify-content: space-between;
+  right: 0px;
+  height: 100vh;
+  // height: auto;
+} */

@@ -4,12 +4,12 @@ import localFont from "next/font/local";
 //___ Components ___//
 import Loader from "./Components/Loader/Loader";
 const Header = dynamic(() => import("./Components/Header/Header"), {
-  loading: () => <p>Loading...</p>,
+  loading: () => <Loader />,
 });
 
 //___ Css ___//
-import "./Styles/var.css";
-import "./Styles/globals.css";
+import "@/assets/css/var.css";
+import "@/assets/css/globals.css";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
