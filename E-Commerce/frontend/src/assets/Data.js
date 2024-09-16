@@ -42,11 +42,11 @@ export const categories = [
 ];
 
 export const carouselData = [
-  { id: 1, img: "/images/banner-1.jpg" },
-  { id: 2, img: "/images/banner-2.jpg" },
-  { id: 3, img: "/images/banner-3.jpg" },
-  { id: 4, img: "/images/banner-4.jpg" },
-  { id: 5, img: "/images/banner-5.jpg" },
+  { id: 1, img: "./images/banner-1.jpg" },
+  { id: 2, img: "./images/banner-2.jpg" },
+  { id: 3, img: "./images/banner-3.jpg" },
+  { id: 4, img: "./images/banner-4.jpg" },
+  { id: 5, img: "./images/banner-5.jpg" },
 ];
 
 export const productsData = [

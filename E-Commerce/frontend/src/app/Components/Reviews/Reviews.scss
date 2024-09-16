@@ -1,0 +1,9 @@
+@import "../../Styles/Variable.scss";
+
+.Reviews {
+  flex-direction: column;
+  p {
+    font-size: 18px;
+    color: $red;
+  }
+}
