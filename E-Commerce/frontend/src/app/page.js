@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import "@/assets/css/Home.css";
 
 //___ Data ___//
-import { categories } from "@/assets/Data";
+import { categories } from "@/assets/js/Data";
 
 //___ Components ___//
 import MySlider from "@/app/Components/MySlider/MySlider";

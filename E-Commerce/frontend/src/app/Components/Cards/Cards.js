@@ -8,7 +8,7 @@ import { FaBangladeshiTakaSign, FaAngleDown } from "react-icons/fa6";
 import "./Cards.css";
 
 //___ Data ___//
-import { productsData } from "@/assets/Data";
+import { productsData } from "@/assets/js/Data";
 
 //___ Components ___//
 import RattingComponent from "../RattingComponent/RattingComponent";
