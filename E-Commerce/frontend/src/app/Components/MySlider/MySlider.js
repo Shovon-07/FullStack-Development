@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import Slider from "react-slick";
@@ -11,11 +10,11 @@ import "./MySlider.css";
 //___ Data ___//
 // import { carouselData } from "@/assets/js/Data";
 // import s from "@/assets/images/banner_1.jpg";
-import GetSliderData from "./GetSliderData";
+// import GetSliderData from "./GetSliderData";
 
 const MySlider = async () => {
-  const data = await GetSliderData();
-  console.log(data.data.data);
+  // const data = await GetSliderData();
+  // console.log(data.data.data);
 
   const settings = {
     dots: true,
@@ -32,7 +31,7 @@ const MySlider = async () => {
   return (
     <div className="slider-container">
       <Slider {...settings}>
-        {data.data.data.map((items, index) => {
+        {/* {data.data.data.map((items, index) => {
           return (
             <Link href={`/banner/${items.id}`} key={index}>
               <Image
@@ -43,7 +42,7 @@ const MySlider = async () => {
               />
             </Link>
           );
-        })}
+        })} */}
       </Slider>
     </div>
   );
