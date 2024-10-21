@@ -1,5 +1,9 @@
 import Button from "@/app/Components/Button";
 
+export function generateMetadata() {
+  return { title: "Products", description: "This is products page" };
+}
+
 const GetProducts = async () => {
   const api = "https://dummyjson.com/products";
   let response = await fetch(api);
