@@ -2,7 +2,8 @@ import dynamic from "next/dynamic";
 import localFont from "next/font/local";
 
 //___ Css ___//
-import "./globals.css";
+import "@/assets/Css/globals.css";
+import "@/assets/Css/var.css";
 
 //___ Components ___//
 const Header = dynamic(() => import("@/app/Components/Header/Header"), {
