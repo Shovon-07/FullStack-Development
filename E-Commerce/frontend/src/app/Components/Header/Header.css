@@ -40,8 +40,19 @@ header .top-header .icon:hover {
 header .top-header .lang {
   position: relative;
 }
+header .top-header .lang .icon {
+  /* margin-top: 10px; */
+  transition: var(--trans);
+}
 header .top-header .lang .dropdown {
   position: absolute;
+}
+header .top-header .lang .dropdown.active {
+  display: block;
+  opacity: 1;
+}
+header .top-header .lang .icon.active {
+  transform: rotate(180deg);
 }
 header .top-header .lang .flag {
   width: 15px;
@@ -67,26 +78,28 @@ header .bottom-header ul li a.active {
 }
 
 .dropdown {
-  /* display: none; */
-  background: var(--light-1);
+  display: none;
+  opacity: 0;
+  background: var(--dropdown-box-clr);
   box-shadow: var(--shadow);
   top: 30px;
+  transition: var(--trans);
 }
 .dropdown .corner {
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid var(--light-1);
+  border-bottom: 10px solid var(--dropdown-box-clr);
   position: absolute;
   top: -10px;
   left: 50%;
   transform: translatex(-50%);
-  box-shadow: var(--shadow);
 }
 .dropdown ul li a {
   display: inline-block;
   padding: 5px 10px;
+  /* color: var(--light-1); */
   cursor: pointer;
 }
 .dropdown ul li a:hover {

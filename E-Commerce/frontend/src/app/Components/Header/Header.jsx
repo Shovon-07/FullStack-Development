@@ -8,7 +8,6 @@ import {
   FaHeart,
   FaShoppingCart,
   FaSearch,
-  FaSortDown,
 } from "react-icons/fa";
 import { FaXTwitter, FaPinterestP } from "react-icons/fa6";
 
@@ -17,8 +16,9 @@ import "./Header.css";
 
 //___ Images ___//
 import Logo from "@/assets/images/icons/Company_orrange.png";
-import UsFlag from "@/assets/images/us.svg";
-import BdFlag from "@/assets/images/bd.svg";
+
+//___ Components ___//
+import LangSelect from "./LangSelect";
 
 const Header = () => {
   return (
@@ -46,32 +46,7 @@ const Header = () => {
           <Link href="https://pint.com" target="_blank">
             <FaPinterestP size={18} className="icon c-pointer" />{" "}
           </Link>
-          <div className="lang c-pointer">
-            <div className="d-flex gap-10">
-              <Image src={UsFlag} alt="usa flag" className="flag" />{" "}
-              <p>
-                English <FaSortDown size={15} />
-              </p>
-            </div>
-            <div className="dropdown">
-              <div className="corner"></div>
-              <ul>
-                <li>
-                  <Link href="">
-                    <Image src={UsFlag} alt="usa flag" className="flag" />{" "}
-                    <span>English</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="">
-                    {" "}
-                    <Image src={BdFlag} alt="bd flag" className="flag" />{" "}
-                    <span>Bengal</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <LangSelect />
         </div>
       </div>
       <div className="bottom-header container d-flex">

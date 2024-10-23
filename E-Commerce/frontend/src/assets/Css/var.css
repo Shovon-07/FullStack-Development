@@ -16,6 +16,7 @@
   --header-color: #060144;
   --btn-color: #c44201;
   --btn-hover-color: #a13601;
+  --dropdown-box-clr: #dfdbdb;
 
   --trans: 0.3s all ease;
   --shadow: 3px 3px 10px var(--light-3);
