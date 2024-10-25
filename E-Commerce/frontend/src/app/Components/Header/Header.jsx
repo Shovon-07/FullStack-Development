@@ -19,11 +19,11 @@ import Logo from "@/assets/images/icons/Company_orrange.png";
 
 //___ Components ___//
 import LangSelect from "./LangSelect";
-// import GetPath from "./GetPath";
+import { GetPathName } from "./GetPath";
 
 const Header = () => {
-  // const pathname = GetPath;
-  // console.log(pathname);
+  const path = GetPathName;
+  console.log(path);
 
   return (
     <>

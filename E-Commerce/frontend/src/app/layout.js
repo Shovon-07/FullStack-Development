@@ -27,9 +27,7 @@ export const metadata = {
   description: "Type hear some description for better seo",
 };
 
-export default function RootLayout({ children, req }) {
-  // console.log("Path from layout " + req.headers.get("PathName"));
-
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
