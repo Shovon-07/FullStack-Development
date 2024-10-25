@@ -27,16 +27,14 @@ export const metadata = {
   description: "Type hear some description for better seo",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children, req }) {
+  // console.log("Path from layout " + req.headers.get("PathName"));
+
   return (
     <html lang="en">
-      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
       <body>
         <Header />
         <div className="container">{children}</div>
-        {/* <Suspense fallback="Loading...">
-          <Footer />
-        </Suspense> */}
       </body>
     </html>
   );
