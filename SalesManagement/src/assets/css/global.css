@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "DM Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  color: var(--dark-3);
+}
+button {
+  background: var(--main-clr);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* It's also need for side nav overlay */
+.body-overlay {
+  background-color: rgba(8, 8, 8, 0.295);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 98;
+}
+.body-overlay.active {
+  display: block;
+}
+
+/*________________ custome scroll bar start ________________*/
+::-webkit-scrollbar {
+  width: 1px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+/*________________ custome scroll bar end ________________*/
