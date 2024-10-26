@@ -37,3 +37,28 @@
     "vite": "^5.3.1"
   }
 }
+
+
+//............. For laravel-inirtia .............//
+# layout page->
+export default function Layout({ child }) {
+    return (
+        <>
+        <Header/>
+        <Sidenav/>
+        {child}
+        </>
+    );
+}
+
+# Home page ->
+function Home({ page }) {
+    return (
+        <>
+            {/* <About /> */}
+            <h1 className="title text-center underline">Hello Asikur</h1>
+        </>
+    );
+}
+Home.layout = page=><Layout child={page}/>
+export default Home;

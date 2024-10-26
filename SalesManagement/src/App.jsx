@@ -13,7 +13,7 @@ const App = ({ children }) => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-    if (counter != 50) {
+    if (counter != 100) {
       setCounter((prev) => (prev = prev + 1));
     }
   });
@@ -46,3 +46,7 @@ const App = ({ children }) => {
 };
 
 export default App;
+
+/***
+ * Install inirtiajs packeg
+ ***/
