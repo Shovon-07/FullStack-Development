@@ -58,8 +58,9 @@
   padding: 10px 20px;
   font-weight: 500;
 }
-.side-nav .side-menu li a div i {
+.side-nav .side-menu li a div .icon {
   margin-right: 10px;
+  font-size: 1.2rem;
 }
 .side-nav .side-menu li a .right-icon {
   transition: var(--trans);
