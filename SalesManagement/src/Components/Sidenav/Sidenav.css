@@ -96,7 +96,6 @@
   transition: var(--trans);
 }
 .side-nav .side-menu .side-nav-dropdown-parent:hover .side-nav-dropdown {
-  /* height: 100%; */
   display: block;
 }
 .side-nav .side-nav-dropdown li a {

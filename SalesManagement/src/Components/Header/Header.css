@@ -21,7 +21,6 @@ header .left {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* flex-basis: 40%; */
 }
 header .left .toggler {
   display: none;
@@ -29,29 +28,6 @@ header .left .toggler {
   cursor: pointer;
   z-index: 99;
 }
-/* header .left .search-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  box-shadow: inset 2px 2px 5px var(--light-3),
-    inset -2px -2px 5px var(--light-3);
-  border-radius: 50px;
-  margin-left: 20px;
-}
-header .left .search-box input {
-  border: none;
-  border-radius: 50px;
-  outline: none;
-  width: 100%;
-  font-size: 1rem;
-  padding: 8px 20px;
-  background: transparent;
-}
-header .left .search-box i {
-  margin-right: 10px;
-  color: var(--dark-3);
-} */
 
 header .right {
   display: flex;
@@ -177,6 +153,7 @@ header .right .profile img {
   height: 30px;
   border-radius: 50%;
   border: var(--border);
+  overflow: hidden;
 }
 /* Profile end */
 
@@ -186,7 +163,6 @@ header .right .profile img {
   top: 38px;
   left: 50%;
   transform: translateX(-50%);
-  /* background: var(--dropdown-box-clr); */
   background: var(--dark-2);
   transition: var(--trans);
   display: none;
@@ -219,11 +195,7 @@ header .right .profile img {
 @media screen and (max-width: 800px) {
   header {
     margin-left: 0;
-    /* padding: 20px 30px 20px 20px !important; */
   }
-  /* header .left {
-    flex-basis: 50%;
-  } */
   header .left .toggler {
     display: block;
     margin-left: 20px;
@@ -244,36 +216,11 @@ header .right .profile img {
     width: 20px;
     height: 20px;
   }
-  /* header .right .profile p {
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  header .right .profile img {
-    width: 25px;
-    height: 25px;
-  } */
-}
-@media screen and (max-width: 500px) {
-  /* header {
-    padding: 20px 10px 20px 10px !important;
-  } */
-  /* header .left .search-box {
-    margin-left: 10px;
-  } */
-  /* header .right {
-    gap: 20px;
-  } */
 }
 @media screen and (max-width: 470px) {
-  /* header .left {
-    flex-basis: 40%;
-  } */
   header .left .toggler {
     font-size: 1.2rem;
   }
-  /* header .left .search-box input {
-    font-size: 0.8rem;
-  } */
   header .right {
     gap: 20px;
   }

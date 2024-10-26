@@ -28,6 +28,14 @@ button {
   align-items: center;
 }
 
+/* Layout */
+.container {
+  margin-left: 230px;
+  max-width: 1500px;
+  padding: 20px;
+  transition: var(--trans);
+}
+
 /* It's also need for side nav overlay */
 .body-overlay {
   background-color: rgba(8, 8, 8, 0.295);
@@ -57,3 +65,10 @@ button {
   background: var(--main-color);
 }
 /*________________ custome scroll bar end ________________*/
+
+/* Responsive */
+@media screen and (max-width: 800px) {
+  .container {
+    margin-left: 0;
+  }
+}

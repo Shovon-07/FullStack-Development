@@ -8,15 +8,15 @@ import "./assets/css/variables.css";
 const Header = lazy(() => import("./Components/Header/Header"));
 const Sidenav = lazy(() => import("./Components/Sidenav/Sidenav"));
 
-const App = () => {
+const App = ({ children }) => {
   const [toggleSideNav, setToggleSideNav] = useState(false);
-  // const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(0);
 
-  // useEffect(() => {
-  //   if (counter != 50) {
-  //     setCounter((prev) => (prev = prev + 1));
-  //   }
-  // });
+  useEffect(() => {
+    if (counter != 50) {
+      setCounter((prev) => (prev = prev + 1));
+    }
+  });
 
   return (
     <div className="main">
@@ -32,8 +32,15 @@ const App = () => {
           setToggleSideNav={setToggleSideNav}
         />
       </Suspense>
-      {/* <h1>Count = {counter} </h1> */}
-      <h1>App</h1>
+      <div className="container">
+        <h1>Count = {counter} </h1>
+        <div
+          className={`body-overlay ${toggleSideNav == true ? "active" : ""}`}
+          onClick={() => setToggleSideNav((prev) => !prev)}
+        ></div>
+        <h1>App</h1>
+        {children}
+      </div>
     </div>
   );
 };

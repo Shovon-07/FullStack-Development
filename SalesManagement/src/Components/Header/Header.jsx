@@ -26,10 +26,6 @@ const Header = (props) => {
         >
           <HiBars3BottomLeft />
         </div>
-        {/* <!-- <div className="search-box">
-          <input type="text" placeholder="Searh hear" />
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </div> --> */}
       </div>
       <ul className="right">
         {/* <!-- Search start --> */}
