@@ -22,6 +22,12 @@ button {
   cursor: pointer;
 }
 
+/* Common classes */
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
 /* It's also need for side nav overlay */
 .body-overlay {
   background-color: rgba(8, 8, 8, 0.295);

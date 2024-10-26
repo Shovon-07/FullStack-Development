@@ -1,16 +1,33 @@
 //___ Icons ___//
 import { IoClose } from "react-icons/io5";
-import { FaHouse } from "react-icons/fa6";
+import {
+  FaHouse,
+  FaGear,
+  FaListUl,
+  FaTag,
+  FaBoxOpen,
+  FaNoteSticky,
+  FaAngleDown,
+} from "react-icons/fa6";
+import { FaUserAlt } from "react-icons/fa";
+import { LuLogOut } from "react-icons/lu";
 
 //___ Css ___//
 import "./Sidenav.css";
 
-const Sidenav = () => {
+const Sidenav = (props) => {
+  const { toggleSideNav, setToggleSideNav } = props;
+
   return (
-    <div className="side-nav">
+    <div className={`side-nav ${toggleSideNav == true ? "active" : ""}`}>
       <div className="brand">
         <h2>Admin</h2>
-        <div className="toggler" id="closeSideNav">
+        <div
+          className={`toggler ${toggleSideNav == true ? "show" : ""}`}
+          onClick={() => {
+            setToggleSideNav((prev) => !prev);
+          }}
+        >
           <IoClose />
         </div>
       </div>
@@ -18,7 +35,7 @@ const Sidenav = () => {
         <li>
           <a href="">
             <div className="d-flex">
-              <FaHouse className="icon" />
+              <FaHouse className="icon" size={18} />
               <p>Dashboard</p>
             </div>
           </a>
@@ -26,25 +43,29 @@ const Sidenav = () => {
         <p className="indicate-section">Accessibility</p>
         <li>
           <a href="">
-            <div>
-              <i className="fa-solid fa-user"></i>Profile
+            <div className="d-flex">
+              <FaUserAlt className="icon" size={16} />
+              <p>Profile</p>
             </div>
           </a>
         </li>
         <li>
           <a href="">
-            <div>
-              <i className="fa-solid fa-gear"></i>Settings
+            <div className="d-flex">
+              <FaGear className="icon" size={18} />
+              <p>Settings</p>
             </div>
           </a>
         </li>
         <p className="indicate-section">Products</p>
         <li className="side-nav-dropdown-parent">
           <a>
-            <div>
-              <i className="fa-solid fa-list"></i>Categories
+            <div className="d-flex">
+              <FaListUl className="icon" size={16} />
+              <p>Categories</p>
             </div>
             <i className="fa-solid fa-angle-down right-icon"></i>
+            <FaAngleDown className="right-icon" />
           </a>
           <ul className="side-nav-dropdown">
             <li>
@@ -65,10 +86,11 @@ const Sidenav = () => {
         </li>
         <li className="side-nav-dropdown-parent">
           <a>
-            <div>
-              <i className="fa-solid fa-tag"></i>Brands
+            <div className="d-flex">
+              <FaTag className="icon" size={20} />
+              <p>Brands</p>
             </div>
-            <i className="fa-solid fa-angle-down right-icon"></i>
+            <FaAngleDown className="right-icon" />
           </a>
           <ul className="side-nav-dropdown">
             <li>
@@ -89,10 +111,11 @@ const Sidenav = () => {
         </li>
         <li className="side-nav-dropdown-parent">
           <a>
-            <div>
-              <i className="fa-solid fa-box"></i>Products
+            <div className="d-flex">
+              <FaBoxOpen className="icon" size={20} />
+              <p>Products</p>
             </div>
-            <i className="fa-solid fa-angle-down right-icon"></i>
+            <FaAngleDown className="right-icon" />
           </a>
           <ul className="side-nav-dropdown">
             <li>
@@ -114,22 +137,33 @@ const Sidenav = () => {
         <p className="indicate-section">Featured</p>
         <li>
           <a href="">
-            <div>
-              <i className="fa-solid fa-file"></i>Items
+            <div className="d-flex">
+              <FaNoteSticky className="icon" size={18} />
+              <p>Item 1</p>
             </div>
           </a>
         </li>
         <li>
           <a href="">
-            <div>
-              <i className="fa-solid fa-file"></i>Items
+            <div className="d-flex">
+              <FaNoteSticky className="icon" size={18} />
+              <p>Item 2</p>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <div className="d-flex">
+              <FaNoteSticky className="icon" size={18} />
+              <p>Item 3</p>
             </div>
           </a>
         </li>
       </ul>
       <div className="bottom-box">
-        <button>
-          Logout<i className="fa-solid fa-right-from-bracket"></i>
+        <button className="d-flex">
+          Logout
+          <LuLogOut className="icon" />
         </button>
       </div>
     </div>

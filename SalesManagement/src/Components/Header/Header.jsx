@@ -11,11 +11,19 @@ import ProfilePic from "../../assets/images/web-page.jpg";
 import "./Header.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-const Header = () => {
+const Header = (props) => {
+  const { toggleSideNav, setToggleSideNav } = props;
+
   return (
     <header>
       <div className="left">
-        <div className="toggler" id="openSideNav">
+        <div
+          className="toggler"
+          id="openSideNav"
+          onClick={() => {
+            setToggleSideNav((prev) => !prev);
+          }}
+        >
           <HiBars3BottomLeft />
         </div>
         {/* <!-- <div className="search-box">

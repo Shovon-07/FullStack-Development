@@ -60,7 +60,6 @@
 }
 .side-nav .side-menu li a div .icon {
   margin-right: 10px;
-  font-size: 1.2rem;
 }
 .side-nav .side-menu li a .right-icon {
   transition: var(--trans);
@@ -86,7 +85,7 @@
 .side-nav .bottom-box button {
   padding: 10px 35px;
 }
-.side-nav .bottom-box button i {
+.side-nav .bottom-box button .icon {
   margin-left: 10px;
 }
 
