@@ -7,12 +7,21 @@ import "../../assets/css/DataTable.css";
 //___ Components ___//
 import Loader from "../../Components/Loader/Loader";
 
+//___ Data ___//
+import { TableData } from "../../Data";
+
 const HomeTable = () => {
     // States
     const [apiData, setApiData] = useState([]);
-    const [searchData, setSearchData] = useState("");
+    const [searchData, setSearchData] = useState();
     const [filteredApiData, setFilteredApiData] = useState([]);
     const [relodeHomeTable, setRelodeHomeTable] = useState(false);
+
+    useEffect(() => {
+        setApiData(TableData);
+        setFilteredApiData(TableData);
+        setRelodeHomeTable((prev) => (prev = true));
+    }, [relodeHomeTable]);
 
     //___ Column for datatable start ____//
     const columns = [
@@ -23,27 +32,26 @@ const HomeTable = () => {
             width: "70px",
         },
         {
-            name: "Material Name",
+            name: "Name",
             field: "MaterialName",
             selector: (row) => row.name,
         },
         {
-            name: "Meters Available",
+            name: "Phone",
             field: "MetersAvailable",
-            selector: (row) => Number(row.stock).toFixed(2),
+            selector: (row) => row.phone,
         },
         {
-            // name: "Price Per Meter",
-            name: "Buy price",
-            field: "PricePerMeter",
-            selector: (row) => Number(row.price).toFixed(2),
+            name: "Roll",
+            field: "MetersAvailable",
+            selector: (row) => row.roll,
         },
-        {
-            name: "Total Value",
-            field: "TotalValue",
-            selector: (row) =>
-                (Number(row.stock) * Number(row.price)).toFixed(2),
-        },
+        // {
+        //     name: "Total Value",
+        //     field: "TotalValue",
+        //     selector: (row) =>
+        //         (Number(row.stock) * Number(row.price)).toFixed(2),
+        // },
         {
             name: "Action",
             cell: (row) =>
