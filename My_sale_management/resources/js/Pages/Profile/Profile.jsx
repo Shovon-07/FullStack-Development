@@ -1,7 +1,7 @@
 import Layout from "../../Layouts/Layout";
 
 const Profile = () => {
-    return <div>Profile</div>;
+    return <div className="animated fadeInDown">Profile</div>;
 };
 
 Profile.layout = (page) => <Layout child={page} />;

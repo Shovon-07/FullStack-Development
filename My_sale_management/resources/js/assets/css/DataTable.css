@@ -1,0 +1,54 @@
+/*** Input field for search***/
+.searchInput {
+    text-align: right;
+    margin-top: 20px;
+}
+.searchInput input {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 0;
+    outline: 0;
+    color: var(--dark-2);
+    background: transparent;
+    border-bottom: 1px solid var(--dark-2);
+    transition: var(--trans);
+}
+
+/*** Table header***/
+.evaFvq {
+    text-align: center;
+    text-transform: capitalize;
+}
+/*** Search bar ***/
+.hMFeQo {
+    padding: 0;
+    min-height: 0;
+}
+/*** Table Container ***/
+
+.kGckkd,
+.mHisf,
+.hrfSzQ {
+    border-bottom: 2px solid var(--dark-2);
+    text-transform: capitalize;
+    background: var(--light-1);
+}
+.gfKXFa {
+    /* font-size: 15px; */
+}
+.faZveH,
+.mHisf,
+.cAGMGL,
+.gfKXFa {
+    font-size: 16px;
+}
+/*** pagination bar ***/
+.hVPalX .kUwhdZ {
+    border: var(--border);
+    border-radius: 8px;
+}
+.fpBGKh {
+    background: var(--light-1);
+    border-bottom: var(--border);
+}
