@@ -5,6 +5,10 @@
     margin: 0;
     padding: 0;
 }
+::selection {
+    background: var(--main-clr);
+    color: var(--light-1);
+}
 body {
     font-family: "DM Sans", sans-serif;
     font-optical-sizing: auto;
@@ -27,9 +31,13 @@ button {
     display: flex;
     align-items: center;
 }
+.c-pointer {
+    cursor: pointer;
+}
 
 /* Layout */
-.container {
+.content-parent {
+    /* width: calc(100%- 230px); */
     max-width: 1500px;
     height: 100%;
     min-height: 100vh;

@@ -162,16 +162,16 @@ const MyModal = (props) => {
                     >
                         <Fade in={open}>
                             <Box sx={style}>
-                                <div className="modalCloseBtn">
+                                <div className="modalHeader">
+                                    <h3 className="modalTitle">{slug}</h3>
                                     <RxCross2
                                         size={25}
-                                        className="cursor"
+                                        className="c-pointer"
                                         color="#fff"
                                         onClick={handleClose}
                                     />
                                 </div>
                                 <div className="modalContent">
-                                    <h3 className="modalTitle">{slug}</h3>
                                     <form
                                         className="d-flex"
                                         onSubmit={handleForm}

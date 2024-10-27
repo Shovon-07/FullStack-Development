@@ -5,6 +5,7 @@ import "../assets/css/global.css";
 import "../assets/css/variables.css";
 
 //___ Components ___//
+import Loader from "../Components/Loader/Loader";
 const Header = lazy(() => import("../Components/Header/Header"));
 const Sidenav = lazy(() => import("../Components/Sidenav/Sidenav"));
 const Footer = lazy(() => import("../Components/Footer/Footer"));
@@ -22,7 +23,7 @@ const Layout = ({ child }) => {
     return (
         <div className="main">
             {/* Header */}
-            <Suspense fallback={"Loading..."}>
+            <Suspense fallback={<Loader />}>
                 <Header
                     toggleSideNav={toggleSideNav}
                     setToggleSideNav={setToggleSideNav}
@@ -30,13 +31,13 @@ const Layout = ({ child }) => {
             </Suspense>
 
             {/* Sidenav */}
-            <Suspense fallback={"Loading..."}>
+            <Suspense fallback={<Loader />}>
                 <Sidenav
                     toggleSideNav={toggleSideNav}
                     setToggleSideNav={setToggleSideNav}
                 />
             </Suspense>
-            <div className="container">
+            <div className="content-parent">
                 {/* <h1>Count = {counter} </h1> */}
                 <div
                     className={`body-overlay ${
@@ -48,7 +49,7 @@ const Layout = ({ child }) => {
             </div>
 
             {/* Footer */}
-            <Suspense fallback={"Loading..."}>
+            <Suspense fallback={<Loader />}>
                 <Footer />
             </Suspense>
         </div>
