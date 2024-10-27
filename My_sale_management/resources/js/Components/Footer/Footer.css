@@ -1,0 +1,5 @@
+.footer {
+    margin: auto auto auto 230px;
+    background: var(--light-1);
+    box-shadow: var(--shadow);
+}
