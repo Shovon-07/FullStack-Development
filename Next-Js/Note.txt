@@ -1,0 +1,2 @@
+# Component in ui folder
+# Pages in dashbord folder

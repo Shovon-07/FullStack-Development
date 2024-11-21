@@ -1,0 +1,49 @@
+/*** Input field for search***/
+.searchInput {
+  text-align: right;
+  margin-top: 20px;
+  width: 30%;
+}
+.searchInput input {
+  font-size: 16px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 0;
+  outline: 0;
+  color: var(--dark-2);
+  background: transparent;
+  border: var(--border);
+  transition: var(--trans);
+}
+
+/*** Table header***/
+.hudJpJ {
+  border-bottom: 2px solid var(--dark-2);
+  text-transform: capitalize;
+  background: var(--main-clr) !important;
+  color: var(--light-1);
+}
+.bzEluS {
+  font-size: 1.1rem !important;
+}
+/*** Table Container ***/
+.kQSTYI,
+.iGxMlw {
+  font-size: 0.9rem !important;
+}
+/* .kQSTYI:hover,
+.iGxMlw:hover {
+    background: var(--light-blue) !important;
+} */
+.dknajr {
+  border: 1px solid var(--dropdown-box-clr) !important;
+}
+/*** pagination bar ***/
+.hDPlLz {
+  border: 1px solid var(--dropdown-box-clr) !important;
+}
+
+/* Aditional */
+.deleteIcon {
+  color: var(--red);
+}

@@ -1,0 +1,37 @@
+.form_box {
+  width: 40%;
+  height: auto;
+  border: var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+.form_box .title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.form_box .input_box {
+  margin-bottom: 30px;
+  border: var(--border);
+  border-radius: 8px;
+}
+.form_box .next_button {
+  text-align: center;
+}
+.form_box .next_button button {
+  width: 20%;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+.form_box .form_bottom {
+  margin-top: 20px;
+  line-height: 2rem;
+  justify-content: flex-end;
+}
+.form_box .form_bottom span {
+  margin: 0 5px;
+}
+.form_box .form_bottom a {
+  color: var(--main-clr);
+}
