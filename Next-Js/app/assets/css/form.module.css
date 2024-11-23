@@ -20,18 +20,32 @@
   text-align: center;
 }
 .form_box .next_button button {
-  width: 20%;
+  width: 100px;
   margin-top: 10px;
   text-transform: uppercase;
 }
 .form_box .form_bottom {
-  margin-top: 20px;
+  margin-top: 25px;
   line-height: 2rem;
+  align-items: end !important;
   justify-content: flex-end;
+  flex-direction: column;
 }
-.form_box .form_bottom span {
+/* .form_box .form_bottom span {
   margin: 0 5px;
-}
+} */
 .form_box .form_bottom a {
   color: var(--main-clr);
+}
+
+/*___ Responsive ___*/
+@media screen and (max-width: 1000px) {
+  .form_box {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .form_box {
+    width: 90%;
+  }
 }

@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //___ Icons ___//
 import { HiBars3BottomLeft } from "react-icons/hi2";
@@ -34,15 +34,16 @@ const Header = (props) => {
   const [profileVal, setProfileVal] = useState(false);
   const [searchDropVal, setSearchDropVal] = useState(false);
 
-  // Close all dropdown
-  // document.onkeydown = function (evt) {
-  //   evt = evt || window.event;
-  //   if (evt.keyCode == 27) {
-  //     setSearchDropVal((prev) => (prev = false));
-  //     setNotificationVal((prev) => (prev = false));
-  //     setProfileVal((prev) => (prev = false));
-  //   }
-  // };
+  useEffect(() => {
+    window.onkeydown = function (evt) {
+      evt = evt || window.event;
+      if (evt.keyCode == 27) {
+        setSearchDropVal((prev) => (prev = false));
+        setNotificationVal((prev) => (prev = false));
+        setProfileVal((prev) => (prev = false));
+      }
+    };
+  }, []);
 
   return (
     <header className="header">

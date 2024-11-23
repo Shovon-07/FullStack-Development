@@ -2,6 +2,7 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 //___ Css ___//
 import FormStyle from "@/app/assets/css/form.module.css";
@@ -18,7 +19,11 @@ const LoginForm = () => {
   const Login = async (evt) => {
     evt.preventDefault();
     console.log(`${inputData.email} \n ${inputData.password}`);
-    redirect("/");
+    toast.success("Login successful");
+
+    setTimeout(() => {
+      redirect("/");
+    }, 1000);
   };
 
   return (
@@ -51,7 +56,7 @@ const LoginForm = () => {
         <p>
           Don't have an account? <Link href="/signup">Signup</Link>
         </p>{" "}
-        <span>|</span>
+        {/* <span>|</span> */}
         <p>
           <Link href="#">Forgot password</Link>
         </p>
