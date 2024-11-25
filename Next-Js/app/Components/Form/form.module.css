@@ -11,11 +11,36 @@
   font-weight: 600;
   margin-bottom: 20px;
 }
-.form_box .input_box {
+/* .form_box .input_box {
   margin-bottom: 30px;
   border: var(--border);
   border-radius: 8px;
+} */
+
+.form_box .inputBox {
+  width: 100%;
+  border: var(--border);
+  border-radius: 8px;
+  margin: 30px 0;
+  position: relative;
 }
+.form_box .inputBox input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--dark-3);
+  font-size: 1.1rem;
+  padding: 6px 15px;
+}
+.form_box .inputBox .showHide {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  background: transparent;
+  color: var(--dark-3);
+}
+
 .form_box .next_button {
   text-align: center;
 }

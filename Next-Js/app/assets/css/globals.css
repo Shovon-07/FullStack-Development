@@ -9,10 +9,6 @@
   margin: 0;
   padding: 0;
 }
-::selection {
-  background: var(--main-clr);
-  color: var(--light-1);
-}
 html {
   scroll-behavior: smooth;
 }
@@ -21,6 +17,10 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   color: var(--dark-3);
+}
+::selection {
+  background: var(--main-clr);
+  color: var(--light-1);
 }
 input {
   border: none;
@@ -35,6 +35,25 @@ input::placeholder {
 }
 input:focus::placeholder {
   padding-left: 10px;
+}
+[type="text"]:focus,
+[type="email"]:focus,
+[type="url"]:focus,
+[type="password"]:focus,
+[type="number"]:focus,
+[type="date"]:focus,
+[type="datetime-local"]:focus,
+[type="month"]:focus,
+[type="search"]:focus,
+[type="tel"]:focus,
+[type="time"]:focus,
+[type="week"]:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  border-radius: 8px;
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
+    calc(1px + var(--tw-ring-offset-width)) #e3dfdf;
 }
 
 /*___ Common classes start ___*/
