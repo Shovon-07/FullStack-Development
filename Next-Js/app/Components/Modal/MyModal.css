@@ -14,24 +14,59 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .addBtn {
   font-weight: 600 !important;
   background: var(--main-clr) !important;
   color: #fff !important;
   font-size: 0.8rem !important;
 }
+.editBtn {
+  color: var(--green) !important;
+  font-size: 1.2rem !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  /* background: #2baf034d !important;
+  padding: 8px !important;
+  border-radius: 50%; */
+}
+.deleteIcon {
+  color: var(--red);
+  /* background: #2baf034d !important;
+  padding: 8px !important;
+  border-radius: 50%;
+  font-size: 1.2rem !important; */
+}
+.createUserIcon {
+  color: var(--light-purple) !important;
+  font-size: 1.28rem !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  /* background: #8805fc61 !important;
+  padding: 8px !important;
+  border-radius: 50%; */
+}
+.createRelationIcon {
+  color: var(--orange) !important;
+  font-size: 1.28rem !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  /* background: #8805fc61 !important;
+  padding: 8px !important;
+  border-radius: 50%; */
+}
+
 .modalCloseBtn span {
   cursor: pointer;
   font-size: 20px;
   color: #fff;
 }
+
 .modalContent {
   padding: 0 20px 0 20px;
 }
 .modalTitle {
-  /* margin-bottom: 20px; */
   font-size: 1.1rem;
-  text-transform: capitalize;
   color: #fff;
 }
 form {
@@ -49,15 +84,14 @@ form label {
 form .inputBox {
   border: 1px solid #7d7d7d;
   width: 100%;
-  /* border-radius: 8px; */
 }
 form .inputBox input {
   border: none;
   outline: none;
   color: #fff;
   background: transparent;
-  border-radius: 8px;
-  font-size: 17px;
+  border-radius: 0;
+  font-size: 1rem;
   width: 100%;
   padding: 5px 15px;
 }
@@ -75,7 +109,7 @@ form .button {
   text-transform: uppercase;
   display: inline-block;
 }
-form .button:focus-within {
+form .button:active {
   background: var(--dark-blue);
 }
 .form-bottom {
@@ -94,6 +128,17 @@ form .button:focus-within {
 .form-bottom span {
   margin: 0 10px;
   color: #f8f9fa;
+}
+
+.select-from-modal {
+  width: 100%;
+  margin-top: 30px;
+}
+.select-from-modal .select {
+  width: 100%;
+  color: var(--light-2);
+  background: var(--dark-1);
+  border: 1px solid #7d7d7d !important;
 }
 
 /* For search */

@@ -12,7 +12,7 @@ import { RxCross2 } from "react-icons/rx";
 import { IoSearch } from "react-icons/io5";
 
 //___ Css ___//
-import ModalStyle from "@/app/assets/css/MyModal.css";
+import "./MyModal.css";
 
 const style = {
   position: "absolute",
@@ -91,11 +91,7 @@ const SearchModal = (props) => {
   return (
     <>
       <div>
-        <Button
-          onClick={handleOpen}
-          className={ModalStyle.addBtn}
-          style={{ color: "var(--dark-3)" }}
-        >
+        <Button onClick={handleOpen} style={{ color: "var(--dark-3)" }}>
           {ModalOpenBtnTitle}
         </Button>
         <Modal

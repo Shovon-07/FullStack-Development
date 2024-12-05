@@ -16,7 +16,8 @@ const NotFoundPage = () => {
       <button
         className="button"
         onClick={() => {
-          router.back();
+          // router.back();
+          window.history.back();
         }}
       >
         Go back

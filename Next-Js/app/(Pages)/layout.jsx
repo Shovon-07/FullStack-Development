@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 
 //___ Components ___//
+// import Loader from "@/app/Components/Loader/Loader";
 const Header = dynamic(() => import("@/app/Components/Header/Header"), {
   loading: "",
 });
@@ -25,6 +26,7 @@ const layout = ({ children }) => {
           onClick={() => setToggleSideNav((prev) => !prev)}
         ></div>
 
+        {/* <Loader /> */}
         {children}
       </div>
     </>

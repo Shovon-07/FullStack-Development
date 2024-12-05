@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import Tooltip from "@mui/material/Tooltip";
 
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
@@ -11,7 +12,7 @@ import Button from "@mui/material/Button";
 import { RxCross2 } from "react-icons/rx";
 
 //___ Css ___//
-import "@/app/assets/css/MyModal.css";
+import "./MyModal.css";
 
 const style = {
   position: "absolute",
@@ -26,68 +27,347 @@ const style = {
 
 //___ Additional utility ___//
 import ApiConfig from "@/app/assets/js/ApiConfig";
+import { GetCookie } from "@/app/Services/GetCookie";
 
 const MyModal = (props) => {
   const {
-    // id,
+    id,
     slug,
     inputFields,
+    identifier,
     api,
+    getSpecificDataApi,
     ModalOpenBtnTitle,
-    ModalOpenBtnStyle,
+    className,
+    data,
+    setData,
+    toolTip,
     setRelodeTable,
+    setRelodeSelect,
   } = props;
 
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    // console.log("From modal");
+    // console.log(data);
+
+    setOpen(true);
+    if (
+      identifier == "designationUpdate" ||
+      identifier == "employeeUpdate" ||
+      identifier == "brandUpdate" ||
+      identifier == "categoryUpdate" ||
+      identifier == "supplierUpdate" ||
+      identifier == "customerUpdate"
+    ) {
+      GetSpecificData();
+    }
+  };
   const handleClose = () => setOpen(false);
 
+  // Create api headers
+  var headers = "";
+  var uid = "";
+  try {
+    headers = {
+      Authorization: `Bearer ${GetCookie("AuthToken")}`,
+    };
+    uid = GetCookie("Uid");
+  } catch (error) {
+    console.log(error);
+  }
+
   const [inputValue, setInputValue] = useState({
-    title: "",
-    project_name: "",
-    developer: "",
+    generated_employee_id: "",
+    employee_id: "0",
+    designation_id: "0",
+    designation: "",
+    name: "",
+    phone: "",
+    national_id: "",
+    blood_group: "",
+    address: "",
+    brand: "",
+    categories: "",
+    // balance: "",
+    // due: "",
   });
   const handleInputValue = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+    // console.log(e.target.name + " = " + e.target.value);
   };
 
+  //___ Employee image start ___//
+  const [employeeImage, setEmployeeImage] = useState();
+  const handleEmployeeImageInput = (e) => {
+    setEmployeeImage(e.target.files[0]);
+  };
+  //___ Employee image end ___//
+
+  //___ Get specific data with id ___//
+  const GetSpecificData = async () => {
+    await ApiConfig.get(getSpecificDataApi + "/" + id, { headers })
+      .then((response) => {
+        if (response.data.status == true) {
+          if (identifier == "designationUpdate") {
+            setInputValue({
+              ...inputValue,
+              designation: response.data.data.name,
+            });
+          } else if (identifier == "employeeUpdate") {
+            setInputValue({
+              ...inputValue,
+              generated_employee_id: response.data.data.employee_id,
+              designation_id: response.data.data.designation_id,
+              name: response.data.data.name,
+              phone: response.data.data.phone,
+              national_id: response.data.data.national_id,
+              blood_group: response.data.data.blood_group,
+              address: response.data.data.address,
+            });
+          } else if (identifier == "brandUpdate") {
+            setInputValue({
+              ...inputValue,
+              brand: response.data.data.name,
+            });
+          } else if (identifier == "categoryUpdate") {
+            setInputValue({
+              ...inputValue,
+              categories: response.data.data.name,
+            });
+          } else if (identifier == "supplierUpdate") {
+            setInputValue({
+              ...inputValue,
+              name: response.data.data.name,
+              phone: response.data.data.phone,
+              balance: response.data.data.balance,
+              due: response.data.data.due,
+            });
+          } else if (identifier == "customerUpdate") {
+            setInputValue({
+              ...inputValue,
+              employee_id: response.data.data.employee_id,
+              name: response.data.data.name,
+              phone: response.data.data.phone,
+              address: response.data.data.address,
+            });
+          }
+          console.clear();
+          // console.log(response);
+        } else {
+          console.log(response);
+        }
+      })
+      .catch((e) => {
+        console.log(`Error = ${e}`);
+      });
+  };
+
+  //___ Submit form data ___//
   const SubmitForm = async (e) => {
     e.preventDefault();
-    if (api == "/add-project") {
-      if (inputValue.title == "") {
-        toast.error("Please enter title");
-      } else if (inputValue.project_name == "") {
-        toast.error("Please enter project name");
-      } else if (inputValue.developer == "") {
-        toast.error("Please enter developer name");
+    if (identifier == "designationStore" || identifier == "designationUpdate") {
+      if (inputValue.designation == "") {
+        toast.error("Please enter designation");
       } else {
         const payload = new FormData();
-        payload.append("title", inputValue.title);
-        payload.append("project_name", inputValue.project_name);
-        payload.append("developer", inputValue.developer);
-
-        setLoader(true);
-        await AxiosClient.post(api, payload)
+        payload.append("name", inputValue.designation);
+        await ApiConfig.post(api, payload, { headers })
           .then((response) => {
             if (response.data.status == true) {
               setInputValue({
-                title: "",
-                project_name: "",
-                developer: "",
+                designation: "",
               });
               handleClose();
               setRelodeTable((prev) => !prev);
               console.clear();
-              toast.success(response.data.msg);
+              toast.success(response.data.message);
             } else {
-              setLoader(false);
-              console.log(response.data.msg);
-              alert(response.data.msg.project_image[1]);
+              toast.error(response.data.error);
             }
           })
           .catch((e) => {
             console.log(`Error = ${e}`);
-            setLoader(false);
+          });
+      }
+    } else if (
+      identifier == "employeeStore" ||
+      identifier == "employeeUpdate"
+    ) {
+      if (inputValue.designation_id <= 0) {
+        toast.error("Please select designation");
+      } else if (inputValue.generated_employee_id == "") {
+        toast.error("Please enter employees unique id");
+      } else if (inputValue.name == "") {
+        toast.error("Please enter employee name");
+      } else if (inputValue.phone == "") {
+        toast.error("Please enter phone number");
+      } else if (inputValue.national_id == "") {
+        toast.error("Please enter national id number");
+      } else if (inputValue.blood_group == "") {
+        toast.error("Please enter blood group");
+      } else if (inputValue.address == "") {
+        toast.error("Please enter address");
+      } else {
+        const payload = new FormData();
+        payload.append("employee_id", inputValue.generated_employee_id);
+        payload.append("designation_id", inputValue.designation_id);
+        payload.append("name", inputValue.name);
+        payload.append("phone", inputValue.phone);
+        payload.append("address", inputValue.address);
+        payload.append("national_id", inputValue.national_id);
+        payload.append("blood_group", inputValue.blood_group);
+        payload.append("created_by", uid);
+        // payload.append("image", employeeImage);
+
+        await ApiConfig.post(api, payload, { headers })
+          .then((response) => {
+            if (response.data.status == true) {
+              setInputValue({
+                employee_id: "",
+                designation_id: "0",
+                name: "",
+                phone: "",
+                national_id: "",
+                blood_group: "",
+                address: "",
+              });
+              handleClose();
+              setEmployeeImage("");
+              setRelodeTable((prev) => !prev);
+              console.clear();
+              toast.success(response.data.message);
+            } else {
+              toast.error(response.data.error);
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
+          });
+      }
+    } else if (identifier == "brandStore" || identifier == "brandUpdate") {
+      if (inputValue.brand == "") {
+        toast.error("Please enter brand name");
+      } else {
+        const payload = new FormData();
+        payload.append("name", inputValue.brand);
+        await ApiConfig.post(api, payload, { headers })
+          .then((response) => {
+            if (response.data.status == true) {
+              setInputValue({
+                brand: "",
+              });
+              handleClose();
+              setRelodeTable((prev) => !prev);
+              console.clear();
+              toast.success(response.data.message);
+            } else {
+              toast.error(response.data.error);
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
+          });
+      }
+    } else if (
+      identifier == "categoryStore" ||
+      identifier == "categoryUpdate"
+    ) {
+      if (inputValue.categories == "") {
+        toast.error("Please enter category");
+      } else {
+        const payload = new FormData();
+        payload.append("name", inputValue.categories);
+        await ApiConfig.post(api, payload, { headers })
+          .then((response) => {
+            if (response.data.status == true) {
+              setInputValue({
+                categories: "",
+              });
+              handleClose();
+              setRelodeTable((prev) => !prev);
+              console.clear();
+              toast.success(response.data.message);
+            } else {
+              toast.error(response.data.error);
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
+          });
+      }
+    } else if (
+      identifier == "supplierStore" ||
+      identifier == "supplierUpdate"
+    ) {
+      if (inputValue.name == "") {
+        toast.error("Please enter supplier name");
+      } else if (inputValue.phone == "") {
+        toast.error("Please enter supplier phone number");
+      } else {
+        const payload = new FormData();
+        payload.append("name", inputValue.name);
+        payload.append("phone", inputValue.phone);
+        payload.append("balance", inputValue.balance);
+        payload.append("due", inputValue.due);
+        await ApiConfig.post(api, payload, { headers })
+          .then((response) => {
+            if (response.data.status == true) {
+              setInputValue({
+                name: "",
+                phone: "",
+                balance: "",
+                due: "",
+              });
+              handleClose();
+              setRelodeTable((prev) => !prev);
+              console.clear();
+              toast.success(response.data.message);
+            } else {
+              toast.error(response.data.error);
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
+          });
+      }
+    } else if (
+      identifier == "customerStore" ||
+      identifier == "customerUpdate"
+    ) {
+      if (inputValue.employee_id <= 0) {
+        toast.error("Please select employee");
+      } else if (inputValue.name == "") {
+        toast.error("Please enter customer name");
+      } else if (inputValue.phone == "") {
+        toast.error("Please enter customer phone number");
+      } else if (inputValue.address == "") {
+        toast.error("Please enter customer address");
+      } else {
+        const payload = new FormData();
+        payload.append("employee_id", inputValue.employee_id);
+        payload.append("name", inputValue.name);
+        payload.append("phone", inputValue.phone);
+        payload.append("address", inputValue.address);
+        await ApiConfig.post(api, payload, { headers })
+          .then((response) => {
+            if (response.data.status == true) {
+              setInputValue({
+                employee_id: "",
+                name: "",
+                phone: "",
+                address: "",
+              });
+              handleClose();
+              setRelodeTable((prev) => !prev);
+              console.clear();
+              toast.success(response.data.message);
+            } else {
+              toast.error(response.data.error);
+            }
+          })
+          .catch((e) => {
+            console.log(`Error = ${e}`);
           });
       }
     }
@@ -96,13 +376,11 @@ const MyModal = (props) => {
   return (
     <>
       <div>
-        <Button
-          onClick={handleOpen}
-          className="addBtn"
-          style={ModalOpenBtnStyle}
-        >
-          {ModalOpenBtnTitle}
-        </Button>
+        <Tooltip title={toolTip}>
+          <Button onClick={handleOpen} className={className}>
+            {ModalOpenBtnTitle}
+          </Button>
+        </Tooltip>
         <Modal
           aria-labelledby="transition-modal-title"
           aria-describedby="transition-modal-description"
@@ -129,6 +407,64 @@ const MyModal = (props) => {
               </div>
               <div className="modalContent">
                 <form className="d-flex" onSubmit={SubmitForm}>
+                  {/* ___ Employee Selection Start  ___ */}
+                  {identifier == "employeeStore" ||
+                  identifier == "employeeUpdate" ? (
+                    <div className="select-from-modal">
+                      <select
+                        className="select"
+                        name="designation_id"
+                        value={inputValue.designation_id}
+                        onChange={handleInputValue}
+                        disabled={identifier == "employeeUpdate" ? true : false}
+                      >
+                        <option value="0" disabled>
+                          Select designation
+                        </option>
+                        {Array.isArray(data) &&
+                          data.map((items, index) => {
+                            return (
+                              <option value={items.id} key={index}>
+                                {items.name}
+                              </option>
+                            );
+                          })}
+                      </select>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {/* ___ Employee Selection End ___ */}
+
+                  {/* ___ Customer Selection Start  ___ */}
+                  {identifier == "customerStore" ||
+                  identifier == "customerUpdate" ? (
+                    <div className="select-from-modal">
+                      <select
+                        className="select"
+                        name="employee_id"
+                        value={inputValue.employee_id}
+                        onChange={handleInputValue}
+                        disabled={identifier == "customerUpdate" ? true : false}
+                      >
+                        <option value="0" disabled>
+                          Select employee
+                        </option>
+                        {Array.isArray(data) &&
+                          data.map((items, index) => {
+                            return (
+                              <option value={items.id} key={index}>
+                                {items.name}
+                              </option>
+                            );
+                          })}
+                      </select>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {/* ___ Customer Selection End ___ */}
+
                   {inputFields.map((items, index) => {
                     return (
                       <div style={{ width: "100%" }} key={index}>
@@ -137,19 +473,32 @@ const MyModal = (props) => {
                           <input
                             type={items.type}
                             name={items.field}
-                            required
                             placeholder={`${items.placeholder}`}
                             onChange={handleInputValue}
-                            value={
-                              items.field == "collectedAmount"
-                                ? inputValue.collection
-                                : inputValue.field
-                            }
+                            value={inputValue[items.field] || ""}
                           />
                         </div>
                       </div>
                     );
                   })}
+
+                  {/* ___ Employee Section Start  ___ */}
+                  {identifier == "employeeStore" ||
+                  identifier == "employeeUpdate" ? (
+                    <div style={{ width: "100%" }}>
+                      <label>Employee image</label>
+                      <div className="inputBox">
+                        <input
+                          type="file"
+                          name="employeeImage"
+                          onChange={handleEmployeeImageInput}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  {/* ___ Employee Section End  ___ */}
 
                   <div>
                     <button type="submit" className="button">
@@ -167,4 +516,3 @@ const MyModal = (props) => {
 };
 
 export default MyModal;
-//

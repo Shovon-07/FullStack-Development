@@ -20,12 +20,14 @@ const page = () => {
       type: "email",
       placeholder: "Enter your email",
       className: "inputBox",
+      autoCompleteAttr: "on",
     },
     {
       field: "password",
       type: "password",
       placeholder: "Enter your password",
       className: "inputBox d-flex",
+      autoCompleteAttr: "off",
     },
   ];
 
@@ -43,3 +45,6 @@ const page = () => {
 };
 
 export default page;
+
+// Email : shovon@mail.com
+// pass : 12345678

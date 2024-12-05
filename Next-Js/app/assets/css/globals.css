@@ -25,6 +25,7 @@ body {
 input {
   border: none;
   outline: none;
+  border-radius: 8px;
   padding: 5px 10px;
   width: 100%;
   color: var(--dark-3);
@@ -36,12 +37,15 @@ input::placeholder {
 input:focus::placeholder {
   padding-left: 10px;
 }
-[type="text"]:focus,
+select {
+  cursor: pointer;
+}
 [type="email"]:focus,
 [type="url"]:focus,
 [type="password"]:focus,
 [type="number"]:focus,
 [type="date"]:focus,
+[type="text"]:focus,
 [type="datetime-local"]:focus,
 [type="month"]:focus,
 [type="search"]:focus,
@@ -49,11 +53,20 @@ input:focus::placeholder {
 [type="time"]:focus,
 [type="week"]:focus,
 [multiple]:focus,
+input:focus,
 textarea:focus,
-select:focus {
-  border-radius: 8px;
+select:focus,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border-radius: 0;
+  outline: 0;
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0
     calc(1px + var(--tw-ring-offset-width)) #e3dfdf;
+}
+.select {
+  padding: 10px;
+  border: var(--border);
 }
 
 /*___ Common classes start ___*/
@@ -63,6 +76,21 @@ select:focus {
 }
 .d-none {
   display: none;
+}
+.gap-10 {
+  gap: 10px;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-30 {
+  gap: 30px;
+}
+.gap-40 {
+  gap: 40px;
+}
+.gap-50 {
+  gap: 50px;
 }
 .c-pointer {
   cursor: pointer;

@@ -12,17 +12,18 @@
   --light-blue: rgb(194 205 241);
   --dark-blue: #0d0144;
 
-  --orange: #fcae05;
+  --orange: #f48726;
   --red: rgb(253, 16, 16);
   --green: #2baf03;
+  --light-purple: #8805fc;
   --dropdown-box-clr: #dfdbdb;
   --link-hover: #4644461c;
 
   --trans: 0.3s all ease;
-  --shadow: 3px 3px 10px var(--light-3);
+  --shadow: 3px 3px 5px var(--light-3);
   --cardShadow: 2px 2px 5px var(--light-3), -2px -2px 5px var(--light-3);
-  /* --border: 1px solid var(--light-3); */
   --border: 1px solid #e3dfdf;
+  --table-border: 1px solid #cccbcb;
 }
 
 /* @media (prefers-color-scheme: dark) {} */

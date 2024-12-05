@@ -15,25 +15,45 @@ import {
   FaTruckFast,
   FaSackDollar,
   FaPeopleGroup,
+  FaUserGraduate,
 } from "react-icons/fa6";
 import { FaUserAlt, FaTools, FaUsers, FaHandPointRight } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
+import { PiUserSwitchBold } from "react-icons/pi";
+
+import { BiSolidSend } from "react-icons/bi";
 
 //___ Css ___//
 import "./sidenav.css";
 
 //___ Components ___//
-// import MenuLinks from "./MenuLinks";
 import LogoutBtn from "./LogoutBtn";
+
+//___ Additional utility ___//
+import { GetCookie } from "@/app/Services/GetCookie";
 
 const sidenav = (props) => {
   const { toggleSideNav, setToggleSideNav } = props;
   const pathname = usePathname();
 
+  // Create api headers
+  var headers = "";
+  try {
+    headers = {
+      Authorization: `Bearer ${GetCookie("AuthToken")}`,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+
   // Sidenav drop value
   const [navDrp_1, setNavDrp_1] = useState(false);
   const [navDrp_2, setNavDrp_2] = useState(false);
   const [navDrp_3, setNavDrp_3] = useState(false);
+
+  const CloseSideNav = () => {
+    setToggleSideNav(false);
+  };
 
   return (
     <div className={`side-nav ${toggleSideNav == true ? "active" : ""}`}>
@@ -41,16 +61,18 @@ const sidenav = (props) => {
         <h2>company</h2>
         <div
           className={`toggler ${toggleSideNav == true ? "show" : ""}`}
-          onClick={() => {
-            setToggleSideNav((prev) => !prev);
-          }}
+          onClick={CloseSideNav}
         >
           <IoClose />
         </div>
       </div>
       <ul className="side-menu">
         <li>
-          <Link href="/" className={pathname === "/" ? "active" : ""}>
+          <Link
+            href="/"
+            className={pathname === "/" ? "active" : ""}
+            onClick={CloseSideNav}
+          >
             <div className="d-flex">
               <FaHouse className="icon" size={18} />
               <p>Dashboard</p>
@@ -62,6 +84,7 @@ const sidenav = (props) => {
           <Link
             href="/profile"
             className={pathname === "/profile" ? "active" : ""}
+            onClick={CloseSideNav}
           >
             <div className="d-flex">
               <FaUserAlt className="icon" size={15} />
@@ -70,15 +93,68 @@ const sidenav = (props) => {
           </Link>
         </li>
         <li>
-          <Link href="/settings" className={pathname === "/" ? "settings" : ""}>
+          <Link
+            href="/settings"
+            className={pathname === "/settings" ? "active" : ""}
+            onClick={CloseSideNav}
+          >
             <div className="d-flex">
               <FaGear className="icon" size={17} />
               <p>Settings</p>
             </div>
           </Link>
         </li>
+        <p className="indicate-section">User panel</p>
+        <li>
+          <Link
+            href="/designation"
+            className={pathname === "/designation" ? "active" : ""}
+            onClick={CloseSideNav}
+          >
+            <div className="d-flex">
+              <FaUserGraduate className="icon" size={16} />
+              <p>Designation</p>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/employees"
+            className={pathname === "/employees" ? "active" : ""}
+            onClick={CloseSideNav}
+          >
+            <div className="d-flex">
+              <PiUserSwitchBold className="icon" size={20} />
+              <p>Employees</p>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/users"
+            className={pathname === "/users" ? "active" : ""}
+            onClick={CloseSideNav}
+          >
+            <div className="d-flex">
+              <FaUsers className="icon" size={20} />
+              <p>Users</p>
+            </div>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/suppliers"
+            className={pathname === "/suppliers" ? "active" : ""}
+            onClick={CloseSideNav}
+          >
+            <div className="d-flex">
+              <BiSolidSend className="icon" size={19} />
+              <p>Suppliers</p>
+            </div>
+          </Link>
+        </li>
         <p className="indicate-section">Products</p>
-        <li
+        {/* <li
           className={`side-nav-dropdown-parent ${navDrp_1 ? "active" : ""}`}
           onClick={() => {
             setNavDrp_1((prev) => !prev);
@@ -137,15 +213,16 @@ const sidenav = (props) => {
               </Link>
             </li>
           </ul>
-        </li>
+        </li> */}
         <li>
           <Link
-            href="/product-sales"
-            className={pathname === "/product-sales" ? "active" : ""}
+            href="/brands"
+            className={pathname === "/brands" ? "active" : ""}
+            onClick={CloseSideNav}
           >
             <div className="d-flex">
-              <FaTruckFast className="icon" size={19} />
-              <p>Product Sales</p>
+              <FaTag className="icon" size={20} />
+              <p>Brands</p>
             </div>
           </Link>
         </li>
@@ -153,6 +230,7 @@ const sidenav = (props) => {
           <Link
             href="/categories"
             className={pathname === "/categories" ? "active" : ""}
+            onClick={CloseSideNav}
           >
             <div className="d-flex">
               <FaListUl className="icon" size={16} />
@@ -162,12 +240,13 @@ const sidenav = (props) => {
         </li>
         <li>
           <Link
-            href="/brands"
-            className={pathname === "/brands" ? "active" : ""}
+            href="/product-sales"
+            className={pathname === "/product-sales" ? "active" : ""}
+            onClick={CloseSideNav}
           >
             <div className="d-flex">
-              <FaTag className="icon" size={20} />
-              <p>Brand</p>
+              <FaTruckFast className="icon" size={19} />
+              <p>Product Sales</p>
             </div>
           </Link>
         </li>
@@ -175,9 +254,10 @@ const sidenav = (props) => {
           <Link
             href="/customer"
             className={pathname === "/customer" ? "active" : ""}
+            onClick={CloseSideNav}
           >
             <div className="d-flex">
-              <FaUsers className="icon" size={20} />
+              <FaPeopleGroup className="icon" size={19} />
               <p>Customer</p>
             </div>
           </Link>
@@ -199,25 +279,41 @@ const sidenav = (props) => {
           </a>
           <ul className="side-nav-dropdown">
             <li>
-              <Link href="#" className={pathname === "#" ? "active" : ""}>
+              <Link
+                href="#"
+                className={pathname === "#" ? "active" : ""}
+                onClick={CloseSideNav}
+              >
                 <FaHandPointRight className="icon" size={16} />
                 <p>Product</p>
               </Link>
             </li>
             <li>
-              <Link href="#" className={pathname === "#" ? "active" : ""}>
+              <Link
+                href="#"
+                className={pathname === "#" ? "active" : ""}
+                onClick={CloseSideNav}
+              >
                 <FaHandPointRight className="icon" size={16} />
                 <p>Store</p>
               </Link>
             </li>
             <li>
-              <Link href="#" className={pathname === "#" ? "active" : ""}>
+              <Link
+                href="#"
+                className={pathname === "#" ? "active" : ""}
+                onClick={CloseSideNav}
+              >
                 <FaHandPointRight className="icon" size={16} />
                 <p>Create specifications</p>
               </Link>
             </li>
             <li>
-              <Link href="#" className={pathname === "#" ? "active" : ""}>
+              <Link
+                href="#"
+                className={pathname === "#" ? "active" : ""}
+                onClick={CloseSideNav}
+              >
                 <FaHandPointRight className="icon" size={16} />
                 <p>Specifications</p>
               </Link>
@@ -229,6 +325,7 @@ const sidenav = (props) => {
           <Link
             href="/daily-report"
             className={pathname === "/daily-report" ? "active" : ""}
+            onClick={CloseSideNav}
           >
             <div className="d-flex">
               <MdDateRange className="icon" size={21} />
@@ -238,19 +335,9 @@ const sidenav = (props) => {
         </li>
         <li>
           <Link
-            href="/supplier"
-            className={pathname === "/supplier" ? "active" : ""}
-          >
-            <div className="d-flex">
-              <FaPeopleGroup className="icon" size={19} />
-              <p>Supplier</p>
-            </div>
-          </Link>
-        </li>
-        <li>
-          <Link
             href="/office-cost"
             className={pathname === "/office-cost" ? "active" : ""}
+            onClick={CloseSideNav}
           >
             <div className="d-flex">
               <FaSackDollar className="icon" size={16} />
@@ -262,6 +349,7 @@ const sidenav = (props) => {
           <Link
             href="/servicing"
             className={pathname === "/servicing" ? "active" : ""}
+            onClick={CloseSideNav}
           >
             <div className="d-flex">
               <FaTools className="icon" size={16} />
@@ -272,7 +360,7 @@ const sidenav = (props) => {
       </ul>
 
       <div className="bottom-box">
-        <LogoutBtn />
+        <LogoutBtn headers={headers} />
       </div>
     </div>
   );

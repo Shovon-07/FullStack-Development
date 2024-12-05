@@ -27,15 +27,17 @@ const HomeTable = (props) => {
   const [filteredApiData, setFilteredApiData] = useState([]);
 
   const getApiData = async () => {
-    try {
-      await ApiConfig.get("/projects").then((response) => {
-        console.log(response);
-        setApiData(response.data.data);
-        setFilteredApiData(response.data.data);
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    console.log("Data fetched");
+
+    // try {
+    //   await ApiConfig.get("/projects").then((response) => {
+    //     console.log(response);
+    //     setApiData(response.data.data);
+    //     setFilteredApiData(response.data.data);
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   useEffect(() => {
@@ -65,7 +67,7 @@ const HomeTable = (props) => {
             slug={`${row.id} = Edit student`}
             inputFields={inputFields}
             ModalOpenBtnTitle={<LuFileEdit />}
-            ModalOpenBtnStyle={editModalOpenBtnStyle}
+            className="editBtn"
             api={"/updateStock"}
             // setRelodeTable={setRelodeTable}
           />
@@ -99,27 +101,18 @@ const HomeTable = (props) => {
       field: "name",
       type: "text",
       placeholder: "Enter name",
-      // className: "inputBox",
     },
     {
       field: "name",
       type: "text",
       placeholder: "Enter email",
-      // className: "inputBox",
     },
     {
       field: "name",
       type: "text",
       placeholder: "Enter phone",
-      // className: "inputBox",
     },
   ];
-
-  // Modals styles
-  const editModalOpenBtnStyle = {
-    color: "green",
-    fontSize: "1.2rem",
-  };
 
   return (
     <>

@@ -1,18 +1,30 @@
 import axios from "axios";
 
 const ApiConfig = axios.create({
-  // baseURL: "https://jsonplaceholder.typicode.com",
   baseURL: "http://localhost:8000/api",
   headers: {
     "Content-type": "multipart/form-data",
-    API_KEY: "83b6349651735fb8b3c6b20b1bc882ba",
+    // Authorization: `Bearer ${AuthToken}`,
+    // API_KEY: "83b6349651735fb8b3c6b20b1bc882ba",
   },
 });
 
 // ApiConfig.interceptors.request.use((config) => {
-//   const token = localStorage.getItem("ACCESS_TOKEN");
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
+//   // const token = localStorage.getItem("ACCESS_TOKEN");
+
+//   function getCookie(name) {
+//     const cookies = document.cookie.split("; ");
+//     for (const cookie of cookies) {
+//       const [key, value] = cookie.split("=");
+//       if (key === name) {
+//         return decodeURIComponent(value);
+//       }
+//     }
+//     return null;
+//   }
+//   const AuthToken = getCookie("AuthToken");
+//   if (AuthToken) {
+//     config.headers.Authorization = `Bearer ${AuthToken}`;
 //   }
 //   return config;
 // });

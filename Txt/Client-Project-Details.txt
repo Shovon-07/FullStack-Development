@@ -1,8 +1,13 @@
 ==> Project backup
  Google drive :
    >> shovon.freelanceruser@gmail.com
- 	1. East-lights-trailers
- 	2. https://molla-properties.com/
+ 	>> 1
+ 	Name: East-lights-trailers
+ 	Url: https://molla-properties.com/
+ 	
+ 	>> 2
+ 	Name: Radient agrovat
+ 	Url: https://...
 
 ==>> Zip file password
 > @projectClientMy_$%07

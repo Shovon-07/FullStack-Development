@@ -17,18 +17,37 @@ import ProfilePic from "@/app/images/web-page.jpg";
 import "./Header.css";
 
 //___ Components ___//
-const SearchModal = dynamic(
-  () => import("@/app/Components/Modal/SearchModal"),
-  {
-    loading: () => "",
-  }
-);
+// const SearchModal = dynamic(
+//   () => import("@/app/Components/Modal/SearchModal"),
+//   {
+//     loading: () => "",
+//   }
+// );
+// const ThemeTogglerSwitch = dynamic(
+//   () => import("@/app/Components/Switch/ThemeTogglerSwitch"),
+//   {
+//     loading: () => "",
+//   }
+// );
 const LogoutBtn = dynamic(() => import("@/app/Components/Header/LogoutBtn"), {
   loading: () => "",
 });
 
+//___ Utilities ___//
+import { GetCookie } from "@/app/Services/GetCookie";
+
 const Header = (props) => {
   const { toggleSideNav, setToggleSideNav } = props;
+
+  // Create api headers
+  var headers = "";
+  try {
+    headers = {
+      Authorization: `Bearer ${GetCookie("AuthToken")}`,
+    };
+  } catch (error) {
+    console.log(error);
+  }
 
   const [notificationVal, setNotificationVal] = useState(false);
   const [profileVal, setProfileVal] = useState(false);
@@ -53,15 +72,24 @@ const Header = (props) => {
           id="openSideNav"
           onClick={() => {
             setToggleSideNav((prev) => !prev);
-            console.log("Toggled");
           }}
         >
           <HiBars3BottomLeft />
         </div>
       </div>
       <ul className="right">
-        {/* <!-- Search start --> */}
-        <li className="search">
+        {/* <!-- ThemeToggler start --> */}
+        {/* <li className="search">
+          <ThemeTogglerSwitch
+            onClick={() => {
+              localStorage.setItem("Theme", true);
+            }}
+          />
+        </li> */}
+        {/* ThemeToggler end */}
+
+        {/* Search start */}
+        {/* <li className="search">
           <SearchModal
             ModalOpenBtnTitle={
               <IoSearch
@@ -76,9 +104,10 @@ const Header = (props) => {
             }
             slug="# Search"
           />
-        </li>
-        {/* <!-- Search end --> */}
-        {/* <!-- Notification start --> */}
+        </li> */}
+        {/* Search end */}
+
+        {/* Notification start */}
         <li
           className={`notification ${
             notificationVal == true ? "activeNotification" : ""
@@ -121,8 +150,8 @@ const Header = (props) => {
             </li>
           </ul>
         </li>
-        {/* <!-- Notification end --> */}
-        {/* <!-- Profile start --> */}
+        {/* Notification end */}
+        {/* Profile start */}
         <li className={`profile ${profileVal == true ? "activeProfile" : ""}`}>
           <div
             onClick={() => {
@@ -152,12 +181,12 @@ const Header = (props) => {
               <a>
                 {/* <i className="fa-solid fa-right-from-bracket"></i>
                 Logout */}
-                <LogoutBtn />
+                <LogoutBtn headers={headers} />
               </a>
             </li>
           </ul>
         </li>
-        {/* <!-- Profile end --> */}
+        {/* Profile end */}
       </ul>
     </header>
   );

@@ -5,7 +5,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 //___ Css ___//
-import FormStyle from "./form.module.css";
+import FormStyle from "./authForm.module.css";
 
 //___ Icons ___//
 import { FaEye } from "react-icons/fa";
@@ -34,31 +34,37 @@ const AuthForm = (props) => {
 
     if (api == "/login") {
       if (inputData.email == "") {
-        toast.error("Please enter email address.");
+        toast.error("Please enter email address");
       } else if (inputData.password == "") {
-        toast.error("Please enter password.");
+        toast.error("Please enter password");
+      } else if (inputData.password.length < 8) {
+        toast.error("Password must be 8 characters or more");
       } else {
         const payload = {
           email: inputData.email,
           password: inputData.password,
         };
-        toast.success("Login successful");
-
-        setTimeout(() => {
-          console.log(payload);
-          redirect("/");
-        }, 1000);
-
-        // ApiConfig.post(api, payload).then((res) => {
-        //   //   console.log(res);
-        //   if (res.data.status == true) {
-        //     setTimeout(() => {
-        //       redirect("/");
-        //     }, 1000);
-        //   } else {
-        //     toast.error(res.data.message);
-        //   }
-        // });
+        ApiConfig.post(api, payload)
+          .then((response) => {
+            if (response.data.status == true) {
+              toast.success(response.data.message);
+              // Set auth info in cookie
+              document.cookie = `AuthToken=${response.data.token}`;
+              document.cookie = `UserRole=${response.data.data.employee.designation.name}`;
+              document.cookie = `UID=${response.data.id}`;
+              // Redirecting
+              setTimeout(() => {
+                console.clear();
+                redirect("/");
+              }, 1000);
+            } else {
+              console.clear();
+              toast.error(response.data.message);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     } else if (api == "/signup") {
       if (inputData.name == "") {
@@ -104,10 +110,11 @@ const AuthForm = (props) => {
           <div className={FormStyle.inputBox} key={index}>
             <input
               type={items.type}
-              className="input"
+              className={items.className}
               name={items.field}
               placeholder={items.placeholder}
               onChange={handleInputValues}
+              autoComplete={items.autoCompleteAttr}
             />
             <div
               className={
@@ -159,3 +166,10 @@ const AuthForm = (props) => {
 };
 
 export default AuthForm;
+
+/***
+ * Email : shovon@mail.com
+ * Pass : 123456789
+ * Encrypted : $2y$12$sClCjNbLjgksnzIW672QhO.kZjgoarTFnG2h8kKcU9eIrSGL4uh5G
+ *
+ ****/
