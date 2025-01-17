@@ -1,6 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = 3000;
+const connectDb = require("./Utility/db");
 
 //___ Express api ___//
 const authRoute = require("./Routes/AuthRoute");
@@ -11,6 +13,11 @@ app.get("/", (req, res) => {
 });
 
 //___ Run server ___//
-app.listen(PORT, () => {
-  console.log(`Server is connected @ ${PORT}`);
+connectDb().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is connected @ ${PORT}`);
+  });
 });
+
+// Mongodb cridentials
+// pass : 6P4fRZT9J6tDOZF3
