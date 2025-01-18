@@ -10,6 +10,7 @@ const config = mysql.createConnection({
 config.connect((err) => {
   if (err) {
     console.log(err);
+    connection.destroy();
     return;
   }
   console.log(`Database connected : ${config.threadId}`);
