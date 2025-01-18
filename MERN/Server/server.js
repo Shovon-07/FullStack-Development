@@ -2,22 +2,21 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = 3000;
-const connectDb = require("./Utility/db");
+const DB = require("./Utility/DB");
 
-// For return json data
+// For use json data
 app.use(express.json());
 
 //___ Express api ___//
-const authRoute = require("./Routes/AuthRoute");
-app.use("/api/auth", authRoute);
-
 app.get("/", (req, res) => {
-  res.status(200).send("This is server");
+  console.log("This server");
 });
 
-//___ Run server ___//
-connectDb().then(() => {
+const authRoute = require("./Routes/auth-route");
+app.use("/api/auth", authRoute);
+
+DB().then(() => {
   app.listen(PORT, () => {
-    console.log(`Server is connected @ ${PORT}`);
+    console.log(`Server is connected @ ${PORT} port`);
   });
 });
