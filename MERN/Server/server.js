@@ -3,6 +3,14 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 const DB = require("./Utility/DB");
+const cors = require("cors");
+
+// Cors handle
+// const corsOptions = {
+//   origin: "http://localhost:5173/",
+//   optionsSuccessStatus: 200,
+// };
+app.use(cors());
 
 // For use json data
 app.use(express.json());
