@@ -2,28 +2,17 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = 3000;
-const authRoute = require("./Routes/auth-route");
-// const DB = require("./Util/DB");
 
+//==> Middleware
 app.use(express.json());
 
+//==> Express api's
 app.get("/", (req, res) => {
   res.send("This is backend");
 });
 
+const authRoute = require("./Routes/auth-route");
 app.use("/api/auth", authRoute);
-
-// app.get("/user", (req, res) => {
-//   DB.query("SELECT * FROM users", (err, result, field) => {
-//     if (err) {
-//       console.log(err);
-//       return;
-//     } else {
-//       console.log(result);
-//       res.status(200).json({ data: result });
-//     }
-//   });
-// });
 
 //==> Run server
 app.listen(PORT, () => {
