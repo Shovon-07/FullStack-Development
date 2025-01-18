@@ -4,6 +4,9 @@ const app = express();
 const PORT = 3000;
 const connectDb = require("./Utility/db");
 
+// For return json data
+app.use(express.json());
+
 //___ Express api ___//
 const authRoute = require("./Routes/AuthRoute");
 app.use("/api/auth", authRoute);
@@ -18,6 +21,3 @@ connectDb().then(() => {
     console.log(`Server is connected @ ${PORT}`);
   });
 });
-
-// Mongodb cridentials
-// pass : 6P4fRZT9J6tDOZF3
