@@ -1,30 +1,25 @@
-require("dotenv").config();
 const express = require("express");
 const app = express();
 const PORT = 3000;
-const DB = require("./Utility/DB");
-const cors = require("cors");
+const DB = require("./Util/DB");
 
-// Cors handle
-// const corsOptions = {
-//   origin: "http://localhost:5173/",
-//   optionsSuccessStatus: 200,
-// };
-app.use(cors());
-
-// For use json data
-app.use(express.json());
-
-//___ Express api ___//
 app.get("/", (req, res) => {
-  console.log("This server");
+  res.send("This is backend");
 });
 
-const authRoute = require("./Routes/auth-route");
-app.use("/api/auth", authRoute);
+// app.get("/user", (req, res) => {
+//   DB.query("SELECT * FROM users", (err, result, field) => {
+//     if (err) {
+//       console.log(err);
+//       return;
+//     } else {
+//       console.log(result);
+//       res.status(200).json({ data: result });
+//     }
+//   });
+// });
 
-DB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Server is connected @ ${PORT} port`);
-  });
+//==> Run server
+app.listen(PORT, () => {
+  console.log(`Server is connected @ : ${PORT}`);
 });

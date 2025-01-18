@@ -1,8 +1,0 @@
-const express = require("express");
-const router = express.Router();
-const AuthController = require("../Controllers/AuthController");
-
-router.route("/").get(AuthController.index);
-router.route("/sign-up").post(AuthController.SignUp);
-
-module.exports = router;
