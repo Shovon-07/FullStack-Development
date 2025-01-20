@@ -4,6 +4,12 @@ const { Encrypt, Decrypt } = require("../Util/Encription");
 
 const Login = async (req, res) => {
   try {
+    const d = await Decrypt(
+      req.body.password,
+      `$2b$10$fVay7Otkg9WSFXtJ3cwA/eOubv.Y6qfFIlT4Je8aER1aDfL.jVy96`
+    );
+    console.log(d);
+
     DB.query(
       `SELECT * FROM users WHERE email = ? AND password = ?`,
       [req.body.email, req.body.password],
@@ -30,7 +36,7 @@ const Login = async (req, res) => {
 
 const SignUp = async (req, res) => {
   try {
-    const hasedPassword = await Encrypt(String(req.body.password));
+    const hasedPassword = await Encrypt(req.body.password);
 
     // Check duplicate user
     DB.query(
