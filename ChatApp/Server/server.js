@@ -1,13 +1,21 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
+const cors = require("cors");
 
 //==> Middleware
+// Cors handle
+// const corsOptions = {
+//   origin: "http://localhost:3000",
+//   optionsSuccessStatus: 200,
+// };
+app.use(cors());
+
 app.use(express.json());
 
 //==> Express api's
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("This is backend");
 });
 

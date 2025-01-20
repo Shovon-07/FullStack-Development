@@ -40,13 +40,11 @@ const AuthForm = (props) => {
   const submit = async (e) => {
     e.preventDefault();
 
-    if (api == "/login") {
+    if (api == "/auth/login") {
       if (inputData.email == "") {
         toast.error("Please enter email address");
       } else if (inputData.password == "") {
         toast.error("Please enter password");
-      } else if (inputData.password.length < 8) {
-        toast.error("Password must be 8 characters or more");
       } else {
         const payload = {
           email: inputData.email,
@@ -56,49 +54,49 @@ const AuthForm = (props) => {
         ApiConfig.post(api, payload)
           .then((response) => {
             if (response.data.status == true) {
-              toast.success(response.data.message);
+              toast.success(response.data.msg);
 
               setTimeout(() => {
                 // Set user data
-                setIsAuthenticated(response.data.token);
-                setUserRole(response.data.user.employee.designation.name);
+                setIsAuthenticated(response.data.data.password);
+                setUserRole(response.data.data.role);
 
                 // Set token in cookie
                 document.cookie = `_Auth_AJS+c0mPanY-07@12#31_token=${Encryption(
-                  response.data.token,
+                  response.data.data.password,
                   secretKey
                 )}`;
 
                 // Set user role in cookie
                 document.cookie = `_Role_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  response.data.user.employee.designation.name,
+                  response.data.data.role,
                   secretKey
                 )}`;
 
                 // Set user id in cookie
-                document.cookie = `_UID_AJS+c0mPanY-07@12#31_user=${response.data.user.employee.id}`;
+                document.cookie = `_UID_AJS+c0mPanY-07@12#31_user=${response.data.data.id}`;
 
                 // Set user name in cookie
                 document.cookie = `_Unme_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  response.data.user.employee.name,
+                  response.data.data.name,
                   secretKey
                 )}`;
 
                 // Set user image in cookie
                 document.cookie = `_Uimg_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  response.data.user.employee.image,
+                  "response.data.user.employee.image",
                   secretKey
                 )}`;
 
                 setLoader(false);
-                // console.log(response.data);
-                console.clear();
                 navigate("/");
+                console.log(response.data);
+                // console.clear();
               }, 1000);
             } else {
-              console.clear();
+              // console.clear();
               setLoader(false);
-              toast.error(response.data.message);
+              toast.error(response.msg);
             }
           })
           .catch((err) => {

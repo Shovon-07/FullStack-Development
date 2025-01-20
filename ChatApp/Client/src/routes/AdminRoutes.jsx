@@ -1,5 +1,5 @@
-import React, { lazy, Suspense, useState } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import React, { lazy, Suspense, useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
 //__- Route -__//
@@ -7,8 +7,8 @@ import PrivateRoute from "./PrivateRoute";
 
 //__- Components -__//
 import Loader from "../components/Loader/Loader";
-// const Header = lazy(() => import("../components/Header/Header"));
-// const Sidenav = lazy(() => import("../components/Sidenav/Sidenav"));
+const Header = lazy(() => import("../components/Header/Header"));
+const Sidenav = lazy(() => import("../components/Sidenav/Sidenav"));
 // const Footer = lazy(() => import("../components/Footer/Footer"));
 
 //__- Pages -__//
@@ -20,6 +20,10 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
   // const location = useLocation();
   const [toggleSideNav, setToggleSideNav] = useState(false);
   const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    console.log(userRole);
+  }, [userRole]);
 
   return (
     <>
@@ -53,7 +57,7 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
               path="/"
               element={
                 <PrivateRoute
-                  roles={["admin", "rsm", "officer", "manager"]}
+                  roles={["admin", "guest"]}
                   userRole={userRole}
                   isAuthenticated={isAuthenticated}
                 >
@@ -66,11 +70,11 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
           </Routes>
         </div>
 
-        {isAuthenticated && (
+        {/* {isAuthenticated && (
           <Suspense fallback={<Loader />}>
             <Footer />
           </Suspense>
-        )}
+        )} */}
       </main>
 
       <ToastContainer

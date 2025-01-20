@@ -29,7 +29,7 @@ const Login = async (req, res) => {
                     return res.status(200).json({
                       status: true,
                       msg: "Login sucessfull",
-                      data: result,
+                      data: result[0],
                     });
                   } else {
                     return res
@@ -47,10 +47,6 @@ const Login = async (req, res) => {
         }
       }
     );
-
-    /*
-    
-    */
   } catch (err) {
     return res.status(400).json({ status: false, msg: err });
   }

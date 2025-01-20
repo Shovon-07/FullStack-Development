@@ -42,6 +42,7 @@ const App = () => {
   //   //     secretKey
   //   //   )}`
   //   // );
+  //   console.log(userRole);
   // }, []);
 
   return (
