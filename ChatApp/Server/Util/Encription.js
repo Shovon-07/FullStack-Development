@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const saltRounds = process.env.BCRYPTS_SAlT_COUNT;
+const saltRounds = parseInt(process.env.BCRYPTS_SAlT_COUNT);
 
 async function Encrypt(data) {
   try {

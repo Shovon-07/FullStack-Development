@@ -8,14 +8,14 @@ const Login = async (req, res) => {
       "SELECT password FROM users WHERE email = ?",
       req.body.email,
       async (err, result, field) => {
-        if (err) {
-          return res.status(400).json({ status: false, msg: err });
+        if (err || result.length == 0) {
+          return res.status(400).json({ status: false, msg: "User not found" });
         } else {
           const decryptedPassword = await Decrypt(
             req.body.password,
             result[0].password
           );
-          console.log(`Decrypted success : ${decryptedPassword}`);
+          console.log(`Decrypted status : ${decryptedPassword}`);
 
           if (decryptedPassword == true) {
             DB.query(
