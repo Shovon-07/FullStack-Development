@@ -1,0 +1,54 @@
+:where(.css-dev-only-do-not-override-161f05s).ant-btn-variant-outlined:not(
+    :disabled
+  ):not(.ant-btn-disabled):hover,
+:where(.css-dev-only-do-not-override-161f05s).ant-btn-variant-outlined,
+:where(.css-161f05s).ant-btn-variant-outlined:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover,
+:where(.css-161f05s).ant-btn-variant-outlined {
+  border-color: transparent !important;
+  padding: 0;
+}
+:where(.css-dev-only-do-not-override-161f05s).ant-btn:not(
+    :disabled
+  ):focus-visible,
+:where(.css-161f05s).ant-btn:not(:disabled):focus-visible {
+  outline: none;
+}
+
+/* Date picker */
+:where(.css-dev-only-do-not-override-161f05s).ant-picker-outlined,
+:where(.css-161f05s).ant-picker-outlined:hover,
+:where(.css-161f05s).ant-picker-outlined:focus-within {
+  border: var(--table-border) !important;
+  background: var(--light-1);
+}
+:where(.css-dev-only-do-not-override-161f05s).ant-space-vertical,
+:where(.css-161f05s).ant-space-vertical {
+  width: 100%;
+}
+:where(.css-161f05s).ant-picker .ant-picker-suffix {
+  color: #838383;
+}
+:where(.css-dev-only-do-not-override-161f05s).ant-picker
+  .ant-picker-input
+  > input {
+  font-size: 1rem;
+}
+
+/* Button */
+:where(.css-dev-only-do-not-override-161f05s).ant-btn-variant-outlined:not(
+    :disabled
+  ):not(.ant-btn-disabled):hover,
+:where(.css-dev-only-do-not-override-161f05s).ant-btn-variant-outlined,
+:where(.css-161f05s).ant-btn-variant-outlined:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover,
+:where(.css-161f05s).ant-btn-variant-outlined {
+  padding: 10px;
+}
+
+/* Image */
+:where(.css-dev-only-do-not-override-161f05s).ant-image .ant-image-mask {
+  border-radius: 0.5rem;
+}

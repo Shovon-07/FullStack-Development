@@ -45,12 +45,7 @@ select {
 select:disabled {
   cursor: not-allowed;
 }
-[type="email"]:focus,
-[type="url"]:focus,
-[type="password"]:focus,
-[type="number"]:focus,
-[type="date"]:focus,
-[type="text"]:focus,
+
 [type="datetime-local"]:focus,
 [type="month"]:focus,
 [type="search"]:focus,
