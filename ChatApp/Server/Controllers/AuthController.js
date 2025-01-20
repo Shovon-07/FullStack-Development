@@ -4,23 +4,41 @@ const { Encrypt, Decrypt } = require("../Util/Encription");
 
 const Login = async (req, res) => {
   try {
-    const d = await Decrypt(
-      req.body.password,
-      `$2b$10$fVay7Otkg9WSFXtJ3cwA/eOubv.Y6qfFIlT4Je8aER1aDfL.jVy96`
-    );
-    console.log(d);
-
     DB.query(
-      `SELECT * FROM users WHERE email = ? AND password = ?`,
-      [req.body.email, req.body.password],
-      (err, result, field) => {
+      "SELECT password FROM users WHERE email = ?",
+      req.body.email,
+      async (err, result, field) => {
         if (err) {
           return res.status(400).json({ status: false, msg: err });
         } else {
-          if (result.length != 0) {
-            return res
-              .status(200)
-              .json({ status: true, msg: "Login sucessfull", data: result });
+          const decryptedPassword = await Decrypt(
+            req.body.password,
+            result[0].password
+          );
+          console.log(`Decrypted success : ${decryptedPassword}`);
+
+          if (decryptedPassword == true) {
+            DB.query(
+              `SELECT * FROM users WHERE email = ? AND password = ?`,
+              [req.body.email, result[0].password],
+              (err, result, field) => {
+                if (err) {
+                  return res.status(400).json({ status: false, msg: err });
+                } else {
+                  if (result.length != 0) {
+                    return res.status(200).json({
+                      status: true,
+                      msg: "Login sucessfull",
+                      data: result,
+                    });
+                  } else {
+                    return res
+                      .status(200)
+                      .json({ status: false, msg: "User not found" });
+                  }
+                }
+              }
+            );
           } else {
             return res
               .status(200)
@@ -29,6 +47,10 @@ const Login = async (req, res) => {
         }
       }
     );
+
+    /*
+    
+    */
   } catch (err) {
     return res.status(400).json({ status: false, msg: err });
   }

@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const saltRounds = 10;
+const saltRounds = process.env.BCRYPTS_SAlT_COUNT;
 
 async function Encrypt(data) {
   try {
@@ -13,7 +13,7 @@ async function Encrypt(data) {
 
 async function Decrypt(plainText, hashedData) {
   try {
-    const isMatch = await bcrypt.compare(String(plainText), hashedData);
+    const isMatch = await bcrypt.compare(String(plainText), String(hashedData));
     return isMatch;
   } catch (error) {
     console.error("Error verifying data:", error);
