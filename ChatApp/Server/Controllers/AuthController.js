@@ -1,5 +1,6 @@
 const DB = require("../Util/DB");
 const bcrypt = require("bcrypt");
+const { Encrypt, Decrypt } = require("../Util/Encription");
 
 const Login = async (req, res) => {
   try {
@@ -29,44 +30,40 @@ const Login = async (req, res) => {
 
 const SignUp = async (req, res) => {
   try {
-    bcrypt.hash(String(req.body.password), 10, (err, hasedPassword) => {
-      if (err) {
-        return res.status(400).json({ status: false, msg: err });
-      } else {
-        // Check duplicate user
-        DB.query(
-          "SELECT email FROM users WHERE email = ?",
-          req.body.email,
-          (err, result, field) => {
-            if (err) {
-              return res.status(400).json({ status: false, msg: err });
-            } else {
-              // Store data
-              if (result <= 0) {
-                const { name, email, password } = req.body;
-                DB.query(
-                  `INSERT INTO users (name, email, password) VALUES ('${name}', '${email}', '${hasedPassword}')`,
-                  (err, result, field) => {
-                    if (err) {
-                      return res.status(400).json({ status: false, msg: err });
-                    } else {
-                      return res.status(200).json({
-                        status: true,
-                        msg: "Registration successfull",
-                      });
-                    }
-                  }
-                );
-              } else {
-                return res
-                  .status(200)
-                  .json({ status: false, msg: "User already exist" });
+    const hasedPassword = await Encrypt(String(req.body.password));
+
+    // Check duplicate user
+    DB.query(
+      "SELECT email FROM users WHERE email = ?",
+      req.body.email,
+      (err, result, field) => {
+        if (err) {
+          return res.status(400).json({ status: false, msg: err });
+        } else {
+          // Store data
+          if (result <= 0) {
+            const { name, email, password } = req.body;
+            DB.query(
+              `INSERT INTO users (name, email, password) VALUES ('${name}', '${email}', '${hasedPassword}')`,
+              (err, result, field) => {
+                if (err) {
+                  return res.status(400).json({ status: false, msg: err });
+                } else {
+                  return res.status(200).json({
+                    status: true,
+                    msg: "Registration successfull",
+                  });
+                }
               }
-            }
+            );
+          } else {
+            return res
+              .status(200)
+              .json({ status: false, msg: "User already exist" });
           }
-        );
+        }
       }
-    });
+    );
   } catch (err) {
     return res.status(400).json({ status: false, msg: err });
   }
