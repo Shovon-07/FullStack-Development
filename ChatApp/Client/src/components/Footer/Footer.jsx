@@ -15,9 +15,9 @@ const Footer = () => {
   // }
   return (
     <div className="Footer">
-      &#169; All rights reserved by{" "}
+      &#169; Created by{" "}
       <a href="https://www.facebook.com/aljubair.shovon/" target="_blank">
-        Company
+        Al jubair shovon
       </a>
     </div>
   );

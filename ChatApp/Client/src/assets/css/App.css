@@ -5,6 +5,4 @@
   src: url(../../assets/fonts/tt0511m.ttf);
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";

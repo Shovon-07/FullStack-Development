@@ -22,7 +22,7 @@
 }
 .side-nav .brand {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   font-weight: 600;
   /* font-family: BlippoBlack; */
   color: var(--main-clr);
@@ -40,9 +40,10 @@
   opacity: 0;
   position: absolute;
   right: 5px;
-  top: 21px;
+  top: 15px;
   transition: 2s all;
   cursor: pointer;
+  font-size: 2rem;
 }
 .side-nav .brand .toggler.show {
   opacity: 1;

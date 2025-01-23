@@ -9,7 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import Loader from "../components/Loader/Loader";
 const Header = lazy(() => import("../components/Header/Header"));
 const Sidenav = lazy(() => import("../components/Sidenav/Sidenav"));
-// const Footer = lazy(() => import("../components/Footer/Footer"));
+const Footer = lazy(() => import("../components/Footer/Footer"));
 
 //__- Pages -__//
 import Home from "../pages/Home/Home";
@@ -70,11 +70,11 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
           </Routes>
         </div>
 
-        {/* {isAuthenticated && (
+        {isAuthenticated && (
           <Suspense fallback={<Loader />}>
             <Footer />
           </Suspense>
-        )} */}
+        )}
       </main>
 
       <ToastContainer
