@@ -5,10 +5,16 @@ import { io } from "socket.io-client";
 const Home = () => {
   const socket = io("http://localhost:3001");
   const [msg, setMsg] = useState("");
+  const [userMsg, setUserMsg] = useState("");
 
   useEffect(() => {
     socket.on("connect", () => {
       console.log(socket.id, " connected");
+
+      socket.on("msg", (msg) => {
+        setMsg(msg);
+        // console.log(msg, " from server");
+      });
     });
 
     socket.on("disconnect", () => {
@@ -17,9 +23,8 @@ const Home = () => {
   }, []);
 
   const Send = () => {
-    console.log(msg);
-    socket.emit("user_msg", msg);
-    setMsg("");
+    socket.emit("user_msg", userMsg);
+    setUserMsg("");
   };
 
   return (
@@ -40,13 +45,14 @@ const Home = () => {
       <div className="animated fadeInDown">
         <h1 className="page-title">Dashboard</h1>
 
+        <h1>{msg}</h1>
         <input
           type="text"
           placeholder="Type hear"
           onChange={(e) => {
-            setMsg(e.target.value);
+            setUserMsg(e.target.value);
           }}
-          value={msg}
+          value={userMsg}
         />
         <button onClick={Send}>Send</button>
       </div>

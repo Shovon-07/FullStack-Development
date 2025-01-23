@@ -31,6 +31,7 @@ io.on("connection", (socket) => {
   // Handle user messages
   socket.on("user_msg", (msg) => {
     console.log(msg);
+    io.emit("msg", msg);
   });
 
   socket.on("disconnect", () => {
