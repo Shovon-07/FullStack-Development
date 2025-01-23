@@ -1,6 +1,21 @@
+import { useEffect } from "react";
 import { HelmetProvider, Helmet } from "react-helmet-async";
+import { io } from "socket.io-client";
 
 const Home = () => {
+  const socket = io("http://localhost:3001");
+
+  socket.on("connect", () => {
+    console.log(socket.id, " connected");
+  });
+
+  socket.on("disconnect", () => {
+    console.log(socket.id, " disconnected");
+  });
+
+  // useEffect(() => {
+
+  // }, []);
   return (
     <HelmetProvider>
       <Helmet>

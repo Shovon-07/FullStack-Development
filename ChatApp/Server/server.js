@@ -1,10 +1,14 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
+const { createServer } = require("http");
 const PORT = 3001;
 const cors = require("cors");
+const { Server } = require("socket.io");
 
-//==> Middleware
+const app = express();
+const server = createServer(app);
+
+//==> Middleware start
 // Cors handle
 // const corsOptions = {
 //   origin: "http://localhost:3000",
@@ -13,6 +17,27 @@ const cors = require("cors");
 app.use(cors());
 
 app.use(express.json());
+//==> Middleware end
+
+//==> Socket code start
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+  },
+});
+io.on("connection", (socket) => {
+  console.log(`${socket.id} has connected !`);
+
+  // Handle user messages
+  socket.on("user_msg", (msg) => {
+    console.log(msg);
+  });
+
+  socket.on("disconnect", () => {
+    console.log(`${socket.id} has disconnected !`);
+  });
+});
+//==> Socket code end
 
 //==> Express api's
 app.get("/api", (req, res) => {
@@ -20,9 +45,10 @@ app.get("/api", (req, res) => {
 });
 
 const authRoute = require("./Routes/auth-route");
+const { Socket } = require("dgram");
 app.use("/api/auth", authRoute);
 
 //==> Run server
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is connected @ : ${PORT}`);
 });

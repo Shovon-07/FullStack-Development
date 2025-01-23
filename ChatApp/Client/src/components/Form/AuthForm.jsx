@@ -84,7 +84,7 @@ const AuthForm = (props) => {
 
                 // Set user image in cookie
                 document.cookie = `_Uimg_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  "response.data.user.employee.image",
+                  "",
                   secretKey
                 )}`;
 
