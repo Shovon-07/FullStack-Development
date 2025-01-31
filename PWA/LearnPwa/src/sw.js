@@ -1,11 +1,44 @@
+const CACHE_NAME = "pwa-cache-v1";
+const STATIC_ASSETS = [
+  "/",
+  "/index.html",
+  "/manifest.json",
+  "/vite.svg",
+  "/src/main.jsx",
+  "/src/App.jsx",
+];
+
+// Install event: Cache important assets
 self.addEventListener("install", (event) => {
-  console.log("Service Worker Installed");
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log("Caching static assets");
+      return cache.addAll(STATIC_ASSETS);
+    })
+  );
 });
 
+// Activate event: Clean up old caches
 self.addEventListener("activate", (event) => {
-  console.log("Service Worker Activated");
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cache) => {
+          if (cache !== CACHE_NAME) {
+            console.log("Deleting old cache:", cache);
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
 });
 
+// Fetch event: Serve cached assets when offline
 self.addEventListener("fetch", (event) => {
-  console.log("Fetching:", event.request.url);
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      return cachedResponse || fetch(event.request);
+    })
+  );
 });
