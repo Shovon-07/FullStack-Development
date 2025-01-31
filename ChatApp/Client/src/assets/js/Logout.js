@@ -1,16 +1,21 @@
-import ApiConfig from "./ApiConfig";
+// import ApiConfig from "./ApiConfig";
 export default async function Logout(headers) {
-  const payload = null;
-  try {
-    await ApiConfig.post("/logout", payload, { headers }).then((response) => {
-      deleteAllCookies();
-      localStorage.clear();
-      sessionStorage.clear();
-      window.location.replace("/");
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  deleteAllCookies();
+  localStorage.clear();
+  sessionStorage.clear();
+  window.location.replace("/");
+
+  // const payload = null;
+  // try {
+  //   await ApiConfig.post("/logout", payload, { headers }).then((response) => {
+  //     deleteAllCookies();
+  //     localStorage.clear();
+  //     sessionStorage.clear();
+  //     window.location.replace("/");
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  // }
 }
 
 function deleteAllCookies() {

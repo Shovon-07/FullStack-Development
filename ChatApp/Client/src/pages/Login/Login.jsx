@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { HelmetProvider, Helmet } from "react-helmet-async";
 
 //___ Css ___//
@@ -7,7 +7,6 @@ import "./Login.css";
 //___ Components ___//
 import Loader from "../../components/Loader/Loader";
 const AuthForm = lazy(() => import("../../components/Form/AuthForm"));
-// import ApiConfig from "../../assets/js/ApiConfig";
 
 const Login = (props) => {
   const { setIsAuthenticated, setUserRole } = props;
@@ -29,19 +28,6 @@ const Login = (props) => {
       autoCompleteAttr: "off",
     },
   ];
-
-  // useEffect(() => {
-  //   async function name() {
-  //     await ApiConfig.get("/auth")
-  //       .then((res) => {
-  //         console.log(res);
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-  //   name();
-  // }, []);
 
   return (
     <HelmetProvider>

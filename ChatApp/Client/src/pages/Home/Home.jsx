@@ -54,15 +54,16 @@ const Home = () => {
         <div className="chatBox">
           <div className="display"></div>
           <div className="controlPanel">
-            <form className="sendMsg" onChange={Submit}>
+            <form className="sendMsg" onSubmit={Submit}>
               <div className="inputBox">
                 <input
                   type="text"
                   placeholder="Type some messages"
                   onChange={(e) => {
+                    console.log(e.target.value);
                     setUserMsg(e.target.value);
                   }}
-                  value={userMsg}
+                  // value={userMsg}
                 />
               </div>
               <div>

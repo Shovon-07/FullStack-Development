@@ -1,0 +1,5 @@
+//===> PWA <===//
+  //==> How to uninstall pwa app from ubuntu 24 lts
+    >> ls ~/.local/share/applications | grep .desktop
+    >> rm ~/.local/share/applications/my-pwa-app.desktop
+    >> rm -rf ~/.config/chromium/PWA_NAME

@@ -1,9 +1,15 @@
 .form_box {
+  backdrop-filter: blur(10px) saturate(200%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  background-color: #45454582;
+  border: 1px solid #a9a8a81f;
+
   width: 40%;
   height: auto;
-  border: var(--border);
+  /* border: var(--border); */
   border-radius: 8px;
   padding: 20px;
+  color: #fff;
 }
 .form_box form {
   display: flex;
@@ -30,7 +36,6 @@
   background: transparent;
   border: none;
   outline: none;
-  color: var(--dark-3);
   font-size: 1.1rem;
   padding: 6px 15px;
 }
@@ -39,7 +44,7 @@
   right: 15px;
   top: 8px;
   background: transparent;
-  color: var(--dark-3);
+  color: var(--light-1);
 }
 
 .form_box .next_button {
@@ -59,7 +64,7 @@
   flex-direction: column;
 }
 .form_box .form_bottom a {
-  color: var(--main-clr);
+  color: var(--orange);
 }
 
 /*___ Responsive ___*/
