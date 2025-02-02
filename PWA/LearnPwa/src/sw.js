@@ -6,6 +6,7 @@ const STATIC_ASSETS = [
   "/vite.svg",
   "/src/main.jsx",
   "/src/App.jsx",
+  "/@vite/client",
 ];
 
 // Install event: Cache important assets
