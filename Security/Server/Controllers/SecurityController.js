@@ -1,10 +1,9 @@
-const DB = require("../Util/DB");
-// const bcrypt = require("bcrypt");
+const SecurityModel = require("../Models/SecurityModel");
 
 const GetSecurity = async (req, res) => {
   try {
-    const [rows] = await DB.query("SELECT * FROM System-Security");
-    return res.json(rows);
+    const data = await SecurityModel.find();
+    return res.status(200).json(data);
   } catch (err) {
     console.error(err);
     res.status(500).send("Server Error");
