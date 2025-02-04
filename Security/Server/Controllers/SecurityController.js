@@ -29,8 +29,12 @@ const UpdateSecurity = async (req, res) => {
         $currentDate: { lastModified: true },
       }
     );
-    if (data.length > 0) {
-      return res.status(200).json({ status: true, data: data });
+    console.log(data);
+
+    if (data != null) {
+      return res
+        .status(200)
+        .json({ status: true, data: "Updated successfull" });
     } else {
       return res.status(500).json({ status: false, data: "No data found" });
     }
