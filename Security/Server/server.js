@@ -23,8 +23,8 @@ app.get("/api", (req, res) => {
   res.send("This is backend");
 });
 
-const authRoute = require("./Routes/auth-route");
-app.use("/api/auth", authRoute);
+// const authRoute = require("./Routes/auth-route");
+// app.use("/api/auth", authRoute);
 
 const securityRoute = require("./Routes/security-route");
 app.use("/api/security", securityRoute);

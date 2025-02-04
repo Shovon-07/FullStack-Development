@@ -1,16 +1,13 @@
 const DB = require("../Util/DB");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 
 const GetSecurity = async (req, res) => {
   try {
-    DB.query("SELECT * FROM System-Security", async (err, res, field) => {
-      if (err) return res.status(400).json({ status: false, msg: err });
-      return res
-        .status(400)
-        .json({ status: false, msg: "Security status retrived", data: res });
-    });
+    const [rows] = await DB.query("SELECT * FROM System-Security");
+    return res.json(rows);
   } catch (err) {
-    return res.status(400).json({ status: false, msg: err });
+    console.error(err);
+    res.status(500).send("Server Error");
   }
 };
 

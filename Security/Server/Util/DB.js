@@ -1,19 +1,15 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
-const config = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
+// Create a connection pool
+const pool = mysql.createPool({
+  host: process.env.DB_HOST, // e.g., 'localhost' or 'yourdomain.com'
+  user: process.env.DB_USERNAME, // cPanel database username
+  password: process.env.DB_PASSWORD, // cPanel database password
+  database: process.env.DB_DATABASE, // cPanel database name
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
 });
 
-config.connect((err) => {
-  if (err) {
-    console.log(err);
-    connection.destroy();
-    return;
-  }
-  console.log(`Database connected : ${config.threadId}`);
-});
-
-module.exports = config;
+// Export the pool for use in other files
+module.exports = pool.promise();
