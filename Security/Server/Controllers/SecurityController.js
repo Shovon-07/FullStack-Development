@@ -17,4 +17,27 @@ const GetSecurity = async (req, res) => {
   }
 };
 
-module.exports = { GetSecurity };
+const UpdateSecurity = async (req, res) => {
+  try {
+    const data = await SecurityModel.updateOne(
+      {
+        domain: req.body.domain,
+        token: req.body.token,
+      },
+      {
+        $set: { is_blocked: req.body.isBlocked },
+        $currentDate: { lastModified: true },
+      }
+    );
+    if (data.length > 0) {
+      return res.status(200).json({ status: true, data: data });
+    } else {
+      return res.status(500).json({ status: false, data: "No data found" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server Error");
+  }
+};
+
+module.exports = { GetSecurity, UpdateSecurity };
