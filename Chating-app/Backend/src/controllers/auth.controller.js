@@ -1,6 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
-import { createToken } from "../lib/jwtToken.js";
+import { createToken, verifyToken } from "../lib/jwtToken.js";
 
 export const signup = async (req, res) => {
   try {
@@ -17,27 +17,27 @@ export const signup = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashPassword = await bcrypt.hash(password, salt);
 
+    //===> Create jwt token
+    const token = await createToken(fullname, email);
+
     //===> Create user
     const newUser = await User.insertOne({
       fullname: fullname,
       email: email,
       password: hashPassword,
+      token: token,
     });
     if (newUser) {
-      //===> Create jwt token
-      const token = createToken(newUser._id, newUser.email);
-      if (token) {
-        const data = await User.findOne(
-          {
-            _id: newUser._id,
-            email: newUser.email,
-          },
-          { password: 0 }
-        );
-        return res
-          .status(200)
-          .json({ status: true, message: "Signup successfull", data: data });
-      }
+      const data = await User.findOne(
+        {
+          _id: newUser._id,
+          email: newUser.email,
+        },
+        { password: 0 }
+      );
+      return res
+        .status(200)
+        .json({ status: true, message: "Signup successfull", data: data });
     }
   } catch (error) {
     console.log(error);
@@ -45,11 +45,15 @@ export const signup = async (req, res) => {
   }
 };
 
-export const login = (req, res) => {
+export const login = async (req, res) => {
   try {
-    res.send("login");
+    const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWwganViYWlyIHNob3ZvbiIsImVtYWlsIjoic2hvdm9uQGdtYWlsLmNvbSIsImlhdCI6MTczOTE4MTY5MCwiZXhwIjoxNzM5Nzg2NDkwfQ.07ykGx6BiEp_zeQcfcVCU3Wwddw2qdb9Yf0t1OolRbI`;
+    const verifiedJWT = await verifyToken(token);
+    if (verifiedJWT)
+      return res.status(200).json({ status: true, message: verifiedJWT });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ status: "error", message: error.message });
   }
 };
 

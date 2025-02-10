@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema(
     fullname: { type: String, required: true },
     password: { type: String, required: true, minlength: 6 },
     profilePic: { type: String, default: "Not defind" },
+    token: { type: String, required: true, default: "0" },
   },
   { timestamps: true }
 );
