@@ -1,4 +1,5 @@
 import User from "../models/user.model.js";
+import Message from "../models/message.model.js";
 
 export const getUserForSidebar = async (req, res) => {
   try {
@@ -18,17 +19,50 @@ export const getUserForSidebar = async (req, res) => {
   }
 };
 
-// import User from "../models/user.model.js";
+export const getMessage = async (req, res) => {
+  try {
+    const { id: userToChatId } = req.params;
+    const myId = req.id;
 
-// export const getUserForSidebar = async (req, res) => {
-//   try {
-//     const loggedInUser = req.user._id; // from middleware
-//     const filteredUser = await User.find({ _id: { $ne: loggedInUser } }).select(
-//       "-password"
-//     );
-//     return res.status(200).json({ status: true, data: filteredUser });
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({ status: "error", message: error.message });
-//   }
-// };
+    //===> Find message
+    const message = await Message.find({
+      $or: [
+        { senderId: myId, receiverId: userToChatId },
+        { senderId: userToChatId, receiverId: myId },
+      ],
+    });
+
+    return res.status(200).json({ status: true, data: userToChatId });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ status: "error", message: error.message });
+  }
+};
+
+export const sendMessage = async (req, res) => {
+  try {
+    const { id: receiverId } = req.params;
+    const senderId = req.id;
+    const { text, image } = req.body;
+
+    let imgUrl;
+    if (image) {
+      // ...
+      // imgUrl= ...
+    }
+
+    const sent = await Message.insertOne({
+      senderId: senderId,
+      receiverId: receiverId,
+      text: text,
+      image: imgUrl,
+    });
+
+    //===> Todo: realtime transmit by socket.io
+
+    return res.status(201).json({ data: sent });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ status: "error", message: error.message });
+  }
+};
