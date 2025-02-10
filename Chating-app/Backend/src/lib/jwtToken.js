@@ -5,8 +5,8 @@ export const createToken = async (uName, uEmail, res) => {
     { name: uName, email: uEmail },
     process.env.JWT_SECRET_KEY,
     {
-      // expiresIn: 60,
-      expiresIn: "7d",
+      // expiresIn: "60s",
+      expiresIn: "1d",
     }
   );
   return token;

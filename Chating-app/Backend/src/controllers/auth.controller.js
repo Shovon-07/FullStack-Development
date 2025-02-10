@@ -41,82 +41,32 @@ export const signup = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ status: false, message: error.message });
+    return res.status(500).json({ status: "error", message: error.message });
   }
 };
 
 export const login = async (req, res) => {
   try {
-    const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWwganViYWlyIHNob3ZvbiIsImVtYWlsIjoic2hvdm9uQGdtYWlsLmNvbSIsImlhdCI6MTczOTE4MTY5MCwiZXhwIjoxNzM5Nzg2NDkwfQ.07ykGx6BiEp_zeQcfcVCU3Wwddw2qdb9Yf0t1OolRbI`;
-    const verifiedJWT = await verifyToken(token);
-    if (verifiedJWT)
-      return res.status(200).json({ status: true, message: verifiedJWT });
+    const token = req.headers.authorization;
+    return res.status(200).json({ status: true, message: token });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });
   }
 };
 
-export const logout = (req, res) => {
+export const logout = async (req, res) => {
   try {
-    res.send("logout");
+    // Verify jwt token
+    const verifiedJWT = await verifyToken(token);
+    if (!verifiedJWT)
+      return res
+        .status(400)
+        .json({ status: true, message: "Unauthorized", data: verifiedJWT });
+
+    return res.status(200).json({ status: true, message: verifiedJWT });
   } catch (error) {
     console.log(error);
+    return res.status(500).json({ status: "error", message: error.message });
   }
 };
-
-// import bcrypt from "bcrypt";
-// import User from "../models/user.model.js";
-
-// export const signup = async (req, res) => {
-//   try {
-//     const { email, fullname, password } = req.body;
-
-//     // Check password
-//     // if (password.length < 6) {
-//     //   return res.status(400).json({ message: "Password must be 6 charecter" });
-//     // }
-
-//     // Check user exists or not
-//     const isExists = await User.findOne({ email: email });
-//     if (isExists)
-//       return res.status(400).json({ message: "User already exists" });
-
-//     // Encrypt password
-//     const salt = await bcrypt.genSalt(10);
-//     const hashedPass = await bcrypt.hash(password, salt);
-
-//     // Create user
-//     const newUser = new User({
-//       fullname: fullname,
-//       email: email,
-//       password: hashedPass,
-//     });
-
-//     if (newUser) {
-//       // Create jwt token
-//     } else {
-//       return res.status(400).json({ message: "Something went wrong!" });
-//     }
-
-//     return res.json(req.body);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const login = (req, res) => {
-//   try {
-//     res.send("login");
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// export const logout = (req, res) => {
-//   try {
-//     res.send("logout");
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
