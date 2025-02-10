@@ -47,8 +47,32 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const token = req.headers.authorization;
-    return res.status(200).json({ status: true, message: token });
+    const { email, password } = req.body;
+
+    // Find user
+    const userData = await User.findOne({ email: email });
+    if (!userData)
+      return res.status(400).json({ status: false, message: "Invalid user" });
+
+    // Decode password
+    const isVerified = await bcrypt.compare(password, userData.password);
+    if (!isVerified)
+      return res.status(400).json({ status: false, message: "Invalid user" });
+
+    if (isVerified) {
+      const data = await User.findOne(
+        {
+          _id: userData._id,
+          email: userData.email,
+        },
+        { password: 0 }
+      );
+      return res.status(200).json({
+        status: true,
+        message: "Login successfull",
+        data: data,
+      });
+    }
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });
@@ -57,6 +81,7 @@ export const login = async (req, res) => {
 
 export const logout = async (req, res) => {
   try {
+    const token = req.headers.authorization;
     // Verify jwt token
     const verifiedJWT = await verifyToken(token);
     if (!verifiedJWT)
