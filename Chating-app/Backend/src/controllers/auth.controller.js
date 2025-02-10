@@ -49,17 +49,25 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Find user
+    //===> Find user
     const userData = await User.findOne({ email: email });
     if (!userData)
-      return res.status(400).json({ status: false, message: "Invalid user" });
+      return res.status(401).json({ status: false, message: "Invalid user" });
 
-    // Decode password
+    //===> Decode password
     const isVerified = await bcrypt.compare(password, userData.password);
     if (!isVerified)
-      return res.status(400).json({ status: false, message: "Invalid user" });
+      return res.status(401).json({ status: false, message: "Invalid user" });
 
     if (isVerified) {
+      //===> Create jwt token & update db
+      const token = await createToken(userData.fullname, userData.email);
+      await User.updateOne(
+        { fullname: userData.fullname, email: userData.email },
+        { $set: { token: token } }
+      );
+
+      //===> Get user data
       const data = await User.findOne(
         {
           _id: userData._id,
@@ -82,20 +90,23 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   try {
     const token = req.headers.authorization;
-    // Verify jwt token
+    //===> Verify jwt token
     const verifiedJWT = await verifyToken(token);
     if (!verifiedJWT)
-      return res.status(400).json({ status: false, message: "Unauthorized" });
+      return res.status(401).json({ status: false, message: "Unauthorized" });
 
+    //===> Update db's token
     const removeToken = await User.updateOne(
       { token: token },
       { $set: { token: "" } }
     );
+    if (removeToken.modifiedCount == 0)
+      return res.status(401).json({ status: false, message: "Unauthorized" });
 
-    if (removeToken)
-      return res
-        .status(200)
-        .json({ status: true, message: "Logout successfull" });
+    return res.status(200).json({
+      status: true,
+      message: "Logout successfull",
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });

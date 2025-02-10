@@ -30,24 +30,4 @@ export const verifyToken = async (token) => {
       return decode;
     }
   });
-
-  // return new Promise((resolve, reject) => {
-  //   jwt.verify(token, secretKey, (err, decoded) => {
-  //     if (err) {
-  //       if (err.name === "TokenExpiredError") {
-  //         reject(new Error("Token has expired"));
-  //       } else if (
-  //         err.name === "JsonWebTokenError" ||
-  //         err.name === "NotBeforeError"
-  //       ) {
-  //         // Include other JWT errors
-  //         reject(new Error("Invalid token"));
-  //       } else {
-  //         reject(new Error("Authentication failed")); // Generic error for other issues
-  //       }
-  //     } else {
-  //       resolve(decoded);
-  //     }
-  //   });
-  // });
 };
