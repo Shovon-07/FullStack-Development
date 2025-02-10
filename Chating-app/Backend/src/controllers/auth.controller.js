@@ -85,11 +85,17 @@ export const logout = async (req, res) => {
     // Verify jwt token
     const verifiedJWT = await verifyToken(token);
     if (!verifiedJWT)
-      return res
-        .status(400)
-        .json({ status: true, message: "Unauthorized", data: verifiedJWT });
+      return res.status(400).json({ status: false, message: "Unauthorized" });
 
-    return res.status(200).json({ status: true, message: verifiedJWT });
+    const removeToken = await User.updateOne(
+      { token: token },
+      { $set: { token: "" } }
+    );
+
+    if (removeToken)
+      return res
+        .status(200)
+        .json({ status: true, message: "Logout successfull" });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });
