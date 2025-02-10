@@ -2,8 +2,9 @@ import User from "../models/user.model.js";
 
 export const getUserForSidebar = async (req, res) => {
   try {
-    const token = req.token;
-    return res.status(200).json({ status: true, data: token });
+    const id = req.id;
+    const email = req.email;
+    return res.status(200).json({ status: true, data: id });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });
