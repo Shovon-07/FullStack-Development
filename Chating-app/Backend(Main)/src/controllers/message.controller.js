@@ -32,7 +32,7 @@ export const getMessage = async (req, res) => {
       ],
     });
 
-    return res.status(200).json({ status: true, data: message });
+    return res.status(200).json({ status: true, data: userToChatId });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });
@@ -58,12 +58,9 @@ export const sendMessage = async (req, res) => {
       image: imgUrl,
     });
 
-    //===> Realtime transmit messages by socket.
-    /**
-     * ...
-     **/
+    //===> Todo: realtime transmit by socket.io
 
-    return res.status(201).json({ status: true, data: sent });
+    return res.status(201).json({ data: sent });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });
