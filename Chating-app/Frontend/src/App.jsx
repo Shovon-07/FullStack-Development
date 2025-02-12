@@ -1,30 +1,85 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SecurityProvider from "./context/SystemSecurity";
 
-//===> Components
-import Navbar from "./components/Navbar/Navbar";
+//===> Css
+import "./assets/css/globals.css";
+import "./assets/css/variables.css";
+
+//===> Routes
+import AdminRoutes from "./routes/AdminRoutes";
+import PublicRoute from "./routes/PublicRoute";
 
 //===> Pages
-import Home from "./pages/Home/Home";
-import Profile from "./pages/Profile/Profile";
-import Settings from "./pages/Settings/Settings";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
+import NotFound from "./pages/NotFound/NotFound";
+
+//===> Utilities
+import { GetCookie } from "./assets/js/GetCookie";
+import { Decryption } from "./assets/js/Encryption";
 
 const App = () => {
+  //==> Get auth token from cookie
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    Decryption(
+      GetCookie("_Auth_AJS+c0mPanY-07@12#31_token") || "",
+      import.meta.env.VITE_SECRET_KEY
+    ) || ""
+  );
+
+  //==> Get user role from cookie
+  const [userRole, setUserRole] = useState(
+    GetCookie("_Role_AJS+c0mPanY-07@12#31_user")
+      ? Decryption(
+          GetCookie("_Role_AJS+c0mPanY-07@12#31_user") || [],
+          import.meta.env.VITE_SECRET_KEY
+        ).split(",")
+      : []
+  );
+
   return (
-    <div>
-      <Navbar />
+    <SecurityProvider>
+      <Router>
+        <Routes>
+          {/* Public routes */}
+          <Route
+            path="/login"
+            element={
+              <PublicRoute isAuthenticated={isAuthenticated}>
+                <Login
+                  setIsAuthenticated={setIsAuthenticated}
+                  setUserRole={setUserRole}
+                />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PublicRoute isAuthenticated={isAuthenticated}>
+                <Signup
+                // setIsAuthenticated={setIsAuthenticated}
+                // setUserRole={setUserRole}
+                />
+              </PublicRoute>
+            }
+          />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/settings" element={<Settings />} />
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-      </Routes>
-    </div>
+          {/* Protected admin routes */}
+          <Route
+            path="/*"
+            element={
+              <AdminRoutes
+                userRole={userRole}
+                isAuthenticated={isAuthenticated}
+              />
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </SecurityProvider>
   );
 };
 

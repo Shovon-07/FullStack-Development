@@ -1,0 +1,15 @@
+//===> Essential packeges (***) <===//
+> axios
+> react-helmet-async
+> react-icons
+> react-router-dom (v: 6.28.0)
+> react-toastify
+> socket.io-client
+> crypto-js
+
+//===> Not essential packeges <===//
+> tailwindcss
+> antd
+> mui/material
+> daisyui
+> chart.js
