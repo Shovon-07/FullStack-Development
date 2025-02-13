@@ -156,10 +156,9 @@ img[alt="Img-from-table"] {
 /*___ Layout start ___*/
 .content_parent {
   height: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 30px);
   margin-left: 300px;
   padding: 0 20px;
-  margin-bottom: 100px;
   transition: var(--trans);
 }
 .content_parent_large {

@@ -39,7 +39,7 @@ const Sidenav = (props) => {
   return (
     <div className="Sidenav">
       <div className="sideNavHead">
-        <h1>গল্প কথা</h1>
+        <h1>S Chat</h1>
       </div>
       <ul className="users mt-5">
         {Array.isArray(data) &&
