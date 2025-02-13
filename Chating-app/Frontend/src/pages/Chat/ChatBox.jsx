@@ -1,10 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { formatMessageTime } from "../../assets/js/DateFormater";
 import demoImg from "../../assets/images/profile.png";
 
 const ChatBox = (props) => {
   const { data, selectUdata } = props;
   const { uid, uImg } = useContext(AuthContext);
+  const messageEndRef = useRef(null);
+
+  useEffect(() => {
+    if (messageEndRef.current && data) {
+      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+
+    console.log(data);
+  }, [data]);
 
   return (
     <div className="chatBox">
@@ -16,6 +26,7 @@ const ChatBox = (props) => {
                 item.senderId == uid ? "chat-end" : "chat-start"
               }`}
               key={item._id}
+              ref={messageEndRef}
             >
               <div className="chat-image avatar">
                 <div className="w-10 rounded-full">
@@ -31,7 +42,9 @@ const ChatBox = (props) => {
               </div>
               <div className="chat-header ">
                 {item.fullname}
-                <time className="text-xs opacity-50 ml-2">12:45</time>
+                <time className="text-xs opacity-50 ml-2">
+                  {formatMessageTime(item.createdAt)}
+                </time>
               </div>
               <div
                 className={`chat-bubble ${
