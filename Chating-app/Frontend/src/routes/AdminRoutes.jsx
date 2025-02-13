@@ -8,12 +8,12 @@ import PrivateRoute from "./PrivateRoute";
 
 //===> Components
 import Loader from "../components/Loader/Loader";
-const Header = lazy(() => import("../components/Header/Header"));
 const Sidenav = lazy(() => import("../components/Sidenav/Sidenav"));
-const Footer = lazy(() => import("../components/Footer/Footer"));
+// const Footer = lazy(() => import("../components/Footer/Footer"));
 
 //===> Pages
 const Home = lazy(() => import("../pages/Home/Home"));
+import Chat from "../pages/Chat/Chat";
 import Profile from "../pages/Profile/Profile";
 
 import NotFound from "../pages/NotFound/NotFound";
@@ -35,9 +35,9 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
                   setLoader={setLoader}
                 />
               </Suspense>
-              <Suspense fallback={<Loader />}>
+              {/* <Suspense fallback={<Loader />}>
                 <Header setToggleSideNav={setToggleSideNav} />
-              </Suspense>
+              </Suspense> */}
             </>
           )}
 
@@ -90,7 +90,7 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
                     isAuthenticated={isAuthenticated}
                   >
                     <Suspense fallback="">
-                      <Home setLoader={setLoader} />
+                      <Chat setLoader={setLoader} />
                     </Suspense>
                   </PrivateRoute>
                 }

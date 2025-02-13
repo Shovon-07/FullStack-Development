@@ -21,7 +21,6 @@ const Sidenav = (props) => {
       await ApiConfig.get("/message/users", { headers })
         .then((res) => {
           setData(res.data.data);
-          console.log(res.data.data);
           setLoader(false);
         })
         .catch((err) => {
@@ -37,7 +36,7 @@ const Sidenav = (props) => {
   };
 
   return (
-    <div className="Sidenav">
+    <div className="Sidenav flex flex-col">
       <div className="sideNavHead">
         <h1>S Chat</h1>
       </div>
@@ -54,6 +53,9 @@ const Sidenav = (props) => {
             );
           })}
       </ul>
+      <div className="sideNavBottom">
+        <button className="button w-40">Logout</button>
+      </div>
     </div>
   );
 };

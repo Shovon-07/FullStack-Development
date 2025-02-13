@@ -18,24 +18,26 @@
   font-family: "Dancing Script", serif;
   text-align: center;
 }
-.Sidenav .users li {
+.Sidenav .users li a {
   padding: 5px 10px;
   transition: var(--trans);
-}
-.Sidenav .users li:hover {
-  background: var(--dark-2);
-}
-.Sidenav .users li a {
   display: inline-flex;
   width: 100%;
   gap: 15px;
   align-items: center;
+}
+.Sidenav .users li a:hover {
+  background: var(--dark-2);
 }
 .Sidenav .users li img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   border: var(--table-border);
+}
+
+.Sidenav .sideNavBottom {
+  margin: auto auto 15px auto;
 }
 
 /* Responsive */
