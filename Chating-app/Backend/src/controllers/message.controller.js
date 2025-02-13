@@ -58,7 +58,7 @@ export const sendMessage = async (req, res) => {
       image: imgUrl,
     });
 
-    //===> Realtime transmit messages by socket.
+    //===> Realtime transmit messages by socket.io
     /**
      * ...
      **/

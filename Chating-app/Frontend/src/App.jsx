@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SecurityProvider from "./context/SystemSecurity";
+// import SecurityProvider from "./context/SystemSecurity";
 
 //===> Css
 import "./assets/css/globals.css";
@@ -39,47 +39,47 @@ const App = () => {
   );
 
   return (
-    <SecurityProvider>
-      <Router>
-        <Routes>
-          {/* Public routes */}
-          <Route
-            path="/login"
-            element={
-              <PublicRoute isAuthenticated={isAuthenticated}>
-                <Login
-                  setIsAuthenticated={setIsAuthenticated}
-                  setUserRole={setUserRole}
-                />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute isAuthenticated={isAuthenticated}>
-                <Signup
-                // setIsAuthenticated={setIsAuthenticated}
-                // setUserRole={setUserRole}
-                />
-              </PublicRoute>
-            }
-          />
-
-          {/* Protected admin routes */}
-          <Route
-            path="/*"
-            element={
-              <AdminRoutes
-                userRole={userRole}
-                isAuthenticated={isAuthenticated}
+    // <SecurityProvider>
+    <Router>
+      <Routes>
+        {/* Public routes */}
+        <Route
+          path="/login"
+          element={
+            <PublicRoute isAuthenticated={isAuthenticated}>
+              <Login
+                setIsAuthenticated={setIsAuthenticated}
+                setUserRole={setUserRole}
               />
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </SecurityProvider>
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <PublicRoute isAuthenticated={isAuthenticated}>
+              <Signup
+              // setIsAuthenticated={setIsAuthenticated}
+              // setUserRole={setUserRole}
+              />
+            </PublicRoute>
+          }
+        />
+
+        {/* Protected admin routes */}
+        <Route
+          path="/*"
+          element={
+            <AdminRoutes
+              userRole={userRole}
+              isAuthenticated={isAuthenticated}
+            />
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+    // </SecurityProvider>
   );
 };
 

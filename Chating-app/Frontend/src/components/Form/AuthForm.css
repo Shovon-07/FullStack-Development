@@ -17,6 +17,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 25px;
+  color: var(--light-1);
 }
 .form_box .inputBox {
   width: 100%;
@@ -30,7 +31,7 @@
   background: transparent;
   border: none;
   outline: none;
-  color: var(--dark-3);
+  color: var(--light-2);
   font-size: 1.1rem;
   padding: 6px 15px;
 }
@@ -39,7 +40,7 @@
   right: 15px;
   top: 8px;
   background: transparent;
-  color: var(--dark-3);
+  color: var(--light-3);
 }
 
 .form_box .next_button {
@@ -57,9 +58,10 @@
   align-items: end !important;
   justify-content: flex-end;
   flex-direction: column;
+  color: var(--light-3);
 }
 .form_box .form_bottom a {
-  color: var(--main-clr);
+  color: var(--light-purple);
 }
 
 /*___ Responsive ___*/

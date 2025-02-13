@@ -1,5 +1,4 @@
 import { lazy, Suspense, useState } from "react";
-import { HelmetProvider, Helmet } from "react-helmet-async";
 
 //===> Css
 import "./Login.css";
@@ -30,12 +29,7 @@ const Login = (props) => {
   ];
 
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>Login</title>
-        <meta name="description" content="Agrovet software" />
-      </Helmet>
-
+    <>
       {loader && <Loader />}
       <div className="d-flex loginContainer animated fadeInDown">
         <div className="d-flex login">
@@ -43,7 +37,7 @@ const Login = (props) => {
             <AuthForm
               title={"Sign in"}
               inputFields={inputField}
-              api={"/login"}
+              api={"/auth/login"}
               loginOrSingupUrl={"/signup"}
               loginOrSingup={"Sign up"}
               // For authentication
@@ -54,11 +48,8 @@ const Login = (props) => {
           </Suspense>
         </div>
       </div>
-    </HelmetProvider>
+    </>
   );
 };
 
 export default Login;
-
-// Email : shovon@mail.com
-// pass : 12345678

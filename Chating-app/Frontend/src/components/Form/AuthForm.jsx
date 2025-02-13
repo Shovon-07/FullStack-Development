@@ -2,14 +2,14 @@ import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
-//===> Css
+//___ Css ___//
 import "./AuthForm.css";
 
-//===> Icons
+//___ Icons ___//
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 
-//===> Utilities
+//___ Additional utilities ___//
 import ApiConfig from "../../assets/js/ApiConfig";
 import { Encryption } from "../../assets/js/Encryption";
 
@@ -40,7 +40,7 @@ const AuthForm = (props) => {
   const submit = async (e) => {
     e.preventDefault();
 
-    if (api == "/login") {
+    if (api == "/auth/login") {
       if (inputData.email == "") {
         toast.error("Please enter email address");
       } else if (inputData.password == "") {
@@ -106,7 +106,9 @@ const AuthForm = (props) => {
             }
           })
           .catch((err) => {
+            setLoader(false);
             console.log(err);
+            toast.error(err.response.data.message);
           });
       }
     } else if (api == "/signup") {
@@ -220,10 +222,3 @@ const AuthForm = (props) => {
 };
 
 export default AuthForm;
-
-/***
- * Email : shovon@mail.com
- * Pass : 123456789
- * Encrypted : $2y$12$sClCjNbLjgksnzIW672QhO.kZjgoarTFnG2h8kKcU9eIrSGL4uh5G
- *
- ****/
