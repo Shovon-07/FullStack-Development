@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 //===> Css
@@ -9,14 +9,39 @@ import ChatHead from "./ChatHead";
 import ChatBox from "./ChatBox";
 import ChatFoot from "./ChatFoot";
 
-const Chat = () => {
+//===> Utilities
+import { AuthContext } from "../../context/AuthContext";
+import ApiConfig from "../../assets/js/ApiConfig";
+
+const Chat = (props) => {
+  const { setLoader } = props;
   const { id } = useParams();
+  const { headers } = useContext(AuthContext);
+  const [msgText, setMsgText] = useState("");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      setLoader(true);
+      await ApiConfig.get(`/message/${id}`, { headers })
+        .then((res) => {
+          setData(res.data.data);
+          console.log(res.data);
+          setLoader(false);
+        })
+        .catch((err) => {
+          setLoader(false);
+          toast.error(err.response.data.message);
+        });
+    };
+    getUsers();
+  }, []);
 
   return (
     <div className="Chat">
       <ChatHead />
       <ChatBox />
-      <ChatFoot />
+      <ChatFoot msgText={msgText} setMsgText={setMsgText} />
     </div>
   );
 };
