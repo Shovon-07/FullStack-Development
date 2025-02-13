@@ -4,7 +4,8 @@ import { AuthContext } from "../../context/AuthContext";
 
 const ChatBox = (props) => {
   const { data, selectUdata } = props;
-  const { uid } = useContext(AuthContext);
+  const { uid, uImg } = useContext(AuthContext);
+  // console.log(uImg);
 
   return (
     <div className="chatBox">
@@ -21,9 +22,7 @@ const ChatBox = (props) => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS chat bubble component"
-                    src={
-                      item.senderId != uid ? selectUdata.profilePic : demoImg
-                    }
+                    src={item.senderId != uid ? selectUdata.profilePic : uImg}
                   />
                 </div>
               </div>

@@ -30,8 +30,21 @@ const AuthProvider = ({ children }) => {
     return GetCookie("_UID_AJS+c0mPanY-07@12#31_user") || null;
   }, [authToken, secretKey]);
 
+  const uImg = useMemo(() => {
+    const cookieImg = GetCookie("_Uimg_AJS+c0mPanY-07@12#31_user") || "";
+    // console.log("Cookie img = ", cookieImg);
+
+    const decImg = Decryption(cookieImg, secretKey);
+    console.log("Decrypted img = ", decImg);
+
+    return Decryption(
+      GetCookie("_Uimg_AJS+c0mPanY-07@12#31_user") || "",
+      secretKey || ""
+    );
+  }, [authToken, secretKey]);
+
   return (
-    <AuthContext.Provider value={{ headers, uid, userRole }}>
+    <AuthContext.Provider value={{ headers, uid, userRole, uImg }}>
       {children}
     </AuthContext.Provider>
   );
