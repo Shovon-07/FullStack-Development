@@ -86,16 +86,11 @@ const AuthForm = (props) => {
 
                 // Set user image in cookie
                 document.cookie = `_Uimg_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  response.data.profilePic,
+                  response.data.data.profilePic,
                   import.meta.env.VITE_SECRET_KEY
                 )}`;
 
                 setLoader(false);
-                // console.log(response.data.permissions);
-                localStorage.setItem(
-                  "User data",
-                  JSON.stringify(response.data)
-                );
                 // console.clear();
                 navigate("/");
               }, 1000);

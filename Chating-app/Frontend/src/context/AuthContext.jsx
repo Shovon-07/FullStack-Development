@@ -31,12 +31,6 @@ const AuthProvider = ({ children }) => {
   }, [authToken, secretKey]);
 
   const uImg = useMemo(() => {
-    const cookieImg = GetCookie("_Uimg_AJS+c0mPanY-07@12#31_user") || "";
-    // console.log("Cookie img = ", cookieImg);
-
-    const decImg = Decryption(cookieImg, secretKey);
-    console.log("Decrypted img = ", decImg);
-
     return Decryption(
       GetCookie("_Uimg_AJS+c0mPanY-07@12#31_user") || "",
       secretKey || ""

@@ -36,8 +36,13 @@ input[type="password"]:focus::placeholder,
 [type="number"]:focus::placeholder {
   padding-left: 10px;
 }
-input:disabled {
+input:disabled,
+button:disabled {
   cursor: not-allowed;
+}
+
+button:disabled {
+  background: red;
 }
 
 select {

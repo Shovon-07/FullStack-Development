@@ -14,7 +14,8 @@ const ChatFoot = (props) => {
   const { id, data, setData, msgText, setMsgText } = props;
   const { headers, uid } = useContext(AuthContext);
 
-  const Submit = async () => {
+  const Submit = async (e) => {
+    e.preventDefault();
     const payload = { senderId: uid, receiverId: id, text: msgText };
 
     await ApiConfig.post(`/message/send/${id}`, payload, { headers })
@@ -28,8 +29,15 @@ const ChatFoot = (props) => {
       });
   };
 
+  // window.addEventListener("keydown", function (event) {
+  //   if (event.key === "Enter") {
+  //     event.preventDefault();
+  //     msgText == "" ? "" : Submit();
+  //   }
+  // });
+
   return (
-    <div className="chatFoot">
+    <form className="chatFoot" onSubmit={Submit}>
       <div className="left">
         <div className="emoji">
           <FaRegFaceSmileBeam size={22} />
@@ -49,11 +57,15 @@ const ChatFoot = (props) => {
         </div>
       </div>
       <div className="right">
-        <div className="send" onClick={Submit}>
+        <button
+          className="send"
+          type="submit"
+          disabled={msgText == "" ? true : false}
+        >
           <IoIosSend size={25} />
-        </div>
+        </button>
       </div>
-    </div>
+    </form>
   );
 };
 

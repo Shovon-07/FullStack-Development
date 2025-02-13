@@ -14,8 +14,6 @@ export const Encryption = (txt, key) => {
 
 // Decryption
 export const Decryption = (encryptedTxt, key) => {
-  console.log(encryptedTxt);
-
   if (secretKey == key) {
     const decrypted = CryptoJS.AES.decrypt(encryptedTxt, key).toString(
       CryptoJS.enc.Utf8
