@@ -19,6 +19,7 @@ const Chat = (props) => {
   const { headers } = useContext(AuthContext);
   const [msgText, setMsgText] = useState("");
   const [data, setData] = useState([]);
+  //   const [reloader, setReloader] = useState(false);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -40,7 +41,7 @@ const Chat = (props) => {
   return (
     <div className="Chat">
       <ChatHead />
-      <ChatBox />
+      <ChatBox data={data} />
       <ChatFoot
         id={id}
         data={data}
