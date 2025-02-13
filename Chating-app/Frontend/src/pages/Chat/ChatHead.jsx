@@ -5,13 +5,19 @@ import demoImg from "../../assets/images/profile.png";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { IoIosSearch } from "react-icons/io";
 
-const ChatHead = () => {
+const ChatHead = (props) => {
+  const { uData } = props;
+
   return (
     <div className="chatHead">
       <div className="uInfo flex items-center gap-5">
-        <img src={demoImg} alt="" />
+        <img src={uData.profilePic != "" ? uData.profilePic : demoImg} alt="" />
         <div>
-          <h1 className="font-semibold text-lg">Md Abdullah mahdee</h1>
+          <h1 className="font-semibold text-lg">
+            {uData.fullname.length > 15
+              ? uData.fullname.slice(0, 15) + " ..."
+              : uData.fullname}
+          </h1>
           <p className="text-sm">active</p>
         </div>
       </div>

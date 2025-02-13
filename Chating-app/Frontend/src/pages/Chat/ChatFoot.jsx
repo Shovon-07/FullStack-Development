@@ -19,7 +19,6 @@ const ChatFoot = (props) => {
 
     await ApiConfig.post(`/message/send/${id}`, payload, { headers })
       .then((res) => {
-        // console.log(res.data.data.text);
         setData([...data, res.data.data]);
         setMsgText("");
       })

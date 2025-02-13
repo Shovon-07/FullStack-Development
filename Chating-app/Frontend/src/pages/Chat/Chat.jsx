@@ -19,6 +19,7 @@ const Chat = (props) => {
   const { headers } = useContext(AuthContext);
   const [msgText, setMsgText] = useState("");
   const [data, setData] = useState([]);
+  const [uData, setUdata] = useState({});
   //   const [reloader, setReloader] = useState(false);
 
   useEffect(() => {
@@ -27,8 +28,9 @@ const Chat = (props) => {
       await ApiConfig.get(`/message/${id}`, { headers })
         .then((res) => {
           setData(res.data.data);
-          console.log(res.data);
+          setUdata(res.data.userToChatData);
           setLoader(false);
+          console.log(res);
         })
         .catch((err) => {
           setLoader(false);
@@ -36,11 +38,11 @@ const Chat = (props) => {
         });
     };
     getUsers();
-  }, []);
+  }, [id]);
 
   return (
     <div className="Chat">
-      <ChatHead />
+      <ChatHead uData={uData} />
       <ChatBox data={data} />
       <ChatFoot
         id={id}

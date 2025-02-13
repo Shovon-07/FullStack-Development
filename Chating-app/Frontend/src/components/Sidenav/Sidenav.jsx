@@ -46,7 +46,10 @@ const Sidenav = (props) => {
             return (
               <li key={item._id}>
                 <NavLink to={item._id}>
-                  <img src={demoImg} alt="" />
+                  <img
+                    src={item.profilePic != "" ? item.profilePic : demoImg}
+                    alt=""
+                  />
                   <p>{item.fullname}</p>
                 </NavLink>
               </li>

@@ -24,6 +24,11 @@ export const getMessage = async (req, res) => {
     const { id: userToChatId } = req.params;
     const myId = req.id;
 
+    //===> Find user
+    const userToChatData = await User.findOne({
+      _id: userToChatId,
+    });
+
     //===> Find message
     const message = await Message.find({
       $or: [
@@ -32,7 +37,9 @@ export const getMessage = async (req, res) => {
       ],
     });
 
-    return res.status(200).json({ status: true, data: message });
+    return res
+      .status(200)
+      .json({ status: true, data: message, userToChatData: userToChatData });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });
