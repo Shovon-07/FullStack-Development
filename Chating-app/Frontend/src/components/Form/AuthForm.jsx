@@ -60,33 +60,33 @@ const AuthForm = (props) => {
 
               setTimeout(() => {
                 // Set user data
-                setIsAuthenticated(response.data.token);
-                setUserRole(response.data.permissions);
+                setIsAuthenticated(response.data.data.token);
+                setUserRole(["Dashboard-page", "Profile-page"]); //permission / role array
 
                 // Set token in cookie
                 document.cookie = `_Auth_AJS+c0mPanY-07@12#31_token=${Encryption(
-                  response.data.token,
+                  response.data.data.token,
                   import.meta.env.VITE_SECRET_KEY
                 )}`;
 
                 // Set user role in cookie
                 document.cookie = `_Role_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  response.data.permissions,
+                  ["Dashboard-page", "Profile-page"],
                   import.meta.env.VITE_SECRET_KEY
                 )}`;
 
                 // Set user id in cookie
-                document.cookie = `_UID_AJS+c0mPanY-07@12#31_user=${response.data.user.employee.id}`;
+                document.cookie = `_UID_AJS+c0mPanY-07@12#31_user=${response.data.data._id}`;
 
                 // Set user name in cookie
                 document.cookie = `_Unme_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  response.data.user.employee.name,
+                  response.data.data.fullname,
                   import.meta.env.VITE_SECRET_KEY
                 )}`;
 
                 // Set user image in cookie
                 document.cookie = `_Uimg_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  response.data.user.employee.image,
+                  response.data.data.profilePic,
                   import.meta.env.VITE_SECRET_KEY
                 )}`;
 
