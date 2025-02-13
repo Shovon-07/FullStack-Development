@@ -2,6 +2,7 @@
   width: 300px;
   height: 100vh;
   background: var(--dark-blue);
+  border-right: 0.01rem solid var(--dark-3);
   overflow-y: scroll;
   position: fixed;
 }

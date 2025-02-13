@@ -1,2 +1,37 @@
 .Chat {
+  display: flex;
+  flex-direction: column;
+}
+
+.Chat .chatHead {
+  padding: 0 20px;
+  height: 50px;
+  background: var(--dark-blue);
+}
+
+.Chat .chatBox {
+  padding: 0 50px;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
+}
+
+.Chat .chatFoot,
+.Chat .chatFoot .left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Chat .chatFoot {
+  padding: 0 20px;
+  height: 50px;
+  /* background: var(--dark-blue); */
+}
+.Chat .chatFoot .left {
+  background-color: rgba(0, 4, 255, 0.384);
+  width: 90%;
+}
+.Chat .chatFoot .right .send {
+  background: var(--dark-3);
+  padding: 5px;
+  border-radius: 50%;
 }
