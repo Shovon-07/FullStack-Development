@@ -12,12 +12,15 @@ const ChatBox = (props) => {
     if (messageEndRef.current && data) {
       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-
-    console.log(data);
   }, [data]);
 
   return (
     <div className="chatBox">
+      <div className="starting flex items-center justify-center flex-col mt-5 mb-10">
+        <img src={selectUdata.profilePic || demoImg} alt="" />
+        <p className="text-sm">Start chat with</p>
+        <h1 className="text-xl">{selectUdata.fullname}</h1>
+      </div>
       {Array.isArray(data) &&
         data.map((item) => {
           return (
