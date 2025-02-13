@@ -17,9 +17,8 @@ const ChatFoot = (props) => {
   const Submit = async () => {
     const payload = { senderId: uid, receiverId: id, text: msgText };
 
-    await ApiConfig.post(`/message/send/${uid}`, payload, { headers })
+    await ApiConfig.post(`/message/send/${id}`, payload, { headers })
       .then((res) => {
-        console.log(res);
         setMsgText("");
       })
       .catch((err) => {
