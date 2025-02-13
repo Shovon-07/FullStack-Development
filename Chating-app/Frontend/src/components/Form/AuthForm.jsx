@@ -61,7 +61,7 @@ const AuthForm = (props) => {
               setTimeout(() => {
                 // Set user data
                 setIsAuthenticated(response.data.data.token);
-                setUserRole(["Dashboard-page", "Profile-page"]); //permission / role array
+                setUserRole(["Dashboard-page", "Profile-page", "Chat-page"]); //permission / role array
 
                 // Set token in cookie
                 document.cookie = `_Auth_AJS+c0mPanY-07@12#31_token=${Encryption(
@@ -71,7 +71,7 @@ const AuthForm = (props) => {
 
                 // Set user role in cookie
                 document.cookie = `_Role_AJS+c0mPanY-07@12#31_user=${Encryption(
-                  ["Dashboard-page", "Profile-page"],
+                  ["Dashboard-page", "Profile-page", "Chat-page"],
                   import.meta.env.VITE_SECRET_KEY
                 )}`;
 

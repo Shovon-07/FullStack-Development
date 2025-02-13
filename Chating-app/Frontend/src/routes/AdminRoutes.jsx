@@ -32,6 +32,7 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
                 <Sidenav
                   toggleSideNav={toggleSideNav}
                   setToggleSideNav={setToggleSideNav}
+                  setLoader={setLoader}
                 />
               </Suspense>
               <Suspense fallback={<Loader />}>
@@ -80,16 +81,30 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
                   </PrivateRoute>
                 }
               />
+              <Route
+                path="/:id"
+                element={
+                  <PrivateRoute
+                    roles={["Developer", "Chat-page"]}
+                    userRole={userRole}
+                    isAuthenticated={isAuthenticated}
+                  >
+                    <Suspense fallback="">
+                      <Home setLoader={setLoader} />
+                    </Suspense>
+                  </PrivateRoute>
+                }
+              />
 
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
 
-          {isAuthenticated && (
+          {/* {isAuthenticated && (
             <Suspense fallback={<Loader />}>
               <Footer />
             </Suspense>
-          )}
+          )} */}
         </main>
 
         <ToastContainer

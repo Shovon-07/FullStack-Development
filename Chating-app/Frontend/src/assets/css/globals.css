@@ -157,7 +157,7 @@ img[alt="Img-from-table"] {
 .content_parent {
   height: 100%;
   min-height: 100vh;
-  margin-left: 245px;
+  margin-left: 300px;
   padding: 0 20px;
   margin-bottom: 100px;
   transition: var(--trans);
@@ -269,11 +269,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /*___ Change default style for library end ___*/
 
 /*___ Responsive ___*/
-@media screen and (max-width: 950px) {
+/* @media screen and (max-width: 950px) {
   .content_parent {
     margin-left: 0;
   }
-}
+} */
 @media screen and(max-width:800px) {
   .Form .card {
     width: 80%;

@@ -1,0 +1,50 @@
+.Sidenav {
+  width: 300px;
+  height: 100vh;
+  background: var(--dark-blue);
+  overflow-y: scroll;
+  position: fixed;
+}
+.Sidenav::-webkit-scrollbar {
+  display: none;
+}
+
+.Sidenav .sideNavHead {
+  background: var(--dark-blue);
+  padding: 0.5rem 0;
+}
+.Sidenav .sideNavHead h1 {
+  font-size: 1.5rem;
+  font-family: "Dancing Script", serif;
+  text-align: center;
+}
+.Sidenav .users li {
+  padding: 5px 10px;
+  transition: var(--trans);
+}
+.Sidenav .users li:hover {
+  background: var(--dark-2);
+}
+.Sidenav .users li a {
+  display: inline-flex;
+  width: 100%;
+  gap: 15px;
+  align-items: center;
+}
+.Sidenav .users li img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: var(--table-border);
+}
+
+/* Responsive */
+/* @media screen and (max-width: 950px) {
+  .Sidenav {
+    left: -300px;
+    box-shadow: none;
+  }
+  .Sidenav.active {
+    left: 0 !important;
+  }
+} */

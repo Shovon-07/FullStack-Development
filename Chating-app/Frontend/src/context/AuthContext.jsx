@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
 
   const headers = useMemo(() => {
     return {
-      Authorization: `Bearer ${Decryption(authToken, secretKey)}`,
+      authorization: `${Decryption(authToken, secretKey)}`,
     };
   }, [authToken, secretKey]);
 

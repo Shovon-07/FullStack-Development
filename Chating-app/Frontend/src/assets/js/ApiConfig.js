@@ -1,6 +1,4 @@
 import axios from "axios";
-// import { GetCookie } from "./GetCookie";
-// import { Decryption, secretKey } from "./Encryption";
 
 const ApiConfig = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -19,8 +17,3 @@ const ApiConfig = axios.create({
 export default ApiConfig;
 
 export const imgUrl = import.meta.env.VITE_IMG_URL;
-
-/***
- * For use backend from localhost
- * > https://radient-agrovet.netlify.app
- ****/
