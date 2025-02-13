@@ -41,7 +41,12 @@ const Chat = (props) => {
     <div className="Chat">
       <ChatHead />
       <ChatBox />
-      <ChatFoot msgText={msgText} setMsgText={setMsgText} />
+      <ChatFoot
+        id={id}
+        msgText={msgText}
+        setMsgText={setMsgText}
+        setLoader={setLoader}
+      />
     </div>
   );
 };

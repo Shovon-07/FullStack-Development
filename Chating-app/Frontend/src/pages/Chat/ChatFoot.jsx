@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
+import { toast } from "react-toastify";
 
 //===> Icons
 import { IoIosSend } from "react-icons/io";
 import { FaRegFaceSmileBeam } from "react-icons/fa6";
 import { GrAttachment } from "react-icons/gr";
 
-const ChatFoot = (props) => {
-  const { msgText, setMsgText } = props;
+//===> Utilities
+import { AuthContext } from "../../context/AuthContext";
+import ApiConfig from "../../assets/js/ApiConfig";
 
-  const Submit = () => {
-    console.log(msgText);
-    setMsgText("");
+const ChatFoot = (props) => {
+  const { id, msgText, setMsgText, setLoader } = props;
+  const { headers, uid } = useContext(AuthContext);
+
+  const Submit = async () => {
+    const payload = { senderId: uid, receiverId: id, text: msgText };
+
+    await ApiConfig.post(`/message/send/${uid}`, payload, { headers })
+      .then((res) => {
+        console.log(res);
+        setMsgText("");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.response.data.message);
+      });
   };
 
   return (
