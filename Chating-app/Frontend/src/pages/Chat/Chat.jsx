@@ -43,6 +43,8 @@ const Chat = (props) => {
       <ChatBox />
       <ChatFoot
         id={id}
+        data={data}
+        setData={setData}
         msgText={msgText}
         setMsgText={setMsgText}
         setLoader={setLoader}

@@ -11,7 +11,7 @@ import { AuthContext } from "../../context/AuthContext";
 import ApiConfig from "../../assets/js/ApiConfig";
 
 const ChatFoot = (props) => {
-  const { id, msgText, setMsgText, setLoader } = props;
+  const { id, data, setData, msgText, setMsgText } = props;
   const { headers, uid } = useContext(AuthContext);
 
   const Submit = async () => {
@@ -19,6 +19,8 @@ const ChatFoot = (props) => {
 
     await ApiConfig.post(`/message/send/${id}`, payload, { headers })
       .then((res) => {
+        // console.log(res.data.data.text);
+        setData([...data, res.data.data]);
         setMsgText("");
       })
       .catch((err) => {
