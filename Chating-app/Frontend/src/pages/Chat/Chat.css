@@ -4,14 +4,22 @@
 }
 
 .Chat .chatHead {
-  padding: 0 20px;
-  height: 50px;
+  padding: 10px 20px;
+  height: 60px;
   background: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.Chat .chatHead img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .Chat .chatBox {
-  padding: 0 50px;
-  height: calc(100vh - 120px);
+  padding: 0 100px;
+  height: calc(100vh - 130px);
   overflow-y: scroll;
 }
 
@@ -20,6 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 20px;
 }
 .Chat .chatFoot {
   padding: 0 20px;
@@ -27,7 +36,7 @@
 }
 .Chat .chatFoot .left {
   background-color: var(--dark-blue);
-  width: 90%;
+  width: 100%;
   height: 70%;
   padding: 0px 10px;
   border-radius: 15px;
@@ -40,12 +49,16 @@
   align-items: center;
   justify-content: center;
 }
+.Chat .chatFoot .left .inputBox {
+  width: 100%;
+  padding: 0 10px;
+}
 .Chat .chatFoot .right .send {
   background: var(--dark-blue);
   border-radius: 50%;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;

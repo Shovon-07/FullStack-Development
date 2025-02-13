@@ -6,16 +6,29 @@ import demoImg from "../../assets/images/profile.png";
 import "./Chat.css";
 
 //===> Icons
-import { IoIosSend } from "react-icons/io";
+import { IoIosSend, IoIosSearch } from "react-icons/io";
 import { FaRegFaceSmileBeam } from "react-icons/fa6";
 import { GrAttachment } from "react-icons/gr";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
 const Chat = () => {
   const { id } = useParams();
 
   return (
     <div className="Chat">
-      <div className="chatHead">head - {id}</div>
+      <div className="chatHead">
+        <div className="uInfo flex items-center gap-5">
+          <img src={demoImg} alt="" />
+          <div>
+            <h1 className="font-semibold text-lg">Md Abdullah mahdee</h1>
+            <p className="text-sm">active</p>
+          </div>
+        </div>
+        <div className="action flex items-center gap-5">
+          <IoIosSearch size={22} className="cursor-pointer" />
+          <HiOutlineDotsVertical size={22} className="cursor-pointer" />
+        </div>
+      </div>
 
       <div className="chatBox">
         <div className="chat chat-start">
@@ -194,7 +207,7 @@ const Chat = () => {
           <div className="emoji">
             <FaRegFaceSmileBeam size={22} />
           </div>
-          <div className="inputBox bg-red-500">
+          <div className="inputBox">
             <input type="text" placeholder="Type somethig" />
           </div>
           <div className="attach">

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 
 //===> Css
@@ -45,10 +45,10 @@ const Sidenav = (props) => {
           data.map((item) => {
             return (
               <li key={item._id}>
-                <Link to={item._id}>
+                <NavLink to={item._id}>
                   <img src={demoImg} alt="" />
                   <p>{item.fullname}</p>
-                </Link>
+                </NavLink>
               </li>
             );
           })}
