@@ -11,7 +11,7 @@
 
 .Chat .chatBox {
   padding: 0 50px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 120px);
   overflow-y: scroll;
 }
 
@@ -23,15 +23,30 @@
 }
 .Chat .chatFoot {
   padding: 0 20px;
-  height: 50px;
-  /* background: var(--dark-blue); */
+  height: 70px;
 }
 .Chat .chatFoot .left {
-  background-color: rgba(0, 4, 255, 0.384);
+  background-color: var(--dark-blue);
   width: 90%;
+  height: 70%;
+  padding: 0px 10px;
+  border-radius: 15px;
+}
+.Chat .chatFoot .left .emoji,
+.Chat .chatFoot .left .attach {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .Chat .chatFoot .right .send {
-  background: var(--dark-3);
-  padding: 5px;
+  background: var(--dark-blue);
   border-radius: 50%;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

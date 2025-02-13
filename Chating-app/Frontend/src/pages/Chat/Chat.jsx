@@ -191,14 +191,14 @@ const Chat = () => {
 
       <div className="chatFoot">
         <div className="left">
-          <div className="imoji">
-            <FaRegFaceSmileBeam />
+          <div className="emoji">
+            <FaRegFaceSmileBeam size={22} />
           </div>
-          <div className="inputBox">
+          <div className="inputBox bg-red-500">
             <input type="text" placeholder="Type somethig" />
           </div>
           <div className="attach">
-            <GrAttachment />
+            <GrAttachment size={22} />
           </div>
         </div>
         <div className="right">
