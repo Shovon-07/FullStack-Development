@@ -1,0 +1,24 @@
+/* Context Menu Animation */
+.context-menu {
+  min-width: 100px;
+  background-color: var(--dark-blue);
+  box-shadow: var(--cardShadow);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.context-menu.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.context-menu-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.context-menu-item:hover {
+  background-color: var(--dark-2);
+}

@@ -1,7 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import { formatMessageTime } from "../../assets/js/DateFormater";
 import demoImg from "../../assets/images/profile.png";
+
+//===> Css
+import "../../assets/css/context-menu.css";
+
+//===> Components
+import ContextMenu from "../../components/ContextMenu/ContextMenu";
+import { formatMessageTime } from "../../assets/js/DateFormater";
 
 const ChatBox = (props) => {
   const { data, selectUdata } = props;
@@ -37,32 +43,6 @@ const ChatBox = (props) => {
     setContextMenu({ ...contextMenu, visible: false });
   };
 
-  // Handle Edit option
-  const handleEdit = () => {
-    const updatedMessages = messages.map((msg) =>
-      msg.id === contextMenu.messageId ? { ...msg, editable: true } : msg
-    );
-    setMessages(updatedMessages);
-    closeContextMenu();
-  };
-
-  // Handle Delete option
-  const handleDelete = () => {
-    const updatedMessages = messages.filter(
-      (msg) => msg.id !== contextMenu.messageId
-    );
-    setMessages(updatedMessages);
-    closeContextMenu();
-  };
-
-  // Handle saving edited message
-  const handleSave = (id, newText) => {
-    const updatedMessages = messages.map((msg) =>
-      msg.id === id ? { ...msg, text: newText, editable: false } : msg
-    );
-    setMessages(updatedMessages);
-  };
-
   return (
     <div className="chatBox" onClick={closeContextMenu}>
       <div className="starting flex items-center justify-center flex-col mt-5 mb-10">
@@ -92,7 +72,7 @@ const ChatBox = (props) => {
                   />
                 </div>
               </div>
-              <div className="chat-header ">
+              <div className="chat-header">
                 {item.fullname}
                 <time className="text-xs opacity-50 ml-2">
                   {formatMessageTime(item.createdAt)}
@@ -112,32 +92,26 @@ const ChatBox = (props) => {
           );
         })}
 
-      {/* Context Menu */}
-      {contextMenu.visible && (
-        <div
-          style={{
-            position: "absolute",
-            top: contextMenu.y,
-            left: contextMenu.x,
-            backgroundColor: "var(--dark-blue)",
-            boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.2)",
-            zIndex: 1000,
-          }}
-        >
-          <div
-            style={{ padding: "10px", cursor: "pointer" }}
-            onClick={handleEdit}
-          >
-            Edit
-          </div>
-          <div
-            style={{ padding: "10px", cursor: "pointer" }}
-            onClick={handleDelete}
-          >
-            Delete
-          </div>
+      {/* Context Menu with Animation */}
+      <ContextMenu
+        contextMenu={contextMenu}
+        closeContextMenu={closeContextMenu}
+      />
+      {/* <div
+        className={`context-menu ${contextMenu.visible && "visible"}`}
+        style={{
+          position: "absolute",
+          top: contextMenu.y,
+          left: contextMenu.x,
+        }}
+      >
+        <div className="context-menu-item" onClick={handleEdit}>
+          Edit
         </div>
-      )}
+        <div className="context-menu-item" onClick={handleDelete}>
+          Delete
+        </div>
+      </div> */}
     </div>
   );
 };
