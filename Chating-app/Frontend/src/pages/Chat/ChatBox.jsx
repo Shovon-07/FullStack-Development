@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { formatMessageTime } from "../../assets/js/DateFormater";
 import demoImg from "../../assets/images/profile.png";
@@ -14,8 +14,57 @@ const ChatBox = (props) => {
     }
   }, [data]);
 
+  //===> Handel context menu & edit & delete
+  const [contextMenu, setContextMenu] = useState({
+    visible: false,
+    x: 0,
+    y: 0,
+    messageId: null,
+  });
+
+  const handleRightClick = (e, messageId) => {
+    e.preventDefault();
+    setContextMenu({
+      visible: true,
+      x: e.clientX,
+      y: e.clientY,
+      messageId: messageId,
+    });
+  };
+
+  // Close the context menu
+  const closeContextMenu = () => {
+    setContextMenu({ ...contextMenu, visible: false });
+  };
+
+  // Handle Edit option
+  const handleEdit = () => {
+    const updatedMessages = messages.map((msg) =>
+      msg.id === contextMenu.messageId ? { ...msg, editable: true } : msg
+    );
+    setMessages(updatedMessages);
+    closeContextMenu();
+  };
+
+  // Handle Delete option
+  const handleDelete = () => {
+    const updatedMessages = messages.filter(
+      (msg) => msg.id !== contextMenu.messageId
+    );
+    setMessages(updatedMessages);
+    closeContextMenu();
+  };
+
+  // Handle saving edited message
+  const handleSave = (id, newText) => {
+    const updatedMessages = messages.map((msg) =>
+      msg.id === id ? { ...msg, text: newText, editable: false } : msg
+    );
+    setMessages(updatedMessages);
+  };
+
   return (
-    <div className="chatBox">
+    <div className="chatBox" onClick={closeContextMenu}>
       <div className="starting flex items-center justify-center flex-col mt-5 mb-10">
         <img src={selectUdata.profilePic || demoImg} alt="" />
         <p className="text-sm">Start chat with</p>
@@ -54,6 +103,7 @@ const ChatBox = (props) => {
                   item.senderId == uid ? "bg-[#3c3c55]" : ""
                 }`}
                 style={{ maxWidth: "230px" }}
+                onContextMenu={(e) => handleRightClick(e, item._id)}
               >
                 {item.text}
               </div>
@@ -61,6 +111,33 @@ const ChatBox = (props) => {
             </div>
           );
         })}
+
+      {/* Context Menu */}
+      {contextMenu.visible && (
+        <div
+          style={{
+            position: "absolute",
+            top: contextMenu.y,
+            left: contextMenu.x,
+            backgroundColor: "var(--dark-blue)",
+            boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.2)",
+            zIndex: 1000,
+          }}
+        >
+          <div
+            style={{ padding: "10px", cursor: "pointer" }}
+            onClick={handleEdit}
+          >
+            Edit
+          </div>
+          <div
+            style={{ padding: "10px", cursor: "pointer" }}
+            onClick={handleDelete}
+          >
+            Delete
+          </div>
+        </div>
+      )}
     </div>
   );
 };
