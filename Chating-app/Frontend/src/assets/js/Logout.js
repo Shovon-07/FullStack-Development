@@ -5,9 +5,11 @@ export default async function Logout(headers) {
 
   const payload = null;
   try {
-    await ApiConfig.post("/logout", payload, { headers }).then((response) => {
-      return;
-    });
+    await ApiConfig.post("/auth/logout", payload, { headers }).then(
+      (response) => {
+        return;
+      }
+    );
   } catch (error) {
     console.log(error);
   }

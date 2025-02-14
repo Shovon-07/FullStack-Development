@@ -1,4 +1,5 @@
 import express from "express";
+import { server, app } from "./src/lib/socket.io.js";
 import dotenv from "dotenv";
 import cors from "cors";
 import { connectDb } from "./src/lib/db.js";
@@ -6,7 +7,7 @@ import authRoutes from "./src/routes/auth.route.js";
 import messageRoutes from "./src/routes/message.route.js";
 
 dotenv.config();
-const app = express();
+// const app = express();
 const PORT = process.env.PORT;
 
 //===> Middlewares
@@ -17,7 +18,7 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log("Server is connected @ " + PORT);
   connectDb();
 });

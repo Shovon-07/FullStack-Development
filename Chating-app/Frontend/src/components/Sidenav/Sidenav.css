@@ -20,15 +20,17 @@
   text-align: center;
 }
 .Sidenav .users li a {
-  padding: 5px 10px;
+  padding: 10px;
   transition: var(--trans);
   display: inline-flex;
   width: 100%;
   gap: 15px;
   align-items: center;
 }
-.Sidenav .users li a:hover {
+.Sidenav .users li a:hover,
+.Sidenav .users li a.active {
   background: var(--dark-2);
+  border-radius: 10px;
 }
 .Sidenav .users li img {
   width: 30px;

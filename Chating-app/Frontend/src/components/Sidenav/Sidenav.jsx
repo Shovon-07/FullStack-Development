@@ -8,6 +8,7 @@ import "./Sidenav.css";
 //===> Utility
 import { AuthContext } from "../../context/AuthContext";
 import ApiConfig from "../../assets/js/ApiConfig";
+import Logout from "../../assets/js/Logout";
 import demoImg from "../../assets/images/profile.png";
 
 const Sidenav = (props) => {
@@ -40,7 +41,7 @@ const Sidenav = (props) => {
       <div className="sideNavHead">
         <h1>S Chat</h1>
       </div>
-      <ul className="users mt-5">
+      <ul className="users mt-5 px-3">
         {Array.isArray(data) &&
           data.map((item) => {
             return (
@@ -50,14 +51,19 @@ const Sidenav = (props) => {
                     src={item.profilePic != "" ? item.profilePic : demoImg}
                     alt=""
                   />
-                  <p>{item.fullname}</p>
+                  <p>
+                    {item.fullname}{" "}
+                    <span className="text-[.8rem]">{item.email}</span>
+                  </p>
                 </NavLink>
               </li>
             );
           })}
       </ul>
       <div className="sideNavBottom">
-        <button className="button w-40">Logout</button>
+        <button className="button w-40" onClick={() => Logout(headers)}>
+          Logout
+        </button>
       </div>
     </div>
   );
