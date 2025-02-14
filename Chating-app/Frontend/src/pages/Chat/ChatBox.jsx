@@ -1,12 +1,18 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  lazy,
+  Suspense,
+} from "react";
 import { AuthContext } from "../../context/AuthContext";
 import demoImg from "../../assets/images/profile.png";
 
-//===> Css
-import "../../assets/css/context-menu.css";
-
 //===> Components
-import ContextMenu from "../../components/ContextMenu/ContextMenu";
+const ContextMenu = lazy(() =>
+  import("../../components/ContextMenu/ContextMenu")
+);
 import { formatMessageTime } from "../../assets/js/DateFormater";
 
 const ChatBox = (props) => {
@@ -93,25 +99,12 @@ const ChatBox = (props) => {
         })}
 
       {/* Context Menu with Animation */}
-      <ContextMenu
-        contextMenu={contextMenu}
-        closeContextMenu={closeContextMenu}
-      />
-      {/* <div
-        className={`context-menu ${contextMenu.visible && "visible"}`}
-        style={{
-          position: "absolute",
-          top: contextMenu.y,
-          left: contextMenu.x,
-        }}
-      >
-        <div className="context-menu-item" onClick={handleEdit}>
-          Edit
-        </div>
-        <div className="context-menu-item" onClick={handleDelete}>
-          Delete
-        </div>
-      </div> */}
+      <Suspense fallback="...">
+        <ContextMenu
+          contextMenu={contextMenu}
+          closeContextMenu={closeContextMenu}
+        />
+      </Suspense>
     </div>
   );
 };

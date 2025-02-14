@@ -2,7 +2,7 @@
 .context-menu {
   min-width: 100px;
   background-color: var(--dark-blue);
-  box-shadow: var(--cardShadow);
+  box-shadow: var(--shadow);
   z-index: 1000;
   opacity: 0;
   transform: translateY(-10px);

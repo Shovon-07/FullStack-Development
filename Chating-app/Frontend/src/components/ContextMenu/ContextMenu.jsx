@@ -1,5 +1,8 @@
 import React from "react";
 
+//===> Css
+import "./context-menu.css";
+
 const ContextMenu = (props) => {
   const { contextMenu, closeContextMenu } = props;
 
