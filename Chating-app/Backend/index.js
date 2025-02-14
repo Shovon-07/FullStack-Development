@@ -19,6 +19,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 
 server.listen(PORT, () => {
-  console.log("Server is connected @ " + PORT);
+  console.log("✅  Server is connected @ " + PORT);
   connectDb();
 });

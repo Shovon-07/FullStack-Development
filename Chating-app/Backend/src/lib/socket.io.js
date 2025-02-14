@@ -12,7 +12,7 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log(`${socket.id} has connected`);
+  console.log(`✅  ${socket.id} has connected`);
 
   socket.on("disconnect", () => {
     console.log(`${socket.id} has disconnected`);
