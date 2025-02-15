@@ -19,6 +19,7 @@ const ChatBox = (props) => {
   const { messages, selectUdata } = props;
   const { uid, uImg } = useContext(AuthContext);
   const messageEndRef = useRef(null);
+  const [deleteAbleMsgId, setDeleteAbleMsgId] = useState("");
 
   useEffect(() => {
     if (messageEndRef.current && messages) {
@@ -42,6 +43,7 @@ const ChatBox = (props) => {
       y: e.clientY,
       messageId: messageId,
     });
+    setDeleteAbleMsgId(messageId);
   };
 
   // Close the context menu
@@ -103,6 +105,7 @@ const ChatBox = (props) => {
         <ContextMenu
           contextMenu={contextMenu}
           closeContextMenu={closeContextMenu}
+          data={deleteAbleMsgId}
         />
       </Suspense>
     </div>

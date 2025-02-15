@@ -17,7 +17,7 @@ import ApiConfig from "../../assets/js/ApiConfig";
 const Chat = (props) => {
   const { setLoader } = props;
   const { id } = useParams();
-  const { headers, uid } = useContext(AuthContext);
+  const { headers } = useContext(AuthContext);
   const [msgText, setMsgText] = useState("");
   const [messages, setMessages] = useState([]);
   const [selectUdata, setSelectUdata] = useState({});

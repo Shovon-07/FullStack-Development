@@ -70,7 +70,20 @@ export const sendMessage = async (req, res) => {
     // if (receiverId) io.to(receiverId).emit("newMessage", newMessage);
     if (receiverId) io.emit("newMessage", newMessage);
 
-    return res.status(201).json({ status: true, data: newMessage });
+    return res.status(200).json({ status: true, data: newMessage });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ status: "error", message: error.message });
+  }
+};
+
+export const deletedMessage = async (req, res) => {
+  try {
+    const { msgId } = req.params;
+
+    const delMsg = await Message.deleteOne({ _id: msgId });
+    if (delMsg)
+      return res.status(200).json({ status: true, data: `Message deleted` });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });
