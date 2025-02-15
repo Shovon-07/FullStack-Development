@@ -16,7 +16,7 @@ const ContextMenu = lazy(() =>
 import { formatMessageTime } from "../../assets/js/DateFormater";
 
 const ChatBox = (props) => {
-  const { messages, selectUdata } = props;
+  const { messages, selectUdata, setReloader } = props;
   const { uid, uImg } = useContext(AuthContext);
   const messageEndRef = useRef(null);
   const [deleteAbleMsgId, setDeleteAbleMsgId] = useState("");
@@ -106,6 +106,7 @@ const ChatBox = (props) => {
           contextMenu={contextMenu}
           closeContextMenu={closeContextMenu}
           data={deleteAbleMsgId}
+          setReloader={setReloader}
         />
       </Suspense>
     </div>

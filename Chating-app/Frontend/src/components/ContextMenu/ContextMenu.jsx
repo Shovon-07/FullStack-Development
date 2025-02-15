@@ -9,10 +9,10 @@ import ApiConfig from "../../assets/js/ApiConfig";
 import { AuthContext } from "../../context/AuthContext";
 
 const ContextMenu = (props) => {
-  const { contextMenu, closeContextMenu, data } = props;
+  const { contextMenu, closeContextMenu, data, setReloader } = props;
   const { headers } = useContext(AuthContext);
 
-  // Handle Edit option
+  //===> Edit option
   const handleEdit = () => {
     const updatedMessages = messages.map((msg) =>
       msg.id === contextMenu.messageId ? { ...msg, editable: true } : msg
@@ -21,22 +21,18 @@ const ContextMenu = (props) => {
     closeContextMenu();
   };
 
-  // Handle Delete option
+  //===> Delete option
   const handleDelete = () => {
     console.log(data);
     ApiConfig.get(`/message/delete/${data}`, { headers })
       .then((res) => {
-        console.log(res);
+        setReloader((prev) => !prev);
         closeContextMenu();
       })
       .catch((err) => {
         console.log(err);
         toast.error(err.response.data.message);
       });
-    // const updatedMessages = messages.filter(
-    //   (msg) => msg.id !== contextMenu.messageId
-    // );
-    // setMessages(updatedMessages);
   };
 
   // Handle saving edited message

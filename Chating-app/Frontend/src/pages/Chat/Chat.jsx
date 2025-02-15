@@ -21,6 +21,7 @@ const Chat = (props) => {
   const [msgText, setMsgText] = useState("");
   const [messages, setMessages] = useState([]);
   const [selectUdata, setSelectUdata] = useState({});
+  const [reloader, setReloader] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -37,7 +38,7 @@ const Chat = (props) => {
         });
     };
     getData();
-  }, [id]);
+  }, [id, reloader]);
 
   //===> Socket.io
   const socketBaseUrl = import.meta.env.VITE_APP_CHAT_SOCKET_URL;
@@ -53,12 +54,16 @@ const Chat = (props) => {
     });
 
     // socket.disconnect();
-  }, [id, selectUdata]);
+  }, [id, selectUdata, reloader]);
 
   return (
     <div className="Chat">
       <ChatHead selectUdata={selectUdata} />
-      <ChatBox messages={messages} selectUdata={selectUdata} />
+      <ChatBox
+        messages={messages}
+        selectUdata={selectUdata}
+        setReloader={setReloader}
+      />
       <ChatFoot
         id={id}
         messages={messages}
