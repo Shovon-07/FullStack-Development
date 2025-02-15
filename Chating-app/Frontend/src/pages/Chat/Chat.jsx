@@ -17,9 +17,9 @@ import ApiConfig from "../../assets/js/ApiConfig";
 const Chat = (props) => {
   const { setLoader } = props;
   const { id } = useParams();
-  const { headers } = useContext(AuthContext);
+  const { headers, uid } = useContext(AuthContext);
   const [msgText, setMsgText] = useState("");
-  const [data, setData] = useState([]);
+  const [messages, setMessages] = useState([]);
   const [selectUdata, setSelectUdata] = useState({});
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Chat = (props) => {
       setLoader(true);
       await ApiConfig.get(`/message/${id}`, { headers })
         .then((res) => {
-          setData(res.data.data);
+          setMessages(res.data.data);
           setSelectUdata(res.data.userToChatData);
           setLoader(false);
         })
@@ -45,25 +45,24 @@ const Chat = (props) => {
 
   useEffect(() => {
     socket.on("connect", () => {
-      console.log(`✅ Connected: ${socket.id}`);
+      // console.log(`✅ Connected: ${socket.id}`);
 
       socket.on("newMessage", (msg) => {
-        // setData([...data, msg]);
-        setData((prev) => [...prev, msg]);
+        setMessages((prev) => [...prev, msg]);
       });
     });
 
     // socket.disconnect();
-  }, [id]);
+  }, [id, selectUdata]);
 
   return (
     <div className="Chat">
       <ChatHead selectUdata={selectUdata} />
-      <ChatBox data={data} selectUdata={selectUdata} />
+      <ChatBox messages={messages} selectUdata={selectUdata} />
       <ChatFoot
         id={id}
-        data={data}
-        setData={setData}
+        messages={messages}
+        setMessages={setMessages}
         msgText={msgText}
         setMsgText={setMsgText}
         setLoader={setLoader}

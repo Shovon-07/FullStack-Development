@@ -16,15 +16,15 @@ const ContextMenu = lazy(() =>
 import { formatMessageTime } from "../../assets/js/DateFormater";
 
 const ChatBox = (props) => {
-  const { data, selectUdata } = props;
+  const { messages, selectUdata } = props;
   const { uid, uImg } = useContext(AuthContext);
   const messageEndRef = useRef(null);
 
   useEffect(() => {
-    if (messageEndRef.current && data) {
+    if (messageEndRef.current && messages) {
       messageEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [data]);
+  }, [messages]);
 
   //===> Handel context menu & edit & delete
   const [contextMenu, setContextMenu] = useState({
@@ -56,8 +56,8 @@ const ChatBox = (props) => {
         <p className="text-sm">Start chat with</p>
         <h1 className="text-xl">{selectUdata.fullname}</h1>
       </div>
-      {Array.isArray(data) &&
-        data.map((item, index) => {
+      {Array.isArray(messages) &&
+        messages.map((item, index) => {
           return (
             <div
               className={`chat ${
