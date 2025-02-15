@@ -45,8 +45,8 @@ const AuthForm = (props) => {
         toast.error("Please enter email address");
       } else if (inputData.password == "") {
         toast.error("Please enter password");
-      } else if (inputData.password.length < 8) {
-        toast.error("Password must be 8 characters or more");
+      } else if (inputData.password.length < 6) {
+        toast.error("Password must be 6 characters or more");
       } else {
         const payload = {
           email: inputData.email,

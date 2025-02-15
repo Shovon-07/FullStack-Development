@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { io } from "socket.io-client";
 
 //===> Css
 import "./Chat.css";
@@ -22,7 +23,7 @@ const Chat = (props) => {
   const [selectUdata, setSelectUdata] = useState({});
 
   useEffect(() => {
-    const getUsers = async () => {
+    const getData = async () => {
       setLoader(true);
       await ApiConfig.get(`/message/${id}`, { headers })
         .then((res) => {
@@ -35,7 +36,24 @@ const Chat = (props) => {
           toast.error(err.response.data.message);
         });
     };
-    getUsers();
+    getData();
+  }, [id]);
+
+  //===> Socket.io
+  const socketBaseUrl = import.meta.env.VITE_APP_CHAT_SOCKET_URL;
+  const socket = io(socketBaseUrl);
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log(`✅ Connected: ${socket.id}`);
+
+      socket.on("newMessage", (msg) => {
+        // setData([...data, msg]);
+        setData((prev) => [...prev, msg]);
+      });
+    });
+
+    // socket.disconnect();
   }, [id]);
 
   return (

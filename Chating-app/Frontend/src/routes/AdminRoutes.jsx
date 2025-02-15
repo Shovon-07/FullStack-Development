@@ -1,8 +1,7 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import AuthProvider from "../context/AuthContext";
-import { io } from "socket.io-client";
 
 //===> Route
 import PrivateRoute from "./PrivateRoute";
@@ -22,18 +21,6 @@ import NotFound from "../pages/NotFound/NotFound";
 const AdminRoutes = ({ userRole, isAuthenticated }) => {
   const [toggleSideNav, setToggleSideNav] = useState(false);
   const [loader, setLoader] = useState(false);
-
-  //===> Socket.io
-  const socketBaseUrl = import.meta.env.VITE_APP_CHAT_SOCKET_URL;
-  const socket = io(socketBaseUrl);
-
-  useEffect(() => {
-    isAuthenticated
-      ? socket.on("connect", () => {
-          console.log(`✅ Connected: ${socket.id}`);
-        })
-      : socket.disconnect();
-  }, []);
 
   return (
     <>

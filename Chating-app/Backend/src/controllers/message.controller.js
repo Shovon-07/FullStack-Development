@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import Message from "../models/message.model.js";
+import { io } from "../lib/socket.io.js";
 
 export const getUserForSidebar = async (req, res) => {
   try {
@@ -58,7 +59,7 @@ export const sendMessage = async (req, res) => {
       // imgUrl= ...
     }
 
-    const sent = await Message.insertOne({
+    const newMessage = await Message.insertOne({
       senderId: senderId,
       receiverId: receiverId,
       text: text,
@@ -66,11 +67,10 @@ export const sendMessage = async (req, res) => {
     });
 
     //===> Realtime transmit messages by socket.io
-    /**
-     * ...
-     **/
+    // if (receiverId) io.to(receiverId).emit("newMessage", newMessage);
+    if (receiverId) io.emit("newMessage", newMessage);
 
-    return res.status(201).json({ status: true, data: sent });
+    return res.status(201).json({ status: true, data: newMessage });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ status: "error", message: error.message });

@@ -57,13 +57,13 @@ const ChatBox = (props) => {
         <h1 className="text-xl">{selectUdata.fullname}</h1>
       </div>
       {Array.isArray(data) &&
-        data.map((item) => {
+        data.map((item, index) => {
           return (
             <div
               className={`chat ${
                 item.senderId == uid ? "chat-end" : "chat-start"
               }`}
-              key={item._id}
+              key={index}
               ref={messageEndRef}
             >
               <div className="chat-image avatar">
