@@ -14,10 +14,7 @@ const ContextMenu = (props) => {
 
   //===> Edit option
   const handleEdit = () => {
-    const updatedMessages = messages.map((msg) =>
-      msg.id === contextMenu.messageId ? { ...msg, editable: true } : msg
-    );
-    setMessages(updatedMessages);
+    toast.error("This feature has not been added yet");
     closeContextMenu();
   };
 
