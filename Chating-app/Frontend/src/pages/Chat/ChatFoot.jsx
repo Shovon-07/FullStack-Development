@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 
 //===> Icons
@@ -10,9 +10,17 @@ import { GrAttachment } from "react-icons/gr";
 import { AuthContext } from "../../context/AuthContext";
 import ApiConfig from "../../assets/js/ApiConfig";
 
+//===> Components
+import EmojiPickerComponent from "../../components/EmojiPicker/EmojiPickerComponent";
+
 const ChatFoot = (props) => {
   const { id, messages, setMessages, msgText, setMsgText } = props;
   const { headers, uid } = useContext(AuthContext);
+
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const handleEmojiClick = (emojiObject) => {
+    setMsgText((prev) => prev + emojiObject.emoji);
+  };
 
   const Submit = async (e) => {
     e.preventDefault();
@@ -29,18 +37,24 @@ const ChatFoot = (props) => {
       });
   };
 
-  // window.addEventListener("keydown", function (event) {
-  //   if (event.key === "Enter") {
-  //     event.preventDefault();
-  //     msgText == "" ? "" : Submit();
-  //   }
-  // });
-
   return (
     <form className="chatFoot" onSubmit={Submit}>
-      <div className="left">
+      <div
+        className="left"
+        onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+      >
         <div className="emoji">
-          <FaRegFaceSmileBeam size={22} />
+          <button
+            type="button"
+            // onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+          >
+            <FaRegFaceSmileBeam size={22} />
+          </button>
+          {showEmojiPicker && (
+            <div className="emoji-picker">
+              <EmojiPickerComponent onEmojiClick={handleEmojiClick} />
+            </div>
+          )}
         </div>
         <div className="inputBox">
           <input
