@@ -5,10 +5,18 @@
   left: 10px;
   background: #3f3f3f;
   border-radius: 50%;
+  display: none;
   transition: var(--trans);
   z-index: 99;
 }
 .sidenavTogglerIcon.active {
   margin-left: 300px;
   transform: rotateY(180deg);
+}
+
+/* Responsive */
+@media screen and (max-width: 950px) {
+  .sidenavTogglerIcon {
+    display: block;
+  }
 }

@@ -21,6 +21,7 @@
 .Chat .chatBox {
   padding: 0 100px;
   height: calc(100vh - 130px);
+  min-width: 500px;
   overflow-y: scroll;
 }
 .Chat .chatBox .starting img {
