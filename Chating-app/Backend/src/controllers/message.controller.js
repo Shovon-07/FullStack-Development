@@ -67,8 +67,8 @@ export const sendMessage = async (req, res) => {
     });
 
     //===> Realtime transmit messages by socket.io
-    // if (receiverId) io.to(receiverId).emit("newMessage", newMessage);
     if (receiverId) io.emit("newMessage", newMessage);
+    // if (receiverId) io.to(receiverId).emit("newMessage", newMessage);
 
     return res.status(200).json({ status: true, data: newMessage });
   } catch (error) {

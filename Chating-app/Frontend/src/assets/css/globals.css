@@ -184,7 +184,7 @@ img[alt="Img-from-table"] {
 
 /*___ It's also need for side nav overlay ___*/
 .body-overlay {
-  background-color: rgba(8, 8, 8, 0.295);
+  background-color: #000000ab;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -199,7 +199,7 @@ img[alt="Img-from-table"] {
 /*___ Layout end ___*/
 
 /*___ custome scroll bar start ___*/
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 6px;
   height: 5px;
 }
@@ -208,7 +208,7 @@ img[alt="Img-from-table"] {
 }
 ::-webkit-scrollbar-thumb {
   background: var(--main-clr);
-}
+} */
 /*___ custome scroll bar end ___*/
 
 /*___ Date picker start ___*/
@@ -273,11 +273,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 /*___ Change default style for library end ___*/
 
 /*___ Responsive ___*/
-/* @media screen and (max-width: 950px) {
+@media screen and (max-width: 950px) {
   .content_parent {
     margin-left: 0;
   }
-} */
+}
 @media screen and(max-width:800px) {
   .Form .card {
     width: 80%;

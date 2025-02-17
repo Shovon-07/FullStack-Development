@@ -5,10 +5,12 @@
   border-right: 0.01rem solid var(--dark-3);
   overflow-y: scroll;
   position: fixed;
+  transition: var(--trans);
+  z-index: 99;
 }
-.Sidenav::-webkit-scrollbar {
+/* .Sidenav::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .Sidenav .sideNavHead {
   background: var(--dark-blue);
@@ -44,7 +46,7 @@
 }
 
 /* Responsive */
-/* @media screen and (max-width: 950px) {
+@media screen and (max-width: 950px) {
   .Sidenav {
     left: -300px;
     box-shadow: none;
@@ -52,4 +54,4 @@
   .Sidenav.active {
     left: 0 !important;
   }
-} */
+}

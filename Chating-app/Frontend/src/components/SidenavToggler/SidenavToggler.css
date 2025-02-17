@@ -1,0 +1,14 @@
+.sidenavTogglerIcon {
+  cursor: pointer;
+  position: fixed;
+  top: 50%;
+  left: 10px;
+  background: #3f3f3f;
+  border-radius: 50%;
+  transition: var(--trans);
+  z-index: 99;
+}
+.sidenavTogglerIcon.active {
+  margin-left: 300px;
+  transform: rotateY(180deg);
+}

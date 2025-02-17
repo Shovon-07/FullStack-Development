@@ -9,7 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 //===> Components
 import Loader from "../components/Loader/Loader";
 const Sidenav = lazy(() => import("../components/Sidenav/Sidenav"));
-// const Footer = lazy(() => import("../components/Footer/Footer"));
+import SidenavToggler from "../components/SidenavToggler/SidenavToggler";
 
 //===> Pages
 const Home = lazy(() => import("../pages/Home/Home"));
@@ -35,9 +35,10 @@ const AdminRoutes = ({ userRole, isAuthenticated }) => {
                   setLoader={setLoader}
                 />
               </Suspense>
-              {/* <Suspense fallback={<Loader />}>
-                <Header setToggleSideNav={setToggleSideNav} />
-              </Suspense> */}
+              <SidenavToggler
+                toggleSideNav={toggleSideNav}
+                setToggleSideNav={setToggleSideNav}
+              />
             </>
           )}
 

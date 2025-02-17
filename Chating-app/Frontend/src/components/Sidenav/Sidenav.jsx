@@ -12,7 +12,7 @@ import Logout from "../../assets/js/Logout";
 import demoImg from "../../assets/images/profile.png";
 
 const Sidenav = (props) => {
-  const { setLoader } = props;
+  const { toggleSideNav, setToggleSideNav, setLoader } = props;
   const { headers } = useContext(AuthContext);
   const [data, setData] = useState([]);
 
@@ -37,7 +37,9 @@ const Sidenav = (props) => {
   };
 
   return (
-    <div className="Sidenav flex flex-col">
+    <div
+      className={`Sidenav flex flex-col ${toggleSideNav == true && "active"}`}
+    >
       <div className="sideNavHead">
         <h1>S Chat</h1>
       </div>
@@ -45,7 +47,7 @@ const Sidenav = (props) => {
         {Array.isArray(data) &&
           data.map((item) => {
             return (
-              <li key={item._id}>
+              <li key={item._id} onClick={CloseSideNav}>
                 <NavLink to={item._id}>
                   <img
                     src={item.profilePic != "" ? item.profilePic : demoImg}
