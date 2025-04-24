@@ -38,8 +38,7 @@ export default function AuthUser() {
   };
 
   const http = axios.create({
-    baseURL: "https://project.molla-properties.com/backend/public/api",
-    // baseURL: "http://localhost:8000/",
+    baseURL: "https://tailor.asikurrahman.com/backend/public/api",
     headers: {
       "Content-type": "application/json",
     },

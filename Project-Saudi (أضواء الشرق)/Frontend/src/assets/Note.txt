@@ -2,10 +2,6 @@
 -> For authorization.
   I changed AuthUser.js, Form.jsx, Header.jsx, App.jsx(Route)
 
--> PendingOrdersInvoice & Invoice page
-  * In productDetails section Commented left side
-  * In productDetails section change right side inline css (style={{ flexBasis: "100%" }})
-
 # Backend :
 -> For authorization.
   I changed Invoice Controller -> Login function
