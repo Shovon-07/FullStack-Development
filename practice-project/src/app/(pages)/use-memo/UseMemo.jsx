@@ -1,7 +1,7 @@
 "use client";
-import { useReducer } from "react";
+import { useMemo, useReducer } from "react";
 
-const UseReducer = () => {
+const UseMemo = () => {
   const initialState = { count: 0, status: false };
   const reducer = (stateVal, action) => {
     switch (action.type) {
@@ -20,18 +20,34 @@ const UseReducer = () => {
   };
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const expensiveCalc = (val) => {
+    let result = val ** val;
+    for (let i = 0; i <= 1000000000; i++) {
+      result * result;
+    }
+    console.log(result);
+    return result;
+  };
+  const expensiveCalcValue = useMemo(
+    () => expensiveCalc(state.count),
+    [state.count]
+  );
+
   return (
     <>
-      <div className="flex items-center gap-5">
-        <button
-          onClick={() => {
-            dispatch({ type: "inc" });
-          }}
-        >
-          +
-        </button>
-        <span className="text-[30px]">{state.count}</span>
-        <button onClick={() => dispatch({ type: "dec" })}>-</button>
+      <div className="flex justify-center items-center flex-col gap-5">
+        <div className="flex items-center gap-5">
+          <button
+            onClick={() => {
+              dispatch({ type: "inc" });
+            }}
+          >
+            +
+          </button>
+          <span className="text-[30px]">{state.count}</span>
+          <button onClick={() => dispatch({ type: "dec" })}>-</button>
+        </div>
+        <p>Expensive calculaton : {expensiveCalcValue}</p>
       </div>
       <hr
         style={{
@@ -53,4 +69,4 @@ const UseReducer = () => {
   );
 };
 
-export default UseReducer;
+export default UseMemo;
