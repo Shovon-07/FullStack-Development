@@ -104,17 +104,17 @@ const Footer = (props) => {
           <h3 className="footer-title">Find It Fast</h3>
           <ul>
             <li>
-              <NavLink to="" className="link-hovered">
+              <NavLink to="/" className="link-hovered">
                 Molla Foundation
               </NavLink>
             </li>
             <li>
-              <NavLink to="" className="link-hovered">
+              <NavLink to="/" className="link-hovered">
                 Molla Agro
               </NavLink>
             </li>
             <li>
-              <NavLink to="" className="link-hovered">
+              <NavLink to="/" className="link-hovered">
                 Molla Homes
               </NavLink>
             </li>
