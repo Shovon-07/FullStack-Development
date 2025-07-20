@@ -7,7 +7,7 @@ import Loader from "../Components/Loader/Loader";
 const SideNav = lazy(() => import("../Components/SideNav/SideNav"));
 const Header = lazy(() => import("../Components/Header/Header"));
 const Footer = lazy(() => import("../Components/Footer/Footer"));
-const FixedToDo = lazy(() => import("../Components/ToDoApp/ToDoApp"));
+// const FixedToDo = lazy(() => import("../Components/ToDoApp/ToDoApp"));
 
 const AdminLayout = () => {
   const {
@@ -58,9 +58,9 @@ const AdminLayout = () => {
         <div className="content">
           {loader && <Loader />}
           <Outlet context={[toggleVal]} />
-          <Suspense fallback={<Loader />}>
+          {/* <Suspense fallback={<Loader />}>
             <FixedToDo />
-          </Suspense>
+          </Suspense> */}
         </div>
         <Suspense fallback={<Loader />}>
           <Footer />
