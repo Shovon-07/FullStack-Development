@@ -103,10 +103,21 @@
 }
 @media screen and (max-width: 600px) {
   .My_Carousel .card {
-    height: 250px;
+    height: 350px;
   }
   .My_Carousel .card .img img {
-    height: 250px;
+    height: 350px;
+  }
+  .My_Carousel .slick-track {
+    gap: 0px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .My_Carousel .card {
+    height: 260px;
+  }
+  .My_Carousel .card .img img {
+    height: 260px;
   }
   .My_Carousel .slick-track {
     gap: 0px;

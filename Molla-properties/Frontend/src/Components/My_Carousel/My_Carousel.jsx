@@ -15,7 +15,7 @@ function My_Carousel(props) {
   var settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true, // false
     autoplaySpeed: 3000,
@@ -24,18 +24,10 @@ function My_Carousel(props) {
       {
         breakpoint: 1600,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 1000,
-        settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
+          infinite: true,
+          dots: true,
         },
       },
       {

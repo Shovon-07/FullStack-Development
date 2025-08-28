@@ -42,16 +42,16 @@ function Latest_Project_Carousel(props) {
               </div>
               <div className="right">
                 <h3 className="title">
-                  {items.Title.length > 70
-                    ? items.Title.slice(0, 70) + " ..."
+                  {items.Title.length > 38
+                    ? items.Title.slice(0, 38) + " ..."
                     : items.Title}
                 </h3>
                 <p
                   className="description"
                   dangerouslySetInnerHTML={{
                     __html:
-                      items.Features.length > 300
-                        ? items.Features.slice(0, 300) + " ......"
+                      items.Features.length > 120
+                        ? items.Features.slice(0, 120) + " ......"
                         : items.Features,
                   }}
                 ></p>
