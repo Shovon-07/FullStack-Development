@@ -7,7 +7,7 @@ const IotModel = require("./Models/IotModel");
 
 const app = express();
 const server = createServer(app);
-const PORT = 3001;
+const PORT = process.env.PORT;
 
 //===> Middlewares
 app.use(cors({ origin: "*", optionsSuccessStatus: 200 }));
