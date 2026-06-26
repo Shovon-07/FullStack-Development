@@ -81,6 +81,18 @@ const App = () => {
           </button>
         </div>
       </div>
+
+      <div style={{ textAlign: "center", marginTop: "30px" }}>
+        <span
+          style={{
+            fontSize: "5rem",
+            color: "#fff",
+            cursor: "pointer",
+          }}
+        >
+          +
+        </span>
+      </div>
     </div>
   );
 };
