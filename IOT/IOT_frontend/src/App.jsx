@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import ApiConfig from "./assets/ApiConfig";
 import { Id } from "./assets/Data";
 
+// import ControlCard from "./ControlCard";
+import "./assets/Css/App.css";
+import "./assets/Css/ControlCard.css";
+
 const App = () => {
   const { powerId, ledId } = Id;
   const [apiData, setApiData] = useState({});
@@ -41,24 +45,39 @@ const App = () => {
   };
 
   return (
-    <div>
-      <h1>Home appliances control</h1>
+    <div className="app">
+      <h1>⚡ Electrical Power Control</h1>
 
-      <div>
-        <div>
-          <span>
-            {apiData[0]?.name} ({apiData[0]?.status})
-          </span>
+      <p className="subtitle">Smart Monitoring & Control Dashboard</p>
+
+      <div className="grid">
+        <div className="card">
+          <div
+            className="status-dot"
+            style={{
+              background: "#FFD600",
+            }}
+          ></div>
+          <h2>💡</h2>
+          <h3>{apiData[0]?.name}</h3>
+          <p>{apiData[0]?.status == 1 ? "ON" : "OFF"}</p>
           <button onClick={(id) => updatePower(apiData[0]?._id)}>
-            {apiData[0]?.status == 1 ? "ON" : "OFF"}
+            {apiData[0]?.status == 0 ? "ON" : "OFF"}
           </button>
         </div>
-        <div>
-          <span>
-            {apiData[1]?.name} ({apiData[1]?.status})
-          </span>
+
+        <div className="card">
+          <div
+            className="status-dot"
+            style={{
+              background: "#29B6F6",
+            }}
+          ></div>
+          <h2>❄️</h2>
+          <h3>{apiData[1]?.name}</h3>
+          <p>{apiData[1]?.status == 1 ? "ON" : "OFF"}</p>
           <button onClick={(id) => updateLed(apiData[1]?._id)}>
-            {apiData[1]?.status == 1 ? "ON" : "OFF"}
+            {apiData[1]?.status == 0 ? "ON" : "OFF"}
           </button>
         </div>
       </div>
