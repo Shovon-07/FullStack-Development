@@ -5,7 +5,6 @@ import { Id } from "./assets/Data";
 const App = () => {
   const { powerId, ledId } = Id;
   const [apiData, setApiData] = useState({});
-  const [count, setCount] = useState(0);
 
   const fetchData = async () => {
     try {
@@ -20,22 +19,24 @@ const App = () => {
   useEffect(() => {
     fetchData();
   });
-  // useEffect(() => {
-  //   // console.log(apiData[0]._id);
-  //   // console.log(count);
-  // }, [count]);
 
   const updatePower = async (id) => {
-    await ApiConfig.put(`/update/${id}`, { status: 505 }).then((res) => {
+    await ApiConfig.put(`/update/${id}`, {
+      status: apiData[0]?.status == 0 ? 1 : 0,
+      boolStatus: apiData[0]?.boolStatus == false ? true : false,
+    }).then((res) => {
       const data = res.data.data;
-      console.log(data);
-      setCount((prev) => (prev += 1));
+      console.log(data.name + " = " + data.status);
     });
   };
+
   const updateLed = async (id) => {
-    await ApiConfig.put(`/update/${id}`, { status: 105 }).then((res) => {
-      console.log(res);
-      setCount((prev) => (prev += 1));
+    await ApiConfig.put(`/update/${id}`, {
+      status: apiData[1]?.status == 0 ? 1 : 0,
+      boolStatus: apiData[1]?.boolStatus == false ? true : false,
+    }).then((res) => {
+      const data = res.data.data;
+      console.log(data.name + " = " + data.status);
     });
   };
 
@@ -48,13 +49,17 @@ const App = () => {
           <span>
             {apiData[0]?.name} ({apiData[0]?.status})
           </span>
-          <button onClick={(id) => updatePower(apiData[0]?._id)}>On/off</button>
+          <button onClick={(id) => updatePower(apiData[0]?._id)}>
+            {apiData[0]?.status == 1 ? "ON" : "OFF"}
+          </button>
         </div>
         <div>
           <span>
             {apiData[1]?.name} ({apiData[1]?.status})
           </span>
-          <button onClick={(id) => updateLed(apiData[1]?._id)}>On/off</button>
+          <button onClick={(id) => updateLed(apiData[1]?._id)}>
+            {apiData[1]?.status == 1 ? "ON" : "OFF"}
+          </button>
         </div>
       </div>
     </div>
