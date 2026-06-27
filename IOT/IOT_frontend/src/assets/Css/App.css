@@ -6,41 +6,44 @@
 }
 
 body {
-  background: #06121d;
+  /* background: #06121d; */
+  background: linear-gradient(135deg, #00111f, #02203d, #04182c);
 }
 
 .app {
   min-height: 100vh;
-
   padding: 50px;
-
-  background: linear-gradient(135deg, #00111f, #02203d, #04182c);
 }
 
 h1 {
   text-align: center;
-
   font-size: 48px;
-
   color: white;
-
   margin-bottom: 10px;
 }
 
 .subtitle {
   text-align: center;
-
   color: #8bb9ff;
-
   margin-bottom: 50px;
-
   font-size: 18px;
 }
 
 .grid {
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
   gap: 30px;
 }
+
+/*___ custome scroll bar start ___*/
+::-webkit-scrollbar {
+  width: 6px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--main-clr);
+}
+/*___ custome scroll bar end ___*/

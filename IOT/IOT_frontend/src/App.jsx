@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ApiConfig from "./assets/ApiConfig";
 import { Id } from "./assets/Data";
+import Footer from "./Components/Footer/Footer";
 
-// import ControlCard from "./ControlCard";
 import "./assets/Css/App.css";
 import "./assets/Css/ControlCard.css";
 
 const App = () => {
-  const { powerId, ledId } = Id;
+  const { lightId, fanId } = Id;
   const [apiData, setApiData] = useState({});
 
   const fetchData = async () => {
@@ -47,16 +47,12 @@ const App = () => {
   return (
     <div className="app">
       <h1>⚡ Electrical Power Control</h1>
-
       <p className="subtitle">Smart Monitoring & Control Dashboard</p>
 
       <div className="grid">
         <div className="card">
           <div
-            className="status-dot"
-            style={{
-              background: "#FFD600",
-            }}
+            className={`status-dot ${apiData[0]?.status == 1 ? "light" : ""}`}
           ></div>
           <h2>💡</h2>
           <h3>{apiData[0]?.name}</h3>
@@ -68,10 +64,7 @@ const App = () => {
 
         <div className="card">
           <div
-            className="status-dot"
-            style={{
-              background: "#29B6F6",
-            }}
+            className={`status-dot ${apiData[1]?.status == 1 ? "fan" : ""}`}
           ></div>
           <h2>❄️</h2>
           <h3>{apiData[1]?.name}</h3>
@@ -93,6 +86,8 @@ const App = () => {
           +
         </span>
       </div>
+
+      <Footer />
     </div>
   );
 };
