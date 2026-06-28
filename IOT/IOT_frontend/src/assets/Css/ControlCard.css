@@ -12,10 +12,10 @@
   animation: fade 0.8s ease;
 }
 
-.card:hover {
-  /* transform: translateY(-12px) scale(1.03); */
+/* .card:hover {
+  transform: translateY(-12px) scale(1.03);
   box-shadow: 0 15px 40px rgba(0, 255, 255, 0.25);
-}
+} */
 
 .card::before {
   content: "";

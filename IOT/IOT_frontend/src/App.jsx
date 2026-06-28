@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import ApiConfig from "./assets/ApiConfig";
 import { Id } from "./assets/Data";
+
+import PCBBackground from "./Components/PCBBackground";
 import Footer from "./Components/Footer/Footer";
 
 import "./assets/Css/App.css";
@@ -45,6 +47,9 @@ const App = () => {
   };
 
   return (
+    <>
+    <PCBBackground />
+    
     <div className="app">
       <h1>⚡ Electrical Power Control</h1>
       <p className="subtitle">Smart Monitoring & Control Dashboard</p>
@@ -88,7 +93,7 @@ const App = () => {
       </div>
 
       <Footer />
-    </div>
+    </div></>
   );
 };
 
